@@ -1,0 +1,53 @@
+{
+  "slug": "corporate-hospital",
+  "brand": "바른마디 정형외과",
+  "industry": "정형외과 의원",
+  "primaryStyle": "Corporate",
+  "productType": "Information Site",
+  "tone": "Trustworthy · Calm · Clear",
+  "secondary": "Cinematic",
+  "accent": "Product",
+  "coreMessage": "어떤 진료를 누가 어떤 절차로 하는지 바로 이해되어 안심하고 예약하게 한다",
+  "naming": "Corporate / Information Site / Trustworthy · Calm · Clear",
+  "palette": {
+    "background": "#ffffff",
+    "backgroundSoft": "#f4f6f7",
+    "backgroundTint": "#eaf3f1",
+    "brand": "#1f7a6f",
+    "brandDark": "#165f57",
+    "brandInk": "#0f4640",
+    "ink": "#1b2428",
+    "inkSecondary": "#3d4a51",
+    "line": "#dde3e6",
+    "stateWarn": "#a35b00"
+  },
+  "sections": [
+    "상단 유틸리티 바(전화·진료시간·KST 기준 현재 진료 상태)",
+    "헤더(진료안내·의료진·진료절차·장비·비급여안내·FAQ·오시는 길 + 우상단 전화/예약 CTA)",
+    "Hero(좌측 정렬: 한 문장 + 근거 있는 수치 3개(개원 연차·전문의·물리치료사) + 예약/전화 CTA + 저채도 진료실 사진)",
+    "진료 과목 6개 — 표형 목록(부위·증상/질환·검사와 치료·담당 의사·요일)",
+    "의료진(실명 3인·전문의·학력·경력·진료 요일·인물 사진)",
+    "진료 절차 5단계(접수→진료→검사→치료→재활, 단계별 소요 시간) + 물리치료실 사진 + 알아 두실 것",
+    "검사·치료 장비 6종(용도·소요·급여 여부) + 검사실 사진 + 검사 결과 안내 화면 UI 목업(Product 액센트, 탭 동작)",
+    "비급여 진료비용 안내 테이블(분류 필터 탭·기준일·의료법 고지 문구)",
+    "자주 묻는 질문 8개(아코디언) + 전화 문의 박스",
+    "오시는 길(SVG 약도·주소 복사·주차·대중교통·요일별 진료시간표·휠체어 접근성)",
+    "예약 안내(배경 밴드 대신 2열 블록: 전화·문자 예약, 변경·취소 규정)",
+    "푸터(사이트맵·연락처·사업자·요양기관기호·개설허가·정책 링크·안내 문구)"
+  ],
+  "interactions": [
+    "스크롤 시 고정 헤더 그림자/경계선 전환",
+    "모바일 햄버거 메뉴(ESC 닫기·링크 클릭 시 닫기)",
+    "현재 섹션 내비 하이라이트(IntersectionObserver)",
+    "KST 기준 현재 진료 중/종료 상태 표시 + 진료시간표 오늘 요일 강조",
+    "검사 결과 화면 목업 탭 전환(X-ray/초음파/치료 계획, 방향키 이동)",
+    "비급여 테이블 분류 필터 탭(방향키 이동)",
+    "FAQ 아코디언(하나만 열림)",
+    "주소 복사 버튼(Clipboard API + 폴백)",
+    "앵커 이동 시 고정 헤더 높이 보정 스크롤",
+    "맨 위로 버튼",
+    "모바일 하단 고정 전화/예약 바",
+    "등장 애니메이션 없음(Corporate: 모든 정보 즉시 표시)"
+  ],
+  "path": "sites/corporate-hospital/index.html"
+}

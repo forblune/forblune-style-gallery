@@ -1,0 +1,50 @@
+{
+  "slug": "cinematic-architecture",
+  "brand": "온결 건축 ONGYEOL",
+  "industry": "건축 설계 스튜디오",
+  "primaryStyle": "Cinematic",
+  "productType": "Portfolio",
+  "tone": "Serious · Crafted · Quiet",
+  "secondary": "Editorial",
+  "accent": "Corporate",
+  "coreMessage": "누가 어떤 판단으로 공간을 설계하는지 보여주어 중요한 건물을 맡길 수 있다고 믿게 한다",
+  "naming": "Cinematic / Portfolio / Serious · Crafted · Quiet",
+  "palette": {
+    "background": "#141210 (웜 블랙) · #1b1815 (딥) · #0e0d0b (푸터)",
+    "light": "#f2ede4 (아이보리) · #e8e1d5",
+    "text": "#d9d1c4 (본) · #a89f92 (본 소프트) · #26221e (잉크, 밝은 섹션)",
+    "accent": "#b3824f (브론즈, 다크) · #875a30 (브론즈 딥, 라이트) — 링크·번호·얇은 선·CTA에만",
+    "rule": "대비는 색이 아니라 밝기·질감·공간. 포인트 컬러는 브론즈 1색."
+  },
+  "typography": {
+    "sans": "Pretendard (system-ui, Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR 폴백)",
+    "serif": "Noto Serif KR 300 — 인용문·푸터 철학 한 줄에만 (Editorial 20%)",
+    "measure": "본문 max-width 65ch, 섹션 라벨 자간 .32em 대문자"
+  },
+  "sections": [
+    "Header — 투명에서 스크롤 시 웜 블랙 단색, Work·Studio·Philosophy·Process·Contact, 작은 문의 링크(화살표 없음), 모바일 오버레이 메뉴",
+    "Hero — 대표 장면(강릉 사천 서가 동측 열람실, 서술형 alt) 느린 줌 26s, 좌측 정렬 한 문장 + 짧은 리드, 밑줄형 링크 2개(페이지 내 화살표는 이 2곳뿐), 필름 스틸 캡션",
+    "Facts strip — '2026년 8월 기준' 기준일 + 설립·준공 34건(내역)·인원·연간 건수를 작은 dl 한 줄로 (큰 숫자 통계 행 없음, Corporate 액센트 10%)",
+    "Studio — 소장 한서윤: 스튜디오 작업 중 흑백 사진, 이름 크게·직무 작게, 현재 역할→작업 방식→경험→철학, 판단 기준 인용, 스튜디오 크레딧",
+    "Philosophy — 4원칙(대지·빛·재료·디테일): 번호·얇은 선·큰 세리프 인용, 신념+과정 서술 2단락 + '증거' 아사이드(해당 Selected Work로 앵커 링크, 짝수 원칙은 좌우 반전)",
+    "Selected Works — 4건(겹집·느린 가마·사천 서가·활자의 집, id work-01~04): 21:9 영화 스틸 썸네일, 연도·위치·용도·역할 메타, 2~4문장, 크레딧 표기, 2건 저채도 컬러, hover 없음(링크 아님)",
+    "Process — Brief·Site·Concept·Detail·Build 5단계 탭/아코디언, 각 단계 확인 항목을 번호 목록(체크 아이콘 없음)으로, 산출물·클라이언트 결정 사항, 소요 기간",
+    "Contact — '프로젝트를 이야기해 주세요' 조용한 폼, 회신 기대치(3영업일·첫 미팅 90분·연 4~5건), 주소·시간",
+    "Footer — 가장 짙은 색, 철학 한 줄, ©·지역·직무·사업자 정보 작게"
+  ],
+  "interactions": [
+    "헤더 스크롤 상태 변화 (투명에서 짙은 단색, 높이 축소)",
+    "모바일 햄버거 메뉴 (aria-expanded, Esc 닫기, 링크 클릭 시 닫힘)",
+    "현재 섹션 내비 활성 표시 (IntersectionObserver)",
+    "스크롤 리빌 — 히어로·소장 사진·인용문·작업 스틸 11개 요소에만 긴 페이드, 나머지는 즉시 표시, prefers-reduced-motion·noscript 시 제거",
+    "Hero 느린 줌(Ken Burns) + 필름 그레인 오버레이, reduced-motion 시 정지",
+    "Process 스텝퍼 — 데스크톱 탭 / 모바일 아코디언 겸용, 방향키·Home·End 키보드 탐색",
+    "철학 원칙의 '증거' 링크가 해당 Selected Work로 스크롤 이동(scroll-margin-top)",
+    "문의 폼 — 필수 항목 검증(이름·이메일·용도·메시지·동의), 제출 후 개인화된 회신 안내 메시지",
+    "이미지 로드 실패 시 컨테이너 배경색 유지",
+    "본문 건너뛰기 링크(포커스 시 표시)"
+  ],
+  "images": "loremflickr 키워드 이미지: hero interior,light lock=2101 · 소장 architect,studio lock=2102 · 겹집 architecture,concrete lock=2103 · 느린 가마 building,facade lock=2104 · 사천 서가 architecture,brick lock=2105 · 활자의 집 interior,light lock=2106. 기본 grayscale(1), 겹집·사천 서가 2건만 저채도 컬러(grayscale .55 saturate .7). 컨테이너 배경색·aspect-ratio 지정, loading=lazy, alt 서술형",
+  "path": "sites/cinematic-architecture/index.html",
+  "antiAiSlop": "pill+dot 0 · 이모지 0 · 그라데이션 텍스트/글로우/글래스 0 · 화살표 아이콘 2곳(히어로 링크만) · 통계 행 대신 기준일 있는 사실 한 줄 · 3열 카드 없음(원칙은 서술+증거 아사이드) · 체크 아이콘 리스트 없음(번호) · hover는 링크·버튼에만 · 서체 Pretendard+Noto Serif KR 2개 · 리빌 11개 요소만"
+}

@@ -1,0 +1,1355 @@
+[
+ {
+  "slug": "editorial-select",
+  "styleFidelityBefore": 78,
+  "styleFidelityAfter": 91,
+  "aiTellsFound": [
+   "§8-13 picsum 랜덤 이미지 43곳(히어로·셀렉션 4×2컷·무드 3·상품 8×2컷·인터뷰 2·매장 1·장바구니 썸네일 12) — 주제와 무관한 이미지",
+   "§8-9 대문자·자간 아이브로우 라벨 6개(‘Autumn Selection · 2026’, ‘This week’, ‘Three rooms’, ‘Shop’, ‘Editorial · 인터뷰’, ‘About · 매장’) + .eyebrow::before 가로선 + mood .en / principles h3 / footer h3 uppercase — 섹션마다 ‘라벨→H2→설명’ 동일 반복",
+   "§8-4 히어로 2버튼 구조(outline btn ‘이번 주 셀렉션 보기 →’ + link ‘고르는 기준 읽기 →’) — Editorial ‘로고·한 문장·CTA만’ 문법 위반",
+   "§8-11 화살표 SVG 6곳(히어로 2, 전체 상품 보기 1, 무드 링크 3)",
+   "§8-15 .reveal fade-up이 34개 요소에 일괄 적용(섹션 헤드·Q&A 5개·원칙·필터·상품 8개·푸터 등 텍스트 블록까지)",
+   "§8-14 헤더 backdrop-filter blur 반투명(글래스 계열)",
+   "§8-1 매장 영업 상태에 원형 dot 마커(펄스는 없음), 장바구니 카운트 border-radius 9px pill(사이트 radius 규칙 0과 불일치)",
+   "§4 hover가 클릭 불가 요소에: .mood__item(article 전체) hover 시 이미지 확대",
+   "§5 카피 소소: 토스트·캡션·이전/다음 글에 em dash ‘—’ 남용(영문 AI 문체 흔적)"
+  ],
+  "aiTellsFixed": [
+   "§8-13 picsum 43곳 전부 loremflickr 키워드 URL(ink,pen / linen,fabric / envelope,paper / ceramic,stone / stationery,notebook / ceramic,cup / bookshelf,minimal / pen,aluminum / notebook,paper / ceramic,jar / linen,towel / brass,clip / book,cover / wood,pencil / book,minimal / woman,portrait / desk,notebook / shop,interior 등)로 교체, lock 41xx 고유, 장바구니 썸네일은 메인 컷과 동일 lock; 히어로 alt·캡션을 실제 키워드 내용에 맞게 수정",
+   "§8-9 .eyebrow를 세리프 13px 일반 표기로 재정의(uppercase·자간·가로선 제거), 6개 중 4개 삭제(This week/Three rooms/Shop/About), 히어로는 ‘2026년 8월 셋째 주’, 인터뷰는 ‘인터뷰 · 열네 번째 글’로 교체; mood .en·principles h3·footer h3 uppercase 제거 → text-transform 0개. 섹션 헤드 형태 다양화(히어로 날짜+H1 / 셀렉션 H2+날짜문장+측면 링크 / 무드 H2+lead / 숍 H2+lead+필터 / 인터뷰 표기+H2+사실표 / 매장 H2+영업상태)",
+   "§8-4 히어로 CTA 1개로 축소, ‘고르는 기준 읽기’는 hero__note의 텍스트 링크로 이동",
+   "§8-11 화살표 6→2곳(히어로 CTA, 전체 상품 보기)",
+   "§8-15 .reveal 34→10개(셀렉션 카드 4·무드 이미지 3·인용문·인터뷰 사진·매장 사진 — 이미지 블록만), 텍스트는 즉시 표시; noscript 대비 추가",
+   "§8-14 헤더 backdrop-filter 제거, 불투명(.97) 배경으로",
+   "§8-1 영업 상태 dot → 6px 정사각 마커, 장바구니 카운트 radius 제거(사이트 radius 0 규칙 통일)",
+   "§4 무드 이미지를 <a class=mood__pic>(data-jump, tabindex=-1)로 감싸고 hover 확대를 링크에만 적용",
+   "§5 토스트 ‘○○ 담았습니다. 장바구니에서 확인하세요.’, 이전/다음 글 구분자 ‘·’, 히어로 캡션 콜론으로 — em dash 제거"
+  ],
+  "dnaIssuesFound": [
+   "Editorial 히어로 문법(로고·한 문장·CTA만) 대비 CTA 2개",
+   "모션 지표 2인데 전 요소 리빌로 모션 체감 과다",
+   "섹션 헤드 반복 리듬(라벨→H2→설명)이 매거진 리듬을 약화",
+   "무드 블록 이미지 hover가 링크 아닌 article에 걸림"
+  ],
+  "dnaIssuesFixed": [
+   "히어로 CTA 1개 + 이미지 주인공 유지(좌 텍스트 4열 / 우 이미지 8열)",
+   "리빌을 이미지 블록 10곳으로 한정 — 느린 페이드는 유지",
+   "섹션마다 헤드 구성 변경, 라벨은 날짜·호수 등 사실 표기만",
+   "무드 이미지 자체를 필터 점프 링크로 만들고 hover를 거기에만"
+  ],
+  "codeIssuesFixed": [
+   "reveal 초기 opacity:0 요소가 JS 비활성 시 안 보이는 문제 → noscript 스타일 추가",
+   "backdrop-filter transition 항목 제거",
+   "prefers-reduced-motion 셀렉터를 .mood__pic 기준으로 갱신",
+   "태그 균형(파서 검증 0 오류)·JS 구문(new Function 통과)·중복 id 0 재확인",
+   "meta.json sections/interactions/images/audit 갱신"
+  ],
+  "finalLineCount": 1534,
+  "imagesReplaced": 43,
+  "remainingIssues": [
+   ".ph--warm::after의 4~6% 투명도 갈색 틴트 그라데이션 오버레이는 사진 톤 통일용으로 유지(블롭/글로우 아님)",
+   "브라우저 탭 한도로 로컬 스크린샷 확인 불가 — 코드 검토로 대체(재시도 안 함)",
+   "loremflickr ‘woman,portrait’(인터뷰 인물) 등 일부 키워드는 결과 사진이 캡션과 정확히 일치하지 않을 수 있음",
+   "footer 링크 열이 3개(Shop/고요/안내) — 정보 구조상 자연스러워 유지"
+  ],
+  "oneLineVerdict": "골격·카피·인터랙션은 이미 사람 손 같았고, 이번 감사로 랜덤 이미지·대문자 라벨 반복·2버튼 히어로·일괄 fade-up 같은 ‘기본값 흔적’을 걷어내 조용한 편집숍의 편집 리듬이 살아난 Editorial Commerce 예시.",
+  "before100": 78,
+  "after100": 91
+ },
+ {
+  "slug": "editorial-perfume",
+  "styleFidelityBefore": 72,
+  "styleFidelityAfter": 90,
+  "aiTellsFound": [
+   "#13 picsum 랜덤 이미지 25장 전부(히어로 2, 무드 패널 6, 상품 카드 12, 에디토리얼 3, 디스커버리 1, 브랜드 1) — 주제 무관 스톡",
+   "#15 .reveal 스크롤 페이드가 18곳(섹션 헤드·탭·상품 카드 6개+data-delay 스태거·에디토리얼 텍스트·인용·브랜드 텍스트 등)에 일괄 적용",
+   "#9/§2 대문자 letter-spacing .22em 아이브로우 라벨 10개(2026 Late Summer Selection / This Season's Notes / Woody·Citrus·Musk / Selection · 06 / Editorial / Discovery Set / Brand Note / Newsletter) — 모든 섹션이 '라벨→H2→설명' 동일 리듬",
+   "#11 화살표 svg 아이콘 5곳(히어로 링크, 무드 패널 링크 3, 상품 하단 링크)",
+   "#5/#16 브랜드 노트 4열 팩트 행(Since 2021 / Per Year ≤4 / Perfumers 2 / Bottle 재사용) — 영문 대문자 라벨+큰 숫자, 통계 행 형식",
+   "#12 3개씩 나열 리듬: 무드 3 + 원칙 3(01~03) + 푸터 3열 + 세 병 골라 담기 — 3섹션 이상 반복, '천천히' 3회 반복",
+   "#14 헤더 backdrop-filter blur(8px) 반투명 글래스",
+   "#7/§1-6 .btn·.toast·.cart-count border-radius 999px pill(shadcn 기본값형) vs 카드 radius 0 — radius 규칙 불일치",
+   "#10 상품 사진 링크가 href=#shop(같은 섹션)으로 '자세히 보기' 어포던스 거짓말",
+   "§3 대문자 라벨 잔존: card__name span uppercase, NOTES, vial__mood CITRUS/WOODY/MUSK, footer h3 uppercase",
+   "§2 body font-weight 300(Noto Sans KR Light 15px) — 가독성 희생"
+  ],
+  "aiTellsFixed": [
+   "#13 25장 전부 loremflickr 키워드 URL로 교체(perfume,bottle / fragrance,glass / linen,texture / perfume,wood / citrus,glass / linen,bed / cedar,wood / perfume,books / paper,texture / perfume,laboratory / perfume,vials / perfume,shop 등, lock 7101~7161 고유), alt 서술 유지·보강",
+   "#15 .reveal을 큰 사진 5장(에디토리얼 3, 디스커버리 박스, 브랜드 사진)으로 축소, data-delay 스태거 제거, translateY 제거하고 순수 1.4s 페이드만",
+   "#9 .eyebrow를 세리프 13px 소문자·짧은 선 마커로 재정의, 10개→7개로 줄이고 내용을 한국어 구체 문장으로(2026 늦여름 셀렉션 / 우디 · 오후 두 시 이후 / No. 01 — 06 · 50ml / 30ml / 에디토리얼 — 향을 고르는 기준 / 디스커버리 세트 · 2ml 바이알). 시즌·브랜드·뉴스레터 섹션은 라벨 없이 H2로 바로 시작해 리듬 변화",
+   "#11 무드 패널 링크 3곳 화살표 제거 → 히어로 링크·상품 하단 링크 2곳만",
+   "#5/#16 4열 팩트 행 삭제, 방문 안내 dl과 합쳐 '시작 / 한 해에 / 병과 상자 / 쇼룸 / 시향' 5행 표로 재구성(2021년 10월, 2025년 3종·2026년 2종 등 기준일 명시)",
+   "#12 원칙 3→4개(04 두 사람 다 거슬리지 않아야 한다: 열흘·사흘 구체 수치), 푸터 3열→2열(둘러보기 / 쇼룸·연락), 시즌 헤드 카피 재작성('천천히' 반복 제거)",
+   "#14 헤더 blur 제거, 단색 var(--bg)",
+   "#7 .btn·.toast·.cart-count radius 0으로 통일(radius 규칙 하나: 0, 라디오형 체크만 원형)",
+   "#10 상품 사진 링크 → href=#season + data-mood-link, 클릭 시 해당 계열 무드 탭 활성화하는 JS 추가, aria-label '○○의 노트 보기'",
+   "§3 card__name span·card__notes(노트)·vial__mood(시트러스/우디/머스크)·footer h3 대문자 제거",
+   "§2 body font-weight 400으로 가독성 확보"
+  ],
+  "dnaIssuesFound": [
+   "헤더 반투명 블러 — Editorial '얇은 단색 헤더' 문법과 어긋남",
+   "섹션마다 동일한 라벨→H2→lead 구조로 매거진 리듬(형태 변화) 부족",
+   "모션 지표 2/5인데 거의 모든 요소가 페이드-업 — 과다",
+   "브랜드 노트 팩트 행이 Corporate 문법(수치 행)에 가까움",
+   "pill 버튼이 Editorial 카드 radius 0 체계와 충돌",
+   "본문 Light 300으로 가독성 저하(감성 때문에 가독성 희생 금지)"
+  ],
+  "dnaIssuesFixed": [
+   "헤더 단색화",
+   "섹션별 도입 형태 변화(라벨 유무·세리프 소제·표·인용) 적용",
+   "페이드를 큰 사진 5장으로 제한",
+   "팩트 행을 문장형 표로 전환",
+   "radius 0 단일 규칙",
+   "본문 400"
+  ],
+  "codeIssuesFixed": [
+   "미사용 .facts CSS 및 반응형 규칙 제거",
+   "applyFilter의 불필요한 is-in 추가 로직 제거",
+   "data-mood-link 핸들러 추가(탭 활성화 함수 재사용)",
+   "태그 균형·중복 id 없음 확인, node --check로 JS 문법 확인, meta.json 갱신(sections/interactions/images)"
+  ],
+  "imagesReplaced": 25,
+  "finalLineCount": 1250,
+  "remainingIssues": [
+   "Browser 도구로 로컬 URL 접근이 거부되어(공유 브라우저) 스크린샷 확인은 하지 못함 — 코드 검토로 대체",
+   "무드 3계열·세 병 골라 담기 등 콘텐츠 구조상 '3'은 남아 있음(향 6종=3계열×2 구조라 의도적으로 유지)",
+   "loremflickr 키워드 특성상 일부 컷(예: perfume,books / paper,handwriting)은 실제 로드 결과가 alt와 다소 어긋날 수 있음",
+   "푸터 하단 '개인정보처리방침 · 이용약관'은 링크가 아닌 텍스트로 유지"
+  ],
+  "oneLineVerdict": "이미지·리듬·모션을 Editorial 문법으로 되돌린 뒤에는 연희동 니치 향수 브랜드의 취향이 먼저 읽히는 조용한 화보형 커머스로, 대문자 라벨·pill·일괄 페이드 같은 AI 티는 거의 사라졌다.",
+  "before100": 72,
+  "after100": 90
+ },
+ {
+  "slug": "editorial-stay",
+  "styleFidelityBefore": 78,
+  "styleFidelityAfter": 91,
+  "aiTellsFound": [
+   "#13 picsum 랜덤 이미지 16장(히어로 3, 장면 3, 공간 8, 호스트 1, 마무리 1) — 주제 무관 스톡",
+   "#15 .reveal(opacity+translateY 18px) 39개 요소 일괄 fade-up — 텍스트·제목·표·위젯까지 전부 스크롤 등장",
+   "#11 화살표 5곳 — 히어로 CTA·문의 버튼·마무리 CTA의 SVG 화살표(hover translateX) 3곳 + 약도 SVG '← 제주공항' '번영로 방면 →' + '공항 → 번영로 → 선흘리'",
+   "#10 클릭 불가 pill 칩 — 아침/낮 장면의 .tags li(border-radius 999px 알약 6개), '마우스를 올리면 다른 컷을 볼 수 있어요' 툴팁형 힌트",
+   "#7/#9 radius 규칙 혼재 — 버튼 999px pill, 달력 4px, 스테퍼·달력 내비 50% 원, 약도 2px, 호스트 원형 아바타 56px; 아이브로우 8개(uppercase+자간 0.14em+선 장식) 모든 섹션 동일 반복(히어로·마무리 포함)",
+   "#14 글래스 헤더(backdrop-filter blur 10px) + 스크롤 큐 '천천히'(그라데이션 선 무한 애니메이션) + .frame::after 의미 없는 하단 그라데이션",
+   "#12 3개씩 나열 리듬 — 아코디언 4개 모두 li 3개, 장면 태그 3개×2, h2 '아침, 낮, 저녁. 세 장면', 'A, B, C, 그리고 D'(참나무 마루, 리넨, 히노키 탕, 그리고 조용함)",
+   "#4 히어로 아이브로우 '숲결 스테이 · 제주 선흘 독채' — 브랜드와 중복되는 라벨(경미)",
+   "코드: min-height 100svh 뒤에 100vh가 덮어씀, policy h4/footer h4 헤딩 레벨 건너뜀, label for가 비입력 div를 가리킴, guests label에 for 없음, .field .value가 입력창처럼 보이나 편집 불가"
+  ],
+  "aiTellsFixed": [
+   "#13 16장 전부 loremflickr 키워드(cabin,forest / bedroom,linen / jeju,stone / cabin,interior / hottub,forest / cabin,livingroom / bookshelf,wood / bedroom,lamp / bathroom,tile / bathroom,mirror / stonewall,garden / hands,coffee / garden,chair) lock 8101~8141 고유, alt 서술형으로 수정",
+   "#15 .reveal을 opacity 전용(이동 없음)으로 바꾸고 사진 figure·공간 카드 8곳에만 남김. 텍스트·제목·표·위젯은 즉시 표시, data-delay 전부 제거",
+   "#11 버튼 SVG 화살표 3개 삭제, 약도 '← 제주공항 40분'→'제주공항 방면 · 차 40분', 경로 문장 '번영로를 타고 선흘리까지'로 — 남은 화살표 1곳(약도 '번영로 방면 →')",
+   "#10 pill 태그 → 세 장면 모두 사실 목록 dl(조식 08:30 / 원두 100g / 동백동산 12분 / 노천탕 깊이 60cm 등, 2·3·2개로 개수 다르게). 툴팁 힌트 삭제, figure에 role=group + aria-label로 두 컷 안내",
+   "#7 radius 2px 단일 규칙(버튼·헤더 CTA·달력 날짜·달력 내비·스테퍼·범례·호스트 사진 세로 프레임). 오늘 표시 dot → 1px 선",
+   "#9 아이브로우를 Editorial 문법(작은 세리프 숫자 <b>01</b> + 제목, uppercase·자간·선 장식 없음)으로 재설계, 히어로·마무리 라벨 삭제(8→6)",
+   "#14 헤더 blur 제거(단색 오프화이트), 스크롤 큐 삭제, .frame::after 그라데이션 삭제",
+   "#12 아코디언 항목 4/2/3/2로 변화(주차 안내 추가·조용한 시간 병합), h2 '해가 드는 순서대로 적어 둔, 이 집의 하루.', '참나무 마루와 리넨, 히노키 탕. 그 다음은 조용함이 알아서 채웁니다.'",
+   "#4 히어로 아이브로우 삭제 → 이미지·한 문장·CTA·텍스트 링크·우측 메타만",
+   "코드: svh/vh 순서 교정, policy·footer h4→h3, label→span.field-label + aria-labelledby, 날짜 필드에 aria-live, .field .value를 밑줄형 표시로 변경, 태그 균형·중복 id 없음 확인"
+  ],
+  "dnaIssuesFound": [
+   "Editorial 모션 지표 2인데 전 요소 translateY fade-up으로 모션 밀도가 과했음",
+   "아이브로우가 Editorial(작은 숫자/이탤릭)이 아니라 Cinematic/템플릿식 대문자·자간 라벨이었음",
+   "pill 버튼·pill 태그·원형 스테퍼가 섞여 '카드마다 다른 모서리' 혼합 위반",
+   "이미지가 주인공이어야 하는데 랜덤 스톡이라 취향·큐레이션 설득이 성립하지 않았음",
+   "70·20·10(Editorial·Commerce·Cinematic) 배분, 요구 8섹션, Scene→Mood→Selection 카피, 제안형 CTA('머무는 날 고르기')는 적합"
+  ],
+  "dnaIssuesFixed": [
+   "모션을 사진 크로스페이드·히어로 느린 줌·이미지 컷 전환으로만 한정(Editorial 모션 2)",
+   "섹션 라벨을 화보 목차형 세리프 숫자로 통일해 Editorial 리듬 확보",
+   "모서리 2px 하나로 통일, 버튼은 얇은 사각 테두리형",
+   "주제 일치 이미지로 교체해 '이미지가 먼저 설득' 구조 복원",
+   "호스트 사진을 원형 아바타 대신 세로 프레임(손·커피 장면)으로 — Cinematic 악센트의 '작업 중인 모습' 문법"
+  ],
+  "imagesReplaced": 16,
+  "remainingIssues": [
+   "로컬 서버(8080) 미가동 + 공유 브라우저 탭 한도로 스크린샷 확인 못 함 — 코드 검토로 대체",
+   "loremflickr 키워드 결과는 실제 사진 품질이 들쭉날쭉할 수 있음(특히 hottub,forest / hands,coffee)",
+   "예약 문의 위젯은 프론트 시뮬레이션(실제 전송 없음) — 예시 사이트 특성상 의도된 범위",
+   "달력 예약 불가일은 결정적 규칙 기반 예시 데이터"
+  ],
+  "oneLineVerdict": "사진이 먼저 말하고 글은 즉시 읽히는, 하루의 리듬을 시간·숫자로 구체화한 조용한 제주 독채 랜딩 — pill·화살표·일괄 fade-up 같은 템플릿 흔적을 걷어내 에디토리얼 문법에 맞췄다.",
+  "finalLineCount": 1626,
+  "before100": 78,
+  "after100": 91
+ },
+ {
+  "slug": "kinetic-sneaker",
+  "styleFidelityBefore": 76,
+  "styleFidelityAfter": 91,
+  "aiTellsFound": [
+   "§8-1 히어로 키커 .status::before — 8px 원형 dot + pulse 애니메이션 + 라임 글로우 box-shadow (line 269–273)",
+   "§8-9 섹션 아이브로우 라벨 '01 / This Drop' '02 / Spec & Tech' '03 / Archive' '04 / Guide' '05 / Quick Buy' 5개, 대문자·자간 .14em·사각 마커 — 모든 섹션이 '라벨→H2(영문+.)→설명' 동일 반복 (§2 리듬 위반 포함)",
+   "§8-11 화살표 5곳 — 히어로 CTA(→), 아카이브 하단 버튼(→), 스펙 카드 링크 ↗ ×3 (spec-card__link svg는 hover 없이 항상 translate된 CSS 버그 포함)",
+   "§8-13 picsum 랜덤 이미지 13개 — 히어로 1, 제품 3, 아카이브 6, JS 장바구니 썸네일 3",
+   "§8-14 글로우/그라데이션 — 히어로 '07' text-shadow 60px 라임 글로우, .btn--lime:hover box-shadow 32px 글로우, 히어로 이미지 라임→시안 135deg 그라데이션 오버레이, 헤더 backdrop-filter blur 글래스",
+   "§8-15 스크롤 fade-up 일괄 — .fx 26개(아이브로우·aside·제품·스펙 카드·데이터 스트립·노트·아카이브·퀵바이 문단·폼까지 전부 translateY 페이드)",
+   "§8-10 클릭 불가한데 호버 반응 — 아카이브 .arc-item(article, 링크 없음)에 확대·시안 오버레이·본문 상승 hover + 커서 확대 트리거, .product__media도 커서 확대 트리거; 스펙 카드 outline .tag가 클릭 가능한 .chip과 시각적으로 동일",
+   "§8-3 유사 — 신뢰 구간이 SVG 아이콘 + h3 + 목록 ×3열 아이콘 카드 그리드 구조",
+   "§8-12 3개씩 나열 — 스펙 카드 3 + 카드마다 태그 3개씩, 신뢰 3열, 섹션 H2 전부 '영문 2~3단어.' 마침표 끊기 형식('3 Models.' 'Built to Push.' 'Past Drops.' 'Slow Down Here.' 'Grab It. Go.'), 히어로 버튼 2개(primary+ghost) 공식, 제품 태그 'New'는 채우기용",
+   "§8-16 사실성 — 아카이브 평균 완판 '7분 46초' 계산 오류(실제 7분 49초), 히어로 스탯 라벨 영문('Drops since 2026.02' 'Pairs sold out')으로 근거 불명확, meta description '300족 한정'"
+  ],
+  "aiTellsFixed": [
+   "§8-1 pulse dot 제거 → 채움형 사각 태그 'Drop 07 · Now Open' + 텍스트로 교체, .eyebrow CSS 전부 삭제",
+   "§8-9 아이브로우 5개 전부 삭제. 섹션 헤더 형태를 각각 다르게: 제품=H2+남은 수량 227/900·오픈 후 경과 시간(라이브), 스펙=1열 H2(줄바꿈)+aside 좌정렬, 아카이브=H2 '01–06 Sold Out'+기록 문장+텍스트 링크, 신뢰=한국어 소제목 '구매 안내'+Pretendard 900 한국어 H2, 퀵바이=H2만",
+   "§8-11 화살표 5→1 (히어로 CTA만). 스펙 링크는 밑줄 텍스트 '시험 조건', 아카이브 하단 버튼 삭제 후 aside에 밑줄 텍스트 링크",
+   "§8-13 picsum 13개 → loremflickr 키워드(sneakers,streetwear / sneaker,closeup / skateboard,street) lock 7101·7111–7113·7121–7126, 장바구니 썸네일은 제품과 같은 lock, alt 전부 서술형으로 재작성",
+   "§8-14 히어로 '07' text-shadow 제거, 버튼 hover 글로우 제거, 이미지 오버레이를 라임 단색 multiply .32로 교체, 헤더 backdrop-filter 제거(불투명 .94)",
+   "§8-15 .fx 일괄 페이드 제거(CSS·마크업·JS 관찰 대상). 남긴 모션: 제목 mask-line 줄 상승, 제품 카드 좌→우 슬라이드 스태거(fx-l), 아카이브 마스크 와이프 스태거(fx-clip), 푸터 워드마크 클립. 스펙·신뢰·퀵바이는 즉시 표시",
+   "§8-10 아카이브 hover(확대·오버레이·상승) 전부 삭제, 커서 확대는 a/button/input에서만, .tag를 항상 채움형 스티커로 바꿔 outline .chip과 구분, 스펙 태그는 슬래시 구분 텍스트로",
+   "§8-3 신뢰 구간을 아이콘 3열 → dl 정의 목록 4행(정품 보증·교환/반품·배송·고객센터, 좌 dt/우 2열 목록) + 단계는 상단 굵은 선 타임라인으로, SVG 아이콘 제거",
+   "§8-12 스펙 카드 3→4(04 Heel Counter 추가, 시험 조건 노트에 측정 방식 보강), 태그 수 2/4/3/2로 불균일, H2 형식 다양화('Drop 07' / 'Built to Push.' / '01–06 Sold Out' / 한국어 문장 / 'Grab It'), 히어로 2버튼 → primary 1개 + 밑줄 텍스트 링크, 'New' 태그 → 'Carbon'",
+   "§8-16 평균 완판 7분 49초로 정정, 히어로 스탯 라벨을 근거 있는 한국어('Drop 01–06 누적 완판', '최단 완판 · Drop 05 (2026.06.13)', '3모델 × 300')로, meta description '300족만 생산·재발매 없음'으로"
+  ],
+  "dnaIssuesFound": [
+   "Kinetic '역할 없는 색 제거' 대비 히어로 라임→시안 듀오톤 그라데이션은 색 역할이 흐릿함",
+   "Kinetic은 '정적인 구간 반드시' 원칙인데 신뢰 구간이 3열 아이콘 카드로 다른 섹션과 같은 카드 문법 — 대비가 약함",
+   "Commerce 카드 규칙(품절/재고/즉시 담기)은 충족했으나 아카이브 카드가 링크 없이 호버만 있어 어포던스 거짓말",
+   "영어 슬로건 반복(모든 H2 영문 마침표형) — '영어 슬로건만으로 전문성 대신 금지'에 근접",
+   "모션이 '스타일 리듬대로'가 아니라 전 요소 fade-up 일괄"
+  ],
+  "dnaIssuesFixed": [
+   "히어로 오버레이를 라임 단색(현재 드롭 상태 색)으로 통일해 색 역할 명확화",
+   "신뢰 구간을 화이트 배경 정의 목록(dl) + 타임라인으로 재구성, 한국어 헤드라인·모션 0으로 정적 대비 강화",
+   "아카이브는 기록용임을 카피로 명시하고 호버 제거, 커서 확대도 링크·버튼에만",
+   "섹션 헤드라인 형식 다양화, 한국어 헤드라인 1곳(신뢰) 추가, 스펙 카피 '형용사 대신 숫자' 문장으로",
+   "모션을 섹션별 한 종류로 제한(제목 마스크 리빌·제품 슬라이드·아카이브 와이프·푸터 클립), 나머지 즉시 표시. 오픈 후 경과 시간 라이브 표시로 Kinetic 속도감 보강(3일 후 자동 숨김)"
+  ],
+  "imagesReplaced": 13,
+  "remainingIssues": [
+   "Browser 도구가 다른 에이전트와 공유 중이라 스크린샷 확인 실패(재시도 안 함) — 코드 검토(태그 균형·중복 id 없음·JS 문법 OK)로 대체",
+   "loremflickr 'sneaker,closeup' 조합은 AND 매칭이라 결과 이미지 수가 적을 수 있음(로드 실패 대비 배경색·aspect-ratio는 지정됨)",
+   "히어로 스탯 4수치 행은 아카이브 데이터와 일치하는 근거 있는 수치이지만 형식상 '통계 행'이라 리뷰어에 따라 지적 가능",
+   "제품 카드 전체 hover(이미지 확대·오버레이)는 카드가 링크가 아니라 사이즈 칩·담기 버튼을 품은 인터랙티브 영역이라 유지 — 엄격 해석 시 논쟁 여지"
+  ],
+  "oneLineVerdict": "대형 타이포·마키·카운트다운·드롭 커머스 흐름은 Kinetic/Commerce 문법에 충실했고, 펄스 dot·글로우·그라데이션·아이브로우 5종·화살표 5곳·picsum 13장·일괄 fade-up 같은 AI 티를 걷어내 '성수 스니커 드롭 스토어'로 읽히는 상태.",
+  "finalLineCount": 1543,
+  "codeIssuesFixed": [
+   "spec-card__link svg가 hover 조건 없이 항상 translate(3px,-3px)되던 CSS 버그 → 링크 재작성으로 제거, 중복 margin-top 선언 정리",
+   "미사용 CSS 삭제(.eyebrow 계열, .trust-col, .archive__foot, .steps__note, .fx, arc-item hover, pulse keyframes)",
+   "prefers-reduced-motion 블록의 삭제된 셀렉터 정리 및 새 리빌 클래스 반영",
+   "#spec-note에 tabindex=-1 추가(앵커 링크 포커스 이동), 커서 hover 대상 a/button/input으로 한정",
+   "아카이브 평균 완판 계산 오류(7분 46초→7분 49초) 정정",
+   "meta.json sections/interactions/fonts/images를 수정 후 구조에 맞게 갱신"
+  ],
+  "before100": 76,
+  "after100": 91
+ },
+ {
+  "slug": "kinetic-festival",
+  "styleFidelityBefore": 72,
+  "styleFidelityAfter": 90,
+  "aiTellsFound": [
+   "§8-1 히어로 .chip 3개: 테두리 칩 + 8px 원형 dot + box-shadow 글로우(점 배지 공식). .ban li 원형 dot 불릿",
+   "§8-3 정보 섹션 3열 .info-card: 34px 틴트 아이콘 박스(SVG) + h3 + 본문 ×3, 동일 1px 보더+배경+radius",
+   "§8-5/16 히어로 직후 4열 카운트업 스탯 행(48팀/3개/22시간/180kW) — 히어로·마키와 중복, 글로우 텍스트섀도, 전형적 통계 밴드",
+   "§8-7 radius 2/3/4px 혼재, .tk 카드 hover translateY(-6px) 리프트(카드는 링크 아님), .slot hover 하이라이트(클릭 불가), tk-best 네온 글로우 섀도, tt-col/note-box/info-card 보더+배경 이중 경계",
+   "§8-8 서체 3개(Anton + Archivo + Pretendard). Archivo가 '--mono' 라벨 서체로 라틴 우선 로드, 이유 없음",
+   "§8-9 모노 대문자 아이브로우 '01 / Lineup' ~ '06 / FAQ' + 최종 CTA까지 7개, 섹션마다 동일 '라벨→H2→설명' 반복. ftr h4·info h4·th 대문자 트래킹 라벨, safe li 영문 라벨 Gate/Medic/Sound…",
+   "§8-10 히어로 칩(버튼처럼 보이는 테두리 박스, 클릭 불가), 스테이지/타임테이블 테두리 태그 칩, .ban li 테두리 박스 리스트",
+   "§8-11 텍스트 화살표 → 5곳(wall-foot, 지하철 안내, 입장 절차 3개) + 히어로 SVG 화살표",
+   "§8-12 카피: '이틀. 세 개의 무대. 48팀.' 3단 스타카토(hero/title/footer), '크게, 빠르게, 그리고 안전하게'(A. B. 그리고 C.), '가장 크고, 가장 시끄럽고, 가장 늦게' 3연, 스테이지 태그 3×3, '티켓, 지금 잡아라', 타임테이블 desc의 사실과 다른 '겹치지 않게' 주장",
+   "§8-13 picsum 랜덤 이미지 4장(hero + 스테이지 3) — 주제 무관 사진 가능성, hero alt 비어 있음",
+   "§8-14 그라데이션 블롭·글로우: hero-bg 마젠타/시안 radial 블롭 2개, 12열 그리드 라인 배경, 커서 추적 radial 글로우, btn-mag 글로우 섀도, stats/lineup/tt/tickets/final 5개 섹션 radial 글로우 배경, hero .dot·.nm hover·stage-num·slot.head 텍스트섀도 글로우, chip backdrop-blur 글래스",
+   "§8-15 .rv 스크롤 리빌 43곳 — 아이브로우·설명·범례·탭·표·정보 카드·FAQ·최종 CTA까지 일괄 fade-up, 정적 구간 없음",
+   "§8-16 2일권 배지 'Best · 가장 많이 선택' — 판매 오픈(8.20) 전이라 근거 불가능한 주장. 티켓 카드 ✓✓✓ 체크 아이콘 리스트(§4)"
+  ],
+  "aiTellsFixed": [
+   "§8-1 칩 → 테두리 없는 텍스트 메타 + 정사각(스큐) 마커; .ban li 원형 dot → 정사각 마커, 테두리 박스 제거",
+   "§8-3 info-card 3열 아이콘 그리드 → 2열(오시는 길 | 안전 안내) + 전폭(반입 금지·가능 2열 리스트) info-block, 아이콘 박스 삭제, 상단 3px 색 선 하나로만 구분",
+   "§8-5/16 스탯 행 섹션 전체 삭제, 카운트업은 라인업 제목 '48팀' 숫자로 이동(사실 수치 1개)",
+   "§8-7 --r:2px 단일 규칙으로 전 radius 통일, .tk hover 리프트·.slot hover 제거, tk-best 글로우 → 6px 하드 오프셋 섀도, tk/note-box/tt-col 경계를 선 또는 배경 하나로",
+   "§8-8 Archivo 제거(Google Fonts 링크 Anton만), --sans/--mono → Pretendard 기반 --label로 통합, SVG 약도 font-family도 교체, 서체 선택 이유 주석 추가",
+   "§8-9 아이브로우 7개 전부 삭제, 섹션 헤드 오른쪽 요소를 섹션마다 다르게(라인업=범례, 스테이지=문장, 타임테이블=탭, 티켓=카운트다운, 정보=일반 제목+문단, FAQ=제목만); ftr h4·info h4·th 일반 볼드, safe 영문 라벨 → Anton 숫자 01~07",
+   "§8-10 태그를 단색 라벨 블록으로(스테이지 카드 전체가 링크, hover 시 반전), 슬롯 태그 틴트 블록, .ban 테두리 박스 제거",
+   "§8-11 텍스트 → 5곳 → 1곳(wall-foot) + 히어로 SVG 화살표 1 = 2곳",
+   "§8-12 hero-sub/title/footer 3단 스타카토 재작성, '크게, 빠르게, 그리고 안전하게' 삭제, 스테이지 desc 3연 제거, 태그 수 2/3/2로 변경, '지금 잡아라' → '얼리버드, 8.20 정오', 타임테이블 노트 사실대로 수정",
+   "§8-13 picsum 4장 → loremflickr festival,crowd / concert,lights / festival,crowd / dj,stage (lock 2610~2613), hero alt 서술형 추가",
+   "§8-14 hero radial 블롭 2개·그리드 라인·커서 글로우(+JS) 삭제, 버튼 글로우 삭제, 5개 섹션 radial 배경 삭제, 모든 텍스트섀도 글로우 삭제(글리치 애니메이션의 색 분리 섀도만 유지 — 글로우 아님), 최종 CTA radial 밴드 → 마젠타 단색 블록 좌측 정렬 큰 숫자 8.20 12:00",
+   "§8-15 .rv 43곳 → 13곳(섹션 제목, 라인업 벽, 스테이지·티켓 카드, 탭 패널). 정보·FAQ·푸터·표·설명은 즉시 표시(정적 구간)",
+   "§8-16 'Best · 가장 많이 선택' → '이틀 전부 · 추천'; 티켓 ✓ 아이콘 15개 삭제 → 무대 색 정사각 마커, 미포함은 취소선+빈 마커"
+  ],
+  "dnaIssuesFound": [
+   "Kinetic '글로우는 핵심 CTA/숫자에만 약하게' 기준 초과 — 섹션마다 글로우 배경, 다크+네온 글로우+그리드 라인 = AI 스타트업 전형",
+   "'정적인 구간을 반드시 넣어 대비' 위반 — Corporate accent 정보 섹션까지 슬라이드 리빌·아이콘 카드로 처리",
+   "서체 3개(라틴 산세리프 Archivo 이유 없음), radius 혼재 → '카드마다 다른 체계' 혼합 경고",
+   "최종 CTA가 중앙 정렬 그라데이션 밴드 + 'Don't Miss It' 영문 슬로건 — Kinetic 큰 숫자·선언형 대신 템플릿 흐름",
+   "설득 순서 중복: 히어로 → 마키 → 스탯 행이 같은 숫자를 세 번 반복",
+   "카피 리듬이 3단 나열로 획일(제목·부제·태그·푸터)"
+  ],
+  "dnaIssuesFixed": [
+   "글로우·블롭·그리드 라인 전부 제거, 깊이는 사진 듀오톤·단색 블록·대형 타이포·하드 오프셋 섀도로만",
+   "정보 섹션을 정적 구간으로: 등장 모션 없음, 디스플레이 서체 대신 Pretendard 일반 제목, 2열+전폭 레이아웃",
+   "서체 2개(Anton 디스플레이 + Pretendard), radius 2px 단일, 카드 경계 규칙 하나",
+   "최종 CTA를 마젠타 단색 풀블리드 블록 + 좌측 큰 숫자 '8.20 12:00' + 가격 문장 + 다크 버튼으로 재구성",
+   "스탯 행 삭제로 히어로→라인업 직행, 카운트업은 라인업 제목 숫자에 통합",
+   "티켓 섹션에 실제 계산되는 오픈 카운트다운(8.20 12:00 KST) 추가 — Kinetic 큰 숫자·속도감 + 사실 정보",
+   "hero-sub·스테이지 desc·푸터 카피를 구체 명사·숫자 문장으로 재작성, 3단 리듬 해체"
+  ],
+  "imagesReplaced": 4,
+  "remainingIssues": [
+   "Browser 도구는 로컬 8080이 정책 차단이라 file:// 정적 스냅샷으로 히어로만 확인(외부 이미지 미로드), 나머지 섹션·375/768 반응형은 코드 검토로만 확인",
+   "헤더·모바일 하단 CTA의 backdrop-filter blur 유지(내비 관례로 판단, 글래스 카드 아님)",
+   "푸터 정책 링크·SNS·구매 버튼은 href='#' 데모 링크(구매 버튼은 클릭 시 오픈 일시 안내로 동작)",
+   "히어로 글리치 애니메이션의 색 분리 text-shadow는 Experimental 요소로 유지"
+  ],
+  "oneLineVerdict": "대형 Anton 타이포·3색 무대 역할·마키·듀오톤 스테이지로 Kinetic 골격은 좋았으나 글로우 블롭·아이브로우·스탯 행·일괄 리빌 같은 AI 랜딩 관습이 겹쳐 있었고, 이를 걷어내고 서체 2개·radius 하나·정적 정보 구간·사실 기반 카운트다운으로 정리해 페스티벌 포스터처럼 읽히게 만들었다.",
+  "finalLineCount": 1284,
+  "codeIssuesFixed": [
+   "미사용 변수 lastY 제거, 커서 글로우 JS 블록 제거",
+   "hero 이미지 alt 서술형 + 컨테이너 aria-hidden 제거(의미 있는 이미지)",
+   "라인업 범례 aria-hidden 제거(안내 문장 포함), 카운트다운 role=timer/aria-label",
+   "마젠타 최종 CTA 블록의 :focus-visible 아웃라인·::selection 색 재정의(명도 대비)",
+   "th 대문자 트래킹 제거·td tabular-nums, 표 overflow-x 유지",
+   "SVG 약도 font-family Archivo → Pretendard",
+   "meta.json fonts/radius/images/sections/interactions 현행화"
+  ],
+  "before100": 72,
+  "after100": 90
+ },
+ {
+  "slug": "cinematic-chef",
+  "styleFidelityBefore": 78,
+  "styleFidelityAfter": 91,
+  "aiTellsFound": [
+   "#13 picsum 랜덤 이미지 9장 (hero 3, 셰프, 코스, 과정, 공간 3) — 주제와 무관한 시드 이미지",
+   "#15 스크롤 fade-up 일괄 — .reveal 클래스가 라벨·h2·문단·리스트 항목 등 37개 요소에 붙어 있음 + data-delay 순차 지연",
+   "#4/§4 체크 아이콘 리스트 — 과정 5단계 × 3개 = 동일 체크 SVG 15개, 모든 단계가 정확히 3개씩",
+   "#12 3개씩 나열 리듬 — 철학 h2 '재료, 불, 그리고 타이밍' (A, B, 그리고 C 공식), 셰프 첫 문장 '메뉴를 짜고, 재료를 고르고, 불을 다루는', 코스 유의사항 3+3, 체크리스트 전부 3",
+   "#5/#16 통계 3열 행 — 셰프 하단 .facts '2 / 12 / 14' 큰 숫자 3열 (본문과 중복, 있어 보이려는 형식)",
+   "#9 영문 장식 태그 남발 — 원칙 제목 아래 Ingredient/Fire/Timing, 단계 제목 옆 Market/Prep/Aging/Fire/Serve, 좌석도 KITCHEN/CHEF/HINOKI COUNTER/ENTRANCE, Seat Map/8 seats·1 fire, Chef's Counter·8 Seats, Scroll — 압축형 대문자 아이브로우가 20곳 이상 + 라벨 자간 0.22em",
+   "#11 화살표 — 히어로 링크 SVG 1 + 좌석도 'ENTRANCE →' 1 (허용 범위였으나 영문 장식과 함께 정리)",
+   "#14 헤더 backdrop-filter blur(6px) 글래스 성향, 히어로 하단 'Scroll' 그라데이션 라인 애니메이션 위젯(템플릿 tic)",
+   "§2 섹션마다 동일한 '라벨 → H2 → 설명' 헤드 6회 반복",
+   "§7 radius 혼재 — 버튼 2px 규칙인데 menu__fire 마커만 50% 원형",
+   "카피 사실 불일치 — 히어로 '하루 두 차례' vs 실제 런치 1회+디너 2회, 셰프 문단 '열여섯 접시' 근거 모호, 과정 lede가 디자인 문서 표현('꼼꼼하게라는 말 대신')을 그대로 노출",
+   "meta.json이 실제 파일과 불일치 (Noto Serif KR·모달·21:9 이미지·과정 레일 등 존재하지 않는 항목, picsum 명시)"
+  ],
+  "aiTellsFixed": [
+   "#13 picsum 9장 → loremflickr 키워드(fire,grill / chef,kitchen / fish,market / omakase,sushi / restaurant,counter) lock 71301~71309 로 교체, alt 서술형으로 재작성, width/height 실제 값으로 갱신",
+   "#15 .reveal 37개 → 이미지·인용문 6곳(셰프 사진, 셰프 인용, 풀쿼트, 코스 사진, 과정 사진, 공간 사진)만 남기고 제거, translateY 없이 opacity 긴 페이드만, data-delay 제거",
+   "§4 체크 SVG 15개 삭제 → 얇은 앰버 선 마커(::before)로 통일, 항목 수를 3/2/3/4/2로 가변화(불 단계는 비장탄 잔량·석쇠 상태 등 구체 항목 추가)",
+   "#12 철학 h2 '먼저 재료, 그다음 불.' + lede에서 타이밍을 종속 문장으로(3항 병렬 해체), 셰프 첫 문장 2항으로, 런치 유의사항 3→2, 과정 lede 재작성",
+   "#5/#16 .facts 3열 큰숫자 → .credits 크레딧형 4줄(주방 경력·화로 개점·맡는 일·하루) 사실 서술로 교체, CSS·반응형 규칙 정리",
+   "#9 영문 장식 태그 전부 제거/한글화 — 원칙·단계 소제목 삭제, 좌석도 SVG 텍스트 주방/화로/셰프/편백 카운터 5.4m/입구·계단(Pretendard), 좌석 배치도/카운터 8석·화로 1, 푸터 하단 '© 2026 화로 · 서울 성북동 / 셰프 카운터 · 8석', 히어로 라벨 '성북동', 라벨 자간 0.22em→0.14em 등 전체 축소",
+   "#11 좌석도 'ENTRANCE →' 삭제 → 페이지 내 화살표 히어로 SVG 1곳만",
+   "#14 헤더 backdrop-filter 제거(불투명 0.97 단색), 히어로 Scroll 위젯·CSS·keyframes 제거",
+   "§2 섹션 헤드 변주 — 공간 섹션 lede를 이미지 아래 .space__intro로 이동(셰프·공간은 다른 형태, 나머지 4곳 유지)",
+   "§7 menu__fire 원형 → 6px 정사각 마커(radius 규칙 2px 버튼만)",
+   "카피 사실 정합 — 히어로 '저녁 두 차례', 셰프 개점 '2022년 4월', 좌석 유지 이유를 원칙 03으로 연결(중복 서술 제거), 과정 lede 재작성, 좌석도 8석 간격 균등화(56/52px 불균형 수정), 푸터 철학 한 줄로 축약",
+   "meta.json 실제 구현(폰트 Pretendard+Barlow Condensed, 섹션 9개, 인터랙션 8개, loremflickr 이미지)에 맞게 전면 갱신"
+  ],
+  "dnaIssuesFound": [
+   "Cinematic '대부분 요소 즉시 표시' 원칙 위반 — 전 요소 순차 리빌로 리듬이 템플릿화",
+   "인물 소개 하단 큰 숫자 통계 3열은 Corporate 문법에 가까움(Cinematic은 크레딧처럼 역할 표기)",
+   "영문 소제목·대문자 라벨 과다로 FlyOne V2 문법을 흉내만 낸 인상, 한국어 브랜드(화로 火爐)와 어긋남",
+   "히어로 카피와 예약 정보 간 사실 불일치(하루 2회 vs 3회)",
+   "과정 lede가 디자인 문서 문구를 그대로 노출(메타 카피)",
+   "섹션 헤드 구조 6회 동일 반복"
+  ],
+  "dnaIssuesFixed": [
+   "리빌을 이미지·인용문 6곳 긴 페이드로 축소, 텍스트 즉시 표시",
+   "통계 3열 → 크레딧형 약력 4줄",
+   "영문 장식 태그 제거·한글화, 라벨 자간 축소, Barlow Condensed는 숫자·시각·가격에만",
+   "히어로/약력/코스/예약 시간 정보 정합",
+   "과정 lede·셰프 문단 사실형으로 재작성",
+   "공간 섹션 헤드 형태 변주"
+  ],
+  "imagesReplaced": 9,
+  "remainingIssues": [
+   "브라우저 탭 생성 실패(공유 브라우저 한도)로 스크린샷 검증 미수행 — 코드 검토(태그 균형·중복 id·앵커 무결성)만 통과",
+   "철학·코스·과정·예약 4개 섹션은 여전히 라벨→H2→lede 헤드 구조(콘텐츠 본문은 각기 다름)",
+   "loremflickr 키워드 사진의 실제 내용은 확인 불가 — alt는 키워드 기준 서술"
+  ],
+  "oneLineVerdict": "셰프·철학·과정·좌석·정책이 구체 숫자로 채워진 진중한 Cinematic 사이트였으나 랜덤 사진·전요소 리빌·영문 장식 태그·체크리스트 3연타가 AI 티를 냈고, 이를 걷어내 사람 손으로 다듬은 오마카세 브랜드 사이트로 정리했다.",
+  "finalLineCount": 1347,
+  "codeIssuesFixed": [
+   "미사용 .facts 반응형 규칙·hero__scroll CSS/keyframes 정리",
+   "이미지 width/height 속성을 실제 요청 크기(1600×1000)로 갱신",
+   "좌석도 SVG 좌석 간격 불균형(4·5번 사이 12px) 균등 52px로 수정, SVG font-family를 Pretendard로 통일",
+   "reduced-motion 블록에서 삭제된 요소 참조 제거",
+   "태그 균형·중복 id·href 앵커 무결성 검증 통과"
+  ],
+  "before100": 78,
+  "after100": 91
+ },
+ {
+  "slug": "cinematic-architecture",
+  "styleFidelityBefore": 7.5,
+  "styleFidelityAfter": 9,
+  "aiTellsFound": [
+   "§8-13 picsum 랜덤 이미지 6장(hero 1920×1200 alt=\"\" aria-hidden, 소장 900×1200, Selected Works 4장 1600×700) — 주제 무관 이미지",
+   "§8-5/16 히어로 직하 4열 큰 숫자 통계 행 (.facts-list b 22~30px: 2011 / 34 / 5 / 4~5) — 기준일 없이 '있어 보이는' 스탯 바 형태",
+   "§8-3(변형) 설계 철학 4원칙마다 동일한 3열 텍스트 카드(Belief·신념 / Process·과정 / Proof·증거 h4 대문자 라벨 ×12) 반복 — 3개씩 나열 리듬 4회",
+   "§8-15 .reveal fade-up이 42개 요소(모든 섹션 헤드·원칙·팩트·문의·폼·본문 단락)에 일괄 적용",
+   "§8-11 화살표 SVG 아이콘 4곳(헤더 btn-quiet, 히어로 링크 2, 제출 버튼) + hover translateX",
+   "§8-10/§4 클릭 불가 요소에 hover: .work:hover img scale/채도 변화(작업 카드는 링크 아님), .portrait figure:hover img scale",
+   "§4 체크 아이콘 리스트 — 과정 5단계 체크리스트에 ✓ SVG 20개",
+   "§8-9 자간 넓은 대문자 마이크로 라벨 과다: eyebrow 6 + principle h4 12 + work-meta dt(.24em) + field label(.24em) + panel-foot h4(.28em) + contact-expect b 등 한국어 라벨에도 .24~.28em 자간",
+   "§5 형식적 티 — H2 3개가 같은 '숫자 명사. 설명구.' 리듬 (네 가지 원칙./네 개의 건물./다섯 단계.)",
+   "§2 섹션마다 동일한 eyebrow → H2 → 설명 헤더 패턴 6회 반복",
+   "§2/§14(경미) 스크롤 헤더 backdrop-filter blur 글래스 처리",
+   "코드: 히어로 이미지 alt 비어 있음(캡션 있으나 서술 alt 없음), JS 미동작 시 .reveal 요소 opacity 0으로 숨겨짐(noscript 폴백 없음), <link rel=stylesheet as=style> 잘못된 속성"
+  ],
+  "aiTellsFixed": [
+   "§8-13 picsum 6장 → loremflickr 키워드+고유 lock으로 전량 교체(interior,light 2101 / architect,studio 2102 / architecture,concrete 2103 / building,facade 2104 / architecture,brick 2105 / interior,light 2106), 히어로 alt 서술형 추가·aria-hidden 제거, 소장 사진 캡션을 스튜디오 장면에 맞게 수정",
+   "§8-5/16 통계 행 → '2026년 8월 기준' 기준일 + dl 한 줄(설립 2011년 3월 종로구 등록 / 준공 34건 내역 / 인원 5명 / 연간 4~5건) 13.5px 텍스트로 재구성, 큰 숫자 제거",
+   "§8-3 원칙 3열 카드 → 신념+과정 서술 2단락(7fr) + '증거' 아사이드(5fr, 브론즈 선, 해당 Selected Work로 앵커 링크 #work-01~04, 짝수 원칙은 좌우 반전)로 재구성. 대문자 h4 12개 제거",
+   "§8-15 reveal 42개 → 11개(히어로 5·소장 사진·인용문·작업 스틸 4)만 유지, 나머지 즉시 표시. noscript 폴백 추가",
+   "§8-11 화살표 SVG 4곳 → 히어로 링크 2곳만 유지(헤더 버튼·제출 버튼 제거, hover translateX 제거)",
+   "§8-10 링크 아닌 .work / .portrait 의 hover 확대·채도 변화 제거",
+   "§4 체크 SVG 20개 제거 → <ol> + CSS counter 번호(01~04)로 교체",
+   "§8-9 한국어 마이크로 라벨 자간 축소(work-meta dt .24→.06em, field label .24→.04em, panel-foot h4 .28→.04em, contact-expect b .14→.06em, uppercase 해제), eyebrow 6→4개(Works·Contact 제거)",
+   "§5 H2 리듬 분산: Works '준공 34건 가운데, 원칙이 도면을 바꾼 네 곳' / Process '첫 미팅부터 준공 1년 점검까지'로 재작성(사실·범위가 들어간 문장), Works 하단에 'Selected Works · 2021—2024 · 사진 크레딧' 메타 줄",
+   "§2 섹션 헤더 패턴 변주: Works는 eyebrow 없이 H2+메타 줄, Contact는 H2 직행+리드 문장에 '천천히 시작해도 됩니다' 흡수",
+   "§14 헤더 backdrop-filter blur 제거 → 단색 .97",
+   "코드: <link as=style> 제거, CSS/JS 주석의 → 문자 제거(페이지 내 → 0개), 태그 균형·중복 id 없음 확인, meta.json 갱신(images·sections·interactions·antiAiSlop)"
+  ],
+  "dnaIssuesFound": [
+   "Cinematic '대부분 요소는 즉시 표시' 원칙 대비 리빌 과다(모션 지표 2인데 42개 요소 페이드)",
+   "Corporate 액센트(10%)로 넣은 통계 행이 시각적으로 큰 숫자 스탯 바가 되어 Corporate 비중이 과해 보임",
+   "설계 철학 섹션이 '신념→과정→증거' 순서는 맞으나 카드 3열 반복으로 서사(서사 지표 5)가 아니라 스펙 표처럼 읽힘",
+   "작업물(Selected Works)이 링크가 아닌데 hover 반응이 있어 '느린 모션이 조작 반응까지'와 어포던스 규칙 위반",
+   "히어로 alt 비어 있어 대표 장면 서술이 접근성 트리에 없음"
+  ],
+  "dnaIssuesFixed": [
+   "리빌을 장면 요소(히어로·인물·인용·스틸)로 한정해 Slow 리듬 유지하면서 본문은 즉시 표시",
+   "팩트를 기준일 있는 작은 한 줄로 낮춰 Corporate 10% 비중으로 복귀",
+   "철학 4원칙을 서술 2단락 + 증거 아사이드(작업물 앵커)로 바꿔 신념→과정→증거가 문장 서사로 흐르고 작업물과 상호 참조",
+   "링크 아닌 요소의 hover 제거, hover는 내비·링크·버튼·증거 링크에만",
+   "히어로 이미지 서술 alt, 소장 사진·캡션 일치, 이미지 6장 주제 일치(건축·스튜디오·파사드·실내 빛)"
+  ],
+  "imagesReplaced": 6,
+  "remainingIssues": [
+   "로컬 http://localhost:8080 은 브라우저 정책으로 차단되어 file:// 정적 스냅샷으로만 확인(외부 이미지 로드 안 됨) — 375/768 폭 실기기 확인 및 loremflickr 실제 사진 품질(키워드 매칭) 육안 확인 필요",
+   "eyebrow 4개(Hero·Studio·Philosophy·Process)와 영문 소제목(Site first 등)은 Cinematic DNA상 허용으로 유지 — 더 줄이려면 Studio eyebrow도 제거 가능",
+   "'판단'(9회)·'클라이언트'(13회) 등 핵심어 반복이 남아 있음(핵심 메시지 어휘라 유지)"
+  ],
+  "oneLineVerdict": "사람·철학·과정·작업물의 순서와 브론즈 1색·느린 리듬은 처음부터 Cinematic에 충실했고, 통계 바·3열 카드·일괄 페이드·체크 아이콘·랜덤 이미지 같은 템플릿 흔적을 걷어내 이제 소장 한서윤의 판단이 문장과 증거로 읽히는 조용한 포트폴리오가 되었다.",
+  "finalLineCount": 1203,
+  "codeIssuesFixed": [
+   "<link rel=stylesheet as=style> 잘못된 속성 제거",
+   "JS 미동작/noscript 시 .reveal 요소가 숨겨지는 문제 — noscript 스타일 폴백 추가",
+   "히어로 img alt 비어 있음 + 컨테이너 aria-hidden → 서술 alt로 교체",
+   "체크리스트 ul→ol 시맨틱 + CSS counter, SVG 20개 제거로 마크업 경량화",
+   "Selected Works article에 id(work-01~04)와 scroll-margin-top 부여해 앵커 링크 동작",
+   "미사용 CSS(.light .btn-quiet, .btn-quiet svg, .btn-solid svg, hover 규칙) 정리",
+   "CSS/JS 주석의 → 문자 제거",
+   "태그 균형·중복 id 없음 재검증(파서 통과), meta.json 유효 JSON 확인"
+  ],
+  "before100": 75,
+  "after100": 90
+ },
+ {
+  "slug": "kinetic-esports",
+  "styleFidelityBefore": 7,
+  "styleFidelityAfter": 8.7,
+  "aiTellsFound": [
+   "#1 pill+펄스 dot: 히어로 kicker `.tag-live::before` 깜빡이는 원형 dot(blink 애니메이션) — 'Live Season' 배지",
+   "#4/#14 히어로 장식: `.hero-grid` 12열 그리드 라인 배경, `.hero-next` backdrop-filter 글래스 패널, `.countdown b` 시안 text-shadow 글로우, 헤더 backdrop blur, `.hero-scroll` 'Scroll' 애니메이션 인디케이터",
+   "#8 서체 3종 로드: Anton + Archivo(500/700/900) + Pretendard — 규칙은 2종 이내",
+   "#13 picsum 랜덤 이미지 9장(hero 1, 로스터 5, 굿즈 3) — 주제와 무관",
+   "#11 화살표: 버튼 SVG 화살표 4곳(헤더 티켓·히어로 CTA·스폰서 CTA·파이널 CTA) + 텍스트 → 2곳(캘린더 구독 →, 정규 1위 → 2라운드) + 푸터 소셜 ↗ 아이콘 4개 = 10곳",
+   "#10 클릭 불가 버튼형 요소: 굿즈 사이즈 칩(S/M/L… 보더 칩, 동작 없음), '예매 예정' 비활성 버튼(aria-disabled·pointer-events:none), 스폰서 `.slogo` li 호버 배경+레드 언더라인(링크 아님), `.match` 행 호버 배경+레드 바(링크 아님)",
+   "#7 굿즈 카드 hover translateY(-6px)+보더 강조 일괄 — 카드 자체는 링크 아님",
+   "#15 fade-up 일괄: `.reveal`(translateY 28px 페이드) 54회 — 모든 sec-sub·카드·행·푸터 텍스트·스폰서 월·CTA에 적용",
+   "§4 체크 아이콘 리스트: `.goods-note` ✓ SVG ×4로 배송 정책 나열",
+   "#16 스폰서 로고 월 아래 동일 10개사 이름을 반복하는 `.sponsor-marquee`(있어 보이려는 중복) + sponsor-cta 그라데이션 배경",
+   "#12 카피: 시즌 성적 sec-sub '숫자는 스스로 말합니다. A, B, 그리고 C' 리듬 / About sec-sub '어떻게 만들어졌고, 어디에 있으며, 어떻게 연락할 수 있는지' 3단 나열 / '함께 달리는 파트너' 직역체 / 굿즈 3종 3열",
+   "#9 트래킹 대문자 아이브로우 라벨 남발: About(Corporate 구간)까지 Founded/Home Arena/League/Staff, History, Sponsorship/Press/Store/Office h4, 푸터 Team/Matches/Store",
+   "#5/#16 수치 정합성: 18경기 15승 3패인데 세트 승률 '37세트 중 29세트 승리(78.4%)' — 15승이면 세트 승 최소 30, 티커의 2:1 승리 2회와도 불일치. 우승/통산 경기 stat-bar --w:.6/.9 근거 없는 장식 바",
+   "코드: `<dl class=player-stats>` 안에 dt/dd 없이 div>b+span(무효 마크업), 로스터 hover-only 지표(터치 기기에서 접근 불가)"
+  ],
+  "aiTellsFixed": [
+   "#1 `.tag-live` dot·blink 키프레임 제거, 배지를 '2026 Summer' 정적 태그로 교체",
+   "#4/#14 hero-grid 라인 삭제, hero-next 단색(--black)+보더로 변경, 카운트다운 text-shadow 제거, 헤더 blur 제거(불투명 .96), hero-scroll 삭제, sponsor-cta 그라데이션 → 단색+레드 좌측 4px 룰",
+   "#8 Archivo 제거, Google Fonts 링크 Anton만 로드, --font-en을 Pretendard로 통합(라틴 숫자 포함). CSS 상단에 서체 선택 이유 주석",
+   "#13 picsum 9장 → loremflickr 10장(hero arena,lights lock 90101 / roster esports,gaming 90111~90115 / goods esports,jersey·hoodie,black·gaming,keyboard·cap,black 90121~90124), alt 서술형, 컨테이너 배경+aspect-ratio 유지",
+   "#11 화살표 10곳 → 2곳(히어로 primary CTA, 파이널 CTA만). 헤더·스폰서 CTA SVG 제거, '캘린더 구독 →' 텍스트 화살표 제거, '정규 1위 → 2라운드' → '정규 1위로 플레이오프 2라운드 직행 확정', 푸터 소셜 ↗ 아이콘 4개 제거",
+   "#10 사이즈 칩 → 실제 선택 버튼(role=group, aria-pressed 토글 JS, 담기 시 선택 사이즈가 토스트에 포함), '예매 예정' 버튼 → `.match-status` 텍스트 '9월 1일 (화) 14:00 예매 오픈', `.slogo` 호버 제거, `.match` 호버 제거(홈 경기 레드 마커는 정적 표시로 전환)",
+   "#7 굿즈 카드 hover 상승·이미지 줌 제거",
+   "#15 `.reveal` 클래스·CSS 전부 삭제. 남긴 모션: 섹션 타이틀 마스크 리빌, 섹션 번호·선수 카드·스탯·굿즈 카드 좌→우 슬라이드(reveal-x, 스태거). sec-sub·행·리스트·CTA·푸터는 즉시 표시. JS 셀렉터·필터 로직 갱신",
+   "§4 체크 리스트 → 굿즈 그리드 안의 '배송 · 교환 안내' dl 블록(배송비/출고/교환·환불/현장 픽업 + 고객센터)",
+   "#16 sponsor-marquee 삭제, 스폰서 CTA 수치에 기준 명시(공식 채널 합산 · 8월 기준 · 회신 기한)",
+   "#12 시즌 성적 sec-sub → '18경기 15승 3패. 세트로는 40세트 중 32세트…' / About sec-sub → '2019년 PC방 4대에서 시작해 마포구 연습실에 이르기까지의 7년, 그리고 연락처' / 파트너 타이틀 → '2026 시즌 파트너 10개사' + 역할 서술 / 굿즈 3종 3열 → 4종+안내 블록 비대칭 그리드(대표 저지 2열 폭 가로형)",
+   "#9 About 라벨을 한국어 소제목으로(창단/홈 경기장/소속 리그/인원, 연혁, 스폰서십·제휴 등), 푸터 컬럼 헤더 팀/경기/스토어, 트래킹 대문자 스타일 해제",
+   "#5/#16 세트 승률 80.0%(32/40세트, 15승 3패·2:1 승 2회·1:2 패 2회와 정합), 리그 2위 64.1%와 15.9%p, 홈 세트 승률 88.9%. 우승/통산 경기의 장식 바 삭제, 비율 있는 지표(세트 승률·리그 평균 대비 27:41/32:08=86.2%)만 바+캡션 유지. 통산 142경기 95승 47패(66.9%) 명시",
+   "코드: player-stats를 ul>li>b+span으로, 카드 링크(#about) → `.player-toggle` 버튼(aria-expanded, JS 토글, 터치 대응), josa() 영문·숫자 끝소리 처리"
+  ],
+  "dnaIssuesFound": [
+   "Kinetic 히어로에 '다크+그리드 라인+글래스 패널+글로우' AI 스타트업 전형 요소가 섞여 Kinetic(대형 타이포·대각선·마키)보다 장식이 먼저 보임",
+   "Corporate 20% 구간(팀 소개·연락처)까지 Kinetic 트래킹 대문자 태그 문법을 그대로 사용 — Corporate는 일반 소제목이 문법",
+   "모션이 '전 요소 fade-up'이라 Kinetic의 방향성 있는 빠른 리듬(슬라이드·마스크 리빌)과 정적 구간 대비가 흐려짐",
+   "'역할 없는 색 제거' 원칙 대비 근거 없는 진행 바(우승·통산 경기)가 장식으로 존재",
+   "굿즈(Commerce 10%)의 사이즈 옵션이 동작하지 않아 Commerce 어포던스 규칙 위반",
+   "티커·hero 카피의 수치와 시즌 성적 섹션 수치가 서로 맞지 않음(전문 신뢰 지표 훼손)",
+   "로스터 지표가 hover 전용이라 모바일(375)에서 핵심 콘텐츠 접근 불가"
+  ],
+  "dnaIssuesFixed": [
+   "히어로를 사진+대형 타이포+레드 슬래시+단색 다음 경기 패널로 정리(그리드·글래스·글로우 제거)",
+   "About/푸터를 한국어 소제목 체계로 전환해 Corporate 20% 구간의 문법을 분리",
+   "모션을 마스크 리빌+좌→우 슬라이드(스태거)로 한정, 본문·리스트는 즉시 표시 → 정적 구간(About) 대비 회복",
+   "진행 바는 비율 지표 2개에만 캡션과 함께 유지",
+   "사이즈 선택 버튼 + 담기 토스트 연동으로 Commerce 어포던스 실제화",
+   "세트 승률·통산 전적·연속 결승 수치를 서로 정합하게 재계산",
+   "선수 카드를 버튼화(클릭/Enter/터치)해 지표 접근성 확보"
+  ],
+  "imagesReplaced": 10,
+  "remainingIssues": [
+   "섹션 헤드가 6개 섹션 모두 '큰 번호 + 영문 타이틀 + 한국어 부제 + 설명' 동일 구조 — Kinetic 번호 문법이라 유지했으나 리듬 변주 여지 있음",
+   "선수 사진·굿즈 사진은 loremflickr 키워드 결과에 따라 인물/제품과 정확히 일치하지 않을 수 있음(esports,gaming / hoodie,black / cap,black)",
+   "푸터 '채용 안내·이용약관·환불 규정' 등 일부 링크가 #about/#schedule 앵커로만 연결(실제 페이지 없음, 데모 한계)",
+   "브라우저 스크롤 확인은 공유 브라우저 타임아웃으로 히어로(1280px) 1회만 확인, 이후 섹션은 코드 검토로 대체"
+  ],
+  "oneLineVerdict": "대형 Anton 타이포·레드 대각선·마키·카운트업으로 Kinetic 속도감은 처음부터 있었고, 이번에 그리드 라인·글래스·글로우·펄스 dot·일괄 fade-up·랜덤 사진·거짓 버튼을 걷어내고 수치를 정합하게 맞춰 '진짜 e스포츠 팀 사이트'로 보이게 다듬었다.",
+  "finalLineCount": 1575,
+  "codeIssuesFixed": [
+   "`<dl class=player-stats>` 무효 자식(div>b+span) → ul>li 구조",
+   "로스터 카드 hover-only 지표 → button.player-toggle(aria-expanded, JS 토글) 터치·키보드 대응",
+   "`.match .btn.is-disabled` aria-disabled 링크(pointer-events:none) → 텍스트 상태",
+   "굿즈 사이즈 span 칩 → button[aria-pressed] 그룹 + JS, 담기 토스트에 사이즈 반영",
+   "josa() 영문·숫자 끝소리(L·M·N·R·0·1·3·6·7·8) 받침 처리",
+   "미사용 CSS 제거(.reveal, .tag-live, .hero-grid, .hero-scroll, .sponsor-marquee, .goods-note, .contact h4 .ko, .player-link, blink 키프레임) 및 reduced-motion 블록 정리",
+   "필터 JS에서 삭제된 reveal 'in' 클래스 의존 제거, revealEls 셀렉터 갱신",
+   "hero-bg aria-hidden 제거 + 실제 alt 부여(배경 사진이 콘텐츠)",
+   "검증: 태그 균형 OK, 중복 id 0, CSS 중괄호 420/420, node --check JS OK, picsum 0"
+  ],
+  "before100": 70,
+  "after100": 87
+ },
+ {
+  "slug": "cinematic-photographer",
+  "styleFidelityBefore": 72,
+  "styleFidelityAfter": 88,
+  "aiTellsFound": [
+   "#13 picsum 랜덤 이미지 26곳(hero, about, 시리즈 12컷 썸네일+라이트박스 full)",
+   "#15 스크롤 fade-up 일괄 — .reveal 63개(텍스트·제목·dl·폼까지 전부)",
+   "#12 3개씩 나열 리듬 — 원칙 3(I·II·III 3열), 촬영 범위 3열 카드, 단계별 확인 항목 5단계×3개, 통계 3칸, 시리즈 제목 '마을, 공장, 그리고 바다'(A, B, 그리고 C)",
+   "#5/#16 record-stats 3칸 통계 행(4회/2권/1회) — 근거는 있으나 템플릿형, '심사위원 3인 만장일치' 자화자찬",
+   "#3 유사: .scopes 3열 등간격 카드(번호+h3+p+ul), .principles 3열 카드",
+   "#4(§4 체크리스트) 체크 아이콘 SVG 목록 15개(✓ 리스트로 기능 나열)",
+   "#9 영문 대문자 아이브로우 남발 — text-transform:uppercase 30곳, 원칙/범위/단계에 이중 영문 부제(Distance, Long-term Documentation, num small Approach + h3 .en Approach 중복), 폼 헤더 'Reply within 3 business days', 라이트박스 'Close', 푸터 내비 영문 small",
+   "#7 radius 규칙 불일치 — 필터 버튼 999px pill, 폼 박스 3px+1px 보더(카드), 나머지 2px",
+   "#10 클릭 불가 배지 — 크레딧 'Award'/'Grant' 보더 태그 2개",
+   "#11 화살표 SVG 4곳(히어로 링크, 이력 링크, 제출 버튼, JS 재삽입)",
+   "#14 유사: 스크롤 헤더 backdrop-filter blur(글래스), 히어로 'Scroll' 드립 라인 애니메이션(템플릿 장식)",
+   "히어로 이름 148px — Cinematic '크지만 소리치지 않는' 기준 초과",
+   "§2 섹션 5개 모두 동일 section-head(라벨→H2) 반복",
+   "코드: .nav-toggle .nav-toggle 중복 선택자, .frame img.is-loaded 미사용, .frame img align-self 잔재, status.focus && setAttribute 순서 오류, 모바일 record-row type order 뒤섞임",
+   "meta.json 내용 불일치(시리즈명·팔레트·이미지 항목이 실제 파일과 다름)"
+  ],
+  "aiTellsFixed": [
+   "#13 picsum 26곳 → loremflickr 키워드(village,people / documentary,portrait / factory,workers / harbor,workers) + lock 101–134, 썸네일·full 동일 lock, hero alt 서술형 보강",
+   "#15 .reveal 63개 → 13개(시리즈 사진 12컷 + 작가 사진)만 유지, 텍스트·제목·dl·폼은 즉시 표시",
+   "#12 원칙 3→4개(이름 항목 추가) 줄 목록으로, 확인 항목 4/2/4/2/3개로 가변, 통계 행 삭제, 시리즈 제목을 '영양의 마을에서 42일, 남동공단에서 22일 밤, 하의도에서 168일'로 재작성",
+   "#5/#16 record-stats 삭제 → 기준일 포함 요약 문장(record-sum), '만장일치' → 상금 나눔 사실 서술",
+   "#3 .scopes 3열 카드 → 4열 요율표형 가로 줄(번호/범위·의뢰처/진행 방식/기간·산출물·비용) + 컬럼 헤더, 진행 방식에 구체 사례·금액 추가; .principles 3열 카드 → 2열 그리드(제목+lede / 줄 목록 I–IV)",
+   "#4 체크 SVG 15개 삭제 → 5px 정사각 마커, '이 단계에서 확인하는 것' 소제목",
+   "#9 uppercase 30→19곳: 원칙·범위 영문 부제 제거, 단계 번호 하단 영문 중복 제거, 폼 헤더 '영업일 3일 이내 회신', 라이트박스 '닫기', 푸터 내비 영문 small 제거, pull-quote cite·dur·form-head 일반 소문자",
+   "#7 필터 pill → 밑줄 탭(2px 하단선), 폼 박스 3px+보더 → 2px 배경차만",
+   "#10 Award/Grant 태그 삭제(정보는 dt에 이미 있음)",
+   "#11 화살표 4→1곳(히어로 '작업 방식 알아보기'만), 이력 링크·제출 버튼·JS 재삽입 화살표 제거",
+   "#14 헤더 backdrop-filter 제거 → 단색 배경, 히어로 Scroll 드립 삭제 → '작가 소개부터 읽기' 텍스트 링크",
+   "히어로 이름 clamp(48px,8vw,112px)로 축소",
+   "§2 About·Commission 섹션은 section-head 없이 인라인 라벨+제목으로 형태 변경(3/5만 section-head)",
+   "코드: 중복 선택자·미사용 CSS 삭제, JS status tabindex→focus 순서 수정, lbImg src 제거 방식, submit 버튼 textContent, 모바일 record-row 순서 정리, 주석 화살표 정리, node --check 통과, 태그 균형·id 중복 없음",
+   "meta.json 전면 갱신(팔레트·타이포·섹션·인터랙션·이미지 규칙)"
+  ],
+  "dnaIssuesFound": [
+   "모션 지표 2인데 전 요소 fade-up + 헤더 blur + 스크롤 드립까지 — 과다",
+   "히어로 이름 148px로 '소리치는' 크기",
+   "섹션 5개 동일 헤드 구조 — 리듬 없음",
+   "3열 등간격 카드(원칙·범위)가 Corporate 아이콘 카드 문법에 가까움 — Cinematic은 줄·번호·여백",
+   "record 통계 3칸은 Corporate 10%를 넘는 '있어 보이는' 장치",
+   "푸터 철학 한 줄이 About 인용문과 동일 문장 중복",
+   "카피 일부 자화자찬('만장일치'), 영문 도배(폼 헤더·Close·부제)"
+  ],
+  "dnaIssuesFixed": [
+   "모션을 사진 등장 페이드 + 히어로 느린 줌·그레인으로 축소, 헤더는 단색 전환",
+   "히어로 이름 112px 상한",
+   "About·Commission 헤드 형태 변경, 원칙은 줄 목록, 범위는 요율표 줄 — 카드 격자 0",
+   "통계 → 요약 문장(기준일 명시), 만장일치 → 행동 서술",
+   "푸터 문장 교체('여기 있는 모든 사진은 찍힌 분이 먼저 보고 허락한 것입니다.')",
+   "의뢰 lede에 '한 해 4–6건만 맡는 이유' 추가, 비용 조건에 착수금·잔금 등 구체 사실 보강, 범위별 사례·금액 추가(Belief→Process→Proof)"
+  ],
+  "imagesReplaced": 26,
+  "remainingIssues": [
+   "브라우저 탭 상한으로 스크린샷 확인 못 함(코드 검토로 대체) — 1280/375에서 .scope 4열 요율표와 .principle 3열 그리드 실제 렌더 확인 권장",
+   "loremflickr 'factory,workers' 키워드는 힌트 목록 밖(street,photography 대신 주제 일치 우선) — 결과 이미지 품질 확인 필요",
+   "hero 이미지 1600×1000 단일 소스, srcset 없음",
+   "Barlow Condensed 영문 라벨 uppercase 19곳 — Cinematic 허용 범위지만 더 줄일 여지 있음"
+  ],
+  "oneLineVerdict": "사람·과정·크레딧으로 설득하는 뼈대는 이미 좋았고, 랜덤 이미지·일괄 페이드·3열 카드·영문 도배만 걷어내니 실제 다큐 사진가 사이트처럼 읽힌다.",
+  "finalLineCount": 1664,
+  "codeIssuesFixed": [
+   ".nav-toggle .nav-toggle .bars::after 중복 선택자 삭제",
+   ".frame img.is-loaded 미사용 규칙, .frame img{align-self} 잔재 삭제",
+   "status.focus && setAttribute → setAttribute 후 focus",
+   "lbImg.src='' → removeAttribute('src')",
+   "submitBtn.innerHTML(SVG 재삽입) → textContent",
+   "모바일 record-row .type order 제거로 연도|종류/제목/장소 순 정렬",
+   "backdrop-filter 제거로 헤더 전환 transition 단순화",
+   "hero-scroll 관련 CSS·reduced-motion 규칙 정리",
+   "주석 내 → 화살표 정리, node --check 통과, 태그 균형·id 중복 확인"
+  ],
+  "before100": 72,
+  "after100": 88
+ },
+ {
+  "slug": "commerce-grocery",
+  "styleFidelityBefore": 88,
+  "styleFidelityAfter": 92,
+  "aiTellsFound": [
+   "§8-1 pill+dot/pulse: 없음 (hero__eyebrow는 순수 텍스트, animation/pulse 0)",
+   "§8-2 이모지: 0개 (grep 확인)",
+   "§8-3 3열 아이콘 카드: 없음 (카테고리는 사진 원형 8개, 보장 섹션은 표+UI 화면)",
+   "§8-4 중앙 정렬 히어로 공식: 없음 (좌측 정렬 기획전 슬라이더 + 우측 마감 카드)",
+   "§8-5 근거 없는 통계 행: 리뷰 요약이 '리뷰 4,812 · 재구매 67% · 신청률 0.9%' 3-통계 리듬 + 신청률이 보장 표와 중복 (경미)",
+   "§8-6 이니셜 아바타 후기: 없음 (마스킹 이름·날짜·구매 횟수)",
+   "§8-7 동일 카드 radius+hover 상승: 없음 (radius 8px 단일 규칙, translateY(-2px) hover 0)",
+   "§8-8 Inter/Geist/Playfair: 없음 (Pretendard 단일 + 시스템 폴백)",
+   "§8-9 모노 대문자 아이브로우: 0개",
+   "§8-10 클릭 불가 버튼형 요소: 없음 ('배송 중' 칩은 상태 라벨 형태, 모든 버튼 동작)",
+   "§8-11 화살표 →: 1곳 (표 헤더 '수확 → 포장')",
+   "§8-12 금지 카피: 0건 (경험/가치/솔루션 0회), 3개 나열은 혜택바·히어로 슬라이드 2곳",
+   "§8-13 picsum: 0 (loremflickr 41개, lock 고유·썸네일 중복은 동일 상품)",
+   "§8-14 그라데이션 블롭/글로우/글래스: 없음 (히어로 이미지 위 가독성 스크림만)",
+   "§8-15 fade-up 일괄: 없음 (이미지 lazy 페이드만)",
+   "§8-16 통계·후기 사실성: 기준일·산정 기준 표기됨, 로고 월 없음",
+   "코드: 미참조 aria-describedby=\"search-hint\", role=tab에 aria-selected 대신 aria-current, 검색 팝오버 h3 헤딩 순서, 히어로 3번 alt가 키워드(vegetables,market)와 불일치, 찜 토스트 '을(를)' 기계 문구"
+  ],
+  "aiTellsFixed": [
+   "§8-5/§8-12 리뷰 요약을 2항목으로 재구성(최근 30일 리뷰 4,812개·그중 사진 1,926개 / 리뷰 작성자 재구매율 67%), 표와 중복되던 신청률 제거",
+   "§8-13 히어로 3번 슬라이드 alt를 이미지 키워드에 맞게 '시장 좌판에 쌓인 갖가지 제철 채소'로 수정",
+   "§8-12 찜 토스트 '을(를) 찜했어요' → '찜 목록에 넣었어요 · 상품명' 자연어로 교체",
+   "Commerce DNA(정직한 재고 표시): 특가 4개에 '오늘 준비 300상자 중 112상자 남음' 등 준비 수량 대비 잔여 수량 추가(가짜 긴급성 아닌 사실형)"
+  ],
+  "dnaIssuesFound": [
+   "Commerce 필수 요소 중 '품절/재고 표시'가 특가에 없음(.deal__limit CSS만 존재)",
+   "리뷰 요약 통계와 보장 표의 '신선 보장 신청률 0.9%' 중복",
+   "농부 이야기 섹션 배경 #fbfaf6(아이보리)은 Editorial 20% 의도로 채도 낮춘 사진·인용문과 함께 설계돼 있어 허용 범위로 판단"
+  ],
+  "dnaIssuesFixed": [
+   "특가 카드에 준비 수량 대비 남은 수량 표기 추가(.deal__limit 사용, b 강조 스타일 추가)",
+   "리뷰 요약 중복 통계 제거·재구성",
+   "meta.json sections/fonts/audit 갱신"
+  ],
+  "codeIssuesFixed": [
+   "미참조 aria-describedby=\"search-hint\" 제거",
+   "히어로 도트 role=tab의 aria-current → aria-selected로 교체(HTML·CSS·JS 동기)",
+   "검색 팝오버 <h3> → <p class=\"search__pop-title\">로 변경(헤딩 순서 정리, CSS 갱신)",
+   "인라인 JS 구문 검사 통과, 태그 균형(div 158/158, span 138/138, svg 109/109 등) 확인, 중복 id 0"
+  ],
+  "finalLineCount": 1535,
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "브라우저 스크린샷 확인 못 함(공유 브라우저 탭 상한으로 열기 실패, 규칙에 따라 재시도 안 함) — 코드 검토로 대체",
+   "농부 이야기 섹션의 아이보리 배경은 의도된 Editorial 톤이지만 브랜드 그린 계열 틴트로 바꾸는 선택지도 있음",
+   "loremflickr 키워드 sweetpotato/kimchi 등은 플리커 태그 수가 적어 관련도 낮은 사진이 나올 수 있음(lock 고정으로 재현성은 확보)"
+  ],
+  "oneLineVerdict": "화이트 배경·큰 검색창·가격 위계·산지·배송 정보가 촘촘한 실제 식료품 마켓 문법을 갖췄고, AI 티 16항목 모두 통과한 수준이라 미세한 사실성·접근성 보정만으로 마무리된 사이트.",
+  "before100": 88,
+  "after100": 92
+ },
+ {
+  "slug": "corporate-b2b",
+  "styleFidelityBefore": 86,
+  "styleFidelityAfter": 93,
+  "aiTellsFound": [
+   "#5/#16 주요 고객사 섹션 하단 `.client-note` — 7.4년/21개사/35%/16회 4열 큰 숫자 통계 행(히어로 4·KPI 4·목업 KPI 4에 이어 네 번째 4열 숫자 행, 리듬 반복)",
+   "#7/#10 `.drawing-tag` 도면 우상단 다크 칩 'DWG NO. HG-2607-114 · REV C' — 버튼처럼 보이는 비클릭 칩",
+   "#10 `.process-step .dur`(1 영업일 등 5개), `.qc-step .rule`(AQL 0.65 등 5개) — 배경 틴트 칩 10개, 비클릭 태그 남발",
+   "#3(색 역할)/§3 `.cat-badge` 설비 분류 배지 4색(파랑·보라·초록·오렌지 틴트) — 필터 탭과 중복되는 shadcn류 색상 배지",
+   "§2 radius 규칙 위반: `.cert-seal` 원형 이중 점선 씰 4개, `.to-top` 원형 버튼 — meta의 '원형은 단계 번호·핀에만'과 불일치",
+   "#12 섹션 제목 5개가 'X, Y' 콤마 피벗 동일 리듬(4개 제품군, … / 설비 96대, … / 인증은 출발점, … / 5개 산업, … / 1998년부터 28년, …)",
+   "#14(경미) `.mock` 목업 box-shadow 0 24px 60px rgba(0,0,0,.35) — 다크 섹션 위 과한 부유 그림자",
+   "#10 유틸바·회사소개·푸터의 '회사소개서 요청' 링크 3곳이 #rfq로 가지만 폼에 해당 항목 없음(수량·납기 필수라 요청 불가)",
+   "코드 버그: `<td class=\"cert\">`가 `.cert` 인증 카드 규칙(display:grid; 56px 1fr auto; padding 16px 18px)을 상속 → 고객사 표 마지막 열 레이아웃 깨짐",
+   "코드: 375px에서 `.mock-nav .user` nowrap으로 목업 헤더 클리핑"
+  ],
+  "aiTellsFixed": [
+   "#5/#16 `.client-note` 4열 통계 행 → `.client-foot` 문장형 주석 1개(같은 수치를 문장에 녹임)로 교체, 관련 CSS·반응형 규칙 제거",
+   "#7/#10 `.drawing-tag` 칩 제거 → 도번·REV를 도면 표제행(`.drawing-title .dwg`) 텍스트로 이동, 모바일에서 표제행 세로 배치",
+   "#10 `.dur` → 상단 실선 + '소요 …' 텍스트, `.rule` → '기준 …' 텍스트(칩 배경·패딩 제거, ::before 라벨)",
+   "§3 `.cat-badge` 4색 배지 → 중립 13px 텍스트 하나로 통일(색 역할은 CTA·강조 숫자에만)",
+   "§2 `.cert-seal` 원형+점선 → 4px 사각 플레이트, `.to-top` 원형 → 4px",
+   "#12 섹션 제목 리듬 분산: 제품군 '4개 제품군을 한 공장 안에서 처리합니다' / 생산 역량 '설비 96대 · 공장 8,200m² · 2교대 24시간 가동' / 품질 '품질 데이터를 매월 고객사에 그대로 공유합니다' / 고객사 '거래 중인 고객사 62곳을 업종별로 정리했습니다' + 리드 문장 재작성",
+   "#14 `.mock` 그림자 완화(0 10px 28px rgba(0,0,0,.22) + 1px 링)",
+   "#10 견적 폼 제품군에 '회사소개서 · 자료 요청' 옵션 추가 + 선택 시 수량·납기 필수 해제(JS 검증·required·필수 표시 토글)"
+  ],
+  "dnaIssuesFound": [
+   "Corporate '포인트는 CTA·링크·아이콘에 제한' 대비 설비 표 분류 배지가 4개 보조 색을 추가함",
+   "radius 규칙 하나(4px) 선언과 달리 인증 씰·맨 위로 버튼이 원형",
+   "숫자 4개짜리 블록(히어로·KPI·목업·고객사)이 연속되어 정보 밀도는 높지만 형태 리듬이 단조로움",
+   "'회사소개서 요청' CTA 3곳이 실제로는 요청을 완료할 수 없는 폼으로 연결(신뢰 요소 훼손)"
+  ],
+  "dnaIssuesFixed": [
+   "분류 배지 색 제거로 팔레트를 화이트+슬레이트+오렌지 1개로 정리",
+   "radius 4px 단일 규칙 준수(원형은 단계 번호·지도 핀·타임라인 점만), meta.json radiusRule 갱신",
+   "고객사 통계 행을 문장으로 바꿔 표→문장→사진/연혁으로 섹션 형태가 교차되게 조정, 섹션 제목 형태(문장/점 목록/문장) 다양화",
+   "회사소개서 요청 경로를 폼에서 실제로 처리 가능하게 연결",
+   "meta.json sections·interactions·audit 갱신"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "브라우저 탭 상한으로 로컬 스크린샷 확인은 생략(코드 검토로 대체) — 1280px 실제 렌더 재확인 권장",
+   "히어로 하단 다크 4수치 밴드는 기준일·단위가 있어 유지했으나, 더 문서형으로 가려면 라이트 표 형태로 바꿀 여지 있음",
+   "설비 표 행 hover 하이라이트는 Utility 액센트 관례로 유지(비클릭 행 hover를 엄격 적용하려면 제거 가능)",
+   "이미지 loremflickr 5장은 키워드·lock 고유이나 실제 로드 결과(주제 일치)는 네트워크에서 확인 필요"
+  ],
+  "oneLineVerdict": "근거·수치·표로 설득하는 정통 Corporate B2B 사이트 — 칩·색 배지·통계 행 잔여 티를 걷어내고 제목 리듬과 폼 동선을 손봐 '사람이 운영하는 제조사 홈페이지'로 읽힘.",
+  "finalLineCount": 1840,
+  "codeIssuesFixed": [
+   "`td.cert`가 `.cert` 인증 카드 CSS를 상속하던 클래스 충돌 → `td.certcol`로 분리(5행) + 반응형 규칙 갱신",
+   "375px 목업 헤더 클리핑 → `.mock-nav .user` 640px 이하 숨김",
+   "제거한 `.client-note`·`.drawing-tag` 관련 CSS·미디어쿼리 정리, 잔여 참조 0",
+   "회사소개서 요청 시 수량·납기 검증 예외 처리(isDocRequest) 추가, node --check JS 문법 통과, 태그 균형·id 중복 없음 확인"
+  ],
+  "before100": 86,
+  "after100": 93
+ },
+ {
+  "slug": "commerce-booking",
+  "styleFidelityBefore": 88,
+  "styleFidelityAfter": 92,
+  "aiTellsFound": [
+   "§8-10 클릭 불가한데 칩처럼 보이는 요소: 클래스 카드 4개의 난이도 라벨(.badge '입문·초급/중급/초·중급/중급 · 소수정원')이 배경 틴트+radius 6px 칩 형태로 필터 칩(.chip)과 시각적으로 혼동됨 (index.html 679·695·711·727행)",
+   "§8-7 radius 규칙 위반: 주석에 '12px/6px 외 금지'라 적었으나 .slot__name em이 4px, :focus-visible이 border-radius:4px를 강제해 포커스 시 카드(12px)·탭 모서리가 4px로 바뀌는 시각 결함 (62행·261행)",
+   "§8-12(경미) 3개 리듬: 상단 안내 바 3항목·오늘 요약 통계 3칸·푸터 3열/3링크 — 단, 통계는 시간표 데이터에서 계산되는 실제 값이라 §8-5·16 위반 아님",
+   "§8-1·2·3·4·6·8·9·11·13·14·15: 해당 없음 — pill+dot 0, 이모지 0, 아이콘 카드 그리드 없음(사진 카드 4열·표·정의 목록), 히어로 좌측 정렬+실제 예약 위젯, 이니셜 아바타 후기 없음, Pretendard 1종, 모노 대문자 라벨 0, 화살표 0, 이미지 9장 모두 loremflickr 키워드(yoga,studio / yoga,class / stretching,class / pilates,reformer / yoga,teacher / pilates,instructor)+고유 lock+서술형 alt, 그라데이션/글로우/글래스 0, fade-up 0(등장 애니메이션 없음 명시)"
+  ],
+  "aiTellsFixed": [
+   "§8-10 클래스 카드 난이도 칩 4개를 시간표 슬롯과 동일한 난이도 점 3개(.lv)+텍스트(.lvl)로 교체(칩 배경·radius 제거), 리포머는 '중급 · 6명 정원'으로 구체화하고 브랜드색 점으로 소수정원 강조",
+   "§8-7 :focus-visible의 border-radius:4px 제거(포커스 시 요소 radius가 바뀌던 결함), .slot__name em radius를 var(--radius-sm)로 통일, radius 규칙 주석에 원형 예외(체크·난이도 점·스위치)를 명시",
+   "§8-12(경미) 3개 리듬은 안내 바·데이터 통계·푸터로 성격이 달라 유지(카피 섹션은 4·4·3·2·4로 이미 비균질)"
+  ],
+  "dnaIssuesFound": [
+   "Commerce/Booking DNA 대부분 충족: 화이트+웜 그레이+브랜드 색 1개(테라코타, CTA·선택·잔여석에만), 7일 날짜 탭·종류 필터·잔여석 바·가격 요약·취소 마감 시각·이용권별 환불 표, 하단 고정 CTA(모바일), 즉시 반응·등장 애니메이션 없음, 정보 밀도 5",
+   "접근성(코드): 모바일 바텀시트(.summary)가 닫힌 상태에서 transform으로만 화면 밖에 있어 내부 select·버튼이 키보드 탭 순서에 남음",
+   "접근성(코드): 날짜 탭이 role=tablist/tab인데 aria-controls와 tabpanel 연결이 없음(패널은 role=group)",
+   "Commerce 문법 중 '로딩 스켈레톤'은 없음(정적 데모라 필요성 낮음), 검색창 대신 종류 필터 칩+예약 가능 토글로 대체(예약형에 적합)"
+  ],
+  "dnaIssuesFixed": [
+   "모바일 바텀시트 닫힘 상태에 visibility:hidden(+transition 지연) 추가 — 오프스크린 포커스 제거, 열림 시 즉시 표시",
+   "날짜 탭 버튼에 aria-controls=\"slot-list\" 추가, 시간표 컨테이너를 role=\"tabpanel\"로 변경해 tablist 패턴 완성",
+   "meta.json 팔레트 노트(서체 1종·radius 예외·난이도 점 표기)와 sections/interactions 설명 갱신"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "브라우저 확인은 다른 에이전트가 탭 한도까지 점유 중이라 스크린샷 검증을 생략(코드 검토로 대체) — 375/768/1440 실기 확인은 별도 필요",
+   "상단 안내 바·오늘 요약 통계·푸터 열이 각각 3개로 남아 있음(데이터/유틸 성격이라 유지했으나 완전한 리듬 파괴를 원하면 안내 바를 2항목으로 줄일 수 있음)",
+   "푸터 정책 링크(이용약관·개인정보처리방침·환불정책)와 강사 대강 안내 등이 모두 #guide 앵커를 가리킴 — 데모용 앵커라 클릭은 동작하지만 실제 페이지는 없음",
+   "히어로 사진 1장에 loading=lazy가 걸려 있음(규칙상 허용, LCP 관점에선 eager가 유리)"
+  ],
+  "oneLineVerdict": "예약 위젯이 진짜 주인공인 Commerce/Booking 페이지 — 사실 위주 카피와 밀도 높은 정보 구조로 AI 티가 거의 없고, 남아 있던 칩형 라벨과 포커스 radius 결함만 걷어내면 디자이너가 트집 잡을 곳이 드문 수준.",
+  "finalLineCount": 1607,
+  "codeIssuesFixed": [
+   ":focus-visible의 border-radius:4px 제거(포커스 시 요소 모서리 변형 버그)",
+   "모바일 .summary 시트 닫힘 상태 visibility:hidden 처리(오프스크린 포커스 트랩 방지)",
+   "날짜 탭 aria-controls + slot-list role=tabpanel 연결",
+   "태그 균형(div 119/119, span 72/72, button 25/25, table·tr·td·th·dl·dt·dd 일치)·중복 id 없음·meta.json JSON 유효성 확인"
+  ],
+  "before100": 88,
+  "after100": 92
+ },
+ {
+  "slug": "product-saas",
+  "styleFidelityBefore": 88,
+  "styleFidelityAfter": 93,
+  "aiTellsFound": [
+   "§8-10 (부분): 요금 토글 라벨 '월 결제 / 연 결제'가 span에 JS click만 붙어 있어 클릭 가능해 보이지만 키보드로 접근 불가·cursor 없음 (index.html 요금 섹션 .toggle-wrap)",
+   "§8-7 (경미): 모서리 규칙이 4px/6px/12px 세 값인데 4px가 토큰 없이 10곳에 하드코딩되어 '의도된 규칙 하나'로 읽히지 않음",
+   "§8-16 (사실성): 히어로 kicker '2026년 8월 전자세금계산서 발행 연동 추가'가 2~7월 도입 고객 후기(세금계산서 누락 0건)·FAQ와 모순, 히어로 서브카피 '12,400개 사업장이 하루 10분 안쪽으로 줄였다'는 전수 과장",
+   "§2 템플릿 흐름 (경미): FAQ → 잉크 CTA 밴드(버튼 2개) → 4열 푸터, 게다가 CTA 링크가 #pricing→#signup→#pricing 순환이라 버튼이 실제 목적지 없음",
+   "그 외 §8-1·2·3·4·5·6·8·9·11·12·13·14·15: 해당 없음 (pill+dot 0, 이모지 0, 아이콘 카드 0, 히어로 좌측 정렬+UI 목업, 통계 근거 명시, 아바타 없음, Pretendard 단일, 모노 아이브로우 0, 화살표 SVG 2곳, 금지 어휘 0, 이미지 없음(CSS UI), 그라데이션/글로우 0, fade-up 0)"
+  ],
+  "aiTellsFixed": [
+   "§8-10: 토글 라벨을 <button type=button>으로 교체 — 키보드 접근·포커스 스타일·cursor 확보",
+   "§8-7: --r-xs: 4px 토큰 추가, border-radius: 4px 10곳을 토큰으로 통일, 상단 주석에 4/6/12 규칙 명시",
+   "§8-16: kicker를 '2026년 8월 업데이트: 매입 세금계산서 자동 수집 추가'로(세무 UI의 매입 집계와 일치), 서브카피를 '7월 한 달 12,400개 사업장 발행, 활성 계정 하루 정산 평균 9분'으로 사실형 재작성",
+   "§2/§8-10: 최종 CTA 밴드의 버튼 2개(순환 링크)를 실제 동작하는 이메일 가입 폼으로 교체 — 형식 검증(aria-invalid·오류 문구), 전송 중, 완료 안내(aria-live·포커스 이동); 헤더·모바일·히어로 '무료로 시작하기'를 #signup으로 정리해 링크 순환 제거, 화살표 SVG는 히어로 1곳만 남김",
+   "부가세 예상 납부 세액 ₩2,761,000 → ₩2,760,000 (매출 3,124,000 + 카드 512,000 − 매입 876,000 계산 일치), 전화번호 02-1522-0818 → 1522-0818(tel: 갱신)"
+  ],
+  "dnaIssuesFound": [
+   "Product 문법(히어로 UI 목업 주인공·기능 4개 UI 조각·1·2·3·통합·후기 수치·가격 토글·FAQ·CTA) 모두 충족, 70/20/10(Corporate: 사업자 정보·보안 문단·근거 명시 / Utility: 대시보드 밀도·tabular-nums·상태 라벨) 적절",
+   "최종 CTA가 배경 밴드+버튼 2개 형태로 Product의 '직접 전환 5' 지표에 비해 실제 전환 행동(가입)이 없고 링크가 순환함",
+   "히어로 카피의 수치 근거가 후기·FAQ 타임라인과 미세하게 충돌 (사실→근거 순서가 Product/Corporate 신뢰를 깎음)"
+  ],
+  "dnaIssuesFixed": [
+   "최종 CTA를 이메일 가입 폼(실동작)으로 바꿔 '무료로 시작하기'가 실제 전환 지점을 갖게 함",
+   "히어로 kicker·서브카피를 제품 타임라인·UI 데이터와 일치하는 사실형 문장으로 정리",
+   "meta.json: radius 규칙(4/6/12), CTA 섹션 설명, 가입 폼 인터랙션 반영"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "작동 방식(3단계)·통합(3그룹)·요금(3플랜)·후기(1+2)가 모두 3 단위 — 콘텐츠상 자연스럽고 형태는 각각 다르지만(상단 선/분할 패널/카드/비대칭 인용) 리듬이 완전히 깨지진 않음",
+   "히어로 목업 테이블은 375px에서 패널 내부 가로 스크롤(페이지 스크롤은 없음) — 의도된 동작",
+   "Browser 미리보기는 정적 스냅샷 모드라 라이브 토스트 순환은 코드 검토로만 확인, 폼 검증·완료 상태는 JS 실행으로 확인 완료"
+  ],
+  "oneLineVerdict": "CSS로 그린 실제 앱 화면과 근거 있는 숫자로 설득하는 정석 Product 랜딩 — AI 티는 사실상 없었고, 사실 모순 정리와 실동작 가입 폼으로 마무리했다.",
+  "finalLineCount": 1418,
+  "codeIssuesFixed": [
+   "토글 라벨 span→button (키보드 접근성)",
+   "가입 폼 JS 추가(검증·완료 상태), node --check 통과, 태그 균형 검사 통과, 중복 id 없음",
+   "375/768/1280 가로 스크롤 없음 확인, tel: 링크 갱신"
+  ],
+  "before100": 88,
+  "after100": 93
+ },
+ {
+  "slug": "corporate-lawfirm",
+  "styleFidelityBefore": 86,
+  "styleFidelityAfter": 91,
+  "aiTellsFound": [
+   "§8-4(히어로 공식 잔재) — 히어로 h1 안 <em>정해진 절차대로</em>에 골드 밑줄 강조(헤드라인 키워드 컬러 하이라이트 패턴), index.html 659행·176행 CSS",
+   "§8-9/§2(라벨→H2 반복 리듬) — 인사이트 섹션 eyebrow '인사이트' + h2 '최근 인사이트' 중복 라벨, 1286~1288행",
+   "§8-12(카피 반복) — '직접' 9회 반복(히어로 note·원칙 03·절차 1단계·상담 사이드 카드 등), 같은 어구 '담당 변호사가 직접 회신/연락' 도돌이표",
+   "§7(코드 잔존물) — 푸터 사업자등록번호 '214-86-XXXXX', 법무법인 등록번호 '서울 제2009-XX호' 플레이스홀더, 1632~1633행",
+   "§8-13(이미지 주제) — 재개발 인사이트 썸네일 키워드 'city,building'이 주제(재개발 조합)와 느슨함, 1306행",
+   "§8-7(카드 hover 잔재) — .btn transition에 사용되지 않는 transform .2s 잔존(hover 상승 템플릿 흔적), 104행",
+   "코드 네이밍 — 운영 상태 마커 JS 변수명 'pill'(pill 배지 아님에도 템플릿 명명), 1883행"
+  ],
+  "aiTellsFixed": [
+   "§8-4 — 히어로 h1의 <em> 하이라이트 제거, CSS .hero h1 em 삭제(Corporate Semi-bold 헤드라인 문법 유지)",
+   "§8-9/§2 — 인사이트 h2를 '분야별 담당 변호사가 쓰는 실무 노트'로 재작성, 설명문도 구체화하여 eyebrow와의 중복 제거",
+   "§8-12 — '직접' 9회→5회로 축소(히어로 note·원칙 03·절차 1단계·상담 사이드 카드 문장 재작성), 남은 5회는 의미가 다른 문맥",
+   "§7 — 사업자등록번호 214-86-01573, 법무법인 등록번호 서울 제2009-14호(현실적 가상 데이터)로 교체",
+   "§8-13 — 재개발 인사이트 이미지 키워드 apartment,construction(lock 71222 유지)으로 변경, alt에 '공사 현장' 서술 추가, meta.json keywords 갱신",
+   "§8-7 — .btn transition에서 transform .2s 제거",
+   "JS 변수 pill→mark 리네임"
+  ],
+  "dnaIssuesFound": [
+   "Corporate 히어로 문법상 헤드라인은 Semi-bold 산세리프가 기본인데 세리프 h1 + 골드 밑줄 강조가 겹쳐 Editorial 비중이 20%를 살짝 넘는 인상(밑줄 제거로 조정, 세리프는 Secondary Editorial 근거로 유지)",
+   "인사이트 섹션 제목이 '최근 인사이트'로 정보 밀도 4 지표에 못 미치는 공허 명사구"
+  ],
+  "dnaIssuesFixed": [
+   "히어로 h1 밑줄 강조 제거로 Corporate 70% 위계 회복",
+   "인사이트 h2·설명문을 구체 문장(누가 무엇을 정리하는지)으로 재작성"
+  ],
+  "imagesReplaced": 0,
+  "codeIssuesFixed": [
+   "미사용 transform transition 제거",
+   "JS 변수명 pill→mark",
+   "태그 균형·중복 id·meta.json 유효성 재검증 통과(1898줄)"
+  ],
+  "remainingIssues": [
+   "Browser 도구가 다른 에이전트 탭 점유 + localhost 정책 차단으로 스크린샷 미확인(코드 검토로 대체)",
+   "히어로 figcaption의 사진 위 그라데이션 스크림(가독성용)은 유지 — 장식 블롭 아님이나 엄격 기준이면 단색 반투명 배경으로 바꿀 수 있음",
+   "구성원 6명 사진이 모두 'lawyer,portrait' 키워드(lock만 다름) — Flickr 결과가 실제 인물이 아닐 수 있어 실서비스 시 실사진 필요",
+   "'영업일 기준 1일 이내' 5회 반복은 정보 성격상 유지했으나 필요 시 1~2곳 정리 가능"
+  ],
+  "oneLineVerdict": "사실·절차·비용을 표와 문장으로 쌓아 올린 정석 Corporate 법무법인 사이트 — AI 티가 거의 없었고 헤드라인 하이라이트·중복 라벨·플레이스홀더 번호·어휘 반복만 걷어내 마감했다.",
+  "finalLineCount": 1898,
+  "before100": 86,
+  "after100": 91
+ },
+ {
+  "slug": "product-app",
+  "styleFidelityBefore": 8.6,
+  "styleFidelityAfter": 9.2,
+  "aiTellsFound": [
+   "§8-9 (아이브로우 라벨 남발) — 기능 3개 상단 `.num-badge` \"01 / 수면 단계\", \"02 / 스마트 알람\", \"03 / 주간 리포트\" + 작동 원리 kicker: '01 / FEATURES'형 번호 아이브로우 패턴 4개 (index.html 796·863·935·953행)",
+   "§8-12 (3개씩 나열 리듬) — 히어로 안내 라인 3항목(무료/OS/용량), 작동 원리 H2 \"센서가 읽고, 모델이 분류하고, 제안으로 돌려줍니다\" A·B·C 3연 리듬, how__facts 3·2·3행 (594–596, 954, 988–992행)",
+   "§8-10 (버튼처럼 보이나 기대 동작 없음) — App Store/Google Play 배지가 히어로에서는 #download 앵커, 다운로드 섹션에서는 #top 앵커로만 이동(스토어 배지인데 스토어로 안 감) (584·588·1221·1225행)",
+   "§8-7 (radius 규칙 이탈, 경미) — `.insight__icon` 9px, `:focus-visible` 6px가 선언된 16/12/8 규칙 밖 (72·247행)",
+   "카피 오류 — FAQ 7 \"플러스은\", \"플러스이\" 조사 오류(1204·1205행); '언제든' 5회 반복",
+   "이미지: picsum 0건(사진 없이 전부 CSS/SVG UI), 이모지 0, pill+dot 0, 그라데이션/글로우/글래스 0, 화살표 0, Inter/Geist 0, fade-up 일괄 0, 이니셜 아바타 0, 근거 없는 통계 0(표본 수·기간·각주 명시) — §8-1·2·3·4·5·6·8·11·13·14·15·16 해당 없음"
+  ],
+  "aiTellsFixed": [
+   "§8-9 — 번호 아이브로우 3개를 목업 탭바와 연결되는 `.tab-ref` 라벨(‘앱의 수면/알람/리포트 탭’ + 해당 탭 SVG 아이콘)로 교체, 번호·슬래시 제거",
+   "§8-12 — 히어로 안내 라인 3→2항목, 작동 원리 H2를 \"머리맡의 스마트폰이 밤새 하는 일\"로 재작성(3연 리듬 제거) + 설명문 보강, how__facts 3·2·3 → 3·2·2",
+   "§8-10 — 스토어 배지 4개를 실제 스토어 URL(apps.apple.com/kr, play.google.com) target=_blank rel=noopener로 교체, aria-label에 '(새 창)' 명시",
+   "§8-7 — insight 아이콘·focus 링 radius를 var(--radius-sm)로 통일",
+   "카피 — 플러스은/플러스이 → 플러스는/플러스가, '언제든' 5→3회, 내비 '과학' → '작동 원리'(섹션 kicker와 일치)"
+  ],
+  "dnaIssuesFound": [
+   "Product 문법 자체는 충실: 흰 배경+라벤더 틴트 1단, 브랜드 보라 1색, CSS/SVG로 그린 실제 앱 화면(히프노그램·점수 링·알람 창·주간 막대), 동작하는 컨트롤(세그먼트·레인지·막대 클릭·요금 토글), 수치 후기·비교표·FAQ 순서 모두 요구 섹션과 일치",
+   "내비 라벨 '과학'이 섹션 제목 '작동 원리'와 불일치(정보 위계 혼선)",
+   "Product 스펙의 '로고 월(사용 팀)'은 App Landing 성격상 부재 — 근거 없는 로고 월을 넣지 않은 것이 오히려 anti-slop 규칙에 부합하므로 유지"
+  ],
+  "dnaIssuesFixed": [
+   "내비/모바일 메뉴 라벨을 '작동 원리'로 통일",
+   "기능 섹션 라벨을 장식 번호 대신 앱 탭 참조로 바꿔 '제품 UI가 주인공'이라는 Product 문법을 카피에도 연결"
+  ],
+  "codeIssuesFixed": [
+   "meta.json: 헤더 라벨·히어로 안내 라인·기능 라벨·how__facts 행 수·스토어 링크 반영, audit 필드 추가(JSON 검증 통과)",
+   "태그 균형·중복 id·JS 파싱 재확인 통과, 최종 1524줄"
+  ],
+  "finalLineCount": 1524,
+  "imagesReplaced": 0,
+  "oneLineVerdict": "폰 목업 안의 실제 UI와 컨트롤이 설득을 이끄는 정석적인 Product 앱 랜딩으로, 남아 있던 번호 아이브로우·3연 리듬·앵커 스토어 배지만 걷어내면 AI 티 없이 배포 가능한 수준.",
+  "remainingIssues": [
+   "히어로의 폰 옆 플로팅 상태 카드 2장(기록 중 02:14 / 06:42 알람)은 정보는 있으나 Dribbble형 앱 랜딩 구도라 디자이너에 따라 템플릿 느낌을 받을 수 있음 — 체크리스트 위반은 아니라 유지",
+   "푸터 정책 링크 4개가 #top 앵커(실제 문서 없음)",
+   "브라우저 탭 상한으로 스크린샷 확인은 생략, 코드 검토로 대체(반응형 규칙 375/768/1440 CSS는 육안 검토 완료)"
+  ],
+  "before100": 86,
+  "after100": 92
+ },
+ {
+  "slug": "commerce-furniture",
+  "styleFidelityBefore": 88,
+  "styleFidelityAfter": 93,
+  "aiTellsFound": [
+   "§8-7 (부분): 배송 조회 목업 .tracker가 1px 보더+그림자+흰 배경을 동시에 사용, 지역 확인 .region이 보더+틴트 배경을 동시에 사용 — '카드 경계는 여백·선·배경차 중 하나만' 위반 (CSS 356·378행)",
+   "§8-7 (부분): 토스트 radius 10px가 4/8/12 radius 규칙 밖 (CSS .toast 505행)",
+   "§8-10: 헤더 '로그인' util 버튼이 <a href=\"#\">로 클릭 시 페이지 상단 이동만 함 — 버튼처럼 보이지만 의미 있는 동작 없음 (554행)",
+   "§8-10 (hover 규칙): .card:hover 시 이미지 확대 — 카드 전체(비클릭 영역 포함) hover에 반응, 클릭 가능한 .card-media에만 걸려야 함 (267행)",
+   "§8-12 (부분): 기획전 침실 카드 카피 '잠들기 전 30분이 달라지는 배치입니다' — 근거 없는 감성 문장 (794행)",
+   "§8-12 (3개 리듬): FAQ 3개 + 리뷰 카드 3개 + 첫 리뷰 태그 3개로 3개 리듬 반복 경향 (897~910행)",
+   "코드: .region-result에 display:grid가 [hidden] UA 스타일을 덮어 로드 직후 빈 흰 박스가 노출되는 버그 (383행)",
+   "접근성: --muted #7B736A 12~13px 텍스트가 베이지 배경(#F6F1E9)에서 대비 4.2:1로 4.5:1 미달; aria-label만 있는 div(.tracker/.trust/.mbar)에 role 없음"
+  ],
+  "aiTellsFixed": [
+   "§8-7: .tracker 그림자 제거(선만), .region 보더 제거(배경차만) — 패널 경계 규칙 하나로 통일",
+   "§8-7: 토스트 radius를 var(--radius) 8px로 규칙 정렬",
+   "§8-10: 로그인 <a href=\"#\"> → <button data-toast> 로 교체, 클릭 시 안내 토스트 동작",
+   "§8-10: 이미지 확대 hover를 .card-media:hover(클릭 가능한 링크)로 한정",
+   "§8-12: 침실 카피를 구체 수치 문장으로 교체('협탁 상판은 매트리스 윗면(바닥에서 약 55cm)과 높이를 맞추고…')",
+   "§8-12: FAQ 4번째 항목(사다리차 요금: 4~5층 50,000원 / 6~10층 60,000원 / 11층 이상 80,000원, 현장 결제) 추가로 3개 리듬 해소",
+   "코드: .region-result[hidden]{display:none} 추가로 빈 박스 노출 버그 수정",
+   "접근성: --muted를 #6B635A로 조정(베이지 위 5.3:1, 흰색 위 5.9:1), .tracker/.mbar에 role=group, .trust를 <section>으로 변경"
+  ],
+  "dnaIssuesFound": [
+   "Commerce DNA 대부분 충족(화이트 배경·큰 검색창·카테고리 내비·프로모션 바·필터+정렬·가격 위계·할인 전후·품절/재입고·찜/장바구니·모바일 2열+하단 고정 CTA·즉각 반응 모션·등장 애니메이션 없음). 70·20·10 배분(기획전 Editorial, 배송 조회 목업 Product) 적절.",
+   "경미: 기획전·배송·리뷰 3개 섹션이 모두 동일한 section-head(h2+p) 형태 — 본문 형태(이미지 카드/표/요약 패널)는 서로 달라 허용 범위",
+   "경미: 패널 경계 처리(보더+그림자 혼용)와 토스트 radius가 선언된 radius 규칙에서 벗어남"
+  ],
+  "dnaIssuesFixed": [
+   "패널 경계를 선 또는 배경차 하나로 통일(tracker 그림자 제거, region 보더 제거), 토스트 radius 8px로 통일 → meta.json radiusRule 갱신",
+   "보조 텍스트 색 대비 보강(#6B635A) → meta.json palette.ink 갱신",
+   "FAQ 4개로 확장(사다리차 요금 실무 정보) → meta.json sections 갱신"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "Browser 도구가 다른 에이전트와 공유 중이라 새 탭 생성 실패 — 스크린샷 검증은 생략하고 코드 검토(태그 균형·node --check JS 문법·meta.json 파싱)로 대체함",
+   "푸터·브레드크럼 등 데모용 href=\"#\" 링크 다수는 예시 사이트 특성상 유지",
+   "loremflickr 키워드 'livingroom'(3301)·'living'(3108)은 태그 매칭 결과가 다소 불안정할 수 있음(주제는 일치, lock 고유)"
+  ],
+  "oneLineVerdict": "필터·가격·배송 조건이 카드에서 바로 읽히는 실무형 가구 카테고리 페이지 — 이모지·pill dot·그라데이션·아이콘 카드·가짜 통계 없이 정보 밀도로 설득하며, 이번 감사에서는 경계 규칙·hover 범위·빈 박스 버그·대비 등 마감만 조였다.",
+  "finalLineCount": 1569,
+  "codeIssuesFixed": [
+   ".region-result가 hidden 상태에서도 display:grid로 노출되던 버그 → [hidden]{display:none} 추가",
+   "카드 hover 범위를 클릭 가능한 .card-media로 한정",
+   "로그인 링크(href=\"#\")를 동작하는 button(data-toast)으로 교체",
+   ".tracker/.mbar role=group, .trust div→section (aria-label 단독 div 제거)",
+   "--muted 대비 4.2:1 → 5.3:1(베이지 위)",
+   "태그 균형 0오류, 중복 id 없음, JS node --check 통과, meta.json 유효"
+  ],
+  "before100": 88,
+  "after100": 93
+ },
+ {
+  "slug": "experimental-launch",
+  "styleFidelityBefore": 90,
+  "styleFidelityAfter": 93,
+  "aiTellsFound": [
+   "#12(부분) 티저 2번 헤드라인 '자는 동안, 걷는 동안, 숨 쉬는 동안' — A, B, C 3항 나열 리듬 (index.html 803~805행)",
+   "#12(부분) 3개 반복 리듬: 티저 3(사양) · 단면 주석 3 · 푸터 문의 링크 3 · 관심 색상 라디오 3 — 사양 필수 항목을 제외하면 푸터 링크 3개가 추가 반복",
+   "#9(경계) Syncopate 대문자 소형 라벨 2곳(.stage-meta 'Orbit 01 · Inclination 6°', .cutaway-cap 'Section A–A') + 워드마크 + 마키 — 모노스페이스는 아니고 2곳으로 제한돼 있어 통과, 기록만",
+   "#1·#2·#3·#4·#5·#6·#7·#8·#10·#11·#13·#14·#15·#16: 해당 없음 (pill/dot 0, 이모지 0, 아이콘 카드 그리드 없음, 히어로 좌하단 카피+궤도 비주얼, 통계행·후기·로고월 없음, radius 0 규칙 일관·hover 상승 없음, Pretendard+Syncopate 2종 이유 명시, 클릭 불가 버튼형 요소 없음, 화살표 0곳, picsum 0(사진 없음·CSS 도형), 글로우·글래스·블롭 0(conic-gradient는 반지 금속 렌더에만), fade-up 일괄 없음—티저 패널 줄 리빌만)",
+   "코드/접근성: --silver-faint(#4a4e56) 텍스트가 검정 위 2.4:1 — .stage-meta, .cut-scale, .foot h3, .foot-base(저작권·개인정보 문구), 이메일 placeholder 5곳 AA 미달"
+  ],
+  "aiTellsFixed": [
+   "#12 티저 2번 헤드라인을 '자는 동안에도, 걷는 동안에도 / 돌고 있습니다. / 켜져 있다는 티를 내지 않고.'로 재작성 — 3항 나열을 2항으로 (index.html 803~805행)",
+   "#12 푸터 문의 링크에 '카카오톡 채널 · 평일 10–18시'를 추가해 3개 반복 리듬 해소 (index.html 1032~1035행)",
+   "접근성: .stage-meta / .cut-scale(+눈금선) / .foot h3 / .foot-base / input::placeholder 를 --silver-dim(#8e939c, 6.5:1)으로 교체, --silver-faint는 눈금·장식선 전용으로 주석 명시"
+  ],
+  "dnaIssuesFound": [
+   "Experimental 개념(궤도) 일관성·질문→경험→초대 카피 순서·정보 블록(제목·기간·참여 방법)·prefers-reduced-motion 정적 버전·스킵 가능한 3초 인트로·키보드 도달 CTA 모두 충족 — 구조상 결함 없음",
+   "70·20·10: Experimental(궤도 인트로·scroll-snap·틸트) / Kinetic(대형 아웃라인 숫자·줄 리빌·마키 밴드) / Product(스펙 원장·단면 다이어그램) 배분 적절. 요구 6개 섹션 누락 없음",
+   "명도 대비 5곳 미달(위 코드 항목)만 발견"
+  ],
+  "dnaIssuesFixed": [
+   "소형 텍스트 대비 5곳 AA 충족으로 상향(--silver-faint→--silver-dim), 팔레트 역할 주석·meta.json palette.text 갱신",
+   "카피 리듬 2곳 조정(티저 2 헤드라인, 푸터 링크 수)"
+  ],
+  "codeIssuesFixed": [
+   "--silver-faint 변수 역할 주석을 '눈금·장식선 전용'으로 정정(텍스트 미사용)",
+   "meta.json palette.text 설명 갱신(JSON 유효성 확인)"
+  ],
+  "imagesReplaced": 0,
+  "finalLineCount": 1342,
+  "remainingIssues": [
+   "브라우저 스크린샷 미확인 — 공유 브라우저가 다른 에이전트 탭(product-devtool)을 표시 중이어서 재시도하지 않고 코드 검토(태그 균형·JS 구문·중복 id·grep)로 대체",
+   ".top 헤더의 mix-blend-mode:difference는 배경이 모두 검정 계열이라 문제 없으나, 밝은 배경 섹션을 추가할 경우 색 반전 확인 필요",
+   "375px에서 단면 다이어그램(.cut-note n1/n2)이 밴드 위로 겹칠 가능성 — 420px 이하 max-width 축소 규칙은 있으나 실기기 확인 권장"
+  ],
+  "oneLineVerdict": "궤도 하나의 개념으로 인트로·티저·스펙·D-day·폼까지 관통시킨 드문 완성도의 티저 — AI 티는 3항 나열 두 곳과 소형 텍스트 대비 외엔 없었고, 모두 정리됨.",
+  "before100": 90,
+  "after100": 93
+ },
+ {
+  "slug": "product-devtool",
+  "styleFidelityBefore": 6.5,
+  "styleFidelityAfter": 8.5,
+  "aiTellsFound": [
+   "§8-3 (변형) SDK 섹션: 동일 카드 8장 — 38px 틴트 문자 박스(JS/PY/GO…) + 제목 + 명령 + 푸터의 아이콘 카드 그리드 구조 (index.html 옛 838~879행)",
+   "§8-5 신뢰 수치 4개 행(4.2억/99.99%/184ms/5곳) — 기준일은 있으나 '1~3개' 기준 초과, 리전 수치는 보안 섹션과 중복",
+   "§8-7/§3 색: 다크 배경(#0B0F14) + Tailwind 기본 팔레트 그대로(accent #10B981 emerald-500, #7DD3FC sky-300, #FBBF24 amber-400, #C4B5FD violet-300, #F87171 red-400) — 'AI 데브툴 랜딩' 기본값, Product DNA(흰 배경·UI 중심)와 불일치",
+   "§3 역할 없는 색: 브랜드 CTA 색과 '정상/전달됨' 상태색이 같은 초록으로 혼용(marker·status bars·btn-primary 모두 --accent)",
+   "§8-2 (유사) 장식 글리프 '▸ SMS 미리보기' (템플릿 미리보기)",
+   "§8-12 3개씩 나열: 코드 탭 3개(Node/Python/cURL) + 템플릿 언어 3개(ko/en/ja) + 플랜 3 + 퀵스타트 3 + 인증 3 — 리듬 반복",
+   "§8-16 '가장 많이 선택' 플랜 태그(근거 없는 소셜 프루프), '24×7 온콜' 표기",
+   "§8-7 흐름도 SVG rx 8/10/12 혼재 — radius 6 단일 규칙 위반, 마커·텍스트 fill 하드코딩",
+   "카피 언어 혼용: 헤더 'Get API Key'·'Docs/Pricing/Changelog/Status', 푸터 'All rights reserved'·'Quickstart'·'Changelog' (한국어 카피 규칙)"
+  ],
+  "aiTellsFixed": [
+   "§8-3 SDK 카드 8장 → 행 목록(.sdk-list: 언어·버전 / 설치 명령 / 포함 항목 / 문서 링크, 헤더 행 포함, 860px 이하 2단 리플로우) — 아이콘 박스 0",
+   "§8-5 신뢰 수치 4개 → 출처 문장(월 1일 갱신·상태 페이지 링크) + 3개(월 발송량·90일 가동률·p50), 각 수치 집계 기간을 날짜 범위로 명시",
+   "§8-7/§3 다크+Tailwind 팔레트 → 흰 배경(#FFFFFF/#F5F7FA) + 어두운 코드 창(#0F1620) 전용 토큰 세트(--code-*), 밝은 바탕 코드 토큰(--kw/--str/--fn/--cm) 분리, 전 팔레트 커스텀 값으로 교체",
+   "§3 색 역할 분리: --accent #1B48C2(CTA·활성)만 브랜드, --ok #157F4F(정상·전달), --warn #99600A, --danger #C0392B, --info #0B5FA5 — marker·status bars·badge·retry·'무료' 표기 모두 상태색으로 이동",
+   "§8-2 '▸' 글리프 제거 → 'SMS 미리보기 · 68자 · 1건'",
+   "§8-12 코드 탭에 Go 패널 추가(4개, JS 탭 로직 그대로 동작), 템플릿 언어 ko/en/ja/vi 4개",
+   "§8-16 '가장 많이 선택' → '카드 등록 시 전환'(사실 표기), '전담 엔지니어 · 24×7 온콜' → '전담 엔지니어 배정 · 야간·주말 온콜 포함'",
+   "§8-7 SVG rect rx 전부 6, 마커 fill·텍스트 색을 클래스(.arr-g/.arr-a/.arr-b/.label-core/.sub-back)로 CSS 변수화, 채널 박스 .box-ch 구분",
+   "영문 UI 카피 한국어화: 문서/요금/변경 이력/상태, 'API 키 발급', 푸터 '빠른 시작'/'변경 이력', 'All rights reserved' 삭제"
+  ],
+  "dnaIssuesFound": [
+   "Product DNA '배경 화이트 또는 아주 옅은 틴트, 제품 UI 목업이 중심' 위반 — 전체 다크 테마라 코드 창(제품 UI)이 배경과 분리되지 않음",
+   "브랜드 색 1개 원칙과 상태색 혼용 (초록이 CTA와 상태를 겸함)",
+   "radius 규칙(6/3) 대비 흐름도 SVG rx 혼재",
+   "SDK 섹션이 Utility(정보 밀도)보다 카드 장식형 — 정보 밀도 4 지표에 못 미침",
+   "헤더·푸터 영문 라벨과 본문 한국어 카피의 톤 불일치"
+  ],
+  "dnaIssuesFixed": [
+   "흰 배경 + 어두운 코드 창 대비로 히어로의 제품 UI(코드 탭·응답·로그 티커)가 시각 중심이 되도록 재테마 — Product 70 강화, Kinetic 액센트(티커·대시 흐름선)는 코드 창 안으로 국한",
+   "브랜드 색 파랑 1개 + 상태색 4개 역할 부여 (Utility 20: 상태 보드·단가표·계산기가 상태색 체계 공유)",
+   "SVG radius 6 통일, 하드코딩 색 제거",
+   "SDK를 표형 목록으로 재구성해 정보 밀도 상향, 코드 탭 4언어로 SDK 목록과 일치",
+   "헤더 내비·CTA·푸터 라벨 한국어 통일, 카피 톤 '~합니다' 유지"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "Product DNA 필수 섹션 중 로고 월·고객 후기·FAQ 없음 — anti-ai-slop §2(사실 없는 로고 월·후기 금지) 우선으로 의도적 생략, 사양 요구 섹션은 모두 충족",
+   "헤더 '변경 이력' 링크와 히어로 릴리스 링크가 푸터(#changelog)로 이동 — 단일 페이지 예시라 실제 체인지로그 페이지 없음",
+   "브라우저 검수는 파일 스냅샷(1280px 히어로·기능 섹션) 1회만 확인, 375/768 폭은 코드 검토로 대체(사이드바 미디어쿼리 600/860/960 정리됨)"
+  ],
+  "oneLineVerdict": "흰 종이 위에 검은 코드 창 하나가 제품을 설명하는 Product 데브툴 랜딩 — Tailwind 다크 기본값을 벗고 색마다 역할이 생겨 이제 '개발자 문서 사이트'로 읽힌다.",
+  "codeIssuesFixed": [
+   "코드 창 안 포커스 아웃라인이 파란 CTA색이라 어두운 바탕에서 안 보이던 것 → .code-window :focus-visible outline-color 코드 문자열색",
+   "toggle knob 색이 다크 전용(#04110B) → 흰 knob + 그림자, 로고 SVG stroke 흰색",
+   "SDK 문서 링크 8개 동일 텍스트 '문서' → aria-label로 언어 구분",
+   "Go 코드 패널 추가에 따른 role=tab/tabpanel·aria-controls·tabindex 정합, JS 배열 기반이라 수정 없이 동작(node --check 통과)",
+   "태그 균형·중복 id 없음 확인(파서 검사), 최종 1408행"
+  ],
+  "finalLineCount": 1408,
+  "before100": 65,
+  "after100": 85
+ },
+ {
+  "slug": "experimental-art",
+  "styleFidelityBefore": 9,
+  "styleFidelityAfter": 9.4,
+  "aiTellsFound": [
+   "§8-1 pill+dot: 없음(.light-toggle ::before는 8px 정사각 상태 마커, 펄스 없음 — 허용)",
+   "§8-2 이모지: 0개(정규식 검색 결과 없음)",
+   "§8-3 3열 아이콘 카드: 없음(작품 5점은 각기 다른 12열 배치)",
+   "§8-4 중앙 정렬 히어로 공식: 제목만 중앙(빛 마스크 개념 종속), pill·그라데이션 텍스트·primary+secondary 버튼 공식 없음 — 비해당",
+   "§8-5 근거 없는 통계 행: 없음",
+   "§8-6 이니셜 아바타 후기: 없음",
+   "§8-7 동일 radius 카드+hover 상승: radius 0 규칙 하나, shadow·translateY hover 없음",
+   "§8-8 Inter/Geist/Space Grotesk/Playfair: 없음(Pretendard Variable 1종)",
+   "§8-9 모노 대문자 아이브로우: 없음. 다만 우상단 .gate-readout(mono 11px '빛 0.50 · 0.45' 좌표 리드아웃)이 의미 없는 HUD 장식(anti-ai-slop §0 '의미 없는 UI 요소')으로 판정 — index.html 659행",
+   "§8-10 클릭 불가 버튼형 요소: 없음",
+   "§8-11 화살표 →: 0곳",
+   "§8-12 금지 카피 어휘: 없음. '경험' 1회(메타 주석). 3개씩 나열 리듬 없음(5·6·4 단위 혼용)",
+   "§8-13 picsum: 0개. loremflickr 키워드(light,installation / neon,art / projection,dark) lock 90411~90415 고유, alt 서술형 — 통과",
+   "§8-14 그라데이션 블롭·글로우·글래스: radial-gradient 6곳은 모두 커서 조명 마스크/장막(핵심 개념)이며 장식 블롭·글래스·backdrop-filter 없음 — 비해당",
+   "§8-15 스크롤 fade-up 일괄: 없음",
+   "§8-16 있어 보이려는 통계·후기·로고 월: 없음(크레딧은 사실형 역할 표기)"
+  ],
+  "aiTellsFixed": [
+   "§8-9/§0 의미 없는 HUD 좌표 리드아웃(.gate-readout + JS readX/readY/tick) 제거 → 우상단을 Experimental 카피 공식(질문→경험→초대)의 '질문' 한 줄('불이 꺼진 뒤에도 보이는 것이 있을까.')로 교체, 모바일에서는 숨김"
+  ],
+  "dnaIssuesFound": [
+   "Experimental 카피 공식 '질문→경험→초대' 중 '질문' 단계가 입장 화면에 없었음(선언문·힌트·입장 버튼만)",
+   "키보드 사용자: 장막(.veiled) 아래 '작품 노트' 버튼·출품작 링크에 포커스해도 빛이 따라오지 않아 50~94% 어둡게 보임(접근성 대안 약함)",
+   "375px 내비: 브랜드 자간 .42em + 조명 토글 + 예매 버튼 합계가 가용 폭(335px)에 근접해 좁은 기기에서 넘칠 위험"
+  ],
+  "dnaIssuesFixed": [
+   "입장 화면 우상단에 질문 한 줄 추가(질문→경험(힌트)→초대(입장) 순서 완성)",
+   "focusin 리스너 추가: 키보드 포커스 이동 시 빛(--mx/--my, --lx/--ly)이 포커스된 요소 중심으로 이동 — 개념 유지하면서 장막 아래 CTA 가독성 확보",
+   "≤420px에서 .nav-brand 자간 .28em, 토글/버튼 패딩 축소로 내비 오버플로 방지",
+   "meta.json sections[0]·interactions 갱신(리드아웃 삭제, 질문 한 줄·포커스 추적 반영)"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "브라우저 검증은 1280px 입장 화면 스크린샷 1회만 성공(공유 브라우저 스크롤 시 타임아웃 → 재시도 안 함). 작품·예매 섹션은 코드 검토로 대체",
+   "hover 기기에서 첫 pointermove 전까지 커서 링이 보이지 않음(cursor:none + 링 opacity 0) — 마우스를 움직이는 즉시 해소되어 수용 범위",
+   "정보 밀도(안내 8행·요금표·예매 위젯)는 Experimental 지표(1)보다 높으나 Product Type=Exhibition Site 필수 정보 블록이라 유지"
+  ],
+  "codeIssuesFixed": [
+   "미사용이 된 readX/readY/tick 변수·rAF 내 리드아웃 갱신 코드 제거",
+   "1384행, section/article/figure/dl/div 등 태그 균형 확인, 중복 id 없음, meta.json UTF-8 유효 JSON 확인"
+  ],
+  "finalLineCount": 1384,
+  "oneLineVerdict": "'커서가 빛이다'라는 한 가지 실험을 입장 화면부터 예매까지 끝까지 밀어붙인, AI 티가 거의 없는 전시 사이트 — 장식성 HUD 리드아웃만 걷어내고 질문·포커스 추적으로 개념을 더 조였다.",
+  "before100": 90,
+  "after100": 94
+ },
+ {
+  "slug": "utility-admin",
+  "styleFidelityBefore": 90,
+  "styleFidelityAfter": 94,
+  "aiTellsFound": [
+   "§8-1 pill+dot: 없음 (.me-dot·.prio·.sq 는 8px/6px 정사각 마커, 펄스 애니메이션 0건 — grep pulse/animation 결과 toast-in 1건뿐)",
+   "§8-2 이모지: 0건 (유니코드 범위 스캔)",
+   "§8-3 3열 아이콘 카드: 없음",
+   "§8-4 중앙 정렬 히어로 공식: 없음 (콘솔 레이아웃, 히어로 자체 없음)",
+   "§8-5 근거 없는 통계 행: 없음 (카운트는 모두 데이터에서 계산)",
+   "§8-6 이니셜 아바타 후기: 없음",
+   "§8-7 동일 radius+hover 상승 카드: 없음 (radius 4px 단일 규칙, translateY는 토스트 등장 6px 1건, hover는 버튼·행·탭에만)",
+   "§8-8 Inter/Geist/Space Grotesk/Playfair: 없음 (Pretendard 1종 + 시스템 모노는 번호·시각에만)",
+   "§8-9 모노 대문자 아이브로우: 0건 (uppercase 없음)",
+   "§8-10 클릭 불가 버튼형 요소: 없음 (태그 칩은 필터 버튼, 첨부는 다운로드 토스트, 워크스페이스 버튼은 응답)",
+   "§8-11 화살표 →: 0건",
+   "§8-12 금지 카피·3개 나열: 0건 (grep 결과 없음, 라벨·동사형 버튼·상태 명사만)",
+   "§8-13 picsum/무관 이미지: 이미지 없음 (사진 없음 사양, UI만)",
+   "§8-14 그라데이션·글로우·글래스: 0건",
+   "§8-15 fade-up 일괄: 없음 (등장 애니메이션 없음, reduced-motion 처리)",
+   "§8-16 있어 보이려는 통계·후기·로고 월: 없음"
+  ],
+  "aiTellsFixed": [
+   "§8 해당 항목 0건 — 제거할 AI 티 없음 (이전 1차 감사에서 사이드바 .row 충돌·비동작 태그 칩·<dl> 내 h3 등은 이미 정리되어 있음을 확인)"
+  ],
+  "dnaIssuesFound": [
+   "명도 대비: 보조 텍스트 --ink-3 #6f7889 가 11~12px 시각·SLA·태그·탭 카운트에 쓰이는데 패널 위 4.0:1, 선택 행 위 3.7:1 (WCAG AA 4.5 미달)",
+   "명도 대비: 채운 primary 버튼(해결로 변경·답장 보내기)과 워크스페이스 마크의 #f6f4ff on #8b7cf6 = 3.1:1",
+   "접근성: 우선순위 컬러 마커(6px 사각)가 title 속성만 있어 스크린리더에서 우선순위를 읽을 수 없음",
+   "반응형: 태블릿(840~1180px) 목록 폭 340px에서 행 하단(상태 라벨+태그 3개+SLA 문구) 가 nowrap 으로 넘칠 수 있는 여지"
+  ],
+  "dnaIssuesFixed": [
+   "--ink-3 → #7d8799 (패널 4.9:1 / 입력·선택 행 4.55:1), 사이드바 카운트·행 시각·SLA·태그·탭 카운트 전부 개선",
+   "채움색 토큰 분리: --brand-fill #6455d6 + --on-brand #fff (5.5:1) 로 .btn-primary·.ws-mark 교체, 선택 표시·포커스 링·링크는 기존 #8b7cf6 유지 → 브랜드 색 역할 2개(강조/채움)로 명확화",
+   "우선순위 마커에 시각 숨김 텍스트('우선순위 긴급' 등) 추가",
+   ".row-foot flex-wrap + .grow min-width 로 좁은 목록 폭에서 SLA 문구가 다음 줄로 내려가도록"
+  ],
+  "codeIssuesFixed": [
+   "미사용 토큰 --brand-deep 제거 및 --brand-fill/--brand-fill-hover 로 대체 (참조 잔존 0건 확인)",
+   "태그 균형·중복 id·JS 구문(node --check) 재검증 통과",
+   "meta.json palette(ink3·brandFill·brandFillHover·onBrand)와 audit.pass2 갱신"
+  ],
+  "imagesReplaced": 0,
+  "finalLineCount": 1286,
+  "remainingIssues": [
+   "브라우저 탭 상한으로 스크린샷 확인 불가(다른 에이전트와 공유) — 코드 검토로 대체",
+   "role=listbox 안 option 에 체크박스·태그 버튼이 중첩되어 있어 스크린리더 탐색이 다소 장황할 수 있음(기능상 문제 없음)",
+   "Utility DNA의 KPI 카드·차트 컴포넌트는 없음 — 사양(티켓 콘솔)에서 요구하지 않아 의도적 생략"
+  ],
+  "oneLineVerdict": "AI 티는 사실상 없는 밀도 높은 다크 헬프데스크 콘솔 — 실데이터 20건·SLA 계산·⌘K·토스트가 실제로 동작하며, 이번 감사에서는 명도 대비와 접근성 마감만 손봤다.",
+  "before100": 90,
+  "after100": 94
+ },
+ {
+  "slug": "experimental-campaign",
+  "styleFidelityBefore": 88,
+  "styleFidelityAfter": 92,
+  "aiTellsFound": [
+   "§8-1 pill+dot: 없음 (chapter-label은 28px 선, rail 원형 마커는 클릭 가능한 내비 인디케이터)",
+   "§8-2 이모지: 0개 (grep 확인)",
+   "§8-3 3열 아이콘 카드: 없음 (참여 방법은 번호형 ol, 스펙은 dl 표)",
+   "§8-4 중앙 정렬 pill 히어로: 없음 — 인트로 오버레이는 Experimental 허용 연출(2.6초·스킵), 1장 히어로는 좌측 정렬 스크롤 연동 타이포",
+   "§8-5/16 통계: join-meta 192,144장·19,214,400원·38.4%는 기준일(2026.09.28 월)·갱신 주기 명시, 산술 일치(×100원, ÷5,000만) — 유지",
+   "§8-6 이니셜 아바타 후기: 없음 (관리인 실명·재직년수 인용 1건)",
+   "§8-7 카드 radius+hover 상승: 없음 (radius 4px 단일 규칙, hover는 링크·버튼에만)",
+   "§8-8 Inter/Geist/Playfair: 없음 (Pretendard + Noto Serif KR 2종)",
+   "§8-9 모노 대문자 아이브로우: 0개 (mono는 헤더 리드아웃 숫자·코드 입력에만)",
+   "§8-10 클릭 불가 버튼형: 없음",
+   "§8-11 화살표 →: 본문 0곳 (CSS/JS 주석에만 존재)",
+   "§8-12 금지 어휘: 0건 / 3개씩 나열 반복 없음 — 다만 '당신' 3회 반복이 캠페인 카피로 다소 잦음",
+   "§8-13 picsum: 0건 — 이미 loremflickr spring,stream / cave,rock / water,drop + lock 고유",
+   "§8-14 그라데이션 블롭·글로우·글래스: 없음 (SVG 그라데이션은 빗줄·물 표현에 종속)",
+   "§8-15 fade-up 일괄: 없음 (reveal은 사진 3장 크로스페이드만, 나머지는 스크롤 진행률 연동)"
+  ],
+  "aiTellsFixed": [
+   "§8-12 '당신' 3회 → 2회: 5장 시 '42년의 기억이 당신의 하루로 흘러듭니다' → '42년의 기억이 한 모금이 됩니다'(구체 명사)",
+   "§8-12 '여정' 어휘 과다(30회) 완화: stage-aside '여정의 시작/여정의 끝' → '출발/도착'"
+  ],
+  "dnaIssuesFound": [
+   "Experimental 핵심 조건(단일 실험 개념 '스크롤=깊이', 모노크롬+형광 1색, 스티키 스크롤텔링, 인트로≤3초 스킵, 핵심 정보 블록, reduced-motion 정적 버전, 키보드 CTA) 모두 충족",
+   "요구 섹션(인트로→5장→핵심 정보→참여 CTA→크레딧) 누락 없음, Secondary Editorial(수원지 기록 비대칭 그리드) 20%·Accent Cinematic(흑백 사진·인용) 10% 비율 적절",
+   "JS 비활성 시 html.is-locked + 인트로 오버레이가 영구 고정되어 페이지 열람 불가 (접근성 대안 결여)",
+   "<dl class=fact> 안에 <span class=sep> 자식 5곳 — dl 콘텐츠 모델 위반",
+   "h1 2개(인트로 제목 + 1장 제목)",
+   "≤1023px에서 1장 하단 스크롤 힌트가 사실(dl.fact) 행과 겹칠 여지",
+   "meta.json '스크롤 시 블러 배경' 기술이 실제 코드(반투명 rgba, blur 없음)와 불일치"
+  ],
+  "dnaIssuesFixed": [
+   "noscript 폴백 스타일 추가: 인트로·진행바·레일 숨김, overflow 해제, 챕터 정적 배경·--p:1로 전체 내용 열람 가능",
+   "dl.fact 구분선을 span → `.fact dd + dt::before` 의사요소로 교체(5곳), 마크업 유효화",
+   "인트로 제목 h1 → p (문서 h1은 1장 '한 방울이 떨어진다' 하나로)",
+   "≤1023px `.ch-rain .stage{padding-bottom:104px}` 추가로 힌트/사실 행 겹침 방지",
+   "meta.json 헤더 설명 수정(반투명 남색 배경) + noscript 폴백 인터랙션 항목 추가"
+  ],
+  "codeIssuesFixed": [
+   "dl 내부 span 제거 (HTML 유효성)",
+   "중복 h1 해소",
+   "noscript 폴백으로 스크롤 잠금 고착 방지",
+   "태그 균형·JS 파싱·meta.json 유효성 재확인 (1412줄)"
+  ],
+  "imagesReplaced": 0,
+  "finalLineCount": 1412,
+  "remainingIssues": [
+   "브라우저 탭 상한으로 스크린샷 검증 미실시 — 코드 검토로 대체(재시도 안 함)",
+   "'42년' 모티프 반복(약 10회, 캠페인 핵심 수치라 의도적으로 유지)",
+   "핵심 정보 블록 밀도가 Experimental 지표(정보 밀도 1)보다 높으나 카테고리 필수 요건(제목·기간·장소·참여 방법 사실형)이라 유지",
+   "푸터 개인정보처리방침·이용약관 링크는 #top으로 연결(실제 문서 없음)"
+  ],
+  "oneLineVerdict": "'스크롤이 깊이다'라는 단일 실험 개념을 5장 SVG·배경 보간·타이포 크기까지 일관되게 밀어붙인 드문 완성도의 캠페인 사이트로, AI 티 체크리스트 16항목 중 실질 위반이 없어 접근성·마크업 유효성 위주로 손봤다.",
+  "before100": 88,
+  "after100": 92
+ },
+ {
+  "slug": "corporate-hospital",
+  "styleFidelityBefore": 88,
+  "styleFidelityAfter": 93,
+  "aiTellsFound": [
+   "#10 클릭 불가 버튼형 요소: 장비 섹션의 검사 결과 UI 목업(.mock) 안 탭(X-ray/초음파/치료 계획)이 <span>이라 동작 없음, 하단 '영상 CD 발급'/'치료 계획 보기'가 버튼 모양의 <span>으로 어포던스 거짓말(index.html 906~924행 원본)",
+   "#13 이미지 주제 약함: 의료진 인물 사진 3장이 단일 태그 'physician'만 사용(hospital,doctor 등 키워드 힌트와 불일치, 무관 사진 위험) — 696·719·743행",
+   "#13/DNA 장비 섹션에 힌트 키워드 'medical,equipment' 사진이 전혀 없어 텍스트 카드 6장만 나열(Cinematic 20% 비중 약화)",
+   "코드: 푸터 소제목이 h2 다음 h4로 건너뜀(heading level skip), 스타일시트 <link>에 불필요한 as=\"style\" 속성",
+   "meta.json이 실제 파일에 없는 '짧은 페이드업 리빌'·'핵심 수치 카운트업' 인터랙션을 기재(사실 불일치), '진료 과목 6개 카드'라고 적었으나 실제는 표형 목록",
+   "그 외 §8 항목 1·2·3·4·5·6·7·8·9·11·12·14·15·16은 해당 없음 확인(pill dot 0, 이모지 0, 아이콘 카드 그리드 없음, 좌측 정렬 사실+수치+CTA 히어로, 수치 3개 모두 근거 표기, 후기 없음, radius 6/3 단일 규칙·hover는 클릭 요소에만, Pretendard 단일 서체, 모노 대문자 아이브로우 0, 화살표 1곳, 금지 어휘 0, picsum 0, 그라데이션 텍스트/글로우/글래스 0, fade-up 0)"
+  ],
+  "aiTellsFixed": [
+   "#10 목업 탭을 role=tablist/tab 실제 <button>으로 바꾸고 X-ray·초음파·치료 계획 3개 패널(hidden 토글, 방향키 이동)을 vanilla JS로 동작시킴. 초음파 패널(SVG 스캔 도해 + 소견 3행)과 치료 계획 패널(주차별 계획·급여/비급여 비용 표시) 콘텐츠 신규 작성",
+   "#10 목업 하단 '영상 CD 발급 · 10,000원'은 #pricing 앵커 <a>로, '치료 계획 보기'는 치료 계획 탭을 여는 <button>으로 교체, hover는 이 클릭 요소에만 추가",
+   "#13 의료진 사진 3장 키워드를 doctor,portrait 로 교체(lock 41220/41222/41226 유지, alt 서술형 유지)",
+   "#13/DNA 장비 섹션 상단에 medical,equipment 키워드 사진(lock 41410, 21:9, 저채도 필터, 서술형 alt·figcaption) 추가",
+   "코드: 푸터 h4→h3로 heading 위계 정리, <link as=\"style\"> 제거",
+   "meta.json sections/interactions를 실제 구현과 일치하도록 재작성(가짜 페이드업·카운트업 항목 삭제, 목업 탭 전환 추가, '등장 애니메이션 없음' 명시)"
+  ],
+  "dnaIssuesFound": [
+   "Cinematic 20%가 히어로·의료진·물리치료실 사진에만 있고 장비 섹션은 텍스트 카드만 있어 사람·현장 감각이 끊김",
+   "Product 10% 액센트(검사 결과 화면 목업)가 정적 그림에 그쳐 '실제 UI'라는 Product 문법에 미달",
+   "meta.json이 Corporate DNA(모션 1, 등장 애니메이션 없음)와 반대로 페이드업·카운트업이 있다고 기술"
+  ],
+  "dnaIssuesFixed": [
+   "장비 섹션에 검사실 사진 추가로 70(Corporate 정보 구조)·20(Cinematic 저채도 현장 사진)·10(Product UI) 배분을 섹션 전반에 고르게 유지",
+   "목업을 실제 동작하는 탭 UI + 치료 계획(비급여 비용 사전 고지) 화면으로 확장해 Product 액센트가 '기능 시연'이 되도록 함 — 동시에 '비급여는 시행 전 고지'라는 Corporate 신뢰 메시지를 화면으로 증명",
+   "meta.json을 Corporate 모션 원칙(즉시 표시)과 일치시킴"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "푸터 정책 링크 #privacy·#terms 는 대상 섹션이 없는 데모용 앵커(단일 페이지 예시라 유지)",
+   "브라우저 스크린샷 검증은 공유 브라우저 탭 상한으로 1회 실패 → 코드 검토(태그 균형·중복 id·JS node --check)로 대체",
+   "히어로 수치 3개 행은 근거(2014년 개원·상근 전문의·물리치료사 수)가 명시돼 유지했으나, 실제 운영 시 기준일 갱신 필요"
+  ],
+  "oneLineVerdict": "정보 구조 자체로 신뢰를 만드는 Corporate 문법에 충실한 정형외과 사이트 — 목업을 실제 동작 UI로, 장비 섹션에 현장 사진을 더해 '버튼처럼 보이는 장식'과 텍스트 편중을 제거했다.",
+  "finalLineCount": 1601,
+  "codeIssuesFixed": [
+   "푸터 heading level skip(h2→h4) 수정: h4→h3, .footer h3 스타일 동일 유지",
+   "<link rel=\"stylesheet\" as=\"style\"> 의 잘못된 as 속성 제거",
+   "목업 탭에 role=tablist/tab/tabpanel + aria-selected/aria-controls/hidden + 방향키 로빙 탭인덱스 적용, 인라인 JS는 node --check 통과",
+   "수정 후 태그 균형·중복 id 없음·화살표 1곳·이모지 0 재확인, 총 1601줄"
+  ],
+  "before100": 88,
+  "after100": 93
+ },
+ {
+  "slug": "utility-dashboard",
+  "styleFidelityBefore": 92,
+  "styleFidelityAfter": 95,
+  "aiTellsFound": [
+   "§8-1 pill+dot/펄스: 없음 (@keyframes·animation·pulse 0건, 상태 마커는 8px 정사각+텍스트 라벨)",
+   "§8-2 이모지: 0건 (정규식 grep 결과 없음)",
+   "§8-3 3열 아이콘 카드 그리드: 없음 (KPI 4카드는 수치+증감+스파크라인, 대시보드 관행)",
+   "§8-4 중앙 정렬 히어로 공식: 해당 없음 (히어로 없는 앱 프레임)",
+   "§8-5 근거 없는 통계 행: 없음 (KPI·리뷰 요약 4칸 모두 기준 시각·기간·출처 명시, 12개 매장 원본과 합계 일치 재계산 확인)",
+   "§8-6 이니셜 아바타 후기: 없음 (사이드바 로그인 사용자 칩 1개는 후기 아님)",
+   "§8-7 동일 radius+보더+shadow+hover 상승: 없음 (2px 단일 radius 규칙, 그림자·translateY 없음)",
+   "§8-8 Inter/Geist/Space Grotesk/Playfair: 없음 (Pretendard Variable 1종 + 시스템 폴백)",
+   "§8-9 모노 대문자 아이브로우: 0개",
+   "§8-10 클릭 불가 버튼형 요소: 없음 (미구현 화면은 토스트로 정직 안내, .tag/.kbd는 버튼 외형 아님)",
+   "§8-11 화살표 →: 0곳 (팔레트 푸터 ↑↓ 키 힌트만)",
+   "§8-12 금지 카피 어휘: 0건 (grep 20여 어휘 모두 없음), 3개씩 나열 리듬 없음",
+   "§8-13 picsum/무관 이미지: 이미지 자체 없음 (Utility 규칙대로 CSS/SVG UI만)",
+   "§8-14 그라데이션 블롭·글로우·글래스: 없음 (repeating-linear-gradient는 범례 해칭 기능용, box-shadow는 표 강조선 inset·팔레트 1곳)",
+   "§8-15 스크롤 fade-up 일괄: 없음 (IntersectionObserver 0, 등장 애니메이션 0)",
+   "§8-16 있어 보이려는 통계·후기·로고 월: 없음"
+  ],
+  "aiTellsFixed": [
+   "해당 없음 — §8 16개 항목 모두 통과하여 AI 티 관련 수정 사항 없음 (meta.json 1차 audit 블록에 이미 이니셜 칩 중복·3칸 나열 등이 제거된 상태였음을 확인)"
+  ],
+  "dnaIssuesFound": [
+   "--ink-3(#6f7572) 보조 텍스트가 회색 표 헤더/페이지 배경(#f3f4f3) 위에서 4.27:1로 AA 미달 (Utility 정보 밀도 최우선 → 작은 글자 대비 중요)",
+   "7일/30일·미처리/처리됨 세그먼트가 role=tab/aria-selected인데 대응 tabpanel이 없어 ARIA 패턴 불완전",
+   "알림·드로어 <time> 요소에 datetime 없음",
+   "그 외 DNA 지표(사이드바+상단 바, 그레이 스케일+브랜드 그린 1색+상태색 의미 사용, Pretendard 13px tabular-nums, 고밀도, 모션 없음, 동사형 버튼·명사형 상태, 실제 업무 데이터) 모두 부합. 요구 섹션 7종 전부 존재. Secondary Product(발주 계산 스켈레톤→표, 드로어)·Accent Corporate(푸터 회사·내선) 비중 적절"
+  ],
+  "dnaIssuesFixed": [
+   "--ink-3 #6f7572 → #656b68 (회색 배경 위 5.0:1, 흰 배경 5.5:1), meta.json palette 갱신",
+   "세그먼트 컨트롤 2곳을 role=group + aria-pressed 버튼으로 교정 (CSS 선택자·JS 토글 3곳·HTML 4버튼 일괄 변경, JS 구문 검사 통과)",
+   "알림 리스트·드로어 관련 알림 <time>에 datetime=\"2026-08-13THH:MM\" 추가",
+   "meta.json에 2차 감사 기록(secondPass) 추가"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "차트 툴팁이 마우스 전용(키보드로 데이터 포인트 탐색 불가) — 요약 패널·테이블이 동일 수치를 텍스트로 제공하므로 허용 수준",
+   "매장 테이블 min-width 960px로 375/768에서는 카드 내부 가로 스크롤(의도된 .tbl-wrap overflow-x:auto, 페이지 가로 스크롤 없음)",
+   "브라우저 스크린샷은 1280px 첫 화면 1회만 확인(공유 브라우저 타임아웃으로 하단 스크롤 확인은 코드 검토로 대체)"
+  ],
+  "oneLineVerdict": "12개 매장 원본 데이터와 KPI·차트·합계가 전부 맞아떨어지는, 마케팅 문구 없이 통제감만 남긴 진짜 운영 대시보드 — AI 티 체크리스트 16개 전부 통과.",
+  "finalLineCount": 885,
+  "before100": 92,
+  "after100": 95
+ },
+ {
+  "slug": "utility-erp",
+  "styleFidelityBefore": 92,
+  "styleFidelityAfter": 96,
+  "aiTellsFound": [
+   "§8-1 pill+dot: 없음 (상태는 8px 정사각 마커+텍스트, 애니메이션 없음)",
+   "§8-2 이모지: 없음 (⌘·↑↓ 는 키 표기용, 요구 사양)",
+   "§8-3 3열 아이콘 카드: 없음 (KPI 4타일은 데이터에서 계산된 수치+SVG 차트)",
+   "§8-4 중앙 정렬 히어로: 없음 (내부 도구, 사이드바+상단 바 레이아웃)",
+   "§8-5 근거 없는 통계 행: 없음 (KPI 전부 items/orders 배열에서 계산)",
+   "§8-6 이니셜 아바타 후기: 없음",
+   "§8-7 카드 radius/hover 일괄: 없음 (radius 4px 단일, hover는 버튼·행·KPI 버튼 등 클릭 가능한 것에만, 발주 목록 행은 hover 제거)",
+   "§8-8 Inter/Geist 등: 없음 (Pretendard Variable 단일 + 시스템 폴백)",
+   "§8-9 모노 대문자 아이브로우: 없음",
+   "§8-10 클릭 불가 버튼형: 없음",
+   "§8-11 화살표 →: 0곳",
+   "§8-12 금지 카피: 없음, 3개씩 나열 리듬 없음",
+   "§8-13 picsum: 없음 (사진 0장, 차트는 인라인 SVG)",
+   "§8-14 그라데이션·글로우·글래스: 없음",
+   "§8-15 fade-up 일괄: 없음 (토스트 180ms 등장, 드로어 200ms 전환만)",
+   "§8-16 있어 보이려는 통계·후기·로고 월: 없음"
+  ],
+  "aiTellsFixed": [
+   "§8 16개 항목 모두 통과 — 수정 불필요 (AI 티 관련 변경 0건)"
+  ],
+  "dnaIssuesFound": [
+   "데이터 일관성: 시드 발주 PO-20260812-03이 245,600원인데 '승인 대기' 상태 — 모달 정책 문구(50만원 이하 자동 승인)와 모순 (index.html orders 배열, 알림 notifs 문구)",
+   "데이터 일관성: 드로어 '최근 이력'의 입고 이벤트 날짜가 랜덤(오늘-1~3일)이라 두 섹션 위의 '최근 입고 8월 5일'과 불일치, 라벨 '5건' 하드코딩",
+   "명도 대비: 브레드크럼 루트 '재고'가 .crumb span 규칙에 걸려 #c9ced6(대비 1.6:1)로 렌더",
+   "명도 대비: --faint #9aa1ab(2.6:1)이 사이드바 그룹 라벨·팔레트 그룹 라벨 텍스트에 사용",
+   "접근성: 하단 요약 바 전체가 aria-live=polite인데 필터·정렬·페이지 변경마다 innerHTML 전체 교체 → 스크린리더 소음"
+  ],
+  "dnaIssuesFixed": [
+   "PO-20260812-03 라인을 HH-5003 롤화장지 30 + HH-5004 24 = 580,200원으로 변경해 승인 대기 상태가 정책과 일치, 알림 문구 '580,200원 (50만원 초과)'로 갱신",
+   "history()를 최근 입고일 기준으로 재작성: 입고일 이후 출고·조정 이벤트 + 입고 1건(날짜=lastIn, PO 번호도 해당 일자), 라벨을 실제 건수로",
+   ".crumb span[aria-hidden]만 연한 색 적용 → 루트 크럼은 뮤트(#6b7380, 4.9:1)",
+   "--faint를 #6f7783(4.5:1)로 조정",
+   "하단 바 aria-live 제거, 선택 건수 변경 시에만 갱신되는 시각 숨김 라이브 리전(#selLive) 추가",
+   "meta.json: palette.text·sections(드로어·발주 목록)·interactions·audit 갱신"
+  ],
+  "imagesReplaced": 0,
+  "remainingIssues": [
+   "로딩 스켈레톤(Utility 컴포넌트 목록 항목)은 미구현 — 정적 데이터라 필요성 낮아 유지",
+   "'today'가 실제 시계 기준이라 데이터 날짜(8/13~8/15)와 시간이 지날수록 벌어짐 — 예시 사이트 특성상 허용",
+   "Pretendard는 jsdelivr CDN CSS 로드(규칙상 허용), 오프라인 시 시스템 폴백"
+  ],
+  "oneLineVerdict": "AI 티 체크리스트 16개 전부 통과한, 실제 소매 ERP처럼 동작하는 고밀도 Utility 화면 — 데이터 정합성(승인 정책·입고 이력)과 명도 대비만 손봤다.",
+  "finalLineCount": 994,
+  "codeIssuesFixed": [
+   "브레드크럼 셀렉터 특정성 수정(.crumb span → .crumb span[aria-hidden])",
+   "history() 재작성 및 이력 건수 동적 표시(histEv.length)",
+   "하단 바 aria-live 제거 + #selLive 라이브 리전, renderBar에서 선택 수 변경 시에만 갱신(초기값 0으로 로드 시 오announce 방지)",
+   "JS node --check 통과, 태그 균형 검사 통과, 중복 id 없음, 로컬 8080 스크린샷·드로어 이력 렌더 확인"
+  ],
+  "before100": 92,
+  "after100": 96
+ }
+]

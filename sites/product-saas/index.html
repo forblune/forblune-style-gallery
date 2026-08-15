@@ -1,0 +1,1418 @@
+<!-- forblune-style: {"slug":"product-saas","primaryStyle":"Product","productType":"SaaS Landing","tone":"Clear · Friendly · Confident","secondary":"Corporate","accent":"Utility","brand":"인보이스플로우 InvoiceFlow","industry":"소상공인 청구·세금계산서 SaaS","coreMessage":"청구서 발행부터 입금 확인까지 얼마나 빨라지는지 UI로 보여주어 무료로 시작하게 한다","naming":"Product / SaaS Landing / Clear · Friendly · Confident"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인보이스플로우 InvoiceFlow — 청구서 발행 45초, 입금 확인은 자동으로</title>
+<meta name="description" content="소상공인을 위한 청구·세금계산서 SaaS. 청구서 발행, 입금 자동 매칭, 리마인더, 세금계산서 발행과 세무 연동까지 한 화면에서. 카드 등록 없이 월 10건까지 무료.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  /* ------------------------------------------------------------
+     토큰 — Product / SaaS Landing / Clear · Friendly · Confident
+     화이트 + 옅은 블루그레이 틴트, 브랜드 블루 1색, 상태색 4종은 의미로만.
+     모서리 규칙: 상태 라벨·아이콘 타일 4px, 컨트롤·내부 요소 6px, 카드·패널 12px. 스위치·아바타만 원형.
+     ------------------------------------------------------------ */
+  :root {
+    --bg: #ffffff;
+    --bg-tint: #f4f6fb;
+    --bg-tint-2: #e9edf6;
+    --border: #e1e5ee;
+    --border-strong: #c9d0de;
+    --text: #16203a;
+    --text-2: #4a5570;
+    --text-3: #6b7590;
+    --brand: #2c5cf6;
+    --brand-600: #2149cf;
+    --brand-700: #1a3ba8;
+    --brand-100: #d7e2ff;
+    --brand-50: #ecf1ff;
+    --ok: #1a7f4b;
+    --ok-bg: #dff5e8;
+    --warn: #a85d00;
+    --warn-bg: #fdf0d5;
+    --info: #2c5cf6;
+    --info-bg: #e3ebff;
+    --danger: #c0392b;
+    --danger-bg: #fde5e1;
+    --shadow-sm: 0 1px 2px rgba(22, 32, 58, .06);
+    --shadow-md: 0 8px 24px -8px rgba(22, 32, 58, .12), 0 2px 6px rgba(22, 32, 58, .05);
+    --shadow-lg: 0 28px 56px -28px rgba(22, 32, 58, .28), 0 6px 18px -10px rgba(22, 32, 58, .1);
+    --r-xs: 4px;
+    --r: 6px;
+    --r-card: 12px;
+    --container: 1200px;
+    --font: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  h1, h2, h3, h4, p { margin: 0; }
+  ul, ol { margin: 0; padding: 0; list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  img, svg { display: block; max-width: 100%; }
+  table { border-collapse: collapse; width: 100%; }
+
+  :focus-visible {
+    outline: 3px solid rgba(44, 92, 246, .45);
+    outline-offset: 2px;
+    border-radius: var(--r);
+  }
+  .skip-link {
+    position: absolute; left: 12px; top: -48px;
+    background: var(--brand); color: #fff; padding: 10px 14px; border-radius: var(--r); z-index: 200;
+    font-weight: 600;
+  }
+  .skip-link:focus { top: 12px; }
+
+  .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
+  @media (max-width: 767px) { .container { width: calc(100% - 32px); } }
+
+  .num { font-variant-numeric: tabular-nums; }
+  /* 그리드 자식의 min-content 팽창 방지 (가로 스크롤 방지) */
+  .mock-main, .mock-row2 > *, .feature > *, .ui-card, .match > *, .tl .body, .kpi, .step, .integ, .quote, .plan-card, .footer-col, .cta-band > *, .cta-form, .split-head > * { min-width: 0; }
+
+  .text-link { color: var(--brand); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .text-link:hover { color: var(--brand-700); }
+
+  /* ---------- 버튼 ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 44px; padding: 0 20px; border-radius: var(--r);
+    font-weight: 600; font-size: 15px; line-height: 1; white-space: nowrap;
+    transition: background-color .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
+  }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-600); }
+  .btn-secondary { background: #fff; color: var(--text); border: 1px solid var(--border-strong); }
+  .btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
+  .btn-ghost { color: var(--text-2); padding: 0 12px; }
+  .btn-ghost:hover { color: var(--text); background: var(--bg-tint-2); }
+  .btn-lg { height: 52px; padding: 0 26px; font-size: 16px; }
+  .btn-sm { height: 36px; padding: 0 14px; font-size: 14px; }
+  .btn-block { width: 100%; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* ---------- 섹션 뼈대 ---------- */
+  .section { padding: 96px 0; }
+  .section.tint { background: var(--bg-tint); }
+  .h2 { font-size: clamp(27px, 3.2vw, 38px); font-weight: 700; letter-spacing: -.015em; line-height: 1.25; }
+  .lead { margin-top: 14px; font-size: 17px; color: var(--text-2); }
+  /* 섹션 머리 형태를 섹션마다 다르게: 좁은 좌측 정렬 / 2열 분할 / 중앙(요금만) */
+  .head-narrow { max-width: 640px; margin-bottom: 48px; }
+  .split-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px 64px; align-items: end; margin-bottom: 48px; }
+  .split-head .lead { margin-top: 0; }
+  .head-center { max-width: 640px; margin: 0 auto 40px; text-align: center; }
+  @media (max-width: 960px) { .split-head { grid-template-columns: 1fr; gap: 12px; } }
+  @media (max-width: 767px) { .section { padding: 64px 0; } .head-narrow, .split-head, .head-center { margin-bottom: 32px; } .lead { font-size: 16px; } }
+
+  /* ============================================================
+     헤더 — 불투명 화이트, 스크롤 시 하단 선만
+     ============================================================ */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .site-header.is-scrolled { border-bottom-color: var(--border); }
+  .header-inner { height: 66px; display: flex; align-items: center; gap: 28px; }
+  .logo { display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
+  .logo-mark { width: 28px; height: 28px; border-radius: var(--r); background: var(--brand); display: grid; place-items: center; }
+  .logo-mark svg { width: 17px; height: 17px; }
+  .logo small { font-weight: 600; color: var(--text-3); font-size: 12px; margin-left: 2px; }
+  .nav { display: flex; align-items: center; gap: 4px; margin-left: 8px; }
+  .nav a { padding: 8px 12px; border-radius: var(--r); font-size: 15px; font-weight: 500; color: var(--text-2); transition: color .15s, background-color .15s; }
+  .nav a:hover { color: var(--text); background: var(--bg-tint-2); }
+  .header-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .menu-btn { display: none; width: 44px; height: 44px; border-radius: var(--r); align-items: center; justify-content: center; margin-left: auto; }
+  .menu-btn:hover { background: var(--bg-tint-2); }
+  .menu-btn svg { width: 24px; height: 24px; }
+  .menu-btn .ic-close { display: none; }
+  .mobile-nav { display: none; }
+
+  @media (max-width: 960px) {
+    .nav, .header-actions .btn-ghost { display: none; }
+    .menu-btn { display: inline-flex; margin-left: 0; }
+    .header-inner { gap: 10px; }
+    .header-actions .btn-primary { height: 38px; padding: 0 14px; font-size: 14px; }
+    .mobile-nav {
+      display: block; overflow: hidden; max-height: 0; transition: max-height .3s var(--ease);
+      border-top: 1px solid transparent;
+    }
+    .site-header.nav-open .mobile-nav { max-height: 420px; border-top-color: var(--border); }
+    .site-header.nav-open .menu-btn .ic-open { display: none; }
+    .site-header.nav-open .menu-btn .ic-close { display: block; }
+    .mobile-nav ul { padding: 8px 0 12px; }
+    .mobile-nav a { display: block; padding: 12px 8px; font-size: 16px; font-weight: 500; border-radius: var(--r); }
+    .mobile-nav a:hover { background: var(--bg-tint-2); }
+    .mobile-nav .mobile-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 4px 0 16px; }
+  }
+  @media (max-width: 480px) {
+    .site-header .logo small { display: none; }
+    .site-header .logo { font-size: 17px; }
+    .header-actions .btn-primary { padding: 0 12px; font-size: 13px; }
+  }
+
+  /* ============================================================
+     Hero — 좌측 정렬 카피 + 아래 전폭 대시보드 목업 (제품 UI가 주인공)
+     ============================================================ */
+  .hero { padding: 72px 0 0; }
+  .hero-copy { max-width: 760px; }
+  .hero-kicker { font-size: 14px; font-weight: 600; color: var(--text-3); }
+  .hero-kicker a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+  .h1 { margin-top: 14px; font-size: clamp(34px, 4.6vw, 54px); font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
+  .h1 em { font-style: normal; color: var(--brand); }
+  .hero-sub { margin-top: 20px; max-width: 640px; font-size: clamp(16px, 1.5vw, 18px); color: var(--text-2); }
+  .hero-cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-fine { margin-top: 14px; font-size: 13.5px; color: var(--text-3); }
+
+  /* ---------- 대시보드 목업 (브라우저 크롬 없이 앱 화면 그대로) ---------- */
+  .mock-wrap { position: relative; margin: 52px auto 0; }
+  .mock {
+    position: relative; background: #fff; border: 1px solid var(--border); border-radius: var(--r-card) var(--r-card) 0 0; box-shadow: var(--shadow-lg);
+    overflow: hidden; text-align: left; font-size: 13px; border-bottom: 0;
+  }
+  .mock-body { display: grid; grid-template-columns: 200px 1fr; min-height: 520px; }
+  .mock-side { border-right: 1px solid var(--border); background: #fafbfd; padding: 14px 10px; display: flex; flex-direction: column; gap: 2px; }
+  .mock-side .ws { display: flex; align-items: center; gap: 8px; padding: 6px 8px 14px; font-weight: 700; font-size: 13px; }
+  .mock-side .ws i { width: 22px; height: 22px; border-radius: var(--r); background: var(--brand); display: block; }
+  .mock-side .ws small { display: block; font-weight: 500; color: var(--text-3); font-size: 11px; }
+  .mock-side a { display: flex; align-items: center; gap: 9px; padding: 7px 10px; border-radius: var(--r); color: var(--text-2); font-weight: 500; font-size: 13px; }
+  .mock-side a svg { width: 15px; height: 15px; color: var(--text-3); }
+  .mock-side a.active { background: var(--brand-50); color: var(--brand-700); font-weight: 600; }
+  .mock-side a.active svg { color: var(--brand); }
+  .mock-side .cnt { margin-left: auto; font-size: 11px; background: #fff; border: 1px solid var(--border); border-radius: var(--r-xs); padding: 0 5px; color: var(--text-3); }
+  .mock-side .plan { margin-top: auto; padding: 10px; border-radius: var(--r); background: #fff; border: 1px solid var(--border); font-size: 11px; color: var(--text-2); }
+  .mock-side .plan b { display: block; color: var(--text); font-size: 12px; margin-bottom: 4px; }
+  .mock-side .plan .bar { height: 4px; border-radius: 2px; background: var(--bg-tint-2); overflow: hidden; margin-top: 6px; }
+  .mock-side .plan .bar i { display: block; height: 100%; width: 68%; background: var(--brand); }
+  .mock-main { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 14px; background: #fff; }
+  .mock-top { display: flex; align-items: center; gap: 10px; }
+  .mock-top h3 { font-size: 16px; font-weight: 700; }
+  .mock-top .date { font-size: 12px; color: var(--text-3); }
+  .mock-search { margin-left: auto; height: 30px; width: 200px; border-radius: var(--r); border: 1px solid var(--border); display: flex; align-items: center; gap: 6px; padding: 0 9px; color: var(--text-3); font-size: 12px; }
+  .mock-search svg { width: 13px; height: 13px; }
+  .mock-search kbd { margin-left: auto; font-family: inherit; font-size: 10px; border: 1px solid var(--border); border-radius: var(--r-xs); padding: 0 4px; color: var(--text-3); }
+  .mock-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--bg-tint-2); color: var(--text); font-size: 11px; font-weight: 700; display: grid; place-items: center; border: 1px solid var(--border); }
+  .mock-btn { height: 30px; padding: 0 11px; border-radius: var(--r); background: var(--brand); color: #fff; font-weight: 600; font-size: 12px; display: inline-flex; align-items: center; gap: 5px; }
+  .mock-btn svg { width: 13px; height: 13px; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .kpi { border: 1px solid var(--border); border-radius: var(--r); padding: 12px 14px; }
+  .kpi .l { font-size: 12px; color: var(--text-3); font-weight: 500; }
+  .kpi .v { margin-top: 4px; font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+  .kpi .d { margin-top: 5px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; border-radius: var(--r-xs); }
+  .kpi .d.up { color: var(--ok); background: var(--ok-bg); }
+  .kpi .d.warn { color: var(--warn); background: var(--warn-bg); }
+  .kpi .d.neutral { color: var(--info); background: var(--info-bg); }
+  .mock-row2 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 12px; }
+  .panel { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+  .panel-h { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--border); font-weight: 700; font-size: 13px; }
+  .panel-h .sub { font-weight: 500; color: var(--text-3); font-size: 12px; }
+  .panel-h .link { margin-left: auto; font-size: 12px; color: var(--brand); font-weight: 600; }
+  .mock-table th, .mock-table td { padding: 9px 12px; text-align: left; font-size: 12px; white-space: nowrap; }
+  .mock-table th { color: var(--text-3); font-weight: 600; background: #fafbfd; border-bottom: 1px solid var(--border); }
+  .mock-table td { border-bottom: 1px solid var(--border); }
+  .mock-table tr:last-child td { border-bottom: 0; }
+  .mock-table tbody tr.hl { background: var(--brand-50); }
+  .mock-table td.amt { font-weight: 700; text-align: right; }
+  .mock-table th.amt { text-align: right; }
+  .mock-table .cust { display: flex; align-items: center; gap: 7px; font-weight: 600; color: var(--text); }
+  .mock-table .cust i { width: 20px; height: 20px; border-radius: var(--r-xs); display: grid; place-items: center; font-size: 10px; font-weight: 800; color: #fff; font-style: normal; }
+  /* 상태 표시: 점 없는 사각 라벨 */
+  .badge { display: inline-flex; align-items: center; height: 22px; padding: 0 7px; border-radius: var(--r-xs); font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .badge.ok { color: var(--ok); background: var(--ok-bg); }
+  .badge.warn { color: var(--warn); background: var(--warn-bg); }
+  .badge.info { color: var(--info); background: var(--info-bg); }
+  .badge.danger { color: var(--danger); background: var(--danger-bg); }
+  .badge.muted { color: var(--text-2); background: var(--bg-tint-2); }
+  .chart { padding: 12px 14px 10px; }
+  .chart .legend { display: flex; gap: 12px; font-size: 11px; color: var(--text-3); margin-bottom: 8px; }
+  .chart .legend i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; vertical-align: 0; }
+  .bars { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; align-items: end; height: 118px; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+  .bar { position: relative; display: flex; align-items: flex-end; gap: 3px; height: 100%; }
+  .bar i { display: block; flex: 1; border-radius: 3px 3px 0 0; transform-origin: bottom; }
+  .bar .b1 { background: var(--brand); }
+  .bar .b2 { background: var(--brand-100); }
+  .bar .b1.hi { background: var(--brand-700); }
+  .bar-labels { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; font-size: 11px; color: var(--text-3); text-align: center; margin-top: 6px; }
+  .mock .toast {
+    position: absolute; right: 18px; bottom: 18px; z-index: 3;
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--text); color: #fff; border-radius: var(--r);
+    box-shadow: 0 12px 30px -10px rgba(22,32,58,.5); font-size: 12px;
+    opacity: 0; transform: translateY(8px); transition: opacity .3s var(--ease), transform .3s var(--ease);
+  }
+  .mock .toast.show { opacity: 1; transform: none; }
+  .mock .toast .ok-mark { width: 22px; height: 22px; border-radius: var(--r-xs); background: var(--ok); display: grid; place-items: center; }
+  .mock .toast .ok-mark svg { width: 12px; height: 12px; }
+  .mock .toast b { display: block; font-size: 12px; }
+  .mock .toast span { color: #c3cadb; font-size: 11px; }
+  .mock .toast .num { color: #fff; }
+
+  @media (max-width: 960px) {
+    .mock-body { grid-template-columns: 1fr; }
+    .mock-side { display: none; }
+    .mock-row2 { grid-template-columns: 1fr; }
+    .mock-search { display: none; }
+  }
+  @media (max-width: 767px) {
+    .hero { padding-top: 44px; }
+    .kpis { grid-template-columns: 1fr 1fr; }
+    .kpis .kpi:nth-child(3) { grid-column: 1 / -1; }
+    .mock-main { padding: 12px; }
+    .panel { overflow-x: auto; }
+    .mock .toast { display: none; }
+  }
+  @media (max-width: 420px) {
+    .kpis { grid-template-columns: 1fr; }
+    .kpis .kpi:nth-child(3) { grid-column: auto; }
+  }
+
+  /* ============================================================
+     로고 월 — 워드마크 텍스트, 테두리·hover 없음
+     ============================================================ */
+  .logos { padding: 44px 0 56px; border-top: 1px solid var(--border); }
+  .logos p { font-size: 14px; color: var(--text-3); margin-bottom: 22px; }
+  .logo-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px 16px; align-items: center; }
+  .logo-item { text-align: center; color: var(--text-3); font-size: 15px; padding: 8px 0; white-space: nowrap; }
+  .logo-item.w1 { font-weight: 800; letter-spacing: -.03em; }
+  .logo-item.w2 { font-weight: 500; letter-spacing: .14em; font-size: 13px; }
+  .logo-item.w3 { font-weight: 700; font-style: italic; }
+  .logo-item.w4 { font-weight: 600; letter-spacing: .04em; }
+  .logo-item.w5 { font-weight: 900; font-size: 16px; }
+  .logo-item.w6 { font-weight: 400; letter-spacing: -.01em; }
+  .logo-item.w7 { font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .logo-item.w8 { font-weight: 800; letter-spacing: .02em; font-size: 14px; }
+  @media (max-width: 960px) { .logo-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 480px) { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ============================================================
+     핵심 기능 — 카드 대신 하이라인으로 나눈 2열 행, 좌우 교대
+     ============================================================ */
+  .feature-list { border-top: 1px solid var(--border); }
+  .feature {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center;
+    padding: 56px 0; border-bottom: 1px solid var(--border);
+  }
+  .feature.rev .feature-text { order: 2; }
+  .feature-no { font-size: 13px; font-weight: 700; color: var(--brand); }
+  .feature-text h3 { margin-top: 10px; font-size: 25px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+  .feature-text > p { margin-top: 12px; color: var(--text-2); font-size: 16px; }
+  .feature-text ul { margin-top: 20px; border-top: 1px solid var(--border); }
+  .feature-text li { display: grid; grid-template-columns: 124px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; color: var(--text-2); }
+  .feature-text li b { color: var(--text); font-weight: 700; }
+  .feature-text .metric { margin-top: 18px; font-size: 14px; color: var(--text-2); }
+  .feature-text .metric b { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: -.01em; margin-right: 8px; white-space: nowrap; }
+  .feature-text .metric small { display: block; font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+  .ui { background: var(--bg-tint); border-radius: var(--r-card); padding: 24px; min-height: 320px; display: flex; align-items: center; justify-content: center; }
+  .ui-card { width: 100%; max-width: 440px; background: #fff; border: 1px solid var(--border); border-radius: var(--r-card); box-shadow: var(--shadow-md); font-size: 13px; overflow: hidden; }
+  .ui-card .hd { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--border); font-weight: 700; white-space: nowrap; }
+  .ui-card .hd .right { margin-left: auto; font-weight: 500; font-size: 12px; color: var(--text-3); }
+  .ui-card .bd { padding: 14px; }
+  .field { display: grid; grid-template-columns: 84px 1fr; align-items: center; gap: 10px; padding: 7px 0; }
+  .field label { font-size: 12px; color: var(--text-3); font-weight: 600; }
+  .field .input { height: 32px; border: 1px solid var(--border); border-radius: var(--r); display: flex; align-items: center; padding: 0 10px; gap: 6px; font-size: 13px; background: #fff; }
+  .field .input.sel::after { content: ""; margin-left: auto; width: 6px; height: 6px; border-right: 1.5px solid var(--text-3); border-bottom: 1.5px solid var(--text-3); transform: rotate(45deg) translateY(-2px); }
+  .field .input i { width: 18px; height: 18px; border-radius: var(--r-xs); background: #0e8fbf; display: grid; place-items: center; color: #fff; font-style: normal; font-size: 9px; font-weight: 800; }
+  .lines { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-top: 6px; }
+  .lines .ln { display: grid; grid-template-columns: 1fr 60px 90px; gap: 8px; padding: 8px 10px; font-size: 12px; border-bottom: 1px solid var(--border); }
+  .lines .ln:last-child { border-bottom: 0; }
+  .lines .ln.head { background: #fafbfd; color: var(--text-3); font-weight: 600; }
+  .lines .ln span:nth-child(2), .lines .ln span:nth-child(3) { text-align: right; }
+  .lines .ln.total { background: var(--brand-50); font-weight: 800; }
+  .switch { position: relative; width: 34px; height: 20px; border-radius: 10px; background: var(--brand); flex: none; }
+  .switch::after { content: ""; position: absolute; top: 2px; left: 16px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+  .switch.off { background: var(--border-strong); }
+  .switch.off::after { left: 2px; }
+  .opt-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; font-size: 13px; }
+  .opt-row .desc { color: var(--text-3); font-size: 12px; margin-left: auto; }
+  .ui-card .ft { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--border); background: #fafbfd; }
+  .ui-card .ft .send { margin-left: auto; height: 32px; padding: 0 12px; border-radius: var(--r); background: var(--brand); color: #fff; font-weight: 700; font-size: 12px; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .ui-card .ft .send svg { width: 13px; height: 13px; }
+  .chip { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 8px; border-radius: var(--r-xs); font-size: 11px; font-weight: 600; background: var(--bg-tint-2); color: var(--text-2); white-space: nowrap; }
+  .chip svg { width: 12px; height: 12px; }
+
+  /* 입금 매칭 UI */
+  .match { display: grid; grid-template-columns: 1fr 44px 1fr; gap: 6px; align-items: center; }
+  .match .col { display: grid; gap: 8px; }
+  .match .col h4 { font-size: 11px; color: var(--text-3); font-weight: 700; }
+  .match .item { border: 1px solid var(--border); border-radius: var(--r); padding: 9px 10px; font-size: 12px; background: #fff; }
+  .match .item b { display: block; font-size: 13px; }
+  .match .item small { color: var(--text-3); font-size: 11px; display: block; margin-top: 2px; }
+  .match .item.on { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(44,92,246,.12); }
+  .match .item.faint { opacity: .55; }
+  .match .link-ic { display: grid; place-items: center; }
+  .match .link-ic span { width: 32px; height: 32px; border-radius: 50%; background: var(--ok-bg); color: var(--ok); display: grid; place-items: center; }
+  .match .link-ic svg { width: 16px; height: 16px; }
+  .match-foot { margin-top: 12px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; font-size: 12px; color: var(--text-2); }
+  .match-foot .conf { font-weight: 800; color: var(--ok); white-space: nowrap; }
+  @media (max-width: 480px) { .match { grid-template-columns: 1fr; } .match .link-ic span { transform: rotate(90deg); } }
+
+  /* 리마인더 UI */
+  .timeline { display: grid; gap: 0; }
+  .tl { display: grid; grid-template-columns: 26px 1fr; gap: 10px; }
+  .tl .dot { position: relative; display: flex; justify-content: center; }
+  .tl .dot::before { content: ""; position: absolute; top: 20px; bottom: -6px; width: 2px; background: var(--border); }
+  .tl:last-child .dot::before { display: none; }
+  .tl .dot i { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 2px solid var(--border); color: var(--text-3); position: relative; z-index: 1; }
+  .tl .dot i.done { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .tl .dot i.now { background: var(--brand); border-color: var(--brand); color: #fff; box-shadow: 0 0 0 4px rgba(44,92,246,.15); }
+  .tl .dot i svg { width: 10px; height: 10px; }
+  .tl .body { padding-bottom: 16px; }
+  .tl .body b { font-size: 13px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; }
+  .tl .body p { font-size: 12px; color: var(--text-2); margin-top: 3px; }
+  .tl .body .msg { margin-top: 7px; padding: 8px 10px; border-radius: var(--r); border-top-left-radius: 2px; background: #fdf6c9; font-size: 12px; color: #5b4708; line-height: 1.5; }
+  .tl .body .msg.sms { background: var(--bg-tint-2); color: var(--text); }
+  .tl .body .when { margin-left: auto; font-size: 11px; color: var(--text-3); font-weight: 500; }
+
+  /* 세무 연동 UI */
+  .tax-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tax-box { border: 1px solid var(--border); border-radius: var(--r); padding: 10px 12px; }
+  .tax-box .l { font-size: 11px; color: var(--text-3); font-weight: 600; }
+  .tax-box .v { font-size: 16px; font-weight: 800; margin-top: 2px; }
+  .tax-box .v small { font-size: 11px; font-weight: 600; color: var(--text-3); margin-left: 4px; }
+  .tax-steps { margin-top: 12px; display: grid; gap: 6px; }
+  .tax-steps .st { display: flex; align-items: center; gap: 9px; padding: 8px 10px; border-radius: var(--r); background: #fafbfd; border: 1px solid var(--border); font-size: 12px; }
+  .tax-steps .st .badge { margin-left: auto; }
+  .tax-steps .st svg { width: 15px; height: 15px; color: var(--text-3); }
+  .tax-steps .st.done svg { color: var(--ok); }
+
+  @media (max-width: 960px) {
+    .feature { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
+    .feature.rev .feature-text { order: 0; }
+    .feature-text h3 { font-size: 22px; }
+    .ui { min-height: 0; padding: 18px; }
+  }
+  @media (max-width: 480px) {
+    .ui { padding: 12px; }
+    .field { grid-template-columns: 1fr; gap: 4px; }
+    .feature-text li { grid-template-columns: 1fr; gap: 2px; }
+    .lines .ln { grid-template-columns: 1fr 40px 84px; gap: 6px; padding: 8px; }
+    .ui-card .bd { padding: 12px; }
+    .mock-table th:nth-child(4), .mock-table td:nth-child(4) { display: none; }
+  }
+
+  /* ============================================================
+     작동 방식 — 카드 없이 상단 굵은 선으로 구분한 3단계
+     ============================================================ */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .step { border-top: 2px solid var(--text); padding-top: 18px; }
+  .step .n { font-size: 13px; font-weight: 700; color: var(--brand); }
+  .step h3 { margin-top: 8px; font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+  .step p { margin-top: 8px; color: var(--text-2); font-size: 15px; }
+  .step .time { margin-top: 12px; font-size: 13px; color: var(--text-3); }
+  .step .time b { color: var(--text); font-weight: 700; }
+  .step-ui { margin-top: 20px; border: 1px solid var(--border); border-radius: var(--r-card); background: var(--bg-tint); padding: 12px; font-size: 12px; }
+  .step-ui .row { display: flex; align-items: center; gap: 8px; padding: 6px 8px; background: #fff; border-radius: var(--r); border: 1px solid var(--border); margin-bottom: 6px; }
+  .step-ui .row:last-child { margin-bottom: 0; }
+  .step-ui .row i { width: 16px; height: 16px; border-radius: var(--r-xs); background: var(--brand-100); display: block; flex: none; }
+  .step-ui .row .r { margin-left: auto; color: var(--text-3); }
+  .step-ui .prog { height: 4px; background: #fff; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; margin-top: 8px; }
+  .step-ui .prog i { display: block; height: 100%; background: var(--brand); }
+  @media (max-width: 960px) { .steps { grid-template-columns: 1fr; gap: 28px; } }
+
+  /* ============================================================
+     통합 — 하나의 패널을 세로선으로 3분할, 항목은 평문 목록
+     ============================================================ */
+  .integ-groups { display: grid; grid-template-columns: repeat(3, 1fr); background: #fff; border: 1px solid var(--border); border-radius: var(--r-card); overflow: hidden; }
+  .integ { padding: 26px 24px; border-right: 1px solid var(--border); }
+  .integ:last-child { border-right: 0; }
+  .integ h3 { font-size: 16px; font-weight: 700; }
+  .integ h3 .cnt { margin-left: 6px; font-size: 13px; font-weight: 500; color: var(--text-3); }
+  .integ p { margin-top: 6px; font-size: 14px; color: var(--text-2); }
+  .integ ul { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 14px; }
+  .integ li { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 13.5px; color: var(--text-2); }
+  .integ li i { width: 20px; height: 20px; border-radius: var(--r-xs); display: grid; place-items: center; font-style: normal; font-size: 9px; font-weight: 800; color: #fff; flex: none; }
+  .integ li.extra { display: none; }
+  .integ.expanded li.extra { display: flex; }
+  .more-btn { margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+  .more-btn:hover { color: var(--brand-700); }
+  .integ-foot { margin-top: 24px; font-size: 14px; color: var(--text-2); max-width: 820px; }
+  .integ-foot b { color: var(--text); }
+  @media (max-width: 960px) {
+    .integ-groups { grid-template-columns: 1fr; }
+    .integ { border-right: 0; border-bottom: 1px solid var(--border); }
+    .integ:last-child { border-bottom: 0; }
+  }
+  @media (max-width: 420px) { .integ ul { grid-template-columns: 1fr; } }
+
+  /* ============================================================
+     고객 사례 — 큰 인용 1 + 작은 인용 2, 아바타·별점 없음
+     ============================================================ */
+  .quotes { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0 48px; }
+  .quote-lead { grid-row: span 2; background: var(--bg-tint); border-radius: var(--r-card); padding: 40px; display: flex; flex-direction: column; }
+  .quote-lead .result b { display: block; font-size: 44px; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+  .quote-lead .result span { display: block; margin-top: 8px; font-size: 14px; color: var(--text-2); }
+  .quote-lead blockquote { margin: 26px 0 0; font-size: 19px; line-height: 1.65; color: var(--text); flex: 1; }
+  .quote { padding: 26px 0; border-top: 1px solid var(--border); }
+  .quote:last-child { border-bottom: 1px solid var(--border); }
+  .quote .result { font-size: 14px; color: var(--text-2); }
+  .quote .result b { font-size: 20px; font-weight: 800; color: var(--text); margin-right: 8px; }
+  .quote blockquote { margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: var(--text); }
+  .who { margin-top: 18px; font-size: 13.5px; color: var(--text-3); }
+  .who b { color: var(--text); font-weight: 700; margin-right: 6px; }
+  .quotes-note { margin-top: 20px; font-size: 13px; color: var(--text-3); }
+  @media (max-width: 960px) {
+    .quotes { grid-template-columns: 1fr; }
+    .quote-lead { grid-row: auto; padding: 28px; margin-bottom: 8px; }
+    .quote-lead blockquote { font-size: 17px; }
+  }
+
+  /* ============================================================
+     요금 — 3플랜, 월/연 토글
+     ============================================================ */
+  .toggle-wrap { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 40px; font-size: 15px; }
+  .toggle-wrap .lbl { font-weight: 600; color: var(--text-3); transition: color .15s; }
+  .toggle-wrap .lbl.on { color: var(--text); }
+  .toggle {
+    position: relative; width: 52px; height: 30px; border-radius: 15px; background: var(--border-strong); transition: background-color .2s var(--ease); flex: none;
+  }
+  .toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .2s var(--ease); }
+  .toggle[aria-checked="true"] { background: var(--brand); }
+  .toggle[aria-checked="true"]::after { transform: translateX(22px); }
+  .toggle-wrap .save { font-size: 13px; color: var(--ok); font-weight: 600; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+  .plan-card { position: relative; background: #fff; border: 1px solid var(--border); border-radius: var(--r-card); padding: 28px; display: flex; flex-direction: column; }
+  .plan-card.featured { border-color: var(--brand); border-width: 2px; padding: 27px; }
+  .plan-card .pop { display: block; font-size: 12px; font-weight: 700; color: var(--brand); margin-bottom: 8px; }
+  .plan-card h3 { font-size: 18px; font-weight: 800; }
+  .plan-card .desc { margin-top: 6px; font-size: 14px; color: var(--text-2); min-height: 42px; }
+  .price { margin-top: 20px; display: flex; align-items: baseline; gap: 4px; }
+  .price .cur { font-size: 20px; font-weight: 700; color: var(--text-2); }
+  .price .amt { font-size: 40px; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+  .price .per { font-size: 14px; color: var(--text-3); font-weight: 500; }
+  .price-note { margin-top: 6px; font-size: 13px; color: var(--text-3); min-height: 20px; }
+  .price-note .strike { text-decoration: line-through; margin-right: 6px; }
+  .plan-card .btn { margin-top: 22px; }
+  .plan-card ul { margin-top: 24px; border-top: 1px solid var(--border); }
+  .plan-card li { padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-2); }
+  .plan-card li.dim { color: var(--text-3); }
+  .plan-card li.dim::before { content: "미포함 · "; }
+  .pricing-foot { margin-top: 26px; text-align: center; font-size: 14px; color: var(--text-2); }
+  @media (max-width: 960px) { .plans { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } .plan-card.featured { order: -1; } }
+
+  /* ============================================================
+     FAQ — 좌측 제목 고정, 우측 아코디언
+     ============================================================ */
+  .faq-layout { display: grid; grid-template-columns: 1fr 1.7fr; gap: 40px 64px; align-items: start; }
+  .faq-intro { position: sticky; top: 90px; }
+  .faq-intro .lead { font-size: 15.5px; }
+  .faq { border-top: 1px solid var(--border); }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; display: flex; align-items: center; gap: 16px; padding: 20px 4px; text-align: left;
+    font-size: 16.5px; font-weight: 700; color: var(--text); transition: color .15s;
+  }
+  .faq-q:hover { color: var(--brand); }
+  .faq-q .pm { margin-left: auto; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border-strong); display: grid; place-items: center; flex: none; transition: transform .25s var(--ease), background-color .2s, border-color .2s; }
+  .faq-q .pm svg { width: 13px; height: 13px; }
+  .faq-q[aria-expanded="true"] .pm { transform: rotate(45deg); background: var(--brand); border-color: var(--brand); color: #fff; }
+  .faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s var(--ease); }
+  .faq-a > div { overflow: hidden; }
+  .faq-a p { padding: 0 44px 20px 4px; font-size: 15px; color: var(--text-2); line-height: 1.75; }
+  .faq-item.open .faq-a { grid-template-rows: 1fr; }
+  @media (max-width: 960px) { .faq-layout { grid-template-columns: 1fr; gap: 24px; } .faq-intro { position: static; } }
+  @media (max-width: 767px) { .faq-q { font-size: 15.5px; padding: 16px 2px; } .faq-a p { padding-right: 8px; } }
+
+  /* ============================================================
+     최종 CTA — 단색 잉크 밴드, 좌 문장 / 우 이메일 가입 폼(실제 검증·완료 상태)
+     ============================================================ */
+  .cta-band {
+    background: var(--text); color: #fff; border-radius: var(--r-card); padding: 52px 56px;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px 40px; align-items: center;
+  }
+  .cta-band h2 { font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; letter-spacing: -.015em; line-height: 1.25; }
+  .cta-band p { margin-top: 12px; font-size: 16px; color: rgba(255,255,255,.72); }
+  .cta-form label { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.72); margin-bottom: 8px; }
+  .cta-row { display: flex; gap: 8px; }
+  .cta-row input {
+    flex: 1; min-width: 0; height: 52px; padding: 0 16px; border-radius: var(--r);
+    border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.08); color: #fff; font: inherit; font-size: 16px;
+    transition: border-color .15s, background-color .15s;
+  }
+  .cta-row input::placeholder { color: rgba(255,255,255,.45); }
+  .cta-row input:focus { outline: none; border-color: #fff; background: rgba(255,255,255,.12); }
+  .cta-row input[aria-invalid="true"] { border-color: #ff9d8f; }
+  .cta-band .btn-white { background: #fff; color: var(--text); flex: none; }
+  .cta-band .btn-white:hover { background: var(--bg-tint-2); }
+  .cta-note { margin-top: 10px; font-size: 13px; color: rgba(255,255,255,.62); line-height: 1.6; }
+  .cta-note.err { color: #ffb4a8; }
+  .cta-note.done { color: #fff; }
+  .cta-note.done b { display: block; font-size: 15px; margin-bottom: 2px; }
+  @media (max-width: 960px) { .cta-band { grid-template-columns: 1fr; padding: 40px 32px; } }
+  @media (max-width: 767px) { .cta-band { padding: 32px 22px; } .cta-row { flex-direction: column; } .cta-band .btn-white { width: 100%; } }
+
+  /* ============================================================
+     푸터
+     ============================================================ */
+  .site-footer { border-top: 1px solid var(--border); background: #fff; padding: 56px 0 32px; font-size: 14px; }
+  .footer-grid { display: grid; grid-template-columns: 1.8fr repeat(3, 1fr); gap: 32px; }
+  .footer-brand p { margin-top: 14px; color: var(--text-2); max-width: 320px; }
+  .footer-brand .trust { margin-top: 12px; font-size: 13px; color: var(--text-3); }
+  .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { color: var(--text-2); }
+  .footer-col a:hover { color: var(--brand); }
+  .footer-bottom { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; color: var(--text-3); font-size: 13px; }
+  .footer-bottom .legal { display: flex; gap: 16px; flex-wrap: wrap; }
+  .footer-bottom .legal a:hover { color: var(--text); }
+  .footer-bottom .biz { width: 100%; line-height: 1.8; }
+  @media (max-width: 960px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } .footer-brand { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    .mock .toast { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#product" class="logo" aria-label="인보이스플로우 홈">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10l4 4v12H5z"/><path d="M9 13h6M9 17h4"/></svg>
+      </span>
+      인보이스플로우 <small>InvoiceFlow</small>
+    </a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#product">제품</a>
+      <a href="#features">기능</a>
+      <a href="#pricing">요금</a>
+      <a href="#customers">고객사례</a>
+      <a href="#docs">문서</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#signup" class="btn btn-ghost">로그인</a>
+      <a href="#signup" class="btn btn-primary btn-sm">무료로 시작하기</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="메뉴 열기">
+      <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="container">
+      <ul>
+        <li><a href="#product">제품</a></li>
+        <li><a href="#features">기능</a></li>
+        <li><a href="#pricing">요금</a></li>
+        <li><a href="#customers">고객사례</a></li>
+        <li><a href="#docs">문서</a></li>
+      </ul>
+      <div class="mobile-cta">
+        <a href="#signup" class="btn btn-secondary">로그인</a>
+        <a href="#signup" class="btn btn-primary">무료로 시작하기</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- Hero -->
+<section class="hero" id="product" aria-labelledby="heroTitle">
+  <div class="container">
+    <div class="hero-copy">
+      <p class="hero-kicker">소상공인 청구·세금계산서 SaaS · 2026년 8월 업데이트: <a href="#features">매입 세금계산서 자동 수집</a>이 추가되었습니다</p>
+      <h1 class="h1" id="heroTitle">청구서 발행 <em>45초</em>,<br>입금 확인은 자동으로.</h1>
+      <p class="hero-sub">청구서 발행, 입금 매칭, 미수금 리마인더, 세금계산서 발행을 한 화면에서 처리합니다. 2026년 7월 한 달간 12,400개 사업장이 청구서를 발행했고, 활성 계정의 하루 정산 작업은 평균 9분이었습니다.</p>
+      <div class="hero-cta">
+        <a href="#signup" class="btn btn-primary btn-lg">무료로 시작하기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#how" class="btn btn-secondary btn-lg">데모 보기</a>
+      </div>
+      <p class="hero-fine">카드 등록 없이 월 10건까지 무료입니다. 가입 후 첫 청구서 발행까지 평균 3분(2026년 7월 신규 가입 계정 기준).</p>
+    </div>
+
+    <!-- 대시보드 목업 (CSS로 그린 실제 인터페이스, 브라우저 크롬 없음) -->
+    <div class="mock-wrap">
+      <div class="mock" role="img" aria-label="인보이스플로우 대시보드 화면: 좌측 사이드바, 이번 달 청구·입금 지표, 월별 청구 차트, 청구서 목록 테이블과 입금 상태 라벨">
+        <div class="mock-body" aria-hidden="true">
+          <aside class="mock-side">
+            <div class="ws"><i></i><div>모모카페 강남점<small>프로 플랜</small></div></div>
+            <a class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>대시보드</a>
+            <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 16h4"/></svg>청구서 <span class="cnt">38</span></a>
+            <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>입금 내역</a>
+            <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>고객 <span class="cnt">126</span></a>
+            <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0112 0v5l2 3H4l2-3z"/><path d="M10 20a2 2 0 004 0"/></svg>리마인더</a>
+            <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg>세금계산서</a>
+            <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M10 19v-9M16 19V9M22 19H2"/></svg>리포트</a>
+            <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>설정</a>
+            <div class="plan"><b>이번 달 발행 68 / 100건</b>프로 플랜 · 8월 31일 갱신<div class="bar"><i></i></div></div>
+          </aside>
+          <div class="mock-main">
+            <div class="mock-top">
+              <div><h3>대시보드</h3><div class="date">2026년 8월 15일 (토) · 오늘 입금 3건</div></div>
+              <div class="mock-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>청구서·고객 검색<kbd>⌘K</kbd></div>
+              <span class="mock-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>새 청구서</span>
+              <span class="mock-avatar">정</span>
+            </div>
+            <div class="kpis">
+              <div class="kpi"><div class="l">이번 달 청구액</div><div class="v num">₩12,480,000</div><span class="d up">▲ 18.2% 전월 대비</span></div>
+              <div class="kpi"><div class="l">입금 완료</div><div class="v num">₩9,860,000</div><span class="d neutral">79% · 자동 매칭 31건</span></div>
+              <div class="kpi"><div class="l">미수금</div><div class="v num">₩2,620,000</div><span class="d warn">7건 · 리마인더 예약됨</span></div>
+            </div>
+            <div class="mock-row2">
+              <div class="panel">
+                <div class="panel-h">최근 청구서 <span class="sub">전체 38건</span><span class="link">모두 보기</span></div>
+                <table class="mock-table">
+                  <thead><tr><th>번호</th><th>고객</th><th class="amt">금액</th><th>발행일</th><th>상태</th></tr></thead>
+                  <tbody id="mockRows">
+                    <tr><td class="num">INV-0815</td><td><div class="cust"><i style="background:#0e8fbf">도</i>(주)도담디자인</div></td><td class="amt num">₩1,540,000</td><td class="num">08.14</td><td><span class="badge ok">입금 완료</span></td></tr>
+                    <tr class="hl" data-live><td class="num">INV-0814</td><td><div class="cust"><i style="background:#e0731c">브</i>브릿지스튜디오</div></td><td class="amt num">₩880,000</td><td class="num">08.13</td><td><span class="badge info" data-status>열람됨</span></td></tr>
+                    <tr><td class="num">INV-0813</td><td><div class="cust"><i style="background:#1f9d6a">그</i>그린테이블</div></td><td class="amt num">₩2,200,000</td><td class="num">08.12</td><td><span class="badge warn">입금 대기</span></td></tr>
+                    <tr><td class="num">INV-0812</td><td><div class="cust"><i style="background:#6b4fd8">한</i>한결물류</div></td><td class="amt num">₩3,960,000</td><td class="num">08.10</td><td><span class="badge ok">입금 완료</span></td></tr>
+                    <tr><td class="num">INV-0811</td><td><div class="cust"><i style="background:#c0392b">루</i>루미공방</div></td><td class="amt num">₩450,000</td><td class="num">08.05</td><td><span class="badge danger">기한 초과 D+10</span></td></tr>
+                    <tr><td class="num">INV-0810</td><td><div class="cust"><i style="background:#6b7590">온</i>온오프마켓</div></td><td class="amt num">₩1,320,000</td><td class="num">08.02</td><td><span class="badge ok">입금 완료</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="panel">
+                <div class="panel-h">월별 청구·입금 <span class="sub">단위: 백만 원</span></div>
+                <div class="chart">
+                  <div class="legend"><span><i style="background:var(--brand)"></i>청구</span><span><i style="background:var(--brand-100)"></i>입금</span></div>
+                  <div class="bars">
+                    <div class="bar"><i class="b1" style="height:46%"></i><i class="b2" style="height:44%"></i></div>
+                    <div class="bar"><i class="b1" style="height:58%"></i><i class="b2" style="height:52%"></i></div>
+                    <div class="bar"><i class="b1" style="height:52%"></i><i class="b2" style="height:50%"></i></div>
+                    <div class="bar"><i class="b1" style="height:70%"></i><i class="b2" style="height:66%"></i></div>
+                    <div class="bar"><i class="b1" style="height:78%"></i><i class="b2" style="height:75%"></i></div>
+                    <div class="bar"><i class="b1 hi" style="height:96%"></i><i class="b2" style="height:76%"></i></div>
+                  </div>
+                  <div class="bar-labels"><span>3월</span><span>4월</span><span>5월</span><span>6월</span><span>7월</span><span>8월</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="toast" id="mockToast" aria-hidden="true">
+          <span class="ok-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>
+          <div><b>입금 자동 매칭 완료</b><span>브릿지스튜디오 · <span class="num">₩880,000</span> · 신한은행</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 로고 월 -->
+<section class="logos" aria-labelledby="logosTitle">
+  <div class="container">
+    <p id="logosTitle">2026년 7월 한 달간 인보이스플로우로 청구서를 발행한 사업장 12,400곳 중 — 카페, 디자인 스튜디오, 물류, 공방, 케이터링</p>
+    <ul class="logo-grid" aria-label="사용 사업장">
+      <li class="logo-item w1">모모카페</li>
+      <li class="logo-item w2">DODAM</li>
+      <li class="logo-item w3">Bridge Studio</li>
+      <li class="logo-item w4">한결물류</li>
+      <li class="logo-item w5">온오프마켓</li>
+      <li class="logo-item w6">루미공방</li>
+      <li class="logo-item w7">그린테이블</li>
+      <li class="logo-item w8">CODE&amp;CO</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 핵심 기능 -->
+<section class="section tint" id="features" aria-labelledby="featTitle">
+  <div class="container">
+    <div class="split-head">
+      <h2 class="h2" id="featTitle">발행·입금·독촉·세무. 네 가지 반복 업무가 한 흐름으로 이어집니다.</h2>
+      <p class="lead">엑셀과 은행 앱, 문자, 홈택스를 오가던 시간을 없앱니다. 아래 화면은 실제 제품 UI를 그대로 옮긴 것입니다.</p>
+    </div>
+
+    <div class="feature-list">
+      <!-- 1. 자동 발행 -->
+      <article class="feature">
+        <div class="feature-text">
+          <span class="feature-no">01 · 청구서 발행</span>
+          <h3>고객을 고르면 45초 만에 청구서가 나갑니다</h3>
+          <p>이전 청구서의 항목·단가·부가세를 기억합니다. 매월 같은 금액이라면 정기 청구를 켜두세요. 발행일 아침 9시에 이메일과 카카오 알림톡으로 자동 전송됩니다.</p>
+          <ul>
+            <li><b>정기 청구</b><span>매월·매주·분기 단위. 공휴일이면 다음 영업일로 자동 조정</span></li>
+            <li><b>열람 추적</b><span>고객이 청구서를 열면 즉시 알림. 링크에서 바로 계좌이체·카드 결제</span></li>
+            <li><b>PDF·엑셀 내보내기</b><span>거래처 양식이 따로 있어도 그대로 맞춰 출력</span></li>
+          </ul>
+          <p class="metric"><b class="num">-87%</b>청구서 1건 작성 시간, 평균 6분에서 45초로<small>활성 계정 발행 로그 평균 · 2026년 7월</small></p>
+        </div>
+        <div class="ui" aria-hidden="true">
+          <div class="ui-card">
+            <div class="hd">새 청구서 <span class="chip">INV-0816 · 초안</span><span class="right">자동 저장됨</span></div>
+            <div class="bd">
+              <div class="field"><label>고객</label><div class="input sel"><i>도</i>(주)도담디자인 · 김서연 대표</div></div>
+              <div class="field"><label>결제 기한</label><div class="input sel">발행일로부터 14일 (8월 30일)</div></div>
+              <div class="lines">
+                <div class="ln head"><span>항목</span><span>수량</span><span>금액</span></div>
+                <div class="ln"><span>브랜드 리플렛 디자인</span><span class="num">1</span><span class="num">₩900,000</span></div>
+                <div class="ln"><span>인쇄 감리 (2일)</span><span class="num">2</span><span class="num">₩500,000</span></div>
+                <div class="ln"><span>부가세 10%</span><span></span><span class="num">₩140,000</span></div>
+                <div class="ln total"><span>합계</span><span></span><span class="num">₩1,540,000</span></div>
+              </div>
+              <div class="opt-row"><span class="switch"></span>정기 청구 <span class="desc">매월 1일 · 다음 발행 9월 1일</span></div>
+              <div class="opt-row"><span class="switch"></span>결제 링크 포함 <span class="desc">계좌이체 · 카드</span></div>
+            </div>
+            <div class="ft">
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>이메일</span>
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H9l-5 4z"/></svg>알림톡</span>
+              <span class="send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>발행하고 보내기</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. 입금 매칭 -->
+      <article class="feature rev">
+        <div class="feature-text">
+          <span class="feature-no">02 · 입금 매칭</span>
+          <h3>입금이 들어오면 어느 청구서인지 자동으로 찾아 표시합니다</h3>
+          <p>계좌를 연결하면 입금 내역을 1분 단위로 읽어 금액·입금자명·기한을 대조합니다. 회사명 대신 대표 개인 이름으로 들어와도, 부가세를 뺀 금액이 들어와도 후보를 제안합니다. 일치도 95% 이상이면 확인 없이 완료 처리하고, 그 미만이면 후보 2~3개를 보여줍니다.</p>
+          <ul>
+            <li><b>부분·합산 입금</b><span>두 건을 한 번에 보내도 나눠서 소진. 잔액은 남은 상태로 표시</span></li>
+            <li><b>영수 안내 자동 발송</b><span>매칭 즉시 고객에게 “입금 확인되었습니다” 알림</span></li>
+          </ul>
+          <p class="metric"><b class="num">주 3.5시간</b>통장 대조에 쓰던 시간 절감<small>도입 3개월 이상 고객 212곳 설문 평균 · 2026년 6월</small></p>
+        </div>
+        <div class="ui" aria-hidden="true">
+          <div class="ui-card">
+            <div class="hd">입금 매칭 <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>1분 전 동기화</span><span class="right">신한 110-***-4821</span></div>
+            <div class="bd">
+              <div class="match">
+                <div class="col">
+                  <h4>은행 입금 내역</h4>
+                  <div class="item on"><b class="num">₩880,000</b>브릿지스튜디오<small>08.15 09:42 · 신한은행</small></div>
+                  <div class="item faint"><b class="num">₩2,000,000</b>김민준<small>08.15 08:10 · 카카오뱅크</small></div>
+                </div>
+                <div class="link-ic"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></span></div>
+                <div class="col">
+                  <h4>매칭된 청구서</h4>
+                  <div class="item on"><b class="num">INV-0814 · ₩880,000</b>브릿지스튜디오<small>기한 08.27 · 열람됨</small></div>
+                  <div class="item faint"><b class="num">INV-0813 · ₩2,200,000</b>그린테이블 (후보 82%)<small>부가세 제외 금액과 일치</small></div>
+                </div>
+              </div>
+              <div class="match-foot"><span class="badge ok">자동 완료</span><span class="conf num">일치도 99%</span><span>금액·입금자명·기한 3항목 일치 · 고객에게 영수 안내 발송됨</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. 리마인더 -->
+      <article class="feature">
+        <div class="feature-text">
+          <span class="feature-no">03 · 미수금 리마인더</span>
+          <h3>독촉 전화 대신, 정중한 리마인더가 정해진 날에 나갑니다</h3>
+          <p>기한 3일 전 안내, 당일 안내, 초과 3일·7일 후 리마인더까지 문구와 시점을 정해두면 끝. 입금이 확인되면 예약된 리마인더는 자동으로 취소되니 “이미 보냈는데요” 소리를 들을 일이 없습니다.</p>
+          <ul>
+            <li><b>단계별 문구</b><span>안내, 재안내, 정중한 최종 안내. 고객 등급별로 다르게 설정</span></li>
+            <li><b>채널 순서</b><span>알림톡을 먼저 보내고 못 읽으면 문자, 이메일 순으로. 읽음 여부 기록</span></li>
+            <li><b>입금 시 자동 중단</b><span>매칭 완료 즉시 남은 일정 취소</span></li>
+          </ul>
+          <p class="metric"><b class="num">41일에서 12일로</b>평균 미수금 회수 기간<small>도입 전 3개월과 도입 후 3개월 비교, 계정 1,180곳 · 2026년 상반기</small></p>
+        </div>
+        <div class="ui" aria-hidden="true">
+          <div class="ui-card">
+            <div class="hd">리마인더 일정 <span class="chip">INV-0813 · 그린테이블</span><span class="right">기한 8월 26일</span></div>
+            <div class="bd">
+              <div class="timeline">
+                <div class="tl">
+                  <div class="dot"><i class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></i></div>
+                  <div class="body"><b>발행 안내 <span class="chip">알림톡 · 읽음</span><span class="when">08.12 09:00</span></b><p>청구서 링크와 결제 기한 안내</p></div>
+                </div>
+                <div class="tl">
+                  <div class="dot"><i class="now"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 6v6l4 2"/></svg></i></div>
+                  <div class="body"><b>기한 3일 전 안내 <span class="chip">알림톡</span><span class="when">08.23 10:00 예약</span></b>
+                    <div class="msg">안녕하세요, 그린테이블 담당자님. 모모카페 강남점에서 8월 12일 발행한 청구서(₩2,200,000)의 결제 기한이 8월 26일입니다. 아래 링크에서 확인해 주세요.</div>
+                  </div>
+                </div>
+                <div class="tl">
+                  <div class="dot"><i></i></div>
+                  <div class="body"><b>기한 당일 안내 <span class="chip">알림톡, 미읽음 시 문자</span><span class="when">08.26 10:00 예약</span></b><p>미입금 시에만 발송</p></div>
+                </div>
+                <div class="tl">
+                  <div class="dot"><i></i></div>
+                  <div class="body"><b>기한 초과 3일 <span class="chip">문자 + 이메일</span><span class="when">08.29 10:00 예약</span></b><div class="msg sms">[모모카페] 8/26 기한 청구서 ₩2,200,000 미입금 안내드립니다. 이미 입금하셨다면 무시해 주세요.</div></div>
+                </div>
+              </div>
+              <div class="opt-row" style="border-top:1px solid var(--border);padding-top:12px"><span class="switch"></span>입금 확인 시 남은 리마인더 자동 취소<span class="desc">켜짐</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. 세무 연동 -->
+      <article class="feature rev">
+        <div class="feature-text">
+          <span class="feature-no">04 · 세금계산서·세무</span>
+          <h3>세금계산서 발행부터 부가세 신고 자료까지 한 번에</h3>
+          <p>입금이 확인된 청구서는 클릭 한 번으로 전자세금계산서가 되어 국세청에 전송됩니다. 공동인증서는 1회만 등록하면 되고, 역발행 요청도 처리합니다. 분기가 끝나면 매출·매입 합계표를 세무사에게 바로 공유하세요. 더존·세무사랑 형식으로 내보내집니다.</p>
+          <ul>
+            <li><b>부가세 신고 자료</b><span>매출·매입 합계표, 카드 매출 집계를 분기별 자동 생성</span></li>
+            <li><b>세무사 초대</b><span>읽기 전용 계정으로 초대해 자료 요청 왕복을 없앰</span></li>
+          </ul>
+          <p class="metric"><b class="num">하루에서 20분으로</b>분기 부가세 신고 자료 준비 시간<small>세무사 초대 기능을 쓰는 계정 640곳 인터뷰 · 2026년 7월</small></p>
+        </div>
+        <div class="ui" aria-hidden="true">
+          <div class="ui-card">
+            <div class="hd">세무 · 2026년 2기 예정 <span class="right">7.1 – 9.30</span></div>
+            <div class="bd">
+              <div class="tax-grid">
+                <div class="tax-box"><div class="l">매출 세금계산서</div><div class="v num">₩31,240,000<small>42건</small></div></div>
+                <div class="tax-box"><div class="l">매입 세금계산서</div><div class="v num">₩8,760,000<small>19건</small></div></div>
+                <div class="tax-box"><div class="l">카드 매출</div><div class="v num">₩5,120,000<small>연동 집계</small></div></div>
+                <div class="tax-box"><div class="l">예상 납부 세액</div><div class="v num">₩2,760,000</div></div>
+              </div>
+              <div class="tax-steps">
+                <div class="st done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>INV-0815 도담디자인 세금계산서 <span class="badge ok">국세청 전송 완료</span></div>
+                <div class="st done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>INV-0812 한결물류 세금계산서 <span class="badge ok">국세청 전송 완료</span></div>
+                <div class="st"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>INV-0814 브릿지스튜디오 세금계산서 <span class="badge info">발행 대기</span></div>
+                <div class="st"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 9l6 6 6-6"/><path d="M4 21h16"/></svg>매출·매입 합계표 (더존 형식) <span class="badge muted">10.1 자동 생성</span></div>
+              </div>
+            </div>
+            <div class="ft"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>세무사 박지훈 · 읽기 전용</span><span class="send">신고 자료 공유</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 작동 방식 -->
+<section class="section" id="how" aria-labelledby="howTitle">
+  <div class="container">
+    <div class="head-narrow">
+      <h2 class="h2" id="howTitle">가입부터 첫 입금 확인까지 세 단계</h2>
+      <p class="lead">가입 후 첫 청구서 발행까지 평균 3분. 계좌 연결은 은행 앱 인증만으로 끝납니다.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <span class="n">1단계</span>
+        <h3>고객과 항목을 등록합니다</h3>
+        <p>엑셀 거래처 목록을 그대로 올리거나 사업자번호만 넣으면 상호·주소가 채워집니다. 자주 쓰는 항목은 단가와 함께 저장됩니다.</p>
+        <p class="time">소요 <b>약 3분</b></p>
+        <div class="step-ui" aria-hidden="true">
+          <div class="row"><i></i>거래처 126곳 · 엑셀 가져오기<span class="r">완료</span></div>
+          <div class="row"><i></i>(주)도담디자인 · 123-45-67890<span class="r">자동 조회</span></div>
+          <div class="row"><i></i>품목 24개 · 단가 저장<span class="r">완료</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="n">2단계</span>
+        <h3>청구서를 발행하고 보냅니다</h3>
+        <p>고객·항목·기한을 고르면 청구서 번호와 부가세가 자동으로 계산됩니다. 이메일·알림톡으로 발송되고, 고객은 링크에서 바로 결제할 수 있습니다.</p>
+        <p class="time">소요 <b>45초</b></p>
+        <div class="step-ui" aria-hidden="true">
+          <div class="row"><i></i>INV-0816 발행 · ₩1,540,000<span class="r">09:00</span></div>
+          <div class="row"><i></i>알림톡 발송 · 열람 확인<span class="r">09:04</span></div>
+          <div class="prog"><i style="width:66%"></i></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="n">3단계</span>
+        <h3>입금은 자동으로 확인되고 세무 자료가 쌓입니다</h3>
+        <p>연결한 계좌로 입금이 들어오면 청구서 상태가 “입금 완료”로 바뀌고 영수 안내가 나갑니다. 미입금 건은 리마인더가, 완료 건은 세금계산서가 이어받습니다.</p>
+        <p class="time">소요 <b>0초</b> · 사람 손이 가지 않습니다</p>
+        <div class="step-ui" aria-hidden="true">
+          <div class="row"><i style="background:var(--ok-bg)"></i>₩1,540,000 입금 · 도담디자인<span class="r">매칭 99%</span></div>
+          <div class="row"><i style="background:var(--ok-bg)"></i>세금계산서 국세청 전송<span class="r">완료</span></div>
+          <div class="row"><i style="background:var(--warn-bg)"></i>INV-0813 리마인더 예약<span class="r">08.23</span></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 통합 -->
+<section class="section tint" id="integrations" aria-labelledby="integTitle">
+  <div class="container">
+    <div class="head-narrow">
+      <h2 class="h2" id="integTitle">이미 쓰는 은행·카드·회계 프로그램에 그대로 연결됩니다</h2>
+      <p class="lead">국내 은행 18곳, 카드사 8곳, 회계·세무 프로그램 6종. 오픈뱅킹 인증으로 연결하며 계좌 비밀번호는 저장하지 않습니다.</p>
+    </div>
+    <div class="integ-groups">
+      <div class="integ" id="integBanks">
+        <h3>은행 계좌 <span class="cnt">18곳</span></h3>
+        <p>입금 내역을 1분 단위로 읽어 자동 매칭합니다.</p>
+        <ul id="bankList">
+          <li><i style="background:#ffbc00;color:#5a3d00">KB</i>KB국민은행</li>
+          <li><i style="background:#0046ff">신한</i>신한은행</li>
+          <li><i style="background:#0067ac">우리</i>우리은행</li>
+          <li><i style="background:#009490">하나</i>하나은행</li>
+          <li><i style="background:#0f7c3a">NH</i>NH농협은행</li>
+          <li><i style="background:#0f4c9c">IBK</i>IBK기업은행</li>
+          <li><i style="background:#fee500;color:#3c1e1e">카</i>카카오뱅크</li>
+          <li><i style="background:#0064ff">토</i>토스뱅크</li>
+          <li class="extra"><i style="background:#1f2f5f">K</i>케이뱅크</li>
+          <li class="extra"><i style="background:#0b6b3a">SC</i>SC제일은행</li>
+          <li class="extra"><i style="background:#1a5fb4">씨</i>한국씨티은행</li>
+          <li class="extra"><i style="background:#3d7dc8">대</i>iM뱅크(대구)</li>
+          <li class="extra"><i style="background:#c8102e">부</i>부산은행</li>
+          <li class="extra"><i style="background:#d94f2b">경</i>경남은행</li>
+          <li class="extra"><i style="background:#2f8f5b">광</i>광주은행</li>
+          <li class="extra"><i style="background:#1f6fb2">전</i>전북은행</li>
+          <li class="extra"><i style="background:#e0731c">제</i>제주은행</li>
+          <li class="extra"><i style="background:#c9302c">우체국</i>우체국예금</li>
+          <li class="extra"><i style="background:#6b7590">새</i>새마을금고 · 신협 (2026년 4분기 예정)</li>
+        </ul>
+        <button class="more-btn" id="bankMore" aria-expanded="false" aria-controls="bankList">나머지 10곳 보기</button>
+      </div>
+      <div class="integ">
+        <h3>카드 결제 <span class="cnt">8곳</span></h3>
+        <p>청구서 링크에서 카드 결제, 매출 집계까지.</p>
+        <ul>
+          <li><i style="background:#1428a0">삼</i>삼성카드</li>
+          <li><i style="background:#16203a">현</i>현대카드</li>
+          <li><i style="background:#e60012">롯</i>롯데카드</li>
+          <li><i style="background:#ffbc00;color:#5a3d00">KB</i>KB국민카드</li>
+          <li><i style="background:#0046ff">신</i>신한카드</li>
+          <li><i style="background:#0067ac">우</i>우리카드</li>
+          <li><i style="background:#009490">하</i>하나카드</li>
+          <li><i style="background:#c8102e">BC</i>BC카드</li>
+        </ul>
+      </div>
+      <div class="integ">
+        <h3>회계·세무 <span class="cnt">6종</span></h3>
+        <p>세무사가 쓰는 형식으로 내보내고, 홈택스와 직접 통신합니다.</p>
+        <ul>
+          <li><i style="background:#1d4ed8">홈</i>홈택스 (국세청)</li>
+          <li><i style="background:#16203a">더</i>더존 (WEHAGO)</li>
+          <li><i style="background:#0e8fbf">세</i>세무사랑</li>
+          <li><i style="background:#6b4fd8">경</i>경리나라</li>
+          <li><i style="background:#1f9d6a">엑</i>엑셀 · CSV</li>
+          <li><i style="background:#e0731c">API</i>REST API · 웹훅</li>
+        </ul>
+      </div>
+    </div>
+    <p class="integ-foot"><b>보안.</b> 모든 계좌 연결은 오픈뱅킹 표준 API의 조회 권한만 사용하고, 데이터는 국내 리전에 암호화 저장됩니다. 2026년 3월 금융보안원 취약점 점검을 통과했고 ISMS 인증은 심사 진행 중입니다. <a href="#docs" class="text-link">보안 문서 보기</a></p>
+  </div>
+</section>
+
+<!-- 고객 사례 -->
+<section class="section" id="customers" aria-labelledby="custTitle">
+  <div class="container">
+    <div class="split-head">
+      <h2 class="h2" id="custTitle">도입 3개월 뒤, 계정에 남은 숫자</h2>
+      <p class="lead">아래 수치는 각 고객 계정의 도입 전·후 3개월 데이터를 비교한 것이고, 인용문은 2026년 7월 인터뷰에서 가져왔습니다.</p>
+    </div>
+    <div class="quotes">
+      <article class="quote-lead">
+        <div class="result"><b class="num">38일에서 11일로</b><span>미수금 회수 기간 · (주)도담디자인, 2026년 2~7월</span></div>
+        <blockquote>“거래처가 30곳이 넘어가면서 누가 언제 입금했는지 통장을 매일 봐야 했어요. 지금은 리마인더가 알아서 나가고, 입금되면 알림만 확인합니다. 독촉 전화를 안 하게 된 게 제일 큽니다.”</blockquote>
+        <p class="who"><b>김서연</b>(주)도담디자인 대표 · 브랜드 디자인 스튜디오, 직원 6명</p>
+      </article>
+      <article class="quote">
+        <p class="result"><b class="num">주 4시간</b>월말 정산 시간 절감</p>
+        <blockquote>“배송 건마다 청구서가 나가다 보니 한 달에 200건이 넘습니다. 정기 청구와 합산 입금 매칭 덕분에 경리 담당 없이 대표인 제가 아침에 20분이면 끝내요.”</blockquote>
+        <p class="who"><b>박준호</b>한결물류 대표 · 소형 화물 운송, 월 청구 210건</p>
+      </article>
+      <article class="quote">
+        <p class="result"><b class="num">0건</b>세금계산서 누락 (도입 전 분기 평균 4건)</p>
+        <blockquote>“케이터링 납품은 입금 확인 후 세금계산서를 끊어야 하는데 늘 몇 건씩 빠졌어요. 이제는 입금 완료 목록에서 한 번에 발행하니 누락이 없고, 분기 신고 자료도 20분이면 세무사에게 넘깁니다.”</blockquote>
+        <p class="who"><b>이하늘</b>그린테이블 대표 · 샐러드 케이터링, 매장 2곳</p>
+      </article>
+    </div>
+    <p class="quotes-note">고객사 이름과 수치는 본인 동의를 받아 게재했습니다. 다른 업종의 사례는 <a href="#docs" class="text-link">고객 사례 모음</a>에서 볼 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- 요금 -->
+<section class="section tint" id="pricing" aria-labelledby="priceTitle">
+  <div class="container">
+    <div class="head-center">
+      <h2 class="h2" id="priceTitle">월 10건까지는 계속 무료, 늘어나면 그때 올리세요</h2>
+      <p class="lead">모든 플랜에 청구서 발행·결제 링크·입금 매칭이 포함됩니다. 부가세 별도, 언제든 해지할 수 있습니다.</p>
+    </div>
+
+    <div class="toggle-wrap">
+      <button type="button" class="lbl on" id="lblMonthly">월 결제</button>
+      <button class="toggle" id="billingToggle" role="switch" aria-checked="false" aria-label="연 결제로 전환 (20% 할인)"></button>
+      <button type="button" class="lbl" id="lblAnnual">연 결제</button>
+      <span class="save">연 결제 시 20% 할인</span>
+    </div>
+
+    <div class="plans">
+      <article class="plan-card">
+        <h3>스타터</h3>
+        <p class="desc">이제 막 청구서를 보내기 시작한 1인 사업자에게</p>
+        <div class="price"><span class="cur">₩</span><span class="amt num" data-monthly="0" data-annual="0">0</span><span class="per">/ 월</span></div>
+        <div class="price-note">카드 등록 없이 기간 제한 없음</div>
+        <a href="#signup" class="btn btn-secondary btn-block">무료로 시작하기</a>
+        <ul>
+          <li>월 청구서 10건</li>
+          <li>이메일·알림톡 발송, 결제 링크</li>
+          <li>계좌 1개 연결 · 입금 자동 매칭</li>
+          <li>기본 리마인더 (기한 당일 1회)</li>
+          <li class="dim">전자세금계산서 발행</li>
+          <li class="dim">정기 청구 · 세무사 초대</li>
+        </ul>
+      </article>
+
+      <article class="plan-card featured">
+        <span class="pop">가장 많이 선택하는 플랜</span>
+        <h3>프로</h3>
+        <p class="desc">거래처 10곳 이상, 매달 반복 청구가 있는 사업장에</p>
+        <div class="price"><span class="cur">₩</span><span class="amt num" data-monthly="19000" data-annual="15200">19,000</span><span class="per">/ 월</span></div>
+        <div class="price-note" data-note-monthly="연 결제 시 월 15,200원 (연 182,400원)" data-note-annual="<span class='strike'>₩19,000</span>연 182,400원 일시 결제">연 결제 시 월 15,200원 (연 182,400원)</div>
+        <a href="#signup" class="btn btn-primary btn-block">14일 무료 체험 시작</a>
+        <ul>
+          <li>월 청구서 100건</li>
+          <li>계좌 3개 · 카드 매출 연동</li>
+          <li>정기 청구, 단계별 리마인더 4회</li>
+          <li>전자세금계산서 월 100건 발행</li>
+          <li>부가세 신고 자료 · 세무사 1명 초대</li>
+          <li>팀원 3명, 채팅 지원 (평일 09–18시)</li>
+        </ul>
+      </article>
+
+      <article class="plan-card">
+        <h3>비즈니스</h3>
+        <p class="desc">지점이 여럿이거나 월 청구가 수백 건인 팀에</p>
+        <div class="price"><span class="cur">₩</span><span class="amt num" data-monthly="49000" data-annual="39200">49,000</span><span class="per">/ 월</span></div>
+        <div class="price-note" data-note-monthly="연 결제 시 월 39,200원 (연 470,400원)" data-note-annual="<span class='strike'>₩49,000</span>연 470,400원 일시 결제">연 결제 시 월 39,200원 (연 470,400원)</div>
+        <a href="#contact" class="btn btn-secondary btn-block">도입 상담 신청</a>
+        <ul>
+          <li>청구서 무제한, 계좌 무제한</li>
+          <li>사업장·지점 최대 10곳 통합 대시보드</li>
+          <li>역발행 · 수정 세금계산서, 매입 자동 수집</li>
+          <li>REST API · 웹훅, 더존·세무사랑 자동 전송</li>
+          <li>팀원 무제한, 권한 관리, 감사 로그</li>
+          <li>전담 매니저 · 전화 지원</li>
+        </ul>
+      </article>
+    </div>
+    <p class="pricing-foot">비영리단체·사회적기업은 프로 플랜을 50% 할인합니다. <a href="#contact" class="text-link">증빙과 함께 문의</a>해 주세요. 결제는 국내 카드·계좌이체 모두 가능하며 세금계산서를 발행해 드립니다.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" aria-labelledby="faqTitle">
+  <div class="container faq-layout">
+    <div class="faq-intro">
+      <h2 class="h2" id="faqTitle">시작하기 전에 자주 묻는 것들</h2>
+      <p class="lead">더 자세한 내용은 <a href="#docs" class="text-link">도움말 문서</a>에서 확인하거나 평일 09–18시 채팅으로 물어보세요. 첫 답변까지 평균 4분입니다.</p>
+    </div>
+    <div class="faq" id="faqList">
+      <div class="faq-item">
+        <h3><button class="faq-q" aria-expanded="false" aria-controls="faq1" id="faqq1">무료 플랜은 정말 기간 제한이 없나요? 카드 등록도 필요 없나요?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="faq-a" id="faq1" role="region" aria-labelledby="faqq1"><div><p>네. 스타터 플랜은 월 청구서 10건까지 기간 제한 없이 무료이며 카드 등록 없이 이메일만으로 시작합니다. 10건을 넘기는 달에만 프로 플랜 전환을 안내드리고, 자동으로 결제되는 일은 없습니다.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" aria-expanded="false" aria-controls="faq2" id="faqq2">계좌를 연결하면 인보이스플로우가 제 돈을 옮길 수 있나요?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="faq-a" id="faq2" role="region" aria-labelledby="faqq2"><div><p>아니요. 오픈뱅킹 <strong>조회 권한</strong>만 사용합니다. 입금·출금 내역을 읽어 청구서와 대조할 뿐, 이체 권한은 요청하지도 보유하지도 않습니다. 계좌 비밀번호나 공동인증서 비밀번호는 저장되지 않으며, 연결은 설정에서 언제든 해제할 수 있습니다.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" aria-expanded="false" aria-controls="faq3" id="faqq3">전자세금계산서를 발행하려면 무엇이 필요한가요?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="faq-a" id="faq3" role="region" aria-labelledby="faqq3"><div><p>사업자용 공동인증서(구 공인인증서) 또는 전자세금계산서용 보안카드 중 하나면 됩니다. 인증서는 브라우저에서 1회 등록하며 국세청 표준 ASP 방식으로 전송됩니다. 발행 즉시 국세청 승인번호가 표시되고 거래처에는 이메일로 자동 발송됩니다. 간이과세자는 발행 대상이 아니므로 대신 현금영수증 발행을 지원합니다.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" aria-expanded="false" aria-controls="faq4" id="faqq4">입금자명이 다르거나 금액이 다르게 들어오면 어떻게 되나요?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="faq-a" id="faq4" role="region" aria-labelledby="faqq4"><div><p>금액·입금자명·기한·과거 입금 패턴을 함께 봐서 일치도를 계산합니다. 95% 이상이면 자동 완료, 그 미만이면 후보 2~3개를 보여드리고 한 번 클릭으로 확정합니다. 확정한 입금자명은 고객 정보에 학습되어 다음부터는 자동으로 잡힙니다. 부분 입금은 잔액이 남은 상태로 표시되고, 두 청구서를 합쳐 보낸 경우 금액을 나눠 소진합니다.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" aria-expanded="false" aria-controls="faq5" id="faqq5">지금 쓰는 엑셀 거래처 목록과 과거 청구 내역을 옮길 수 있나요?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="faq-a" id="faq5" role="region" aria-labelledby="faqq5"><div><p>가능합니다. 엑셀·CSV를 올리면 열을 자동으로 인식해 거래처와 품목을 만들고, 과거 청구 내역도 “발행 완료·입금 완료” 상태로 가져올 수 있어 리포트가 이어집니다. 프로 플랜 이상은 온보딩 담당자가 30분 화상으로 이관을 도와드립니다.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" aria-expanded="false" aria-controls="faq6" id="faqq6">해지하면 데이터는 어떻게 되나요?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="faq-a" id="faq6" role="region" aria-labelledby="faqq6"><div><p>해지 후 90일 동안 읽기 전용으로 접근할 수 있고, 그 기간에 청구서·입금 내역·세금계산서를 엑셀과 PDF로 한 번에 내려받을 수 있습니다. 90일이 지나면 법정 보관 의무가 있는 세금계산서 발행 기록을 제외한 모든 데이터가 삭제됩니다. 유료 플랜은 남은 기간을 일할 계산해 환불합니다.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 최종 CTA -->
+<section class="section" id="signup" aria-labelledby="ctaTitle" style="padding-top:0">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h2 id="ctaTitle">이번 달 청구서부터 45초에 끝내 보세요</h2>
+        <p>가입 3분, 첫 청구서 발행은 오늘 안에. 월 10건까지 무료이고 카드 등록은 필요 없습니다. 이미 계정이 있다면 인증 메일 링크로 그대로 로그인됩니다.</p>
+      </div>
+      <form class="cta-form" id="signupForm" novalidate>
+        <label for="signupEmail">업무용 이메일</label>
+        <div class="cta-row">
+          <input type="email" id="signupEmail" name="email" autocomplete="email" inputmode="email" placeholder="you@company.kr" required aria-describedby="signupNote">
+          <button type="submit" class="btn btn-white btn-lg">무료로 시작하기</button>
+        </div>
+        <p class="cta-note" id="signupNote" aria-live="polite">인증 메일의 링크를 누르면 바로 대시보드가 열립니다. 비밀번호 설정은 나중에 해도 됩니다.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer" id="docs">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#product" class="logo" aria-label="인보이스플로우 홈">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10l4 4v12H5z"/><path d="M9 13h6M9 17h4"/></svg>
+          </span>
+          인보이스플로우 <small>InvoiceFlow</small>
+        </a>
+        <p>소상공인의 청구·입금·세무를 한 흐름으로. 청구서 발행 45초, 입금 확인은 자동으로.</p>
+        <p class="trust">오픈뱅킹 이용기관 · 전자세금계산서 ASP 사업자 · 데이터 국내 리전 암호화 저장</p>
+      </div>
+      <div class="footer-col">
+        <h4>제품</h4>
+        <ul>
+          <li><a href="#features">청구서 발행</a></li>
+          <li><a href="#features">입금 자동 매칭</a></li>
+          <li><a href="#features">리마인더</a></li>
+          <li><a href="#features">세금계산서 · 세무</a></li>
+          <li><a href="#integrations">통합</a></li>
+          <li><a href="#pricing">요금</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>리소스 · 회사</h4>
+        <ul>
+          <li><a href="#docs">도움말 문서</a></li>
+          <li><a href="#docs">API 레퍼런스</a></li>
+          <li><a href="#customers">고객 사례</a></li>
+          <li><a href="#docs">부가세 신고 가이드</a></li>
+          <li><a href="#docs">회사 소개 · 채용</a></li>
+          <li><a href="#docs">파트너 (세무사·회계사)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" id="contact">
+        <h4>지원</h4>
+        <ul>
+          <li><a href="mailto:help@invoiceflow.kr">help@invoiceflow.kr</a></li>
+          <li><a href="tel:15220818">1522-0818</a></li>
+          <li>평일 09:00–18:00 (점심 12–13시)</li>
+          <li><a href="#docs">서비스 상태</a></li>
+          <li><a href="#signup">로그인</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="legal">
+        <a href="#docs">이용약관</a>
+        <a href="#docs"><strong>개인정보처리방침</strong></a>
+        <a href="#docs">전자금융거래 이용약관</a>
+        <a href="#docs">보안</a>
+      </div>
+      <span>© 2026 InvoiceFlow Inc.</span>
+      <p class="biz">주식회사 인보이스플로우 · 대표 정다은 · 사업자등록번호 512-88-01934 · 통신판매업신고 2024-서울마포-1187 · 서울특별시 마포구 월드컵북로 396, 누리꿈스퀘어 비즈니스타워 12층 · 개인정보보호책임자 한지원</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 헤더: 스크롤 상태 ---------- */
+  var header = document.getElementById('siteHeader');
+  function onScroll() {
+    if (window.scrollY > 8) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- 헤더: 모바일 메뉴 ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileNav = document.getElementById('mobileNav');
+  function setMenu(open) {
+    header.classList.toggle('nav-open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  }
+  menuBtn.addEventListener('click', function () {
+    setMenu(!header.classList.contains('nav-open'));
+  });
+  mobileNav.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && header.classList.contains('nav-open')) { setMenu(false); menuBtn.focus(); }
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 960 && header.classList.contains('nav-open')) setMenu(false);
+  });
+
+  /* ---------- Hero 목업: 입금 매칭 라이브 시연 (기능 시연에 봉사하는 유일한 모션) ---------- */
+  var liveRow = document.querySelector('#mockRows [data-live]');
+  var toast = document.getElementById('mockToast');
+  if (liveRow && toast) {
+    var statusEl = liveRow.querySelector('[data-status]');
+    var states = [
+      { cls: 'badge info', text: '열람됨' },
+      { cls: 'badge warn', text: '입금 대기' },
+      { cls: 'badge ok', text: '입금 완료' }
+    ];
+    var idx = 0;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      statusEl.className = 'badge ok';
+      statusEl.textContent = '입금 완료';
+      toast.classList.add('show');
+    } else {
+      var heroSeen = false;
+      var heroIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !heroSeen) { heroSeen = true; setTimeout(cycle, 1400); heroIO.disconnect(); }
+        });
+      }, { threshold: 0.3 });
+      heroIO.observe(document.querySelector('.mock'));
+    }
+    function cycle() {
+      idx = (idx + 1) % states.length;
+      statusEl.className = states[idx].cls;
+      statusEl.textContent = states[idx].text;
+      if (idx === 2) {
+        toast.classList.add('show');
+        setTimeout(function () { toast.classList.remove('show'); }, 3200);
+        setTimeout(cycle, 5200);
+      } else {
+        setTimeout(cycle, 2200);
+      }
+    }
+  }
+
+  /* ---------- 통합: 은행 목록 더 보기 ---------- */
+  var bankMore = document.getElementById('bankMore');
+  var integBanks = document.getElementById('integBanks');
+  if (bankMore && integBanks) {
+    bankMore.addEventListener('click', function () {
+      var open = !integBanks.classList.contains('expanded');
+      integBanks.classList.toggle('expanded', open);
+      bankMore.setAttribute('aria-expanded', open ? 'true' : 'false');
+      bankMore.textContent = open ? '접기' : '나머지 10곳 보기';
+    });
+  }
+
+  /* ---------- 요금 토글 (월/연) ---------- */
+  var toggle = document.getElementById('billingToggle');
+  var lblMonthly = document.getElementById('lblMonthly');
+  var lblAnnual = document.getElementById('lblAnnual');
+  var amounts = document.querySelectorAll('.price .amt');
+  var notes = document.querySelectorAll('.price-note[data-note-monthly]');
+  function fmt(n) { return Number(n).toLocaleString('ko-KR'); }
+  function setBilling(annual) {
+    toggle.setAttribute('aria-checked', annual ? 'true' : 'false');
+    toggle.setAttribute('aria-label', annual ? '월 결제로 전환' : '연 결제로 전환 (20% 할인)');
+    lblMonthly.classList.toggle('on', !annual);
+    lblAnnual.classList.toggle('on', annual);
+    amounts.forEach(function (el) {
+      var target = Number(annual ? el.dataset.annual : el.dataset.monthly);
+      if (reduceMotion || target === 0 || Number(el.textContent.replace(/[^\d]/g, '')) === 0) {
+        el.textContent = fmt(target);
+        return;
+      }
+      var from = Number(el.textContent.replace(/[^\d]/g, '')) || 0;
+      var start = performance.now(), dur = 320;
+      (function tick(now) {
+        var t = Math.min(1, (now - start) / dur);
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = fmt(Math.round(from + (target - from) * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      })(start);
+    });
+    notes.forEach(function (el) {
+      el.innerHTML = annual ? el.dataset.noteAnnual : el.dataset.noteMonthly;
+    });
+  }
+  toggle.addEventListener('click', function () {
+    setBilling(toggle.getAttribute('aria-checked') !== 'true');
+  });
+  lblMonthly.addEventListener('click', function () { setBilling(false); });
+  lblAnnual.addEventListener('click', function () { setBilling(true); });
+
+  /* ---------- FAQ 아코디언 ---------- */
+  var faqItems = document.querySelectorAll('#faqList .faq-item');
+  function setFaq(item, open) {
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    item.classList.toggle('open', open);
+    q.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // 접힌 답변은 스크린리더·탭 순서에서도 제외
+    if (open) { a.removeAttribute('inert'); a.removeAttribute('aria-hidden'); }
+    else { a.setAttribute('inert', ''); a.setAttribute('aria-hidden', 'true'); }
+  }
+  faqItems.forEach(function (item, i) {
+    // 첫 항목은 열어두어 아코디언 동작을 바로 보여줌
+    setFaq(item, i === 0);
+    item.querySelector('.faq-q').addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      faqItems.forEach(function (other) { setFaq(other, false); });
+      if (!isOpen) setFaq(item, true);
+    });
+  });
+
+  /* ---------- 최종 CTA: 이메일 가입 폼 (검증 → 완료 상태) ---------- */
+  var signupForm = document.getElementById('signupForm');
+  if (signupForm) {
+    var emailInput = document.getElementById('signupEmail');
+    var note = document.getElementById('signupNote');
+    var noteDefault = note.textContent;
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    emailInput.addEventListener('input', function () {
+      if (emailInput.getAttribute('aria-invalid') === 'true' && emailRe.test(emailInput.value.trim())) {
+        emailInput.removeAttribute('aria-invalid');
+        note.className = 'cta-note';
+        note.textContent = noteDefault;
+      }
+    });
+    signupForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = emailInput.value.trim();
+      if (!emailRe.test(v)) {
+        emailInput.setAttribute('aria-invalid', 'true');
+        note.className = 'cta-note err';
+        note.textContent = v ? '이메일 형식을 확인해 주세요. 예: kim@dodam.co.kr' : '업무용 이메일을 입력해 주세요. 인증 메일이 이 주소로 갑니다.';
+        emailInput.focus();
+        return;
+      }
+      var btn = signupForm.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = '보내는 중';
+      setTimeout(function () {
+        signupForm.querySelector('.cta-row').hidden = true;
+        signupForm.querySelector('label').hidden = true;
+        note.className = 'cta-note done';
+        note.innerHTML = '<b>' + v.replace(/[<>&]/g, '') + ' 으로 인증 메일을 보냈습니다.</b>5분 안에 도착하지 않으면 스팸함을 확인하거나 <a href="mailto:help@invoiceflow.kr" class="text-link" style="color:#fff">help@invoiceflow.kr</a>로 알려 주세요.';
+        note.setAttribute('tabindex', '-1');
+        note.focus();
+      }, 700);
+    });
+  }
+
+  /* ---------- 앵커 이동 + 포커스 관리 ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - 76;
+      window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+      history.replaceState(null, '', id);
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "slug": "experimental-launch",
+  "brand": "ORBIT ONE",
+  "industry": "스마트 링 신제품 티저",
+  "primaryStyle": "Experimental",
+  "productType": "Product Teaser",
+  "tone": "Bold · Futuristic · Minimal",
+  "secondary": "Kinetic",
+  "accent": "Product",
+  "coreMessage": "글자와 도형이 궤도를 돌며 “곧 온다”는 기대를 만들고 사전 알림을 신청하게 한다",
+  "naming": "Experimental / Product Teaser / Bold · Futuristic · Minimal",
+  "concept": "궤도 — 모든 글자와 도형이 중심의 반지를 돌고, 10월 15일에 내려온다. 인트로의 회전 궤도, 티저 패널의 우측 레일, 출시 정보의 진행 궤도, 마키 밴드(궤도를 펼친 선)까지 한 개념으로 관통",
+  "palette": {
+    "background": "#06070a (블랙) · #0b0c10 (폼·푸터)",
+    "text": "#d8dbe0 (실버) · #8e939c (실버 딤 — 캡션·푸터·플레이스홀더 포함, 검정 위 6.5:1) · #4a4e56 (눈금·장식선·아웃라인 전용, 읽는 텍스트에는 미사용)",
+    "rule": "#1e2127 (구분선) · #343841 (궤도선·강조 구분선)",
+    "accent": "#2b5cff (일렉트릭 블루 1색) — CTA·궤도 위 신호점·포커스·현재 위치 표시에만",
+    "product": "실버 conic-gradient는 반지 금속 렌더에만 사용. 글로우·글래스·블롭 없음",
+    "rule_note": "블랙+실버 모노크롬에 블루 1색. radius는 UI 0, 원형은 궤도·반지에만"
+  },
+  "typography": {
+    "body": "Pretendard Variable — 본문·한국어 헤드라인·표",
+    "display": "Syncopate 400/700 — 워드마크·궤도 위 글자(O R B I T / O N E)·스펙 수치·D-day 숫자·마키 밴드. 위성 표식 같은 와이드 지오메트릭 대문자, 반지의 곡선과 대비. 소형 대문자 라벨은 단면도 캡션·인트로 좌표 표식 2곳으로 제한",
+    "note": "서체 2개. 모노스페이스 없음"
+  },
+  "sections": [
+    "풀스크린 궤도 인트로 — 중심 반지(CSS conic 마스크) + 3개 경사 궤도(순수 CSS 회전, 글자·도형 정립 유지 역변환 체인) + 3초 자동 종료·스킵 버튼·Esc",
+    "티저 문장 3개 — 100svh scroll-snap 패널(질문 → 경험 → 초대), 대형 아웃라인 숫자가 곧 인덱스(별도 라벨 없음), 줄 단위 리빌, 우측 궤도 레일",
+    "힌트 스펙 원장 — 확정 수치 3개(두께 2.6mm · 배터리 7일 · 무게 3.4g) + 비공개 2행, 힌트 더 보기 토글, 반지 단면 다이어그램(센서 창 3곳·티타늄 밴드·충전 접점)",
+    "마키 밴드 — 공개 일시·색상·핵심 수치 반복(Kinetic 20%)",
+    "출시 정보 블록 — 실제 날짜 기준 D-day(2026-10-15 10:00 KST), 공개 예고일→공개일 진행 궤도, 공개·사전 알림·예약 판매·배송·색상/사이즈·가격 원장",
+    "이메일 알림 폼 — 이메일 검증(형식·.com 오타)·동의 검증·인라인 오류·성공 상태·localStorage 유지·다시 등록",
+    "푸터 — 회사 정보·문의·개인정보 처리 안내"
+  ],
+  "interactions": [
+    "인트로 3초 자동 종료, '인트로 건너뛰기' 버튼·Esc 키로 즉시 스킵 후 티저로 스크롤",
+    "포인터 위치에 따라 궤도면 rotateX/rotateY 틸트(pointer:fine 환경, reduced-motion 시 비활성)",
+    "궤도 3개 순수 CSS 무한 회전, 궤도 위 글자와 도형은 역회전·역스케일 체인으로 항상 정립",
+    "티저 패널 IntersectionObserver 리빌 + 우측 레일 현재 위치 동기화(레일 점은 앵커 링크)",
+    "힌트 스펙 '힌트 더 보기' 토글(aria-expanded·hidden)",
+    "D-day와 진행 궤도를 실제 현재 시각으로 계산, 1분마다 갱신",
+    "알림 폼: novalidate 커스텀 검증, 첫 오류 필드 포커스, 성공 시 상태 카드로 전환하고 localStorage에 보관, '다른 주소로 다시 등록'",
+    "prefers-reduced-motion: 궤도·마키·리빌·틸트 정지, scroll-snap 해제, 정적 구성 유지"
+  ],
+  "path": "sites/experimental-launch/index.html"
+}

@@ -1,0 +1,1664 @@
+<!-- forblune-style: {"slug":"cinematic-photographer","primaryStyle":"Cinematic","productType":"Portfolio","tone":"Serious · Human · Documentary","secondary":"Editorial","accent":"Corporate","brand":"정하늘 JEONG HANEUL","industry":"다큐멘터리 사진가","coreMessage":"어떤 시선으로 사람과 장소를 기록하는지 보여주어 기록을 맡길 수 있다고 믿게 한다","naming":"Cinematic / Portfolio / Serious · Human · Documentary"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정하늘 JEONG HANEUL — 사람과 장소가 남기는 시간을 기록하는 다큐멘터리 사진가</title>
+<meta name="description" content="다큐멘터리 사진가 정하늘의 포트폴리오. 경북 영양의 남겨진 마을, 인천 남동공단의 야간 근무, 신안 하의도의 김 양식장을 오래 머물며 기록한 세 시리즈와 접근·머무름·촬영·선택·인화로 이어지는 작업 방식, 전시·출판 이력, 기록·인물·공간 촬영 의뢰 안내.">
+<meta property="og:title" content="정하늘 JEONG HANEUL — 다큐멘터리 사진가">
+<meta property="og:description" content="먼저 이름을 묻고, 카메라는 나중에 꺼냅니다. 사람과 장소가 남기는 시간을 기록합니다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   0. 토큰 — 블랙 / 차콜 / 웜 블랙 + 아이보리, 포인트는 오렌지 한 색
+   ========================================================================== */
+:root {
+  --bg-0: #0b0b0a;          /* 푸터, 가장 짙은 색 */
+  --bg-1: #121211;          /* 기본 배경 */
+  --bg-2: #1a1917;          /* 차콜 섹션 */
+  --bg-3: #242320;          /* 살짝 띄운 면 */
+  --ivory: #efe9dd;         /* 밝은 섹션 */
+  --ivory-2: #e5ded0;
+  --ivory-3: #d6cdbc;
+
+  --fg: #e8e3d8;            /* 어두운 배경 위 본문 */
+  --fg-soft: #b8b1a4;
+  --fg-muted: #8f887c;
+  --fg-dim: #66615a;
+
+  --ink: #171614;           /* 밝은 배경 위 본문 */
+  --ink-soft: #4d4841;
+  --ink-muted: #756f66;
+
+  --line: rgba(232, 227, 216, 0.14);
+  --line-strong: rgba(232, 227, 216, 0.30);
+  --line-ink: rgba(23, 22, 20, 0.16);
+  --line-ink-strong: rgba(23, 22, 20, 0.34);
+
+  --accent: #d8631f;        /* 오렌지 — 링크·번호·얇은 선·CTA에만 */
+  --accent-deep: #b9511a;   /* 밝은 배경 위 대비 확보용 같은 색상 계열 */
+
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  --font-cond: "Barlow Condensed", "Pretendard Variable", Pretendard, system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+
+  --container: 1320px;
+  --gutter: clamp(20px, 5vw, 80px);
+  --measure: 64ch;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.24, 1);
+  --dur: 1.3s;
+  --dur-ui: 0.35s;
+}
+
+/* ==========================================================================
+   1. 리셋 · 기본
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg-1);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: -0.005em;
+  font-feature-settings: "ss05", "tnum";
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: anywhere;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, h4, p, figure, blockquote, dl, dd, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+address { font-style: normal; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: #fff; }
+
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+.skip-link {
+  position: absolute; left: 16px; top: -60px; z-index: 200;
+  padding: 10px 14px; background: var(--ivory); color: var(--ink); font-size: 14px;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 16px; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 라벨: 자간 넓은 대문자 + 번호는 오렌지 */
+.label {
+  display: inline-flex; align-items: baseline; gap: 14px;
+  font-family: var(--font-cond); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg-muted);
+}
+.label .num { color: var(--accent); font-size: 15px; letter-spacing: 0.08em; }
+.label .ko { font-family: var(--font-sans); font-size: 12px; letter-spacing: 0.32em; font-weight: 500; }
+.section--light .label { color: var(--ink-muted); }
+.section--light .label .num { color: var(--accent-deep); }
+
+.section-head {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+  padding-bottom: 20px; margin-bottom: clamp(40px, 6vw, 80px);
+  border-bottom: 1px solid var(--line);
+}
+.section--light .section-head { border-bottom-color: var(--line-ink); }
+.section-head .label-en {
+  font-family: var(--font-cond); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.section--light .section-head .label-en { color: var(--ink-muted); }
+
+/* 제목 위계 — 크지만 소리치지 않는 압축형 */
+.h-display {
+  font-family: var(--font-cond); font-weight: 500;
+  font-size: clamp(38px, 6vw, 84px); line-height: 1.02; letter-spacing: -0.005em;
+}
+.h-section {
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 44px); line-height: 1.3; letter-spacing: -0.02em;
+}
+.h-item {
+  font-family: var(--font-sans); font-weight: 600;
+  font-size: clamp(18px, 1.6vw, 22px); line-height: 1.4; letter-spacing: -0.01em;
+}
+.lede { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.85; color: var(--fg-soft); max-width: var(--measure); }
+.section--light .lede { color: var(--ink-soft); }
+.body { color: var(--fg-soft); max-width: var(--measure); }
+.section--light .body { color: var(--ink-soft); }
+.body p + p { margin-top: 1.1em; }
+
+/* 버튼 · 링크 — 작고 차분하게 */
+.btn-line {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 24px; border: 1px solid var(--line-strong); border-radius: 2px;
+  font-size: 14px; letter-spacing: 0.06em; color: var(--fg);
+  transition: border-color var(--dur-ui) var(--ease), background-color var(--dur-ui) var(--ease), color var(--dur-ui) var(--ease);
+}
+.btn-line:hover { border-color: var(--fg); background: rgba(232, 227, 216, 0.06); }
+.btn-solid {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 15px 26px; border-radius: 2px; background: var(--accent); color: #fff;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border: 1px solid var(--accent);
+  transition: background-color var(--dur-ui) var(--ease), border-color var(--dur-ui) var(--ease);
+}
+.btn-solid:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px; letter-spacing: 0.04em; color: var(--fg-soft);
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+  transition: color var(--dur-ui) var(--ease), border-color var(--dur-ui) var(--ease);
+}
+.link-arrow svg { width: 16px; height: 16px; transition: transform var(--dur-ui) var(--ease); }
+.link-arrow:hover { color: var(--fg); border-bottom-color: var(--accent); }
+.link-arrow:hover svg { transform: translateX(4px); }
+.section--light .link-arrow { color: var(--ink-soft); }
+.section--light .link-arrow:hover { color: var(--ink); }
+
+/* 섹션 공통 */
+.section { position: relative; padding-top: clamp(80px, 11vw, 160px); padding-bottom: clamp(80px, 11vw, 160px); }
+.section--charcoal { background: var(--bg-2); }
+.section--light { background: var(--ivory); color: var(--ink); }
+.section--light ::selection { background: var(--accent-deep); color: #fff; }
+
+/* 사진 프레임 — 로드 실패 대비 배경색, 흑백 필터 */
+.frame { position: relative; overflow: hidden; background: #26241f; border-radius: 2px; }
+.frame img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(1) contrast(1.06) brightness(0.96);
+  transition: transform 2.2s var(--ease), filter 1.2s var(--ease), opacity 1.2s var(--ease);
+}
+.frame--color img { filter: saturate(0.58) contrast(1.05) brightness(0.95); }
+.frame::after {
+  /* 미세한 필름 그레인 */
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.6 0 0 0 0 0.6 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* 느린 상승 페이드 */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); transition-delay: var(--d, 0ms); will-change: opacity, transform; }
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* ==========================================================================
+   2. 헤더 — 투명 -> 짙은 단색
+   ========================================================================== */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  transition: background-color 0.6s var(--ease), border-color 0.6s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.site-header.is-scrolled {
+  background: var(--bg-1);
+  border-bottom-color: var(--line);
+}
+.header-inner {
+  max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter);
+  height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  transition: height 0.5s var(--ease);
+}
+.site-header.is-scrolled .header-inner { height: 62px; }
+.brand { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-ko { font-size: 17px; font-weight: 600; letter-spacing: 0.06em; }
+.brand-en { font-family: var(--font-cond); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--fg-muted); margin-top: 3px; }
+.nav ul { display: flex; gap: clamp(20px, 2.6vw, 40px); }
+.nav a {
+  position: relative; display: inline-block; padding: 8px 0;
+  font-size: 13.5px; letter-spacing: 0.08em; color: var(--fg-soft);
+  transition: color var(--dur-ui) var(--ease);
+}
+.nav a small { font-family: var(--font-cond); font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg-dim); margin-left: 6px; }
+.nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 2px; height: 1px; background: var(--accent); transition: right 0.5s var(--ease); }
+.nav a:hover, .nav a.is-active { color: var(--fg); }
+.nav a.is-active::after, .nav a:hover::after { right: 0; }
+.header-cta {
+  font-size: 13px; letter-spacing: 0.06em; padding: 9px 16px; border: 1px solid var(--line-strong); border-radius: 2px; color: var(--fg);
+  transition: border-color var(--dur-ui) var(--ease), background-color var(--dur-ui) var(--ease);
+}
+.header-cta:hover { border-color: var(--fg); background: rgba(232, 227, 216, 0.06); }
+.nav-toggle { display: none; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.1em; padding: 8px 4px; }
+.nav-toggle .bars { position: relative; width: 22px; height: 12px; }
+.nav-toggle .bars::before, .nav-toggle .bars::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--fg); transition: transform 0.4s var(--ease), top 0.4s var(--ease); }
+.nav-toggle .bars::before { top: 0; }
+.nav-toggle .bars::after { top: 11px; }
+.site-header.is-open .nav-toggle .bars::before { top: 5px; transform: rotate(45deg); }
+.site-header.is-open .nav-toggle .bars::after { top: 5px; transform: rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; }
+  .header-cta { display: none; }
+  .nav {
+    position: fixed; inset: 0; z-index: -1; background: var(--bg-1);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: opacity 0.5s var(--ease), visibility 0.5s;
+  }
+  .site-header.is-open .nav { opacity: 1; visibility: visible; }
+  .site-header.is-open { background: var(--bg-1); border-bottom-color: var(--line); }
+  .nav ul { flex-direction: column; gap: 6px; text-align: center; }
+  .nav a { font-size: 26px; font-weight: 500; letter-spacing: 0.02em; padding: 12px 0; }
+  .nav a small { display: block; margin: 4px 0 0; font-size: 11px; }
+  .nav a::after { display: none; }
+  .nav .nav-cta { margin-top: 24px; }
+  .nav .nav-cta a { font-size: 15px; letter-spacing: 0.06em; border: 1px solid var(--line-strong); padding: 12px 24px; border-radius: 2px; }
+}
+@media (min-width: 901px) { .nav .nav-cta { display: none; } }
+
+/* ==========================================================================
+   3. 히어로 — 대표 사진 풀블리드, 이름·역할
+   ========================================================================== */
+.hero {
+  position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end;
+  background: #141311; overflow: hidden; isolation: isolate;
+}
+.hero-media { position: absolute; inset: 0; z-index: 0; background: #1c1b18; }
+.hero-media img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+  filter: grayscale(1) contrast(1.08) brightness(0.72);
+  transform: scale(1.02); transform-origin: 55% 45%;
+  animation: hero-zoom 28s var(--ease) forwards;
+}
+@keyframes hero-zoom { from { transform: scale(1.02); } to { transform: scale(1.1); } }
+.hero-shade { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(11,11,10,0.55) 0%, rgba(11,11,10,0.05) 26%, rgba(11,11,10,0.0) 50%, rgba(11,11,10,0.62) 78%, rgba(18,18,17,0.98) 100%);
+}
+.hero-grain { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0.22; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.7 0 0 0 0 0.7 0 0 0 0 0.7 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+  animation: grain 1.6s steps(4) infinite;
+}
+@keyframes grain { 0% { transform: translate(0,0); } 25% { transform: translate(-3%, 2%); } 50% { transform: translate(2%, -3%); } 75% { transform: translate(-1%, -1%); } 100% { transform: translate(0,0); } }
+
+.hero-content { position: relative; z-index: 3; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); padding-top: 140px; }
+.hero-kicker { font-family: var(--font-cond); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--fg-soft); display: flex; align-items: center; gap: 16px; }
+.hero-kicker::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
+.hero h1 { margin-top: 26px; display: flex; flex-direction: column; gap: 10px; }
+.hero-name { font-family: var(--font-sans); font-weight: 600; font-size: clamp(48px, 8vw, 112px); line-height: 1.02; letter-spacing: -0.03em; color: #f3eee4; }
+.hero-en { font-family: var(--font-cond); font-weight: 500; font-size: clamp(16px, 2vw, 26px); letter-spacing: 0.34em; text-transform: uppercase; color: var(--fg-soft); }
+.hero-role { margin-top: 26px; font-size: clamp(16px, 1.5vw, 20px); color: var(--fg-soft); letter-spacing: 0.02em; }
+.hero-role strong { color: var(--fg); font-weight: 500; }
+.hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: center; }
+.hero-foot {
+  position: relative; z-index: 3; width: 100%; max-width: var(--container); margin: 0 auto; padding: 44px var(--gutter) 30px;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+}
+.hero-credit { font-family: var(--font-cond); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); line-height: 1.7; }
+.hero-credit .ko { font-family: var(--font-sans); letter-spacing: 0.06em; text-transform: none; font-size: 12.5px; }
+.hero-credit .sep { margin: 0 8px; color: var(--fg-dim); }
+.hero-next { font-size: 13px; letter-spacing: 0.04em; color: var(--fg-muted); border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; transition: color var(--dur-ui) var(--ease), border-color var(--dur-ui) var(--ease); }
+.hero-next:hover { color: var(--fg); border-bottom-color: var(--accent); }
+.hero .hero-in { opacity: 0; transform: translateY(24px); animation: hero-in 1.6s var(--ease) forwards; animation-delay: var(--d, 0.2s); }
+@keyframes hero-in { to { opacity: 1; transform: none; } }
+
+@media (max-width: 640px) {
+  .hero-foot { flex-direction: column; align-items: flex-start; gap: 20px; padding-top: 32px; }
+  .hero-content { padding-top: 120px; }
+}
+
+/* ==========================================================================
+   4. 작가 소개
+   ========================================================================== */
+.about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.about-photo { position: sticky; top: 100px; }
+.about-photo .frame { aspect-ratio: 4 / 5; }
+.about-photo figcaption { margin-top: 12px; font-size: 12.5px; letter-spacing: 0.04em; color: var(--fg-muted); line-height: 1.6; display: flex; gap: 10px; }
+.about-photo figcaption::before { content: ""; flex: 0 0 18px; height: 1px; background: var(--accent); margin-top: 11px; }
+.about-name { display: flex; flex-direction: column; gap: 8px; }
+.about-name .name { font-size: clamp(40px, 5vw, 64px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; }
+.about-name .role { font-size: 14px; letter-spacing: 0.14em; color: var(--fg-muted); font-weight: 500; }
+.about-name .role .en { font-family: var(--font-cond); letter-spacing: 0.24em; text-transform: uppercase; margin-left: 10px; color: var(--fg-dim); }
+.about-body .body { margin-top: 32px; font-size: 16.5px; }
+.about-body .body p strong { color: var(--fg); font-weight: 500; }
+.pull-quote { margin: 48px 0 0; padding: 32px 0 32px 28px; border-left: 1px solid var(--accent); }
+.pull-quote p { font-size: clamp(22px, 2.4vw, 32px); font-weight: 400; line-height: 1.45; letter-spacing: -0.02em; color: #f1ece2; }
+.pull-quote cite { display: block; margin-top: 16px; font-style: normal; font-size: 13px; letter-spacing: 0.06em; color: var(--fg-muted); }
+.meta-list { margin-top: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; border-top: 1px solid var(--line); }
+.meta-list > div { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; font-size: 14px; }
+.meta-list dt { font-family: var(--font-cond); letter-spacing: 0.2em; text-transform: uppercase; font-size: 11.5px; color: var(--fg-muted); padding-top: 4px; }
+.meta-list dd { color: var(--fg-soft); line-height: 1.6; }
+
+/* 판단 기준 — 장부처럼 줄로 나눈 목록. 카드 아님 */
+.principles-wrap { margin-top: clamp(64px, 9vw, 120px); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 24px clamp(32px, 6vw, 96px); align-items: start; }
+.principles-wrap .h-section { max-width: 12ch; }
+.principles-wrap .lede { margin-top: 20px; font-size: 16px; }
+.principles { border-top: 1px solid var(--line-strong); }
+.principle { display: grid; grid-template-columns: 56px 150px minmax(0, 1fr); gap: 12px 24px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.principle .num { font-family: var(--font-cond); font-size: 15px; letter-spacing: 0.1em; color: var(--accent); padding-top: 4px; }
+.principle h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.4; }
+.principle p { font-size: 15px; color: var(--fg-soft); max-width: 52ch; }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { position: static; max-width: 520px; }
+  .principles-wrap { grid-template-columns: 1fr; }
+  .principles-wrap .h-section { max-width: none; }
+}
+@media (max-width: 640px) {
+  .principle { grid-template-columns: 40px minmax(0, 1fr); }
+  .principle p { grid-column: 2; }
+}
+@media (max-width: 560px) { .meta-list { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   5. 시리즈
+   ========================================================================== */
+.work-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 64px); align-items: end; }
+.work-intro .h-section { max-width: 18ch; }
+.series-index { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+.series-index a { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; color: var(--fg-soft); transition: color var(--dur-ui) var(--ease); }
+.series-index a:hover { color: var(--fg); }
+.series-index .num { font-family: var(--font-cond); color: var(--accent); letter-spacing: 0.08em; }
+.series-index .yr { font-family: var(--font-cond); letter-spacing: 0.12em; color: var(--fg-muted); font-size: 13px; }
+
+.series { padding-top: clamp(72px, 10vw, 140px); }
+.series + .series { border-top: 1px solid var(--line); margin-top: clamp(72px, 10vw, 140px); }
+.series-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px clamp(24px, 4vw, 64px); align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+.series-head .num { font-family: var(--font-cond); font-size: clamp(56px, 8vw, 112px); line-height: 0.85; font-weight: 400; color: var(--accent); letter-spacing: -0.01em; }
+.series-title { margin-top: 18px; font-size: clamp(30px, 4.2vw, 56px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
+.series-title .en { display: block; font-family: var(--font-cond); font-size: clamp(13px, 1.2vw, 16px); letter-spacing: 0.3em; text-transform: uppercase; color: var(--fg-muted); margin-top: 10px; font-weight: 500; }
+.series-meta { display: grid; grid-template-columns: repeat(3, minmax(0, auto)); gap: 8px 28px; justify-content: start; padding-top: 14px; border-top: 1px solid var(--line-strong); }
+.series-meta div { display: flex; flex-direction: column; gap: 4px; }
+.series-meta dt { font-family: var(--font-cond); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg-dim); }
+.series-meta dd { font-size: 14.5px; color: var(--fg); letter-spacing: 0.02em; }
+
+.series-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 20px); }
+.series-grid .shot { position: relative; margin: 0; }
+.series-grid .frame { width: 100%; }
+.series-grid button.frame { display: block; text-align: left; }
+.series-grid button.frame:hover img { transform: scale(1.03); }
+.series-grid button.frame:hover { outline: 0; }
+.series-grid button.frame::before { content: ""; position: absolute; inset: 0; z-index: 2; box-shadow: inset 0 0 0 1px rgba(232,227,216,0); transition: box-shadow var(--dur-ui) var(--ease); }
+.series-grid button.frame:focus-visible::before { box-shadow: inset 0 0 0 2px var(--accent); }
+.shot figcaption { margin-top: 10px; display: flex; justify-content: space-between; gap: 12px; font-size: 12.5px; color: var(--fg-muted); letter-spacing: 0.02em; line-height: 1.6; }
+.shot figcaption .idx { font-family: var(--font-cond); letter-spacing: 0.16em; color: var(--fg-dim); flex: 0 0 auto; }
+/* 패턴 A: 7·5 / 5·7 */
+.grid-a .shot:nth-child(1) { grid-column: span 7; } .grid-a .shot:nth-child(1) .frame { aspect-ratio: 3 / 2; }
+.grid-a .shot:nth-child(2) { grid-column: span 5; } .grid-a .shot:nth-child(2) .frame { aspect-ratio: 4 / 5; }
+.grid-a .shot:nth-child(3) { grid-column: span 5; } .grid-a .shot:nth-child(3) .frame { aspect-ratio: 4 / 5; }
+.grid-a .shot:nth-child(4) { grid-column: span 7; } .grid-a .shot:nth-child(4) .frame { aspect-ratio: 3 / 2; }
+/* 패턴 B: 8·4 / 6·6 */
+.grid-b .shot:nth-child(1) { grid-column: span 8; } .grid-b .shot:nth-child(1) .frame { aspect-ratio: 16 / 9; }
+.grid-b .shot:nth-child(2) { grid-column: span 4; } .grid-b .shot:nth-child(2) .frame { aspect-ratio: 4 / 5; }
+.grid-b .shot:nth-child(3) { grid-column: span 6; } .grid-b .shot:nth-child(3) .frame { aspect-ratio: 3 / 2; }
+.grid-b .shot:nth-child(4) { grid-column: span 6; } .grid-b .shot:nth-child(4) .frame { aspect-ratio: 3 / 2; }
+/* 패턴 C: 5·7 / 12 넓게 + 작은 두 컷 */
+.grid-c .shot:nth-child(1) { grid-column: span 5; } .grid-c .shot:nth-child(1) .frame { aspect-ratio: 4 / 5; }
+.grid-c .shot:nth-child(2) { grid-column: span 7; } .grid-c .shot:nth-child(2) .frame { aspect-ratio: 3 / 2; }
+.grid-c .shot:nth-child(3) { grid-column: span 7; } .grid-c .shot:nth-child(3) .frame { aspect-ratio: 3 / 2; }
+.grid-c .shot:nth-child(4) { grid-column: span 5; } .grid-c .shot:nth-child(4) .frame { aspect-ratio: 4 / 5; }
+.series-grid .frame { height: auto; }
+.series-grid .frame img { position: absolute; inset: 0; height: 100%; }
+
+.series-text { margin-top: clamp(32px, 4.5vw, 64px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.essay { font-size: clamp(16.5px, 1.3vw, 18.5px); line-height: 1.9; color: var(--fg-soft); max-width: 62ch; }
+.essay p + p { margin-top: 1.1em; }
+.essay .first { color: var(--fg); }
+.credits { border-top: 1px solid var(--line-strong); }
+.credits > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.credits dt { font-family: var(--font-cond); letter-spacing: 0.22em; text-transform: uppercase; font-size: 11px; color: var(--fg-muted); padding-top: 4px; }
+.credits dd { color: var(--fg-soft); line-height: 1.65; }
+.credits dd a { color: var(--fg); border-bottom: 1px solid var(--line-strong); transition: border-color var(--dur-ui); }
+.credits dd a:hover { border-bottom-color: var(--accent); }
+
+@media (max-width: 900px) {
+  .work-intro, .series-head, .series-text { grid-template-columns: 1fr; }
+  .series-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .series-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .series-grid .shot { grid-column: span 1 !important; }
+  .grid-a .shot:nth-child(1) .frame, .grid-a .shot:nth-child(4) .frame,
+  .grid-b .shot:nth-child(1) .frame, .grid-b .shot:nth-child(3) .frame, .grid-b .shot:nth-child(4) .frame,
+  .grid-c .shot:nth-child(2) .frame, .grid-c .shot:nth-child(3) .frame { aspect-ratio: 4 / 5; }
+  .grid-a .shot:nth-child(2) .frame, .grid-a .shot:nth-child(3) .frame,
+  .grid-b .shot:nth-child(2) .frame, .grid-c .shot:nth-child(1) .frame, .grid-c .shot:nth-child(4) .frame { aspect-ratio: 4 / 5; }
+}
+@media (max-width: 480px) {
+  .series-meta { grid-template-columns: 1fr 1fr; }
+  .shot figcaption { font-size: 11.5px; }
+}
+
+/* ==========================================================================
+   6. 작업 방식
+   ========================================================================== */
+.process-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.process-side { position: sticky; top: 110px; }
+.process-side .h-section { margin-top: 24px; max-width: 14ch; }
+.process-side .lede { margin-top: 24px; font-size: 16px; }
+.process-side .summary { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+.process-side .summary li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; font-size: 13.5px; color: var(--fg-muted); }
+.process-side .summary .n { font-family: var(--font-cond); color: var(--accent); letter-spacing: 0.1em; }
+.steps { border-top: 1px solid var(--line-strong); }
+.step { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 24px 32px; padding: clamp(32px, 4vw, 48px) 0; border-bottom: 1px solid var(--line); }
+.step .num { font-family: var(--font-cond); font-size: clamp(40px, 5vw, 64px); line-height: 0.9; color: var(--accent); font-weight: 400; }
+.step h3 { font-size: clamp(22px, 2.2vw, 30px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; }
+.step h3 .en { font-family: var(--font-cond); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--fg-muted); margin-left: 12px; vertical-align: middle; font-weight: 500; }
+.step p { margin-top: 16px; font-size: 16px; color: var(--fg-soft); max-width: 60ch; }
+.step .checks { margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 24px; max-width: 640px; }
+.step .checks li { position: relative; font-size: 13.5px; color: var(--fg-soft); line-height: 1.55; padding: 10px 0 0 16px; border-top: 1px solid var(--line); }
+.step .checks li::before { content: ""; position: absolute; left: 0; top: 17px; width: 5px; height: 5px; background: var(--accent); }
+.step .checks-title { margin-top: 24px; font-size: 12px; letter-spacing: 0.1em; color: var(--fg-muted); }
+.step .dur { margin-top: 20px; font-size: 13px; letter-spacing: 0.04em; color: var(--fg-muted); }
+.step .dur b { color: var(--fg-soft); font-weight: 500; }
+@media (max-width: 900px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .process-side { position: static; }
+  .process-side .h-section { max-width: none; }
+}
+@media (max-width: 640px) {
+  .step { grid-template-columns: 1fr; gap: 12px; }
+  .step .checks { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   7. 전시 · 출판 이력 (밝은 섹션)
+   ========================================================================== */
+.record-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px clamp(24px, 4vw, 64px); align-items: end; margin-bottom: clamp(32px, 5vw, 64px); }
+.record-head .h-section { max-width: 16ch; }
+.record-sum { font-size: 15px; line-height: 1.8; color: var(--ink-soft); max-width: 40ch; border-top: 1px solid var(--line-ink-strong); padding-top: 18px; }
+.record-sum b { color: var(--ink); font-weight: 500; }
+.filters { display: flex; flex-wrap: wrap; gap: 4px 28px; margin-bottom: 8px; }
+.filter-btn {
+  position: relative; padding: 8px 0 10px; font-size: 14px; letter-spacing: 0.04em; color: var(--ink-muted); border-radius: 0;
+  transition: color var(--dur-ui) var(--ease);
+}
+.filter-btn::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: transparent; transition: background-color var(--dur-ui) var(--ease); }
+.filter-btn:hover { color: var(--ink); }
+.filter-btn[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
+.filter-btn[aria-pressed="true"]::after { background: var(--accent-deep); }
+.filter-btn .c { font-family: var(--font-cond); letter-spacing: 0.1em; margin-left: 6px; color: var(--ink-muted); font-weight: 400; }
+.record-list { border-top: 1px solid var(--line-ink-strong); }
+.record-row {
+  display: grid; grid-template-columns: 90px 96px minmax(0, 1fr) minmax(0, 0.9fr); gap: 12px 24px; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--line-ink);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease), background-color var(--dur-ui);
+}
+.record-row.is-hidden { display: none; }
+.record-row.is-fading { opacity: 0; transform: translateY(8px); }
+.record-row .yr { font-family: var(--font-cond); font-size: 24px; letter-spacing: 0.04em; color: var(--ink); line-height: 1; font-weight: 500; }
+.record-row .type { font-family: var(--font-cond); font-size: 11.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-deep); }
+.record-row .type .ko { font-family: var(--font-sans); letter-spacing: 0.1em; text-transform: none; color: var(--ink-muted); display: block; font-size: 12px; margin-top: 3px; }
+.record-row .title { font-size: 16.5px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; line-height: 1.5; }
+.record-row .title small { display: block; font-size: 13px; color: var(--ink-muted); font-weight: 400; margin-top: 3px; letter-spacing: 0; }
+.record-row .place { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+.record-row .place b { font-weight: 500; color: var(--ink); }
+.record-empty { padding: 32px 0; text-align: center; color: var(--ink-muted); font-size: 14px; display: none; }
+.record-empty.is-shown { display: block; }
+.record-foot { margin-top: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-size: 13.5px; color: var(--ink-muted); }
+@media (max-width: 900px) {
+  .record-head { grid-template-columns: 1fr; }
+  .record-row { grid-template-columns: 72px minmax(0, 1fr); gap: 8px 16px; }
+  .record-row .yr { grid-row: span 3; }
+  .record-row .type, .record-row .title, .record-row .place { grid-column: 2; }
+}
+
+/* ==========================================================================
+   8. 의뢰 안내
+   ========================================================================== */
+.commission-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 64px); align-items: end; }
+.commission-intro .h-section { max-width: 18ch; }
+/* 촬영 범위 — 요율표처럼 가로 줄. 카드 격자 아님 */
+.scopes { margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--line-strong); }
+.scopes-cols { display: grid; grid-template-columns: 56px minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr); gap: 0 32px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 11.5px; letter-spacing: 0.08em; color: var(--fg-dim); }
+.scope { display: grid; grid-template-columns: 56px minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr); gap: 16px 32px; padding: 32px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.scope .num { font-family: var(--font-cond); font-size: 28px; line-height: 1; letter-spacing: 0.04em; color: var(--accent); }
+.scope h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.35; }
+.scope .who { margin-top: 12px; font-size: 13px; color: var(--fg-muted); line-height: 1.6; }
+.scope .who b { color: var(--fg-soft); font-weight: 500; }
+.scope p { font-size: 15px; color: var(--fg-soft); max-width: 46ch; }
+.scope ul { display: flex; flex-direction: column; gap: 6px; }
+.scope li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px; font-size: 13.5px; color: var(--fg-soft); line-height: 1.6; }
+.scope li span:first-child { font-size: 12px; color: var(--fg-muted); padding-top: 1px; }
+.scope li span:last-child b { color: var(--fg); font-weight: 500; }
+
+.commission-body { margin-top: clamp(56px, 8vw, 112px); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.contact-info h3 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.35; }
+.contact-info .body { margin-top: 20px; font-size: 15.5px; }
+.contact-direct { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+.contact-direct a { display: inline-flex; align-items: baseline; gap: 12px; font-size: 17px; color: var(--fg); letter-spacing: 0.01em; width: fit-content; border-bottom: 1px solid var(--line-strong); padding-bottom: 3px; transition: border-color var(--dur-ui); }
+.contact-direct a:hover { border-bottom-color: var(--accent); }
+.contact-direct a .k { font-family: var(--font-cond); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg-muted); }
+.terms { margin-top: 40px; border-top: 1px solid var(--line-strong); }
+.terms > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.terms dt { font-family: var(--font-cond); letter-spacing: 0.22em; text-transform: uppercase; font-size: 11px; color: var(--fg-muted); padding-top: 4px; }
+.terms dd { color: var(--fg-soft); line-height: 1.65; }
+.terms dd b { color: var(--fg); font-weight: 500; }
+
+.contact-form { background: var(--bg-3); border-radius: 2px; padding: clamp(24px, 3vw, 44px); }
+.contact-form .form-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.contact-form .form-head h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.contact-form .form-head span { font-size: 12.5px; letter-spacing: 0.04em; color: var(--fg-muted); }
+.form-grid { margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field--full { grid-column: 1 / -1; }
+.field label { font-size: 12.5px; letter-spacing: 0.1em; color: var(--fg-soft); display: flex; justify-content: space-between; }
+.field label .req { color: var(--accent); font-family: var(--font-cond); letter-spacing: 0.2em; font-size: 10.5px; text-transform: uppercase; }
+.field input, .field select, .field textarea {
+  width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line-strong); border-radius: 0;
+  color: var(--fg); font: inherit; font-size: 15px; padding: 10px 0; outline: none;
+  transition: border-color var(--dur-ui) var(--ease);
+}
+.field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23b8b1a4' stroke-width='1.4'/></svg>"); background-repeat: no-repeat; background-position: right 2px center; padding-right: 24px; }
+.field select option { background: var(--bg-3); color: var(--fg); }
+.field textarea { resize: vertical; min-height: 130px; line-height: 1.7; }
+.field input::placeholder, .field textarea::placeholder { color: var(--fg-dim); }
+.field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--accent); }
+.field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea { border-bottom-color: #d97b6b; }
+.field .hint { font-size: 12px; color: var(--fg-muted); min-height: 1.4em; line-height: 1.4; }
+.field.is-invalid .hint { color: #e5a394; }
+.field--check { flex-direction: row; align-items: flex-start; gap: 12px; }
+.field--check input { width: 16px; height: 16px; margin: 4px 0 0; accent-color: var(--accent); flex: 0 0 16px; }
+.field--check label { display: block; font-size: 13px; letter-spacing: 0.02em; color: var(--fg-soft); line-height: 1.6; }
+.form-foot { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.form-foot .note { font-size: 12.5px; color: var(--fg-muted); }
+.form-status { margin-top: 20px; padding: 16px 18px; border: 1px solid var(--line); border-left: 2px solid var(--accent); border-radius: 2px; font-size: 14px; color: var(--fg-soft); display: none; line-height: 1.7; }
+.form-status.is-shown { display: block; }
+.form-status b { color: var(--fg); font-weight: 500; }
+@media (max-width: 1000px) {
+  .commission-intro, .commission-body { grid-template-columns: 1fr; }
+  .scopes-cols { display: none; }
+  .scope { grid-template-columns: 48px minmax(0, 1fr); gap: 16px 20px; padding: 28px 0; }
+  .scope > *:not(.num) { grid-column: 2; }
+}
+@media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   9. 푸터 — 가장 짙은 색
+   ========================================================================== */
+.site-footer { background: var(--bg-0); border-top: 1px solid var(--line); padding: clamp(56px, 8vw, 96px) 0 36px; }
+.footer-top { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px clamp(24px, 4vw, 64px); align-items: start; padding-bottom: clamp(36px, 5vw, 64px); border-bottom: 1px solid var(--line); }
+.footer-line { font-size: clamp(22px, 2.6vw, 34px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.4; color: #efe9dd; max-width: 20ch; }
+.footer-line::before { content: ""; display: block; width: 34px; height: 1px; background: var(--accent); margin-bottom: 22px; }
+.footer-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.footer-nav h4 { font-family: var(--font-cond); font-size: 11.5px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 14px; font-weight: 500; }
+.footer-nav li + li { margin-top: 8px; }
+.footer-nav a { font-size: 14px; color: var(--fg-soft); transition: color var(--dur-ui); }
+.footer-nav a:hover { color: var(--fg); }
+.footer-bottom { padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-family: var(--font-cond); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-dim); }
+.footer-bottom .ko { font-family: var(--font-sans); letter-spacing: 0.06em; text-transform: none; }
+.footer-bottom .sep { margin: 0 10px; }
+@media (max-width: 800px) { .footer-top { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   10. 라이트박스
+   ========================================================================== */
+.lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(11, 11, 10, 0.96); display: none; align-items: center; justify-content: center; padding: clamp(16px, 4vw, 56px); }
+.lightbox.is-open { display: flex; }
+.lightbox-inner { position: relative; width: 100%; max-width: 1200px; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 16px; opacity: 0; transform: translateY(16px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.lightbox.is-open .lightbox-inner { opacity: 1; transform: none; }
+.lightbox-stage { position: relative; flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.lightbox-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; filter: grayscale(1) contrast(1.06); background: #26241f; transition: opacity 0.6s var(--ease); }
+.lightbox-stage img.is-color { filter: saturate(0.6) contrast(1.05); }
+.lightbox-stage img.is-switching { opacity: 0; }
+.lightbox-cap { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; font-size: 13.5px; color: var(--fg-soft); line-height: 1.6; }
+.lightbox-cap .idx { font-family: var(--font-cond); letter-spacing: 0.2em; color: var(--fg-muted); flex: 0 0 auto; }
+.lightbox-cap .series-name { color: var(--fg-muted); margin-right: 10px; }
+.lightbox-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); border-radius: 50%; background: rgba(18,18,17,0.7); color: var(--fg); transition: border-color var(--dur-ui), background-color var(--dur-ui); }
+.lightbox-btn:hover { border-color: var(--fg); background: rgba(36,35,32,0.9); }
+.lightbox-btn svg { width: 18px; height: 18px; }
+.lightbox-prev { left: 0; }
+.lightbox-next { right: 0; }
+.lightbox-close { position: absolute; top: 0; right: 0; z-index: 2; display: inline-flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.08em; color: var(--fg-soft); padding: 10px 0; }
+.lightbox-close svg { width: 16px; height: 16px; }
+.lightbox-close:hover { color: var(--fg); }
+@media (max-width: 640px) {
+  .lightbox { padding: 16px; }
+  .lightbox-btn { width: 40px; height: 40px; top: auto; bottom: 64px; transform: none; }
+  .lightbox-cap { flex-direction: column; gap: 6px; padding-right: 96px; }
+}
+
+/* ==========================================================================
+   11. 모션 축소
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero .hero-in { opacity: 1; transform: none; animation: none; }
+  .hero-media img { animation: none; transform: none; }
+  .hero-grain { animation: none; }
+  .frame img, .lightbox-inner, .lightbox-stage img, .record-row { transition: none; }
+  .series-grid button.frame:hover img { transform: none; }
+  .site-header, .header-inner, .nav { transition: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+<!-- ======================================================================
+     헤더
+     ====================================================================== -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="정하늘 홈으로">
+      <span class="brand-ko">정하늘</span>
+      <span class="brand-en">Jeong Haneul</span>
+    </a>
+    <nav class="nav" id="primaryNav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="#about" data-nav="about">작가<small>About</small></a></li>
+        <li><a href="#work" data-nav="work">시리즈<small>Work</small></a></li>
+        <li><a href="#process" data-nav="process">작업 방식<small>Process</small></a></li>
+        <li><a href="#record" data-nav="record">이력<small>Record</small></a></li>
+        <li><a href="#contact" data-nav="contact">의뢰<small>Contact</small></a></li>
+        <li class="nav-cta"><a href="#contact">프로젝트 이야기하기</a></li>
+      </ul>
+    </nav>
+    <a class="header-cta" href="#contact">의뢰 문의</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">
+      <span class="nav-toggle-text">메뉴</span><span class="bars" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<!-- ======================================================================
+     Hero — 대표 사진 풀블리드
+     ====================================================================== -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <figure class="hero-media">
+    <img src="https://loremflickr.com/1600/1000/village,people?lock=101" width="1600" height="1000"
+         alt="경북 영양 수비면의 마을 길, 집 앞에 앉은 노인과 담장 너머 산자락. 흑백 필름." fetchpriority="high">
+  </figure>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-kicker hero-in" style="--d:0.2s">Documentary Photographer <span aria-hidden="true">·</span> Seoul, Korea</p>
+    <h1 id="hero-title" class="hero-in" style="--d:0.45s">
+      <span class="hero-name">정하늘</span>
+      <span class="hero-en">Jeong Haneul</span>
+    </h1>
+    <p class="hero-role hero-in" style="--d:0.7s"><strong>다큐멘터리 사진가.</strong> 사람과 장소가 남기는 시간을, 오래 머물며 기록합니다.</p>
+    <div class="hero-actions hero-in" style="--d:0.9s">
+      <a class="btn-line" href="#work">시리즈 보기</a>
+      <a class="link-arrow" href="#process">작업 방식 알아보기
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-foot hero-in" style="--d:1.2s">
+    <p class="hero-credit">
+      <span class="ko">대표 사진</span><span class="sep" aria-hidden="true">/</span>〈남겨진 마을〉 중<span class="sep" aria-hidden="true">·</span><span class="ko">경북 영양 수비면</span><span class="sep" aria-hidden="true">·</span>2023<span class="sep" aria-hidden="true">·</span>35mm B&amp;W Film
+    </p>
+    <a class="hero-next" href="#about">작가 소개부터 읽기</a>
+  </div>
+</section>
+
+<!-- ======================================================================
+     01 작가 소개
+     ====================================================================== -->
+<section class="section section--charcoal" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-grid">
+      <figure class="about-photo reveal">
+        <div class="frame">
+          <img src="https://loremflickr.com/1000/1250/documentary,portrait?lock=102" width="1000" height="1250" loading="lazy"
+               alt="전남 신안 하의도 김 양식장에서 카메라를 들고 서 있는 정하늘. 작업복 차림, 흑백.">
+        </div>
+        <figcaption>전남 신안 하의도, 〈바다가 오는 시간〉 촬영 중. 2024년 11월. 사진 김도윤</figcaption>
+      </figure>
+
+      <div class="about-body">
+        <span class="label" style="margin-bottom:28px"><span class="num">01</span><span class="ko">작가</span></span>
+        <h2 id="about-title" class="about-name">
+          <span class="name">정하늘</span>
+          <span class="role">다큐멘터리 사진가 · 서울<span class="en">b. 1986</span></span>
+        </h2>
+        <div class="body">
+          <p><strong>서울을 기반으로 사람과 장소를 오래 두고 기록하는 다큐멘터리 사진가입니다.</strong> 2011년부터 개인 시리즈와 의뢰 작업을 함께 해 왔고, 지금은 서해 섬마을의 김 양식 공동체를 두 해째 따라가고 있습니다.</p>
+          <p>한 장소에 최소 몇 주를 머무릅니다. 첫 방문에는 카메라를 가져가지 않고, 서로 이름을 부를 수 있게 된 뒤에야 촬영을 시작합니다. 사진의 대부분은 35mm 흑백 필름으로 찍고, 성북동 자가 암실에서 직접 인화합니다. 색이 이야기의 일부일 때만 중형 컬러 필름을 씁니다.</p>
+          <p>《월간 기록》, 《포토프레스》, 한국농어촌기록센터, 서울역사아카이브와 함께 일했습니다. 시리즈 〈야간 근무〉로 2022년 제12회 서울다큐멘터리사진상을 받았고, 두 권의 사진집을 냈습니다. 지방 소도시의 문화재단, 지역 신문사, 건축사무소의 기록 의뢰를 정기적으로 맡고 있습니다.</p>
+        </div>
+
+        <blockquote class="pull-quote">
+          <p>“먼저 이름을 묻고, 카메라는 나중에 꺼냅니다. 사진은 셔터를 누르는 순간보다 그 앞에 머문 시간이 결정합니다.”</p>
+          <cite>촬영을 시작하는 기준</cite>
+        </blockquote>
+
+        <dl class="meta-list">
+          <div><dt>활동</dt><dd>2011년부터, 15년째</dd></div>
+          <div><dt>기반</dt><dd>서울 성북동 · 전국 현장</dd></div>
+          <div><dt>주 매체</dt><dd>35mm 흑백 필름 · 중형 6×7 컬러 네거티브</dd></div>
+          <div><dt>인화</dt><dd>젤라틴 실버 프린트(자가 암실) · C-프린트</dd></div>
+          <div><dt>학력</dt><dd>한국사진예술대학 사진학과 졸업 (2010)</dd></div>
+          <div><dt>소속</dt><dd>한국다큐멘터리사진가협회 회원</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="principles-wrap">
+      <div>
+        <h3 class="h-section">찍기 전에 정해 둔 것들.</h3>
+        <p class="lede">15년 동안 바뀌지 않은 네 가지 기준입니다. 의뢰 작업에도 그대로 적용됩니다.</p>
+      </div>
+      <ol class="principles">
+        <li class="principle">
+          <span class="num">I</span>
+          <h3>거리</h3>
+          <p>가까이 가되 침범하지 않습니다. 렌즈는 50mm를 넘기지 않고, 사람이 허락한 거리에서만 찍습니다. 망원으로 몰래 당겨 찍은 사진은 한 장도 발표한 적이 없습니다.</p>
+        </li>
+        <li class="principle">
+          <span class="num">II</span>
+          <h3>머문 시간</h3>
+          <p>짧은 방문으로는 표정만 남습니다. 몇 주를 머물면 관계와 반복이 사진에 들어옵니다. 세 시리즈 모두 최소 여섯 주 이상 현장에서 지낸 뒤에 나온 결과입니다.</p>
+        </li>
+        <li class="principle">
+          <span class="num">III</span>
+          <h3>이름</h3>
+          <p>사진 속 사람은 익명으로 두지 않습니다. 이름과 나이, 하는 일을 캡션에 적고, 원치 않으시면 그 사진은 발표하지 않습니다. 사진집 《야간 근무》에는 스물일곱 명의 이름이 실려 있습니다.</p>
+        </li>
+        <li class="principle">
+          <span class="num">IV</span>
+          <h3>돌려주기</h3>
+          <p>찍힌 사람은 사진의 첫 관객입니다. 발표 전에 보여 드리고 빼고 싶은 사진을 묻습니다. 인화본 한 장은 반드시 그분께 전달합니다.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     02 시리즈
+     ====================================================================== -->
+<section class="section" id="work" aria-labelledby="work-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="label"><span class="num">02</span><span class="ko">시리즈</span></span>
+      <span class="label-en">Selected Series · 2021 – 2024</span>
+    </div>
+
+    <div class="work-intro">
+      <div>
+        <h2 id="work-title" class="h-section">영양의 마을에서 42일, 남동공단에서 22일 밤, 하의도에서 168일.</h2>
+        <p class="lede">한 장소에 여섯 주 이상 머문 뒤에 나온 시리즈만 골랐습니다. 촬영 기간, 사용한 필름, 인화 방식, 수록처를 크레딧처럼 함께 적었습니다. 사진을 누르면 크게 볼 수 있습니다.</p>
+      </div>
+      <nav class="series-index" aria-label="시리즈 목록">
+        <a href="#series-01"><span class="num">01</span><span>남겨진 마을 — 경북 영양</span><span class="yr">2023 · B&amp;W</span></a>
+        <a href="#series-02"><span class="num">02</span><span>야간 근무 — 인천 남동공단</span><span class="yr">2021 · B&amp;W</span></a>
+        <a href="#series-03"><span class="num">03</span><span>바다가 오는 시간 — 신안 하의도</span><span class="yr">2024 · Color</span></a>
+      </nav>
+    </div>
+
+    <!-- 시리즈 01 -->
+    <article class="series" id="series-01" aria-labelledby="s1-title" data-series="남겨진 마을">
+      <header class="series-head">
+        <div>
+          <span class="num" aria-hidden="true">01</span>
+          <h3 id="s1-title" class="series-title">남겨진 마을<span class="en">The Village That Stayed</span></h3>
+        </div>
+        <dl class="series-meta">
+          <div><dt>연도</dt><dd>2023</dd></div>
+          <div><dt>장소</dt><dd>경북 영양군 수비면</dd></div>
+          <div><dt>매체</dt><dd>35mm 흑백 필름</dd></div>
+        </dl>
+      </header>
+
+      <div class="series-grid grid-a">
+        <figure class="shot reveal">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1600/1067/village,people?lock=111" data-caption="빈 집 마루에 가지런히 놓인 고무신 두 켤레. 주인은 2021년 겨울 요양원으로 떠났다." aria-label="크게 보기: 빈 집 마루의 고무신">
+            <img src="https://loremflickr.com/1200/800/village,people?lock=111" width="1200" height="800" loading="lazy" alt="빈 집 마루에 가지런히 놓인 고무신 두 켤레, 흑백">
+          </button>
+          <figcaption><span>빈 집 마루의 고무신. 주인은 2021년 겨울 요양원으로 떠났다.</span><span class="idx">01 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="--d:100ms">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1200/1500/village,people?lock=112" data-caption="밭일을 마치고 마을 길을 내려오는 김옥분(84)·이만수(87) 부부. 두 사람은 이 마을에서 태어났다." aria-label="크게 보기: 밭일을 마치고 돌아오는 부부">
+            <img src="https://loremflickr.com/900/1125/village,people?lock=112" width="900" height="1125" loading="lazy" alt="밭일을 마치고 마을 길을 내려오는 노부부의 뒷모습, 흑백">
+          </button>
+          <figcaption><span>밭일을 마치고 돌아오는 김옥분(84)·이만수(87) 부부.</span><span class="idx">02 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1200/1500/village,people?lock=113" data-caption="1996년 폐교된 수비초등학교 분교 운동장의 철봉. 마지막 졸업생은 세 명이었다." aria-label="크게 보기: 폐교 운동장의 철봉">
+            <img src="https://loremflickr.com/900/1125/village,people?lock=113" width="900" height="1125" loading="lazy" alt="폐교 운동장에 홀로 남은 녹슨 철봉, 흑백">
+          </button>
+          <figcaption><span>1996년 폐교된 분교 운동장의 철봉. 마지막 졸업생은 세 명.</span><span class="idx">03 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="--d:100ms">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1600/1067/village,people?lock=114" data-caption="마을회관 벽에 붙은 1978년 마을 체육대회 사진. 사진 속 서른두 명 중 지금 마을에 남은 사람은 네 명이다." aria-label="크게 보기: 마을회관 벽의 오래된 단체사진">
+            <img src="https://loremflickr.com/1200/800/village,people?lock=114" width="1200" height="800" loading="lazy" alt="마을회관 벽에 붙은 빛바랜 단체사진, 흑백">
+          </button>
+          <figcaption><span>마을회관 벽의 1978년 체육대회 사진. 서른두 명 중 남은 이는 네 명.</span><span class="idx">04 / 04</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="series-text">
+        <div class="essay">
+          <p class="first">영양군 수비면의 한 마을에는 주민 열한 명이 남아 있습니다. 2023년 3월부터 12월까지 네 차례, 모두 여섯 주를 그곳에서 지냈습니다.</p>
+          <p>떠난 사람들의 집과 남은 사람들의 하루를 같은 거리에서 찍으려 했습니다. 빈 집을 찍는 날에는 그 집에 살았던 분의 이야기를 먼저 들었고, 사람을 찍는 날에는 그분이 원하는 자리에서만 셔터를 눌렀습니다. 마지막 촬영일에 이장님이 “이제 우리 마을은 사진 속에만 남겠네”라고 하셨고, 그 말이 이 시리즈의 제목이 되었습니다.</p>
+        </div>
+        <dl class="credits">
+          <div><dt>촬영</dt><dd>2023.03 – 2023.12 · 4회 방문 · 42일 체류</dd></div>
+          <div><dt>필름</dt><dd>Kodak Tri-X 400 · 총 61롤</dd></div>
+          <div><dt>인화</dt><dd>젤라틴 실버 프린트 11×14 in · 에디션 7</dd></div>
+          <div><dt>수록</dt><dd>사진집 《남겨진 마을》 (도서출판 시선, 2024, 144쪽)</dd></div>
+          <div><dt>전시</dt><dd>2024 단체전 〈머무는 사람들〉 서울 갤러리 소격</dd></div>
+          <div><dt>협력</dt><dd>영양군 수비면 주민 11명 · 영양문화원</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 시리즈 02 -->
+    <article class="series" id="series-02" aria-labelledby="s2-title" data-series="야간 근무">
+      <header class="series-head">
+        <div>
+          <span class="num" aria-hidden="true">02</span>
+          <h3 id="s2-title" class="series-title">야간 근무<span class="en">Night Shift</span></h3>
+        </div>
+        <dl class="series-meta">
+          <div><dt>연도</dt><dd>2021</dd></div>
+          <div><dt>장소</dt><dd>인천 남동국가산업단지</dd></div>
+          <div><dt>매체</dt><dd>35mm 흑백 필름</dd></div>
+        </dl>
+      </header>
+
+      <div class="series-grid grid-b">
+        <figure class="shot reveal">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1600/900/factory,workers?lock=121" data-caption="프레스 기계 앞에 선 박성재(52), 근무 19년차. 밤 11시, 두 번째 휴식 직전." aria-label="크게 보기: 프레스 기계 앞의 작업자">
+            <img src="https://loremflickr.com/1400/788/factory,workers?lock=121" width="1400" height="788" loading="lazy" alt="프레스 기계 앞에 선 작업자의 옆모습, 형광등 아래, 흑백">
+          </button>
+          <figcaption><span>프레스 기계 앞의 박성재(52), 근무 19년차. 밤 11시.</span><span class="idx">01 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="--d:100ms">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1200/1500/factory,workers?lock=122" data-caption="새벽 3시 휴게실. 도시락을 먹는 야간조 다섯 명. 식사 시간은 20분이다." aria-label="크게 보기: 새벽 3시 휴게실">
+            <img src="https://loremflickr.com/900/1125/factory,workers?lock=122" width="900" height="1125" loading="lazy" alt="새벽 휴게실에서 도시락을 먹는 노동자들, 흑백">
+          </button>
+          <figcaption><span>새벽 3시 휴게실. 식사 시간은 20분.</span><span class="idx">02 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1600/1067/factory,workers?lock=123" data-caption="도장 라인의 최은희(47). 마스크 자국이 뺨에 남아 있다. 근무 8년차." aria-label="크게 보기: 도장 라인의 작업자">
+            <img src="https://loremflickr.com/1200/800/factory,workers?lock=123" width="1200" height="800" loading="lazy" alt="형광등 아래 도장 작업 중인 노동자의 손과 얼굴, 흑백">
+          </button>
+          <figcaption><span>도장 라인의 최은희(47), 근무 8년차.</span><span class="idx">03 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="--d:100ms">
+          <button class="frame" type="button" data-lightbox data-full="https://loremflickr.com/1600/1067/factory,workers?lock=124" data-caption="아침 6시 10분, 공장 정문. 야간조가 나가고 주간조가 들어온다. 서로 인사는 짧다." aria-label="크게 보기: 아침 교대 시각의 공장 정문">
+            <img src="https://loremflickr.com/1200/800/factory,workers?lock=124" width="1200" height="800" loading="lazy" alt="아침 교대 시각 공장 정문을 나서는 사람들, 흑백">
+          </button>
+          <figcaption><span>아침 6시 10분, 공장 정문. 야간조가 나가고 주간조가 들어온다.</span><span class="idx">04 / 04</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="series-text">
+        <div class="essay">
+          <p class="first">남동공단의 야간조는 저녁 8시에 시작해 아침 6시에 끝납니다. 2021년 7월부터 12월까지 스물두 밤을 세 곳의 공장에서 노동자들과 함께 보냈습니다.</p>
+          <p>기계 소리 속에서 사람은 말이 적어지고 몸짓은 정확해집니다. 그 정확함을 담고 싶었습니다. 플래시를 쓰지 않았기 때문에 형광등이 닿는 자리에서만 찍을 수 있었고, 그 제약이 사진의 밝기를 정했습니다. 사진 속 모든 분의 이름과 근무 연차를 사진집에 함께 기록했습니다.</p>
+        </div>
+        <dl class="credits">
+          <div><dt>촬영</dt><dd>2021.07 – 2021.12 · 22일 야간 동행 · 공장 3곳</dd></div>
+          <div><dt>필름</dt><dd>Ilford HP5 Plus (ISO 1600 증감) · 총 48롤</dd></div>
+          <div><dt>인화</dt><dd>젤라틴 실버 프린트 16×20 in · 에디션 5</dd></div>
+          <div><dt>수록</dt><dd>사진집 《야간 근무》 (포토프레스, 2022, 128쪽)</dd></div>
+          <div><dt>수상</dt><dd>제12회 서울다큐멘터리사진상 (2022)</dd></div>
+          <div><dt>협력</dt><dd>남동공단 3개 사업장 노동자 27명 · 인천노동자문화센터</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 시리즈 03 (컬러 저채도) -->
+    <article class="series" id="series-03" aria-labelledby="s3-title" data-series="바다가 오는 시간">
+      <header class="series-head">
+        <div>
+          <span class="num" aria-hidden="true">03</span>
+          <h3 id="s3-title" class="series-title">바다가 오는 시간<span class="en">When the Sea Comes In</span></h3>
+        </div>
+        <dl class="series-meta">
+          <div><dt>연도</dt><dd>2024 – 진행 중</dd></div>
+          <div><dt>장소</dt><dd>전남 신안군 하의도</dd></div>
+          <div><dt>매체</dt><dd>중형 6×7 컬러 네거티브</dd></div>
+        </dl>
+      </header>
+
+      <div class="series-grid grid-c">
+        <figure class="shot reveal">
+          <button class="frame frame--color" type="button" data-lightbox data-color data-full="https://loremflickr.com/1200/1500/harbor,workers?lock=131" data-caption="새벽 4시 40분, 물때에 맞춰 배를 띄우는 강명자(61)·문재호(64) 부부. 이 일을 31년째 하고 있다." aria-label="크게 보기: 새벽 물때에 배를 띄우는 부부">
+            <img src="https://loremflickr.com/900/1125/harbor,workers?lock=131" width="900" height="1125" loading="lazy" alt="새벽 어둠 속 배를 띄우는 부부, 저채도 컬러">
+          </button>
+          <figcaption><span>새벽 4시 40분, 배를 띄우는 강명자(61)·문재호(64) 부부.</span><span class="idx">01 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="--d:100ms">
+          <button class="frame frame--color" type="button" data-lightbox data-color data-full="https://loremflickr.com/1600/1067/harbor,workers?lock=132" data-caption="김발을 걷어 올리는 손. 겨울 바닷물에 손등이 트고, 장갑은 하루에 두 켤레를 쓴다." aria-label="크게 보기: 김발을 걷어 올리는 손">
+            <img src="https://loremflickr.com/1200/800/harbor,workers?lock=132" width="1200" height="800" loading="lazy" alt="바다에서 김발을 걷어 올리는 두 손, 저채도 컬러">
+          </button>
+          <figcaption><span>김발을 걷어 올리는 손. 장갑은 하루에 두 켤레.</span><span class="idx">02 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="frame frame--color" type="button" data-lightbox data-color data-full="https://loremflickr.com/1600/1067/harbor,workers?lock=133" data-caption="작업장 바닥에 널린 김과 주황색 장화. 오전 9시, 첫 물량 정리가 끝난 뒤." aria-label="크게 보기: 작업장 바닥의 김과 장화">
+            <img src="https://loremflickr.com/1200/800/harbor,workers?lock=133" width="1200" height="800" loading="lazy" alt="작업장 바닥에 널린 김과 주황색 장화, 저채도 컬러">
+          </button>
+          <figcaption><span>작업장 바닥의 김과 장화. 오전 9시, 첫 물량 정리 뒤.</span><span class="idx">03 / 04</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="--d:100ms">
+          <button class="frame frame--color" type="button" data-lightbox data-color data-full="https://loremflickr.com/1200/1500/harbor,workers?lock=134" data-caption="안개 낀 갯벌 위를 지나는 경운기. 물이 빠진 두 시간 동안만 이 길이 열린다." aria-label="크게 보기: 안개 낀 갯벌 위의 경운기">
+            <img src="https://loremflickr.com/900/1125/harbor,workers?lock=134" width="900" height="1125" loading="lazy" alt="안개 낀 갯벌 위를 지나는 경운기, 저채도 컬러">
+          </button>
+          <figcaption><span>안개 낀 갯벌 위의 경운기. 물이 빠진 두 시간만 열리는 길.</span><span class="idx">04 / 04</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="series-text">
+        <div class="essay">
+          <p class="first">하의도의 김 양식장은 물때에 따라 하루가 정해집니다. 2024년 한 해 동안 매달 보름씩 머물며 세 가족의 일을 따라갔습니다.</p>
+          <p>새벽 바다의 색과 김발의 검은색, 작업복의 주황색이 이 시리즈를 흑백으로 찍을 수 없게 했습니다. 처음으로 컬러 네거티브를 주 매체로 쓴 작업이고, 그래서 더 신중하게 채도를 낮춰 인화합니다. 이 작업은 아직 진행 중이며, 2026년 봄 완성과 사진집 출간을 목표로 하고 있습니다.</p>
+        </div>
+        <dl class="credits">
+          <div><dt>촬영</dt><dd>2024.01 – 진행 중 · 월 15일 체류 · 누적 168일</dd></div>
+          <div><dt>필름</dt><dd>Kodak Portra 400 (6×7) · 현재 총 94롤</dd></div>
+          <div><dt>인화</dt><dd>C-프린트 20×24 in · 랩 협업 (서울 을지로 컬러랩 온)</dd></div>
+          <div><dt>지원</dt><dd>2024 전남문화재단 시각예술 창작지원</dd></div>
+          <div><dt>전시</dt><dd>2025 개인전 〈바다가 오는 시간: 중간 보고〉 목포 갤러리 항구</dd></div>
+          <div><dt>협력</dt><dd>하의도 어촌계 · 김 양식 3가구</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ======================================================================
+     03 작업 방식
+     ====================================================================== -->
+<section class="section section--charcoal" id="process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="label"><span class="num">03</span><span class="ko">작업 방식</span></span>
+      <span class="label-en">Process · Five Stages</span>
+    </div>
+
+    <div class="process-grid">
+      <aside class="process-side">
+        <h2 id="process-title" class="h-section">모든 시리즈는 같은 다섯 단계를 지납니다.</h2>
+        <p class="lede">의뢰 작업도 예외가 아닙니다. 어느 단계에서 무엇을 확인하는지, 얼마나 걸리는지를 미리 알려 드리는 것이 협업의 시작이라고 생각합니다.</p>
+        <ol class="summary" aria-label="단계 요약">
+          <li><span class="n">01</span><span>접근 — 소개자와 목적서</span></li>
+          <li><span class="n">02</span><span>머무름 — 최소 2주, 보통 한 달</span></li>
+          <li><span class="n">03</span><span>촬영 — 자연광, 렌즈 두 개</span></li>
+          <li><span class="n">04</span><span>선택 — 시차를 둔 편집, 촬영자 확인</span></li>
+          <li><span class="n">05</span><span>인화 — 자가 암실, 인화본 전달</span></li>
+        </ol>
+      </aside>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="num">01</div>
+          <div>
+            <h3>접근<span class="en">Approach</span></h3>
+            <p>촬영 전에 그 장소를 소개해 줄 사람을 먼저 찾습니다. 첫 방문에는 카메라를 가져가지 않습니다. 마을회관, 노조 사무실, 어촌계 같은 공동체의 문을 통해 들어가고, 무엇을 왜 찍으려는지 A4 한 장짜리 목적서로 설명합니다. 동의 방식(구두·서면·발표 전 확인)은 이때 함께 정합니다.</p>
+            <p class="checks-title">이 단계에서 확인하는 것</p>
+            <ul class="checks" aria-label="확인 항목">
+              <li>소개자 확보</li>
+              <li>한 장짜리 목적서 전달</li>
+              <li>촬영 동의 방식 합의</li>
+              <li>찍지 않을 장소·상황 목록</li>
+            </ul>
+            <p class="dur">소요 <b>1 – 3주</b> · 카메라 없이</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">02</div>
+          <div>
+            <h3>머무름<span class="en">Stay</span></h3>
+            <p>최소 2주, 보통 한 달 이상 같은 곳에서 지냅니다. 카메라 없이 하루를 함께 보내는 날이 절반입니다. 사람들의 시간표, 이름과 호칭, 서로의 관계를 노트에 적습니다. 이 노트는 나중에 사진 캡션과 사진집 텍스트의 바탕이 됩니다.</p>
+            <p class="checks-title">이 단계에서 확인하는 것</p>
+            <ul class="checks" aria-label="확인 항목">
+              <li>현지 숙소 · 같은 리듬으로 생활</li>
+              <li>이름 · 호칭 · 관계 노트</li>
+            </ul>
+            <p class="dur">소요 <b>2주 – 수개월</b> · 시리즈 기준 6주 이상</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">03</div>
+          <div>
+            <h3>촬영<span class="en">Shoot</span></h3>
+            <p>35mm 흑백 필름을 기본으로 하고, 색이 이야기의 일부일 때만 중형 컬러 필름을 씁니다. 렌즈는 35mm와 50mm 두 개, 플래시는 쓰지 않습니다. 하루 촬영 분량은 두세 롤을 넘기지 않으며, 롤마다 날짜·장소·누구를 찍었는지를 기록합니다. 찍지 말아 달라는 요청은 이유를 묻지 않고 따릅니다.</p>
+            <p class="checks-title">이 단계에서 확인하는 것</p>
+            <ul class="checks" aria-label="확인 항목">
+              <li>자연광만 · 플래시 없음</li>
+              <li>렌즈 35 / 50mm 두 개</li>
+              <li>롤별 촬영 기록 (날짜·장소·인물)</li>
+              <li>촬영 거부 요청은 즉시 반영</li>
+            </ul>
+            <p class="dur">하루 <b>2 – 3롤</b> · 머무는 기간 내내</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">04</div>
+          <div>
+            <h3>선택<span class="en">Select</span></h3>
+            <p>현상 후 밀착 인화지를 만들고, 최소 3주가 지난 뒤에 다시 봅니다. 촬영 직후의 감정을 걷어내기 위해서입니다. 한 시리즈에서 인화까지 가는 사진은 보통 전체의 1% 미만입니다. 최종 선택 전에는 촬영된 분들께 후보 사진을 보여 드리고 빼고 싶은 사진이 있는지 묻습니다. 의뢰 작업에서는 이 단계에서 클라이언트와 함께 봅니다.</p>
+            <p class="checks-title">이 단계에서 확인하는 것</p>
+            <ul class="checks" aria-label="확인 항목">
+              <li>밀착 인화 · 3주 뒤 재검토</li>
+              <li>촬영된 분의 사전 확인</li>
+            </ul>
+            <p class="dur">소요 <b>4 – 8주</b> · 촬영 종료 후</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">05</div>
+          <div>
+            <h3>인화<span class="en">Print</span></h3>
+            <p>젤라틴 실버 프린트는 서울 성북동 자가 암실에서 직접 합니다. 컬러 작업은 을지로의 랩 한 곳에서 C-프린트로 진행하며, 색 보정은 제가 입회해 결정합니다. 모든 프린트는 아카이벌 처리 후 뒷면에 제목·연도·에디션 번호를 연필로 적습니다. 인화본 한 장은 반드시 촬영된 분께 전달합니다.</p>
+            <p class="checks-title">이 단계에서 확인하는 것</p>
+            <ul class="checks" aria-label="확인 항목">
+              <li>아카이벌 워시 · 셀레늄 토닝</li>
+              <li>프린트 뒷면 기록 (제목·연도·에디션)</li>
+              <li>촬영된 분께 인화본 전달</li>
+            </ul>
+            <p class="dur">소요 <b>2 – 4주</b> · 수량에 따라</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     04 전시 · 출판 이력 (밝은 섹션)
+     ====================================================================== -->
+<section class="section section--light" id="record" aria-labelledby="record-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="label"><span class="num">04</span><span class="ko">전시 · 출판</span></span>
+      <span class="label-en">Exhibitions &amp; Publications · 2014 – 2025</span>
+    </div>
+
+    <div class="record-head">
+      <h2 id="record-title" class="h-section">발표한 자리와 남긴 인쇄물.</h2>
+      <p class="record-sum">2014년 서울시민갤러리 공모전으로 시작해 2025년 목포 개인전까지, <b>개인전 4회와 단체전 4회</b>, <b>사진집 2권</b>과 잡지 특집 1건을 냈습니다. 작품 소장처와 강연 이력은 여기 적지 않았고, 요청하시면 PDF로 보내 드립니다.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="이력 종류 필터">
+      <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">전체<span class="c">12</span></button>
+      <button class="filter-btn" type="button" data-filter="solo" aria-pressed="false">개인전<span class="c">4</span></button>
+      <button class="filter-btn" type="button" data-filter="group" aria-pressed="false">단체전<span class="c">4</span></button>
+      <button class="filter-btn" type="button" data-filter="pub" aria-pressed="false">출판<span class="c">3</span></button>
+      <button class="filter-btn" type="button" data-filter="award" aria-pressed="false">수상<span class="c">1</span></button>
+    </div>
+
+    <ol class="record-list" id="recordList" aria-live="polite">
+      <li class="record-row" data-type="solo">
+        <span class="yr">2025</span>
+        <span class="type">Solo<span class="ko">개인전</span></span>
+        <span class="title">〈바다가 오는 시간: 중간 보고〉<small>진행 중인 시리즈의 첫 발표. C-프린트 18점</small></span>
+        <span class="place"><b>목포 · 갤러리 항구</b><br>2025.10.04 – 11.16</span>
+      </li>
+      <li class="record-row" data-type="group">
+        <span class="yr">2024</span>
+        <span class="type">Group<span class="ko">단체전</span></span>
+        <span class="title">〈머무는 사람들〉<small>다큐멘터리 사진가 6인전 · 〈남겨진 마을〉 12점 출품</small></span>
+        <span class="place"><b>서울 · 갤러리 소격</b><br>2024.09.12 – 10.20</span>
+      </li>
+      <li class="record-row" data-type="pub">
+        <span class="yr">2024</span>
+        <span class="type">Book<span class="ko">출판</span></span>
+        <span class="title">사진집 《남겨진 마을》<small>도서출판 시선 · 144쪽 · 사진 68점 · 초판 800부</small></span>
+        <span class="place"><b>서울 · 도서출판 시선</b><br>ISBN 979-11-6821-204-3</span>
+      </li>
+      <li class="record-row" data-type="solo">
+        <span class="yr">2023</span>
+        <span class="type">Solo<span class="ko">개인전</span></span>
+        <span class="title">〈야간 근무〉<small>젤라틴 실버 프린트 24점 · 노동자 인터뷰 음성 병행</small></span>
+        <span class="place"><b>서울 · 갤러리 이안</b><br>2023.03.02 – 04.09</span>
+      </li>
+      <li class="record-row" data-type="award">
+        <span class="yr">2022</span>
+        <span class="type">Award<span class="ko">수상</span></span>
+        <span class="title">제12회 서울다큐멘터리사진상<small>시리즈 〈야간 근무〉 · 상금은 촬영에 참여한 노동자 27명과 나눔</small></span>
+        <span class="place"><b>서울 · 한국다큐멘터리사진가협회</b><br>2022.11.18</span>
+      </li>
+      <li class="record-row" data-type="pub">
+        <span class="yr">2022</span>
+        <span class="type">Book<span class="ko">출판</span></span>
+        <span class="title">사진집 《야간 근무》<small>포토프레스 · 128쪽 · 사진 54점 · 노동자 27명 이름 수록</small></span>
+        <span class="place"><b>서울 · 포토프레스</b><br>ISBN 979-11-90514-77-1</span>
+      </li>
+      <li class="record-row" data-type="group">
+        <span class="yr">2021</span>
+        <span class="type">Group<span class="ko">단체전</span></span>
+        <span class="title">〈일하는 손〉<small>노동 기록 사진 기획전 · 〈야간 근무〉 초기 작업 8점</small></span>
+        <span class="place"><b>부산 · 부산기록사진관</b><br>2021.11.05 – 12.19</span>
+      </li>
+      <li class="record-row" data-type="pub">
+        <span class="yr">2020</span>
+        <span class="type">Press<span class="ko">출판</span></span>
+        <span class="title">《월간 기록》 2020년 9월호 특집 ‘남해의 어부들’<small>사진 22점 · 24쪽 수록 · 글 정하늘</small></span>
+        <span class="place"><b>서울 · 월간 기록</b><br>통권 214호</span>
+      </li>
+      <li class="record-row" data-type="solo">
+        <span class="yr">2019</span>
+        <span class="type">Solo<span class="ko">개인전</span></span>
+        <span class="title">〈남해 일지〉<small>경남 남해 미조항 어부들 · 2017–2019 · 젤라틴 실버 프린트 20점</small></span>
+        <span class="place"><b>서울 · 갤러리 이안</b><br>2019.05.10 – 06.09</span>
+      </li>
+      <li class="record-row" data-type="group">
+        <span class="yr">2018</span>
+        <span class="type">Group<span class="ko">단체전</span></span>
+        <span class="title">〈청년 다큐멘터리 5인〉<small>광주 사진문화재단 기획 · 초기작 〈골목의 시간〉 10점</small></span>
+        <span class="place"><b>광주 · 광주시립사진전시관</b><br>2018.06.21 – 08.05</span>
+      </li>
+      <li class="record-row" data-type="solo">
+        <span class="yr">2016</span>
+        <span class="type">Solo<span class="ko">개인전</span></span>
+        <span class="title">〈골목의 시간〉<small>서울 창신동 봉제골목 · 2013–2016 · 첫 개인전</small></span>
+        <span class="place"><b>서울 · 스페이스 창신</b><br>2016.10.14 – 11.13</span>
+      </li>
+      <li class="record-row" data-type="group">
+        <span class="yr">2014</span>
+        <span class="type">Group<span class="ko">단체전</span></span>
+        <span class="title">〈서울, 지금〉<small>서울시민갤러리 신진작가 공모 선정 · 6점</small></span>
+        <span class="place"><b>서울 · 서울시민갤러리</b><br>2014.04.03 – 05.11</span>
+      </li>
+    </ol>
+    <p class="record-empty" id="recordEmpty">해당 종류의 이력이 없습니다.</p>
+
+    <div class="record-foot">
+      <span>이력은 2025년 11월 기준입니다.</span>
+      <a class="link-arrow" href="mailto:hello@jeonghaneul.kr?subject=%EC%A0%84%EC%B2%B4%20%EC%9D%B4%EB%A0%A5%20%EC%9A%94%EC%B2%AD">전체 이력 PDF 요청 (메일)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     05 의뢰 안내
+     ====================================================================== -->
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="commission-intro">
+      <div>
+        <span class="label" style="margin-bottom:24px"><span class="num">05</span><span class="ko">의뢰</span></span>
+        <h2 id="contact-title" class="h-section">기록이 필요한 자리에 함께 갑니다.</h2>
+      </div>
+      <p class="lede">개인 시리즈와 같은 방식으로 의뢰 작업을 진행합니다. 빠른 결과보다 오래 남는 기록이 필요할 때 프로젝트를 이야기해 주세요. 한 해에 4 – 6건만 맡습니다. 그래야 각 현장에 여섯 주를 쓸 수 있습니다.</p>
+    </div>
+
+    <div class="scopes">
+      <div class="scopes-cols" aria-hidden="true"><span></span><span>촬영 범위</span><span>어떻게 진행하는지</span><span>기간 · 산출물 · 비용</span></div>
+      <article class="scope">
+        <span class="num">A</span>
+        <div>
+          <h3>기록 촬영</h3>
+          <p class="who">공동체·마을·현장을 수개월에서 수년에 걸쳐 따라가는 장기 기록.<br>주 의뢰처 <b>문화재단 · 지자체 · 연구기관</b></p>
+        </div>
+        <p>2023년 영양 촬영과 같은 방식으로 진행합니다. 소개자를 통해 들어가고, 첫 방문은 카메라 없이, 분기마다 체류 일정을 다시 잡습니다. 끝나면 촬영 노트와 캡션, 원본 스캔을 묶은 아카이브를 통째로 인계합니다. 최근 예로는 재개발을 앞둔 인천 배다리 마을 14개월 기록이 있습니다.</p>
+        <ul>
+          <li><span>기간</span><span>최소 4주에서 3년까지</span></li>
+          <li><span>산출물</span><span>프린트 · 스캔 아카이브 · 캡션 문서</span></li>
+          <li><span>비용</span><span><b>월 단위 계약</b>, 체류일 기준 산정</span></li>
+        </ul>
+      </article>
+      <article class="scope">
+        <span class="num">B</span>
+        <div>
+          <h3>인물 촬영</h3>
+          <p class="who">장인·연구자·농부·창업자 등 일하는 사람의 초상.<br>주 의뢰처 <b>출판사 · 매체 · 기업 홍보팀</b></p>
+        </div>
+        <p>스튜디오가 아니라 그분의 일터에서, 반나절에서 이틀을 함께 지내며 찍습니다. 조명을 세우지 않고 그 자리의 빛으로만 찍기 때문에 첫날 오전은 대개 카메라를 꺼내지 않습니다. 흑백 필름으로 촬영하고 젤라틴 실버 인화본을 드립니다.</p>
+        <ul>
+          <li><span>기간</span><span>반나절 – 2일 동행</span></li>
+          <li><span>산출물</span><span>인화본 3 – 5점 · 스캔 파일</span></li>
+          <li><span>비용</span><span><b>1일 120만 원부터</b> + 필름·인화 실비</span></li>
+        </ul>
+      </article>
+      <article class="scope">
+        <span class="num">C</span>
+        <div>
+          <h3>공간 촬영</h3>
+          <p class="who">철거·이전·개조를 앞둔 공간의 기록.<br>주 의뢰처 <b>건축사무소 · 기록기관 · 소유주</b></p>
+        </div>
+        <p>오래된 병원, 공방, 극장, 학교, 주택을 사람이 쓰던 상태 그대로 남깁니다. 도면 위에 촬영 위치를 표시하고, 그 공간을 써 온 분의 구술을 함께 정리해 건축사무소나 기록기관에 전달합니다. 2024년에는 이전을 앞둔 원주의 60년 된 산부인과를 8일간 기록했습니다.</p>
+        <ul>
+          <li><span>기간</span><span>2 – 10일</span></li>
+          <li><span>산출물</span><span>프린트 · 도면 매칭 사진집 · 구술 기록</span></li>
+          <li><span>비용</span><span><b>1일 140만 원부터</b>, 구술 정리 별도</span></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="commission-body">
+      <div class="contact-info">
+        <h3>프로젝트를 이야기해 주세요.</h3>
+        <div class="body">
+          <p>어떤 장소, 어떤 사람, 어떤 시점인지 편하게 적어 보내 주시면 됩니다. 아직 정리되지 않은 생각이어도 괜찮습니다. 첫 상담은 무료이며, 서울·경기는 대면으로, 그 외 지역은 화상으로 진행합니다. 견적은 일정·매체·인화 수량을 기준으로 서면으로 드립니다.</p>
+        </div>
+        <div class="contact-direct">
+          <a href="mailto:hello@jeonghaneul.kr"><span class="k">Email</span>hello@jeonghaneul.kr</a>
+          <a href="tel:+821042371193"><span class="k">Phone</span>010-4237-1193 <span style="font-size:13px;color:var(--fg-muted)">(평일 10 – 18시)</span></a>
+          <a href="https://instagram.com/jeonghaneul.photo" target="_blank" rel="noopener noreferrer"><span class="k">Instagram</span>@jeonghaneul.photo</a>
+        </div>
+        <dl class="terms">
+          <div><dt>회신</dt><dd><b>영업일 3일 이내</b>에 답장드립니다. 현장 체류 중이면 자동 회신으로 복귀일을 알려 드립니다.</dd></div>
+          <div><dt>일정</dt><dd>의뢰 접수는 촬영 희망일 <b>최소 6주 전</b>. 장기 기록은 분기 단위로 조율합니다.</dd></div>
+          <div><dt>비용</dt><dd>일 단위 촬영료 + 필름·현상·인화 실비. 범위별 기준은 위 표에 있고, <b>서면 견적 후 계약</b>합니다. 착수금 30%, 잔금은 인화본 전달 시.</dd></div>
+          <div><dt>권리</dt><dd>저작권은 촬영자에게, <b>사용 범위·기간·매체</b>는 계약서에 명시. 촬영된 분의 확인 절차는 의뢰 작업에도 동일하게 적용.</dd></div>
+          <div><dt>작업실</dt><dd>서울 성북구 성북로 23길 14, 2층 (암실 겸 사무실). 방문은 사전 약속.</dd></div>
+        </dl>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-head">
+          <h3>의뢰 문의</h3>
+          <span>영업일 3일 이내 회신</span>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-name">이름 · 소속<span class="req">필수</span></label>
+            <input type="text" id="f-name" name="name" autocomplete="name" placeholder="예: 김서연 · 목포문화재단" required>
+            <span class="hint" data-hint></span>
+          </div>
+          <div class="field">
+            <label for="f-email">이메일<span class="req">필수</span></label>
+            <input type="email" id="f-email" name="email" autocomplete="email" placeholder="답장을 받을 주소" required>
+            <span class="hint" data-hint></span>
+          </div>
+          <div class="field">
+            <label for="f-type">촬영 종류<span class="req">필수</span></label>
+            <select id="f-type" name="type" required>
+              <option value="">선택해 주세요</option>
+              <option value="record">A · 기록 촬영 (장기)</option>
+              <option value="portrait">B · 인물 촬영</option>
+              <option value="space">C · 공간 촬영</option>
+              <option value="other">아직 모르겠습니다 — 상담부터</option>
+            </select>
+            <span class="hint" data-hint></span>
+          </div>
+          <div class="field">
+            <label for="f-when">희망 시기</label>
+            <input type="text" id="f-when" name="when" placeholder="예: 2026년 10월, 또는 미정">
+            <span class="hint" data-hint></span>
+          </div>
+          <div class="field field--full">
+            <label for="f-msg">이야기<span class="req">필수</span></label>
+            <textarea id="f-msg" name="message" placeholder="어떤 장소와 사람을, 왜 기록하고 싶은지 편하게 적어 주세요. 예산 범위가 있다면 함께 알려 주시면 상담이 빨라집니다." required minlength="20"></textarea>
+            <span class="hint" data-hint>20자 이상</span>
+          </div>
+          <div class="field field--full field--check">
+            <input type="checkbox" id="f-agree" name="agree" required>
+            <label for="f-agree">보내 주신 정보는 상담과 회신에만 쓰고, 상담 종료 후 6개월 내 삭제합니다. 이에 동의합니다.<span class="hint" data-hint style="display:block"></span></label>
+          </div>
+        </div>
+        <div class="form-foot">
+          <button class="btn-solid" type="submit" id="submitBtn">프로젝트 이야기하기</button>
+          <span class="note">보내기 전에 위 촬영 범위 표를 한 번 봐 주세요.</span>
+        </div>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================================================================
+     푸터
+     ====================================================================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <p class="footer-line">여기 있는 모든 사진은 찍힌 분이 먼저 보고 허락한 것입니다.</p>
+      <div class="footer-nav">
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="#about">작가</a></li>
+            <li><a href="#work">시리즈</a></li>
+            <li><a href="#process">작업 방식</a></li>
+            <li><a href="#record">이력</a></li>
+            <li><a href="#contact">의뢰</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@jeonghaneul.kr">hello@jeonghaneul.kr</a></li>
+            <li><a href="tel:+821042371193">010-4237-1193</a></li>
+            <li><a href="https://instagram.com/jeonghaneul.photo" target="_blank" rel="noopener noreferrer">@jeonghaneul.photo</a></li>
+            <li><address style="font-size:13px;color:var(--fg-muted);margin-top:10px;line-height:1.6">서울 성북구 성북로 23길 14, 2층<br>암실 · 사무실 (방문 예약제)</address></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 <span class="ko">정하늘</span> Jeong Haneul<span class="sep" aria-hidden="true">·</span>Seoul, Korea<span class="sep" aria-hidden="true">·</span>Documentary Photographer</span>
+      <span><span class="ko">모든 사진의 저작권은 작가에게 있으며 무단 사용을 금합니다.</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================================================================
+     라이트박스
+     ====================================================================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="사진 크게 보기" aria-hidden="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" type="button" id="lightboxClose">닫기
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
+    </button>
+    <div class="lightbox-stage">
+      <img id="lightboxImg" src="" alt="">
+      <button class="lightbox-btn lightbox-prev" type="button" id="lightboxPrev" aria-label="이전 사진">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M11 3L5 9l6 6"/></svg>
+      </button>
+      <button class="lightbox-btn lightbox-next" type="button" id="lightboxNext" aria-label="다음 사진">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M7 3l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-cap">
+      <span><span class="series-name" id="lightboxSeries"></span><span id="lightboxCaption"></span></span>
+      <span class="idx" id="lightboxIdx"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ------------------------------------------------------------------
+     헤더: 투명 -> 짙은 단색, 모바일 메뉴, 현재 섹션 표시
+     ------------------------------------------------------------------ */
+  var header = document.getElementById('siteHeader');
+  var navToggle = document.getElementById('navToggle');
+  var nav = document.getElementById('primaryNav');
+  var navLinks = nav.querySelectorAll('a[data-nav]');
+
+  function onScroll() {
+    if (window.scrollY > 40) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  function closeNav() {
+    header.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.querySelector('.nav-toggle-text').textContent = '메뉴';
+    document.body.style.overflow = '';
+  }
+  function openNav() {
+    header.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.querySelector('.nav-toggle-text').textContent = '닫기';
+    document.body.style.overflow = 'hidden';
+  }
+  navToggle.addEventListener('click', function () {
+    if (header.classList.contains('is-open')) closeNav(); else openNav();
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest('a')) closeNav();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && header.classList.contains('is-open')) closeNav();
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900 && header.classList.contains('is-open')) closeNav();
+  });
+
+  // 현재 섹션 표시
+  var sectionIds = ['about', 'work', 'process', 'record', 'contact'];
+  var sections = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  if ('IntersectionObserver' in window) {
+    var current = null;
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) current = entry.target.id;
+      });
+      navLinks.forEach(function (a) {
+        a.classList.toggle('is-active', a.getAttribute('data-nav') === current);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { navObserver.observe(s); });
+  }
+
+  /* ------------------------------------------------------------------
+     느린 상승 페이드
+     ------------------------------------------------------------------ */
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { revealObserver.observe(el); });
+  }
+
+  /* ------------------------------------------------------------------
+     이미지 로드 실패 대비 — 배경색은 CSS가 유지, 실패 시 alt 텍스트만 조용히 표기
+     ------------------------------------------------------------------ */
+  document.querySelectorAll('.frame img, .hero-media img').forEach(function (img) {
+    img.addEventListener('error', function () {
+      img.style.opacity = '0';
+      var holder = img.parentElement;
+      if (holder && !holder.querySelector('.img-fallback')) {
+        var f = document.createElement('span');
+        f.className = 'img-fallback';
+        f.textContent = img.alt || '';
+        f.setAttribute('aria-hidden', 'true');
+        f.style.cssText = 'position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px;font-size:12px;line-height:1.5;color:#8f887c;letter-spacing:.02em;';
+        holder.appendChild(f);
+      }
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     라이트박스 — 시리즈 사진 크게 보기 (키보드 ← -> Esc)
+     ------------------------------------------------------------------ */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  var lbCap = document.getElementById('lightboxCaption');
+  var lbSeries = document.getElementById('lightboxSeries');
+  var lbIdx = document.getElementById('lightboxIdx');
+  var lbClose = document.getElementById('lightboxClose');
+  var lbPrev = document.getElementById('lightboxPrev');
+  var lbNext = document.getElementById('lightboxNext');
+  var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
+  var lbIndex = -1;
+  var lastFocus = null;
+
+  function shotData(btn) {
+    var article = btn.closest('.series');
+    var img = btn.querySelector('img');
+    return {
+      full: btn.getAttribute('data-full'),
+      caption: btn.getAttribute('data-caption') || (img ? img.alt : ''),
+      alt: img ? img.alt : '',
+      color: btn.hasAttribute('data-color'),
+      series: article ? article.getAttribute('data-series') : '',
+      // 같은 시리즈 안에서 몇 번째인지
+      posInSeries: (function () {
+        var list = article ? Array.prototype.slice.call(article.querySelectorAll('[data-lightbox]')) : [btn];
+        return { i: list.indexOf(btn) + 1, n: list.length };
+      })()
+    };
+  }
+
+  function showAt(i) {
+    if (i < 0) i = triggers.length - 1;
+    if (i >= triggers.length) i = 0;
+    lbIndex = i;
+    var d = shotData(triggers[i]);
+    var swap = function () {
+      lbImg.src = d.full;
+      lbImg.alt = d.alt;
+      lbImg.classList.toggle('is-color', d.color);
+      lbCap.textContent = d.caption;
+      lbSeries.textContent = '〈' + d.series + '〉';
+      lbIdx.textContent = String(d.posInSeries.i).padStart(2, '0') + ' / ' + String(d.posInSeries.n).padStart(2, '0');
+    };
+    if (reduceMotion) { swap(); return; }
+    lbImg.classList.add('is-switching');
+    setTimeout(function () {
+      swap();
+      var done = function () { lbImg.classList.remove('is-switching'); lbImg.removeEventListener('load', done); };
+      if (lbImg.complete) done(); else lbImg.addEventListener('load', done);
+      setTimeout(done, 1200);
+    }, reduceMotion ? 0 : 260);
+  }
+
+  function openLightbox(i) {
+    lastFocus = document.activeElement;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showAt(i);
+    lbClose.focus();
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lbImg.removeAttribute('src');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  triggers.forEach(function (btn, i) {
+    btn.addEventListener('click', function () { openLightbox(i); });
+  });
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', function () { showAt(lbIndex - 1); });
+  lbNext.addEventListener('click', function () { showAt(lbIndex + 1); });
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); showAt(lbIndex - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); showAt(lbIndex + 1); }
+    else if (e.key === 'Tab') {
+      // 간단한 포커스 트랩
+      var focusables = [lbClose, lbPrev, lbNext];
+      var idx = focusables.indexOf(document.activeElement);
+      if (e.shiftKey && (idx <= 0)) { e.preventDefault(); focusables[focusables.length - 1].focus(); }
+      else if (!e.shiftKey && idx === focusables.length - 1) { e.preventDefault(); focusables[0].focus(); }
+    }
+  });
+
+  /* ------------------------------------------------------------------
+     이력 필터
+     ------------------------------------------------------------------ */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.record-row'));
+  var emptyMsg = document.getElementById('recordEmpty');
+
+  function applyFilter(type) {
+    var visible = 0;
+    rows.forEach(function (row, i) {
+      var match = type === 'all' || row.getAttribute('data-type') === type;
+      if (match) {
+        row.classList.remove('is-hidden');
+        if (!reduceMotion) {
+          row.classList.add('is-fading');
+          // 리플로우 후 순차 등장
+          setTimeout(function () { row.classList.remove('is-fading'); }, 30 + visible * 45);
+        }
+        visible++;
+      } else {
+        row.classList.add('is-hidden');
+        row.classList.remove('is-fading');
+      }
+    });
+    emptyMsg.classList.toggle('is-shown', visible === 0);
+  }
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      btn.setAttribute('aria-pressed', 'true');
+      applyFilter(btn.getAttribute('data-filter'));
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     의뢰 폼 — 검증 후 접수 안내(데모: 서버 전송 없음)
+     ------------------------------------------------------------------ */
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('submitBtn');
+
+  function setHint(field, msg) {
+    var wrap = field.closest('.field');
+    var hint = wrap ? wrap.querySelector('[data-hint]') : null;
+    if (!wrap) return;
+    if (msg) {
+      wrap.classList.add('is-invalid');
+      if (hint) hint.textContent = msg;
+      field.setAttribute('aria-invalid', 'true');
+    } else {
+      wrap.classList.remove('is-invalid');
+      if (hint) hint.textContent = hint.getAttribute('data-default') || '';
+      field.removeAttribute('aria-invalid');
+    }
+  }
+  // 기본 힌트 보존
+  form.querySelectorAll('[data-hint]').forEach(function (h) { h.setAttribute('data-default', h.textContent); });
+
+  function validateField(field) {
+    var v = (field.value || '').trim();
+    if (field.type === 'checkbox') {
+      if (field.required && !field.checked) return '동의가 필요합니다.';
+      return '';
+    }
+    if (field.required && !v) {
+      if (field.tagName === 'SELECT') return '촬영 종류를 골라 주세요.';
+      return '필수 항목입니다.';
+    }
+    if (field.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return '이메일 형식을 확인해 주세요.';
+    if (field.minLength > 0 && v.length < field.minLength) return '조금 더 적어 주세요. (' + v.length + ' / ' + field.minLength + '자)';
+    return '';
+  }
+
+  var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+  fields.forEach(function (f) {
+    f.addEventListener('blur', function () { setHint(f, validateField(f)); });
+    f.addEventListener('input', function () {
+      if (f.closest('.field').classList.contains('is-invalid')) setHint(f, validateField(f));
+    });
+    if (f.type === 'checkbox') f.addEventListener('change', function () { setHint(f, validateField(f)); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstBad = null;
+    fields.forEach(function (f) {
+      var msg = validateField(f);
+      setHint(f, msg);
+      if (msg && !firstBad) firstBad = f;
+    });
+    status.classList.remove('is-shown');
+    if (firstBad) {
+      firstBad.focus();
+      status.textContent = '표시된 항목을 확인해 주세요.';
+      status.classList.add('is-shown');
+      return;
+    }
+    var name = form.querySelector('#f-name').value.trim();
+    var typeSel = form.querySelector('#f-type');
+    var typeLabel = typeSel.options[typeSel.selectedIndex].text;
+    submitBtn.disabled = true;
+    submitBtn.textContent = '보내는 중…';
+    setTimeout(function () {
+      status.innerHTML = '<b>' + escapeHtml(name) + '</b> 님, 이야기를 잘 받았습니다. “' + escapeHtml(typeLabel) + '” 의뢰로 접수되었고, <b>영업일 3일 이내</b>에 hello@jeonghaneul.kr에서 답장드리겠습니다. 현장 체류 중이면 복귀일을 먼저 알려 드립니다.';
+      status.classList.add('is-shown');
+      form.reset();
+      fields.forEach(function (f) { setHint(f, ''); });
+      submitBtn.disabled = false;
+      submitBtn.textContent = '프로젝트 이야기하기';
+      status.setAttribute('tabindex', '-1');
+      status.focus();
+    }, reduceMotion ? 0 : 900);
+  });
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+})();
+</script>
+</body>
+</html>

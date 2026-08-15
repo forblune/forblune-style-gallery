@@ -1,0 +1,53 @@
+{
+  "slug": "cinematic-photographer",
+  "brand": "정하늘 JEONG HANEUL",
+  "industry": "다큐멘터리 사진가",
+  "primaryStyle": "Cinematic",
+  "productType": "Portfolio",
+  "tone": "Serious · Human · Documentary",
+  "secondary": "Editorial",
+  "accent": "Corporate",
+  "coreMessage": "어떤 시선으로 사람과 장소를 기록하는지 보여주어 기록을 맡길 수 있다고 믿게 한다",
+  "naming": "Cinematic / Portfolio / Serious · Human · Documentary",
+  "palette": {
+    "black": "#0b0b0a",
+    "charcoal": "#121211",
+    "charcoal2": "#1a1917",
+    "raised": "#242320",
+    "ivory": "#efe9dd",
+    "fg": "#e8e3d8",
+    "fgMuted": "#8f887c",
+    "ink": "#171614",
+    "accent": "#d8631f",
+    "accentDeep": "#b9511a",
+    "note": "블랙/차콜/웜 블랙 + 아이보리 섹션 1개, 포인트는 오렌지 1색(#d8631f, 밝은 배경에서는 #b9511a) — 링크 밑줄·번호·얇은 선·CTA·필터 표시에만"
+  },
+  "typography": {
+    "body": "Pretendard Variable (system-ui, Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR 폴백) — 한국어 본문·제목·이름",
+    "display": "Barlow Condensed — 영문 섹션 라벨·연도·번호·크레딧 dt에만 (Cinematic 압축형 산세리프, 자간 넓은 대문자 라벨)",
+    "radius": "2px 단일 규칙 (버튼·프레임·폼 박스)"
+  },
+  "sections": [
+    "Header (투명 → 스크롤 시 짙은 단색, 현재 섹션 표시, 모바일 전체화면 메뉴)",
+    "Hero (대표 사진 풀블리드 흑백 + 필름 그레인 + 28초 느린 줌, 이름 크게·역할 작게, 한 줄 선언, 시리즈 보기 / 작업 방식 알아보기, 사진 크레딧)",
+    "About 01 (하의도 촬영 중 사진 sticky, 이름·역할 → 작업 방식 → 경험, 큰 인용문, 활동·매체·인화 메타 목록, 판단 기준 4개 줄 목록 I–IV)",
+    "Series 02-01 남겨진 마을 (2023, 경북 영양 수비면, 35mm 흑백, 4컷 7·5/5·7 그리드, 에세이, 크레딧 dl)",
+    "Series 02-02 야간 근무 (2021, 인천 남동공단, 35mm 흑백 증감, 4컷 8·4/6·6 그리드, 에세이, 크레딧 dl, 수상)",
+    "Series 02-03 바다가 오는 시간 (2024–진행 중, 신안 하의도, 6×7 컬러 네거티브 저채도, 4컷 5·7/7·5 그리드, 에세이, 크레딧 dl)",
+    "Process 03 (접근 → 머무름 → 촬영 → 선택 → 인화, 좌측 sticky 요약, 단계별 소요 기간, 단계마다 개수가 다른 확인 항목 2–4개)",
+    "Record 04 (아이보리 섹션, 이력 요약 문장, 종류 필터 밑줄 탭, 연도·종류·제목·장소 12건, 전체 이력 PDF 메일 요청)",
+    "Commission 05 (범위 A·B·C 요율표형 가로 줄: 진행 방식·기간·산출물·비용, 협업 어조 문장, 직접 연락처, 회신·일정·비용·권리·작업실 조건, 의뢰 폼)",
+    "Footer (가장 짙은 색, 철학 한 줄, 사이트 인덱스, 연락처·주소, ©·지역·직무)"
+  ],
+  "interactions": [
+    "스크롤 시 헤더 투명 → 단색 전환 + IntersectionObserver 현재 섹션 내비 밑줄",
+    "모바일 메뉴 열기/닫기 (aria-expanded, Esc, 링크 클릭 시 닫힘, 리사이즈 시 자동 닫힘)",
+    "히어로 느린 줌(28s) + 필름 그레인 오버레이, 히어로 요소 순차 페이드 인 (prefers-reduced-motion 시 비활성)",
+    "시리즈 사진 12컷과 작가 사진만 느린 상승 페이드 등장 — 텍스트는 즉시 표시",
+    "시리즈 사진 라이트박스 (이전/다음, 키보드 ←/→/Esc, 포커스 트랩, 시리즈 내 카운터, 컬러 시리즈 필터 유지, 닫을 때 원래 포커스 복귀)",
+    "전시·출판 이력 종류 필터 (전체/개인전/단체전/출판/수상, 밑줄 탭, 순차 페이드, 빈 결과 메시지)",
+    "의뢰 폼 클라이언트 검증 (필수·이메일 형식·20자 이상·동의) + 제출 후 이름·범위·회신 기대치 확인 메시지, 상태 영역 포커스 이동"
+  ],
+  "images": "loremflickr 키워드 고정(lock 101–134): hero village,people · about documentary,portrait · 시리즈01 village,people · 시리즈02 factory,workers · 시리즈03 harbor,workers. 흑백 grayscale 필터 기본, 시리즈03만 saturate(0.58) 저채도 컬러. 모든 프레임 배경색 + aspect-ratio 고정, loading=lazy, 서술형 alt",
+  "path": "sites/cinematic-photographer/index.html"
+}

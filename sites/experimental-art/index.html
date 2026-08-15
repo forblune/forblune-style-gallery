@@ -1,0 +1,1384 @@
+<!-- forblune-style: {"slug":"experimental-art","primaryStyle":"Experimental","productType":"Exhibition Site","tone":"Dark · Immersive · Curious","secondary":"Cinematic","accent":"Kinetic","brand":"빛의 잔향 AFTERGLOW","industry":"미디어아트 전시","coreMessage":"커서가 곧 빛이 되어 화면을 밝히며 전시를 미리 경험하게 한다","naming":"Experimental / Exhibition Site / Dark · Immersive · Curious"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>빛의 잔향 AFTERGLOW — 미디어아트 전시 · 2026.09.04–11.29 성수 언더그라운드 홀</title>
+<meta name="description" content="빛이 꺼진 뒤의 시간을 다루는 미디어아트 전시. 다섯 작품, 다섯 가지 색. 2026년 9월 4일부터 11월 29일까지 성수 언더그라운드 홀 지하 1·2층. 화–일 11:00–20:00, 사전예매 1,000원 할인.">
+<meta name="theme-color" content="#060607">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* ---------------------------------------------------------
+   토큰 — 거의 완전한 검정, 따뜻한 흰 잉크, 작품별 색 하나씩
+   서체는 Pretendard Variable 하나. 굵기 200과 500의 차이로 위계를 만든다.
+   모서리 규칙: 0. 어디에도 둥근 모서리를 쓰지 않는다(커서 링 제외).
+   --------------------------------------------------------- */
+:root{
+  --void:#060607;
+  --void-2:#0d0d11;
+  --ink:#f1efe8;
+  --ink-70:rgba(241,239,232,.7);
+  --ink-45:rgba(241,239,232,.52); /* 13px 라벨이 4.5:1 을 넘기는 최소값 */
+  --ink-25:rgba(241,239,232,.25);
+  --ink-10:rgba(241,239,232,.1);
+  --rule:rgba(241,239,232,.14);
+  --rule-strong:rgba(241,239,232,.34);
+
+  --w1:#f2a640;   /* 01 잔향 — 호박색 */
+  --w2:#3fd3c4;   /* 02 심해 회로 — 청록 */
+  --w3:#c8b6ff;   /* 03 흰 소음의 방 — 연보라 */
+  --w4:#ff5a45;   /* 04 불면 — 주홍 */
+  --w5:#8fe07a;   /* 05 새벽 두 시의 결 — 연둣빛 */
+
+  --font:"Pretendard Variable",Pretendard,system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+
+  --gutter:clamp(20px,5vw,84px);
+  --nav-h:64px;
+  --beam:280px;     /* 빛의 반경 */
+  --dim:1;          /* 장막 농도 배율 — 터치·모션 축소 환경에서 낮춤 */
+  --mx:50vw;        /* 뷰포트 기준 빛 좌표 (JS) */
+  --my:45vh;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+@media (max-width:767px){
+  :root{--beam:170px;--nav-h:56px}
+}
+@media (hover:none){
+  :root{--dim:.62}
+}
+@media (prefers-reduced-motion:reduce){
+  :root{--dim:.4}
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--void);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--void);
+  line-height:1.6;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  font-variant-numeric:tabular-nums;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit;letter-spacing:inherit}
+button{background:none;border:0;cursor:pointer;border-radius:0}
+input,select{border-radius:0}
+ol,ul{list-style:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{
+  position:fixed;left:var(--gutter);top:10px;z-index:80;
+  padding:8px 14px;background:var(--ink);color:var(--void);font-size:13px;
+  transform:translateY(-200%);transition:transform .2s;
+}
+.skip:focus{transform:none}
+
+/* 링크·버튼 공통 */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  min-height:44px;padding:0 22px;
+  border:1px solid var(--rule-strong);
+  font-size:14px;letter-spacing:.06em;
+  transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease);
+}
+.btn:hover{background:var(--ink);color:var(--void);border-color:var(--ink)}
+.btn--solid{background:var(--ink);color:var(--void);border-color:var(--ink)}
+.btn--solid:hover{background:var(--ink-70);border-color:transparent}
+.link{border-bottom:1px solid var(--rule-strong);transition:border-color .2s}
+.link:hover{border-color:var(--ink)}
+
+/* ---------------------------------------------------------
+   빛 — 커서 링, 앰비언트 빔, 장막(veil)
+   [data-lit] 요소는 JS가 --lx/--ly(요소 기준 px)를 갱신한다.
+   .veiled 는 빛 반경 바깥을 검게 덮는 ::after 를 갖는다.
+   --------------------------------------------------------- */
+.beam{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(circle var(--beam) at var(--mx) var(--my),rgba(241,239,232,.045),transparent 72%);
+}
+.ring{
+  position:fixed;left:0;top:0;z-index:70;pointer-events:none;
+  width:12px;height:12px;border:1px solid var(--ink);border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition:width .22s var(--ease),height .22s var(--ease),opacity .3s;
+  will-change:transform;
+  opacity:0;
+}
+.ring.is-on{opacity:1}
+.ring.is-hover{width:44px;height:44px}
+html.lit .ring,html.touch .ring{display:none}
+@media (prefers-reduced-motion:reduce){.ring,.beam{display:none}}
+
+.veiled{position:relative;isolation:isolate}
+.veiled::after{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(circle var(--beam) at var(--lx,50%) var(--ly,50%),
+    transparent 0,
+    rgba(6,6,7,calc(var(--veil,.9) * var(--dim) * .5)) 55%,
+    rgba(6,6,7,calc(var(--veil,.9) * var(--dim))) 100%);
+  transition:opacity .7s var(--ease);
+}
+html.lit .veiled::after{opacity:0}
+
+/* 손전등 커서 — 호버 가능한 기기에서만 네이티브 커서를 숨긴다 */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  html:not(.lit) .gate,html:not(.lit) .statement,html:not(.lit) .works{cursor:none}
+  html:not(.lit) .gate a,html:not(.lit) .gate button,
+  html:not(.lit) .works a,html:not(.lit) .works button{cursor:none}
+}
+
+/* ---------------------------------------------------------
+   상단 내비
+   --------------------------------------------------------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:0 var(--gutter);
+  transition:background .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+html.scrolled .nav{background:rgba(6,6,7,.92);border-color:var(--rule)}
+.nav-brand{
+  font-size:13px;letter-spacing:.42em;font-weight:500;
+  display:flex;align-items:center;gap:14px;
+}
+.nav-brand small{font-size:12px;letter-spacing:.02em;font-weight:400;color:var(--ink-45)}
+.nav-links{display:flex;gap:28px;font-size:14px}
+.nav-links a{position:relative;padding:6px 0;color:var(--ink-70);transition:color .2s}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--ink);
+  transition:right .3s var(--ease);
+}
+.nav-links a:hover,.nav-links a[aria-current="true"]{color:var(--ink)}
+.nav-links a[aria-current="true"]::after{right:0}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.light-toggle{
+  min-height:36px;padding:0 12px;font-size:13px;color:var(--ink-70);
+  border:1px solid var(--rule);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:color .2s,border-color .2s;
+}
+.light-toggle:hover{color:var(--ink);border-color:var(--rule-strong)}
+.light-toggle::before{
+  content:"";width:8px;height:8px;background:currentColor;
+  transform:scale(.55);transition:transform .3s var(--ease);
+}
+.light-toggle[aria-pressed="true"]::before{transform:scale(1)}
+.nav .btn{min-height:36px;padding:0 14px;font-size:13px}
+@media (max-width:767px){
+  .nav-links{display:none}
+  .nav-brand small{display:none}
+}
+@media (max-width:420px){
+  .nav-brand{letter-spacing:.28em}
+  .nav .light-toggle{padding:0 10px}
+  .nav .btn{padding:0 12px}
+}
+
+/* ---------------------------------------------------------
+   입장 화면
+   --------------------------------------------------------- */
+.gate{
+  position:relative;
+  min-height:100svh;
+  display:grid;grid-template-rows:auto 1fr auto;
+  padding:calc(var(--nav-h) + 24px) var(--gutter) 32px;
+  overflow:hidden;
+}
+.gate-top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:24px;
+  font-size:13px;color:var(--ink-45);letter-spacing:.02em;
+}
+.gate-top .cap{color:var(--ink-45);text-align:right;max-width:22ch}
+.gate-stage{position:relative;display:grid;place-items:center;min-height:52vh}
+.gate-title-wrap{position:relative;width:100%;text-align:center}
+.gate-title{
+  font-weight:200;
+  font-size:clamp(64px,15vw,236px);
+  line-height:.94;letter-spacing:-.015em;
+  color:var(--ink);
+}
+.gate-title .en{
+  display:block;margin-top:clamp(14px,2vw,28px);
+  font-size:clamp(13px,1.6vw,22px);
+  font-weight:400;letter-spacing:.48em;line-height:1;
+  padding-left:.48em; /* 자간 보정 */
+}
+.gate-title .sub{
+  display:block;margin-top:clamp(18px,2.4vw,34px);
+  font-size:clamp(14px,1.3vw,18px);font-weight:300;letter-spacing:.02em;
+  color:var(--ink-70);
+}
+/* 유령 제목: 언제나 아주 희미하게 보여 '여기 무언가 있다'를 알린다 */
+.gate-ghost{position:absolute;inset:0;color:transparent;pointer-events:none;user-select:none}
+.gate-ghost .gate-title{color:var(--ink-10)}
+.gate-ghost .gate-title .sub{color:var(--ink-10)}
+/* 밝혀지는 제목: 빛 반경 안에서만 보인다 */
+.gate-lit{
+  position:relative;
+  -webkit-mask-image:radial-gradient(circle var(--beam) at var(--lx,50%) var(--ly,45%),#000 0,rgba(0,0,0,.85) 40%,transparent 100%);
+          mask-image:radial-gradient(circle var(--beam) at var(--lx,50%) var(--ly,45%),#000 0,rgba(0,0,0,.85) 40%,transparent 100%);
+}
+html.lit .gate-lit{-webkit-mask-image:none;mask-image:none}
+@media (prefers-reduced-motion:reduce){
+  .gate-lit{-webkit-mask-image:none;mask-image:none}
+}
+.gate-bottom{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+}
+.gate-fact{font-size:14px;line-height:1.7;color:var(--ink-70)}
+.gate-fact strong{display:block;font-weight:500;color:var(--ink);font-size:15px}
+.gate-cta{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.gate-hint{font-size:13px;color:var(--ink-45);letter-spacing:.02em}
+.gate-hint .for-touch{display:none}
+@media (hover:none){
+  .gate-hint .for-mouse{display:none}
+  .gate-hint .for-touch{display:inline}
+}
+.gate-actions{display:flex;gap:10px}
+@media (max-width:767px){
+  .gate{padding-bottom:24px}
+  .gate-stage{min-height:46vh}
+  .gate-bottom{flex-direction:column;align-items:flex-start}
+  .gate-cta{align-items:flex-start}
+  .gate-top .cap{display:none}
+}
+
+/* ---------------------------------------------------------
+   입장 후 첫 문장
+   --------------------------------------------------------- */
+.statement{
+  padding:clamp(72px,10vw,150px) var(--gutter);
+  --veil:.6;
+}
+.statement-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(12,1fr);gap:32px 24px}
+.statement-lede{
+  grid-column:1/11;
+  font-weight:200;
+  font-size:clamp(28px,4.4vw,66px);
+  line-height:1.22;letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.statement-note{
+  grid-column:7/13;
+  font-size:16px;line-height:1.85;color:var(--ink-70);
+  max-width:52ch;
+}
+.statement-note b{font-weight:500;color:var(--ink)}
+@media (max-width:900px){
+  .statement-lede,.statement-note{grid-column:1/-1}
+}
+
+/* ---------------------------------------------------------
+   작품 5점
+   --------------------------------------------------------- */
+.works{padding:0 var(--gutter) clamp(60px,8vw,120px)}
+.works-inner{max-width:1440px;margin:0 auto}
+.works-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  padding:28px 0;border-top:1px solid var(--rule);
+}
+.works-head h2{font-weight:300;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.01em}
+.works-head p{font-size:14px;color:var(--ink-45)}
+.work{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:28px 24px;
+  padding:clamp(48px,7vw,110px) 0;
+  border-top:1px solid var(--rule);
+  scroll-margin-top:calc(var(--nav-h) + 12px);
+}
+.work-fig{
+  --veil:.94;
+  background:var(--void-2);
+  overflow:hidden;
+}
+.work-fig img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(.72) contrast(1.04);
+}
+/* 작품색 테두리 빛 — 빛의 가장자리에서 작품의 색이 배어 나온다 */
+.work-fig.veiled::after{
+  background:radial-gradient(circle var(--beam) at var(--lx,50%) var(--ly,50%),
+    transparent 0,transparent 36%,
+    rgba(6,6,7,calc(var(--veil) * var(--dim) * .35)) 62%,
+    rgba(6,6,7,calc(var(--veil) * var(--dim))) 100%);
+}
+@supports (color:color-mix(in srgb,#000 10%,transparent)){
+  .work-fig.veiled::after{
+    background:radial-gradient(circle var(--beam) at var(--lx,50%) var(--ly,50%),
+      transparent 0,transparent 34%,
+      color-mix(in srgb,var(--hue) 16%,transparent) 58%,
+      rgba(6,6,7,calc(var(--veil) * var(--dim))) 100%);
+  }
+}
+.work-body{
+  --veil:.5;
+  display:flex;flex-direction:column;gap:18px;
+  align-self:end;
+}
+.work-no{
+  font-weight:200;font-size:clamp(56px,7vw,112px);line-height:.9;letter-spacing:-.03em;
+  color:var(--hue);
+}
+.work-title{
+  font-weight:300;font-size:clamp(28px,3vw,42px);line-height:1.15;letter-spacing:-.01em;
+}
+.work-title .en{
+  display:block;margin-top:6px;
+  font-size:13px;font-weight:400;letter-spacing:.24em;color:var(--hue);
+}
+.work-meta{
+  display:grid;grid-template-columns:auto 1fr;gap:6px 18px;
+  font-size:13.5px;line-height:1.55;
+  padding-top:14px;border-top:1px solid var(--rule);
+}
+.work-meta dt{color:var(--ink-45)}
+.work-meta dd{color:var(--ink-70)}
+.work-desc{font-size:16px;line-height:1.8;color:var(--ink-70);max-width:48ch}
+.work-more{
+  align-self:flex-start;
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:13px;letter-spacing:.06em;color:var(--ink);
+  padding:6px 0;border-bottom:1px solid var(--rule-strong);
+  transition:border-color .2s,color .2s;
+}
+.work-more:hover{border-color:var(--hue);color:var(--hue)}
+.work-more::before{
+  content:"";width:9px;height:9px;border:1px solid currentColor;
+  transition:background .2s;
+}
+.work-more[aria-expanded="true"]::before{background:currentColor}
+.work-note{
+  font-size:14.5px;line-height:1.8;color:var(--ink-70);
+  padding:16px 18px;border-left:2px solid var(--hue);
+  max-width:48ch;
+}
+.work-note[hidden]{display:none}
+
+/* 다섯 작품, 다섯 배치 */
+.work--1 .work-fig{grid-column:1/8;aspect-ratio:3/2}
+.work--1 .work-body{grid-column:9/13}
+.work--2 .work-body{grid-column:1/5;order:1}
+.work--2 .work-fig{grid-column:6/13;aspect-ratio:16/10;order:2}
+.work--3 .work-fig{grid-column:1/13;aspect-ratio:21/9}
+.work--3 .work-body{grid-column:1/8;padding-top:8px}
+.work--4 .work-body{grid-column:1/6;order:1}
+.work--4 .work-fig{grid-column:7/12;aspect-ratio:4/5;order:2}
+.work--5 .work-fig{grid-column:1/9;aspect-ratio:16/9}
+.work--5 .work-body{grid-column:9/13}
+@media (max-width:1023px){
+  .work--1 .work-fig{grid-column:1/9}.work--1 .work-body{grid-column:9/13}
+  .work--4 .work-fig{grid-column:6/13}.work--4 .work-body{grid-column:1/6}
+}
+@media (max-width:860px){
+  .work .work-fig,.work .work-body{grid-column:1/-1;order:0}
+  .work .work-body{order:1}
+  .work--3 .work-fig{aspect-ratio:16/9}
+  .work--4 .work-fig{aspect-ratio:4/5;max-width:520px}
+  .work-desc,.work-note{max-width:none}
+}
+
+/* ---------------------------------------------------------
+   흐르는 띠 — Kinetic 악센트
+   --------------------------------------------------------- */
+.ticker{
+  overflow:hidden;white-space:nowrap;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:14px 0;
+  font-size:13px;letter-spacing:.16em;font-weight:500;color:var(--ink-70);
+}
+.ticker-track{display:inline-flex;gap:0;animation:ticker 38s linear infinite}
+.ticker-track span{padding:0 28px;position:relative}
+.ticker-track span::after{
+  content:"";position:absolute;right:-4px;top:50%;width:6px;height:6px;
+  transform:translateY(-50%);background:var(--ink-45);
+}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+}
+
+/* ---------------------------------------------------------
+   전시 안내 — 언제나 밝게, 언제나 읽히게
+   --------------------------------------------------------- */
+.info{
+  padding:clamp(80px,10vw,150px) var(--gutter);
+  scroll-margin-top:var(--nav-h);
+}
+.info-inner{
+  max-width:1440px;margin:0 auto;
+  display:grid;grid-template-columns:5fr 7fr;gap:48px 64px;
+}
+.info-lead h2{font-weight:300;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.01em}
+.info-dates{
+  margin-top:28px;
+  font-weight:200;font-size:clamp(52px,7.5vw,128px);line-height:.95;letter-spacing:-.03em;
+}
+.info-dates small{
+  display:block;margin-top:14px;
+  font-size:15px;font-weight:400;letter-spacing:.02em;color:var(--ink-70);
+}
+.info-lead .lead-note{margin-top:28px;font-size:15px;line-height:1.8;color:var(--ink-70);max-width:38ch}
+.info-list{border-top:1px solid var(--rule-strong)}
+.info-row{
+  display:grid;grid-template-columns:120px 1fr;gap:12px 24px;
+  padding:22px 0;border-bottom:1px solid var(--rule);
+}
+.info-row dt{font-size:13px;letter-spacing:.1em;color:var(--ink-45);padding-top:3px}
+.info-row dd{font-size:16px;line-height:1.75}
+.info-row dd p+p{margin-top:4px}
+.info-row dd .sub{font-size:14px;color:var(--ink-70)}
+.price{width:100%;border-collapse:collapse;font-size:15px}
+.price td{padding:6px 0;vertical-align:top;border-bottom:1px solid var(--rule)}
+.price tr:last-child td{border-bottom:0}
+.price td:last-child{text-align:right;white-space:nowrap;padding-left:20px}
+.price td span{display:block;font-size:13px;color:var(--ink-45)}
+.info-warn{display:grid;gap:6px;font-size:15px}
+.info-warn li{padding-left:16px;position:relative}
+.info-warn li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:1px;background:var(--ink-45)}
+.info-actions{margin-top:36px;display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:900px){
+  .info-inner{grid-template-columns:1fr;gap:40px}
+  .info-row{grid-template-columns:1fr;gap:6px}
+}
+
+/* ---------------------------------------------------------
+   작가 — Cinematic 톤. 이름 크게, 직무 작게, 판단 기준 한 문장.
+   --------------------------------------------------------- */
+.artists{
+  padding:clamp(72px,10vw,150px) var(--gutter);
+  border-top:1px solid var(--rule);
+  scroll-margin-top:var(--nav-h);
+}
+.artists-inner{max-width:1440px;margin:0 auto}
+.artists-head{
+  display:grid;grid-template-columns:5fr 7fr;gap:24px 64px;align-items:end;
+  margin-bottom:56px;
+}
+.artists-head h2{font-weight:300;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.01em}
+.artists-head p{font-size:17px;line-height:1.75;color:var(--ink-70);max-width:52ch}
+.artist{
+  display:grid;grid-template-columns:5fr 5fr 2fr;gap:16px 40px;
+  padding:34px 0;border-top:1px solid var(--rule);
+}
+.artist:last-child{border-bottom:1px solid var(--rule)}
+.artist-name{
+  font-weight:300;font-size:clamp(26px,3vw,40px);line-height:1.1;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+}
+.artist-name .mark{
+  display:inline-block;width:10px;height:10px;background:var(--hue);
+  transform:translateY(-2px);
+}
+.artist-base{display:block;margin-top:10px;font-size:13px;letter-spacing:.1em;color:var(--ink-45)}
+.artist-bio{font-size:15.5px;line-height:1.8;color:var(--ink-70)}
+.artist-bio p+p{margin-top:8px}
+.artist-shows{font-size:13.5px;color:var(--ink-45);margin-top:10px;line-height:1.7}
+.artist-works{display:flex;flex-direction:column;gap:8px;align-items:flex-start;font-size:14px}
+.artist-works .cap{font-size:12px;letter-spacing:.1em;color:var(--ink-45)}
+.artist-works a{
+  display:inline-flex;gap:10px;align-items:baseline;
+  padding-bottom:3px;border-bottom:1px solid var(--rule-strong);
+  transition:border-color .2s,color .2s;
+}
+.artist-works a:hover{border-color:var(--hue);color:var(--hue)}
+.artist-works a b{font-weight:500;color:var(--hue)}
+@media (max-width:900px){
+  .artists-head{grid-template-columns:1fr;gap:16px}
+  .artist{grid-template-columns:1fr;gap:14px}
+  .artist-works{flex-direction:row;flex-wrap:wrap;gap:8px 20px}
+}
+
+/* 기획의 글 */
+.curator{
+  max-width:1440px;margin:clamp(72px,9vw,130px) auto 0;
+  display:grid;grid-template-columns:5fr 7fr;gap:24px 64px;
+}
+.curator-label{font-size:13px;letter-spacing:.22em;color:var(--ink-45)}
+.curator-quote{
+  font-weight:200;font-size:clamp(26px,3.6vw,52px);line-height:1.25;letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.curator-body{max-width:58ch}
+.curator-body p{font-size:16px;line-height:1.9;color:var(--ink-70)}
+.curator-body p+p{margin-top:18px}
+.curator-sign{margin-top:28px;font-size:14px;color:var(--ink-45)}
+.curator-sign b{font-weight:500;color:var(--ink)}
+@media (max-width:900px){
+  .curator{grid-template-columns:1fr;gap:28px}
+}
+
+/* ---------------------------------------------------------
+   예매
+   --------------------------------------------------------- */
+.booking{
+  padding:clamp(80px,10vw,150px) var(--gutter);
+  border-top:1px solid var(--rule);
+  scroll-margin-top:var(--nav-h);
+}
+.booking-inner{
+  max-width:1440px;margin:0 auto;
+  display:grid;grid-template-columns:5fr 7fr;gap:48px 64px;align-items:start;
+}
+.booking-lead h2{font-weight:300;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.01em}
+.booking-lead p{margin-top:20px;font-size:16px;line-height:1.8;color:var(--ink-70);max-width:40ch}
+.booking-lead .fine{margin-top:28px;font-size:13.5px;line-height:1.75;color:var(--ink-45);max-width:44ch}
+.booking-form{border-top:1px solid var(--rule-strong)}
+.field{
+  display:grid;grid-template-columns:120px 1fr;gap:8px 24px;align-items:center;
+  padding:18px 0;border-bottom:1px solid var(--rule);
+}
+.field>label,.field>.legend{font-size:13px;letter-spacing:.1em;color:var(--ink-45)}
+.field input[type="date"],.field select{
+  width:100%;max-width:360px;
+  min-height:46px;padding:0 14px;
+  background:var(--void-2);
+  border:1px solid var(--rule);
+  color:var(--ink);
+  transition:border-color .2s;
+  color-scheme:dark;
+}
+.field input[type="date"]:focus,.field select:focus{border-color:var(--ink);outline:none}
+.field select:disabled{color:var(--ink-45)}
+.field-hint{grid-column:2;font-size:13px;color:var(--ink-45);line-height:1.6}
+.field-hint.is-error{color:var(--w4)}
+fieldset{border:0;min-inline-size:0}
+.counts{display:grid;gap:0}
+.count-row{
+  display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;
+  padding:12px 0;
+}
+.count-row+.count-row{border-top:1px solid var(--rule)}
+.count-row .name{font-size:15px}
+.count-row .name span{display:block;font-size:12.5px;color:var(--ink-45)}
+.count-row .unit{font-size:14px;color:var(--ink-70);min-width:76px;text-align:right}
+.stepper{display:inline-grid;grid-template-columns:40px 40px 40px;border:1px solid var(--rule)}
+.stepper button{
+  height:40px;font-size:18px;font-weight:300;line-height:1;
+  transition:background .2s,color .2s;
+}
+.stepper button:hover{background:var(--ink);color:var(--void)}
+.stepper button:disabled{color:var(--ink-25);background:none;cursor:not-allowed}
+.stepper output{display:grid;place-items:center;font-size:15px;border-left:1px solid var(--rule);border-right:1px solid var(--rule)}
+.booking-sum{
+  margin-top:8px;padding:22px 0 0;
+  display:grid;grid-template-columns:120px 1fr;gap:10px 24px;
+  border-top:1px solid var(--rule-strong);
+}
+.booking-sum dt{font-size:13px;letter-spacing:.1em;color:var(--ink-45);align-self:end}
+.booking-sum dd{font-size:15px;text-align:right}
+.booking-sum dd.total{font-weight:200;font-size:clamp(34px,4vw,54px);line-height:1;letter-spacing:-.02em}
+.booking-sum dd.total small{font-size:15px;font-weight:400;letter-spacing:0;margin-left:4px}
+.booking-submit{margin-top:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.booking-submit .btn{min-height:52px;padding:0 28px;font-size:15px}
+.booking-error{font-size:13.5px;color:var(--w4)}
+.booking-error:empty{display:none}
+.booking-result{
+  margin-top:24px;padding:24px 26px;
+  border:1px solid var(--rule-strong);
+  display:grid;gap:14px;
+}
+.booking-result[hidden]{display:none}
+.booking-result h3{font-weight:400;font-size:18px}
+.booking-result .code{font-family:var(--mono);font-size:15px;letter-spacing:.06em;color:var(--w1)}
+.booking-result dl{display:grid;grid-template-columns:96px 1fr;gap:6px 18px;font-size:14.5px}
+.booking-result dt{color:var(--ink-45)}
+.booking-result p{font-size:13.5px;line-height:1.7;color:var(--ink-70)}
+@media (max-width:900px){
+  .booking-inner{grid-template-columns:1fr;gap:36px}
+  .field{grid-template-columns:1fr;gap:8px}
+  .field-hint{grid-column:1}
+  .booking-sum{grid-template-columns:1fr 1fr}
+  .booking-sum dd{text-align:left}
+}
+@media (max-width:480px){
+  .count-row{grid-template-columns:1fr auto;gap:8px 12px}
+  .count-row .unit{grid-column:1;text-align:left;min-width:0}
+  .count-row .stepper{grid-column:2;grid-row:1/3}
+}
+
+/* ---------------------------------------------------------
+   크레딧
+   --------------------------------------------------------- */
+.credits{
+  padding:clamp(64px,8vw,110px) var(--gutter) 40px;
+  border-top:1px solid var(--rule);
+}
+.credits-inner{max-width:1440px;margin:0 auto}
+.credits-grid{display:grid;grid-template-columns:5fr 7fr;gap:32px 64px}
+.credits h2{font-weight:300;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.01em}
+.credits-note{margin-top:20px;font-size:14.5px;line-height:1.8;color:var(--ink-70);max-width:40ch}
+.credit-list{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.credit-list div{
+  display:grid;grid-template-columns:96px 1fr;gap:6px 14px;
+  padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px;line-height:1.6;
+}
+.credit-list dt{color:var(--ink-45)}
+.credits-foot{
+  margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--ink-45);
+}
+.credits-foot nav{display:flex;gap:18px}
+.credits-foot nav a{color:var(--ink-45);transition:color .2s}
+.credits-foot nav a:hover{color:var(--ink)}
+@media (max-width:900px){
+  .credits-grid{grid-template-columns:1fr}
+  .credit-list{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="beam" aria-hidden="true"></div>
+<div class="ring" id="ring" aria-hidden="true"></div>
+
+<a class="skip" href="#statement">본문으로 건너뛰기</a>
+
+<nav class="nav" aria-label="주요">
+  <a class="nav-brand" href="#top">AFTERGLOW <small>빛의 잔향</small></a>
+  <div class="nav-links">
+    <a href="#works" data-spy="works">작품</a>
+    <a href="#info" data-spy="info">안내</a>
+    <a href="#artists" data-spy="artists">작가</a>
+    <a href="#booking" data-spy="booking">예매</a>
+  </div>
+  <div class="nav-actions">
+    <button type="button" class="light-toggle" data-light-toggle aria-pressed="false">조명 켜기</button>
+    <a class="btn" href="#booking">예매하기</a>
+  </div>
+</nav>
+
+<!-- 입장 화면 : 커서(손끝)가 지나간 자리만 제목이 드러난다 -->
+<header class="gate" id="top">
+  <div class="gate-top">
+    <p>미디어아트 전시 · 다섯 작품, 다섯 가지 색<br>성수 언더그라운드 홀 B1–B2</p>
+    <p class="cap">불이 꺼진 뒤에도<br>보이는 것이 있을까.</p>
+  </div>
+
+  <div class="gate-stage">
+    <div class="gate-title-wrap" data-lit>
+      <div class="gate-ghost" aria-hidden="true">
+        <p class="gate-title">빛의 잔향<span class="en">AFTERGLOW</span><span class="sub">빛이 꺼진 뒤, 4초 동안 벽에 남는 것</span></p>
+      </div>
+      <div class="gate-lit">
+        <h1 class="gate-title">빛의 잔향<span class="en">AFTERGLOW</span><span class="sub">빛이 꺼진 뒤, 4초 동안 벽에 남는 것</span></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="gate-bottom">
+    <p class="gate-fact">
+      <strong>2026. 9. 4. 금 – 11. 29. 일</strong>
+      화–일 11:00–20:00 · 금·토 21:00까지<br>
+      서울 성동구 연무장5길 27, 지하 1·2층
+    </p>
+    <div class="gate-cta">
+      <p class="gate-hint">
+        <span class="for-mouse">마우스를 움직이면 빛이 따라옵니다.</span>
+        <span class="for-touch">손끝으로 화면을 문지르면 빛이 따라옵니다.</span>
+      </p>
+      <div class="gate-actions">
+        <a class="btn" href="#statement">입장</a>
+        <button type="button" class="btn" data-light-toggle aria-pressed="false">조명 켜기</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 입장 후 첫 문장 -->
+<section class="statement veiled" id="statement" data-lit aria-label="전시 소개">
+  <div class="statement-inner">
+    <p class="statement-lede">어둠은 비어 있지 않다. 눈이 적응하는 4초 동안, 방금 꺼진 불빛이 아직 벽에 남아 있다. 이 전시는 그 4초를 50분으로 늘린다.</p>
+    <p class="statement-note">지하 두 층, 여섯 개의 방. 첫 방은 비어 있다. 눈이 어둠에 익는 4분을 위한 방이고, 나머지 다섯 방에는 각각 하나의 색만 있다. 조명은 관람객이 움직일 때 켜지고, 멈추면 천천히 꺼진다. <b>이 사이트의 커서도 같은 규칙을 따른다.</b> 밝은 화면이 필요하면 상단의 ‘조명 켜기’를 누르거나 키보드에서 L 키를 누르면 된다.</p>
+  </div>
+</section>
+
+<!-- 작품 5점 -->
+<section class="works" id="works" aria-labelledby="works-h">
+  <div class="works-inner">
+    <div class="works-head">
+      <h2 id="works-h">작품</h2>
+      <p>5점 · B1 암순응실 지나 2점, B2 3점 · 한 방향 동선 약 50분</p>
+    </div>
+
+    <article class="work work--1" id="w1" style="--hue:var(--w1)">
+      <figure class="work-fig veiled" data-lit>
+        <img src="https://loremflickr.com/1200/800/light,installation?lock=90411" width="1200" height="800" loading="lazy" alt="안개가 낮게 깔린 어두운 방, 벽면에 호박색 빛의 잔상이 넓게 번져 있다">
+      </figure>
+      <div class="work-body veiled" data-lit>
+        <p class="work-no" aria-hidden="true">01</p>
+        <h3 class="work-title">잔향<span class="en">AFTERGLOW</span></h3>
+        <dl class="work-meta">
+          <dt>작가</dt><dd>김세하</dd>
+          <dt>연도</dt><dd>2026</dd>
+          <dt>매체</dt><dd>프로젝션 매핑, 안개, 적외선 센서 12개</dd>
+          <dt>규모</dt><dd>12 × 8 × 5 m</dd>
+          <dt>위치</dt><dd>B1 제1실</dd>
+        </dl>
+        <p class="work-desc">방에 들어서면 벽 세 면에 호박색 빛이 켜졌다가 3초 만에 꺼진다. 남는 것은 안개 속에 걸린 잔상뿐이다. 센서는 사람이 멈춘 자리를 기억해, 다음 관람객이 지나갈 때 그 자리에서만 다시 켠다.</p>
+        <button type="button" class="work-more" aria-expanded="false" aria-controls="w1-note">작품 노트</button>
+        <div class="work-note" id="w1-note" hidden>
+          <p>김세하는 2019년부터 ‘꺼진 뒤의 빛’을 기록해 왔다. 이번 작품의 안개 농도는 1㎥당 0.4g. 빛이 공중에 3.2초 머무는 값이다. 방 안 온도는 21도로 유지되며, 습도가 높은 날에는 잔상이 조금 더 오래 남는다.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="work work--2" id="w2" style="--hue:var(--w2)">
+      <figure class="work-fig veiled" data-lit>
+        <img src="https://loremflickr.com/1200/750/neon,art?lock=90412" width="1200" height="750" loading="lazy" alt="검은 수조 바닥에서 청록색 점광이 격자로 켜져 물결에 흔들리는 장면">
+      </figure>
+      <div class="work-body veiled" data-lit>
+        <p class="work-no" aria-hidden="true">02</p>
+        <h3 class="work-title">심해 회로<span class="en">DEEP CIRCUIT</span></h3>
+        <dl class="work-meta">
+          <dt>작가</dt><dd>박도윤</dd>
+          <dt>연도</dt><dd>2025</dd>
+          <dt>매체</dt><dd>LED 3,240개, 수조, 초음파 발생기</dd>
+          <dt>규모</dt><dd>6 × 6 × 3.4 m</dd>
+          <dt>위치</dt><dd>B1 제2실</dd>
+        </dl>
+        <p class="work-desc">물이 든 수조 바닥에서 청록색 점이 하나씩 켜지며 위로 떠오른다. 관람객의 발소리를 초음파 센서가 받아 물결을 만들고, 그 물결이 빛의 경로를 바꾼다. 같은 장면은 두 번 나오지 않는다.</p>
+        <button type="button" class="work-more" aria-expanded="false" aria-controls="w2-note">작품 노트</button>
+        <div class="work-note" id="w2-note" hidden>
+          <p>박도윤은 부산 영도의 조선소 옆에서 자랐다. 수조의 물은 3일마다 갈고, LED는 30cm 간격 격자로 심어져 있다. 회로 배선도 원본은 전시실 입구 벽에 걸려 있다.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="work work--3" id="w3" style="--hue:var(--w3)">
+      <figure class="work-fig veiled" data-lit>
+        <img src="https://loremflickr.com/1600/686/projection,dark?lock=90413" width="1600" height="686" loading="lazy" alt="헤이즈로 가득한 넓은 방을 가로지르는 연보라색 레이저 면, 사람의 실루엣이 그 아래 서 있다">
+      </figure>
+      <div class="work-body veiled" data-lit>
+        <p class="work-no" aria-hidden="true">03</p>
+        <h3 class="work-title">흰 소음의 방<span class="en">WHITE NOISE ROOM</span></h3>
+        <dl class="work-meta">
+          <dt>작가</dt><dd>이서율 &amp; 스튜디오 논오브젝트</dd>
+          <dt>연도</dt><dd>2026</dd>
+          <dt>매체</dt><dd>8채널 사운드, 레이저 4기, 헤이즈</dd>
+          <dt>규모</dt><dd>15 × 9 m</dd>
+          <dt>위치</dt><dd>B2 제3실</dd>
+        </dl>
+        <p class="work-desc">가장 큰 방이자 가장 어두운 방. 소리가 먼저 오고, 연보라색 레이저 면이 소리의 파형을 따라 천천히 기울어진다. 방 한가운데에는 소리가 사라지는 지점이 하나 있다. 찾는 데 보통 2분쯤 걸린다.</p>
+        <button type="button" class="work-more" aria-expanded="false" aria-controls="w3-note">작품 노트</button>
+        <div class="work-note" id="w3-note" hidden>
+          <p>스피커 8대는 벽이 아니라 천장에 매달려 있다. 헤이즈는 40분 주기로 채워지고 빠진다. 광과민성 발작이 우려되는 분은 입구 안내원에게 말씀해 주시면 레이저를 피하는 우회 동선을 안내한다.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="work work--4" id="w4" style="--hue:var(--w4)">
+      <figure class="work-fig veiled" data-lit>
+        <img src="https://loremflickr.com/900/1125/neon,art?lock=90414" width="900" height="1125" loading="lazy" alt="거울로 둘러싸인 좁은 방, 주홍색 네온 튜브가 끝없이 반사되어 이어진다">
+      </figure>
+      <div class="work-body veiled" data-lit>
+        <p class="work-no" aria-hidden="true">04</p>
+        <h3 class="work-title">불면<span class="en">SLEEPLESS</span></h3>
+        <dl class="work-meta">
+          <dt>작가</dt><dd>김세하</dd>
+          <dt>연도</dt><dd>2024</dd>
+          <dt>매체</dt><dd>네온 튜브 26개, 거울, 타이머</dd>
+          <dt>규모</dt><dd>4 × 4 × 3 m</dd>
+          <dt>위치</dt><dd>B2 제4실</dd>
+        </dl>
+        <p class="work-desc">주홍색 네온이 벽시계처럼 60초에 한 번 깜빡인다. 사방이 거울이라 관람객은 자신이 서 있는 방이 어디까지인지 알 수 없다. 2024년 광주에서 처음 공개됐고, 이번에는 천장을 40cm 낮췄다.</p>
+        <button type="button" class="work-more" aria-expanded="false" aria-controls="w4-note">작품 노트</button>
+        <div class="work-note" id="w4-note" hidden>
+          <p>타이머는 매일 개관 시각에 0으로 맞춰진다. 하루 540번 깜빡인 뒤 폐관과 함께 꺼진다. 방 안에는 최대 6명까지 들어갈 수 있다.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="work work--5" id="w5" style="--hue:var(--w5)">
+      <figure class="work-fig veiled" data-lit>
+        <img src="https://loremflickr.com/1200/675/light,installation?lock=90415" width="1200" height="675" loading="lazy" alt="세 겹의 반투명 천 위로 연둣빛 결이 흐르고, 관람객의 그림자가 겹쳐 비친다">
+      </figure>
+      <div class="work-body veiled" data-lit>
+        <p class="work-no" aria-hidden="true">05</p>
+        <h3 class="work-title">새벽 두 시의 결<span class="en">GRAIN AT 2 A.M.</span></h3>
+        <dl class="work-meta">
+          <dt>작가</dt><dd>오하나</dd>
+          <dt>연도</dt><dd>2026</dd>
+          <dt>매체</dt><dd>실시간 관객 추적 프로젝션, 리넨 스크린 3겹</dd>
+          <dt>규모</dt><dd>10 × 6 m</dd>
+          <dt>위치</dt><dd>B2 제5실</dd>
+        </dl>
+        <p class="work-desc">관람객의 실루엣이 연둣빛 결로 바뀌어 세 겹의 천 위에 겹친다. 움직임이 느릴수록 결이 곱고, 빠르면 거칠어진다. 마지막 방이다. 여기서 나가면 계단이고, 계단 끝은 지상이다.</p>
+        <button type="button" class="work-more" aria-expanded="false" aria-controls="w5-note">작품 노트</button>
+        <div class="work-note" id="w5-note" hidden>
+          <p>오하나는 제주에서 직조를 배웠다. 스크린은 리넨 3겹, 프로젝터는 3대. 관객 추적은 형태만 인식하며 영상은 어디에도 저장되지 않는다.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 흐르는 띠 -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>AFTERGLOW</span><span>2026.09.04 – 11.29</span><span>성수 언더그라운드 홀 B1–B2</span><span>화–일 11:00–20:00 · 금·토 21:00까지</span><span>사전예매 매당 1,000원 할인</span><span>회차당 60명</span>
+    <span>AFTERGLOW</span><span>2026.09.04 – 11.29</span><span>성수 언더그라운드 홀 B1–B2</span><span>화–일 11:00–20:00 · 금·토 21:00까지</span><span>사전예매 매당 1,000원 할인</span><span>회차당 60명</span>
+  </div>
+</div>
+
+<!-- 전시 안내 -->
+<section class="info" id="info" aria-labelledby="info-h">
+  <div class="info-inner">
+    <div class="info-lead">
+      <h2 id="info-h">전시 안내</h2>
+      <p class="info-dates">09.04<br>—11.29<small>2026년 · 87일간 · 월요일 휴관</small></p>
+      <p class="lead-note">예매 없이 오셔도 잔여 회차가 있으면 입장할 수 있습니다. 회차당 60명이라 토·일 오후는 사전예매로 먼저 차는 편이니, 여유 있게 보려면 화–목 11:00–12:30 회차를 권합니다.</p>
+      <div class="info-actions">
+        <a class="btn btn--solid" href="#booking">예매하기</a>
+        <a class="btn" href="https://map.kakao.com/?q=%EC%84%B1%EB%8F%99%EA%B5%AC%20%EC%97%B0%EB%AC%B4%EC%9E%A55%EA%B8%B8%2027" target="_blank" rel="noopener">지도 열기</a>
+      </div>
+    </div>
+
+    <dl class="info-list">
+      <div class="info-row">
+        <dt>기간</dt>
+        <dd>2026년 9월 4일(금) – 11월 29일(일)<p class="sub">추석 연휴(9월 24–26일)는 정상 개관, 9월 28일(월) 휴관</p></dd>
+      </div>
+      <div class="info-row">
+        <dt>장소</dt>
+        <dd>성수 언더그라운드 홀 지하 1층 · 지하 2층<p class="sub">서울 성동구 연무장5길 27 · 2호선 성수역 3번 출구 도보 7분 · 주차 불가(성수2가 공영주차장 도보 5분)</p></dd>
+      </div>
+      <div class="info-row">
+        <dt>관람 시간</dt>
+        <dd>화·수·목·일 11:00–20:00 / 금·토 11:00–21:00<p class="sub">입장 마감은 폐관 40분 전 · 매주 월요일 휴관 · 30분 간격 회차제</p></dd>
+      </div>
+      <div class="info-row">
+        <dt>요금</dt>
+        <dd>
+          <table class="price">
+            <tbody>
+              <tr><td>성인</td><td>18,000원</td></tr>
+              <tr><td>청소년 <span>만 13–18세</span></td><td>12,000원</td></tr>
+              <tr><td>어린이 <span>36개월–만 12세</span></td><td>8,000원</td></tr>
+              <tr><td>야간권 <span>금·토 18:00 이후 입장, 성인</span></td><td>13,000원</td></tr>
+              <tr><td>무료 <span>36개월 미만 · 장애인 · 국가유공자 (동반 1인 50%)</span></td><td>0원</td></tr>
+            </tbody>
+          </table>
+        </dd>
+      </div>
+      <div class="info-row">
+        <dt>예매</dt>
+        <dd>회차당 60명, 온라인 사전예매 시 매당 1,000원 할인<p class="sub">현장 발권은 잔여 회차에 한함 · 환불은 관람일 전날 23:59까지 전액, 당일 취소 불가</p></dd>
+      </div>
+      <div class="info-row">
+        <dt>소요 시간</dt>
+        <dd>약 50분<p class="sub">한 방향 동선, 재입장 불가. 마지막 회차 입장 후 40분이 지나면 조명이 켜집니다.</p></dd>
+      </div>
+      <div class="info-row">
+        <dt>유의</dt>
+        <dd>
+          <ul class="info-warn">
+            <li>실내 조도가 매우 낮습니다. 계단에서는 손잡이를 잡아 주세요.</li>
+            <li>섬광과 레이저를 사용합니다. 광과민성 발작 병력이 있는 분은 입구에서 안내원에게 알려 주세요.</li>
+            <li>만 6세 이하는 보호자와 함께 입장합니다.</li>
+            <li>사진 촬영은 가능하나 플래시와 삼각대는 사용할 수 없습니다.</li>
+            <li>휠체어·유모차는 B2 엘리베이터로 이동할 수 있습니다.</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="info-row">
+        <dt>문의</dt>
+        <dd><a class="link" href="tel:0224620904">02-462-0904</a> (화–일 11:00–19:00) · <a class="link" href="mailto:hello@afterglow.kr">hello@afterglow.kr</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- 작가 소개 -->
+<section class="artists" id="artists" aria-labelledby="artists-h">
+  <div class="artists-inner">
+    <div class="artists-head">
+      <h2 id="artists-h">작가</h2>
+      <p>네 명의 작가와 한 스튜디오. 모두 빛을 재료로 쓰지만, 다루는 시간의 길이가 다르다. 잔상이 머무는 3초, 수조의 물을 가는 3일, 헤이즈가 차고 빠지는 40분, 네온이 깜빡이는 60초, 그리고 관람객이 천 앞에 서 있는 만큼.</p>
+    </div>
+
+    <ol class="artist-list">
+      <li class="artist" style="--hue:var(--w1)">
+        <div>
+          <h3 class="artist-name"><span class="mark" aria-hidden="true"></span>김세하</h3>
+          <span class="artist-base">서울 · 베를린 / 1988년생</span>
+        </div>
+        <div class="artist-bio">
+          <p>빛이 꺼진 직후의 시간을 다룬다. 카메라 대신 안개와 센서를 써서 잔상을 붙잡아 두는 방식으로 작업해 왔다. 이번 전시에서 유일하게 두 점을 낸 작가다.</p>
+          <p class="artist-shows">2019 국립현대미술관 「밤의 형식」 · 2023 베를린 CTM 페스티벌 · 2024 광주 「불면」 초연</p>
+        </div>
+        <div class="artist-works">
+          <span class="cap">출품작</span>
+          <a href="#w1"><b>01</b> 잔향</a>
+          <a href="#w4"><b>04</b> 불면</a>
+        </div>
+      </li>
+
+      <li class="artist" style="--hue:var(--w2)">
+        <div>
+          <h3 class="artist-name"><span class="mark" aria-hidden="true"></span>박도윤</h3>
+          <span class="artist-base">부산 / 1991년생</span>
+        </div>
+        <div class="artist-bio">
+          <p>물과 전기, 서로 닿으면 안 되는 두 매체를 한 방에 놓는다. 영도 조선소 옆에서 자라 배 밑바닥의 조명을 오래 보고 컸다고 말한다.</p>
+          <p class="artist-shows">2022 부산비엔날레 「물결 회로」 · 2025 서울미디어시티 프로젝트 · 2025 도쿄 21_21 그룹전</p>
+        </div>
+        <div class="artist-works">
+          <span class="cap">출품작</span>
+          <a href="#w2"><b>02</b> 심해 회로</a>
+        </div>
+      </li>
+
+      <li class="artist" style="--hue:var(--w3)">
+        <div>
+          <h3 class="artist-name"><span class="mark" aria-hidden="true"></span>이서율 &amp; 스튜디오 논오브젝트</h3>
+          <span class="artist-base">서울 / 사운드 아티스트 · 공간 기술 스튜디오</span>
+        </div>
+        <div class="artist-bio">
+          <p>사운드 아티스트 이서율과 2017년 설립된 스튜디오 논오브젝트의 세 번째 협업. 소리를 먼저 설계하고 빛은 그 뒤를 따라가게 한다.</p>
+          <p class="artist-shows">2024 국립아시아문화전당 「소음의 좌표」 · 2025 암스테르담 소닉 액츠</p>
+        </div>
+        <div class="artist-works">
+          <span class="cap">출품작</span>
+          <a href="#w3"><b>03</b> 흰 소음의 방</a>
+        </div>
+      </li>
+
+      <li class="artist" style="--hue:var(--w5)">
+        <div>
+          <h3 class="artist-name"><span class="mark" aria-hidden="true"></span>오하나</h3>
+          <span class="artist-base">제주 / 1994년생</span>
+        </div>
+        <div class="artist-bio">
+          <p>직조와 프로젝션을 함께 쓴다. 천의 올과 픽셀의 격자가 같은 크기일 때 무슨 일이 일어나는지 실험해 왔다. 관객의 영상은 저장하지 않는다는 원칙을 모든 작업에 적용한다.</p>
+          <p class="artist-shows">2025 제주비엔날레 · 2026 도쿄 스파이럴 홀 개인전 예정</p>
+        </div>
+        <div class="artist-works">
+          <span class="cap">출품작</span>
+          <a href="#w5"><b>05</b> 새벽 두 시의 결</a>
+        </div>
+      </li>
+    </ol>
+
+    <div class="curator">
+      <div>
+        <p class="curator-label">기획의 글</p>
+        <p class="curator-quote" style="margin-top:18px">빛을 보여주는 전시가 아니라, 빛이 사라진 뒤를 보여주는 전시다.</p>
+      </div>
+      <div class="curator-body">
+        <p>전시장은 지하 두 층, 여섯 개의 방으로 이루어져 있다. 첫 방에는 작품이 없다. 4분 동안 눈이 어둠에 익기를 기다리는 빈 방이다. 그다음부터 조명은 관람객이 움직일 때만 켜지고, 멈추면 천천히 꺼진다. 처음 몇 분은 불편할 것이다. 발밑이 보이지 않고, 옆 사람의 얼굴도 흐릿하다. 그러나 눈이 적응하는 순간, 방금까지 없던 벽이 나타난다.</p>
+        <p>참여 작가들에게 부탁한 것은 하나였다. 색을 하나만 쓸 것. 호박색, 청록, 연보라, 주홍, 연둣빛. 방을 옮길 때마다 눈은 앞 방의 색을 보색으로 잠시 붙들고 있다가 놓는다. 그 짧은 겹침이 이 전시의 제목이다.</p>
+        <p>이 웹사이트도 같은 규칙으로 만들었다. 커서를 움직이지 않으면 아무것도 보이지 않는다. 물론, 조명을 켜는 버튼도 있다. 전시장에도 있다.</p>
+        <p class="curator-sign"><b>정민재</b> · 큐레이터, 성수문화재단</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 예매 -->
+<section class="booking" id="booking" aria-labelledby="booking-h">
+  <div class="booking-inner">
+    <div class="booking-lead">
+      <h2 id="booking-h">예매</h2>
+      <p>날짜와 회차를 고르면 잔여 인원이 표시됩니다. 회차당 60명이며, 온라인 예매는 매당 1,000원이 할인됩니다.</p>
+      <p class="fine">금·토 18:00 이후 회차는 성인 요금이 야간권(13,000원)으로 자동 적용됩니다. 무료 대상자는 현장에서 증빙 확인 후 입장권을 받으므로 여기서는 인원에 포함하지 않아도 됩니다. 결제 단계는 예매처 페이지에서 진행되며 10분 안에 완료하지 않으면 선택한 회차가 자동으로 풀립니다.</p>
+    </div>
+
+    <div>
+      <form class="booking-form" id="bookingForm" novalidate>
+        <div class="field">
+          <label for="bkDate">관람일</label>
+          <input type="date" id="bkDate" name="date" min="2026-09-04" max="2026-11-29" required>
+          <p class="field-hint" id="dateHint">2026년 9월 4일부터 11월 29일까지. 월요일은 휴관입니다.</p>
+        </div>
+        <div class="field">
+          <label for="bkSlot">회차</label>
+          <select id="bkSlot" name="slot" disabled required>
+            <option value="">날짜를 먼저 선택해 주세요</option>
+          </select>
+          <p class="field-hint" id="slotHint"></p>
+        </div>
+        <fieldset class="field counts">
+          <legend class="sr-only">인원</legend>
+          <span class="legend" aria-hidden="true">인원</span>
+          <div>
+            <div class="count-row">
+              <p class="name">성인 <span>만 19세 이상</span></p>
+              <p class="unit" data-unit="adult">18,000원</p>
+              <div class="stepper" data-count="adult">
+                <button type="button" data-step="-1" aria-label="성인 한 명 빼기" disabled>−</button>
+                <output aria-live="polite" aria-label="성인 인원">0</output>
+                <button type="button" data-step="1" aria-label="성인 한 명 더하기">+</button>
+              </div>
+            </div>
+            <div class="count-row">
+              <p class="name">청소년 <span>만 13–18세</span></p>
+              <p class="unit" data-unit="teen">12,000원</p>
+              <div class="stepper" data-count="teen">
+                <button type="button" data-step="-1" aria-label="청소년 한 명 빼기" disabled>−</button>
+                <output aria-live="polite" aria-label="청소년 인원">0</output>
+                <button type="button" data-step="1" aria-label="청소년 한 명 더하기">+</button>
+              </div>
+            </div>
+            <div class="count-row">
+              <p class="name">어린이 <span>36개월–만 12세</span></p>
+              <p class="unit" data-unit="child">8,000원</p>
+              <div class="stepper" data-count="child">
+                <button type="button" data-step="-1" aria-label="어린이 한 명 빼기" disabled>−</button>
+                <output aria-live="polite" aria-label="어린이 인원">0</output>
+                <button type="button" data-step="1" aria-label="어린이 한 명 더하기">+</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <dl class="booking-sum">
+          <dt>매수</dt><dd id="sumCount">0매</dd>
+          <dt>사전예매 할인</dt><dd id="sumDisc">0원</dd>
+          <dt>결제 예정</dt><dd class="total"><span id="sumTotal">0</span><small>원</small></dd>
+        </dl>
+
+        <div class="booking-submit">
+          <button type="submit" class="btn btn--solid">이 회차 잡아 두기</button>
+          <p class="booking-error" id="bookingError" role="alert"></p>
+        </div>
+      </form>
+
+      <div class="booking-result" id="bookingResult" hidden aria-live="polite">
+        <h3>회차를 잡아 두었습니다</h3>
+        <p class="code" id="resCode"></p>
+        <dl>
+          <dt>관람일</dt><dd id="resDate"></dd>
+          <dt>회차</dt><dd id="resSlot"></dd>
+          <dt>인원</dt><dd id="resPeople"></dd>
+          <dt>금액</dt><dd id="resTotal"></dd>
+        </dl>
+        <p>10분 안에 결제를 마쳐 주세요. 시간이 지나면 잡아 둔 인원이 다른 관람객에게 돌아갑니다. 예매 확인 문자는 결제 완료 직후 발송됩니다.</p>
+        <div>
+          <button type="button" class="btn" id="resReset">다시 선택</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 크레딧 -->
+<footer class="credits" aria-labelledby="credits-h">
+  <div class="credits-inner">
+    <div class="credits-grid">
+      <div>
+        <h2 id="credits-h">크레딧</h2>
+        <p class="credits-note">이 사이트는 커서 또는 손끝을 빛으로 삼습니다. 조명을 켜면 모든 내용이 즉시 밝아지고, 모션 축소 설정을 켠 브라우저에서는 처음부터 밝게 열립니다.</p>
+      </div>
+      <dl class="credit-list">
+        <div><dt>주최</dt><dd>성수문화재단</dd></div>
+        <div><dt>주관</dt><dd>스튜디오 잔향</dd></div>
+        <div><dt>기획</dt><dd>정민재</dd></div>
+        <div><dt>협력</dt><dd>서울조명연구소 · 스튜디오 논오브젝트</dd></div>
+        <div><dt>기술 감독</dt><dd>한지우</dd></div>
+        <div><dt>사운드</dt><dd>최여름</dd></div>
+        <div><dt>공간 설계</dt><dd>오피스 그레이</dd></div>
+        <div><dt>그래픽</dt><dd>워크룸 다크</dd></div>
+        <div><dt>웹사이트</dt><dd>Forblune</dd></div>
+        <div><dt>후원</dt><dd>성동구 · 한국문화예술위원회</dd></div>
+      </dl>
+    </div>
+    <div class="credits-foot">
+      <p>© 2026 빛의 잔향 AFTERGLOW. 작품 이미지의 저작권은 각 작가에게 있습니다.</p>
+      <nav aria-label="바닥글">
+        <a href="#works">작품</a>
+        <a href="#info">안내</a>
+        <a href="#artists">작가</a>
+        <a href="#booking">예매</a>
+        <a href="#top">맨 위로</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var root=document.documentElement;
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var canHover=window.matchMedia('(hover: hover) and (pointer: fine)');
+  if(!canHover.matches){root.classList.add('touch');}
+
+  /* -----------------------------------------------------
+     1. 빛 — 포인터/터치 좌표를 추적해 CSS 변수로 흘려보낸다
+     ----------------------------------------------------- */
+  var litEls=Array.prototype.slice.call(document.querySelectorAll('[data-lit]'));
+  var ring=document.getElementById('ring');
+  var vw=window.innerWidth,vh=window.innerHeight;
+  var tx=vw*0.5,ty=vh*0.45,cx=tx,cy=ty;
+  var moved=false,started=performance.now();
+
+  function setTarget(x,y){tx=x;ty=y;moved=true;if(ring)ring.classList.add('is-on');}
+  window.addEventListener('pointermove',function(e){setTarget(e.clientX,e.clientY);},{passive:true});
+  window.addEventListener('touchstart',function(e){var t=e.touches[0];if(t)setTarget(t.clientX,t.clientY);},{passive:true});
+  window.addEventListener('touchmove',function(e){var t=e.touches[0];if(t)setTarget(t.clientX,t.clientY);},{passive:true});
+  /* 키보드로 이동하면 빛도 포커스를 따라간다 */
+  document.addEventListener('focusin',function(e){
+    if(!e.target||!e.target.getBoundingClientRect||root.classList.contains('lit'))return;
+    var r=e.target.getBoundingClientRect();
+    if(r.width===0&&r.height===0)return;
+    setTarget(r.left+r.width/2,r.top+r.height/2);
+  });
+  window.addEventListener('resize',function(){vw=window.innerWidth;vh=window.innerHeight;});
+  document.addEventListener('mouseleave',function(){if(ring)ring.classList.remove('is-on');});
+  document.addEventListener('mouseenter',function(){if(ring&&moved)ring.classList.add('is-on');});
+
+  function frame(now){
+    if(!moved&&!reduceMotion.matches){
+      /* 아무도 움직이지 않을 때: 빛이 천천히 떠돈다 */
+      var t=(now-started)/1000;
+      tx=vw*(0.5+0.2*Math.sin(t*0.42));
+      ty=vh*(0.44+0.13*Math.sin(t*0.71+1.3));
+    }
+    var k=reduceMotion.matches?1:0.14;
+    cx+=(tx-cx)*k;cy+=(ty-cy)*k;
+    root.style.setProperty('--mx',cx.toFixed(1)+'px');
+    root.style.setProperty('--my',cy.toFixed(1)+'px');
+    for(var i=0;i<litEls.length;i++){
+      var el=litEls[i];
+      var r=el.getBoundingClientRect();
+      if(r.bottom<-500||r.top>vh+500)continue;
+      el.style.setProperty('--lx',(cx-r.left).toFixed(1)+'px');
+      el.style.setProperty('--ly',(cy-r.top).toFixed(1)+'px');
+    }
+    if(ring)ring.style.transform='translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px) translate(-50%,-50%)';
+    window.requestAnimationFrame(frame);
+  }
+  window.requestAnimationFrame(frame);
+
+  /* 링이 클릭 가능한 것 위에 올라가면 커진다 */
+  document.addEventListener('pointerover',function(e){
+    if(!ring)return;
+    var hit=e.target.closest&&e.target.closest('a,button,input,select,label');
+    ring.classList.toggle('is-hover',!!hit);
+  });
+
+  /* -----------------------------------------------------
+     2. 조명 켜기 / 끄기
+     ----------------------------------------------------- */
+  var toggles=Array.prototype.slice.call(document.querySelectorAll('[data-light-toggle]'));
+  function setLit(on){
+    root.classList.toggle('lit',on);
+    toggles.forEach(function(b){
+      b.setAttribute('aria-pressed',on?'true':'false');
+      b.textContent=on?'조명 끄기':'조명 켜기';
+    });
+  }
+  toggles.forEach(function(b){b.addEventListener('click',function(){setLit(!root.classList.contains('lit'));});});
+  if(reduceMotion.matches)setLit(true);
+  document.addEventListener('keydown',function(e){
+    if((e.key||'').toLowerCase()==='l'&&!e.metaKey&&!e.ctrlKey&&!e.altKey){
+      var tag=(e.target.tagName||'').toLowerCase();
+      if(tag==='input'||tag==='select'||tag==='textarea')return;
+      setLit(!root.classList.contains('lit'));
+    }
+  });
+
+  /* -----------------------------------------------------
+     3. 내비 — 스크롤 상태, 현재 섹션 표시
+     ----------------------------------------------------- */
+  function onScroll(){root.classList.toggle('scrolled',window.scrollY>40);}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  var spyLinks=Array.prototype.slice.call(document.querySelectorAll('[data-spy]'));
+  if('IntersectionObserver' in window&&spyLinks.length){
+    var spy=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting)return;
+        var id=en.target.id;
+        spyLinks.forEach(function(a){
+          if(a.getAttribute('data-spy')===id)a.setAttribute('aria-current','true');
+          else a.removeAttribute('aria-current');
+        });
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    ['works','info','artists','booking'].forEach(function(id){
+      var s=document.getElementById(id);if(s)spy.observe(s);
+    });
+  }
+
+  /* -----------------------------------------------------
+     4. 작품 노트 펼치기
+     ----------------------------------------------------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.work-more'),function(btn){
+    btn.addEventListener('click',function(){
+      var note=document.getElementById(btn.getAttribute('aria-controls'));
+      var open=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',open?'false':'true');
+      btn.textContent=open?'작품 노트':'노트 닫기';
+      if(note)note.hidden=open;
+    });
+  });
+
+  /* -----------------------------------------------------
+     5. 예매 — 회차 생성, 잔여 계산, 합계, 가예약
+     ----------------------------------------------------- */
+  var PRICE={adult:18000,teen:12000,child:8000,night:13000};
+  var DISCOUNT=1000;
+  var CAP=60;
+  var form=document.getElementById('bookingForm');
+  if(form){
+    var dateIn=document.getElementById('bkDate');
+    var slotSel=document.getElementById('bkSlot');
+    var dateHint=document.getElementById('dateHint');
+    var slotHint=document.getElementById('slotHint');
+    var sumCount=document.getElementById('sumCount');
+    var sumDisc=document.getElementById('sumDisc');
+    var sumTotal=document.getElementById('sumTotal');
+    var errEl=document.getElementById('bookingError');
+    var result=document.getElementById('bookingResult');
+    var counts={adult:0,teen:0,child:0};
+    var DAY=['일','월','화','수','목','금','토'];
+
+    function won(n){return n.toLocaleString('ko-KR')+'원';}
+    function hash(str){
+      var h=2166136261;
+      for(var i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);}
+      return h>>>0;
+    }
+    function parseDate(v){
+      var p=v.split('-');
+      return new Date(+p[0],+p[1]-1,+p[2]);
+    }
+    function isNight(dow,slot){
+      return (dow===5||dow===6)&&parseInt(slot.slice(0,2),10)>=18;
+    }
+    function buildSlots(){
+      var v=dateIn.value;
+      slotSel.innerHTML='';
+      slotHint.textContent='';slotHint.classList.remove('is-error');
+      dateHint.classList.remove('is-error');
+      if(!v){
+        slotSel.disabled=true;
+        slotSel.appendChild(new Option('날짜를 먼저 선택해 주세요',''));
+        return;
+      }
+      var d=parseDate(v);
+      var dow=d.getDay();
+      if(v<'2026-09-04'||v>'2026-11-29'){
+        slotSel.disabled=true;
+        slotSel.appendChild(new Option('전시 기간이 아닙니다',''));
+        dateHint.textContent='전시 기간은 2026년 9월 4일부터 11월 29일까지입니다.';
+        dateHint.classList.add('is-error');
+        return;
+      }
+      if(dow===1){
+        slotSel.disabled=true;
+        slotSel.appendChild(new Option('휴관일',''));
+        dateHint.textContent=(d.getMonth()+1)+'월 '+d.getDate()+'일은 월요일, 휴관일입니다. 다른 날짜를 골라 주세요.';
+        dateHint.classList.add('is-error');
+        return;
+      }
+      dateHint.textContent=(d.getMonth()+1)+'월 '+d.getDate()+'일 ('+DAY[dow]+') · '+((dow===5||dow===6)?'11:00–21:00 · 18:00 이후 야간권':'11:00–20:00');
+      slotSel.disabled=false;
+      slotSel.appendChild(new Option('회차를 선택해 주세요',''));
+      var lastHour=(dow===5||dow===6)?20:19; /* 마지막 입장 회차 시각 (폐관 40분 전 = :20 이후 없음) */
+      var open=0;
+      for(var h=11;h<=lastHour;h++){
+        for(var m=0;m<60;m+=30){
+          if(h===lastHour&&m>0)break;
+          var slot=(h<10?'0':'')+h+':'+(m===0?'00':'30');
+          var left=CAP-(hash(v+slot)%67);
+          if(left<0)left=0;
+          var label=slot+(isNight(dow,slot)?' 야간권':'')+' · '+(left===0?'매진':'잔여 '+left+'명');
+          var opt=new Option(label,slot);
+          opt.disabled=left===0;
+          opt.dataset.left=left;
+          if(left>0)open++;
+          slotSel.appendChild(opt);
+        }
+      }
+      slotHint.textContent=open===0?'이 날은 모든 회차가 매진입니다.':'예매 가능한 회차 '+open+'개. 매진 회차는 선택할 수 없습니다.';
+    }
+    function totalCount(){return counts.adult+counts.teen+counts.child;}
+    function calc(){
+      var slot=slotSel.value;
+      var dow=dateIn.value?parseDate(dateIn.value).getDay():-1;
+      var night=slot&&isNight(dow,slot);
+      var adultPrice=night?PRICE.night:PRICE.adult;
+      document.querySelector('[data-unit="adult"]').textContent=won(adultPrice)+(night?' (야간권)':'');
+      var n=totalCount();
+      var gross=counts.adult*adultPrice+counts.teen*PRICE.teen+counts.child*PRICE.child;
+      var disc=n*DISCOUNT;
+      sumCount.textContent=n+'매';
+      sumDisc.textContent=(disc?'−':'')+won(disc);
+      sumTotal.textContent=Math.max(0,gross-disc).toLocaleString('ko-KR');
+      errEl.textContent='';
+      Array.prototype.forEach.call(document.querySelectorAll('.stepper'),function(st){
+        var key=st.getAttribute('data-count');
+        st.querySelector('[data-step="-1"]').disabled=counts[key]<=0;
+        st.querySelector('[data-step="1"]').disabled=n>=10;
+      });
+      return {n:n,gross:gross,disc:disc,total:Math.max(0,gross-disc),night:night};
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.stepper'),function(st){
+      var key=st.getAttribute('data-count');
+      var out=st.querySelector('output');
+      st.addEventListener('click',function(e){
+        var b=e.target.closest('button[data-step]');
+        if(!b)return;
+        var next=counts[key]+parseInt(b.getAttribute('data-step'),10);
+        if(next<0)return;
+        if(totalCount()+(next-counts[key])>10){errEl.textContent='한 번에 최대 10매까지 예매할 수 있습니다.';return;}
+        counts[key]=next;
+        out.value=String(next);
+        calc();
+      });
+    });
+    dateIn.addEventListener('change',function(){buildSlots();calc();});
+    slotSel.addEventListener('change',calc);
+
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var s=calc();
+      if(!dateIn.value){errEl.textContent='관람일을 선택해 주세요.';dateIn.focus();return;}
+      if(slotSel.disabled||!slotSel.value){errEl.textContent='회차를 선택해 주세요.';slotSel.focus();return;}
+      if(s.n===0){errEl.textContent='인원을 한 명 이상 선택해 주세요.';return;}
+      var opt=slotSel.options[slotSel.selectedIndex];
+      var left=parseInt(opt.dataset.left||'0',10);
+      if(s.n>left){errEl.textContent='이 회차의 잔여 인원은 '+left+'명입니다. 인원을 줄이거나 다른 회차를 골라 주세요.';return;}
+      var d=parseDate(dateIn.value);
+      var code='AG-'+dateIn.value.replace(/-/g,'').slice(2)+'-'+(1000+hash(dateIn.value+slotSel.value+s.n)%9000);
+      document.getElementById('resCode').textContent=code;
+      document.getElementById('resDate').textContent=d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일 ('+DAY[d.getDay()]+')';
+      document.getElementById('resSlot').textContent=slotSel.value+' 입장'+(s.night?' · 야간권 적용':'');
+      var people=[];
+      if(counts.adult)people.push('성인 '+counts.adult);
+      if(counts.teen)people.push('청소년 '+counts.teen);
+      if(counts.child)people.push('어린이 '+counts.child);
+      document.getElementById('resPeople').textContent=people.join(' · ')+' — 총 '+s.n+'매';
+      document.getElementById('resTotal').textContent=won(s.total)+' (사전예매 할인 '+won(s.disc)+' 적용)';
+      form.hidden=true;
+      result.hidden=false;
+      result.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'center'});
+    });
+    document.getElementById('resReset').addEventListener('click',function(){
+      result.hidden=true;form.hidden=false;
+      form.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
+      dateIn.focus();
+    });
+    buildSlots();calc();
+  }
+})();
+</script>
+</body>
+</html>

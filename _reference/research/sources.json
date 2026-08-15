@@ -1,0 +1,978 @@
+[
+  {
+    "claim": "[정량 근거] Show HN 랜딩 1,590개를 헤드리스 브라우저로 스캔한 결과, 가장 흔한 AI 텔은 그라데이션 배경 28%, 손대지 않은 shadcn/ui 컴포넌트 23.5%, 중앙 정렬 제목 23.5%, 다크모드+회색 본문 20.3%, 피처 카드 그리드 20.1% 순. 글래스 패널 17.1%, AI 선호 폰트 15.8%, 카드 컬러 액센트 13%, 통계 배너 12.2%, 보라 CTA 10.7%. 4개 이상 패턴 겹친 '헤비 슬롭' 22%, 2~3개 32%, 0~1개 46%.",
+    "evidence": "Adrian Krebs, 'Scoring Show HN submissions for AI design patterns'(2026-04-20): Playwright로 DOM/computed style 검사, 16개 결정적 CSS/DOM 지표, 수동 QA 시 오탐 5~10%. GIGAZINE(2026-04-23)이 개별 패턴 빈도 보도. Krebs: '슬롭은 나쁜 게 아니라 uninspired… 문제는 차별화'.",
+    "source": "https://www.adriankrebs.ch/blog/design-slop/ ; https://gigazine.net/gsc_news/en/20260423-design-slop/ ; https://www.developersdigest.tech/blog/ai-design-slop-and-how-to-spot-it",
+    "actionable": "리뷰 체크리스트에 가중치를 둔다: 그라데이션 배경·기본 shadcn 카드·중앙 제목·다크+회색 본문·피처 카드 그리드 5개 중 2개 이상 겹치면 즉시 수정 대상(4개 이상 = 헤비 슬롭).",
+    "angle": "tells-ui",
+    "sourceType": "개발자 블로그(데이터 분석) / IT 매체"
+  },
+  {
+    "claim": "[신규] 카드 한쪽(주로 왼쪽)에 3~4px 굵기의 컬러 액센트 보더(side-tab / colored left border)를 두는 패턴이 '가장 알아보기 쉬운 AI UI 텔'로 지목됨. 특히 둥근 모서리(rounded) 카드에 굵은 한쪽 보더가 붙으면 형태가 충돌해 더 티가 남.",
+    "evidence": "impeccable.style/slop(Paul Bakaus): 'Thick colored border on one side of a card. The most recognizable tell of AI-generated UIs'; 'Border accent on rounded element' 별도 항목. developersdigest 16패턴: '컬러 좌측 보더는 엠대시만큼 확실한 AI 신호'. Sikora #3 'Left-Border Gradient Card'. Krebs 데이터에서 카드 컬러 액센트 13%.",
+    "source": "https://impeccable.style/slop/ ; https://sikora.software/blog/ai-website-design ; https://www.developersdigest.tech/blog/ai-design-slop-and-how-to-spot-it",
+    "actionable": "카드·인용·알림 박스에 border-left/border-top 컬러 액센트 금지. 강조가 필요하면 배경 톤 차이·타이포 위계·전체 1px 선 중 하나만.",
+    "angle": "tells-ui",
+    "sourceType": "디자이너 도구 문서 / 개발자 블로그"
+  },
+  {
+    "claim": "[보강·경고] '보라 그라데이션'의 다음 세대 텔은 크림/베이지 배경 + 하이컨트라스트 세리프 디스플레이 + 테라코타/세이지/브라스 액센트 조합('tasteful default', 'warm minimalism'). Anthropic 자체 frontend-design 스킬조차 이를 3대 AI 클러스터 중 1번으로 명시. 우리 Editorial(아이보리+세리프) 스타일이 정확히 이 위험군에 든다.",
+    "evidence": "Anthropic frontend-design SKILL.md: 'AI-generated design right now clusters around three looks: (1) a warm cream background (near #F4F1EA) with a high-contrast serif display and a terracotta accent; (2) near-black + acid-green/vermilion accent; (3) broadsheet-style layout with hairline rules, zero border-radius, dense newspaper-like columns'. claudecodehq 'Unslop UI' Tell 0(공동 1위): cream #faf8f5/#f5f1e8/stone-50/amber-50 + Instrument Serif/Fraunces/Playfair/Spectral + sage #15573a/#1a4d3a. taste-skill SKILL.md는 배경 #f5f1ea #f7f5f1 #fbf8f1 #efeae0 #ece6db #faf7f1 #e8dfcb, 액센트 #b08947 #b6553a #9a2436 #9c6e2a #bc7c3a #7d5621, 텍스트 #1a1714 #1a1814 #1b1814 을 hex 단위로 금지. impeccable: 'Warm cream/beige background has become default tasteful AI surface'.",
+    "source": "https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/frontend-design/skills/frontend-design/SKILL.md ; https://www.claudecodehq.com/playbooks/unslop-ui ; https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md ; https://impeccable.style/slop/",
+    "actionable": "Editorial·Cinematic에서 크림 배경을 쓸 때 위 hex 목록(#f5f1ea~#e8dfcb, #F4F1EA, #faf8f5)과 ±3% 이내 값 금지, 테라코타/브라스/세이지 액센트+세리프 조합 금지. 크림은 사진·질감·브랜드 색과 함께 '이유'가 문서화될 때만.",
+    "angle": "tells-ui",
+    "sourceType": "도구 공식 문서 / 오픈소스 스킬(76.7k stars) / 플레이북"
+  },
+  {
+    "claim": "[신규] 산세리프 헤드라인 안에 이탤릭 세리프 단어 하나를 끼워 넣거나(serif italic accent word), 초대형 이탤릭 세리프를 히어로 메인 서체로 쓰는 것이 '보편적 AI 스타트업 기본값'이 됨. 조합 서체로 Instrument Serif·Fraunces·Space Grotesk·Geist가 반복 등장.",
+    "evidence": "impeccable: 'Oversized italic serif as primary hero has become universal AI-startup default'; 'Overused font: Inter, Geist, Space Grotesk, Instrument Serif'. developersdigest #2·#3: 'Space Grotesk + Instrument Serif + Geist 조합', 'single italicized serif word in hero'. taste-skill: 'Fraunces', 'Instrument_Serif' 명시 금지, 'Do NOT inject a random serif word into a sans headline just to add visual interest'.",
+    "source": "https://impeccable.style/slop/ ; https://www.developersdigest.tech/blog/ai-design-slop-and-how-to-spot-it ; https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md",
+    "actionable": "금지 폰트 목록에 Instrument Serif·Fraunces·Spectral 추가. 헤드라인 안 단어 1개만 이탤릭 세리프로 바꾸는 장식 금지. 세리프는 브리프에 이유가 있을 때만(편집·출판·헤리티지) 전체 시스템으로 사용.",
+    "angle": "tells-ui",
+    "sourceType": "디자이너 도구 문서 / 개발자 블로그 / 오픈소스 스킬"
+  },
+  {
+    "claim": "[보강·검출 규칙] AI 보라색의 정체는 Tailwind indigo-500(#6366f1)/violet-500(#8b5cf6)/#7c3aed 계열(hue 255~280). 원인은 Tailwind UI가 5년 전 모든 버튼을 bg-indigo-500으로 만든 것이 학습 데이터에 침투한 것으로, 창시자 Adam Wathan이 공개 사과성 농담을 남김.",
+    "evidence": "Adam Wathan(트윗, Kai Ni 인용): 'I'd like to formally apologize for making every button in Tailwind UI bg-indigo-500 five years ago, leading to every AI generated UI on earth also being indigo'. claudecodehq Tell 2: '--primary hue ~255–280', '#6366f1, #7c3aed, #8b5cf6'. prg.sh(2025-10-26): 'modern web design = purple buttons' 규칙을 모델이 내재화. Sikora #2: indigo-500 #615fff / violet-500 #8e51ff.",
+    "source": "https://medium.com/@kai.ni/design-observation-why-do-ai-generated-websites-always-favour-blue-purple-gradients-ea91bf038d4c ; https://prg.sh/ramblings/Why-Your-AI-Keeps-Building-the-Same-Purple-Gradient-Website ; https://www.claudecodehq.com/playbooks/unslop-ui",
+    "actionable": "CSS 린트: 주색/CTA의 HSL hue가 240~285이고 채도 60% 이상이면 경고. 보라가 브랜드색이면 Tailwind 기본값에서 벗어난 특정 톤 + 비기본 뉴트럴과 짝지어 사용.",
+    "angle": "tells-ui",
+    "sourceType": "디자이너 블로그(Medium) / 개발자 블로그 / 플레이북"
+  },
+  {
+    "claim": "[신규] 카드 본문 길이·단어 수가 모두 동일하고 3개/2×2 등 완벽 대칭 그리드로 배치되는 '기계적 균일성'(rigid symmetry, uniform card lengths)과, py-24류 과도한 섹션 패딩으로 '반응형은 통과하지만 큰 화면에서 텅 빈' 느낌이 텔로 지목.",
+    "evidence": "Sikora(2026-07-25) #8: 'Every feature card contains identical text lengths and word counts… perfectly even grids (3 cards, 2×2)'; #9 'Responsive by Default, Empty by Design… generous padding (py-24) fill space rather than serve design intent'. 925studios 가이드(2026-08-15): 'Every element gets the same 16px border radius and 24px padding'. aitoolpick 30체크: 'Uniform padding/margins', 'Uniform size increments', 'line-height 1.5 everywhere'.",
+    "source": "https://sikora.software/blog/ai-website-design ; https://www.925studios.co/blog/ai-slop-web-design-guide ; https://aitoolpick.org/blog/ai-generated-website-checklist/",
+    "actionable": "카드/목록 아이템의 텍스트 길이를 의도적으로 다르게(1줄~4줄 혼재), 열 폭·높이를 비대칭으로. 섹션 상하 패딩은 콘텐츠 밀도에 따라 2~3단계로 차등, 전 섹션 동일 py 값 금지.",
+    "angle": "tells-ui",
+    "sourceType": "개발자 블로그 / 디자인 스튜디오 블로그 / 체크리스트"
+  },
+  {
+    "claim": "[신규] 카피의 엠대시(—) 남발과 타이포그래픽 스마트 따옴표(“ ”)가 UI 텍스트에서 AI 신호로 읽힘. taste-skill은 UI 어디에도 —/– 1개라도 있으면 실패 처리. 'Not just X, it's Y' 대조 구문, 아포리즘형 마무리, '~theater' 표현, 'Quietly trusted by/From the field' 같은 '조용한 척' 라벨도 반복 텔.",
+    "evidence": "Sikora #1 'The Ubiquitous Em Dash', #7 'Typographic Smart Quotes'. taste-skill: 'Em-dash (—) is COMPLETELY banned… headlines, eyebrows, pills, button text, captions, nav items'. impeccable Copy: 'Em-dash overuse', 'Aphoristic-cadence copy… manufactured-contrast aphorism', 'Theater framing copy'. slop-detect.com 카피 축: 'em-dash-heavy', 'Not just X, it's Y antithesis'. taste-skill: 'No Quietly in use at / Quietly trusted by', 'No From the field / Field notes'.",
+    "source": "https://sikora.software/blog/ai-website-design ; https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md ; https://impeccable.style/slop/ ; https://slop-detect.com/",
+    "actionable": "grep 규칙 추가: 마크업 내 '—', '–', 스마트 따옴표, 'A가 아니라 B입니다' 대조 구문, '조용히 ~에서 쓰이는' 류 라벨. 문장 끝 격언형 한 줄 요약 금지.",
+    "angle": "tells-ui",
+    "sourceType": "개발자 블로그 / 오픈소스 스킬 / 디자이너 도구 문서 / 검출 도구"
+  },
+  {
+    "claim": "[신규] div로 그린 가짜 대시보드·터미널·태스크 리스트, 편집 불가능한 히어로 카피에 붙은 깜빡이는 가짜 커서, 손으로 코딩한 아마추어 SVG 일러스트/도형 조립 히어로 아트가 '플레이스홀더'로 읽히는 텔.",
+    "evidence": "taste-skill: 'No div-based fake screenshots (fake task lists, terminals, dashboards built from styled divs)', 'No hand-rolled decorative SVGs as default', 'Text + gradient blob is not a hero—it's a placeholder'. impeccable: 'Decorative blinking cursor: fake caret makes non-editable hero copy resemble terminal', 'Amateurish hand-drawn SVG', 'Shape-assembled illustration… reads like placeholder clip art'.",
+    "source": "https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md ; https://impeccable.style/slop/",
+    "actionable": "Product/Utility 스타일에서 UI 목업은 실제 데이터·실제 컴포넌트로 렌더(가짜 div 대시보드 금지). 타이핑 커서·타자기 효과 금지. 히어로 그래픽은 실사진/실제 UI/타이포 중 하나, 도형 조립 SVG 금지.",
+    "angle": "tells-ui",
+    "sourceType": "오픈소스 스킬 / 디자이너 도구 문서"
+  },
+  {
+    "claim": "[신규] 장식용 텍스트 조각들이 '있어 보이려는' AI 텔로 명시됨: 히어로의 버전 라벨(V0.6/BETA/INVITE-ONLY), '00 / INDEX'·'001 · Capabilities' 섹션 번호 아이브로우, '01 / 4' 이미지 페이지네이션, 'Scroll ↓ / Scroll to explore' 스크롤 큐, 도시명·현지 시각·날씨 스트립, 세로 회전 텍스트, 크로스헤어/헤어라인 격자 배경, 히어로 하단 'BRAND. MOTION. SPATIAL.' 장식 띠, 로고 월 아래 산업 카테고리 라벨.",
+    "evidence": "taste-skill SKILL.md 'Micro-Interactions & Decoration' 섹션의 금지 목록 그대로. impeccable: 'Tiny numbered section labels… without adding structure', 'Decorative grid-line background… without supporting a canvas, map, or measurement task'. Anthropic 스킬: 'numbered markers (01 / 02 / 03)… only appropriate if the content actually is a sequence'.",
+    "source": "https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md ; https://impeccable.style/slop/ ; https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/frontend-design/skills/frontend-design/SKILL.md",
+    "actionable": "번호는 실제 순서(공정·타임라인)일 때만. 스크롤 큐·버전 배지·시간/날씨 위젯·세로 텍스트·격자 배경·장식 대문자 띠는 0개. 로고 월은 로고만.",
+    "angle": "tells-ui",
+    "sourceType": "오픈소스 스킬 / 디자이너 도구 문서 / 도구 공식 문서"
+  },
+  {
+    "claim": "[신규] 히어로 과적재가 텔: CTA 아래 작은 태그라인, 신뢰 마이크로 스트립('4.9★ 2,000+ 팀'), 아바타 행, 기능 불릿, 가격 티저까지 한 화면에 쌓는 구조. 히어로 텍스트 요소는 최대 4개(아이브로우 또는 브랜드 스트립 / 헤드라인 / 서브 / CTA)이며 첫 뷰포트에 들어가야 함. 같은 의도의 CTA 2개도 실패.",
+    "evidence": "taste-skill: 'Max 4 text elements in hero', 'Banned in the hero: tiny tagline below CTAs, trust micro-strip, pricing teaser, feature bullet list, social-proof avatar row', 'No duplicate CTA intent: two CTAs with the same intent = Pre-Flight Fail', 'Hero MUST fit in the initial viewport'. aitoolpick: '3+ CTA buttons per section'. impeccable 'Hero metric layout: Big number, small label, three supporting stats, gradient accent. Used everywhere, trusted nowhere'.",
+    "source": "https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md ; https://aitoolpick.org/blog/ai-generated-website-checklist/ ; https://impeccable.style/slop/",
+    "actionable": "히어로 텍스트 블록 4개 이하, CTA는 의도별 1개(총 2개 이하), CTA 아래 미니 신뢰 문구·아바타·별점 스트립 금지. 히어로 통계 3개 배치 금지.",
+    "angle": "tells-ui",
+    "sourceType": "오픈소스 스킬 / 체크리스트 / 디자이너 도구 문서"
+  },
+  {
+    "claim": "[보강] 모션 텔의 구체형: 무한 오토스크롤 마퀴(로고 월 포함), 이미지 hover 시 scale/rotate, hover:scale-105 카드, bounce/elastic 이징, initial={{opacity:0,y:20}}·data-aos=fade-up 반복, opacity:0으로 시작해 스크립트 실패 시 콘텐츠가 안 보이는 상태. Anthropic 스킬조차 '애니메이션이 많을수록 AI가 만든 느낌'이라 명시.",
+    "evidence": "impeccable Motion: 'Auto-scrolling marquee', 'Bounce/elastic easing… dated and tacky', 'Image hover transform: scaling or rotating image on hover is recurring generated-UI signature', 'Content invisible at rest (opacity: 0)'. claudecodehq Tell 4: 'initial={{ opacity: 0, y: 20 }} repeated, data-aos=fade-up everywhere, hover:scale-105 on cards'. taste-skill: 'Marquee max-one-per-page', 'Motion claimed = motion shown'. Anthropic: 'extra animation contributes to the feeling that the design is AI-generated'.",
+    "source": "https://impeccable.style/slop/ ; https://www.claudecodehq.com/playbooks/unslop-ui ; https://raw.githubusercontent.com/anthropics/claude-code/main/plugins/frontend-design/skills/frontend-design/SKILL.md",
+    "actionable": "마퀴 0개(로고 월 정적), 이미지 hover scale/rotate 금지, spring/bounce 이징 금지(ease-out quart/quint만), 초기 opacity:0 리빌 금지(콘텐츠는 기본 표시). prefers-reduced-motion 필수.",
+    "angle": "tells-ui",
+    "sourceType": "디자이너 도구 문서 / 플레이북 / 도구 공식 문서"
+  },
+  {
+    "claim": "[신규·역방향 텔] 균일함만이 아니라 '부조화'도 AI 신호: 컴포넌트마다 다른 라운드(카드 12px, 버튼 pill, 인풋 4px 혼용), 광원이 두 개인 그림자, 8px 그리드를 벗어난 7/13/19px 간격, 아이콘 세트/굵기 혼용. 각 컴포넌트가 학습 평균으로 따로 회귀하기 때문.",
+    "evidence": "dev.to @kiwibreaksme(6월 16일): 'Each component regresses to the mean of its training data, and the mean of a button and the mean of a card were never coordinated'; 라운드는 Sharp(0-4)/Soft(8-12)/Pill 중 하나, 그림자는 'a scene with two suns' 금지, off-grid 7/13/19px는 'sloppy'. claudecodehq Tell 10: 'Inconsistent padding (mix of p-3, p-7, arbitrary mt-[37px])'. 반대로 Kai Ni는 AI가 8px/16px radius·아웃라인 아이콘으로 수렴한다고 관찰.",
+    "source": "https://dev.to/kiwibreaksme/why-ai-generated-uis-look-off-and-the-one-principle-that-fixes-it-4j20 ; https://www.claudecodehq.com/playbooks/unslop-ui ; https://medium.com/@kai.ni/design-observation-why-do-ai-generated-websites-always-favour-blue-purple-gradients-ea91bf038d4c",
+    "actionable": "프로젝트당 축별 1값 고정: radius 스케일 1개, 그림자 1광원 1틴트, 간격 사다리(4/8/12/16/24/32/48/64)만, 아이콘 1패밀리 1굵기. 임의 px(mt-[37px]) 금지.",
+    "angle": "tells-ui",
+    "sourceType": "개발자 커뮤니티(DEV) / 플레이북 / 디자이너 블로그"
+  },
+  {
+    "claim": "[신규] 카드 안 카드(nested cards), 헤어라인 보더+넓게 퍼진 그림자 동시 사용, 24px 이상 과라운드 카드('soft blob'), 섹션마다 #F5F5F5 교차 배경, 검정 텍스트/흰 배경/파란 CTA의 '사무실 색' 조합이 생성 UI 서명으로 지목됨.",
+    "evidence": "impeccable: 'Nested cards create visual noise', 'Hairline border with wide shadow… generated-UI signature. Choose one', 'Extreme border-radius on cards (24px+)'. aitoolpick: 'Alternating section backgrounds (#F5F5F5 pattern)', 'Box-shadow on every element'. Nick Babich 글 댓글(Wendyteo): 'Black/Dark text. White/Light background. And blue CTA buttons… Boring office like colours… very safe'.",
+    "source": "https://impeccable.style/slop/ ; https://aitoolpick.org/blog/ai-generated-website-checklist/ ; https://uxplanet.org/how-to-spot-ai-generated-design-697aaabe76c8",
+    "actionable": "카드 중첩 금지(내부는 여백·구분선), 카드 경계는 선 또는 그림자 하나만, 카드 radius 16px 초과 금지(pill은 태그·버튼만), 섹션 배경 흰/회색 교차 패턴 금지.",
+    "angle": "tells-ui",
+    "sourceType": "디자이너 도구 문서 / 체크리스트 / UX 블로그(UX Planet)"
+  },
+  {
+    "claim": "[신규] 다크모드에서 중간 회색 본문(WCAG AA 미달)과 컬러 배경 위 회색 텍스트, 컬러 박스섀도 글로우가 '기본 cool 룩'으로 반복. 다크모드 자체가 아니라 '요청하지 않은 글로우'와 '저대비 회색 본문'이 텔.",
+    "evidence": "developersdigest #5·#6: 'Permanent dark mode with medium-grey body text and all-caps section labels', 'Low contrast body text failing WCAG AA'. Krebs 데이터: 다크+회색 텍스트 20.3%. impeccable: 'Dark mode with glowing accents… default cool look', 'Gray text on colored background'. claudecodehq '데이터상 클리어': 'Dark mode itself (only unprompted glow is flagged)'.",
+    "source": "https://www.developersdigest.tech/blog/ai-design-slop-and-how-to-spot-it ; https://impeccable.style/slop/ ; https://www.claudecodehq.com/playbooks/unslop-ui",
+    "actionable": "다크 테마 본문은 대비 4.5:1 이상(회색 #9CA3AF류 본문 금지), 컬러 box-shadow/text-shadow 0개, 컬러 배경 위 텍스트는 흰색 또는 더 어두운 같은 계열.",
+    "angle": "tells-ui",
+    "sourceType": "개발자 블로그 / 디자이너 도구 문서 / 플레이북"
+  },
+  {
+    "claim": "[신규] 코드·메타 지문: 기본 favicon(Vite/Next 로고), 마크업 내 '<!-- Hero -->', '<!-- Testimonials -->' 섹션 주석과 장식 구분선 주석, 빌더 배지('Edit with Lovable', 'Made in Bolt', 'Built with v0'), 거의 빈 페이지 소스(#root + /assets/index-*.js), /lovable-uploads/ 경로, README 이모지 남발과 'Claude Code' 커밋 메시지, 앱 상단바의 '전형적 AI 그라데이션'.",
+    "evidence": "VibeZero(2026-07-08) 7신호: 'a comment reading Hero or Testimonials sitting above each block, decorative divider comments, and emoji scattered through the markup'; 기본 look은 'dark bg, purple-to-blue gradient, pill buttons, Inter/Geist, Lucide on every card'. HN 45871787 댓글: 'stereotypical AI gradient in the top bar', 답글에 'purple gradients, excessive emojis in the README… commit messages attributed to Claude Code'.",
+    "source": "https://www.vibe0.com.au/blog/how-to-tell-if-a-website-is-vibe-coded ; https://hn.algolia.com/api/v1/items/45871787",
+    "actionable": "배포 전 grep: 기본 favicon 교체 확인, HTML 주석 '<!-- Hero/Features/Testimonials -->' 제거, 마크업 내 이모지 0, 헤더 바에 그라데이션 금지, 모든 카드에 동일 Lucide 라인 아이콘 반복 금지.",
+    "angle": "tells-ui",
+    "sourceType": "에이전시 블로그 / Hacker News 댓글"
+  },
+  {
+    "claim": "[신규] 카피 구조 텔: 'Learn more/자세히 보기'류 범용 버튼, 'Features/Solutions' 같은 추상 명사 섹션 제목, 두 문장 이상의 긴 서브타이틀, 'Build faster. Ship smarter.'류 무게 없는 2~3어절 슬로건, 'Sarah Johnson'류 흔한 이름·'Acme/Nexus/Cloudly' 가짜 브랜드·99.99%류 완벽 숫자, 'Step 1/Stage 1/Phase 01' 범용 단계 라벨.",
+    "evidence": "aitoolpick: 'Generic Learn more buttons', 'Abstract headings (Features, Solutions)', 'Multi-sentence subtitles'. 925studios: 'Build faster. Ship smarter… says nothing specific'; 반례로 Stripe 'Financial infrastructure', Linear 'Plan and build products'. Sikora #5 'Sarah Johnson'. taste-skill: 'No generic names John Doe/Sarah Chan', 'No fake-perfect numbers 99.99%, 50%, 1234567', 'No startup-slop brand names Acme, Nexus, SmartFlow, Cloudly', 'No generic step labels Stage 1 / Step 1 / Phase 01'.",
+    "source": "https://aitoolpick.org/blog/ai-generated-website-checklist/ ; https://www.925studios.co/blog/ai-slop-design-tells ; https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md",
+    "actionable": "버튼 라벨은 동사+목적어('견적 받기', '샘플 3장 보기'), 섹션 제목은 명사 한 단어 금지, 서브타이틀 1문장, 예시 인물명은 흔한 조합 회피하고 회사·역할까지, 숫자는 99.9/50/10K 같은 정수·반올림 금지, 단계 라벨은 내용어로.",
+    "angle": "tells-ui",
+    "sourceType": "체크리스트 / 디자인 스튜디오 블로그 / 오픈소스 스킬"
+  },
+  {
+    "claim": "[신규] 좌측 큰 헤드라인 + 우측 작은 설명 문단의 '스플릿 섹션 헤더', 지그재그 교차 레이아웃 3회 이상 반복, 리듬 없는 벤토 그리드, 긴 목록/스펙 표의 모든 행에 border-t/border-b, 사진 위 pill 라벨 오버레이, 장식용 사진 크레딧 캡션, 마케팅 페이지 푸터의 버전 표기가 기본값 텔로 명시.",
+    "evidence": "taste-skill: 'The pattern left big headline + right small explainer paragraph as a section header is banned as default', 'Max 2 consecutive zigzag layouts', 'Bento grids MUST have rhythm', 'A long product specification table with border-b on every row is the AI default… Banned', 'No pills/labels overlaid on images', 'No photo-credit captions as decoration', 'No version footers on marketing pages'.",
+    "source": "https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/skills/taste-skill/SKILL.md",
+    "actionable": "섹션 헤더 '좌 큰 제목/우 작은 문단' 구조는 사이트당 1회 이하, 지그재그는 연속 2회까지, 표는 행마다 선 대신 그룹 구분선·배경 줄무늬 없이 여백, 이미지 위 pill 0개, 푸터에 v1.2 같은 버전 표기 금지.",
+    "angle": "tells-ui",
+    "sourceType": "오픈소스 스킬(GitHub 76.7k stars)"
+  },
+  {
+    "claim": "[반례·주의] 데이터로 보면 텔이 아닌 것들: 메시/블롭/오로라 배경(키워드 아티팩트), 벤토 그리드(커뮤니티가 적극 옹호), 다크모드 자체, Tailwind/shadcn 도구 자체('손대지 않은 기본값'이 문제). 또한 HN에서는 '2010년대 테크 스타트업 사이트/Bootstrap 시대와 똑같다'는 지적처럼 이 패턴이 AI 이전 인간 템플릿의 유산이며, Krebs는 '슬롭 페이지도 전환은 잘 된다'고 단서를 닮.",
+    "evidence": "claudecodehq(3.2M 포스트·3,033댓글 분석) 'Cleared by Data (Do Not Chase): Mesh/blob/aurora backgrounds, Bento grids (0.1%, actively defended), Dark mode itself, shadcn/Tailwind themselves'. HN vibe-coded.lol 스레드: lispisok 'looks like all the tech startup websites of the 2010s', Darmani 'a bit of a Bootstrap feel'. Krebs: 'slop pages are not bad, just uninspired, and can still convert fine'.",
+    "source": "https://www.claudecodehq.com/playbooks/unslop-ui ; https://hn.algolia.com/api/v1/items/45622944 ; https://www.adriankrebs.ch/blog/design-slop/",
+    "actionable": "우리 기준서의 '메시 그라데이션 블롭 전면 금지'는 '보라/시안 글로우 블롭 금지'로 좁히고, 벤토는 크기 리듬이 있으면 허용, 다크모드는 글로우·저대비만 검사. 검사 대상은 '도구'가 아니라 '커스터마이즈 여부'로 표기.",
+    "angle": "tells-ui",
+    "sourceType": "플레이북(Reddit 데이터) / Hacker News / 개발자 블로그"
+  },
+  {
+    "claim": "[국내] 한국어권 논의도 같은 진단: AI 출력이 '가장 실패하지 않는 조합(보라 그라데이션·Inter·다크모드)'으로 분포 수렴하며, 디자이너 역량은 'AI가 제안한 기본값을 그대로 받아들여도 될까'를 묻고 의도적 편차를 만드는 것. 국내 실무 글은 Lovable류 원샷 대신 스크린샷 참조·회사 헤더/푸터 복제·제품 이미지 직접 투입을 'AI 티 제거' 방법으로 제시.",
+    "evidence": "브런치 fromhyuns(2026-02-08) 'AI가 그린 세상은 왜 다 보라색일까?': '가장 확률이 높은 패턴으로 수렴… 가장 실패하지 않는 선택'. qjc.app(2026-07-08) taste-skill 정리: '보라색 그라데이션, 가운데 정렬 히어로, 똑같은 3개짜리 기능 카드, Inter 폰트에 회색 배경'. ai-gateway.kr 심규현(2025-09-08): 'AI로 만든 티가 너무 많이 남'→스크린샷 기반 참조·브랜드 요소 복제.",
+    "source": "https://brunch.co.kr/@fromhyuns/13 ; https://qjc.app/en/blog/taste-skill-anti-slop-frontend ; https://ai-gateway.kr/blog/ai-landing-page-development",
+    "actionable": "빌더 프롬프트에 '기본값 채택 이유'를 한 줄씩 적게 하고(색·서체·레이아웃), 레퍼런스 스크린샷 1장과 실제 제품/브랜드 요소를 반드시 입력으로 준다.",
+    "angle": "tells-ui",
+    "sourceType": "국내 블로그(브런치) / 국내 커뮤니티 블로그 / 국내 실무 블로그"
+  },
+  {
+    "claim": "[보강] Anthropic·Claude Design 사용자 관찰: 지시 없이 생성하면 '아이브로우 + 64pt 헤드라인 + 서브 + CTA 2개 중앙 히어로, 3-up 카드, 로고 수프, 프라이싱 토글, FAQ 아코디언, shadcn 기본 카드, rounded-xl 버튼, 애니메이션 블롭'으로 수렴하며, Space Grotesk는 '노력한 척(I tried) 업그레이드'로 읽힘. Anthropic의 Claude Design 마케팅 로고조차 같은 함정에 빠졌다는 지적.",
+    "evidence": "The Adpharm(2026-05-01) 'Claude Design produces AI slop unless you tell it not to': 'Inter, Roboto, Arial… Space Grotesk as the I tried upgrade', 'Centered hero with eyebrow plus 64-pt headline plus subhead plus two CTAs. Three-up feature cards. Logo soup. Pricing toggle. FAQ accordion', 'Anthropic's own Claude Design marketing logo fell into the trap'. 처방: 레퍼런스 2개 리믹스('Linear의 타이포 규율 + Pitchfork의 편집 색').",
+    "source": "https://www.theadpharm.com/insights/claude-design-without-the-ai-slop-look ; https://claude.com/blog/improving-frontend-design-through-skills",
+    "actionable": "프라이싱 토글·FAQ 아코디언·로고 수프 3종을 한 페이지에 함께 쓰지 않는다. 스타일 DNA는 단일 레퍼런스가 아니라 이질적 레퍼런스 2개의 조합으로 정의해 통계적 중심에서 벗어난다.",
+    "angle": "tells-ui",
+    "sourceType": "에이전시 인사이트 / 도구 공식 블로그"
+  },
+  {
+    "claim": "보라-파랑(indigo) 그라데이션이 AI 티인 이유는 취향이 아니라 학습 데이터의 통계적 평균: Tailwind UI가 5년 전 모든 버튼을 bg-indigo-500으로 만든 것이 GitHub 튜토리얼 코드에 대량 복제됐고, LLM이 '웹 버튼 = 인디고'로 학습했다. 제작자 Adam Wathan이 2025-08 공개 사과 트윗.",
+    "evidence": "Adam Wathan(X, 2025-08): \"I'd like to formally apologize for making every button in Tailwind UI bg-indigo-500 five years ago, leading to every AI generated UI on earth also being indigo.\" / dev.to: 학습 코드에 bg-indigo-500이 불균형하게 많아 모델이 '보라 버튼이 버튼의 모습'이라는 통계적 진실을 학습",
+    "source": "https://x.com/adamwathan/status/1953510802159219096",
+    "actionable": "포인트 색을 hex로 명시하되 hue 230~280°(indigo·violet) 계열은 '브랜드 근거 문서'가 없으면 금지. 그라데이션은 색상+방향+스타일을 명시할 때만 허용.",
+    "angle": "typography-color",
+    "sourceType": "제작자 SNS(1차 출처) + 개발자 블로그(dev.to/alanwest)"
+  },
+  {
+    "claim": "Inter는 '나쁜 서체'가 아니라 '아무도 타이포 결정을 하지 않았다'는 신호. 인디고 그라데이션은 2026년 가장 시끄러운 AI 텔(tell)이며 '모델이 천만 번 본 것'이라는 게 문제.",
+    "evidence": "925Studios(2026-08-15): \"an unchosen Inter signals nobody made a typography decision\", \"The indigo gradient is not ugly, it is just the one a model has seen ten million times.\"",
+    "source": "https://www.925studios.co/blog/ai-slop-design-tells",
+    "actionable": "서체 선언 옆에 반드시 '선택 이유' 주석 1줄을 남긴다(예: /* 본문: SUIT — 가격·수치 많은 화면, 숫자 폭 정돈 */). 이유를 못 적으면 그 서체는 기본값이다.",
+    "angle": "typography-color",
+    "sourceType": "디자인 스튜디오 블로그"
+  },
+  {
+    "claim": "'Inter 금지'는 2차 기본값을 낳는다: Inter를 막으면 모델은 Space Grotesk로 수렴하고(Anthropic frontend-design 스킬이 Space Grotesk를 이름으로 금지한 이유), Space Grotesk는 이미 '모델이 생각하는 엣지 있는 기본값'이 되었다. 해법은 개별 서체 금지가 아니라 '성격 있는 디스플레이 + 중립 본문' 시스템을 사람이 고르는 것.",
+    "evidence": "aiskill.market(2026-06-07): \"Inter is everywhere the agent goes by default, and default is the tell.\" Space Grotesk는 \"the model's idea of 'edgy default'… now its own cliché\". 추천 조합 예: Fraunces+Geist, Clash Display+Satoshi, Monument Extended+General Sans",
+    "source": "https://aiskill.market/blog/banning-inter-the-font-tell",
+    "actionable": "금지 목록을 Inter/Geist/Space Grotesk/Playfair에서 멈추지 말고 '2차 기본값'(Instrument Serif 이탤릭 악센트, Fraunces, Satoshi, Clash Display, DM Sans/Plus Jakarta)도 '이유 없는 사용 시 지적' 목록에 추가.",
+    "angle": "typography-color",
+    "sourceType": "AI 스킬 마켓 블로그"
+  },
+  {
+    "claim": "반례/주의: 2025-10 시점의 AI 슬롭 탈출 가이드가 Playfair Display·Space Grotesk·JetBrains Mono·Crimson Pro를 '대안'으로 권했고, 이것들이 1년 만에 새 AI 티가 됨. 즉 '특정 서체 리스트'는 유통기한이 짧다.",
+    "evidence": "prg.sh(2025-10-26): Anthropic Cookbook 접근으로 Arial/Inter 회피 + 'Playfair Display, Crimson Pro, JetBrains Mono, Space Grotesk' 추천 → developersdigest(2026-04): 'Space Grotesk, Instrument Serif, Geist 조합 반복'을 슬롭 패턴 #2로 지목",
+    "source": "https://prg.sh/ramblings/Why-Your-AI-Keeps-Building-the-Same-Purple-Gradient-Website",
+    "actionable": "기준 문서에 서체명 화이트리스트를 두지 말고 '선택 절차'(브랜드 형용사 3개 → 후보 3종 → 실제 카피로 렌더 비교 → 이유 기록)를 둔다. 서체 리스트는 분기마다 갱신.",
+    "angle": "typography-color",
+    "sourceType": "개발자 블로그"
+  },
+  {
+    "claim": "크림/누런 배경 + 러스트 오렌지 + 큰 이탤릭 세리프 + 자간 넓힌(tracked-out) 소제목 + 뉴스 티커 바 + 네온 글로우 둥근 대시보드 = '클로드 미학(Claude aesthetic)'. 원인은 사용자가 밀어내지 않으면 모델이 '가장 낮은 공통 허용선'을 출력하기 때문. 디자이너들은 팔레트 자체는 좋아도 그 웜톤에 '본능적 거부감'을 느끼기 시작.",
+    "evidence": "Kyle Chayka(2026-06-29): 특징 나열 + David McGillivray \"dashboard elements with multiple rounded rectangular outlines, sometimes with a neon glow\", Celine Nguyen \"Now I find myself instinctively repulsed by the warm tones\"",
+    "source": "https://kylechayka.substack.com/p/the-generic-style-of-ai-web-design",
+    "actionable": "자간 넓힌 대문자 소제목·티커 바·이탤릭 세리프 강조 1단어·둥근 아웃라인 대시보드 목업을 리뷰 체크리스트에 추가(기존 §3 아이브로우 라벨 항목 확장).",
+    "angle": "typography-color",
+    "sourceType": "문화 비평 뉴스레터(뉴요커 기고자)"
+  },
+  {
+    "claim": "크림 배경의 정체: Claude.ai 자체 캔버스가 #faf9f5(크림), 포인트 #cc785c(코랄), 제목 Copernicus/Tiempos 세리프 + 본문 StyreneB/Inter. '경쟁사(쿨 슬레이트·파랑)와 반대되는 웜톤'이라는 Anthropic 브랜드 전략이며, 생성물이 이 UI를 그대로 물려받는다. 즉 크림+세리프는 '따뜻함'이 아니라 '클로드 브랜드 복제'.",
+    "evidence": "awesome-design-md/claude DESIGN.md: canvas #faf9f5, accent #cc785c, dark #181715, \"deliberately warm and humanist where most AI brands use cool blue + slate\"",
+    "source": "https://github.com/VoltAgent/awesome-design-md/blob/main/design-md/claude/DESIGN.md",
+    "actionable": "배경 hex가 #FAF9F5±(#F9F7F3, #FAF9F6, #FDFBF7) 범위이고 포인트가 코랄/테라코타(#cc785c 근처)면 자동 지적. 아이보리가 필요하면 종이·사진에서 뽑은 다른 값(예: 청회색 기운 #F3F1EC 등)과 텍스트 잉크색을 세트로 정의.",
+    "angle": "typography-color",
+    "sourceType": "디자인 시스템 리버스 문서(GitHub)"
+  },
+  {
+    "claim": "Show HN 1,590개 페이지 감사: 22%가 4개 이상 슬롭 패턴, 32%가 2~3개. 색·타이포 관련 텔: Inter 일괄, 반복 조합(Space Grotesk/Instrument Serif/Geist), 세리프 이탤릭 1단어 강조, 'VibeCode 보라', 상시 다크모드+중간회색 본문+대문자 라벨, WCAG AA 턱걸이 대비, 그라데이션 남발, 컬러 글로우 그림자, 카드 좌측 컬러 보더('em-dash만큼 확실한 신호').",
+    "evidence": "developersdigest(2026-04-22, 6-10 갱신): \"Inter… has also become the Helvetica of the LLM era\", \"Colored left borders are almost as reliable a sign of AI-generated design as em-dashes\", 핵심 처방 3가지: 관점 있는 비기본 팔레트 / Inter 아닌 서체 / 레이아웃 원시형 1개 반복",
+    "source": "https://www.developersdigest.tech/blog/ai-design-slop-and-how-to-spot-it",
+    "actionable": "리뷰 grep 추가: `border-left: 3px solid`류 컬러 스트라이프, `box-shadow: 0 0 40px rgba(색,…)` 컬러 글로우, 다크 배경에서 본문 #888~#a0 회색(대비 4.5:1 미만).",
+    "angle": "typography-color",
+    "sourceType": "개발자 블로그(정량 감사 포함)"
+  },
+  {
+    "claim": "다크+글로우+그라데이션+글래스가 AI 티로 읽히는 배경엔 'Linear 디자인' 유행이 있다: Linear.app 스타일(다크, 볼드 타이포, 복합 그라데이션, 글래스)을 Raycast·Reflect·Supabase 등이 복제해 이미 2025년에 '단조롭다'는 비판. LLM은 이 유행의 평균을 다시 출력한다.",
+    "evidence": "LogRocket(2025-06-07, Daniel Schwarz): \"all the products that follow the trend start to look monotonous and lack variety\"; 차별화 예로 Raycast의 붉은 포인트+노이즈 오버레이, 비관습적 타이포 권장",
+    "source": "https://blog.logrocket.com/ux-design/linear-design/",
+    "actionable": "다크 테마를 쓸 땐 '글로우/그라데이션 없이' 질감(노이즈·사진)·강한 단일 포인트색·타이포 위계로 깊이를 만든다. Raycast식 '단일 채도 높은 색 1개 + 질감'을 다크 대체 공식으로.",
+    "angle": "typography-color",
+    "sourceType": "UX 블로그"
+  },
+  {
+    "claim": "국내 관점: AI 결과물이 닮는 이유는 '분포 수렴(Distributional Convergence)'. 보라·Inter는 실패 위험이 가장 낮은 조합이라 선택되며, 디자이너의 역량은 'AI가 제안한 기본값을 그대로 받아들여도 되는가'를 묻고 어디서부터 의도적으로 어긋날지 정하는 것.",
+    "evidence": "brunch @fromhyuns(2026-02-08): \"AI 모델은 자신이 학습한 방대한 데이터 분포 안에서 가장 확률이 높은 패턴으로 수렴하려는 성질을 가진다\", \"보라색은 기본값일 뿐\"",
+    "source": "https://brunch.co.kr/@fromhyuns/13",
+    "actionable": "각 예시 사이트 스펙에 '기본값에서 의도적으로 어긋난 지점 3개'(색·서체·레이아웃 각 1개)를 명시하고 리뷰어가 확인.",
+    "angle": "typography-color",
+    "sourceType": "국내 디자이너 브런치"
+  },
+  {
+    "claim": "국내 실무 팁: 그라데이션 '떡칠'은 키워드를 몰라서 생김. GrainyGradient(노이즈·종이 질감)/AuroraBackground(블러 블롭)/MeshGradient/Subtle Gradient를 구분하고, '색상 + 스타일 + 방향' 3요소를 함께 줘야 AI가 보라 떡칠을 안 함(30회+ 테스트).",
+    "evidence": "dddesign.io(Threads, 2026-02-04): 예시 \"GrainyGradient로 배경 만들어줘, 색상은 Cream에서 Light Gray로\" — \"색상 + 스타일 + 방향 이 3개를 같이 줘야 AI가 떡칠 안 합니다\"",
+    "source": "https://www.threads.com/@dddesign.io/post/DUWoCEqkmm5",
+    "actionable": "그라데이션 허용 조건: 시작색·끝색 hex + 각도/방향 + 종류(grainy/subtle 등)를 CSS 주석에 기록. 미기재 시 단색으로 치환. Aurora/Mesh 블롭은 여전히 금지.",
+    "angle": "typography-color",
+    "sourceType": "국내 디자인 커뮤니티(Threads)"
+  },
+  {
+    "claim": "Pretendard는 'Inter와 거의 흡사한' 영문·숫자 폭을 갖도록 만든 본고딕(Noto Sans KR) 대체재라 국내 스타트업의 사실상 기본값이 됨. 본고딕의 약점은 영문이 너무 얇아 Inter를 혼용해야 했던 것. 즉 Pretendard 일괄 사용은 한국어판 'unchosen Inter'가 될 위험.",
+    "evidence": "brunch @lovelylucia(2023-07-04): 선택 기준 3가지(무료·웹폰트·영문/숫자 심미성), \"Inter 폰트와 거의 흡사하게 뚱뚱하게 표현되어서 더 이상 혼용하지 않아도 된다\", \"노토산스의 영어는 너무 얇아지는 경우가 있었다\"",
+    "source": "https://brunch.co.kr/@lovelylucia/148",
+    "actionable": "Pretendard는 Utility/Product/Corporate 본문에 한해 허용하고 반드시 제목 서체(명조·디스플레이·굵기 대비)와 짝지어 쓴다. 24개 예시 중 Pretendard 단독 사이트는 4개 이하로 제한.",
+    "angle": "typography-color",
+    "sourceType": "국내 스타트업 디자이너 브런치"
+  },
+  {
+    "claim": "공공 디자인 시스템 KRDS의 정량 규칙: 기본 서체 Pretendard GOV, 본문 최소 17px(타 서체 16px), 행간 150% 이상, 굵기는 Regular 400·Bold 700 중심으로 최대 4종, 타입 스케일은 Display/Heading/Body 3계층 + Navigation/Label 시맨틱 토큰, 텍스트 대비 4.5:1(AA)/7:1(AAA). '같은 px도 서체마다 크기가 달라 보인다'는 보정 원칙.",
+    "evidence": "KRDS 스타일 가이드 타이포그래피 페이지(정부 디지털 서비스 디자인 시스템)",
+    "source": "https://www.krds.go.kr/html/site/style/style_03.html",
+    "actionable": "한국어 본문 기본값을 16~17px/행간 1.5~1.7로 고정, 굵기 4종 이내, 타입 토큰은 display/heading/body/label 역할명으로. 서체 교체 시 x-height 보정(±1px) 후 스크린샷 비교.",
+    "angle": "typography-color",
+    "sourceType": "공공 디자인 시스템 문서"
+  },
+  {
+    "claim": "한·영 섞어짜기 원칙(이용제): 같은 pt에서 영문은 한글보다 물리적으로 작아 보이므로 영문을 키워 회색도를 맞추고, 영문의 어센더/디센더 때문에 베이스라인을 의도적으로 결정해야 하며, 한글과 섞는 숫자는 올드스타일보다 모던(라이닝) 스타일이 무난하다. 궁극적으로 '섞지 않는 것'이 가장 조화롭다.",
+    "evidence": "brunch @writing-minju(2022-03-04, 이용제 인터뷰): \"같은 크기로 영어와 한글을 늘어놓으면, 물리적으로는 영어가 한글보다 대체로 작다\", \"(숫자는) 모던스타일로 선택하는 것이 무난하다\"",
+    "source": "https://brunch.co.kr/@writing-minju/87",
+    "actionable": "한글 본문에 영문 디스플레이 서체를 섞을 땐 영문 크기 +3~5%·자간 별도 조정, 숫자는 lining/tabular(font-variant-numeric) 지정. 가능하면 라틴 글리프가 좋은 한글 서체(SUIT·Pretendard·IBM Plex Sans KR·Paperlogy)로 단일 서체 운용.",
+    "angle": "typography-color",
+    "sourceType": "국내 타이포그래피 디자이너 인터뷰(브런치)"
+  },
+  {
+    "claim": "Paperlogy는 PPT용으로 설계된 디스플레이 지향 서체(G마켓산스+Montserrat 결합, 자폭 5% 축소, 고정폭 숫자, 9굵기)이며 한글 2,780자만 수록해 파일이 660KB로 가볍다. 웹 본문(전체 11,172자 필요)에 쓰면 일부 글자 깨짐 위험.",
+    "evidence": "freesentation.blog Paperlogy 소개: 파워포인트 최적화, \"모든 숫자 폭 동일\", 2,780 한글 글리프·660KB, OFL",
+    "source": "https://freesentation.blog/paperlogyfont",
+    "actionable": "Paperlogy는 제목·숫자 강조·Kinetic 디스플레이 전용, 본문 폴백에 Pretendard/Noto Sans KR 필수 지정. 자소 결합 글자가 많은 카피(예: 뷁·쒜)는 렌더 확인.",
+    "angle": "typography-color",
+    "sourceType": "서체 배포처 문서"
+  },
+  {
+    "claim": "국내 무료 한글 서체를 브랜드 성격/용도로 분류: 본문·UI(OFL)=Pretendard(시스템 기본 대체 목적, 9굵기)·SUIT(숫자/라틴 정돈, 가변폰트)·Wanted Sans(화면 가독성); 제목·배너=G마켓 산스(이커머스 프로모션 단골, 기하학적)·에스코어 드림; 개성=배민 시리즈(레트로), Gowun Dodum/Batang(손글씨 온기, 브랜드 스토리·인터뷰 페이지). 저작권 분쟁은 서체가 아니라 '어디서 받았고 어떻게 쓰는지'에서 생김.",
+    "evidence": "플로우웍스 '상업용 무료 폰트 추천 11선': \"이커머스 프로모션 배너의 단골 폰트\"(G마켓 산스), \"폰트 저작권 분쟁의 대부분은 … '어디서 받았는지'와 '어떻게 쓰는지'에서 생깁니다\"",
+    "source": "https://flowworks.io/blog/free-commercial-fonts",
+    "actionable": "카테고리별 서체 후보표를 성격 축으로 재편: Editorial=Gowun Batang/나눔명조+SUIT, Product/Utility=Pretendard 또는 IBM Plex Sans KR, Kinetic=Paperlogy/G마켓산스 디스플레이+Pretendard, Corporate=Noto Sans KR/Pretendard+본명조. G마켓산스는 이커머스 배너 연상이 강하니 비커머스 브랜드엔 이유 없이 쓰지 않는다.",
+    "angle": "typography-color",
+    "sourceType": "국내 디자인 실무 블로그"
+  },
+  {
+    "claim": "60-30-10은 '팔레트'가 아니라 '비율' 규칙이며 어떤 색을 쓸지는 알려주지 않는다. 포인트색의 힘은 희소성에서 나오므로 장식 보더·헤딩에 쓰이는 순간 '어디를 클릭할지' 신호가 사라진다. 어디서나 쓰고 있다면 그건 보조색이어야 한다. 시각 균형과 WCAG 대비는 독립 문제.",
+    "evidence": "sixtythirtyten 블로그: \"It is not a palette and it does not tell you which colors to use; it tells you how much of each to use\", \"the impact of accent colors comes from scarcity\"",
+    "source": "https://www.sixtythirtyten.co/blog/60-30-10-rule-complete-guide",
+    "actionable": "각 사이트에서 포인트색 사용 위치를 셀 것: 주 CTA·포커스·핵심 상태 외 3곳 이상이면 위반. 60/30/10은 배경(중립) / 보조 표면·구분 / 포인트로 매핑.",
+    "angle": "typography-color",
+    "sourceType": "도구 문서/개발자 가이드"
+  },
+  {
+    "claim": "색 스킴은 'hex 나열'이 아니라 '역할의 작은 집합': 표면·텍스트용 중립색, 주요 액션용 포인트 1개, 상태용 시맨틱 색. 우선순위는 중립색 먼저 → 가장 강한 색은 주 액션에만 → 모든 상태에서 대비 검증 → 보조 UI엔 포인트의 뮤트 변형. 크기·굵기 대비를 색 강조보다 먼저 쓴다.",
+    "evidence": "Tech Bytes(2026-07-05, Dillip Chowdary): \"A cohesive color scheme is a small set of roles, not a long list of hex values\", 표면은 \"consistent light-to-dark ladder\"",
+    "source": "https://techbytes.app/posts/escape-ai-slop-frontend-design-guide/",
+    "actionable": "팔레트 정의 순서를 강제: (1) paper/ink 중립 4~5단 → (2) cta 1색 → (3) 상태색 → (4) 대비표. 헤딩 컬러 강조 금지(굵기·크기로 먼저).",
+    "angle": "typography-color",
+    "sourceType": "개발자 블로그"
+  },
+  {
+    "claim": "한 가지 기본색을 밝고 어둡게 '변형'하는 규칙(HSB): 어둡게 = 명도↓ 채도↑ + hue를 0/120/240°(빨·초·파) 쪽으로, 밝게 = 명도↑ 채도↓ + hue를 60/180/300°(노·시안·마젠타) 쪽으로. 현실의 빛/그림자를 참고하면 인위적 회색이 안 나온다. 색 고르기보다 '변형'이 UI 색의 핵심 기술.",
+    "evidence": "Erik D. Kennedy, Learn UI Design: \"Darker color variations are made by lowering brightness and increasing saturation. Brighter color variations are made by increasing brightness and lowering saturation.\"",
+    "source": "https://www.learnui.design/blog/color-in-ui-design-a-practical-framework.html",
+    "actionable": "hover/active/배경 틴트를 opacity로 만들지 말고 HSB 규칙으로 파생색을 만들어 토큰화(예: --cta, --cta-hover(어둡게·채도↑), --cta-tint(밝게·채도↓)).",
+    "angle": "typography-color",
+    "sourceType": "UI 디자인 교육 블로그"
+  },
+  {
+    "claim": "사진/콘텐츠에서 팔레트를 '알고리즘적으로' 뽑는 표준 절차(Material 3 Dynamic Color): 이미지를 양자화해 소스 색 1개 선택 → 키 색 5개(primary/secondary/tertiary/neutral/neutral-variant)로 확장 → 각각 13단 톤 팔레트 → 명도 기준으로 역할(surface, on-surface, primary 등)에 슬롯. 색을 값이 아니라 '역할'로 배정.",
+    "evidence": "m3.material.io Dynamic color: 양자화(quantization)로 소스 색 선택, 5개 키 색 → 13 tones → 정의된 역할에 배정",
+    "source": "https://m3.material.io/styles/color/dynamic",
+    "actionable": "레퍼런스/히어로 사진에서 색을 뽑을 땐 '가장 많은 색'이 아니라 소스 1색을 정하고 중립색은 그 hue로 살짝 물들인(neutral-variant) 회색을 만든다. 순수 회색(#888) 금지.",
+    "angle": "typography-color",
+    "sourceType": "디자인 시스템 공식 문서"
+  },
+  {
+    "claim": "국내 실무 절차(라이트브레인): 브랜드 기반 주색 선택 → 단색/유사/보색으로 보조색 → 그레이스케일 테스트로 위계·가독성 확인 → 60:30:10 또는 70:25:5로 비율 조정 → 상태색은 국제 관례. 다크모드는 순수 검정(#000) 대신 #121212류, 라이트 팔레트 반전이 아니라 별도 정의.",
+    "evidence": "RightBrainLAB '디자인 작업에서의 컬러 사용 방법': 4원칙(Hierarchical/Legible/Expressive/Communication), WCAG 4.5:1·3:1, 다크는 #121212 권장",
+    "source": "https://blog.rightbrain.co.kr/?p=12673",
+    "actionable": "팔레트 확정 전 흑백 스크린샷으로 위계가 유지되는지 확인(색 없이도 CTA가 보여야 함). 다크 예시(Cinematic)는 #0a0a0a~#121212 + 웜/쿨 기운 정하고, 라이트 토큰 반전 금지.",
+    "angle": "typography-color",
+    "sourceType": "국내 UX 에이전시 블로그"
+  },
+  {
+    "claim": "디자인 토큰 네이밍: 3계층(primitive=외형 이름 blue.500 / semantic=역할 이름 color.action.primary, surface.background / component=button.primary.background)이며 한 계층만 참조. 시맨틱 계층에서 color.brand.red처럼 값 이름을 쓰면 브랜드 색이 바뀌는 순간 이름이 거짓이 된다. 네이밍 공식은 category.concept.property.variant.state.",
+    "evidence": "PIXMA UX Guides(2026): \"Name semantic and component tokens for the job they do — color.action.primary, not color.brand.red — and the rebrand becomes a value change instead of a search-and-replace.\"",
+    "source": "https://pixmauxguides.com/guide/design-tokens-naming-system",
+    "actionable": "CSS 변수는 --{concept}-{property}-{state} 역할명(--ink, --ink-muted, --paper, --paper-raised, --cta, --cta-hover, --rule)로 통일. --primary/--secondary/--accent, --purple, --gray-500을 시맨틱 자리에 쓰면 위반(기존 §7 보강: 계층·공식 명시).",
+    "angle": "typography-color",
+    "sourceType": "UX 가이드 문서"
+  },
+  {
+    "claim": "프롬프트/스펙에서 기본값을 이기는 실전 4가지: (1) 팔레트를 hex로 명시 (2) 레퍼런스 사이트 이름 (3) 서체 명시 (4) 레이아웃 서술. 색·서체 미지정 = 인디고+Inter+시스템 폰트+둥근 모서리+0.1 opacity 그림자+3열 그리드+그라데이션 텍스트 히어로.",
+    "evidence": "dev.to @alanwest: \"Specify a color palette by hex codes... Name a reference site... Pick a font explicitly... Describe the layout you want.\"",
+    "source": "https://dev.to/alanwest/why-every-ai-built-website-looks-the-same-blame-tailwinds-indigo-500-3h2p",
+    "actionable": "빌더 입력 스펙 필수 필드: paper/ink/cta hex 3개 + 서체 2개(이유 포함) + 레퍼런스 URL 1개 + 히어로 문법. 하나라도 비면 생성 시작 금지.",
+    "angle": "typography-color",
+    "sourceType": "개발자 커뮤니티(DEV)"
+  },
+  {
+    "claim": "템플릿 구조가 반복되는 1차 원인은 '전환 최적화의 유산'이다. 20년간의 A/B 테스트로 굳어진 패턴(히어로→사회적 증거→기능→CTA)을 사용자가 이미 학습했기 때문에, 위치를 바꾸면 오히려 마찰이 생긴다는 반론(반례)도 있다.",
+    "evidence": "\"Conventions were adopted to better align with human behavior, and increase retention and usability\" / 파격 디자인을 \"pillow… out of sandpaper\"에 비유. 권장 요소로 \"left-aligned text, a hero section, and visual callouts for testimonials and features\"",
+    "source": "https://demandmyths.substack.com/p/why-do-saas-websites-look-so-similar",
+    "actionable": "섹션의 '순서'(문제→증거→기능→행동)는 유지해도 되지만 각 섹션의 '형태'(중앙정렬 pill·아이콘 카드·통계 행)는 스타일별로 바꾼다. 순서를 뒤집는 것으로 개성을 내지 않는다.",
+    "angle": "layout-components",
+    "sourceType": "마케팅 뉴스레터(Substack)"
+  },
+  {
+    "claim": "SaaS 사이트가 똑같아지는 구체 메커니즘: (1) 노코드 빌더/템플릿이 사전 최적화 레이아웃 제공 → 로고만 바꿔 출시, (2) Stripe/Linear 모방, (3) MVP 출시 압박. 대안은 구조 폐기가 아니라 '스토리텔링 교체'.",
+    "evidence": "반복 요소로 hero, dashboard mockup on dark, logo wall, 3-column feature cards, pricing, testimonials 열거. 처방: \"Keep structure, change storytelling\", 기능 카드를 \"cards organized by core jobs to be done\"로, 이미지는 \"product-specific UI scenes, real customer environments, or commissioned illustrations\"",
+    "source": "https://www.overpass.studio/blog/why-saas-websites-look-the-same",
+    "actionable": "기능 카드를 넣어야 하면 '기능명+설명' 대신 '고객이 하려는 일(job)' 단위로 묶고, 각 카드에 실제 UI 조각·고객 환경 사진을 넣는다. 다크 배경 위 떠 있는 대시보드 목업은 금지 목록에 추가.",
+    "angle": "layout-components",
+    "sourceType": "디자인 스튜디오 블로그"
+  },
+  {
+    "claim": "랜딩 페이지 공식(Nav→Hero→Social proof→Features&Objections→CTA→Footer)은 Julian Shapiro 가이드류에서 '혼란 최소화' 논리로 정당화됐다. 즉 반복은 게으름이 아니라 검증된 설득 흐름이며, 문제는 흐름이 아니라 '채우는 방식'이다.",
+    "evidence": "\"the more you detour from the template, the more confused the average visitor becomes\", \"Purchase Rate = Desire - (Labor + Confusion)\", 기능 섹션은 3~6개 벤핏이 히어로 주장과 \"carry a running narrative\"",
+    "source": "https://www.julian.com/guide/startup/landing-pages",
+    "actionable": "기능 섹션은 히어로 헤드라인의 주장을 이어받는 '서사' 순서로 배치하고, 각 기능 옆에 예상 반론(objection)과 답을 문장으로 붙인다. 아이콘 3장 병렬은 서사가 없으므로 금지.",
+    "angle": "layout-components",
+    "sourceType": "창업 핸드북(Julian Shapiro)"
+  },
+  {
+    "claim": "AI 슬롭의 컴포넌트 신호는 '균일성' 자체다: 동일 패딩·동일 radius·동일 카드 높이, 아무 일도 안 하는 hover, easing 없이 툭 바뀌는 버튼.",
+    "evidence": "\"identical padding, identical border radius, and identical card heights throughout\", \"Hover states that do nothing\", \"Buttons that snap instead of easing\". 처방: 색은 \"semantically... CSS custom properties with semantic names\", 모션은 \"communicates state changes\"",
+    "source": "https://www.925studios.co/blog/ai-slop-web-design-guide",
+    "actionable": "한 섹션 안 카드들의 높이·너비·패딩을 콘텐츠 양에 따라 다르게 두고(균등 강제 금지), 모든 transition에 easing 곡선(예: cubic-bezier)과 150~300ms를 명시한다. hover는 상태가 바뀌는 요소에만.",
+    "angle": "layout-components",
+    "sourceType": "디자인 에이전시 블로그"
+  },
+  {
+    "claim": "'AI가 만든 사이트' 체크리스트에 Lucide 기본 아이콘·떠 있는 대시보드 카드·feature grid·\"Get Started\" CTA가 명시적으로 포함된다(단, 정량 근거 없는 관찰).",
+    "evidence": "\"glowing blue-purple gradient\", \"floating dashboard cards\", \"Lucide icons\", \"feature grid\", \"'Get Started' CTA\"; 카피는 \"None of these sentences tells me what the product actually does\". 저자는 Product Hunt/Twitter 관찰 기반, 데이터 없음.",
+    "source": "https://medium.com/@sahilkargutkar.sk/your-website-looks-like-ai-made-it-and-thats-becoming-a-problem-e679668ca7f4",
+    "actionable": "Lucide/Heroicons 기본 세트를 그대로 쓰지 않는다(스트로크 굵기·모서리 규칙을 프로젝트 값으로 재정의하거나 숫자·문자로 대체). CTA 라벨은 'Get Started/시작하기' 대신 결과를 말하는 동사구('견적 받기', '샘플 다운로드').",
+    "angle": "layout-components",
+    "sourceType": "디자이너 블로그(Medium)"
+  },
+  {
+    "claim": "Awwwards 공식 평가는 Design 40% / Usability 30% / Creativity 20% / Content 10%. 화려한 WebGL·스크롤 연출(창의성)은 20%뿐이고, 70%는 디자인 기본기와 사용성이다.",
+    "evidence": "공식 페이지: \"based on the following 4 criteria\" — Design 40%, Usability 30%, Creativity 20%, Content 10%",
+    "source": "https://www.awwwards.com/about-evaluation/",
+    "actionable": "'손맛'을 애니메이션으로 만들려 하지 않는다. 리뷰 점수표도 타이포 위계·여백·리듬(디자인)과 읽기 쉬움(사용성)에 70% 비중을 두고, 모션은 20% 이하로.",
+    "angle": "layout-components",
+    "sourceType": "어워드 공식 문서"
+  },
+  {
+    "claim": "심사위원이 보상하는 것은 '템플릿 같지 않은 그리드 규율', '섹션 전체를 관통하는 단 하나의 강한 아이디어'이며, 효과를 쌓는 것은 '통제력 부족'으로 읽힌다(제3자 해설).",
+    "evidence": "\"Grid discipline that still feels intentional, not templated\", \"Layout tension and negative space\", \"A single strong idea carried through every section beats three competing ideas\", \"Designers pile on effects to look impressive. The jury reads that as a lack of control\"",
+    "source": "https://www.hontran.dev/blog/awwwards-judging-criteria",
+    "actionable": "페이지마다 '한 가지 모티프'(예: 굵은 룰 라인, 한 컬러, 한 이미지 처리법)를 정하고 모든 섹션에서 반복한다. 글로우+그라데이션+글래스+패럴랙스처럼 효과 3종 이상 겹치면 리뷰 실패.",
+    "angle": "layout-components",
+    "sourceType": "개발자 블로그(Awwwards 기준 해설)"
+  },
+  {
+    "claim": "에디토리얼 레이아웃의 핵심은 '폭이 다른 몇 가지 트랙(full-width / content / breakout / split view)'을 이름 붙인 그리드로 정의하고 섹션마다 폭을 바꾸는 것. 균등 12열 카드 그리드와 근본적으로 다르다.",
+    "evidence": "Rachel Andrew: \"a full-width area for images, a central content area, and perhaps a split view of two half-width blocks\"; named lines(content-start/-end)로 \"grid-column: content\" 배치, subgrid로 하위 정렬 유지",
+    "source": "https://www.smashingmagazine.com/2019/10/editorial-design-patterns-css-grid-subgrid-naming/",
+    "actionable": "Editorial/매거진 스타일은 `grid-template-columns: [full-start] 1fr [content-start] minmax(0,68ch) [content-end] 1fr [full-end]` 식의 named grid를 정의하고, 이미지=full, 본문=content, 인용=breakout 으로 섹션마다 폭을 바꾼다. 모든 섹션 동일 container 금지.",
+    "angle": "layout-components",
+    "sourceType": "Smashing Magazine(기술 아티클)"
+  },
+  {
+    "claim": "인쇄 매거진(Avaunt)에서 가져올 수 있는 '손맛' 기법: 표준 열 사이에 좁은 열(skinny column)을 끼운 비대칭 모듈 그리드, 서체 2종(스텐실 세리프+지오메트릭 산스)을 고정한 채 그리드만 밀고 당기기, 이미지 크기를 모듈 단위로 결정.",
+    "evidence": "\"modular grids can fill your designs with energy\", \"the asymmetry created by placing a skinny column between two standard columns makes a structured layout feel more dynamic\", \"push the grid and pull their foundation typography styles in different directions\"",
+    "source": "https://www.smashingmagazine.com/2019/06/inspired-design-decisions-avaunt-magazine/",
+    "actionable": "12열 대신 '12열+좁은 열 1개'(예: 2fr 2fr 1fr 2fr 2fr…) 그리드를 쓰고 캡션·번호·날짜를 좁은 열에 배치한다. 사진 크기는 모듈 배수(1×1, 2×1, 2×3)로만.",
+    "angle": "layout-components",
+    "sourceType": "Smashing Magazine(Andy Clarke 연재)"
+  },
+  {
+    "claim": "매거진 레이아웃을 웹에서 만드는 실제 방법: 14열 그리드 위에 이미지를 불균등 스팬·겹침(z-index)으로 배치하고, grid-template-areas로 모바일/데스크톱 배치를 통째로 바꾼다. 카드 그리드와 다른 점은 '아무것도 깔끔한 행·열에 맞지 않는다'는 것.",
+    "evidence": "\"nothing really fits into neat rows and columns. The images are laid out on an uneven grid, sometimes even overlapping\", \"completely changed the layout without having touched the very simple HTML structure at all\"",
+    "source": "https://www.smashingmagazine.com/2023/02/build-magazine-layout-css-grid-areas/",
+    "actionable": "히어로·특집 섹션에서 이미지 2~3장을 서로 다른 span(예: 6×4, 4×3)으로 놓고 1곳만 겹치게 한다. 겹침·비대칭은 페이지당 1~2곳, 모바일은 grid-template-areas로 스택 순서를 명시.",
+    "angle": "layout-components",
+    "sourceType": "Smashing Magazine(기술 아티클)"
+  },
+  {
+    "claim": "스위스 스타일(International Typographic Style)의 정의적 특징은 모듈 그리드+비대칭 배치+왼쪽 맞춤 rag(flush-left, ragged-right)+산세리프(Helvetica/Univers). '중앙 정렬 대칭 히어로'는 스위스 스타일이 아니다.",
+    "evidence": "\"grid systems, sans-serif typography, precision, and minimalism… modular grid system, asymmetrical layout\", \"Text was almost always set flush-left and ragged-right\"",
+    "source": "https://en.wikipedia.org/wiki/International_Typographic_Style",
+    "actionable": "Swiss/Corporate 계열 예시는 모든 텍스트 좌정렬·ragged-right, 히어로도 좌측 컬럼에서 시작. 중앙정렬은 1줄 짜리 짧은 표제 외 금지.",
+    "angle": "layout-components",
+    "sourceType": "백과사전(참고 요약)"
+  },
+  {
+    "claim": "비대칭 레이아웃의 실전 기법과 리스크: 한쪽이 훨씬 큰 split hero, 겹치는 이미지·텍스트 블록, offset margin·z-index 레이어링, 균형은 여백으로 잡음. 리스크는 모바일 overflow·가로 스크롤, 보조기기 혼란, 유지보수 비용.",
+    "evidence": "\"split-screen hero sections where one side is significantly larger\", \"Negative space… to prevent chaotic feeling\", 경고: \"push content off-screen or provoke horizontal scrolling\", \"Irregular layouts might confuse assistive technologies\"",
+    "source": "https://hypedge.com/the-rise-of-asymmetric-layouts-a-bold-move-in-2025-web-design/",
+    "actionable": "비대칭 히어로는 컬럼 비율을 명시(예: 7:5, 8:4)하고 DOM 순서=읽기 순서를 유지한다. 모바일(≤768px)에서는 반드시 단일 컬럼으로 접히는지, overflow-x가 없는지 리뷰 항목에 추가.",
+    "angle": "layout-components",
+    "sourceType": "에이전시 블로그"
+  },
+  {
+    "claim": "'Linear 스타일'(다크 1~10% 명도 배경+글래스모피즘+복합 그라데이션+굵은 산세리프)은 유행이 되면서 단조로움의 원인이 됐다. Raycast처럼 '노이즈 오버레이의 추상 비주얼'로 차별화한 사례가 언급된다.",
+    "evidence": "\"all the products that follow the trend start to look monotonous and lack variety\"; 대안: \"abstract visuals with noisy overlays\", 글래스모피즘은 \"very difficult to do differently\", 타이포는 \"the same old sans-serif typefaces\" 탈피",
+    "source": "https://blog.logrocket.com/ux-design/linear-design/",
+    "actionable": "다크 테마를 쓸 때 글래스 카드·글로우 대신 노이즈/그레인 텍스처 1종 + 대담한 디스플레이 서체 + 강한 단색 1개로 깊이를 만든다. 다크 배경은 순검정이 아니라 브랜드색 계열 저명도로.",
+    "angle": "layout-components",
+    "sourceType": "UX 블로그(LogRocket)"
+  },
+  {
+    "claim": "벤토 그리드는 Apple·Linear 영향으로 기본 마케팅 레이아웃이 됐다. 잘 쓰려면 '가장 큰 셀=가장 중요'로 크기로 위계를 만들고 미디어를 섞어야 하며, 장문 읽기·순차 프로세스·데이터 표에는 부적합하다.",
+    "evidence": "\"Linear becoming the gold standard for modern UI\", \"biggest item most important\", \"if the gaps are uneven, the 'grid' illusion breaks\", 부적합: \"long-form reading\", sequential, \"data-heavy tables\"",
+    "source": "https://superfiles.in/bento-grid-ui-design-trend.php",
+    "actionable": "벤토를 쓰면 셀 크기를 최소 3종(예: 2×2 히어로 1개, 2×1 2개, 1×1 나머지)으로 나누고, 셀 안은 아이콘+제목이 아니라 실제 이미지/UI/숫자로 채운다. 동일 크기 카드 나열은 벤토가 아니라 '3열 카드'로 판정.",
+    "angle": "layout-components",
+    "sourceType": "디자인 블로그"
+  },
+  {
+    "claim": "브루탈리즘 웹은 세 미시 양식(purists: 순수 마크업·건축적 참조 / UX minimalists: 성능·효율 / anti-ists: 예술적 반항)으로 나뉜다. 시스템 폰트·흰/검 배경·파란 링크·드롭다운 없음이 전형이고, 아트·패션·'alt' 브랜드에 적합.",
+    "evidence": "Deville: \"a reaction by a younger generation to the lightness, optimism, and frivolity of today's web design\"; LogRocket: \"boxy, raw HTML-like appearance with little decoration and no drop-down menus\", 적합 대상 \"art, fashion, or any other brand that wants to signal its position as 'alt'\"",
+    "source": "https://blog.logrocket.com/ux-design/web-brutalism/",
+    "actionable": "브루탈리즘 예시는 세 미시 양식 중 하나를 문서에 명시하고 그 규칙만 따른다(예: purist=시스템 폰트, 기본 파란 링크, 표 기반 목록, 이미지 없음). 브루탈리즘에 그라데이션·둥근 카드·그림자 섞기 금지.",
+    "angle": "layout-components",
+    "sourceType": "UX 블로그(LogRocket) + brutalistwebsites.com 정의 인용"
+  },
+  {
+    "claim": "반례: 수상/큐레이션 갤러리(Godly류)도 '다른 종류의 획일화'로 비판받는다 — 화면에 8단어 이하의 초대형 타이포, 그라데이션 텍스트, 스크롤 바운드 효과, 3초 내 로드 실패, '웹사이트가 아니라 인터랙티브 경험'.",
+    "evidence": "HN 코멘트: \"no more than eight words can appear onscreen simultaneously\", \"content loads, then styling loads, then animations play\", \"do not finish loading in 3 seconds\", \"These are interactive experiences, not websites\"",
+    "source": "https://news.ycombinator.com/item?id=37226805",
+    "actionable": "'손맛'을 흉내내려고 초대형 타이포+스크롤 애니메이션만 넣지 않는다. 텍스트는 JS 없이 즉시 표시(FOUC·레이아웃 시프트 0), 스크롤 하이재킹·핀 고정 섹션 금지, 첫 화면에 실제 문장 최소 2줄.",
+    "angle": "layout-components",
+    "sourceType": "커뮤니티(Hacker News)"
+  },
+  {
+    "claim": "NN/g 아이트래킹: 소제목이 없으면 F-패턴(가장 비효율)으로 스캔하고, 의미 있는 소제목이 있으면 '레이어 케이크' 패턴으로 가장 효율적으로 읽는다. 즉 섹션 제목이 정보를 담아야 스캔이 된다.",
+    "evidence": "F-pattern은 \"in the absence of subheadings and bullets\"; Layer-cake는 \"headings and subheadings\"에 집중, \"By far the most effective way\"; 권장 \"meaningful subheadings\"",
+    "source": "https://www.nngroup.com/articles/text-scanning-patterns-eyetracking/",
+    "actionable": "섹션 라벨(모노 대문자 'FEATURES')+장식 H2 대신, H2 자체를 정보 문장으로 쓴다(예: '기능' → '주문 후 12시간 안에 포장이 끝납니다'). 라벨은 삭제, 소제목은 스캔만으로 내용이 파악되게.",
+    "angle": "layout-components",
+    "sourceType": "UX 연구(Nielsen Norman Group)"
+  },
+  {
+    "claim": "FAQ 아코디언이 모든 랜딩에 붙은 배경엔 SEO(FAQ 리치 결과) 동기가 있었으나, Google은 2023-08 정부·보건 사이트로 제한, 2026-05 완전 폐지했다. 남는 이유는 '실제 고객 질문' 뿐이다.",
+    "evidence": "\"August 2023: … limited to well-known authoritative government and health websites\", \"May 2026: … completely deprecated\", 점검 질문: \"Are these the questions your customers actually ask, or generic placeholders someone wrote to fill the section?\"",
+    "source": "https://www.thehoth.com/blog/google-faq-rich-results-deprecated/",
+    "actionable": "FAQ는 실제 문의에서 나온 질문 3~5개가 있을 때만 넣고, 없으면 섹션 삭제. 형태도 아코디언 대신 펼쳐진 Q&A 목록(정의 리스트 dl)로 즉시 읽히게.",
+    "angle": "layout-components",
+    "sourceType": "SEO 블로그"
+  },
+  {
+    "claim": "AI 완성도에 대한 반작용으로 '손으로 만든 증거'가 디자인 트렌드가 됐다: 그레인·종이 질감·잉크 번짐, 손글씨 마크·서명, 콜라주, 겹치는 레이어, '혼란스럽지만 지적인 그리드'(chaotic but intelligent grids), 의도적 어색한 비례(Naïve Design).",
+    "evidence": "\"Naïve Design embraces imperfection, awkward proportions, and visible 'human error'\", \"as AI image generation became mainstream, that level of perfection stopped feeling aspirational. It started feeling sterile\", \"Rich layering of graphic elements—overlap, collage, textures, chaotic but intelligent grids\"",
+    "source": "https://lindsaymarsh.substack.com/p/design-trends-2026-imperfection-rebellion",
+    "actionable": "Editorial/Kinetic 카테고리에서 '손맛 장치' 1개를 허용한다(그레인 오버레이, 손글씨 주석 1곳, 살짝 어긋난 이미지 겹침). 단 장치는 페이지당 1종, 사용 이유를 문서에 적고, Corporate/Utility엔 적용 금지.",
+    "angle": "layout-components",
+    "sourceType": "디자이너 뉴스레터(Substack)"
+  },
+  {
+    "claim": "수공예·인간 중심 디자인은 '합성 획일성(synthetic sameness)'에 대한 반응으로, 시간·기술·개인성의 증거(브러시 스트로크, 어긋난 활판 인쇄)를 가치로 본다. 하이브리드(AI 스케치→손으로 완성)도 언급.",
+    "evidence": "\"synthetic sameness\", 관객은 \"evidence of time, skill, and individuality\"를 원함, \"misaligned letterpress prints… proof of life\"",
+    "source": "https://medium.com/we-and-the-color/handcrafted-human-centered-design-the-counter-trend-to-ai-reshaping-2025-44db66257ffd",
+    "actionable": "이미지 지시문에 '스톡 완성도' 대신 물성 단서를 넣는다(예: 'letterpress on cotton paper, slight misregistration', 'film grain, available light'). 사진 필터도 카테고리별 1종으로 고정.",
+    "angle": "layout-components",
+    "sourceType": "디자인 매거진(Medium)"
+  },
+  {
+    "claim": "Awwwards SOTY 2025(Lando Norris, OFF+BRAND)의 '손맛'은 템플릿 밖의 형태가 아니라 '주제에서 도출된 은유'였다: 속도(F1)→날카로운 전환·시네마틱 스크롤, 인물의 성격→대화체 콘텐츠 섹션, 비비드 액센트+대담 타이포, 성능 병행.",
+    "evidence": "\"speed-inspired animations echo the intensity of racing\", \"sharp transitions, responsive interactions, and cinematic scrolling\", \"conversational content sections\", \"lazy-loading… streamlined code\"",
+    "source": "https://www.itsoffbrand.com/our-work/lando-norris",
+    "actionable": "각 예시 사이트는 '브랜드 은유 1개'(속도/종이/무대/도구…)를 먼저 정하고, 전환·hover·섹션 형태를 그 은유에서만 파생시킨다. 은유와 무관한 fade-up·글로우는 제거.",
+    "angle": "layout-components",
+    "sourceType": "에이전시 케이스 스터디"
+  },
+  {
+    "claim": "큐레이션 갤러리의 실제 분포: siteinspire에서 'Typographic' 태그 2,084개 vs 'Minimal' 744개, 스타일 필터에 'Unusual Layout'·'Grid Layout'이 별도 존재. Godly는 주 3~4개만 엄선. 즉 '손맛'의 1순위 신호는 타이포그래피와 레이아웃 선택이지 컴포넌트 장식이 아니다.",
+    "evidence": "siteinspire 카테고리 카운트 \"Typographic: 2,084 sites; Minimal: 744 sites\", 스타일 필터 \"Typographic / Minimal / Grid Layout / Unusual Layout\"; Godly는 \"might only add three or four a week\"(uwarp 소개)",
+    "source": "https://www.siteinspire.com/",
+    "actionable": "각 예시의 리뷰 첫 항목을 '서체 선택 이유+크기 대비(디스플레이/본문 비율 ≥ 4:1 또는 명시적 규칙)'로 두고, 레이아웃은 Grid/Unusual 중 어느 계열인지 문서에 선언한다.",
+    "angle": "layout-components",
+    "sourceType": "큐레이션 갤러리"
+  },
+  {
+    "claim": "Wikipedia 'Signs of AI writing' 가이드는 어휘뿐 아니라 '구조적' 신호를 12개 범주로 분류: 의의 과장(pivotal moment, evolving landscape), 홍보 어투(boasts, vibrant, nestled), 피상적 -ing 분석(highlighting, underscoring, fostering), 모호한 출처(experts argue), 3개 나열, 부정 병렬(not just X, it's Y), em dash, Title Case 헤딩, 굵은 글씨 남발, 이모지 장식, 'In summary/Challenges and Future Outlook' 결말 공식.",
+    "evidence": "\"marking a pivotal moment in the evolution of…\", \"not a mirror but a portal\", 'Additionally, delve, intricate, crucial, underscore, landscape, testament, tapestry' 밀집. 단, \"potential signs of a problem, not the problem itself\" — 단일 신호로 판정 금지.",
+    "source": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
+    "actionable": "리뷰 체크리스트에 어휘 외 구조 항목 추가: -ing 부연절(~하며 …를 강조한다), 'not just/뿐만 아니라' 병렬, Title Case 소제목, 굵은 글씨 3곳 이상, 결말 요약문 → 각 1개 이상이면 재작성. 단일 신호로는 판정하지 말고 2~3개 겹칠 때 'AI 티'로 판정.",
+    "angle": "copywriting",
+    "sourceType": "커뮤니티 편집 가이드(위키백과 AI Cleanup 팀)"
+  },
+  {
+    "claim": "PubMed 초록 1,420만 건 분석에서 ChatGPT 이후 'delves' 25.2배, 'showcasing' 9.2배, 'underscores' 9.1배 급증. 초과 어휘의 66%가 동사·18%가 형용사(내용어가 아닌 '스타일 어휘') — AI 티는 명사보다 동사·형용사에서 난다.",
+    "evidence": "\"at least 10% of 2024 abstracts were processed with LLMs\"; 2024 초과어는 style words 위주(verbs 66%, adjectives 18%) vs COVID기 초과어는 content nouns.",
+    "source": "https://arxiv.org/html/2406.07016v1",
+    "actionable": "카피 검수 시 명사보다 동사·형용사를 먼저 훑는다: 강조·과시 동사(강화하다, 극대화하다, 선보이다, 제공하다) 와 평가 형용사(혁신적인, 정교한, 필수적인)를 구체 행위 동사·측정 가능한 형용사로 교체.",
+    "angle": "copywriting",
+    "sourceType": "연구(Kobak et al., Science Advances 2025 프리프린트)"
+  },
+  {
+    "claim": "Paul Graham의 'delve = AI' 트윗은 큰 반발을 불렀음: 특정 어휘(delve)가 나이지리아 영어 등 일부 화자층에서 정상 어휘라는 지적. 단어 블랙리스트만으로 판정하면 오탐·편향이 생긴다(반례).",
+    "evidence": "\"delve… rarely used in spoken English\" 주장 → 'lexical racism and language bias' 비판 기사 다수.",
+    "source": "https://medium.com/@moyosoreale/the-paul-graham-vs-nigerian-twitter-saga-lexical-racism-and-language-bias-masked-as-chatgpt-53ee9f6459aa",
+    "actionable": "금지어 목록은 '자동 탈락'이 아니라 '주의 신호'로 운용. 금지어가 있어도 문맥상 구체 정보가 붙어 있으면 통과, 없으면 교체.",
+    "angle": "copywriting",
+    "sourceType": "커뮤니티/Medium"
+  },
+  {
+    "claim": "em dash 자체는 AI 증거가 아니다(반례). Dickinson·Nietzsche 등이 표현적으로 사용했고, 전문 카피라이터도 리듬·강조용으로 쓴다. 진짜 신호는 '납작한 질감, 공식적 문장, 독창적 아이디어 부재'.",
+    "evidence": "\"the flat quality, the formulaic sentences, the absence of original ideas\"; ChatGPT도 \"before 2023… used em dashes more frequently\"라고 인정하되 현재는 톤에 따라 조절 가능.",
+    "source": "https://tech.yahoo.com/ai/articles/em-dashes-really-sign-ai-162348067.html",
+    "actionable": "한국어 사이트에서는 em dash 대신 쉼표·마침표·줄바꿈을 기본으로 하되, 대시 유무보다 '문장에 새 정보가 있는가'로 판정한다.",
+    "angle": "copywriting",
+    "sourceType": "미디어 기사"
+  },
+  {
+    "claim": "영문 AI 카피의 17가지 tell: 버즈워드(leverage, empower, seamless), 문장 길이 균일(low burstiness), 헤지 표현, 상투 도입부(In today's fast-paced digital world), 'dive in' 집착, 결말 요약, 훅 전환(But here's the kicker), 굵은 소제목+설명 리스트, 가짜 경험(Imagine…), 양비론, 세 문장 짜리 균질 문단.",
+    "evidence": "블랙리스트: 동사 delve/leverage/foster/ignite/empower/unleash/streamline/demystify/navigate, 형용사 cutting-edge/seamless/robust/transformative/comprehensive, 은유 tapestry/landscape/beacon/journey. 테스트 문장: \"Would you say it to a colleague over a beer?\" 인간형 예: \"We help you work faster\" vs AI형 \"We empower users to optimize their workflows.\"",
+    "source": "https://www.oliviacal.com/post/ai-writing-tells",
+    "actionable": "영문 카피가 필요한 페이지는 블랙리스트 grep + '동료에게 말로 할 수 있는 문장인가' 낭독 테스트. 'Imagine…' 가상 시나리오, 'Whether you're X or Y' 구문 금지.",
+    "angle": "copywriting",
+    "sourceType": "카피라이터 블로그"
+  },
+  {
+    "claim": "AI 생성 콘텐츠 과다 사용 어휘 200+ 목록: 'revolutionize the way, cutting-edge, unlock the potential of, a testament to, it is important to note, cannot be overstated, in this article'. 저자는 이 목록을 프롬프트에 '금지어'로 넣어 쓰라고 권함.",
+    "evidence": "\"Tell it what to avoid. Cut out the generic phrases. Ban the lifeless transitions.\"",
+    "source": "https://www.kraabel.net/200-overused-words-and-phrases-in-ai-generated-content/",
+    "actionable": "빌더 프롬프트에 영/한 금지어 목록을 명시적으로 주입하고, 결과물은 리뷰어가 grep으로 재검사(생성 단계+검수 단계 이중 필터).",
+    "angle": "copywriting",
+    "sourceType": "마케터 블로그"
+  },
+  {
+    "claim": "AI 카피의 대체 원칙은 '결과 기반 문장': 'takes your productivity to the next level' 대신 'helps you finish two extra tasks every day'.",
+    "evidence": "\"500 words of polished mediocrity that sounds exactly like every other AI-generated landing page\" — 해결책은 banned words list + outcome-based writing.",
+    "source": "https://www.qwe.edu.pl/tutorial/ai-tools-website-copy-landing-pages/",
+    "actionable": "모든 혜택 문장은 '무엇을/얼마나/언제'가 들어간 결과 문장으로 바꾼다: '생산성 향상' → '하루 2건 더 처리'.",
+    "angle": "copywriting",
+    "sourceType": "도구 튜토리얼(검색 스니펫 기준)"
+  },
+  {
+    "claim": "GPTZero 등 탐지기는 perplexity(다음 단어의 예측 가능성)와 burstiness(문장별 perplexity·길이의 변동)로 판정. 인간은 짧은 문장과 긴 문장을 섞고 어휘를 바꾸지만 AI는 균일함.",
+    "evidence": "\"Humans… vary their sentence construction and diction… language models… write with a very consistent level of AI-likeness\".",
+    "source": "https://gptzero.me/news/perplexity-and-burstiness-what-is-it/",
+    "actionable": "섹션당 문장 길이 분포를 확인: 모든 문장이 20~30자면 재작성. 3~5자 짜리 문장 하나를 의도적으로 넣고, 한 문장은 길게 끌고 간다.",
+    "angle": "copywriting",
+    "sourceType": "도구 문서"
+  },
+  {
+    "claim": "Gary Provost의 'This sentence has five words' 구절: 5단어 문장만 반복하면 단조롭고, 길이를 바꾸면 리듬·크레셴도가 생긴다.",
+    "evidence": "\"By varying sentence length, he creates music—writing that has a pleasant rhythm, a lilt, and harmony.\"",
+    "source": "https://www.aerogrammestudio.com/2014/08/05/this-sentence-has-five-words/",
+    "actionable": "히어로 부제·소개문은 '짧-길-짧' 또는 '길-짧' 패턴으로 쓴다. 예: '오후 2시 전 주문. 다음날 새벽, 문 앞에 있어요.'",
+    "angle": "copywriting",
+    "sourceType": "작법 블로그(원전: 100 Ways to Improve Your Writing)"
+  },
+  {
+    "claim": "NN/g 실험: 홍보성 문장(marketese)을 객관 문장으로 바꾸면 사용성 27%↑, 간결 58%↑, 스캔 가능 47%↑, 셋 결합 시 124%↑. 과장은 독자가 걸러내느라 인지 부담을 만든다.",
+    "evidence": "홍보형: \"Nebraska is filled with internationally recognized attractions that draw large crowds…\" → 객관형: \"Nebraska has several attractions.\" + 방문객 수 목록. \"promotional language imposes a cognitive burden on users who have to spend resources on filtering out the hyperbole\".",
+    "source": "https://www.nngroup.com/articles/how-users-read-on-the-web/",
+    "actionable": "형용사 대신 목록·수치로: '국내 최고 인기 코스' → '지난달 1,240명 수강'. 형용사 3개 이상 연속 금지.",
+    "angle": "copywriting",
+    "sourceType": "연구(NN/g)"
+  },
+  {
+    "claim": "NN/g 톤 실험: 신뢰성이 브랜드 선호도 분산의 52%를 설명, 친근함은 8%만 추가. 캐주얼·대화체·'적당히' 열정적인 톤이 최고 성과, 장난스러운 톤(자동차보험 사례)은 친근하지만 신뢰·전문성을 깎아 최악.",
+    "evidence": "\"the friendliness and irreverence actually undermined users' perceptions of trustworthiness and professionalism\"; \"The best tone… will depend on your users, your message, and your brand\".",
+    "source": "https://www.nngroup.com/articles/tone-voice-users/",
+    "actionable": "카테고리별로 4축(funny–serious / formal–casual / respectful–irreverent / enthusiastic–matter-of-fact) 위치를 명시. 금융·의료·B2B는 enthusiastic 축을 중간 이하로, 느낌표 0개.",
+    "angle": "copywriting",
+    "sourceType": "연구(NN/g)"
+  },
+  {
+    "claim": "Packard & Berger(JCR 2021): 직원이 '그것' 대신 '그 티셔츠'처럼 구체어를 쓰면 고객 만족·구매가 오른다. 구체성 5.6% 증가 → 만족 8.9% 증가, 이메일 941건 분석에서 구체어 사용 시 지출 30%↑.",
+    "evidence": "\"I'll go look for that\"(구체성 4.77) vs \"I'll go search for that t-shirt\"(5.77); 고객은 구체어를 '내 말을 듣고 있다'는 신호로 해석.",
+    "source": "https://academic.oup.com/jcr/article/47/5/787/5873524",
+    "actionable": "대명사·상위어를 하위 명사로 교체: '제품' → '오크 원목 6인 식탁', '서비스' → '월 1회 방문 세차'. 페이지당 '이것/해당/제품/서비스' 대명사류 3회 이하.",
+    "angle": "copywriting",
+    "sourceType": "연구(Journal of Consumer Research)"
+  },
+  {
+    "claim": "Copyhackers 리뷰 마이닝: 아마존/트립어드바이저 리뷰에서 '끈적한 문장(sticky phrases)·고통·바라는 결과'를 3열 스프레드시트로 수집. 리뷰 문장 그대로 만든 헤드라인 \"If you think you need rehab, you do\"가 대조군 대비 클릭 400%↑.",
+    "evidence": "\"It's about your prospects and the outcome they're seeking. It's not about your product.\"",
+    "source": "https://copyhackers.com/2014/10/amazon-review-mining/",
+    "actionable": "예시 사이트마다 카테고리 실제 리뷰(네이버 플레이스·쿠팡·앱스토어)에서 표현 5개를 뽑아 헤드라인/부제에 그대로 쓴다. 헤드라인은 '우리가 하는 것' 대신 '고객이 원하는 결과'.",
+    "angle": "copywriting",
+    "sourceType": "카피라이터 블로그(Joanna Wiebe)"
+  },
+  {
+    "claim": "Mailchimp 스타일 가이드: 보이스는 고정, 톤은 상황마다 변한다. 보이스를 'X but not Y' 쌍으로 정의(weird but not inappropriate, smart but not snobbish; subtle over noisy, wry over farcical). \"it's always more important to be clear than entertaining\".",
+    "evidence": "\"You have the same voice all the time, but your tone changes.\"",
+    "source": "https://styleguide.mailchimp.com/voice-and-tone/",
+    "actionable": "각 예시 사이트 상단 주석에 보이스 3쌍('담백하지만 무뚝뚝하지 않게' 등)과 톤 예외(에러·결제 실패 시)를 적고 카피를 그 기준으로 검수.",
+    "angle": "copywriting",
+    "sourceType": "기업 공개 스타일 가이드"
+  },
+  {
+    "claim": "PAS(Problem–Agitate–Solve) 공식: 히어로 다음 섹션에서 문제를 한두 줄로 제시 → 감정적으로 구체화 → 해결책을 문제와 정확히 맞물리게 배치. 광고 약속을 랜딩 헤드라인에 반복하고 근거를 옆에 둔다.",
+    "evidence": "\"open with a problem, agitating the problem, solving it… works for landing pages, sales pages, ads, and emails\".",
+    "source": "https://copyhackers.com/2015/10/copywriting-formula/",
+    "actionable": "'기능 3개 나열' 섹션 대신 PAS 1세트(문제 문장 → 상황 묘사 → 해결 문장+근거)로 대체. 문제 문장은 고객 리뷰 언어로.",
+    "angle": "copywriting",
+    "sourceType": "카피라이터 블로그"
+  },
+  {
+    "claim": "토스 8가지 라이팅 원칙: Predictable hint(다음 화면 예고), Weed cutting(의미 없는 단어 '잡초' 제거), Remove empty sentences(허전함 채우려는 문장 삭제), Focus on key message, Easy to speak(구어체·한자어 회피), Suggest over force(강요보다 제안), Universal words(유행어·밈 금지), Find hidden emotion.",
+    "evidence": "\"'앞으로'라는 단어는 이 문장에서 넣어도 그만, 빠져도 그만인 단어\"; \"특정 사용자들만 이해할 수 있는 유행어, 은어, 밈 등을 지양\".",
+    "source": "https://toss.tech/article/8-writing-principles-of-toss",
+    "actionable": "문장마다 '빼도 뜻이 같은 단어'를 삭제(잡초 검사). 섹션에 '채우기용 문장'이 있으면 섹션 자체를 줄인다. 밈·유행어 금지.",
+    "angle": "copywriting",
+    "sourceType": "기업 기술 블로그(토스)"
+  },
+  {
+    "claim": "토스 첫 UX 라이터의 보이스 정의법: 추상 원칙이 아니라 '우리 톤 같다'고 느낀 실제 문구를 모아 역설계. 특징은 명사형이 아닌 문장형, '명료하지만 기계 같지 않다', 지시형보다 청유형. 원칙은 지표 상승을 낸 A/B 사례 기반.",
+    "evidence": "\"명료하지만 기계 같지 않다\"; \"지표 상승을 이끌어낸 사례들을 기반으로\"; 30여 명 디자이너가 같은 톤으로 쓰도록 시스템화.",
+    "source": "https://toss.tech/article/1st_uxwriter",
+    "actionable": "버튼·소제목을 명사구('빠른 배송', '프리미엄 케어')로 끝내지 말고 문장형/청유형으로: '내일 새벽에 받아보세요'. 스타일별로 '좋은 문장 5개' 레퍼런스를 먼저 모으고 규칙을 뽑는다.",
+    "angle": "copywriting",
+    "sourceType": "기업 기술 블로그(토스)"
+  },
+  {
+    "claim": "토스 마이크로카피 실례: '받는 분' → '어디로 돈을 보낼까요?', '0원' → '얼마나 보낼까요?', '입금 계좌/출금 계좌' → '~에서/~로', '이체가 완료되었습니다' → '~로 ~원을 보냈어요'.",
+    "evidence": "원칙 요약: \"User-side Info, Weed Cutting, Easy to Speak, Keep Consistency\".",
+    "source": "https://brunch.co.kr/@kellypoly/62",
+    "actionable": "완료 메시지·상태 문구를 '~되었습니다' 피동·한자어 대신 주어가 있는 능동 해요체로. 라벨 대신 질문형 플레이스홀더 허용.",
+    "angle": "copywriting",
+    "sourceType": "디자이너 블로그(브런치)"
+  },
+  {
+    "claim": "토스 UX 라이터 인터뷰: 대출 상환 알림 '대출 잔액이 줄어들었으니 확인해보세요' → '갚느라 고생 많으셨다'류로 바꾸자 반응이 크게 올랐다. 40여 개 서비스가 '하나의 서비스'처럼 느껴지게 톤을 통일.",
+    "evidence": "\"어려운 금융 정보를 쉽게 가공해 잘 알려드리는 다리 역할\".",
+    "source": "https://toss.im/tossfeed/article/uxwriter-interview",
+    "actionable": "완료·달성 순간의 카피는 정보 알림이 아니라 사용자의 수고를 인정하는 문장 1개로(단, 느낌표·이모지 없이).",
+    "angle": "copywriting",
+    "sourceType": "기업 블로그(토스피드)"
+  },
+  {
+    "claim": "반례: 토스식 친근 해요체를 '무작정' 베끼면 안 된다. 토스가 통하는 건 '어려운 금융을 쉽게, 친근하게'라는 페르소나와 UI·기능이 일관되기 때문. 신뢰가 핵심인 브랜드(예: 삼성)가 친구 말투를 쓰면 이미지에 부정적.",
+    "evidence": "\"신뢰감이 가장 중요한\" 기업에 친구 같은 톤은 \"브랜드 이미지에 부정적인 영향을 미칠 수 있다\".",
+    "source": "https://brunch.co.kr/@greening/29",
+    "actionable": "24개 예시 사이트에 해요체를 일괄 적용하지 않는다. Corporate/의료/법률/B2B는 합니다체 또는 절제된 해요체, Kinetic/Editorial만 개성 있는 말투. 스타일 문서에 종결어미를 명시.",
+    "angle": "copywriting",
+    "sourceType": "UX 라이터 블로그(브런치)"
+  },
+  {
+    "claim": "배민 UX 라이팅 시작기: 서비스 맥락 파악이 결과물을 좌우하고, 사용자 관점만이 아니라 비즈니스 요구도 함께 본다. 본인인증 화면에 '2분 만에 끝내기'와 법적 필요 이유를 덧붙여 불안을 낮춤. 단체주문은 '선택 완료 인원' 대신 '남은 인원' 표시로 전환.",
+    "evidence": "\"서비스 맥락을 잘 파악할 수 있다는 게 결과물에 큰 도움이 되더라고요\".",
+    "source": "https://bcut.baemin.com/6287/",
+    "actionable": "폼·인증·결제 단계 카피에는 소요 시간(2분)과 '왜 필요한지' 한 줄을 붙인다. 숫자는 사용자가 다음에 할 행동 기준으로 고른다(남은 것 vs 끝난 것).",
+    "angle": "copywriting",
+    "sourceType": "기업 기술 블로그(배민 B컷)"
+  },
+  {
+    "claim": "국내 기업 UX 라이팅 가이드 지형: SK텔레콤 『사람 잡는 글쓰기』(쉽게·짧게·맞게·옳게), KB국민은행 『KB 고객언어가이드』, 신한카드 『UX Writing 가이드』(바르게·친절하게·쉽게·일관되게), 토스(사용자 중심 정보·잡초 제거·Easy to speak·일관성, zero jargon), 네이버(2013 『서비스 글쓰기의 모든 것』).",
+    "evidence": "신한카드 4원칙 \"바르게 쓰기, 친절하게 쓰기, 쉽게 쓰기, 일관되게 쓰기\"; 토스 목표 \"zero jargon\".",
+    "source": "https://brunch.co.kr/@margrit74/114",
+    "actionable": "우리 카피 규칙도 4~5개 원칙+대체어 사전 형태로 문서화하고, 카테고리별 전문용어(부동산·의료·금융·개발)는 대체어 표를 만든다.",
+    "angle": "copywriting",
+    "sourceType": "UX 라이터 블로그(브런치)"
+  },
+  {
+    "claim": "SKT '사람 잡는 글쓰기' 실례: 'NEW 단말' → '개통한 적이 없는 휴대폰', 'IMEI' → '휴대폰 식별번호', 'OTA 개통' → '유심 정보를 온라인으로 받아 개통'; 짧게 쓰기: '죄송한 마음에 조그만 선물을 전달 드리오니 앞으로도 많이 사랑하고 아껴주세요' → '죄송한 마음에 조그만 선물을 드립니다. 앞으로도 많이 사랑해주세요'.",
+    "evidence": "4장 구성 '쉽게 쓰기, 짧게 쓰기, 맞게 쓰기, 옳게 쓰기' + 부록 '고객 언어 사전·체크리스트'.",
+    "source": "https://www.greened.kr/news/articleView.html?idxno=216879",
+    "actionable": "영문 약어·업계 용어는 첫 등장 시 우리말 풀이를 앞에 두고 괄호로 원어. 한 문장에 '드리오니/하오니' 류 연결어미로 두 문장을 잇지 말고 마침표로 끊는다.",
+    "angle": "copywriting",
+    "sourceType": "뉴스 기사"
+  },
+  {
+    "claim": "SKT 뉴스룸 후속: 'MVNO' → '알뜰폰(MVNO)', '잔존가액' → '현재 가치를 현금으로 환산한 금액', '리유저블 컵' → '다회용 컵', '언택트' → '비대면'(국립국어원 순화어). 어린이 서비스는 '친구가 말하듯 쉽게', 차별적 표현·이미지 점검 포함.",
+    "evidence": "\"마케팅에서 헷갈리는 맞춤법\" 정리, \"차별적인 요소들을 바꾸고\".",
+    "source": "https://news.sktelecom.com/182000",
+    "actionable": "외래어 마케팅 용어(리유저블, 언택트, 프리미엄, 시그니처)는 우리말 대체어가 있으면 교체. 대상 연령이 다르면 말투 규칙도 별도 정의.",
+    "angle": "copywriting",
+    "sourceType": "기업 뉴스룸"
+  },
+  {
+    "claim": "신한카드 UX Writing 가이드 2.0: 6개 보이스·7개 톤으로 언어적 개성 정의, 대출 신청 CTA 버튼 A/B 테스트에서 '의미 있는 전환율 차이' 확인. 'UX 기획과 UX 라이팅은 하나의 프로세스'.",
+    "evidence": "\"사용자 중심의 UX 라이팅이 서비스 전환율에 실질적 효과\".",
+    "source": "https://ditoday.com/%EC%8B%A0%ED%95%9C%EC%B9%B4%EB%93%9C%EB%8A%94-%EC%9D%B4%EB%A0%87%EA%B2%8C-ux-%EB%9D%BC%EC%9D%B4%ED%8C%85%ED%95%9C%EB%8B%A4/",
+    "actionable": "CTA 문구는 '지금 시작하기' 하나로 고정하지 말고 카테고리별 행동 동사(견적 받기, 자리 예약, 샘플 신청)로 쓰고, 최소 2안을 적어 비교 선택한다.",
+    "angle": "copywriting",
+    "sourceType": "디자인 매거진(디지털 인사이트)"
+  },
+  {
+    "claim": "한국어 AI 문체의 대표 신호(커뮤니티 관찰): 쉼표 남용, 접속어 '이처럼·또한·이를 통해·이를·이러한·마침내' 반복.",
+    "evidence": "\"가장 대표적인게 쉼표 많이쓰기, '이처럼', '또한', '이를통해', '이를', '이러한', '마침내' 같은 접속어임\".",
+    "source": "https://www.threads.com/@poodle_doodle_noodle/post/DHD-6TGheUR/",
+    "actionable": "금지 접속어 목록에 추가: 이처럼·또한·이를 통해·이러한·마침내·뿐만 아니라·더 나아가. 문단 첫 어절이 접속어이면 삭제. 한 문장 쉼표 2개 이상 금지.",
+    "angle": "copywriting",
+    "sourceType": "커뮤니티(Threads)"
+  },
+  {
+    "claim": "한국어 AI 탐지 도구(GPT Killer)가 정리한 AI 텍스트 5특징: 개인 경험·감정·비유 배제된 평이한 톤, 일반론 반복, 경직된 문어체(기능어가 정확해 문법적으로 흠 없음), 무견해·판단 회피, 동일 키워드 반복으로 단조로움.",
+    "evidence": "\"개인적인 경험과 감정, 비유적인 표현이 배제된 평이한 톤\"; \"같은 내용 혹은 핵심 키워드가 글 전반에 반복되면서 내용이 단조로움\".",
+    "source": "https://manual.muhayu.com/montly-gpt-killer-labs/detected-ai-patterns",
+    "actionable": "소개 문단에는 브랜드 고유의 구체 사실(창업 연도, 장소, 사람 이름, 재료, 실패담) 1개 이상 필수. '문법적으로 완벽하지만 아무 주장도 없는' 문장은 삭제.",
+    "angle": "copywriting",
+    "sourceType": "도구 문서(무하유 GPT Killer)"
+  },
+  {
+    "claim": "AI가 다듬은 한국어 글이 내 글 같지 않은 이유: '급변하는 현대 사회에서…' 클리셰, 주관성 증발, 같은 길이·구조 문장 반복(수면제), 과도한 부연. 해결 7체크: 클리셰 제거, 개인 목소리 삽입, 문장 리듬 복원, 핵심만, 단어 반복 제거, 문단 연결, 비판적 시각.",
+    "evidence": "\"같은 길이, 같은 구조의 문장이 반복돼 수면제 역할\"; 대신 \"구체적인 상황, 숫자, 날것의 현실\"로 시작하라.",
+    "source": "https://brunch.co.kr/@lazygenius/21",
+    "actionable": "섹션 도입부는 시대 배경('요즘', '급변하는', '디지털 시대')으로 시작 금지. 장면·숫자·고유명사로 시작한다.",
+    "angle": "copywriting",
+    "sourceType": "작가 블로그(브런치)"
+  },
+  {
+    "claim": "국내 브랜드 카피 사례: 오늘의집 '누구나 예쁜 집에 살 수 있어'(심리적 허들 제거, 일상 언어), 라프텔 '정의롭고 당당한 덕후들을 위한 서비스'(타깃 명시). 29CM는 담백하면서 브랜드 방향을 문장으로 드러내는 카피('일상을 채우는 물건').",
+    "evidence": "오늘의집: 심리적 허들 제거·일상 언어; 29CM: \"담백하면서 크리에이티브함을 놓치지 않는 카피\".",
+    "source": "https://publy.co/content/7474",
+    "actionable": "슬로건은 '누가(타깃)' 또는 '무엇이 달라지는가'를 일상어로 한 문장. '당신만을 위한 프리미엄 경험' 류 추상 슬로건 금지, 반말 슬로건도 브랜드 페르소나가 허락할 때만.",
+    "angle": "copywriting",
+    "sourceType": "콘텐츠 플랫폼(퍼블리)"
+  },
+  {
+    "claim": "네이버파이낸셜 UX Writing 가이드(공개 글): '누구에게나 쉬운 금융'·'신뢰 있는 서비스' 두 가치 아래 원칙·규칙을 세우고 '대체어 사전'을 제작(본문 열람 실패, 검색 스니펫 기준).",
+    "evidence": "\"원칙과 규칙을 세우고 대체어 사전을 만들었습니다\"(검색 결과 요약).",
+    "source": "https://medium.com/naverfinancial/%EB%88%84%EA%B5%AC%EC%97%90%EA%B2%8C%EB%82%98-%EC%89%AC%EC%9A%B4-%EA%B8%88%EC%9C%B5%EC%9D%84-%EC%9C%84%ED%95%9C-ux-writing-%EA%B0%80%EC%9D%B4%EB%93%9C-345b15686025",
+    "actionable": "카테고리별 '대체어 사전' 파일을 만들어 빌더 프롬프트에 첨부(예: 금융 '이체'→'보내기', 부동산 '전용면적'→'실제 쓰는 넓이(전용)').",
+    "angle": "copywriting",
+    "sourceType": "기업 개발 블로그(NAVER Pay, Medium)"
+  },
+  {
+    "claim": "'미드저니 룩(Midjourney look)'의 정체는 정해져 있다: 과채도(oversaturated), 유광·플라스틱 피부(glossy/plastic skin), 그림자 없는 균일 조명, 과한 보케(heavy bokeh), 거의 대칭인 구도, 필름 그레인 0. 이것은 모델 결함이 아니라 '수백만 명이 같은 도구·같은 프롬프트로 기본값에 맡긴 결과'이며, 모델 자체에 '미(beauty)·스펙터클·채도·대칭 선호' 편향(aesthetic bias)이 있다.",
+    "evidence": "\"oversaturated color, glossy or plastic-looking skin, lighting that is perfectly even with no harsh shadows, heavy bokeh, near-symmetrical composition, zero film grain\" / \"Research on text-to-image systems has documented an aesthetic bias: a recurring preference for beauty, spectacle, saturation, and symmetry.\" 해법: 실제 사진을 섞고(anchor to reality), 브랜드 팔레트·서체를 매 생성물에 강제, 의도된 불완전함(Imperfect by Design), 결과물 중심에 있는 것은 사람이 거른다.",
+    "source": "https://kompozy.io/guides/the-ai-design-aesthetic",
+    "actionable": "이미지 리뷰 체크: 과채도·유광 피부·그림자 없음·과한 보케·좌우 대칭·그레인 0 중 3개 이상이면 '미드저니 룩'으로 판정해 재생성. 생성물엔 반드시 실제 사진 요소나 브랜드 팔레트·서체를 합성한다.",
+    "angle": "images",
+    "sourceType": "디자이너 가이드/블로그"
+  },
+  {
+    "claim": "AI 이미지가 유난히 반들거리는(shiny/glossy) 기술적 이유: (1) 학습 데이터에 에어브러시·스튜디오 조명 상업 사진 비중이 큼, (2) 크라우드소싱 미적 선호(RLHF류)로 '보기 좋게' 추가 최적화, (3) 디퓨전의 손실 압축이 고주파(질감) 정보를 먼저 지워 표면을 매끈하게 만듦, (4) 국소 질감 생성이 약해 하이라이트로 덮는 경향.",
+    "evidence": "HN 스레드: \"there's an added objective in some of these models to make them more aesthetically pleasing based on subjective crowdsourced data\" / \"compression usually works by removing the high-frequency information first\"",
+    "source": "https://news.ycombinator.com/item?id=41262547",
+    "actionable": "질감(고주파)은 모델이 먼저 버리는 정보이므로 프롬프트에 '보이는 모공·직물 결·먼지·스크래치' 등 질감 앵커를 넣고, 필요하면 후처리로 그레인/노이즈를 더한다. '아름답게' 류 형용사는 편향을 강화하므로 쓰지 않는다.",
+    "angle": "images",
+    "sourceType": "커뮤니티(Hacker News)"
+  },
+  {
+    "claim": "2026 기준 '아직도 통하는' AI 이미지 판별 신호는 손이 아니라 배경 텍스트·반복 패턴·반사/그림자다. 배경 간판·번호판·책등 텍스트는 여전히 깨지고, 벽돌·타일·직물 짜임 같은 반복 패턴이 프레임을 가로지르며 크기·간격이 흐트러진다. 손은 v7급 모델에서 대부분 해결돼 '겹치거나 물건을 쥔 손' 정도만 남았다.",
+    "evidence": "\"Text sitting in the background, on a distant storefront, a license plate, a book spine on a shelf\" / \"Brick walls, tiled floors, fabric weaves, and fence patterns should repeat with mathematical regularity\" / Medium(2025): 주요 모델은 손을 크게 개선해 \"hands are no longer a reliable way to detect AI-created images\"",
+    "source": "https://www.opticflux.com/how-to-spot-an-ai-generated-image-in-2026-the-tells-that-still-work/79504/ ; https://medium.com/@vk.vamsikrishna24/is-that-face-even-real-how-to-spot-ai-generated-images-in-2025-e55f19133582",
+    "actionable": "생성 이미지 QA 시 배경 간판·라벨·책등을 100% 줌으로 확인하고 텍스트가 있으면 크롭/인페인트로 제거하거나 텍스트가 없는 장면을 프롬프트한다(예: 'blank storefront'). 벽돌·타일·격자 배경은 피하고 무늬 없는 면·자연 소재를 지정한다.",
+    "angle": "images",
+    "sourceType": "미디어 기사(보강: Medium 2025)"
+  },
+  {
+    "claim": "실사 판별에서 '피부가 그늘지거나 기름져야 할 곳까지 에어브러시된 것', '한 얼굴이 모든 방향에서 균일하게 밝은 것', '광원 방향과 그림자 방향 불일치', '양쪽 귀걸이 디자인이 다르거나 떠 있는 액세서리'가 지목된다. Everypixel도 '유광 시트(glossy sheen)', '끊어진 머리카락 가닥', '텅 빈 눈', '지나치게 예술적인 조명'을 든다.",
+    "evidence": "Medium: 얼굴이 \"perfectly lit on all sides, even when one side should be darker\" / Everypixel: \"surfaces that appear unnaturally smooth, plastic-looking, and have a glossy sheen\", \"disconnected strands of hair, or a peculiar glow around it\"",
+    "source": "https://journal.everypixel.com/how-to-spot-ai-generated-images",
+    "actionable": "인물 컷은 '한 방향 주광 + 반대편 그늘'을 프롬프트에 명시(예: 'single window light from camera left, shadow side unlit'), 액세서리·머리카락 경계·눈 하이라이트를 QA 항목에 넣는다.",
+    "angle": "images",
+    "sourceType": "스톡/이미지 업계 저널(보강: Medium 2025)"
+  },
+  {
+    "claim": "실사 프롬프트의 최우선 기법은 '불완전함 블록(imperfection block)'이다. 완벽한 대칭·무결점 피부가 AI의 특징이므로 '보이는 모공, 미세 비대칭, 잔털, 살짝 붉은 눈, 흩날리는 머리카락, 표정 주름'을 매 프롬프트에 넣고, 네거티브로 'no plastic skin, no waxy shine, no CGI/3D render'를 둔다. 카메라 이름 자체가 성격을 바꾼다: 'Canon EOS R5 85mm f/2.8'은 스튜디오풍, 'shot on iPhone 16'은 카메라롤의 캐주얼·캔디드 느낌.",
+    "evidence": "\"Real skin has pores, blemishes, and tonal variation… the technique that produces the most visible improvement… most beginners overlook\" / 네거티브: \"no cartoon style, no CGI, no 3D render, no game engine, no plastic skin, no unrealistic lighting\" / 검색 요약: 'shot on iPhone 16 produces a completely different character—more casual, natural, candid'",
+    "source": "https://aivideobootcamp.com/blog/photorealistic-ai-prompts-guide-2026/ ; https://imagera.ai/blog/best-prompts-realistic-ai-images-2026",
+    "actionable": "우리 프롬프트 템플릿 끝에 고정 블록 추가: 'visible pores, subtle facial asymmetry, flyaway hairs, natural fabric grain, slight motion blur; no plastic skin, no waxy shine, no CGI'. 자연스러운 UGC/캔디드가 필요한 카테고리(F&B·라이프스타일)는 'shot on iPhone'을, 제품·에디토리얼은 풀프레임 카메라+렌즈를 지정.",
+    "angle": "images",
+    "sourceType": "프롬프트 가이드 블로그"
+  },
+  {
+    "claim": "프로 리얼리즘의 핵심은 '사물이 아니라 물리를 프롬프트하라(Stop prompting for objects, start prompting for physics)'. 특정 카메라·센서(Sony A7R IV, Leica M11), 초점거리·조리개(35/85/100mm macro, f/1.4~f/11), 필름 스톡(Kodak Portra 400, Fuji Pro 400H), 명명된 조명(Rembrandt, three-point), 서브서피스 스캐터링·벨루스 헤어 같은 용어가 '프로 사진 학습 데이터'를 호출한다.",
+    "evidence": "\"The AI has thousands of examples of this lighting setup in its training data.\" 필름 스톡은 색·그레인 구조를, 조리개는 심도를 결정한다고 설명.",
+    "source": "https://blog.designhero.tv/ai-art-direction-prompts-flux-midjourney/",
+    "actionable": "카테고리별 '장비 프리셋'을 만든다: Editorial=medium format + Portra 400 + window light, Cinematic=Arri Alexa + anamorphic + chiaroscuro, Product=100mm macro f/8 + three-point softbox, F&B=50mm f/2 + natural side light. 형용사(realistic, 8k) 대신 이 용어를 쓴다.",
+    "angle": "images",
+    "sourceType": "디자이너 블로그(Flux/Midjourney)"
+  },
+  {
+    "claim": "Midjourney: V7은 자연어를 이해하므로 '스톡 DB에 태그 달듯' 키워드 나열이 아니라 '시네마토그래퍼에게 사진을 설명하듯' 쓴다. 최대 실사는 --style raw(V8은 --raw) + 낮은 --stylize(0~100). 제품 사진엔 저 stylize 권장, --sref로 룩 고정, --oref(오므니 레퍼런스)로 피사체 일관성, --ow는 400 이하.",
+    "evidence": "\"V7 understands natural language—write prompts like you're describing a photograph to a skilled cinematographer, not tagging a stock photo database.\" / \"For maximum photorealism, combine low stylization with --style raw\" / \"keep --ow under 400\"",
+    "source": "https://blakecrosley.com/guides/midjourney",
+    "actionable": "Midjourney 기본 파라미터: '--style raw --s 50' (실사) / 브랜드 룩은 --sref 코드 하나로 고정해 사이트 전체 이미지의 톤 통일. 'hyper realistic, 8k, masterpiece' 류 키워드는 금지.",
+    "angle": "images",
+    "sourceType": "도구 가이드(Midjourney 8.x)"
+  },
+  {
+    "claim": "Flux 실사용 '아마추어 스냅샷' LoRA가 실제 사진처럼 보이는 이유는 폴리시 대신 평범한 일상 장면과 캡션(“on flickr in 2007, 2005 blog”)으로 학습됐기 때문. 권장: LoRA 가중치 0.3~0.5, CFG 2.5~4(낮을수록 실사, 높을수록 정합), 'Medium shot photo of / Selfie photo of' 같은 사진 용어로 시작. 손·텍스트·배경 인물·피부 일관성은 여전히 약점이라 가중치를 낮춰 보정.",
+    "evidence": "Amateur Photography [Flux Dev] 페이지: 트리거 \"Amateur photography of [subject], [scene], [quality tags], on flickr in 2007, 2005 blog\", \"CFG 2.5-4\", \"LoRA Weight 0.3-0.5\", \"Detailed prompts still works best\"; RunningHub 'Improved Amateur Snapshot Photo Realism'도 'lower guidance and lower steps for more realism'",
+    "source": "https://www.shakker.ai/modelinfo/6997bc9e474d478bbcd979baa9dc8d5d/Amateur-Photography-Flux-Dev",
+    "actionable": "UGC·후기·현장감 이미지는 Flux dev + Amateur/iPhone Realism LoRA(가중치 0.3~0.5, guidance 2.5~4)로 만들고, 광고 촬영 느낌 컷과 섞어 '한 장만 지나치게 완벽한' 상태를 피한다.",
+    "angle": "images",
+    "sourceType": "모델 허브 문서(Flux LoRA)"
+  },
+  {
+    "claim": "Nano Banana(Gemini 이미지) 공식 가이드: 키워드 나열이 아니라 장면을 서술하고(‘describe the scene narratively’), 강한 동사로 시작하며, 하드웨어를 지정하면 룩이 바뀐다(GoPro=왜곡된 액션감, Fujifilm=색 과학, 일회용 카메라=날 것·플래시). 'low-angle shot with shallow depth of field (f/1.8)', 'three-point softbox', 'Chiaroscuro', 'Golden hour backlighting' 등 용어를 그대로 이해. 네거티브는 부정형 대신 긍정 서술('no cars' 대신 'empty street').",
+    "evidence": "\"A simple list of keywords won't cut it; you need to describe the scene narratively.\" / \"a cheap disposable camera for a raw, nostalgic flash aesthetic\" / \"Describe what you want, not what you don't want (e.g. 'empty street' instead of 'no cars')\"",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-nano-banana",
+    "actionable": "Nano Banana 프롬프트는 3~5문장 서술형으로: 동사→피사체→행동→장소→카메라/렌즈/조리개→조명 이름→후처리(필름·그레인). 부정형 대신 원하는 상태를 서술.",
+    "angle": "images",
+    "sourceType": "도구 공식 문서(Google Cloud)"
+  },
+  {
+    "claim": "Gemini API 공식 템플릿은 실사·일러스트·제품컷을 분리한다. 실사: “A photorealistic [type of shot] of [subject] in [setting]. [light]. Shot from a [camera angle] with a [lens type].” 제품: “studio-lit product photograph… on a [surface]. The lighting is a [three-point softbox setup]…”. 일러스트는 매체·선·셀셰이딩 등 시각 특성을 명시.",
+    "evidence": "문서 원문 템플릿 인용: \"A photorealistic [type of shot] of a [subject description] in a [setting description]. [Description of the light]. Shot from a [camera angle] with a [lens type].\" / \"The more specific you are, the more control you have over the results.\"",
+    "source": "https://ai.google.dev/gemini-api/docs/image-generation",
+    "actionable": "빌더용 프롬프트 스캐폴드를 이 세 템플릿으로 고정하고, 사이트 스타일(Editorial/Product/Kinetic)에 따라 실사·제품·일러스트 템플릿 중 하나만 선택해 혼용하지 않는다.",
+    "angle": "images",
+    "sourceType": "도구 공식 문서(Gemini API)"
+  },
+  {
+    "claim": "AI 이미지에 텍스트가 깨지는 근본 원인: 모델은 글을 '읽지' 않고 시각 패턴으로 다루며, 디노이징 초기 단계에서 낱글자 같은 미세 디테일은 저순위로 처리되고, CLIP 토크나이저가 단어를 쪼개 의미를 흩뜨린다. 그래서 전문가들은 텍스트 없는 이미지를 만들고 Figma/Photoshop에서 브랜드 서체로 타이포를 얹는다. 텍스트가 꼭 필요하면 Ideogram·Recraft V3(또는 Nano Banana Pro)로 별도 처리.",
+    "evidence": "\"AI image generators don't actually 'read' text. At all.\" / \"Fine details like individual letters are treated as low-priority during the early denoising steps.\" / \"Many professionals now create their AI imagery text-free, then overlay typography using traditional design tools like Photoshop, Canva, or Figma.\" Krumzi 팁: 'leave negative space on the left for headline placement'처럼 여백을 미리 프롬프트.",
+    "source": "https://uxdesign.cc/lost-for-words-why-text-in-ai-images-still-goes-wrong-b5232c39bd11 ; https://www.krumzi.com/blog/how-to-add-text-to-ai-images",
+    "actionable": "이미지 프롬프트에 글자·로고·라벨을 넣지 않고 'leave negative space on the [left/top] for headline'을 넣어 여백을 확보한 뒤 HTML/CSS 텍스트로 얹는다. 병 라벨·간판처럼 텍스트가 피사체면 'blank label'로 만들고 SVG로 합성.",
+    "angle": "images",
+    "sourceType": "UX 커뮤니티(UX Collective)"
+  },
+  {
+    "claim": "반례·보강: Nano Banana Pro는 포스터·다이어그램·목업의 선명한 텍스트를 강점으로 내세우며, '텍스트 내용과 스타일(폰트, 위치)을 명시'하고 '먼저 대화로 문구를 확정한 뒤 이미지 요청'하는 text-first 방식을 권한다. 즉 텍스트 렌더링 자체는 크게 개선됐지만, 웹사이트에서는 여전히 접근성·번역·수정 가능성 때문에 라이브 텍스트가 우선이다.",
+    "evidence": "Google 블로그: 모델은 \"posters, intricate diagrams, and even detailed product mockups\"의 선명한 텍스트를 지원, \"Clearly state what text should appear and how it should look\" / Cloud 가이드: \"Gemini Image models work best if you first converse with it to generate the text concepts, and then ask for an image with that text.\"",
+    "source": "https://blog.google/products-and-platforms/products/gemini/prompting-tips-nano-banana-pro/",
+    "actionable": "텍스트가 이미지 안에 꼭 있어야 하는 목업(패키지·포스터 썸네일)만 Nano Banana Pro로 문구를 따옴표로 지정해 생성하고, 페이지의 헤드라인·CTA·가격 등은 절대 이미지 텍스트로 넣지 않는다.",
+    "angle": "images",
+    "sourceType": "도구 공식 블로그(Google)"
+  },
+  {
+    "claim": "NN/g 아이트래킹: 사용자는 '정보를 담은 이미지'는 정독하고 '분위기용 대형 이미지'는 완전히 무시한다. FreshBooks의 실제 직원 사진은 사용자가 소개글보다 10% 더 오래 봤고, Yale SOM의 스톡 사진은 무시됐다. Amazon TV 페이지에선 이미지에 18%, 텍스트에 82%의 시선. 무료 스톡은 여러 사이트에서 반복 노출돼 '가치 없음'으로 학습되어 무시된다.",
+    "evidence": "\"Some types of pictures are completely ignored. This is typically the case for big feel-good images that are purely decorative.\" / \"10% more time viewing the portrait photos than reading the biographies\" / \"only 18% of the viewing time was spent on the photos, while 82% was spent on the text\"",
+    "source": "https://www.nngroup.com/articles/photos-as-web-content/",
+    "actionable": "히어로·팀·제품 이미지는 '이 사진이 없으면 사용자가 모르는 정보'가 있어야 채택한다. 주제 키워드 스톡(loremflickr)도 여전히 장식이므로 가능하면 실제 제품·실제 공간·실제 UI 캡처·수치 그래픽으로 대체하고, 없으면 이미지를 빼고 타이포/여백으로 처리한다.",
+    "angle": "images",
+    "sourceType": "UX 리서치(Nielsen Norman Group)"
+  },
+  {
+    "claim": "소비자 데이터: Getty 'Building Trust in the Age of AI' 조사에서 98%가 '진짜(authentic) 이미지·영상이 신뢰 형성에 핵심'이라 답했고, 사람·제품을 AI로 생성한 브랜드에 덜 호의적이었으며 약 90%가 AI 사용 여부 표시를 원했다. Clutch(2025.9): 57%는 AI 사진을 구분 못 하지만 82%는 '실사 촬영을 대체하지 않는 맥락'에서만 AI 사진을 수용.",
+    "evidence": "Getty: \"98% of consumers agree that 'authentic' images and videos are pivotal in establishing trust\", \"People felt less favourably towards brands that used AI to generate visuals of people or products specifically\" / Clutch: 57% 미식별, 82% 조건부 수용",
+    "source": "https://newsroom.gettyimages.com/en/getty-images/nearly-90-of-consumers-want-transparency-on-ai-images-finds-getty-images-report ; https://clutch.co/resources/ai-photos-brand-usage-consumer-trust",
+    "actionable": "사람 얼굴·판매 제품은 AI 생성 금지(실사 촬영 또는 미노출). AI 생성은 배경·질감·분위기·개념 일러스트에 한정하고, 사이트 어딘가에 AI 이미지 사용 고지를 둔다.",
+    "angle": "images",
+    "sourceType": "업계 리서치(Getty Images, 보강: Clutch)"
+  },
+  {
+    "claim": "제품 이미지 한정 반례: Stylitics 조사에서 쇼퍼 71%는 실사와 AI 제품컷을 '같거나 소폭 차이'로 봤고, AI임을 알렸을 때 60%가 중립·긍정, 31%가 부정. 76%는 (촬영이든 AI든) 착용컷(on-model)이 가장 유용, 59%는 라벨링을 원함. 결론: 출처보다 색·소재 질감·구조가 정확한지, 그리고 정직한 고지가 신뢰를 결정한다.",
+    "evidence": "\"71% of shoppers said the images looked the same or had only small differences\" / \"31% reacted negatively\" / \"59% wanted clear labeling\"",
+    "source": "https://stylitics.com/resources/blog/fashion-product-photo-ai/",
+    "actionable": "커머스형 예시 사이트에서 AI 제품컷을 쓰려면 실제 제품 사진을 참조 이미지(--oref/이미지 입력)로 넣어 색·소재를 고정하고, 착용/사용 장면 위주로 만들고, 캡션에 'AI 생성 연출컷' 고지를 단다.",
+    "angle": "images",
+    "sourceType": "커머스 업계 리서치"
+  },
+  {
+    "claim": "2026 웹 트렌드: 고해상 사진을 걷어내고 SVG·순수 CSS로 대체(대역폭·지속가능성), 단색 배경에 CSS 그레인 필터/애니메이션 SVG 노이즈로 '디지털 완벽함'을 깨는 촉감을 주고, 타이포그래피를 1차 인터페이스 구조로 올린다. 배경엔 '바이브코딩 템플릿 범람으로 시각적 기준선이 평탄화됐다'는 진단이 있다.",
+    "evidence": "\"High-resolution photography is being stripped out and replaced by Scalable Vector Graphics (SVG) and pure CSS\" / \"Applying a subtle CSS grain filter or an animated SVG noise overlay to a solid background instantly breaks up the digital perfection.\" / \"As vibe-coded templates flood the market, the visual baseline has flatlined.\"",
+    "source": "https://fireart.studio/blog/the-best-web-design-trends/",
+    "actionable": "Product/Utility/Kinetic 스타일은 사진 대신 SVG 다이어그램·CSS 도형·데이터 그래픽 + feTurbulence 기반 SVG 노이즈(투명도 3~6%)를 표준으로 삼고, 이미지 없는 히어로를 허용한다. 단, 노이즈 오버레이도 '전 페이지 일괄'이 아니라 배경면 1~2곳에만.",
+    "angle": "images",
+    "sourceType": "디자인 스튜디오 블로그(트렌드)"
+  },
+  {
+    "claim": "스톡 클리셰 목록과 대체안: 익명 비즈니스맨 악수, 과장된 하이파이브 팀, 헤드셋 낀 상담원은 즉시 '스톡'으로 읽힌다. 대안은 브랜드 전용 촬영·일러스트, 제품이 실제로 쓰이는 장면, 시각 은유(얽힌 사물·정렬된 길), UGC. 여기에 AI 이미지도 같은 클리셰를 재생산하기 쉬우므로 '무엇을 찍을지'가 도구보다 먼저다.",
+    "evidence": "검색 요약: 'handshakes… cheesy team celebrations… smiling customer support representatives with headsets' / 'pick an image illustrating your product's real-world application or the genuine emotions'",
+    "source": "https://www.databirdjournal.com/posts/beyond-the-cliche-how-to-avoid-overused-stock-photos-in-your-marketing-materials ; https://webflow.com/blog/website-hero-image",
+    "actionable": "금지 피사체 목록을 프롬프트/스톡 검색에 공통 적용: 악수, 하이파이브, 헤드셋 상담원, 노트북 앞 미소, 유리벽 회의실, 전구·퍼즐·로켓 은유. 대신 '실제 작업 중인 손·도구·제품·공간'을 지정.",
+    "angle": "images",
+    "sourceType": "마케팅 블로그(보강: Webflow)"
+  },
+  {
+    "claim": "한국어 실사 팁(브런치): 조명·배경·카메라 각도·질감을 구체화하되 '너무 많은 디테일을 한꺼번에 담으면 이미지가 어색해진다'—즉 요소 과적재는 오히려 이질감을 만든다. 렌즈 가이드(캐럿): 인물 85/135mm, 풍경·거리 24/35mm, 제품 디테일 매크로.",
+    "evidence": "\"너무 많은 디테일을 한꺼번에 담으려다 보면 이미지가 어색해질 수 있습니다\" / 캐럿 블로그: '인물 사진은 85mm 또는 135mm, 풍경/거리는 24mm 또는 35mm, 제품 디테일은 macro lens'",
+    "source": "https://brunch.co.kr/@morningwalk/510 ; https://carat.im/blog/ai-image-prompt-guide",
+    "actionable": "프롬프트는 한 장면·한 피사체·한 광원 원칙(요소 3~5개 이내). 렌즈는 용도표(인물 85/135, 공간 24/35, 제품 100 macro)에서 고른다.",
+    "angle": "images",
+    "sourceType": "한국어 블로그(보강: 캐럿)"
+  },
+  {
+    "claim": "Anthropic 공식 frontend-design 스킬(SKILL.md)은 코드를 쓰기 전 '2패스'를 강제한다: 1패스에서 4~6개 hex 팔레트·2역할 이상의 서체·ASCII 와이어프레임·'시그니처 요소' 하나를 담은 압축 토큰 시스템(compact token system)을 먼저 적고, 2패스에서 '어떤 비슷한 페이지에도 낼 법한 기본값(generic default)'이 있으면 고친 뒤에야 코드를 쓴다.",
+    "evidence": "\"describe the palette as 4–6 named hex values\", \"the single unique element this page will be remembered by\", \"if any part of it reads like the generic default you would produce for any similar page… revise that part, say what you changed and why\" → \"Only after revision should you start to write the code\". 또 \"Spend your boldness in one place.\", 넘버링 01/02/03은 \"only appropriate if the content actually is a sequence\", \"extra animation contributes to the feeling that the design is AI-generated\".",
+    "source": "https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md",
+    "actionable": "빌더 프롬프트를 '토큰 플랜(팔레트 hex 4~6, 서체 역할 2+, ASCII 와이어프레임, 시그니처 1개) → 자기비판(기본값 지목·수정 사유 명시) → 코드' 3단계로 강제하고, 대담함은 시그니처 1곳에만 쓴다.",
+    "angle": "process",
+    "sourceType": "도구 문서(Anthropic 공식 스킬 원문)"
+  },
+  {
+    "claim": "같은 SKILL.md가 '현재 AI 디자인이 몰리는 3가지 기본 룩'을 명시한다: (1) 웜 크림(#F4F1EA 근처)+고대비 세리프+테라코타, (2) 근흑 배경+애시드 그린/버밀리언 단일 액센트, (3) 헤어라인 룰·radius 0·촘촘한 신문 컬럼의 브로드시트. 셋 다 '선택이 아니라 기본값'이며 주제와 무관하게 나온다고 경고 — 우리 Editorial/Cinematic 스타일이 이 기본값과 겹칠 수 있다는 반례.",
+    "evidence": "\"AI-generated design right now clusters around three looks\" … \"All three are legitimate for some briefs, but they are defaults rather than choices, and they appear regardless of subject. Where the brief leaves an axis free, don't spend that freedom on one of these defaults.\"",
+    "source": "https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md",
+    "actionable": "금지 목록에 '크림+세리프+테라코타', '흑+네온 단일 액센트', '브로드시트(헤어라인·radius0·밀집 컬럼)'을 추가하고, Editorial·Cinematic 예시는 주제(브랜드 소재·도구·어휘)에서 나온 근거를 프롬프트에 적게 한다.",
+    "angle": "process",
+    "sourceType": "도구 문서(Anthropic 공식 스킬 원문)"
+  },
+  {
+    "claim": "Anthropic 쿡북의 ~400토큰 <frontend_aesthetics> 블록은 '차원별 지시(타이포·색·모션·배경) + 영감 출처 제시(IDE 테마·문화 미학) + 기본값 명시 금지' 3전략이며, 같은 프롬프트로 with/without 비교 시 결과가 달라진다고 명시. 단, 이 블록조차 '세대를 거치며 Space Grotesk로 재수렴한다'고 자인한다.",
+    "evidence": "\"Without guidance, Claude often defaults to simplistic designs with white and purple backgrounds. With the aesthetics prompt, it produces more varied and visually interesting designs.\" / \"You still tend to converge on common choices (Space Grotesk, for example) across generations. Avoid this\"",
+    "source": "https://platform.claude.com/cookbook/coding-prompting-for-frontend-aesthetics",
+    "actionable": "금지 서체 목록에 Space Grotesk를 명시적으로 넣고, 24개 사이트 생성 후 실제로 어떤 서체·색으로 재수렴했는지 집계해 금지 목록을 매 라운드 갱신한다(정적 목록으로는 부족).",
+    "angle": "process",
+    "sourceType": "도구 문서(Anthropic 쿡북)"
+  },
+  {
+    "claim": "픽셀·hex·px를 전부 못박는 프롬프트는 '기술적으로 맞지만 시각적으로 죽은' 결과를 내고, 원칙 기반 지시(무엇을 생각할지)가 더 낫다는 실사용 보고. 스킬은 '바닥을 올려줄' 뿐 디자이너를 대체하지 못하며, AI는 '정의된 디자인 시스템을 일관되게 적용'에는 강하고 '시스템을 처음 만드는 것'에는 약하다.",
+    "evidence": "\"Some outputs I'd happily ship. Others are exactly the AI slop everyone complains about. Two prompts apart.\" / 정확한 값 지정은 \"technically correct and visually dead\" / \"Tell Claude what to think about, not what to produce.\" / \"It makes AI a competent execution layer that doesn't embarrass you.\"",
+    "source": "https://thomas-wiegold.com/blog/claude-code-frontend-design-plugin/",
+    "actionable": "스타일 DNA는 사람이 결정(서체 후보·팔레트 역할·히어로 문법)하고, 프롬프트는 '고려할 원칙+금지 기본값' 위주로 쓰며 세부 px는 스타일 가이드에만 둔다.",
+    "angle": "process",
+    "sourceType": "개발자 블로그(실사용 후기)"
+  },
+  {
+    "claim": "같은 프롬프트를 (a) Claude Code 원본, (b) Claude 웹, (c) Claude Code+frontend-design 플러그인 3환경에서 돌린 비교: 원본은 '안전한 선택의 예측 가능한 실행', 플러그인 적용본이 가장 응집력 있고 대담(앰버 팔레트·장식 요소). 결론은 '능력 차이가 아니라 지시(설정) 차이'.",
+    "evidence": "\"The gap between Claude web and Claude Code isn't about capability. It's about instructions.\" / raw: \"safe choices, predictably executed\" / \"The design gap is real. But it's not a limitation — it's a configuration you haven't set yet.\"",
+    "source": "https://baremetaldigest.substack.com/p/the-design-gap-between-claude-web",
+    "actionable": "빌더 세션마다 frontend-design 스킬(또는 우리 자체 디자인 스킬 파일)이 로드됐는지 체크리스트 0번 항목으로 확인한다.",
+    "angle": "process",
+    "sourceType": "뉴스레터(비교 실험)"
+  },
+  {
+    "claim": "Claude Design용 '안티 슬롭' 프로세스 공식: 리믹스할 미학 계열 2개 지목(예: Linear의 타이포 규율 + Pitchfork의 에디토리얼 컬러) → DESIGN.md 작성/차용 → 쿡북 안티슬롭 조각 삽입 → 목표-레이아웃-콘텐츠-제약(Goal-Layout-Content-Constraints) 브리프 → 재프롬프트 대신 요소 코멘트/Tweaks로 반복 → Claude Code 핸드오프. 요소 코멘트가 필요 수정의 약 95%를 커버.",
+    "evidence": "\"pick two aesthetic families to remix, borrow or write a DESIGN.md, drop the cookbook's anti-slop fragment into the project, prompt with goal-layout-content-constraints, iterate in Tweaks and comments\" / \"Comment-on-element covered roughly 95% of what he needed.\"",
+    "source": "https://www.theadpharm.com/insights/claude-design-without-the-ai-slop-look",
+    "actionable": "각 예시 사이트 브리프에 '리믹스 레퍼런스 2개(A의 X + B의 Y)'와 '목표/레이아웃/콘텐츠/제약' 4칸을 필수 기입하고, 수정은 전체 재생성 대신 요소 단위 코멘트로 한다.",
+    "angle": "process",
+    "sourceType": "에이전시 인사이트 블로그"
+  },
+  {
+    "claim": "커뮤니티 큐레이션(awesome-claude-design)은 미학을 산업이 아니라 9개 '계열'로 나누고 토큰 리믹스 레시피를 제안하며, 스킬을 써도 생기는 새 지문 8개를 목록화: 어디에나 나오는 틸 #16d5e6, 내비 구석 깜빡이는 상태 점, 중첩 컨테이너 패딩 누적, 기본 세리프 헤드라인, 모든 카드 왼쪽 바 액센트, 히어로의 3열 기능 그리드, Lucide 아이콘 기본값, 이미지 생성기가 DESIGN.md 토큰 무시. 커뮤니티 비판: '모든 Claude Design 결과가 똑같아 보인다'.",
+    "evidence": "8 fingerprints: \"Teal accents (#16d5e6) appearing everywhere\", \"Blinking status dot\", \"Left-bar accent on every card\", \"Three-column feature grids in hero sections\", \"Lucide icon stack defaults\", \"Image generator ignoring DESIGN.md tokens\" / \"Every Claude Design output looks the same\" / 결론: \"without intentional DESIGN.md specification, Claude Design converges to the same teal-and-serif default\"",
+    "source": "https://github.com/rohitg00/awesome-claude-design",
+    "actionable": "리뷰 체크리스트에 '틸 #16d5e6류 액센트', '카드 좌측 액센트 바', 'Lucide 기본 아이콘 그대로', '이미지가 토큰과 불일치'를 추가하고, 카테고리를 '업종'이 아니라 '미학 계열+리믹스'로 지정한다.",
+    "angle": "process",
+    "sourceType": "커뮤니티 큐레이션(GitHub)"
+  },
+  {
+    "claim": "오픈소스 스킬 Impeccable(Paul Bakaus)은 프로세스를 명령으로 분해한다: /init(청중·브랜드 포지셔닝·보이스·안티 레퍼런스·색·서체를 묻고 PRODUCT.md·DESIGN.md 작성) → /shape·/craft → /audit(59개 결정론적 감지 규칙, API 키 없이 CLI로 실행) → /normalize(기존 토큰에 정렬) → /polish(감지기 0건까지 반복), 톤 조절 다이얼 /bolder /quieter.",
+    "evidence": "\"gather design context, write PRODUCT.md and DESIGN.md, configure live mode\" / \"59 deterministic detector rules\" 예: \"Don't wrap everything in cards or nest cards inside cards\", \"Don't use bounce/elastic easing\", 순흑·순회색 미틴트, 보라 그라데이션, 다크 글로우 / /polish는 \"reruns the detector… until it reaches zero findings\"",
+    "source": "https://github.com/pbakaus/impeccable",
+    "actionable": "우리 §8 체크리스트를 grep 가능한 결정론적 규칙(정규식/CSS 파서)으로 스크립트화해 '감지 0건'을 머지 조건으로 삼고, 프로젝트 문서에 '안티 레퍼런스(닮으면 안 되는 사이트)'를 필수 항목으로 넣는다.",
+    "angle": "process",
+    "sourceType": "도구 문서(GitHub, 오픈소스 스킬)"
+  },
+  {
+    "claim": "Google Labs가 2026-04-21 오픈소스화한 DESIGN.md(Stitch)는 색 토큰·타이포 스케일·간격·컴포넌트 규칙을 한 파일에 담아 Stitch/Claude Code/Cursor가 생성 전 항상 로드하는 '지속 컨텍스트'로 쓰는 포맷. 실사용자는 약 70줄 DESIGN.md + Stitch MCP로 Claude Code 첫 렌더가 Stitch 레이아웃 대비 '약 90% 정확'했다고 보고. 수정은 파일 직접 편집(top-down)과 캔버스 프롬프트(bottom-up) 양방향.",
+    "evidence": "\"Every time Stitch (or Claude Code, or any agent that reads it) generates UI, it loads DESIGN.md first as persistent context.\" / \"about 90% accurate to the Stitch layout\" / \"It is portable… It is human-readable… It lives in version control.\"",
+    "source": "https://www.designsystemscollective.com/the-design-md-workflow-how-google-stitch-claude-code-quietly-changed-the-design-to-code-handoff-c4213f97ed8f",
+    "actionable": "24개 카테고리마다 70줄 내외의 DESIGN.md(Brand/Color/Type/Spacing/Components)를 저장소에 두고, 빌더·리뷰어 모두 이 파일을 먼저 읽게 한다.",
+    "angle": "process",
+    "sourceType": "디자이너 블로그(Design Systems Collective)"
+  },
+  {
+    "claim": "Cursor+Figma MCP 사례: 출력이 들쭉날쭉했던 원인은 프롬프트가 아니라 같은 색값에 토큰 이름이 여러 개(color.primary.500 / color.brand.main / --brand-blue…)여서 결정론적으로 고를 수 없던 것. raw→semantic 계층 분리, CSS 변수 1:1 정렬 후 생성하니 '예측 가능·결정론적'이 되고 후처리 비용이 줄었다.",
+    "evidence": "\"Figma MCP relies on explicit design token references, not inferred intent or value matching.\" / 결론 \"Reliable AI code generation depends more on system design than prompts.\" 결과: \"predictable\", \"deterministic\", \"lower post-generation cleanup cost\"",
+    "source": "https://medium.com/@sachin88/how-we-fixed-design-tokens-to-make-cursor-generate-reliable-ui-code-74d699e72e38",
+    "actionable": "우리 §7의 역할 기반 변수(--ink/--paper/--cta/--rule)를 '값 1개=토큰 1개' 원칙으로 잠그고, 프롬프트에는 '브랜드 색 써' 대신 'tokens.css의 변수만 써'라고 지시한다.",
+    "angle": "process",
+    "sourceType": "실무 사례(Medium)"
+  }
+]

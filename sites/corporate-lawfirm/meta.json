@@ -1,0 +1,67 @@
+{
+  "slug": "corporate-lawfirm",
+  "brand": "법무법인 서로",
+  "industry": "법무법인",
+  "primaryStyle": "Corporate",
+  "productType": "Information Site",
+  "tone": "Serious · Precise · Composed",
+  "secondary": "Editorial",
+  "accent": "Cinematic",
+  "coreMessage": "어떤 사건을 어떤 구성원이 어떤 절차로 다루는지 명확히 보여주어 상담을 결심하게 한다",
+  "naming": "Corporate / Information Site / Serious · Precise · Composed",
+  "palette": {
+    "background": "#ffffff",
+    "backgroundSoft": "#f5f6f8",
+    "backgroundTint": "#eef1f6",
+    "navy": "#132a52",
+    "navyDark": "#0b1a36",
+    "navyInk": "#081228",
+    "gold": "#a68a4b",
+    "goldText": "#846a2f",
+    "goldLine": "#c9b47f",
+    "ink": "#1a2233",
+    "inkSecondary": "#414b5c",
+    "line": "#dfe3ea"
+  },
+  "typography": {
+    "body": "Pretendard (system-ui, Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR 폴백)",
+    "display": "Noto Serif KR — 히어로 H1·대표변호사 인용·인사이트 제목에만 (Editorial 20%)",
+    "radius": "4px 단일 규칙(지하철 노선 원형 표기 제외)"
+  },
+  "sections": [
+    "상단 유틸리티 바(대표전화·운영시간·이메일)",
+    "헤더(업무분야·구성원·업무절차·인사이트·상담 + 전화·상담 예약 CTA, 모바일 메뉴)",
+    "Hero(사실 한 줄: 소재지·설립연도·변호사 수 → 한 문장 → 상담 예약 CTA + 절차 텍스트 링크 → 회신·상담료 안내 + 저채도 흑백 사진 → 사실 4개: 설립·구성원·분야·초기 상담료, 기준일 명시)",
+    "업무 분야 6개 2열 행 목록(번호·분야·형태·설명·주요 수행 업무 2~4개·담당 변호사 링크, 아이콘 없음)",
+    "일하는 기준 4개(이해충돌 확인·상담 요약 서면·담당 변호사 직접 연락·비용 계약서 명시) + 대표변호사 인용",
+    "구성원 6명(흑백 인물 사진·실명형 가명·직위·주요 분야·학력·경력·자격, 분야 필터, 상담 신청 텍스트 링크)",
+    "상담 절차 5단계 스테퍼(문의→초기 상담→수임→진행→종결, 단계별 할 일·준비물) + 비용 안내 표(2026년 8월 기준)",
+    "주요 수행 업무 6건(연도·분야·업무 내용·담당, 비식별·결과 보장 없음 고지)",
+    "자주 묻는 질문 5개(아코디언)",
+    "인사이트 3개 — 분야별 담당 변호사의 실무 노트(주제 사진·분야·날짜·읽기 시간·제목·요약·필자)",
+    "상담 신청 폼(이름·연락처·이메일·분야 선택·상담 방식·내용·개인정보 동의) + 상담 안내 사이드(전화·회신 기준·지참 서류)",
+    "오시는 길(SVG 약도·주소 복사·대중교통·주차·요일별 운영시간·현재 운영 상태)",
+    "푸터(사이트맵·주소·전화·사업자등록번호·법무법인 등록번호·광고책임변호사·정책 링크·법률 자문 아님 고지)"
+  ],
+  "interactions": [
+    "스크롤 시 고정 헤더 하단선·그림자 전환",
+    "모바일 햄버거 메뉴(ESC 닫기·링크 클릭 시 닫기)",
+    "현재 섹션 내비 하이라이트(IntersectionObserver)",
+    "구성원 분야 필터(aria-pressed, 빈 상태 표시)",
+    "상담 절차 스테퍼 탭(클릭·방향키·Home/End·이전/다음 버튼, 모바일 가로 스크롤)",
+    "FAQ 아코디언(하나만 열림)",
+    "상담 신청 폼 검증(휴대전화 자동 하이픈, 이메일 형식, 10자 이상, 동의 필수) 및 접수 번호 발급 화면",
+    "주소 복사 버튼(Clipboard API + 폴백)",
+    "KST 기준 현재 운영 상태 표시 + 운영시간표 오늘 요일 강조",
+    "앵커 이동 시 고정 헤더 높이 보정 스크롤",
+    "맨 위로 버튼",
+    "모바일 하단 고정 전화/상담 예약 바",
+    "등장 애니메이션·카운트업 없음(Corporate: 즉시 표시)"
+  ],
+  "images": {
+    "provider": "loremflickr",
+    "keywords": ["lawyer,office", "lawyer,portrait", "meeting,room", "apartment,construction", "law,books"],
+    "filter": "히어로·구성원 grayscale(Cinematic 10%), 인사이트 saturate .35(Editorial 20%)"
+  },
+  "path": "sites/corporate-lawfirm/index.html"
+}

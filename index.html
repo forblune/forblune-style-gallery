@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Forblune Style Gallery — 웹 디자인 언어 시스템 v2, 카테고리별 예시 사이트 24</title>
+<meta name="description" content="Forblune 웹 디자인 언어 시스템 v2의 8개 카테고리(Editorial·Kinetic·Cinematic·Corporate·Product·Commerce·Experimental·Utility)별 예시 사이트 24개를 라이브 미리보기와 명명 규칙, 검토 결과와 함께 모아 보는 갤러리 허브.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 허브 스타일: Utility에 가까운 정돈된 라이트 테마. 서체는 Pretendard 1종, 모서리는 3px 하나, 카드 경계는 1px 선만. */
+:root{
+  --paper:#FFFFFF; --paper-2:#F4F5F7; --ink:#15181D; --ink-2:#464C56; --ink-3:#687080;
+  --rule:#D9DDE3; --rule-2:#ECEEF2; --cta:#15181D; --cta-ink:#FFFFFF; --focus:#1F4B8F;
+  --r:3px;
+  --c-editorial:#9A5B44; --c-kinetic:#C93A16; --c-cinematic:#8F6018; --c-corporate:#1F4B8F;
+  --c-product:#1B6F63; --c-commerce:#B0245A; --c-experimental:#5E36B8; --c-utility:#4E5C6B;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#111318; --paper-2:#181B21; --ink:#E7E9ED; --ink-2:#B3B9C3; --ink-3:#8B929E;
+    --rule:#2A2F38; --rule-2:#1F232B; --cta:#E7E9ED; --cta-ink:#111318; --focus:#8FB0EE;
+    --c-editorial:#D9A08A; --c-kinetic:#F0785A; --c-cinematic:#D9A64A; --c-corporate:#86ABE8;
+    --c-product:#5FBFAF; --c-commerce:#F07AA5; --c-experimental:#B69CF0; --c-utility:#9AA8B8;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;font-feature-settings:"tnum" 1;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+h1,h2,h3,p,dl,dd,figure{margin:0}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* 상단 */
+.top{padding:44px 0 28px}
+.top h1{font-size:30px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.top .sub{margin-top:8px;font-size:16px;color:var(--ink-2)}
+.top .meta{margin-top:14px;font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px}
+.top .meta a{color:var(--ink-2)}
+.cats{width:100%;min-width:640px;border-collapse:collapse;margin-top:26px;font-size:14px}
+.cats caption{text-align:left;font-size:13px;color:var(--ink-3);padding-bottom:8px}
+.cats th,.cats td{text-align:left;padding:9px 12px 9px 0;border-top:1px solid var(--rule-2);vertical-align:top;font-weight:400}
+.cats thead th{font-size:12px;color:var(--ink-3);border-top:0;padding-top:0}
+.cats tbody th a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;color:var(--ink)}
+.cats tbody th a i{width:9px;height:9px;background:var(--cc);flex:0 0 auto}
+.cats tbody th a small{font-weight:400;color:var(--ink-3);font-size:12px}
+.cats tbody th a:hover{text-decoration:underline;text-underline-offset:3px}
+.cats-wrap{overflow-x:auto}
+
+/* 필터 바 */
+.filters{position:sticky;top:0;z-index:20;background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.filters .wrap{display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.fgroup{display:flex;flex-wrap:wrap;gap:6px}
+.fbtn{font:inherit;font-size:13px;line-height:1;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:var(--r);padding:8px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.fbtn b{font-weight:600;letter-spacing:.01em}
+.fbtn span{color:var(--ink-3);font-size:12px}
+.fbtn:hover{border-color:var(--ink)}
+.fbtn[aria-pressed="true"]{background:var(--cta);color:var(--cta-ink);border-color:var(--cta)}
+.fbtn[aria-pressed="true"] span{color:inherit;opacity:.72}
+.fside{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:13px;color:var(--ink-3)}
+.fside label{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);cursor:pointer}
+.fside input{width:15px;height:15px;margin:0;accent-color:var(--ink)}
+
+/* 카테고리 섹션 */
+.cat{padding:40px 0 48px;border-top:1px solid var(--rule)}
+.cat:first-of-type{border-top:0}
+.cat[hidden]{display:none}
+.cat-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 48px;align-items:start;margin-bottom:24px}
+.cat-def h2{font-size:24px;font-weight:600;line-height:1.25;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.cat-def h2 .en{color:var(--cc)}
+.cat-def h2 .ko{font-size:15px;font-weight:500;color:var(--ink-2)}
+.cat-def .one{margin-top:8px;font-size:16px;color:var(--ink)}
+.facts{margin-top:12px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13px}
+.facts dt{color:var(--ink-3)}
+.facts dd{color:var(--ink-2)}
+.cat-dna{border-left:1px solid var(--rule);padding-left:24px}
+.dna-title{font-size:13px;font-weight:600;margin-bottom:10px}
+.dna-title span{font-weight:400;color:var(--ink-3);margin-left:6px}
+.dna{display:grid;grid-template-columns:1fr 1fr;gap:7px 20px}
+.dna>div{display:grid;grid-template-columns:60px 1fr 14px;align-items:center;gap:8px;font-size:12px;color:var(--ink-2)}
+.dna .bar{display:flex;gap:2px}
+.dna .bar b{flex:1;height:6px;background:var(--rule-2)}
+.dna .bar b.on{background:var(--cc)}
+.dna .n{text-align:right;color:var(--ink-3)}
+
+/* 카드 */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{border:1px solid var(--rule);border-radius:var(--r);background:var(--paper);display:flex;flex-direction:column;min-width:0}
+.shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--paper-2);border-bottom:1px solid var(--rule);border-radius:var(--r) var(--r) 0 0}
+.shot iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none;background:#fff;opacity:0;transition:opacity .3s}
+.shot iframe.is-ready{opacity:1}
+.shot .ph{position:absolute;inset:0;display:grid;place-items:center;padding:16px;text-align:center;font-size:13px;color:var(--ink-3)}
+.shot iframe.is-ready ~ .ph{visibility:hidden}
+.shot-link{position:absolute;inset:0;z-index:2}
+.shot-link:hover{box-shadow:inset 0 0 0 2px var(--cc)}
+.shot--fail{display:grid;place-items:center}
+.card--fail .shot .ph{color:var(--c-kinetic);font-weight:600}
+.body{padding:14px 16px 12px;display:grid;gap:8px}
+.cat-tag{font-size:12px;font-weight:600;color:var(--cc);display:flex;align-items:center;gap:7px}
+.cat-tag::before{content:"";width:8px;height:8px;background:currentColor;flex:0 0 auto}
+.brand{font-size:17px;font-weight:600;line-height:1.3;letter-spacing:-.005em}
+.ind{font-size:13px;color:var(--ink-2);margin-top:-4px}
+.naming{font-size:13px;background:var(--paper-2);border-radius:var(--r);padding:6px 9px;color:var(--ink);word-break:keep-all}
+.naming .k{color:var(--ink-3);margin-right:8px}
+.core{font-size:14px;line-height:1.55;border-left:2px solid var(--cc);padding-left:10px;word-break:keep-all}
+.mix{display:flex;flex-wrap:wrap;gap:2px 8px;font-size:12px}
+.mix dt{color:var(--ink-3)}
+.mix dd{color:var(--ink-2);margin-right:8px}
+.rev{font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule-2);padding-top:9px;margin-top:2px}
+.rev b{color:var(--ink);font-weight:600}
+.rev .was{margin-left:4px}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 16px 14px}
+.open{font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.open:hover{color:var(--cc)}
+.path{font-size:12px;color:var(--ink-3)}
+.empty{padding:40px 0;color:var(--ink-3);font-size:14px}
+.empty[hidden]{display:none}
+
+/* 하단 */
+.about{border-top:1px solid var(--rule);padding:44px 0 40px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px 48px}
+.about h2{font-size:18px;font-weight:600;margin-bottom:12px}
+.about p,.about li{font-size:14px;color:var(--ink-2)}
+.about ul{margin:0;padding-left:18px}
+.about li+li{margin-top:6px}
+.fmt{border:1px solid var(--rule);border-radius:var(--r);padding:14px 16px;font-size:14px;margin:10px 0 14px}
+.fmt .line{font-weight:600;color:var(--ink);font-size:16px}
+.fmt dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin-top:10px;font-size:13px}
+.fmt dt{color:var(--ink-3)}
+.fmt dd{color:var(--ink-2)}
+.about .note{margin-top:14px;font-size:13px;color:var(--ink-3)}
+.links li a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.links li span{color:var(--ink-3);font-size:13px;margin-left:6px}
+.bottom{border-top:1px solid var(--rule);padding:18px 0 40px;font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 24px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;background:var(--paper-2);padding:2px 5px;border-radius:var(--r);color:var(--ink-2)}
+.links li code{color:var(--ink);font-size:13px}
+
+@media (max-width:1100px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cat-head{grid-template-columns:1fr}
+  .cat-dna{border-left:0;padding-left:0;border-top:1px solid var(--rule-2);padding-top:16px}
+  .about{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .wrap{padding:0 16px}
+  .top{padding:32px 0 20px}
+  .top h1{font-size:24px}
+  .grid{grid-template-columns:1fr}
+  .dna{grid-template-columns:1fr}
+  .fside{margin-left:0;width:100%;justify-content:space-between}
+  .fgroup{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+  .fbtn{flex:0 0 auto}
+  .cats th,.cats td{padding-right:10px}
+  .cats-wrap{margin:0 -16px;padding:0 16px}
+}
+@media (prefers-reduced-motion: reduce){
+  .shot iframe{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="sr" href="#sections">본문으로 건너뛰기</a>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Forblune Style Gallery</h1>
+    <p class="sub">웹 디자인 언어 시스템 v2 — 카테고리별 예시 사이트 24</p>
+    <p class="meta">
+      <span>8개 카테고리 × 3개 사이트, 단일 HTML 파일 24개</span>
+      <span>기준: <a href="https://app.notion.com/p/3bb5baabfd1b81e3b0d8fcfeaf33916d" target="_blank" rel="noopener">Notion 원문</a> · <code>_reference/design-language.md</code> · <code>_reference/anti-ai-slop.md</code></span>
+      <span>확인 2026-08-16 · 정상 24/24</span>
+    </p>
+    <div class="cats-wrap">
+    <table class="cats">
+      <caption>8개 카테고리 정의 — 이름을 누르면 해당 카테고리만 표시됩니다.</caption>
+      <thead><tr><th scope="col">카테고리</th><th scope="col">중심 가치</th><th scope="col">핵심 감정</th><th scope="col">설득 수단</th><th scope="col">리듬</th></tr></thead>
+      <tbody>
+        <tr style="--cc:var(--c-editorial)"><th scope="row"><a href="#editorial" data-filter-link="editorial"><i></i>Editorial <small>에디토리얼 · 감성형</small></a></th><td>취향과 이미지</td><td>Desire · 갖고 싶다</td><td>이미지·큐레이션</td><td>Slow</td></tr>
+        <tr style="--cc:var(--c-kinetic)"><th scope="row"><a href="#kinetic" data-filter-link="kinetic"><i></i>Kinetic <small>키네틱 · 임팩트형</small></a></th><td>에너지와 임팩트</td><td>Excitement · 강하다</td><td>임팩트·모션</td><td>Fast</td></tr>
+        <tr style="--cc:var(--c-cinematic)"><th scope="row"><a href="#cinematic" data-filter-link="cinematic"><i></i>Cinematic <small>시네마틱 · 서사형</small></a></th><td>서사와 전문성</td><td>Trust · 믿을 수 있다</td><td>사람·과정·철학</td><td>Slow</td></tr>
+        <tr style="--cc:var(--c-corporate)"><th scope="row"><a href="#corporate" data-filter-link="corporate"><i></i>Corporate <small>코퍼레이트 · 신뢰형</small></a></th><td>신뢰와 정보</td><td>Trust / Clarity · 이해된다</td><td>근거·구조·실적</td><td>Balanced</td></tr>
+        <tr style="--cc:var(--c-product)"><th scope="row"><a href="#product" data-filter-link="product"><i></i>Product <small>프로덕트 · 기능형</small></a></th><td>기능과 사용성</td><td>Clarity · 쓰고 싶다</td><td>기능 시연·사용 흐름</td><td>Balanced</td></tr>
+        <tr style="--cc:var(--c-commerce)"><th scope="row"><a href="#commerce" data-filter-link="commerce"><i></i>Commerce <small>커머스 · 구매형</small></a></th><td>탐색과 구매</td><td>Desire + Clarity</td><td>상품·가격·혜택·리뷰</td><td>Balanced~Fast</td></tr>
+        <tr style="--cc:var(--c-experimental)"><th scope="row"><a href="#experimental" data-filter-link="experimental"><i></i>Experimental <small>익스페리멘털 · 경험형</small></a></th><td>독창성과 경험</td><td>Surprise / Curiosity</td><td>경험 자체·인터랙션</td><td>가변</td></tr>
+        <tr style="--cc:var(--c-utility)"><th scope="row"><a href="#utility" data-filter-link="utility"><i></i>Utility <small>유틸리티 · 업무형</small></a></th><td>효율과 업무</td><td>Control · 통제된다</td><td>데이터·상태·속도</td><td>Fast (반응)</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</header>
+
+<nav class="filters" aria-label="카테고리 필터">
+  <div class="wrap">
+    <div class="fgroup" role="group" aria-label="카테고리 선택">
+      <button type="button" class="fbtn" data-filter="all" aria-pressed="true"><b>ALL</b><span>전체 · 24</span></button>
+      <button type="button" class="fbtn" data-filter="editorial" aria-pressed="false" style="--cc:var(--c-editorial)"><b>EDITORIAL</b><span>에디토리얼·감성형 · 3</span></button>
+      <button type="button" class="fbtn" data-filter="kinetic" aria-pressed="false" style="--cc:var(--c-kinetic)"><b>KINETIC</b><span>키네틱·임팩트형 · 3</span></button>
+      <button type="button" class="fbtn" data-filter="cinematic" aria-pressed="false" style="--cc:var(--c-cinematic)"><b>CINEMATIC</b><span>시네마틱·서사형 · 3</span></button>
+      <button type="button" class="fbtn" data-filter="corporate" aria-pressed="false" style="--cc:var(--c-corporate)"><b>CORPORATE</b><span>코퍼레이트·신뢰형 · 3</span></button>
+      <button type="button" class="fbtn" data-filter="product" aria-pressed="false" style="--cc:var(--c-product)"><b>PRODUCT</b><span>프로덕트·기능형 · 3</span></button>
+      <button type="button" class="fbtn" data-filter="commerce" aria-pressed="false" style="--cc:var(--c-commerce)"><b>COMMERCE</b><span>커머스·구매형 · 3</span></button>
+      <button type="button" class="fbtn" data-filter="experimental" aria-pressed="false" style="--cc:var(--c-experimental)"><b>EXPERIMENTAL</b><span>익스페리멘털·경험형 · 3</span></button>
+      <button type="button" class="fbtn" data-filter="utility" aria-pressed="false" style="--cc:var(--c-utility)"><b>UTILITY</b><span>유틸리티·업무형 · 3</span></button>
+    </div>
+    <div class="fside">
+      <span id="count" aria-live="polite">24개 중 24개 표시</span>
+      <label><input type="checkbox" id="live" checked> 라이브 미리보기</label>
+    </div>
+  </div>
+</nav>
+
+<main id="sections" class="wrap">
+<section class="cat" id="cat-editorial" data-cat="editorial" style="--cc:var(--c-editorial)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Editorial</span> <span class="ko">에디토리얼 · 감성형</span></h2>
+      <p class="one">상품을 판매하기 전에 브랜드의 취향을 먼저 보여주는 사이트.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>이미지·큐레이션</dd>
+        <dt>리듬</dt><dd>Slow</dd>
+        <dt>적합</dt><dd>패션, 뷰티, 향수, 라이프스타일, 카페, 스테이, 사진가</dd>
+        <dt>기준</dt><dd>기준 사례 f0ring (Editorial / Commerce / Soft · Curated)</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Editorial DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="editorial" style="--cc:var(--c-editorial)">
+  <div class="shot" data-slug="editorial-perfume"><iframe data-src="sites/editorial-perfume/index.html" src="sites/editorial-perfume/index.html" loading="lazy" title="무향 MUHYANG 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">무향 MUHYANG</span><a class="shot-link" href="sites/editorial-perfume/index.html" target="_blank" rel="noopener" aria-label="무향 MUHYANG 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Editorial · 에디토리얼</p>
+    <h3 class="brand">무향 MUHYANG</h3>
+    <p class="ind">니치 향수 브랜드</p>
+    <p class="naming"><span class="k">명명</span>Editorial / Commerce / Soft · Quiet · Curated</p>
+    <p class="core">향을 팔기 전에 이 브랜드가 어떤 취향으로 냄새를 고르는지 먼저 느끼게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Commerce</dd><dt>Accent</dt><dd>Product</dd></dl>
+    <p class="rev">충실도 <b>90</b><span class="was">(검토 전 72)</span> · AI 티 11건 제거 · 이미지 25장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/editorial-perfume/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/editorial-perfume · 1,250줄</span></div>
+</article>
+<article class="card" data-cat="editorial" style="--cc:var(--c-editorial)">
+  <div class="shot" data-slug="editorial-stay"><iframe data-src="sites/editorial-stay/index.html" src="sites/editorial-stay/index.html" loading="lazy" title="숲결 스테이 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">숲결 스테이</span><a class="shot-link" href="sites/editorial-stay/index.html" target="_blank" rel="noopener" aria-label="숲결 스테이 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Editorial · 에디토리얼</p>
+    <h3 class="brand">숲결 스테이</h3>
+    <p class="ind">제주 독채 스테이(숙소)</p>
+    <p class="naming"><span class="k">명명</span>Editorial / Brand Landing (예약 유도) / Soft · Warm · Slow</p>
+    <p class="core">방을 팔기 전에 이곳에서 보내는 하루의 리듬을 먼저 상상하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Commerce</dd><dt>Accent</dt><dd>Cinematic</dd></dl>
+    <p class="rev">충실도 <b>91</b><span class="was">(검토 전 78)</span> · AI 티 10건 제거 · 이미지 16장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/editorial-stay/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/editorial-stay · 1,626줄</span></div>
+</article>
+<article class="card" data-cat="editorial" style="--cc:var(--c-editorial)">
+  <div class="shot" data-slug="editorial-select"><iframe data-src="sites/editorial-select/index.html" src="sites/editorial-select/index.html" loading="lazy" title="고요 GOYO 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">고요 GOYO</span><a class="shot-link" href="sites/editorial-select/index.html" target="_blank" rel="noopener" aria-label="고요 GOYO 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Editorial · 에디토리얼</p>
+    <h3 class="brand">고요 GOYO</h3>
+    <p class="ind">문구·리빙 편집숍</p>
+    <p class="naming"><span class="k">명명</span>Editorial / Commerce / Curated · Neutral · Calm</p>
+    <p class="core">많이 파는 곳이 아니라 천천히 고른 것만 두는 곳이라는 인상을 만든다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Commerce</dd><dt>Accent</dt><dd>Product</dd></dl>
+    <p class="rev">충실도 <b>91</b><span class="was">(검토 전 78)</span> · AI 티 9건 제거 · 이미지 43장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/editorial-select/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/editorial-select · 1,533줄</span></div>
+</article>
+  </div>
+</section>
+<section class="cat" id="cat-kinetic" data-cat="kinetic" style="--cc:var(--c-kinetic)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Kinetic</span> <span class="ko">키네틱 · 임팩트형</span></h2>
+      <p class="one">짧은 시간 안에 기술력과 에너지를 강하게 각인시키는 사이트.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>임팩트·모션</dd>
+        <dt>리듬</dt><dd>Fast</dd>
+        <dt>적합</dt><dd>스포츠, 자동차, 드론, 게임, 음악·공연, 테크 스타트업, 스트리트 패션, 페스티벌</dd>
+        <dt>기준</dt><dd>기준 사례 FlyOne V1 (Kinetic / Brand Landing / Bold · Energetic)</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Kinetic DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="kinetic" style="--cc:var(--c-kinetic)">
+  <div class="shot" data-slug="kinetic-sneaker"><iframe data-src="sites/kinetic-sneaker/index.html" src="sites/kinetic-sneaker/index.html" loading="lazy" title="VOLT LAB 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">VOLT LAB</span><a class="shot-link" href="sites/kinetic-sneaker/index.html" target="_blank" rel="noopener" aria-label="VOLT LAB 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Kinetic · 키네틱</p>
+    <h3 class="brand">VOLT LAB</h3>
+    <p class="ind">스트리트 스니커 드롭 스토어</p>
+    <p class="naming"><span class="k">명명</span>Kinetic / Commerce (Drop) / Bold · Loud · Fast</p>
+    <p class="core">이번 드롭이 얼마나 빠르고 강한지 3초 안에 각인시키고 바로 담게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Commerce</dd><dt>Accent</dt><dd>Experimental</dd></dl>
+    <p class="rev">충실도 <b>91</b><span class="was">(검토 전 76)</span> · AI 티 10건 제거 · 이미지 13장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/kinetic-sneaker/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/kinetic-sneaker · 1,543줄</span></div>
+</article>
+<article class="card" data-cat="kinetic" style="--cc:var(--c-kinetic)">
+  <div class="shot" data-slug="kinetic-festival"><iframe data-src="sites/kinetic-festival/index.html" src="sites/kinetic-festival/index.html" loading="lazy" title="PULSE FEST 2026 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">PULSE FEST 2026</span><a class="shot-link" href="sites/kinetic-festival/index.html" target="_blank" rel="noopener" aria-label="PULSE FEST 2026 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Kinetic · 키네틱</p>
+    <h3 class="brand">PULSE FEST 2026</h3>
+    <p class="ind">일렉트로닉 뮤직 페스티벌</p>
+    <p class="naming"><span class="k">명명</span>Kinetic / Event Landing / Bold · Energetic · Colorful</p>
+    <p class="core">이틀 동안 얼마나 크고 빠른 무대가 펼쳐지는지 즉시 느끼게 하고 티켓으로 보낸다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Experimental</dd><dt>Accent</dt><dd>Corporate</dd></dl>
+    <p class="rev">충실도 <b>90</b><span class="was">(검토 전 72)</span> · AI 티 13건 제거 · 이미지 4장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/kinetic-festival/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/kinetic-festival · 1,348줄</span></div>
+</article>
+<article class="card" data-cat="kinetic" style="--cc:var(--c-kinetic)">
+  <div class="shot" data-slug="kinetic-esports"><iframe data-src="sites/kinetic-esports/index.html" src="sites/kinetic-esports/index.html" loading="lazy" title="APEX NINE 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">APEX NINE</span><a class="shot-link" href="sites/kinetic-esports/index.html" target="_blank" rel="noopener" aria-label="APEX NINE 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Kinetic · 키네틱</p>
+    <h3 class="brand">APEX NINE</h3>
+    <p class="ind">e스포츠 프로 팀</p>
+    <p class="naming"><span class="k">명명</span>Kinetic / Brand Landing / Bold · Technical · Sharp</p>
+    <p class="core">이 팀이 얼마나 빠르고 강한지 보여주고 경기·굿즈·스폰서로 연결한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Corporate</dd><dt>Accent</dt><dd>Commerce</dd></dl>
+    <p class="rev">충실도 <b>87</b><span class="was">(검토 전 70)</span> · AI 티 14건 제거 · 이미지 10장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/kinetic-esports/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/kinetic-esports · 1,575줄</span></div>
+</article>
+  </div>
+</section>
+<section class="cat" id="cat-cinematic" data-cat="cinematic" style="--cc:var(--c-cinematic)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Cinematic</span> <span class="ko">시네마틱 · 서사형</span></h2>
+      <p class="one">작업자의 철학과 과정으로 전문성을 증명하는 사이트.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>사람·과정·철학</dd>
+        <dt>리듬</dt><dd>Slow</dd>
+        <dt>적합</dt><dd>영상 프로덕션, 건축, 감독·촬영감독, 사진가, 공예, 셰프·레스토랑, 예술가</dd>
+        <dt>기준</dt><dd>기준 사례 FlyOne V2 (Cinematic / Portfolio / Serious · Human)</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Cinematic DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="cinematic" style="--cc:var(--c-cinematic)">
+  <div class="shot" data-slug="cinematic-architecture"><iframe data-src="sites/cinematic-architecture/index.html" src="sites/cinematic-architecture/index.html" loading="lazy" title="온결 건축 ONGYEOL 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">온결 건축 ONGYEOL</span><a class="shot-link" href="sites/cinematic-architecture/index.html" target="_blank" rel="noopener" aria-label="온결 건축 ONGYEOL 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Cinematic · 시네마틱</p>
+    <h3 class="brand">온결 건축 ONGYEOL</h3>
+    <p class="ind">건축 설계 스튜디오</p>
+    <p class="naming"><span class="k">명명</span>Cinematic / Portfolio / Serious · Crafted · Quiet</p>
+    <p class="core">누가 어떤 판단으로 공간을 설계하는지 보여주어 중요한 건물을 맡길 수 있다고 믿게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Corporate</dd></dl>
+    <p class="rev">충실도 <b>90</b><span class="was">(검토 전 75)</span> · AI 티 12건 제거 · 이미지 6장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/cinematic-architecture/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/cinematic-architecture · 1,203줄</span></div>
+</article>
+<article class="card" data-cat="cinematic" style="--cc:var(--c-cinematic)">
+  <div class="shot" data-slug="cinematic-chef"><iframe data-src="sites/cinematic-chef/index.html" src="sites/cinematic-chef/index.html" loading="lazy" title="화로 火爐 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">화로 火爐</span><a class="shot-link" href="sites/cinematic-chef/index.html" target="_blank" rel="noopener" aria-label="화로 火爐 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Cinematic · 시네마틱</p>
+    <h3 class="brand">화로 火爐</h3>
+    <p class="ind">셰프 오마카세 레스토랑</p>
+    <p class="naming"><span class="k">명명</span>Cinematic / Brand Site (예약 문의) / Serious · Warm · Human</p>
+    <p class="core">셰프가 재료와 불을 대하는 태도를 보여주어 한 끼를 맡길 수 있다고 믿게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Commerce</dd></dl>
+    <p class="rev">충실도 <b>91</b><span class="was">(검토 전 78)</span> · AI 티 12건 제거 · 이미지 9장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/cinematic-chef/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/cinematic-chef · 1,346줄</span></div>
+</article>
+<article class="card" data-cat="cinematic" style="--cc:var(--c-cinematic)">
+  <div class="shot" data-slug="cinematic-photographer"><iframe data-src="sites/cinematic-photographer/index.html" src="sites/cinematic-photographer/index.html" loading="lazy" title="정하늘 JEONG HANEUL 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">정하늘 JEONG HANEUL</span><a class="shot-link" href="sites/cinematic-photographer/index.html" target="_blank" rel="noopener" aria-label="정하늘 JEONG HANEUL 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Cinematic · 시네마틱</p>
+    <h3 class="brand">정하늘 JEONG HANEUL</h3>
+    <p class="ind">다큐멘터리 사진가</p>
+    <p class="naming"><span class="k">명명</span>Cinematic / Portfolio / Serious · Human · Documentary</p>
+    <p class="core">어떤 시선으로 사람과 장소를 기록하는지 보여주어 기록을 맡길 수 있다고 믿게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Corporate</dd></dl>
+    <p class="rev">충실도 <b>88</b><span class="was">(검토 전 72)</span> · AI 티 15건 제거 · 이미지 26장 교체</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/cinematic-photographer/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/cinematic-photographer · 1,664줄</span></div>
+</article>
+  </div>
+</section>
+<section class="cat" id="cat-corporate" data-cat="corporate" style="--cc:var(--c-corporate)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Corporate</span> <span class="ko">코퍼레이트 · 신뢰형</span></h2>
+      <p class="one">근거와 구조로 “이 조직은 믿을 수 있고 무엇을 하는지 바로 이해된다”를 만드는 사이트.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>근거·구조·실적</dd>
+        <dt>리듬</dt><dd>Balanced</dd>
+        <dt>적합</dt><dd>기업, 병원, 법률, B2B, 제조, 금융</dd>
+        <dt>기준</dt><dd>Notion 한 줄 정의에서 파생한 기준</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Corporate DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="corporate" style="--cc:var(--c-corporate)">
+  <div class="shot" data-slug="corporate-hospital"><iframe data-src="sites/corporate-hospital/index.html" src="sites/corporate-hospital/index.html" loading="lazy" title="바른마디 정형외과 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">바른마디 정형외과</span><a class="shot-link" href="sites/corporate-hospital/index.html" target="_blank" rel="noopener" aria-label="바른마디 정형외과 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Corporate · 코퍼레이트</p>
+    <h3 class="brand">바른마디 정형외과</h3>
+    <p class="ind">정형외과 의원</p>
+    <p class="naming"><span class="k">명명</span>Corporate / Information Site / Trustworthy · Calm · Clear</p>
+    <p class="core">어떤 진료를 누가 어떤 절차로 하는지 바로 이해되어 안심하고 예약하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Cinematic</dd><dt>Accent</dt><dd>Product</dd></dl>
+    <p class="rev">충실도 <b>93</b><span class="was">(검토 전 88)</span> · AI 티 6건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/corporate-hospital/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/corporate-hospital · 1,601줄</span></div>
+</article>
+<article class="card" data-cat="corporate" style="--cc:var(--c-corporate)">
+  <div class="shot" data-slug="corporate-lawfirm"><iframe data-src="sites/corporate-lawfirm/index.html" src="sites/corporate-lawfirm/index.html" loading="lazy" title="법무법인 서로 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">법무법인 서로</span><a class="shot-link" href="sites/corporate-lawfirm/index.html" target="_blank" rel="noopener" aria-label="법무법인 서로 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Corporate · 코퍼레이트</p>
+    <h3 class="brand">법무법인 서로</h3>
+    <p class="ind">법무법인</p>
+    <p class="naming"><span class="k">명명</span>Corporate / Information Site / Serious · Precise · Composed</p>
+    <p class="core">어떤 사건을 어떤 구성원이 어떤 절차로 다루는지 명확히 보여주어 상담을 결심하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Cinematic</dd></dl>
+    <p class="rev">충실도 <b>91</b><span class="was">(검토 전 86)</span> · AI 티 7건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/corporate-lawfirm/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/corporate-lawfirm · 1,898줄</span></div>
+</article>
+<article class="card" data-cat="corporate" style="--cc:var(--c-corporate)">
+  <div class="shot" data-slug="corporate-b2b"><iframe data-src="sites/corporate-b2b/index.html" src="sites/corporate-b2b/index.html" loading="lazy" title="한결정밀 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">한결정밀</span><a class="shot-link" href="sites/corporate-b2b/index.html" target="_blank" rel="noopener" aria-label="한결정밀 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Corporate · 코퍼레이트</p>
+    <h3 class="brand">한결정밀</h3>
+    <p class="ind">정밀 가공 부품 제조(B2B)</p>
+    <p class="naming"><span class="k">명명</span>Corporate / B2B Company Site / Technical · Trustworthy · Solid</p>
+    <p class="core">생산 역량과 품질 관리 체계를 수치로 보여주어 견적을 요청하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Product</dd><dt>Accent</dt><dd>Utility</dd></dl>
+    <p class="rev">충실도 <b>93</b><span class="was">(검토 전 86)</span> · AI 티 8건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/corporate-b2b/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/corporate-b2b · 1,839줄</span></div>
+</article>
+  </div>
+</section>
+<section class="cat" id="cat-product" data-cat="product" style="--cc:var(--c-product)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Product</span> <span class="ko">프로덕트 · 기능형</span></h2>
+      <p class="one">기능이 실제로 어떻게 작동하고 무엇이 좋아지는지를 보여주어 “쓰고 싶다”를 만드는 사이트.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>기능 시연·사용 흐름</dd>
+        <dt>리듬</dt><dd>Balanced</dd>
+        <dt>적합</dt><dd>SaaS, 앱, 플랫폼, 개발 도구</dd>
+        <dt>기준</dt><dd>Notion 한 줄 정의에서 파생한 기준</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Product DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="product" style="--cc:var(--c-product)">
+  <div class="shot" data-slug="product-saas"><iframe data-src="sites/product-saas/index.html" src="sites/product-saas/index.html" loading="lazy" title="인보이스플로우 InvoiceFlow 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">인보이스플로우 InvoiceFlow</span><a class="shot-link" href="sites/product-saas/index.html" target="_blank" rel="noopener" aria-label="인보이스플로우 InvoiceFlow 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Product · 프로덕트</p>
+    <h3 class="brand">인보이스플로우 InvoiceFlow</h3>
+    <p class="ind">소상공인 청구·세금계산서 SaaS</p>
+    <p class="naming"><span class="k">명명</span>Product / SaaS Landing / Clear · Friendly · Confident</p>
+    <p class="core">청구서 발행부터 입금 확인까지 얼마나 빨라지는지 UI로 보여주어 무료로 시작하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Corporate</dd><dt>Accent</dt><dd>Utility</dd></dl>
+    <p class="rev">충실도 <b>93</b><span class="was">(검토 전 88)</span> · AI 티 5건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/product-saas/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/product-saas · 1,418줄</span></div>
+</article>
+<article class="card" data-cat="product" style="--cc:var(--c-product)">
+  <div class="shot" data-slug="product-app"><iframe data-src="sites/product-app/index.html" src="sites/product-app/index.html" loading="lazy" title="잠결 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">잠결</span><a class="shot-link" href="sites/product-app/index.html" target="_blank" rel="noopener" aria-label="잠결 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Product · 프로덕트</p>
+    <h3 class="brand">잠결</h3>
+    <p class="ind">수면 트래킹 모바일 앱</p>
+    <p class="naming"><span class="k">명명</span>Product / App Landing / Soft · Clear · Reassuring</p>
+    <p class="core">앱이 내 수면을 어떻게 읽고 무엇을 바꿔주는지 화면으로 보여주어 설치하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Utility</dd></dl>
+    <p class="rev">충실도 <b>92</b><span class="was">(검토 전 86)</span> · AI 티 5건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/product-app/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/product-app · 1,524줄</span></div>
+</article>
+<article class="card" data-cat="product" style="--cc:var(--c-product)">
+  <div class="shot" data-slug="product-devtool"><iframe data-src="sites/product-devtool/index.html" src="sites/product-devtool/index.html" loading="lazy" title="Relay API 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">Relay API</span><a class="shot-link" href="sites/product-devtool/index.html" target="_blank" rel="noopener" aria-label="Relay API 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Product · 프로덕트</p>
+    <h3 class="brand">Relay API</h3>
+    <p class="ind">알림·메시지 발송 API 플랫폼</p>
+    <p class="naming"><span class="k">명명</span>Product / Developer Platform Landing / Technical · Precise · Minimal</p>
+    <p class="core">몇 줄의 코드로 SMS·이메일·푸시를 보내는 게 얼마나 단순한지 코드로 보여주어 API 키를 발급받게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Utility</dd><dt>Accent</dt><dd>Kinetic</dd></dl>
+    <p class="rev">충실도 <b>85</b><span class="was">(검토 전 65)</span> · AI 티 10건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/product-devtool/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/product-devtool · 1,407줄</span></div>
+</article>
+  </div>
+</section>
+<section class="cat" id="cat-commerce" data-cat="commerce" style="--cc:var(--c-commerce)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Commerce</span> <span class="ko">커머스 · 구매형</span></h2>
+      <p class="one">원하는 것을 빠르게 찾고 안심하고 결제하게 만드는 사이트.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>상품·가격·혜택·리뷰</dd>
+        <dt>리듬</dt><dd>Balanced~Fast</dd>
+        <dt>적합</dt><dd>쇼핑몰, 예약, 판매, 마켓</dd>
+        <dt>기준</dt><dd>Notion 한 줄 정의에서 파생한 기준</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Commerce DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="commerce" style="--cc:var(--c-commerce)">
+  <div class="shot" data-slug="commerce-grocery"><iframe data-src="sites/commerce-grocery/index.html" src="sites/commerce-grocery/index.html" loading="lazy" title="새벽밭 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">새벽밭</span><a class="shot-link" href="sites/commerce-grocery/index.html" target="_blank" rel="noopener" aria-label="새벽밭 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Commerce · 커머스</p>
+    <h3 class="brand">새벽밭</h3>
+    <p class="ind">산지직송 식료품 온라인 마켓</p>
+    <p class="naming"><span class="k">명명</span>Commerce / Storefront / Fresh · Clear · Trustworthy</p>
+    <p class="core">오늘 뭘 사면 좋은지 빠르게 찾고, 산지·배송을 믿고 담게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Product</dd></dl>
+    <p class="rev">충실도 <b>92</b><span class="was">(검토 전 88)</span> · AI 티 4건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/commerce-grocery/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/commerce-grocery · 1,535줄</span></div>
+</article>
+<article class="card" data-cat="commerce" style="--cc:var(--c-commerce)">
+  <div class="shot" data-slug="commerce-booking"><iframe data-src="sites/commerce-booking/index.html" src="sites/commerce-booking/index.html" loading="lazy" title="무브룸 MOVEROOM 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">무브룸 MOVEROOM</span><a class="shot-link" href="sites/commerce-booking/index.html" target="_blank" rel="noopener" aria-label="무브룸 MOVEROOM 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Commerce · 커머스</p>
+    <h3 class="brand">무브룸 MOVEROOM</h3>
+    <p class="ind">요가·필라테스 클래스 예약</p>
+    <p class="naming"><span class="k">명명</span>Commerce / Booking / Clear · Calm · Efficient</p>
+    <p class="core">원하는 시간의 클래스를 30초 안에 찾고 예약을 끝내게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Product</dd><dt>Accent</dt><dd>Editorial</dd></dl>
+    <p class="rev">충실도 <b>92</b><span class="was">(검토 전 88)</span> · AI 티 2건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/commerce-booking/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/commerce-booking · 1,607줄</span></div>
+</article>
+<article class="card" data-cat="commerce" style="--cc:var(--c-commerce)">
+  <div class="shot" data-slug="commerce-furniture"><iframe data-src="sites/commerce-furniture/index.html" src="sites/commerce-furniture/index.html" loading="lazy" title="결 가구 GYEOL 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">결 가구 GYEOL</span><a class="shot-link" href="sites/commerce-furniture/index.html" target="_blank" rel="noopener" aria-label="결 가구 GYEOL 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Commerce · 커머스</p>
+    <h3 class="brand">결 가구 GYEOL</h3>
+    <p class="ind">온라인 가구 쇼핑몰</p>
+    <p class="naming"><span class="k">명명</span>Commerce / Storefront (Category Page) / Neutral · Warm · Practical</p>
+    <p class="core">조건에 맞는 가구를 비교해서 고르고 배송·설치까지 안심하고 주문하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Product</dd></dl>
+    <p class="rev">충실도 <b>93</b><span class="was">(검토 전 88)</span> · AI 티 8건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/commerce-furniture/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/commerce-furniture · 1,569줄</span></div>
+</article>
+  </div>
+</section>
+<section class="cat" id="cat-experimental" data-cat="experimental" style="--cc:var(--c-experimental)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Experimental</span> <span class="ko">익스페리멘털 · 경험형</span></h2>
+      <p class="one">정보 전달보다 경험 자체가 메시지인 사이트.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>경험 자체·인터랙션</dd>
+        <dt>리듬</dt><dd>가변</dd>
+        <dt>적합</dt><dd>캠페인, 아트, 브랜드 이벤트, 티저</dd>
+        <dt>기준</dt><dd>Notion 한 줄 정의에서 파생한 기준</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Experimental DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="experimental" style="--cc:var(--c-experimental)">
+  <div class="shot" data-slug="experimental-campaign"><iframe data-src="sites/experimental-campaign/index.html" src="sites/experimental-campaign/index.html" loading="lazy" title="물의 기억 — 담수(淡水) 캠페인 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">물의 기억 — 담수(淡水) 캠페인</span><a class="shot-link" href="sites/experimental-campaign/index.html" target="_blank" rel="noopener" aria-label="물의 기억 — 담수(淡水) 캠페인 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Experimental · 익스페리멘털</p>
+    <h3 class="brand">물의 기억 — 담수(淡水) 캠페인</h3>
+    <p class="ind">생수 브랜드 캠페인 마이크로사이트</p>
+    <p class="naming"><span class="k">명명</span>Experimental / Campaign Microsite / Poetic · Bold · Immersive</p>
+    <p class="core">스크롤 한 번이 물 한 방울의 여정이 되어, 이 물이 어디서 왔는지를 몸으로 느끼게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Editorial</dd><dt>Accent</dt><dd>Cinematic</dd></dl>
+    <p class="rev">충실도 <b>92</b><span class="was">(검토 전 88)</span> · AI 티 2건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/experimental-campaign/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/experimental-campaign · 1,412줄</span></div>
+</article>
+<article class="card" data-cat="experimental" style="--cc:var(--c-experimental)">
+  <div class="shot" data-slug="experimental-art"><iframe data-src="sites/experimental-art/index.html" src="sites/experimental-art/index.html" loading="lazy" title="빛의 잔향 AFTERGLOW 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">빛의 잔향 AFTERGLOW</span><a class="shot-link" href="sites/experimental-art/index.html" target="_blank" rel="noopener" aria-label="빛의 잔향 AFTERGLOW 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Experimental · 익스페리멘털</p>
+    <h3 class="brand">빛의 잔향 AFTERGLOW</h3>
+    <p class="ind">미디어아트 전시</p>
+    <p class="naming"><span class="k">명명</span>Experimental / Exhibition Site / Dark · Immersive · Curious</p>
+    <p class="core">커서가 곧 빛이 되어 화면을 밝히며 전시를 미리 경험하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Cinematic</dd><dt>Accent</dt><dd>Kinetic</dd></dl>
+    <p class="rev">충실도 <b>94</b><span class="was">(검토 전 90)</span> · AI 티 1건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/experimental-art/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/experimental-art · 1,384줄</span></div>
+</article>
+<article class="card" data-cat="experimental" style="--cc:var(--c-experimental)">
+  <div class="shot" data-slug="experimental-launch"><iframe data-src="sites/experimental-launch/index.html" src="sites/experimental-launch/index.html" loading="lazy" title="ORBIT ONE 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">ORBIT ONE</span><a class="shot-link" href="sites/experimental-launch/index.html" target="_blank" rel="noopener" aria-label="ORBIT ONE 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Experimental · 익스페리멘털</p>
+    <h3 class="brand">ORBIT ONE</h3>
+    <p class="ind">스마트 링 신제품 티저</p>
+    <p class="naming"><span class="k">명명</span>Experimental / Product Teaser / Bold · Futuristic · Minimal</p>
+    <p class="core">글자와 도형이 궤도를 돌며 “곧 온다”는 기대를 만들고 사전 알림을 신청하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Kinetic</dd><dt>Accent</dt><dd>Product</dd></dl>
+    <p class="rev">충실도 <b>93</b><span class="was">(검토 전 90)</span> · AI 티 2건 제거 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/experimental-launch/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/experimental-launch · 1,342줄</span></div>
+</article>
+  </div>
+</section>
+<section class="cat" id="cat-utility" data-cat="utility" style="--cc:var(--c-utility)">
+  <header class="cat-head">
+    <div class="cat-def">
+      <h2><span class="en">Utility</span> <span class="ko">유틸리티 · 업무형</span></h2>
+      <p class="one">반복 업무를 빠르고 실수 없이 끝내게 하는 도구.</p>
+      <dl class="facts">
+        <dt>설득 수단</dt><dd>데이터·상태·속도</dd>
+        <dt>리듬</dt><dd>Fast (반응)</dd>
+        <dt>적합</dt><dd>대시보드, ERP, 내부 도구, 관리 콘솔</dd>
+        <dt>기준</dt><dd>Notion 한 줄 정의에서 파생한 기준</dd>
+      </dl>
+    </div>
+    <div class="cat-dna">
+      <p class="dna-title">DNA 지표 <span>1~5</span></p>
+      <div class="dna" role="list" aria-label="Utility DNA 지표(1~5)"><div><span>감성</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>시각 강도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">2</span></div><div><span>모션</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>서사</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>사람</span><span class="bar" aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></span><span class="n">1</span></div><div><span>정보 밀도</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></span><span class="n">5</span></div><div><span>직접 전환</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b><b class=""></b></span><span class="n">3</span></div><div><span>전문 신뢰</span><span class="bar" aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class=""></b></span><span class="n">4</span></div></div>
+    </div>
+  </header>
+  <div class="grid">
+<article class="card" data-cat="utility" style="--cc:var(--c-utility)">
+  <div class="shot" data-slug="utility-dashboard"><iframe data-src="sites/utility-dashboard/index.html" src="sites/utility-dashboard/index.html" loading="lazy" title="브루잉 OS — 매장 운영 대시보드 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">브루잉 OS — 매장 운영 대시보드</span><a class="shot-link" href="sites/utility-dashboard/index.html" target="_blank" rel="noopener" aria-label="브루잉 OS — 매장 운영 대시보드 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Utility · 유틸리티</p>
+    <h3 class="brand">브루잉 OS — 매장 운영 대시보드</h3>
+    <p class="ind">카페 체인 매장 운영 대시보드</p>
+    <p class="naming"><span class="k">명명</span>Utility / Dashboard / Neutral · Dense · Calm</p>
+    <p class="core">오늘 전 매장 상황을 한 화면에서 파악하고 이상 매장을 바로 찾게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Product</dd><dt>Accent</dt><dd>Corporate</dd></dl>
+    <p class="rev">충실도 <b>95</b><span class="was">(검토 전 92)</span> · AI 티 0건 · 체크리스트 16항목 통과 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/utility-dashboard/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/utility-dashboard · 885줄</span></div>
+</article>
+<article class="card" data-cat="utility" style="--cc:var(--c-utility)">
+  <div class="shot" data-slug="utility-erp"><iframe data-src="sites/utility-erp/index.html" src="sites/utility-erp/index.html" loading="lazy" title="스톡플로우 — 재고·발주 관리 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">스톡플로우 — 재고·발주 관리</span><a class="shot-link" href="sites/utility-erp/index.html" target="_blank" rel="noopener" aria-label="스톡플로우 — 재고·발주 관리 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Utility · 유틸리티</p>
+    <h3 class="brand">스톡플로우 — 재고·발주 관리</h3>
+    <p class="ind">소매 재고·발주 내부 도구(ERP)</p>
+    <p class="naming"><span class="k">명명</span>Utility / Internal Tool / Neutral · Dense · Functional</p>
+    <p class="core">재고 부족을 놓치지 않고 발주를 실수 없이 끝내게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Product</dd><dt>Accent</dt><dd>Corporate</dd></dl>
+    <p class="rev">충실도 <b>96</b><span class="was">(검토 전 92)</span> · AI 티 0건 · 체크리스트 16항목 통과 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/utility-erp/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/utility-erp · 994줄</span></div>
+</article>
+<article class="card" data-cat="utility" style="--cc:var(--c-utility)">
+  <div class="shot" data-slug="utility-admin"><iframe data-src="sites/utility-admin/index.html" src="sites/utility-admin/index.html" loading="lazy" title="헬프데스크 콘솔 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">헬프데스크 콘솔</span><a class="shot-link" href="sites/utility-admin/index.html" target="_blank" rel="noopener" aria-label="헬프데스크 콘솔 새 탭에서 열기"></a></div>
+  <div class="body">
+    <p class="cat-tag">Utility · 유틸리티</p>
+    <h3 class="brand">헬프데스크 콘솔</h3>
+    <p class="ind">고객지원 티켓 관리 콘솔</p>
+    <p class="naming"><span class="k">명명</span>Utility / Admin Console / Neutral · Dark · Focused</p>
+    <p class="core">밀린 티켓을 우선순위대로 빠르게 처리하게 한다</p>
+    <dl class="mix"><dt>Secondary</dt><dd>Product</dd><dt>Accent</dt><dd>Corporate</dd></dl>
+    <p class="rev">충실도 <b>94</b><span class="was">(검토 전 90)</span> · AI 티 0건 · 체크리스트 16항목 통과 · 이미지 교체 없음</p>
+  </div>
+  <div class="foot"><a class="open" href="sites/utility-admin/index.html" target="_blank" rel="noopener">열기</a><span class="path">sites/utility-admin · 1,286줄</span></div>
+</article>
+  </div>
+</section>
+  <p class="empty" id="empty" hidden>표시할 사이트가 없습니다.</p>
+</main>
+
+<footer>
+  <div class="wrap about">
+    <section>
+      <h2>분류 표기 표준</h2>
+      <p>모든 프로젝트는 대표 스타일 하나를 고르고 아래 순서로 적습니다. 카드의 "명명" 줄이 이 형식입니다.</p>
+      <div class="fmt">
+        <p class="line">Primary Style / Product Type / Tone</p>
+        <dl>
+          <dt>Primary Style</dt><dd>사이트가 만드는 감정과 인상 — 8개 카테고리 중 하나. 시각 표현을 결정</dd>
+          <dt>Product Type</dt><dd>랜딩·포트폴리오·커머스·SaaS 등 실제 목적. CTA 구조를 결정</dd>
+          <dt>Tone</dt><dd>Soft·Bold·Serious·Technical 등 표현의 온도. 2~3개 단어를 가운뎃점으로</dd>
+          <dt>Core Message</dt><dd>방문자가 한 문장으로 무엇을 느껴야 하는가</dd>
+          <dt>혼합 비율</dt><dd>Primary 70 · Secondary 20 · Accent 10. 카드의 Secondary / Accent 표기가 이 비율</dd>
+        </dl>
+      </div>
+      <p>예: f0ring은 <b>Editorial / Commerce / Soft · Curated</b>, FlyOne V1은 <b>Kinetic / Brand Landing / Bold · Energetic</b>, FlyOne V2는 <b>Cinematic / Portfolio / Serious · Human</b>.</p>
+      <p class="note">카드의 "충실도"는 스타일 충실도 검토 점수(100점 만점, 굵은 숫자가 검토 후, 괄호가 검토 전)이며, 10점 척도로 검토된 5개 사이트는 100점으로 환산했습니다. "AI 티"는 anti-ai-slop.md §8 체크리스트 16항목 기준으로 제거한 건수, "이미지"는 무관 스톡 사진을 주제 일치 사진으로 바꾼 장수입니다. 미리보기는 각 사이트를 1280px 폭으로 렌더한 뒤 축소한 실제 화면이라, 이미지 로드까지 잠시 걸릴 수 있습니다.</p>
+    </section>
+    <section>
+      <h2>기준 문서와 레퍼런스</h2>
+      <ul class="links">
+        <li><a href="https://app.notion.com/p/3bb5baabfd1b81e3b0d8fcfeaf33916d" target="_blank" rel="noopener">Forblune 웹 디자인 언어 시스템 · v2</a><span>Notion 원문</span></li>
+        <li><code>_reference/design-language.md</code><span>에이전트용 요약 · 8개 카테고리 문법과 DNA 지표 (저장소 안 문서)</span></li>
+        <li><code>_reference/anti-ai-slop.md</code><span>AI 티 제거 기준 · 리뷰 체크리스트 16항목 (저장소 안 문서)</span></li>
+        <li><a href="https://f0ring.co.kr" target="_blank" rel="noopener">f0ring</a><span>Editorial / Commerce / Soft · Curated</span></li>
+        <li><a href="https://forblune.github.io/flyone-landing/" target="_blank" rel="noopener">FlyOne V1</a><span>Kinetic / Brand Landing / Bold · Energetic</span></li>
+        <li><a href="https://forblune.github.io/flyone-landing/v2/" target="_blank" rel="noopener">FlyOne V2</a><span>Cinematic / Portfolio / Serious · Human</span></li>
+      </ul>
+      <p class="note">Corporate·Product·Commerce·Experimental·Utility 다섯 카테고리는 Notion에 한 줄 정의만 있어 design-language.md에서 파생 기준을 세웠고, 이 갤러리의 해당 예시들은 그 파생 기준을 따릅니다.</p>
+    </section>
+  </div>
+  <div class="wrap bottom">
+    <span>Forblune · 2026</span>
+    <span>로컬 실행: 저장소 루트에서 <code>python -m http.server 8080</code> 후 <code>http://localhost:8080</code></span>
+    <span>사이트 파일: <code>sites/&lt;slug&gt;/index.html</code></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CATS = ["editorial", "kinetic", "cinematic", "corporate", "product", "commerce", "experimental", "utility"];
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.fbtn'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.cat'));
+  var count = document.getElementById('count');
+  var empty = document.getElementById('empty');
+  var main = document.getElementById('sections');
+  var filters = document.querySelector('.filters');
+  var TOTAL = 24;
+
+  function fromHash(){
+    var h = (location.hash || '').replace('#','').toLowerCase();
+    return CATS.indexOf(h) >= 0 ? h : 'all';
+  }
+  function apply(cat, scroll){
+    var shown = 0;
+    sections.forEach(function(sec){
+      var on = cat === 'all' || sec.getAttribute('data-cat') === cat;
+      sec.hidden = !on;
+      if (on) shown += sec.querySelectorAll('.card').length;
+    });
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-filter') === cat ? 'true' : 'false');
+    });
+    count.textContent = TOTAL + '개 중 ' + shown + '개 표시';
+    empty.hidden = shown !== 0;
+    document.title = (cat === 'all' ? '' : cat.charAt(0).toUpperCase() + cat.slice(1) + ' — ') + 'Forblune Style Gallery';
+    if (scroll){
+      var top = main.getBoundingClientRect().top + window.pageYOffset - filters.offsetHeight - 8;
+      if (window.pageYOffset > top) window.scrollTo(0, top);
+    }
+    // 보이는 섹션의 미리보기 축소 비율 재계산
+    fit();
+  }
+  function setHash(cat){
+    var next = cat === 'all' ? '#all' : '#' + cat;
+    if (location.hash === next) { apply(cat, true); return; }
+    if (history.pushState) { history.pushState(null, '', next); apply(cat, true); }
+    else { location.hash = next; }
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ setHash(b.getAttribute('data-filter')); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-filter-link]'), function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      setHash(a.getAttribute('data-filter-link'));
+    });
+  });
+  window.addEventListener('hashchange', function(){ apply(fromHash(), false); });
+  window.addEventListener('popstate', function(){ apply(fromHash(), false); });
+
+  // 미리보기: 1280px 폭으로 렌더한 iframe을 카드 폭에 맞춰 축소
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+  function fitOne(shot){
+    var f = shot.querySelector('iframe');
+    if (!f) return;
+    var w = shot.clientWidth;
+    if (!w) return;
+    f.style.transform = 'scale(' + (w / 1280) + ')';
+  }
+  function fit(){ shots.forEach(fitOne); }
+  if ('ResizeObserver' in window){
+    var ro = new ResizeObserver(function(entries){ entries.forEach(function(en){ fitOne(en.target); }); });
+    shots.forEach(function(s){ ro.observe(s); });
+  } else {
+    window.addEventListener('resize', fit);
+  }
+  shots.forEach(function(s){
+    var f = s.querySelector('iframe');
+    if (!f) return;
+    f.addEventListener('load', function(){
+      if (f.getAttribute('src') && f.getAttribute('src') !== 'about:blank') f.classList.add('is-ready');
+    });
+  });
+
+  // 라이브 미리보기 켜기/끄기 (24개 iframe 부하를 줄이고 싶을 때)
+  var live = document.getElementById('live');
+  live.addEventListener('change', function(){
+    shots.forEach(function(s){
+      var f = s.querySelector('iframe');
+      if (!f) return;
+      if (live.checked){
+        f.setAttribute('src', f.getAttribute('data-src'));
+      } else {
+        f.classList.remove('is-ready');
+        f.setAttribute('src', 'about:blank');
+      }
+    });
+  });
+
+  apply(fromHash(), false);
+  fit();
+})();
+</script>
+</body>
+</html>

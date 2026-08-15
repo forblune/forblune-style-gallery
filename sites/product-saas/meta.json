@@ -1,0 +1,56 @@
+{
+  "slug": "product-saas",
+  "brand": "인보이스플로우 InvoiceFlow",
+  "industry": "소상공인 청구·세금계산서 SaaS",
+  "primaryStyle": "Product",
+  "productType": "SaaS Landing",
+  "tone": "Clear · Friendly · Confident",
+  "secondary": "Corporate",
+  "accent": "Utility",
+  "coreMessage": "청구서 발행부터 입금 확인까지 얼마나 빨라지는지 UI로 보여주어 무료로 시작하게 한다",
+  "naming": "Product / SaaS Landing / Clear · Friendly · Confident",
+  "palette": {
+    "background": "#ffffff",
+    "tint": "#f4f6fb",
+    "text": "#16203a",
+    "muted": "#4a5570",
+    "border": "#e1e5ee",
+    "brand": "#2c5cf6",
+    "status": {
+      "success": "#1a7f4b",
+      "warning": "#a85d00",
+      "info": "#2c5cf6",
+      "danger": "#c0392b"
+    },
+    "radius": {
+      "label": "4px",
+      "control": "6px",
+      "card": "12px"
+    },
+    "font": "Pretendard Variable (단일 서체, 숫자는 tabular-nums)"
+  },
+  "sections": [
+    "헤더 (제품·기능·요금·고객사례·문서, 로그인 + 무료로 시작하기, 모바일 메뉴, 불투명 화이트)",
+    "Hero (좌측 정렬 가치 제안 + 서브 + CTA 2개 + 한 줄 조건 안내 + 전폭 CSS 대시보드 목업: 사이드바·KPI·청구서 테이블·상태 라벨·월별 차트·라이브 매칭 토스트, 브라우저 크롬 없음)",
+    "로고 월 (기준일 명시, 워드마크 텍스트 8개)",
+    "핵심 기능 4개 (자동 발행 · 입금 매칭 · 리마인더 · 세무 연동, 하이라인 2열 행 좌우 교대, 각각 CSS UI 조각 + 정의형 목록 + 근거 있는 수치)",
+    "작동 방식 1·2·3 (카드 없이 상단 굵은 선, 소요 시간, 단계별 UI 조각)",
+    "통합 (은행 18곳 · 카드 8곳 · 회계·세무 6종을 한 패널에 3분할, 은행 나머지 10곳 더 보기 토글 + 보안 문단)",
+    "고객 사례 (큰 인용 1 + 작은 인용 2, 실명·회사·역할, 도입 전후 데이터 기준 명시, 아바타·별점 없음)",
+    "가격표 3플랜 (스타터 무료 / 프로 / 비즈니스, 월·연 토글, 스펙 시트형 목록)",
+    "FAQ 6문항 (좌측 제목 고정 + 우측 아코디언)",
+    "최종 CTA (단색 잉크 밴드, 좌 문장 / 우 이메일 가입 폼 — 검증·완료 상태 동작, 버튼 링크 순환 없음)",
+    "푸터 (브랜드 + 3열 링크 + 사업자 정보·정책 링크)"
+  ],
+  "interactions": [
+    "헤더 스크롤 시 하단 선 표시",
+    "모바일 햄버거 메뉴 토글 (aria-expanded, Esc 닫기)",
+    "Hero 목업 라이브 시연: 청구서 상태 라벨 열람됨→입금 대기→입금 완료 순환 + 입금 매칭 토스트 (prefers-reduced-motion 시 정적)",
+    "통합 섹션 은행 목록 '나머지 10곳 보기 / 접기' 토글 (aria-expanded)",
+    "요금 월/연 결제 토글 (금액 카운트 애니메이션, 안내 문구 변경, role=switch)",
+    "FAQ 아코디언 (단일 열림, aria-expanded/aria-controls, 접힌 답변은 inert·aria-hidden 처리)",
+    "최종 CTA 이메일 가입 폼: 형식 검증(aria-invalid, 오류 문구) → 전송 중 → 완료 안내(aria-live)",
+    "앵커 부드러운 스크롤 + 포커스 이동"
+  ],
+  "path": "sites/product-saas/index.html"
+}

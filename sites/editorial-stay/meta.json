@@ -1,0 +1,53 @@
+{
+  "slug": "editorial-stay",
+  "brand": "숲결 스테이",
+  "industry": "제주 독채 스테이(숙소)",
+  "primaryStyle": "Editorial",
+  "productType": "Brand Landing (예약 유도)",
+  "tone": "Soft · Warm · Slow",
+  "secondary": "Commerce",
+  "accent": "Cinematic",
+  "coreMessage": "방을 팔기 전에 이곳에서 보내는 하루의 리듬을 먼저 상상하게 한다",
+  "naming": "Editorial / Brand Landing (예약 유도) / Soft · Warm · Slow",
+  "palette": {
+    "background": "#F4F0E8 (웜 오프화이트)",
+    "surface": "#ECE6DA / #E4DDCE",
+    "text": "#3A3E34 (짙은 올리브 그레이)",
+    "textSoft": "#6C7064",
+    "accentEarth": "#8A6A4B (흙색)",
+    "accentGrass": "#A9A077 (마른 풀색)",
+    "dark": "#24261F (하우스 노트 · Cinematic 악센트 구간)"
+  },
+  "typography": {
+    "heading": "Noto Serif KR 200–400 (Google Fonts) — 화보 캡션·목차 느낌의 얇은 명조",
+    "body": "Pretendard Variable 350–500 (CDN) → system-ui 폴백",
+    "note": "서체 2개, 모노스페이스·대문자 아이브로우 없음"
+  },
+  "sections": [
+    "헤더(투명 → 스크롤 시 오프화이트 단색 축소 고정, 모바일 패널 메뉴)",
+    "전면 화보 Hero(3장 느린 크로스페이드 + 미세 줌, 좌측 정렬 한 문장, '머무는 날 고르기' CTA + 텍스트 링크, 우측 하단 위치·인원 메타)",
+    "인트로 문장 + 집 개요(지어진 해·구조·면적·인원)",
+    "01 머무는 하루 — 07:40 / 13:20 / 19:50 세 장면 비대칭 타임라인, 장면마다 사실 목록(dl)",
+    "02 공간 — 거실·침실·욕실·마당 비대칭 그리드(호버·포커스 시 두 번째 컷으로 크로스페이드)",
+    "03 준비된 것들 — 8개 어메니티 번호 리스트 + 유의사항",
+    "04 위치·주변 — 인라인 SVG 약도 일러스트 + 주소·주변 소요시간·오시는 길",
+    "05 요금·예약 — 요일별/성수기 요금표, 환불 규정, 달력형 예약 문의 위젯(Commerce 20%)",
+    "06 하우스 노트 — 웜 블랙 구간(Cinematic 10%), 호스트 인용·소개, 4개 아코디언(2~4개 항목)",
+    "마무리(사진 + 조용한 예약 유도 문장 + 이메일)",
+    "푸터(브랜드 문장·둘러보기·연락·계절 소식 뉴스레터·사업자 정보)"
+  ],
+  "interactions": [
+    "히어로 3장 크로스페이드 자동 순환(6.5s) + 바 형태 인디케이터 수동 선택, 탭 비활성 시 정지, reduced-motion 시 정지",
+    "헤더 스크롤 40px 이후 배경·색·높이 전환",
+    "모바일 햄버거 메뉴 패널(ESC 닫기, 링크 클릭 시 닫힘)",
+    "사진(figure)만 IntersectionObserver로 느리게 페이드 인(이동 없음), 텍스트는 즉시 표시",
+    "공간 카드 호버/포커스 시 두 번째 컷으로 크로스페이드",
+    "예약 위젯: 6개월 달력 이동, 체크인/체크아웃 범위 선택, 예약 불가일 처리, 인원 스텝퍼(최대 4), 요일·성수기 요금 합산, 추가 인원·3박 이상 5% 자동 계산, 문의 접수 상태 전환·다시 고르기",
+    "하우스 노트 아코디언(aria-expanded, max-height 전환)",
+    "푸터 뉴스레터 폼 유효성 검사 + 완료 메시지"
+  ],
+  "images": "loremflickr 키워드 이미지 16장(cabin,forest / bedroom,linen / jeju,stone / cabin,interior / hottub,forest / bathroom,tile 등) lock=8101~8141 고유, saturate 0.82 · sepia 0.06 필터, 컨테이너 배경색+aspect-ratio 지정, lazy loading",
+  "path": "sites/editorial-stay/index.html",
+  "radiusRule": "2px 단일(버튼·달력·필드·사진 프레임)",
+  "reviewed": "2026-08-15 AI 티 감사: pill 태그·화살표 아이콘·스크롤 큐·글래스 헤더·전 요소 fade-up 제거, picsum→loremflickr, 3개 나열 리듬 해소"
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "product-devtool",
+  "brand": "Relay API",
+  "industry": "알림·메시지 발송 API 플랫폼",
+  "primaryStyle": "Product",
+  "productType": "Developer Platform Landing",
+  "tone": "Technical · Precise · Minimal",
+  "secondary": "Utility",
+  "accent": "Kinetic",
+  "coreMessage": "몇 줄의 코드로 SMS·이메일·푸시를 보내는 게 얼마나 단순한지 코드로 보여주어 API 키를 발급받게 한다",
+  "naming": "Product / Developer Platform Landing / Technical · Precise · Minimal",
+  "palette": {
+    "background": "#FFFFFF",
+    "backgroundAlt": "#F5F7FA",
+    "surface": "#FFFFFF",
+    "border": "#E2E7ED",
+    "text": "#0F1720",
+    "textMuted": "#48535F",
+    "accent": "#1B48C2 (브랜드·CTA·활성 상태 전용)",
+    "statusOk": "#157F4F",
+    "statusWarn": "#99600A",
+    "statusError": "#C0392B",
+    "statusInfo": "#0B5FA5",
+    "codeWindow": "#0F1620 (히어로 코드 창·로그 티커만 어두운 바탕)",
+    "codeKeyword": "#79C7F5 / 밝은 바탕 #0B5FA5",
+    "codeString": "#F5C24B / 밝은 바탕 #9A4A12",
+    "codeFunction": "#C7B4F7 / 밝은 바탕 #6B3FA0"
+  },
+  "fonts": {
+    "sans": "Pretendard (CDN) → system-ui 폴백",
+    "mono": "JetBrains Mono (Google Fonts) → ui-monospace 폴백 · 코드·버전·로그·표 숫자에만 사용"
+  },
+  "radius": "6px 단일 규칙(카드·버튼·탭·입력) + 3px(인라인 코드·상태 라벨) · 스위치만 pill",
+  "sections": [
+    "헤더 (문서·요금·변경 이력·상태 + 로그인 + API 키 발급, 흰 배경·스크롤 시 하단 보더, 모바일 메뉴)",
+    "Hero (좌: 릴리스 노트 링크 + 한 줄 가치 제안 + 주 CTA·보조 CTA(작동 방식) + 무료 할당 사실 문장 / 우: Node·Python·Go·cURL 코드 탭 + 202 응답 블록 + 발송 로그 티커 — 흰 종이 위 어두운 코드 창, 브라우저 크롬·글로우·그리드 배경 없음)",
+    "신뢰 수치 (출처 문장 + 3개: 월 발송량 4.2억 건 2026-07 · 최근 90일 가동률 99.99% · p50 184ms 서울 리전 8/8~15 — 각 수치에 집계 기간 표기, 카운트업 없음)",
+    "기능 4개 (2열, 각각 실제 대시보드 UI 조각: 라우팅 규칙 토글 · 템플릿 에디터+SMS 미리보기 · 웹훅 이벤트 테이블 · 재시도 타임라인 + 코드 힌트, 아이콘 박스 없음)",
+    "통합 흐름 도식 (인라인 SVG: 앱 → 인증·검증 → 라우터 → 큐·재시도 → SMS/Email/Push → 웹훅 회신, 4단계 설명, rx 6 단일 radius)",
+    "SDK 목록 (카드 대신 행 8줄: 언어·버전 / 설치 명령 / 포함 항목 / 문서 링크, 모바일 2단 리플로우) + OpenAPI/Postman/Terraform/CLI 링크",
+    "요금 (Free / Pay as you go / Enterprise 플랜, 포함 항목은 사양표형 행 · 채널별 사용량 구간 단가 테이블 · 월 예상 비용 계산기)",
+    "상태·보안 (90일 가동률 상태 보드 6개 서비스 · SLA 크레딧 · TLS 1.3/AES-256-GCM · 리전 5곳 · ISMS-P/ISO 27001/SOC 2 취득 시점 명시 — 사양서형 행 레이아웃)",
+    "문서 CTA (빠른 시작 3단계 + API 키 발급 CTA + 요금 계산기 링크)",
+    "푸터 (제품·문서 / 회사 / 정책 3열, 사업자 정보, 영업·지원·보안 신고 메일 링크, 상태 링크)"
+  ],
+  "interactions": [
+    "코드 스니펫 언어 탭 전환 (Node.js / Python / Go / cURL, role=tablist, 방향키 이동)",
+    "코드 복사 버튼 (Clipboard API + execCommand 폴백, '복사됨' 상태 표시)",
+    "헤더 스크롤 시 is-scrolled 상태 (하단 보더 표시)",
+    "모바일 햄버거 메뉴 열기/닫기 (aria-expanded, ESC 닫기)",
+    "발송 로그 티커 (2.6초 주기 회전, reduced-motion 시 정지) — Kinetic 액센트",
+    "통합 흐름 SVG의 경로 대시 애니메이션 (Kinetic 액센트, reduced-motion 시 제거)",
+    "월 예상 비용 계산기 (SMS·이메일·푸시 range 슬라이더 → 무료 할당·구간 단가 반영 실시간 계산)",
+    "상태 보드 90일 가동률 바 JS 생성"
+  ],
+  "audit": {
+    "date": "2026-08-16",
+    "round2": [
+      "다크 배경 + Tailwind 기본 팔레트(emerald-500·sky-300·amber-400·violet-300·red-400) → Product DNA대로 흰 배경 + 어두운 코드 창, 커스텀 팔레트",
+      "브랜드 액센트와 '정상' 상태색이 같은 초록 → CTA 파랑 / 상태 초록·주황·빨강·파랑으로 역할 분리",
+      "SDK 8장 동일 카드(틴트 문자 박스+제목+명령) → 행 목록(언어·버전 / 설치 / 포함 / 문서)",
+      "신뢰 수치 4개 행 → 출처 문장 + 3개, 집계 기간 명시",
+      "코드 탭 3개 → Go 추가 4개(3개씩 나열 리듬 해소), 템플릿 언어 3→4",
+      "'▸' 장식 글리프 제거, 'Get API Key'·'Docs/Pricing/Changelog/Status'·'All rights reserved'·'Quickstart' 영문 → 한국어",
+      "'가장 많이 선택' 근거 없는 플랜 태그 → '카드 등록 시 전환' 사실 표기, '24×7 온콜' → '야간·주말 온콜 포함'",
+      "흐름도 SVG rx 8/10/12 → 6 단일 radius, 하드코딩 색 → CSS 변수 클래스"
+    ],
+    "round1Removed": [
+      "eyebrow pill+dot 6개",
+      "hero 릴리스 pill",
+      "hero radial glow·그리드 배경",
+      "docs CTA glow",
+      "header backdrop blur",
+      "브라우저 신호등 dots",
+      "펄스 dot",
+      "카운트업",
+      "reveal fade-up 39개",
+      "아이콘 틴트 박스 8개",
+      "체크 아이콘 리스트 12개",
+      "화살표 → 24곳 → 0 (SVG 화살표는 CTA 2곳)",
+      "비클릭 hover(feature·sdk·표 행)",
+      "근거 없는 '활성 팀 12,400' 통계"
+    ]
+  },
+  "path": "sites/product-devtool/index.html"
+}

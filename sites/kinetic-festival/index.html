@@ -1,0 +1,1348 @@
+<!-- forblune-style: {"slug":"kinetic-festival","primaryStyle":"Kinetic","productType":"Event Landing","tone":"Bold · Energetic · Colorful","secondary":"Experimental","accent":"Corporate","brand":"PULSE FEST 2026","industry":"일렉트로닉 뮤직 페스티벌","coreMessage":"이틀 동안 얼마나 크고 빠른 무대가 펼쳐지는지 즉시 느끼게 하고 티켓으로 보낸다","naming":"Kinetic / Event Landing / Bold · Energetic · Colorful"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PULSE FEST 2026 — 10월 10·11일 인천 송도, 3개 무대 48팀 일렉트로닉 뮤직 페스티벌</title>
+<meta name="description" content="PULSE FEST 2026 · 10월 10일(토)–11일(일) 인천 송도달빛축제공원. PULSE·WAVE·VOLT 3개 스테이지, 48팀 아티스트, 낮 12시부터 밤 11시까지. 1일권 99,000원부터. 라인업·타임테이블·티켓·오시는 길·안전 안내.">
+<meta name="theme-color" content="#070A1C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* ==========================================================
+   PULSE FEST 2026 — Kinetic / Event Landing / Bold · Energetic · Colorful
+   색 역할: 마젠타 = 01 PULSE 스테이지 + 핵심 CTA
+            시안   = 02 WAVE 스테이지 + 정보 링크
+            옐로   = 03 VOLT 스테이지 + 강조·포커스
+   서체 2개: Anton(라틴 압축 디스플레이 — 페스티벌 포스터·라인업 벽의 관습, 400 단일 굵기·라틴 전용)
+            + Pretendard(한국어 본문·라벨·버튼, 한글 디스플레이는 900 폴백)
+   모서리 규칙: --r 2px 하나만 (Kinetic 각진 블록)
+   ========================================================== */
+:root{
+  --bg:#070A1C;
+  --bg-2:#0D1130;
+  --bg-3:#141A44;
+  --ink:#F4F5FF;
+  --ink-2:rgba(244,245,255,.66);
+  --ink-3:rgba(244,245,255,.5);
+  --line:rgba(244,245,255,.14);
+  --line-2:rgba(244,245,255,.07);
+  --mag:#FF2D95;
+  --cyan:#19E6FF;
+  --yel:#FFE600;
+  --dark:#0A0A14;
+  --r:2px;
+  --disp:"Anton","Pretendard",Impact,"Arial Black",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --body:"Pretendard",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --label:"Pretendard",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-snap:cubic-bezier(.2,.9,.2,1);
+  --fast:.22s;
+  --wrap:1360px;
+  --hdr-h:84px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-synthesis:none;
+}
+/* 디스플레이 서체를 쓰는 요소는 모두 900 → 라틴은 Anton(400 단일), 한글은 Pretendard 900 */
+.disp,.logo,.hero-title,.sec-title,.marquee,.wall,.stage-num,.stage-name,.tab,.tt-col-h,.slot-n,.tk-name,.tk-price .now,.cd-n,.safe li i,.q-btn .n,.final-title,.ftr-big,.mcta .p b{font-weight:900}
+.sr-only:focus{position:fixed;top:1rem;left:1rem;width:auto;height:auto;clip:auto;margin:0;padding:.6rem 1rem;background:var(--yel);color:var(--dark);z-index:200;font-weight:800;border-radius:var(--r)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+strong{font-weight:800}
+:focus-visible{outline:3px solid var(--yel);outline-offset:3px;border-radius:var(--r)}
+::selection{background:var(--mag);color:var(--dark)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{width:min(100% - 2.5rem,var(--wrap));margin-inline:auto}
+@media (min-width:768px){.wrap{width:min(100% - 4rem,var(--wrap))}}
+
+/* ---------- 타이포 공통 ---------- */
+.disp{font-family:var(--disp);text-transform:uppercase;letter-spacing:-.01em;line-height:.9}
+/* 섹션 헤드는 섹션마다 오른쪽 요소가 다르다: 라인업=범례 / 스테이지=문장 / 타임테이블=탭 / 티켓=카운트다운 / 정보=일반 제목 / FAQ=제목만 */
+.sec-head{display:grid;gap:1.2rem;margin-bottom:clamp(2rem,4vw,3.5rem)}
+.sec-title{font-family:var(--disp);text-transform:uppercase;font-size:clamp(3.2rem,9vw,8.5rem);line-height:.86;letter-spacing:-.015em}
+.sec-title .o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.sec-desc{max-width:52ch;color:var(--ink-2);font-size:clamp(1rem,1.3vw,1.15rem);font-weight:500}
+@media (min-width:1024px){
+  .sec-head{grid-template-columns:1fr auto;align-items:end}
+  .sec-head .sec-desc{text-align:right;justify-self:end}
+}
+.sec{padding-block:clamp(4.5rem,9vw,8.5rem);position:relative}
+
+/* ---------- 버튼 ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  font-family:var(--label);font-weight:800;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;
+  padding:1.05rem 1.7rem;border-radius:var(--r);border:2px solid transparent;
+  transition:transform var(--fast) var(--ease-snap),box-shadow var(--fast) var(--ease-snap),background var(--fast),color var(--fast);
+  will-change:transform;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-mag{background:var(--mag);color:var(--dark)}
+.btn-mag:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--yel)}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--dark);transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--cyan)}
+.btn-yel{background:var(--yel);color:var(--dark)}
+.btn-yel:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--mag)}
+.btn-dark{background:var(--dark);color:var(--ink)}
+.btn-dark:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--yel)}
+.btn-line{border-color:var(--dark);color:var(--dark)}
+.btn-line:hover{background:var(--dark);color:var(--ink);transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--yel)}
+.btn-sm{padding:.7rem 1.1rem;font-size:.82rem}
+.btn:active{transform:translate(0,0);box-shadow:none}
+
+/* ---------- 헤더 ---------- */
+.hdr{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  height:var(--hdr-h);
+  transition:height .3s var(--ease-out),background .3s,border-color .3s,backdrop-filter .3s;
+  border-bottom:1px solid transparent;
+}
+.hdr.is-scrolled{
+  --hdr-h:64px;
+  background:rgba(7,10,28,.86);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-color:var(--line-2);
+}
+.hdr-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{display:inline-flex;align-items:baseline;gap:.35rem;font-family:var(--disp);font-size:1.6rem;line-height:1;letter-spacing:.01em;text-transform:uppercase}
+.logo span{color:var(--mag)}
+.logo em{font-style:normal;font-family:var(--label);font-weight:900;font-size:.72rem;letter-spacing:.14em;color:var(--yel);padding:.15rem .35rem;border:1.5px solid var(--yel);border-radius:var(--r);transform:translateY(-.15rem)}
+.nav ul{display:flex;gap:2rem}
+.nav a{font-family:var(--label);font-weight:700;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);position:relative;padding:.4rem 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform var(--fast) var(--ease-snap)}
+.nav a:hover{color:var(--ink)}
+.nav a:hover::after{transform:scaleX(1)}
+.hdr-act{display:flex;align-items:center;gap:.8rem}
+.burger{display:none;width:44px;height:44px;place-items:center;border:1.5px solid var(--line);border-radius:var(--r)}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);position:relative;transition:background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--ink);transition:transform .25s var(--ease-snap),top .25s}
+.burger span::before{top:-6px}
+.burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+@media (max-width:1023px){
+  .nav ul{gap:1.3rem}
+  .nav a{font-size:.8rem}
+}
+@media (max-width:860px){
+  .burger{display:grid}
+  .nav{
+    position:fixed;top:var(--hdr-h);left:0;right:0;
+    background:rgba(7,10,28,.97);border-bottom:1px solid var(--line);
+    padding:1.2rem 1.25rem 1.6rem;
+    transform:translateY(-8px);opacity:0;visibility:hidden;
+    transition:transform .25s var(--ease-snap),opacity .2s,visibility .2s;
+  }
+  .nav.is-open{transform:none;opacity:1;visibility:visible}
+  .nav ul{flex-direction:column;gap:0}
+  .nav li+li{border-top:1px solid var(--line-2)}
+  .nav a{display:block;padding:.95rem 0;font-size:1.05rem;font-family:var(--disp);font-weight:900;letter-spacing:.04em}
+  .nav a::after{display:none}
+}
+/* 티켓 CTA는 우상단 상시 노출 — 하단 고정 CTA가 대신하는 소형 모바일에서만 숨김 */
+@media (max-width:480px){
+  .hdr-cta{display:none}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;background:var(--bg);
+  padding-top:var(--hdr-h);
+}
+.hero-bg{position:absolute;inset:0;background:#141A44;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:contrast(1.25) saturate(1.5) brightness(.8);opacity:.75;transform:scale(1.06);animation:heroZoom 12s var(--ease-out) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+/* 사진 위 처리는 하단 가독성용 단색 어둡힘 하나뿐 — 블롭·글로우 없음 */
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(7,10,28,.15) 0%,rgba(7,10,28,.3) 45%,rgba(7,10,28,.96) 100%);
+}
+.hero-in{position:relative;z-index:2;padding-bottom:clamp(4rem,8vh,7rem);padding-top:2rem}
+@media (min-width:1024px){
+  .hero-in{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:3rem;align-items:end}
+  .hero-meta{grid-column:1 / -1}
+  .hero-title{grid-column:1}
+  .hero-row{grid-column:2;grid-template-columns:1fr;justify-items:end;text-align:right;margin-top:0;padding-bottom:.35em}
+}
+/* 날짜·장소·시간: 테두리 없는 텍스트 + 정사각 마커(칩·점 배지 아님) */
+.hero-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.8rem;margin-bottom:1.5rem;font-family:var(--label);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.hero-meta span{display:inline-flex;align-items:center;gap:.6rem}
+.hero-meta span::before{content:"";width:10px;height:10px;background:var(--c,var(--mag));transform:skewX(-12deg)}
+.hero-title{
+  font-family:var(--disp);text-transform:uppercase;
+  font-size:clamp(5.4rem,min(20vw,26vh),19rem);line-height:.82;letter-spacing:-.02em;
+  display:grid;margin-left:-.04em;
+}
+.hero-title .ln{display:block;overflow:hidden;padding-right:.1em}
+.hero-title .ln>span{display:inline-block;transform:translateY(112%);animation:lineUp .75s var(--ease-snap) forwards}
+.hero-title .ln:nth-child(1)>span{animation-delay:.05s}
+.hero-title .ln:nth-child(2)>span{animation-delay:.17s}
+.hero-title .ln:nth-child(3)>span{animation-delay:.29s}
+@keyframes lineUp{to{transform:translateY(0)}}
+.hero-title .glitch{position:relative;display:inline-block;animation:glitch 6s steps(1) infinite 2s}
+@keyframes glitch{
+  0%,92%,100%{text-shadow:none}
+  93%{text-shadow:-6px 0 var(--mag),6px 0 var(--cyan)}
+  95%{text-shadow:5px 0 var(--mag),-5px 0 var(--cyan)}
+  97%{text-shadow:-3px 0 var(--mag),3px 0 var(--cyan)}
+}
+.hero-title .o{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+.hero-title .dot{color:var(--yel)}
+.hero-row{display:grid;gap:1.6rem;margin-top:1.8rem;opacity:0;transform:translateX(-30px);animation:slideIn .55s var(--ease-snap) .55s forwards}
+@keyframes slideIn{to{opacity:1;transform:none}}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:600;max-width:36ch;line-height:1.45;color:var(--ink)}
+.hero-sub b{color:var(--yel)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem}
+@media (min-width:1024px){.hero-cta{justify-content:flex-end}}
+.hero-scroll{
+  position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);z-index:2;
+  font-family:var(--label);font-weight:700;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);
+  writing-mode:vertical-rl;display:flex;align-items:center;gap:.7rem;
+}
+.hero-scroll::after{content:"";width:2px;height:54px;background:linear-gradient(var(--cyan),transparent);animation:scrollPulse 1.4s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.35;transform:scaleY(.6);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+@media (max-width:767px){.hero-scroll{display:none}}
+
+/* ---------- 마키 ---------- */
+.marquee{
+  position:relative;z-index:3;overflow:hidden;
+  background:var(--yel);color:var(--dark);
+  font-family:var(--disp);text-transform:uppercase;font-size:clamp(1.4rem,3vw,2.4rem);line-height:1;
+  padding:.65rem 0;
+  border-top:3px solid var(--dark);border-bottom:3px solid var(--dark);
+}
+.marquee-track{display:flex;width:max-content;gap:0;animation:marquee 22s linear infinite}
+.marquee-track span{display:inline-flex;align-items:center;gap:1.4rem;padding-right:1.4rem;white-space:nowrap}
+.marquee-track span i{font-style:normal;color:var(--mag);font-size:.6em}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.band-wrap{position:relative;z-index:3;overflow:hidden;background:var(--bg);padding:1.9rem 0 1.7rem;margin-top:-2.6rem}
+.marquee.tilt{transform:rotate(-1.6deg) scale(1.03);transform-origin:center}
+.marquee.mag{background:var(--mag);border-color:var(--dark)}
+.marquee.mag .marquee-track span i{color:var(--dark)}
+.marquee.mag .marquee-track{animation-direction:reverse;animation-duration:26s}
+.marquee.cyan{background:var(--cyan)}
+.marquee.cyan .marquee-track span i{color:var(--mag)}
+
+/* ---------- 리빌 (스크롤 등장) — 섹션 제목·라인업 벽·스테이지 카드·티켓 카드에만. 정보·FAQ·푸터는 즉시 표시(정적 구간) ---------- */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .5s var(--ease-snap),transform .55s var(--ease-snap);transition-delay:var(--d,0s)}
+.rv-l{transform:translateX(-48px)}
+.rv-r{transform:translateX(48px)}
+/* 좌우 슬라이드 리빌은 등장 전 화면 밖으로 삐져나오므로, 해당 섹션은 가로 방향만 clip (스크롤 컨테이너를 만들지 않음) */
+.sec{overflow-x:clip}
+.rv-sc{transform:scale(.94)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- 라인업 ---------- */
+.lineup{background:var(--bg-2);overflow:hidden}
+.legend{display:grid;gap:.5rem;font-family:var(--label);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+@media (min-width:1024px){.legend{justify-items:end;text-align:right}}
+.legend span{display:inline-flex;align-items:center;gap:.6rem}
+.legend span::before{content:"";width:12px;height:12px;background:var(--c);transform:skewX(-12deg)}
+.legend small{display:block;font-size:.8rem;letter-spacing:0;text-transform:none;font-weight:500;color:var(--ink-3);margin-top:.4rem;max-width:34ch}
+.wall{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.15em .55em;
+  font-family:var(--disp);text-transform:uppercase;line-height:1;letter-spacing:-.01em;
+  font-size:clamp(2rem,5.6vw,5rem);
+}
+.nm{
+  position:relative;display:inline-block;color:var(--ink);
+  transition:color var(--fast),transform var(--fast) var(--ease-snap);
+  padding:.06em 0;
+}
+.nm::after{content:"·";color:var(--ink-3);margin-left:.5em;font-size:.6em;vertical-align:.2em}
+.nm:last-child::after{content:none}
+.nm::before{
+  content:attr(data-st);position:absolute;left:0;bottom:calc(100% - .35rem);z-index:2;
+  font-family:var(--label);font-weight:900;font-size:clamp(.58rem,.16em,.74rem);letter-spacing:.18em;line-height:1;
+  color:var(--dark);background:var(--c);padding:.35em .6em;border-radius:var(--r);
+  opacity:0;transform:translateY(8px);transition:opacity var(--fast),transform var(--fast) var(--ease-snap);
+  white-space:nowrap;pointer-events:none;
+}
+.nm:hover,.nm:focus-visible{color:var(--c);transform:skewX(-8deg) translateX(.06em)}
+.nm:hover::before,.nm:focus-visible::before{opacity:1;transform:none}
+.nm.hl{font-size:1.5em;color:var(--ink)}
+.nm.hl:hover{color:var(--c)}
+.s1{--c:var(--mag)}
+.s2{--c:var(--cyan)}
+.s3{--c:var(--yel)}
+.wall-foot{margin-top:2.4rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;color:var(--ink-2);font-size:.92rem}
+.wall-foot a{color:var(--cyan);font-weight:700;border-bottom:1.5px solid currentColor}
+
+/* ---------- 스테이지 ---------- */
+.stages{background:var(--bg)}
+.stage-grid{display:grid;gap:1rem}
+@media (min-width:900px){
+  .stage-grid{grid-template-columns:1.15fr 1fr;grid-template-rows:auto auto}
+  .stage.big{grid-row:1 / span 2}
+}
+.stage{
+  position:relative;overflow:hidden;border-radius:var(--r);background:var(--bg-3);
+  min-height:480px;display:flex;flex-direction:column;justify-content:flex-end;
+  isolation:isolate;
+}
+.stage.big{min-height:560px}
+@media (min-width:900px){.stage.big{min-height:100%}}
+.stage-img{position:absolute;inset:0;z-index:0;background:var(--bg-3)}
+.stage-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.25) saturate(1.2) brightness(.75);transition:transform .7s var(--ease-out),filter .5s}
+.stage-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,28,.55) 0%,rgba(7,10,28,.15) 32%,rgba(7,10,28,.25) 55%,rgba(7,10,28,.92) 100%)}
+/* 스테이지 색을 이미지 위에 'color' 블렌드로 입혀 듀오톤처럼 — 색 = 무대 역할 */
+.stage-tint{position:absolute;inset:0;z-index:1;background:var(--c);mix-blend-mode:color;opacity:.55;transition:opacity .4s}
+.stage-num{
+  position:absolute;top:.4rem;left:1.1rem;z-index:2;
+  font-family:var(--disp);font-size:clamp(5rem,11vw,9rem);line-height:1;color:var(--c);
+  filter:drop-shadow(0 3px 0 rgba(7,10,28,.85));
+  transition:transform .4s var(--ease-snap),color .3s;
+}
+.stage:not(.big) .stage-num{font-size:clamp(4rem,8vw,6.5rem)}
+.stage-body{position:relative;z-index:2;padding:1.4rem;transition:background .3s,color .3s;background:transparent}
+.stage-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+/* 태그 = 단색 라벨 블록(테두리 칩 아님). 카드 전체가 링크이므로 태그 자체는 버튼처럼 보이지 않게 */
+.tag{font-family:var(--label);font-weight:800;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .5rem;background:var(--c);color:var(--dark);border-radius:var(--r);line-height:1;transition:background var(--fast),color var(--fast)}
+.stage:hover .stage-tags .tag,.stage:focus-within .stage-tags .tag{background:var(--dark);color:var(--c)}
+.stage-name{font-family:var(--disp);text-transform:uppercase;font-size:clamp(2.6rem,5vw,4.6rem);line-height:.9;letter-spacing:-.01em}
+.stage-name small{display:block;font-family:var(--body);font-weight:800;font-size:.32em;text-transform:none;letter-spacing:0;margin-top:.5rem;color:var(--c);transition:color .3s}
+.stage-desc{margin-top:.9rem;font-size:.95rem;line-height:1.55;color:var(--ink-2);max-width:48ch;transition:color .3s}
+.stage-meta{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-family:var(--label);font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);transition:color .3s}
+.stage-meta b{color:var(--ink);transition:color .3s}
+.stage:hover .stage-img img,.stage:focus-within .stage-img img{transform:scale(1.07);filter:contrast(1.25) saturate(1.5) brightness(.8)}
+.stage:hover .stage-tint{opacity:.8}
+.stage:hover .stage-num{transform:translate(6px,-4px) skewX(-6deg)}
+.stage:hover .stage-body,.stage:focus-within .stage-body{background:var(--c);color:var(--dark)}
+.stage:hover .stage-name small,.stage:hover .stage-desc,.stage:hover .stage-meta,.stage:hover .stage-meta b,
+.stage:focus-within .stage-name small,.stage:focus-within .stage-desc,.stage:focus-within .stage-meta,.stage:focus-within .stage-meta b{color:var(--dark)}
+.stage-link{position:absolute;inset:0;z-index:3;border-radius:var(--r)}
+.stage-link:focus-visible{outline-offset:-4px}
+
+/* ---------- 타임테이블 ---------- */
+.tt{background:var(--bg-2);overflow:hidden}
+/* 타임테이블 헤드: 제목 왼쪽 + 탭이 오른쪽 요소 */
+.tabs{display:flex;gap:.6rem;flex-wrap:wrap;align-items:flex-end}
+@media (min-width:1024px){.tabs{justify-content:flex-end}}
+.tab{
+  display:inline-flex;flex-direction:column;align-items:flex-start;gap:.15rem;
+  padding:.9rem 1.4rem .8rem;border:2px solid var(--line);border-radius:var(--r);min-width:180px;
+  font-family:var(--disp);text-transform:uppercase;font-size:1.7rem;line-height:1;color:var(--ink-2);
+  transition:background var(--fast),color var(--fast),border-color var(--fast),transform var(--fast) var(--ease-snap);
+}
+.tab small{font-family:var(--label);font-weight:700;font-size:.66rem;letter-spacing:.16em;color:var(--ink-3)}
+.tab:hover{color:var(--ink);border-color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--dark);border-color:var(--ink);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--mag)}
+.tab[aria-selected="true"] small{color:var(--dark);opacity:.7}
+.tab-note{flex-basis:100%;font-size:.8rem;color:var(--ink-3);font-weight:500}
+@media (min-width:1024px){.tab-note{text-align:right}}
+.panel[hidden]{display:none}
+.tt-grid{display:grid;gap:1rem;position:relative;z-index:1}
+@media (min-width:900px){.tt-grid{grid-template-columns:repeat(3,1fr)}}
+.tt-col{border-radius:var(--r);background:rgba(7,10,28,.6);overflow:hidden}
+.tt-col-h{
+  display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  padding:.9rem 1rem;background:var(--c);color:var(--dark);
+  font-family:var(--disp);text-transform:uppercase;font-size:1.5rem;line-height:1;
+}
+.tt-col-h small{font-family:var(--label);font-weight:800;font-size:.68rem;letter-spacing:.14em}
+.slot{
+  display:grid;grid-template-columns:5.2rem 1fr auto;align-items:center;gap:.8rem;
+  padding:.85rem 1rem;border-top:1px solid var(--line-2);position:relative;
+}
+.slot-t{font-family:var(--label);font-weight:700;font-size:.82rem;letter-spacing:.06em;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.slot-n{font-family:var(--disp);text-transform:uppercase;font-size:1.25rem;line-height:1;letter-spacing:.01em}
+.slot-n em{font-style:normal;font-family:var(--body);font-weight:600;font-size:.7rem;text-transform:none;letter-spacing:0;color:var(--ink-3);display:block;margin-top:.25rem}
+.slot .tag{font-size:.6rem;padding:.3rem .45rem;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent)}
+.slot.head{background:color-mix(in srgb,var(--c) 12%,transparent);border-left:4px solid var(--c)}
+.slot.head .slot-n{font-size:1.6rem;color:var(--c)}
+.slot.head .tag{background:var(--c);color:var(--dark)}
+.tt-foot{margin-top:1.4rem;display:grid;gap:.6rem;font-size:.88rem;color:var(--ink-2);position:relative;z-index:1}
+.tt-foot p::before{content:"—";margin-right:.5rem;color:var(--ink-3)}
+
+/* ---------- 티켓 ---------- */
+.tickets{background:var(--bg);overflow:hidden}
+/* 판매 오픈 카운트다운 — 8.20 12:00 KST 실제 계산, 지나면 "판매 중" */
+.cd{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:flex-end}
+@media (min-width:1024px){.cd{justify-content:flex-end}}
+.cd-l{flex-basis:100%;font-family:var(--label);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+@media (min-width:1024px){.cd-l{text-align:right}}
+.cd-u{display:grid;justify-items:start;gap:.15rem}
+.cd-n{font-family:var(--disp);font-size:clamp(2.6rem,5vw,4.2rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--yel);min-width:2ch}
+.cd-u small{font-size:.74rem;font-weight:600;color:var(--ink-3)}
+.cd-open{font-family:var(--disp);text-transform:uppercase;font-size:clamp(2rem,4vw,3.2rem);line-height:.9;color:var(--yel)}
+.tk-grid{display:grid;gap:1rem;position:relative;z-index:1}
+@media (min-width:900px){.tk-grid{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+/* 카드 경계는 2px 선 하나. 카드 자체는 링크가 아니므로 hover 없음(버튼만 반응) */
+.tk{
+  position:relative;display:flex;flex-direction:column;
+  border:2px solid var(--line);border-radius:var(--r);
+  padding:1.6rem 1.4rem 1.4rem;
+}
+.tk-best{border-color:var(--mag);box-shadow:6px 6px 0 var(--mag)}
+.tk-badge{
+  position:absolute;top:-1px;right:1.2rem;transform:translateY(-50%);
+  background:var(--mag);color:var(--dark);font-family:var(--label);font-weight:800;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.4rem .7rem;border-radius:var(--r);
+}
+.tk-badge.yel{background:var(--yel)}
+.tk-k{font-family:var(--label);font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c)}
+.tk-name{font-family:var(--disp);text-transform:uppercase;font-size:clamp(2.2rem,3.6vw,3rem);line-height:.95;margin-top:.5rem}
+.tk-name small{display:block;font-family:var(--body);font-weight:700;font-size:.34em;text-transform:none;color:var(--ink-2);margin-top:.35rem}
+.tk-price{margin-top:1.3rem;display:flex;align-items:baseline;flex-wrap:wrap;gap:.4rem .6rem}
+.tk-price .now{font-family:var(--disp);font-size:clamp(2.6rem,4.5vw,3.6rem);line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.tk-price .now b{font-family:var(--body);font-weight:800;font-size:.42em;margin-left:.1em}
+.tk-price .was{color:var(--ink-3);text-decoration:line-through;font-weight:600;font-size:.95rem}
+.tk-price .save{font-family:var(--label);font-weight:900;font-size:.68rem;letter-spacing:.12em;color:var(--dark);background:var(--yel);padding:.25rem .45rem;border-radius:var(--r)}
+.tk-sale{margin-top:.5rem;font-size:.82rem;color:var(--ink-2)}
+.tk-list{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line-2);display:grid;gap:.6rem;flex:1}
+/* 체크 아이콘 대신 무대 색 정사각 마커, 미포함 항목은 취소선 + 빈 마커 */
+.tk-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.93rem;color:var(--ink)}
+.tk-list li::before{content:"";width:9px;height:9px;flex:none;margin-top:.5rem;background:var(--c);transform:skewX(-12deg)}
+.tk-list li.off{color:var(--ink-3);text-decoration:line-through}
+.tk-list li.off::before{background:transparent;border:1.5px solid var(--ink-3)}
+.tk .btn{margin-top:1.4rem;width:100%}
+.tk-terms{margin-top:1.2rem;font-size:.86rem;color:var(--ink-2)}
+.tk-notes{margin-top:2.4rem;display:grid;gap:1rem;position:relative;z-index:1}
+@media (min-width:900px){.tk-notes{grid-template-columns:1fr 1fr}}
+.note-box{border:1px solid var(--line-2);border-radius:var(--r);padding:1.3rem 1.3rem 1.1rem}
+.note-box h3{font-family:var(--body);font-weight:800;font-size:1rem;letter-spacing:0;display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.note-box h3::before{content:"";width:10px;height:10px;background:var(--c,var(--cyan));transform:skewX(-12deg)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:.6rem .5rem;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:top}
+th{font-weight:700;color:var(--ink-2);font-size:.8rem}
+td{font-variant-numeric:tabular-nums}
+td b{font-weight:800}
+tr:last-child td{border-bottom:0}
+.tbl-wrap{overflow-x:auto}
+.note-box p{font-size:.84rem;color:var(--ink-2);margin-top:.8rem;line-height:1.55}
+
+/* ---------- 정적 정보 (Corporate accent) — 등장 모션 없음, 디스플레이 서체 대신 일반 제목, 2열 + 전폭 ---------- */
+.info{background:#0B0F2A;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.info-head{display:grid;gap:.8rem;margin-bottom:clamp(2rem,4vw,3rem);max-width:64ch}
+.info-title{font-family:var(--body);font-weight:800;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.2;letter-spacing:-.01em}
+.info-head p{color:var(--ink-2);font-size:1rem}
+.info-grid{display:grid;gap:2rem 2.5rem}
+@media (min-width:1024px){.info-grid{grid-template-columns:1.15fr 1fr}.info-block.wide{grid-column:1 / -1}}
+.info-block{border-top:3px solid var(--c);padding-top:1.1rem;display:flex;flex-direction:column;gap:1rem}
+.info-block h3{font-family:var(--body);font-weight:800;font-size:1.15rem}
+.info-block h4{font-weight:700;font-size:.9rem;color:var(--ink-2);margin-bottom:.5rem}
+.info-block .lead{font-size:.9rem;color:var(--ink-2);max-width:60ch}
+.kv{display:grid;gap:.55rem;font-size:.92rem}
+.kv li{display:grid;grid-template-columns:5.5rem 1fr;gap:.6rem;align-items:start;padding-bottom:.55rem;border-bottom:1px solid var(--line-2)}
+.kv li:last-child{border-bottom:0;padding-bottom:0}
+.kv li span:first-child{color:var(--ink-3);font-weight:600;font-size:.82rem;padding-top:.1rem}
+.kv li b{display:block;font-weight:800}
+.kv li p{color:var(--ink-2);font-size:.86rem;line-height:1.5}
+.map{
+  position:relative;border-radius:var(--r);overflow:hidden;background:#101540;
+  aspect-ratio:16/9;
+}
+.map svg{width:100%;height:100%;display:block}
+.ban-cols{display:grid;gap:1.4rem 2.5rem}
+@media (min-width:768px){.ban-cols{grid-template-columns:1.4fr 1fr}}
+.ban{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem}
+.ban li{display:flex;align-items:flex-start;gap:.55rem;font-size:.88rem;font-weight:600;padding:.45rem 0;border-bottom:1px solid var(--line-2)}
+.ban li::before{content:"";width:9px;height:9px;flex:none;margin-top:.5rem;background:var(--mag);transform:skewX(-12deg)}
+.ban li.ok::before{background:var(--cyan)}
+@media (max-width:480px){.ban{grid-template-columns:1fr}}
+.safe{display:grid;gap:.7rem}
+.safe li{display:grid;grid-template-columns:2.6rem 1fr;gap:.6rem;align-items:start;font-size:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--line-2)}
+.safe li:last-child{border-bottom:0;padding-bottom:0}
+.safe li i{font-style:normal;font-family:var(--disp);font-size:1.5rem;line-height:1;color:var(--yel)}
+.safe li b{display:block;font-weight:800;margin-bottom:.15rem}
+.safe li p{color:var(--ink-2);font-size:.86rem;line-height:1.5}
+.info-foot{margin-top:2rem;padding:1.1rem 1.3rem;border-radius:var(--r);background:rgba(255,230,0,.07);display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;align-items:center;font-size:.9rem}
+.info-foot strong{color:var(--yel)}
+.info-foot a{color:var(--cyan);font-weight:700;border-bottom:1.5px solid currentColor}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--bg-2)}
+.faq-list{display:grid;gap:0;border-top:2px solid var(--line)}
+.q{border-bottom:1px solid var(--line-2)}
+.q-btn{
+  width:100%;display:grid;grid-template-columns:3.2rem 1fr auto;align-items:center;gap:1rem;
+  padding:1.3rem 0;text-align:left;font-weight:700;font-size:1.05rem;line-height:1.4;
+  transition:color var(--fast);
+}
+.q-btn .n{font-family:var(--disp);font-size:1.6rem;color:var(--ink-3);line-height:1;transition:color var(--fast)}
+.q-btn:hover{color:var(--cyan)}
+.q-btn:hover .n{color:var(--cyan)}
+.q-btn[aria-expanded="true"]{color:var(--yel)}
+.q-btn[aria-expanded="true"] .n{color:var(--yel)}
+.q-ic{width:32px;height:32px;border:1.5px solid var(--line);border-radius:var(--r);display:grid;place-items:center;transition:transform .3s var(--ease-snap),background var(--fast),border-color var(--fast)}
+.q-ic svg{width:14px;height:14px}
+.q-btn[aria-expanded="true"] .q-ic{transform:rotate(45deg);background:var(--yel);border-color:var(--yel);color:var(--dark)}
+.q-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease-snap)}
+.q-panel>div{overflow:hidden}
+.q-panel.open{grid-template-rows:1fr}
+.q-body{padding:0 0 1.5rem 4.2rem;color:var(--ink-2);font-size:.95rem;line-height:1.7;max-width:70ch}
+.q-body a{color:var(--cyan);font-weight:700;border-bottom:1.5px solid currentColor}
+@media (max-width:600px){.q-btn{grid-template-columns:2.4rem 1fr auto;font-size:.98rem}.q-body{padding-left:0}}
+.faq-foot{margin-top:1.6rem;font-size:.9rem;color:var(--ink-2)}
+.faq-foot a{color:var(--cyan);font-weight:700;border-bottom:1.5px solid currentColor}
+
+/* ---------- 마지막 CTA — 그라데이션 밴드 대신 마젠타 단색 블록, 좌측 정렬, 큰 숫자(오픈 시각) ---------- */
+.final{background:var(--mag);color:var(--dark);overflow:hidden;padding-block:clamp(4rem,9vw,7.5rem);border-top:3px solid var(--dark)}
+.final-in{display:grid;gap:1.6rem}
+@media (min-width:1024px){.final-in{grid-template-columns:auto minmax(0,1fr);column-gap:3rem;align-items:end}}
+.final-title{font-family:var(--disp);text-transform:uppercase;font-size:clamp(4rem,14vw,14rem);line-height:.84;letter-spacing:-.02em;margin-left:-.03em}
+.final-title small{display:block;font-family:var(--body);font-weight:800;font-size:clamp(1rem,1.6vw,1.3rem);letter-spacing:0;text-transform:none;line-height:1.3;margin-bottom:.6rem}
+.final-body{display:grid;gap:1.4rem}
+@media (min-width:1024px){.final-body{justify-items:end;text-align:right;padding-bottom:.4em}}
+.final-body p{max-width:38ch;font-size:clamp(1rem,1.4vw,1.2rem);font-weight:600;line-height:1.5}
+.final-body .hero-cta{gap:.8rem}
+.final ::selection{background:var(--dark);color:var(--mag)}
+.final :focus-visible{outline-color:var(--dark)}
+
+/* ---------- 푸터 ---------- */
+.ftr{background:#04061A;border-top:1px solid var(--line-2);padding:clamp(3rem,6vw,5rem) 0 2rem;overflow:hidden}
+.ftr-big{font-family:var(--disp);text-transform:uppercase;font-size:clamp(3.6rem,15vw,15rem);line-height:.82;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(244,245,255,.35);white-space:nowrap;margin-bottom:2.5rem;user-select:none}
+.ftr-big span{color:var(--mag);-webkit-text-stroke:0}
+.ftr-grid{display:grid;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line-2)}
+@media (min-width:600px){.ftr-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1024px){.ftr-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.ftr h4{font-weight:700;font-size:.9rem;color:var(--ink);margin-bottom:.8rem}
+.ftr ul{display:grid;gap:.5rem;font-size:.9rem}
+.ftr a:hover{color:var(--cyan)}
+.ftr p{font-size:.88rem;color:var(--ink-2);line-height:1.6}
+.ftr-bot{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;justify-content:space-between;align-items:center;padding-top:1.4rem;font-size:.78rem;color:var(--ink-3)}
+.ftr-bot .sns{display:flex;gap:1.2rem;font-family:var(--label);font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.ftr-bot .sns a{color:var(--ink-2)}
+.ftr-bot .sns a:hover{color:var(--yel)}
+
+/* ---------- 모바일 하단 고정 CTA ---------- */
+.mcta{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;
+  padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+  background:rgba(7,10,28,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);
+  gap:.8rem;align-items:center;justify-content:space-between;
+}
+.mcta .p{font-family:var(--label);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.mcta .p b{display:block;font-family:var(--disp);font-size:1.3rem;letter-spacing:0;color:var(--ink)}
+@media (max-width:767px){
+  .mcta{display:flex}
+  body{padding-bottom:78px}
+  .hero-in{padding-bottom:6.8rem} /* 하단 고정 CTA(78px)에 히어로 버튼이 가리지 않도록 */
+  .tab{min-width:0;flex:1 1 140px;font-size:1.45rem}
+  .tab-note{margin-left:0;flex-basis:100%}
+}
+
+/* ---------- 모션 최소화 ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .hero-title .ln>span{transform:none;animation:none}
+  .hero-row{opacity:1;transform:none;animation:none}
+  .hero-bg img{transform:none;animation:none}
+  .marquee-track{animation:none;transform:none}
+  .rv{opacity:1;transform:none}
+  .hero-title .glitch{animation:none}
+}
+</style>
+</head>
+<body>
+
+<a class="sr-only" href="#main">본문으로 건너뛰기</a>
+
+<!-- ================= 헤더 ================= -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a href="#top" class="logo" aria-label="PULSE FEST 2026 홈">PULSE<span>FEST</span><em>’26</em></a>
+    <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="#lineup">라인업</a></li>
+        <li><a href="#stages">스테이지</a></li>
+        <li><a href="#timetable">타임테이블</a></li>
+        <li><a href="#tickets">티켓</a></li>
+        <li><a href="#info">오시는 길·안내</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-act">
+      <a href="#tickets" class="btn btn-mag btn-sm hdr-cta">티켓 구매</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-bg">
+    <img src="https://loremflickr.com/1800/1100/festival,crowd?lock=2610" alt="야간 페스티벌 메인 무대 앞, 조명 아래 손을 든 수만 명의 관객" width="1800" height="1100" fetchpriority="high">
+  </div>
+
+  <div class="wrap hero-in">
+    <p class="hero-meta">
+      <span style="--c:var(--mag)">2026.10.10 SAT — 10.11 SUN</span>
+      <span style="--c:var(--cyan)">인천 송도달빛축제공원</span>
+      <span style="--c:var(--yel)">12:00 — 23:00 · 만 19세 이상</span>
+    </p>
+    <h1 class="hero-title" id="hero-title">
+      <span class="ln"><span class="glitch">PULSE</span></span>
+      <span class="ln"><span class="o">FEST</span></span>
+      <span class="ln"><span>2026<span class="dot">.</span></span></span>
+    </h1>
+    <div class="hero-row">
+      <p class="hero-sub"><b>48팀</b>이 세 무대에서 낮 12시부터 밤 11시까지 멈추지 않는다. 10월 10일과 11일, 인천 송도.</p>
+      <div class="hero-cta">
+        <a href="#tickets" class="btn btn-mag">티켓 구매하기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#lineup" class="btn btn-ghost">라인업 보기</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<div class="band-wrap" aria-hidden="true">
+  <div class="marquee tilt">
+    <div class="marquee-track">
+      <span>2 Days <i>◆</i> 3 Stages <i>◆</i> 48 Artists <i>◆</i> 11 Hours a Day <i>◆</i> 10.10 – 10.11 <i>◆</i> Songdo, Incheon <i>◆</i></span>
+      <span>2 Days <i>◆</i> 3 Stages <i>◆</i> 48 Artists <i>◆</i> 11 Hours a Day <i>◆</i> 10.10 – 10.11 <i>◆</i> Songdo, Incheon <i>◆</i></span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 라인업 ================= -->
+<section class="sec lineup" id="lineup" aria-labelledby="lineup-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title rv rv-l" id="lineup-title"><span data-count="48">48</span>팀,<br><span class="o">한 번에</span></h2>
+      <div class="legend">
+        <span style="--c:var(--mag)">01 Pulse · 메인</span>
+        <span style="--c:var(--cyan)">02 Wave · 수변</span>
+        <span style="--c:var(--yel)">03 Volt · 텐트</span>
+        <small>이름에 커서를 올리면 그 팀이 서는 무대의 색과 날짜가 뜹니다. 큰 이름은 헤드라이너.</small>
+      </div>
+    </div>
+
+    <div class="wall rv" style="--d:.1s">
+      <a class="nm hl s1" href="#timetable" data-st="01 Pulse · Day 1 Headliner">Nova Kraft</a>
+      <a class="nm hl s1" href="#timetable" data-st="01 Pulse · Day 2 Headliner">Maxima</a>
+      <a class="nm hl s2" href="#timetable" data-st="02 Wave · Day 1 Closer">Lunar Drift</a>
+      <a class="nm hl s1" href="#timetable" data-st="01 Pulse · Day 2">Siren Volt</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 1">Kairos</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 1">Rin &amp; Tao</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 1">Void Walker</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 1">Halo 9</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 1">Orbital Kid</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 1">Tekken Lee</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 1">Glass Animus</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 1">Velvet Static</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 1">Dusk Parade</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 2">Mono Chroma</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 2">Midnight Union</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 2">Zero Gravity</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 1">Pyro Seoul</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 1">Sol/Aris</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 1">Helix</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 2">Neon Garden</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 2">Prism Cut</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 2">Dawn Patrol</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 2">Deep Current</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 1">Mirae</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 1">Subsonic</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 2">Blaze</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 2">Wavelength</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 1">Echo Tribe</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 1">Juno Park</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 2">Ultramarine</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 2">Raven</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 2 Opening">Aura Beat</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 2">Kokoro</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 1">Spark</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · Day 1 Opening">DJ Hyuna K</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 2">Anima</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 2">Circuit Boy</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · Day 1">Lo-Fi Kim</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · 9월 슬롯 공개">Motor City Kim</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 2 · Live">Bit Crush</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · 9월 슬롯 공개">Sakura Dub</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · 9월 슬롯 공개">Flux</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 2 Closer">Gravity Well</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · 9월 슬롯 공개">Pale Fire</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · 9월 슬롯 공개">Tide</a>
+      <a class="nm s1" href="#timetable" data-st="01 Pulse · 9월 슬롯 공개">Jaeho</a>
+      <a class="nm s3" href="#timetable" data-st="03 Volt · Day 2">Hana Haze</a>
+      <a class="nm s2" href="#timetable" data-st="02 Wave · 9월 슬롯 공개">Northern Light</a>
+    </div>
+
+    <div class="wall-foot">
+      <p>1차 라인업 48팀 확정, 41팀 시간 확정. 아직 시간이 없는 7팀(PULSE 3 · WAVE 4)은 9월 10일 타임테이블 2차 공개 때 추가 슬롯과 함께 발표합니다.</p>
+      <a href="#timetable">무대별 시간 보기 →</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee mag" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Pulse <i>01</i> Wave <i>02</i> Volt <i>03</i> Three Stages, One Weekend <i>◆</i> Pulse <i>01</i> Wave <i>02</i> Volt <i>03</i> Three Stages, One Weekend <i>◆</i></span>
+    <span>Pulse <i>01</i> Wave <i>02</i> Volt <i>03</i> Three Stages, One Weekend <i>◆</i> Pulse <i>01</i> Wave <i>02</i> Volt <i>03</i> Three Stages, One Weekend <i>◆</i></span>
+  </div>
+</div>
+
+<!-- ================= 스테이지 ================= -->
+<section class="sec stages" id="stages" aria-labelledby="stages-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title rv rv-l" id="stages-title">세 개의 무대,<br><span class="o">세 가지 색</span></h2>
+      <p class="sec-desc">색은 장식이 아니라 길잡이입니다. 손목밴드, 안내 표지, 타임테이블, 스태프 조끼까지 같은 색을 따라가면 무대에 닿습니다.</p>
+    </div>
+
+    <div class="stage-grid">
+      <article class="stage big rv rv-sc" style="--c:var(--mag)">
+        <div class="stage-img"><img src="https://loremflickr.com/1000/1300/concert,lights?lock=2611" alt="PULSE 메인 스테이지 — 밤하늘 아래 조명이 쏟아지는 대형 무대와 관객" width="1000" height="1300" loading="lazy"></div>
+        <div class="stage-tint" aria-hidden="true"></div>
+        <div class="stage-num" aria-hidden="true">01</div>
+        <div class="stage-body">
+          <div class="stage-tags"><span class="tag">Main</span><span class="tag">Techno · Big Room</span></div>
+          <h3 class="stage-name">Pulse<small>메인 스테이지 · 마젠타</small></h3>
+          <p class="stage-desc">폭 62m 메인 스크린과 180kW 라인어레이. 헤드라이너가 매일 밤 21시 15분부터 마지막 90분을 이 무대에서 끕니다. 페스티벌에서 가장 크고 가장 늦게 끝나는 무대.</p>
+          <div class="stage-meta"><span>수용 <b>18,000명</b></span><span>운영 <b>12:00 – 23:00</b></span><span>위치 <b>공원 중앙 잔디광장</b></span></div>
+        </div>
+        <a class="stage-link" href="#timetable" aria-label="PULSE 스테이지 타임테이블 보기"></a>
+      </article>
+
+      <article class="stage rv rv-r" style="--c:var(--cyan);--d:.08s">
+        <div class="stage-img"><img src="https://loremflickr.com/1200/800/festival,crowd?lock=2612" alt="WAVE 스테이지 — 해질녘 호숫가 야외 무대 앞 잔디에 앉거나 서 있는 관객" width="1200" height="800" loading="lazy"></div>
+        <div class="stage-tint" aria-hidden="true"></div>
+        <div class="stage-num" aria-hidden="true">02</div>
+        <div class="stage-body">
+          <div class="stage-tags"><span class="tag">House</span><span class="tag">Melodic Techno</span><span class="tag">Sunset 18:30</span></div>
+          <h3 class="stage-name">Wave<small>수변 스테이지 · 시안</small></h3>
+          <p class="stage-desc">호수를 등지고 서쪽을 향해 세운 무대. 해가 지는 18시 30분 슬롯이 이 무대의 하이라이트입니다. 하우스와 멜로딕 테크노가 이어지고, 잔디에 앉아서 듣는 사람도 많습니다.</p>
+          <div class="stage-meta"><span>수용 <b>8,000명</b></span><span>운영 <b>12:30 – 23:00</b></span><span>위치 <b>서측 호수 데크</b></span></div>
+        </div>
+        <a class="stage-link" href="#timetable" aria-label="WAVE 스테이지 타임테이블 보기"></a>
+      </article>
+
+      <article class="stage rv rv-r" style="--c:var(--yel);--d:.16s">
+        <div class="stage-img"><img src="https://loremflickr.com/1200/800/dj,stage?lock=2613" alt="VOLT 스테이지 — 텐트 안 DJ 부스와 레이저, 앞으로 밀집한 관객" width="1200" height="800" loading="lazy"></div>
+        <div class="stage-tint" aria-hidden="true"></div>
+        <div class="stage-num" aria-hidden="true">03</div>
+        <div class="stage-body">
+          <div class="stage-tags"><span class="tag">Bass · Drum &amp; Bass</span><span class="tag">Live Sets</span></div>
+          <h3 class="stage-name">Volt<small>텐트 스테이지 · 옐로</small></h3>
+          <p class="stage-desc">지붕이 있는 유일한 무대. 서브우퍼 24대가 바닥을 흔들고, 라이브 셋과 드럼앤베이스가 쉬지 않고 붙습니다. 비가 와도 이 무대는 멈추지 않습니다.</p>
+          <div class="stage-meta"><span>수용 <b>5,000명</b></span><span>운영 <b>12:30 – 23:00</b></span><span>위치 <b>동측 대형 텐트</b></span></div>
+        </div>
+        <a class="stage-link" href="#timetable" aria-label="VOLT 스테이지 타임테이블 보기"></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 타임테이블 ================= -->
+<section class="sec tt" id="timetable" aria-labelledby="tt-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title rv rv-l" id="tt-title">누가,<br><span class="o">언제, 어디서</span></h2>
+      <div class="tabs" role="tablist" aria-label="공연 날짜 선택">
+        <button class="tab" role="tab" id="tab-d1" aria-selected="true" aria-controls="panel-d1" tabindex="0">Day 1<small>10.10 SAT</small></button>
+        <button class="tab" role="tab" id="tab-d2" aria-selected="false" aria-controls="panel-d2" tabindex="-1">Day 2<small>10.11 SUN</small></button>
+        <span class="tab-note">1차 공개 · 2026.08.15 기준. 각 무대의 마지막 90분이 헤드라이너·클로저 슬롯입니다.</span>
+      </div>
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="panel rv" id="panel-d1" role="tabpanel" aria-labelledby="tab-d1">
+      <div class="tt-grid">
+        <div class="tt-col" style="--c:var(--mag)">
+          <div class="tt-col-h"><span>01 Pulse</span><small>Main · 12:00 –</small></div>
+          <div class="slot"><span class="slot-t">12:00</span><span class="slot-n">DJ Hyuna K<em>오프닝 셋 · 90분</em></span><span class="tag">Opening</span></div>
+          <div class="slot"><span class="slot-t">13:30</span><span class="slot-n">Juno Park</span></div>
+          <div class="slot"><span class="slot-t">15:00</span><span class="slot-n">Pyro Seoul</span></div>
+          <div class="slot"><span class="slot-t">16:30</span><span class="slot-n">Glass Animus<em>라이브 셋</em></span><span class="tag">Live</span></div>
+          <div class="slot"><span class="slot-t">18:00</span><span class="slot-n">Kairos</span></div>
+          <div class="slot"><span class="slot-t">19:30</span><span class="slot-n">Halo 9</span></div>
+          <div class="slot head"><span class="slot-t">21:15</span><span class="slot-n">Nova Kraft<em>90분 · 국내 첫 풀 셋</em></span><span class="tag">Headliner</span></div>
+          <div class="slot"><span class="slot-t">22:45</span><span class="slot-n">Close<em>퇴장 안내 · 셔틀 운행 시작</em></span></div>
+        </div>
+        <div class="tt-col" style="--c:var(--cyan)">
+          <div class="tt-col-h"><span>02 Wave</span><small>Lake · 12:30 –</small></div>
+          <div class="slot"><span class="slot-t">12:30</span><span class="slot-n">Lo-Fi Kim</span><span class="tag">Opening</span></div>
+          <div class="slot"><span class="slot-t">14:00</span><span class="slot-n">Mirae</span></div>
+          <div class="slot"><span class="slot-t">15:30</span><span class="slot-n">Sol/Aris</span></div>
+          <div class="slot"><span class="slot-t">17:00</span><span class="slot-n">Velvet Static</span></div>
+          <div class="slot"><span class="slot-t">18:30</span><span class="slot-n">Rin &amp; Tao<em>선셋 슬롯</em></span><span class="tag">Sunset</span></div>
+          <div class="slot"><span class="slot-t">20:00</span><span class="slot-n">Orbital Kid</span></div>
+          <div class="slot head"><span class="slot-t">21:30</span><span class="slot-n">Lunar Drift<em>90분 · 클로징</em></span><span class="tag">Closer</span></div>
+          <div class="slot"><span class="slot-t">23:00</span><span class="slot-n">Close</span></div>
+        </div>
+        <div class="tt-col" style="--c:var(--yel)">
+          <div class="tt-col-h"><span>03 Volt</span><small>Tent · 12:30 –</small></div>
+          <div class="slot"><span class="slot-t">12:30</span><span class="slot-n">Spark</span><span class="tag">Opening</span></div>
+          <div class="slot"><span class="slot-t">14:00</span><span class="slot-n">Subsonic</span></div>
+          <div class="slot"><span class="slot-t">15:30</span><span class="slot-n">Echo Tribe<em>라이브 밴드 셋</em></span><span class="tag">Live</span></div>
+          <div class="slot"><span class="slot-t">17:00</span><span class="slot-n">Helix</span></div>
+          <div class="slot"><span class="slot-t">18:30</span><span class="slot-n">Dusk Parade</span></div>
+          <div class="slot"><span class="slot-t">20:00</span><span class="slot-n">Tekken Lee</span></div>
+          <div class="slot head"><span class="slot-t">21:30</span><span class="slot-n">Void Walker<em>90분 · 클로징</em></span><span class="tag">Closer</span></div>
+          <div class="slot"><span class="slot-t">23:00</span><span class="slot-n">Close</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="panel" id="panel-d2" role="tabpanel" aria-labelledby="tab-d2" hidden>
+      <div class="tt-grid">
+        <div class="tt-col" style="--c:var(--mag)">
+          <div class="tt-col-h"><span>01 Pulse</span><small>Main · 12:00 –</small></div>
+          <div class="slot"><span class="slot-t">12:00</span><span class="slot-n">Aura Beat<em>오프닝 셋 · 90분</em></span><span class="tag">Opening</span></div>
+          <div class="slot"><span class="slot-t">13:30</span><span class="slot-n">Neon Garden</span></div>
+          <div class="slot"><span class="slot-t">15:00</span><span class="slot-n">Mono Chroma</span></div>
+          <div class="slot"><span class="slot-t">16:30</span><span class="slot-n">Deep Current</span></div>
+          <div class="slot"><span class="slot-t">18:00</span><span class="slot-n">Blaze<em>라이브 셋</em></span><span class="tag">Live</span></div>
+          <div class="slot"><span class="slot-t">19:30</span><span class="slot-n">Siren Volt<em>서브 헤드라이너 · 100분</em></span><span class="tag">Sub-Head</span></div>
+          <div class="slot head"><span class="slot-t">21:15</span><span class="slot-n">Maxima<em>90분 · 페스티벌 클로징</em></span><span class="tag">Headliner</span></div>
+          <div class="slot"><span class="slot-t">22:45</span><span class="slot-n">Close<em>퇴장 안내 · 셔틀 운행 시작</em></span></div>
+        </div>
+        <div class="tt-col" style="--c:var(--cyan)">
+          <div class="tt-col-h"><span>02 Wave</span><small>Lake · 12:30 –</small></div>
+          <div class="slot"><span class="slot-t">12:30</span><span class="slot-n">Kokoro</span><span class="tag">Opening</span></div>
+          <div class="slot"><span class="slot-t">14:00</span><span class="slot-n">Anima</span></div>
+          <div class="slot"><span class="slot-t">15:30</span><span class="slot-n">Ultramarine</span></div>
+          <div class="slot"><span class="slot-t">17:00</span><span class="slot-n">Wavelength</span></div>
+          <div class="slot"><span class="slot-t">18:30</span><span class="slot-n">Prism Cut<em>선셋 슬롯</em></span><span class="tag">Sunset</span></div>
+          <div class="slot"><span class="slot-t">20:00</span><span class="slot-n">Midnight Union</span></div>
+          <div class="slot head"><span class="slot-t">21:30</span><span class="slot-n">Orbital Kid b2b Rin &amp; Tao<em>90분 · 클로징 B2B</em></span><span class="tag">B2B</span></div>
+          <div class="slot"><span class="slot-t">23:00</span><span class="slot-n">Close</span></div>
+        </div>
+        <div class="tt-col" style="--c:var(--yel)">
+          <div class="tt-col-h"><span>03 Volt</span><small>Tent · 12:30 –</small></div>
+          <div class="slot"><span class="slot-t">12:30</span><span class="slot-n">Raven</span><span class="tag">Opening</span></div>
+          <div class="slot"><span class="slot-t">14:00</span><span class="slot-n">Zero Gravity</span></div>
+          <div class="slot"><span class="slot-t">15:30</span><span class="slot-n">Dawn Patrol<em>라이브 셋</em></span><span class="tag">Live</span></div>
+          <div class="slot"><span class="slot-t">17:00</span><span class="slot-n">Circuit Boy</span></div>
+          <div class="slot"><span class="slot-t">18:30</span><span class="slot-n">Bit Crush<em>하드웨어 라이브</em></span><span class="tag">Live</span></div>
+          <div class="slot"><span class="slot-t">20:00</span><span class="slot-n">Hana Haze</span></div>
+          <div class="slot head"><span class="slot-t">21:30</span><span class="slot-n">Gravity Well<em>90분 · 클로징</em></span><span class="tag">Closer</span></div>
+          <div class="slot"><span class="slot-t">23:00</span><span class="slot-n">Close</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tt-foot">
+      <p>게이트 오픈 11:00. 첫 공연 30분 전에 입장 대기열이 가장 깁니다. 여유 있게 오세요.</p>
+      <p>모든 시간은 현장 사정에 따라 최대 15분 조정될 수 있으며, 변경 시 앱 푸시와 무대 스크린으로 즉시 안내합니다.</p>
+      <p>아직 시간이 없는 7팀(PULSE 3 · WAVE 4)은 9월 10일 12:00 타임테이블 2차 공개 때 오프닝 앞 슬롯과 B2B 슬롯으로 추가됩니다. 게이트 오픈 시간은 바뀌지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee cyan" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Early Bird Open <i>◆</i> 1일권 99,000원부터 <i>◆</i> 2일권 189,000원 <i>◆</i> VIP 349,000원 <i>◆</i> 8.20 12:00 <i>◆</i></span>
+    <span>Early Bird Open <i>◆</i> 1일권 99,000원부터 <i>◆</i> 2일권 189,000원 <i>◆</i> VIP 349,000원 <i>◆</i> 8.20 12:00 <i>◆</i></span>
+  </div>
+</div>
+
+<!-- ================= 티켓 ================= -->
+<section class="sec tickets" id="tickets" aria-labelledby="tk-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title rv rv-l" id="tk-title">얼리버드,<br><span class="o">8.20 정오</span></h2>
+      <div class="cd" id="cd" role="timer" aria-live="off" aria-label="1차 얼리버드 오픈까지 남은 시간">
+        <span class="cd-l">1차 얼리버드 오픈까지</span>
+        <span class="cd-u"><span class="cd-n" data-cd="d">—</span><small>일</small></span>
+        <span class="cd-u"><span class="cd-n" data-cd="h">—</span><small>시간</small></span>
+        <span class="cd-u"><span class="cd-n" data-cd="m">—</span><small>분</small></span>
+        <span class="cd-u"><span class="cd-n" data-cd="s">—</span><small>초</small></span>
+      </div>
+    </div>
+
+    <div class="tk-grid">
+      <article class="tk rv" style="--c:var(--cyan)">
+        <span class="tk-k">Day Pass</span>
+        <h3 class="tk-name">1일권<small>Day 1 또는 Day 2 중 선택</small></h3>
+        <div class="tk-price"><span class="now">99,000<b>원</b></span><span class="was">129,000원</span><span class="save">-23%</span></div>
+        <p class="tk-sale">얼리버드 · 정가 129,000원 · 1인 최대 4매</p>
+        <ul class="tk-list">
+          <li>선택한 날짜 3개 스테이지 전체 입장</li>
+          <li>당일 손목밴드 · 재입장 무제한</li>
+          <li>센트럴파크역 ↔ 공원 무료 셔틀</li>
+          <li>귀마개 무료 배부 · 급수대 이용</li>
+          <li class="off">VIP 뷰잉 덱 · 전용 게이트</li>
+        </ul>
+        <a href="#" class="btn btn-ghost" data-buy="1일권">1일권 구매</a>
+      </article>
+
+      <article class="tk tk-best rv" style="--c:var(--mag);--d:.08s">
+        <span class="tk-badge">이틀 전부 · 추천</span>
+        <span class="tk-k">2-Day Pass</span>
+        <h3 class="tk-name">2일권<small>Day 1 + Day 2 · 이틀 모두</small></h3>
+        <div class="tk-price"><span class="now">189,000<b>원</b></span><span class="was">219,000원</span><span class="save">-14%</span></div>
+        <p class="tk-sale">얼리버드 · 정가 219,000원 · 1일권 2매보다 9,000원 저렴</p>
+        <ul class="tk-list">
+          <li>이틀 3개 스테이지 전체 입장</li>
+          <li>2일 손목밴드 1회 발급 · 재입장 무제한</li>
+          <li>무료 셔틀 · 귀마개 · 급수대</li>
+          <li>공식 굿즈 부스 우선 입장 (Day 1 11:00–12:00)</li>
+          <li class="off">VIP 뷰잉 덱 · 전용 게이트</li>
+        </ul>
+        <a href="#" class="btn btn-mag" data-buy="2일권">2일권 구매</a>
+      </article>
+
+      <article class="tk rv" style="--c:var(--yel);--d:.16s">
+        <span class="tk-badge yel">한정 1,500장</span>
+        <span class="tk-k">VIP 2-Day</span>
+        <h3 class="tk-name">VIP 2일권<small>Day 1 + Day 2 · 전용 구역</small></h3>
+        <div class="tk-price"><span class="now">349,000<b>원</b></span><span class="was">389,000원</span><span class="save">-10%</span></div>
+        <p class="tk-sale">얼리버드 · 정가 389,000원 · 1인 최대 2매</p>
+        <ul class="tk-list">
+          <li>2일권 혜택 전부 포함</li>
+          <li>PULSE 무대 정면 VIP 뷰잉 덱 (높이 1.2m)</li>
+          <li>전용 입장 게이트 · 전용 화장실 · 라운지</li>
+          <li>락커 1칸 (2일) · 웰컴 드링크 쿠폰 2매</li>
+          <li>한정 VIP 키트 (배지·타월·포스터)</li>
+        </ul>
+        <a href="#" class="btn btn-yel" data-buy="VIP 2일권">VIP 구매</a>
+      </article>
+    </div>
+
+    <p class="tk-terms">모든 가격은 부가세 포함, 예매 수수료 2,000원 별도. 1차 얼리버드는 8월 20일(목) 12:00 오픈, 수량 소진 시 종료됩니다.</p>
+
+    <div class="tk-notes">
+      <div class="note-box" style="--c:var(--cyan)">
+        <h3>판매 일정</h3>
+        <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>차수</th><th>오픈</th><th>1일권</th><th>2일권</th><th>VIP</th></tr></thead>
+          <tbody>
+            <tr><td><b>1차 얼리버드</b></td><td>8.20 (목) 12:00</td><td>99,000</td><td>189,000</td><td>349,000</td></tr>
+            <tr><td><b>2차 얼리버드</b></td><td>9.10 (목) 12:00</td><td>115,000</td><td>205,000</td><td>369,000</td></tr>
+            <tr><td><b>정가</b></td><td>9.24 (목) 12:00</td><td>129,000</td><td>219,000</td><td>389,000</td></tr>
+            <tr><td><b>현장 판매</b></td><td>당일 11:00 (잔여 시)</td><td>140,000</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>모든 차수는 수량 소진 시 조기 종료됩니다. 예매처: 펄스티켓·인터파크·YES24 (동일 가격). 만 19세 이상만 예매·입장 가능하며 입장 시 신분증을 확인합니다.</p>
+      </div>
+      <div class="note-box" style="--c:var(--yel)">
+        <h3>취소·환불 규정</h3>
+        <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>취소 시점</th><th>환불</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>예매 후 7일 이내</td><td><b>100%</b></td><td>수수료 포함 전액</td></tr>
+            <tr><td>공연 10일 전까지 (9.30)</td><td><b>90%</b></td><td>취소 수수료 10%</td></tr>
+            <tr><td>공연 3일 전까지 (10.7)</td><td><b>80%</b></td><td>취소 수수료 20%</td></tr>
+            <tr><td>공연 2일 전 ~ 당일</td><td><b>불가</b></td><td>양도는 예매처 안전거래만 허용</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>기상 악화(태풍·호우 경보) 등으로 주최 측이 공연을 취소·중단할 경우, 해당일 티켓은 수수료 포함 전액 환불하며 공지 후 14일 이내 예매 결제수단으로 자동 환급합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 정적 정보 구간 : 오시는 길 · 반입 금지 · 안전 안내 ================= -->
+<section class="sec info" id="info" aria-labelledby="info-title">
+  <div class="wrap">
+    <div class="info-head">
+      <h2 class="info-title" id="info-title">오시는 길, 반입 금지 물품, 안전 안내</h2>
+      <p>여기부터는 천천히 읽어 주세요. 게이트 앞에서 되돌아가는 일이 없도록 미리 알아 둘 것들입니다.</p>
+    </div>
+
+    <div class="info-grid">
+      <!-- 오시는 길 -->
+      <article class="info-block" style="--c:var(--cyan)">
+        <h3>오시는 길</h3>
+        <div class="map" role="img" aria-label="약도: 인천1호선 센트럴파크역 4번 출구에서 남서쪽으로 도보 12분, 셔틀 승강장은 4번 출구 앞, 행사장 게이트는 공원 북측">
+          <svg viewBox="0 0 640 360" aria-hidden="true">
+            <defs>
+              <pattern id="g" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0v32" fill="none" stroke="rgba(244,245,255,.06)"/></pattern>
+            </defs>
+            <rect width="640" height="360" fill="url(#g)"/>
+            <path d="M0 250 C120 240 200 300 330 260 S520 200 640 230 L640 360 L0 360Z" fill="rgba(25,230,255,.10)"/>
+            <path d="M0 250 C120 240 200 300 330 260 S520 200 640 230" fill="none" stroke="rgba(25,230,255,.55)" stroke-width="2"/>
+            <text x="470" y="320" fill="rgba(25,230,255,.7)" font-size="13" font-family="Pretendard, sans-serif" font-weight="700" letter-spacing="2">LAKE</text>
+            <path d="M0 96 H640" stroke="rgba(244,245,255,.35)" stroke-width="10" stroke-dasharray="26 10"/>
+            <text x="18" y="84" fill="rgba(244,245,255,.7)" font-size="12" font-family="Pretendard, sans-serif" font-weight="700" letter-spacing="2">INCHEON LINE 1</text>
+            <path d="M120 96 V150 H160 V190" fill="none" stroke="rgba(244,245,255,.5)" stroke-width="3"/>
+            <path d="M120 96 V150 H160 V190" fill="none" stroke="#FFE600" stroke-width="3" stroke-dasharray="6 6"/>
+            <circle cx="120" cy="96" r="12" fill="#070A1C" stroke="#19E6FF" stroke-width="4"/>
+            <text x="140" y="126" fill="#F4F5FF" font-size="13" font-family="Pretendard, sans-serif" font-weight="800">센트럴파크역 4번 출구</text>
+            <rect x="96" y="112" width="18" height="10" rx="2" fill="#FFE600"/>
+            <text x="20" y="150" fill="#FFE600" font-size="11" font-family="Pretendard, sans-serif" font-weight="700">셔틀 승강장</text>
+            <path d="M160 190 L250 190" fill="none" stroke="#FF2D95" stroke-width="3"/>
+            <rect x="250" y="120" width="330" height="140" rx="4" fill="rgba(255,45,149,.10)" stroke="#FF2D95" stroke-width="2"/>
+            <rect x="250" y="120" width="70" height="140" fill="rgba(255,45,149,.18)"/>
+            <text x="262" y="200" fill="#FF2D95" font-size="12" font-family="Pretendard, sans-serif" font-weight="900" letter-spacing="1" transform="rotate(-90 262 200)">GATE</text>
+            <text x="340" y="150" fill="#F4F5FF" font-size="16" font-family="Anton, Impact, sans-serif" letter-spacing="1">PULSE FEST 2026</text>
+            <text x="340" y="172" fill="rgba(244,245,255,.7)" font-size="12" font-family="Pretendard, sans-serif" font-weight="600">송도달빛축제공원 · 북측 게이트</text>
+            <circle cx="420" cy="215" r="14" fill="#FF2D95"/><text x="415" y="220" fill="#0A0A14" font-size="12" font-family="Pretendard, sans-serif" font-weight="900">01</text>
+            <circle cx="480" cy="235" r="12" fill="#19E6FF"/><text x="475" y="239" fill="#0A0A14" font-size="11" font-family="Pretendard, sans-serif" font-weight="900">02</text>
+            <circle cx="540" cy="205" r="12" fill="#FFE600"/><text x="535" y="209" fill="#0A0A14" font-size="11" font-family="Pretendard, sans-serif" font-weight="900">03</text>
+            <text x="596" y="335" fill="rgba(244,245,255,.5)" font-size="11" font-family="Pretendard, sans-serif" font-weight="700">N ↑</text>
+          </svg>
+        </div>
+        <ul class="kv">
+          <li><span>주소</span><span><b>인천광역시 연수구 센트럴로 350</b><p>송도달빛축제공원 (도로명 기준). 내비게이션에 "송도달빛축제공원 주차장" 검색.</p></span></li>
+          <li><span>지하철</span><span><b>인천1호선 센트럴파크역 4번 출구에서 도보 12분</b><p>4번 출구 앞에서 행사장 북측 게이트까지 안내 스태프와 바닥 표지를 따라오세요. 서울역에서 약 75분, 공항철도 환승 시 검암역 이용.</p></span></li>
+          <li><span>셔틀</span><span><b>센트럴파크역 4번 출구 – 북측 게이트 왕복, 10분 간격</b><p>운행 10:30–23:50 · 무료 · 손목밴드 또는 모바일 티켓 제시. 22:45 이후 퇴장 셔틀은 4대 동시 배차.</p></span></li>
+          <li><span>주차</span><span><b>공원 주차장 1,200면 · 1일 20,000원 (선결제)</b><p>주차권은 티켓과 별도로 9월 1일 오픈, 현장 판매 없음. 만차 대비 인근 공영주차장 3곳과 대중교통을 권장합니다. 음주 후 운전은 안 됩니다.</p></span></li>
+        </ul>
+      </article>
+
+      <!-- 안전 안내 -->
+      <article class="info-block" style="--c:var(--yel)">
+        <h3>안전 · 진행 안내</h3>
+        <ul class="safe">
+          <li><i>01</i><span><b>입장 절차</b><p>모바일 티켓 QR 스캔, 신분증 확인(만 19세), 가방 검사, 손목밴드 착용 순서입니다. 밴드는 훼손·분실 시 재발급되지 않으니 이틀간 풀지 마세요. 재입장은 밴드 스캔으로 무제한.</p></span></li>
+          <li><i>02</i><span><b>의료 부스 3곳 · 응급 대응</b><p>각 스테이지 좌측 후방에 의료 부스, 구급차 2대 상시 대기. 어지럼·탈수 증상은 참지 말고 노란 조끼 스태프에게 바로 말하세요. 응급 시 무전으로 3분 내 도착.</p></span></li>
+          <li><i>03</i><span><b>청력 보호</b><p>무대 앞 5m 구역은 105dB를 넘습니다. 입구와 각 무대 인포에서 폼 귀마개를 무료로 드립니다. 어린이 동반 불가(만 19세 이상 행사).</p></span></li>
+          <li><i>04</i><span><b>급수 · 폭염 대비</b><p>무료 급수대 6곳(각 무대 2곳), 쿨링 미스트존 2곳. 10월이지만 낮 최고 24℃ 예상. 물병을 들고 다니세요.</p></span></li>
+          <li><i>05</i><span><b>우천 시 진행</b><p>비가 와도 진행합니다(우비 지참). 낙뢰·강풍 시 무대를 일시 중단하고 스크린·앱으로 안내하며, 안전 확보 후 재개합니다. VOLT 텐트는 우천 대피처로도 개방.</p></span></li>
+          <li><i>06</i><span><b>분실물 · 일행 찾기</b><p>북측 게이트 옆 인포센터에서 분실물 접수·보관(행사 후 14일). 일행과 헤어졌을 땐 각 무대 번호 깃발 아래를 만남 장소로 정해 두세요.</p></span></li>
+          <li><i>07</i><span><b>퇴장 동선</b><p>22:45부터 PULSE 관객은 북측·서측 게이트로 분산 퇴장, 셔틀 4대 동시 배차. 스태프 지시에 따라 천천히 이동하고 뛰거나 밀지 마세요.</p></span></li>
+        </ul>
+      </article>
+
+      <!-- 반입 금지 (전폭) -->
+      <article class="info-block wide" style="--c:var(--mag)">
+        <h3>반입 금지 물품</h3>
+        <p class="lead">게이트에서 전 인원 가방 검사를 합니다. 아래 물품은 보관소에 맡길 수 없고 반입이 거부되니 처음부터 가져오지 마세요.</p>
+        <div class="ban-cols">
+          <div>
+            <h4>반입 불가</h4>
+            <ul class="ban">
+              <li>유리병·캔 음료</li>
+              <li>외부 주류 일체</li>
+              <li>탈부착 렌즈 카메라</li>
+              <li>드론·촬영용 짐벌</li>
+              <li>1m 초과 셀카봉·깃대</li>
+              <li>접이식 의자·대형 텐트</li>
+              <li>폭죽·연막·화기류</li>
+              <li>우산 (우비만 허용)</li>
+              <li>반려동물 (안내견 제외)</li>
+              <li>스케이트보드·킥보드</li>
+              <li>레이저 포인터</li>
+              <li>스프레이·페인트</li>
+            </ul>
+          </div>
+          <div>
+            <h4>반입 가능</h4>
+            <ul class="ban">
+              <li class="ok">빈 플라스틱 물병·텀블러 (급수대에서 채우세요)</li>
+              <li class="ok">500ml 이하 밀봉 생수 1병</li>
+              <li class="ok">보조배터리 · 스마트폰 카메라</li>
+              <li class="ok">돗자리 (2×2m 이하, WAVE 잔디 구역만)</li>
+              <li class="ok">개인 귀마개 · 선크림 · 우비</li>
+              <li class="ok">처방약 (처방전 지참)</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="info-foot">
+      <strong>운영 시간</strong>
+      <span>게이트 오픈 11:00 · 공연 12:00 – 23:00 · 최종 퇴장 23:30</span>
+      <span>문의 <a href="tel:1544-2026">1544-2026</a> (평일 10:00–18:00) · <a href="mailto:help@pulsefest.kr">help@pulsefest.kr</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title rv rv-l" id="faq-title">자주 묻는<br><span class="o">질문</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a1" id="q1"><span class="n">01</span><span>티켓은 어디서, 어떻게 받나요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a1" role="region" aria-labelledby="q1"><div><div class="q-body">종이 티켓은 없습니다. 예매처 앱의 모바일 티켓 QR을 게이트에서 스캔하면 손목밴드로 교환해 드립니다. 캡처 이미지는 스캔되지 않으니 앱에서 직접 열어 주세요. 예매자 본인 확인을 위해 신분증(주민등록증·운전면허증·여권·모바일 신분증)을 꼭 지참하세요.</div></div></div>
+      </div>
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a2" id="q2"><span class="n">02</span><span>재입장이 되나요? 밴드가 끊어지면요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a2" role="region" aria-labelledby="q2"><div><div class="q-body">손목밴드를 착용한 상태라면 이틀 내내 횟수 제한 없이 재입장할 수 있습니다. 밴드는 훼손·절단·분실 시 재발급이 불가하며 재입장도 거부되니, 2일권은 첫날 밤에도 풀지 말고 착용해 주세요. 샤워는 착용한 채로 가능합니다(방수 소재).</div></div></div>
+      </div>
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a3" id="q3"><span class="n">03</span><span>비가 오면 어떻게 되나요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a3" role="region" aria-labelledby="q3"><div><div class="q-body">우천 시에도 그대로 진행합니다. 우산은 뒷사람 시야와 안전 때문에 반입이 안 되고 우비만 허용됩니다(입구에서 3,000원 판매). 낙뢰·강풍 등 안전에 위협이 되는 기상 상황에서는 무대를 일시 중단하고, 태풍·호우 경보로 하루 전체가 취소될 경우 해당일 티켓은 수수료 포함 전액 환불합니다. <a href="#tickets">취소·환불 규정 보기</a></div></div></div>
+      </div>
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a4" id="q4"><span class="n">04</span><span>미성년자는 입장할 수 없나요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a4" role="region" aria-labelledby="q4"><div><div class="q-body">네. PULSE FEST는 만 19세 이상 성인(청소년보호법 기준, 2007년 12월 31일 이전 출생자)만 예매·입장할 수 있는 행사입니다. 보호자 동반 여부와 관계없이 미성년자는 입장할 수 없으며, 게이트에서 신분증 확인 후 나이가 확인되지 않으면 환불 없이 입장이 거부됩니다.</div></div></div>
+      </div>
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a5" id="q5"><span class="n">05</span><span>현장에서 음식과 음료를 살 수 있나요? 결제 수단은요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a5" role="region" aria-labelledby="q5"><div><div class="q-body">푸드트럭 28대와 바 6곳이 운영됩니다. 현금은 받지 않고 카드·삼성페이·애플페이·카카오페이만 가능합니다. 주류는 성인 확인 밴드 착용자에 한해 1인 1회 2잔까지 판매하고, 유리·캔 대신 리유저블 컵(보증금 1,000원, 반납 시 환급)에 제공됩니다. 급수대 6곳은 무료입니다.</div></div></div>
+      </div>
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a6" id="q6"><span class="n">06</span><span>짐은 어디에 맡기나요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a6" role="region" aria-labelledby="q6"><div><div class="q-body">북측 게이트 안쪽에 유료 락커 800칸(소 5,000원 · 대 8,000원, 1일)이 있으며 앱에서 사전 예약할 수 있습니다. VIP 2일권에는 락커 1칸이 포함되어 있습니다. 반입 금지 물품은 락커에도 보관할 수 없으니 처음부터 가져오지 마세요.</div></div></div>
+      </div>
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a7" id="q7"><span class="n">07</span><span>휠체어 이용자나 이동이 불편한 관객을 위한 구역이 있나요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a7" role="region" aria-labelledby="q7"><div><div class="q-body">세 무대 모두 정면 좌측에 접근성 플랫폼(휠체어 이용자 + 동반 1인)을 운영하고, 게이트에서 플랫폼까지 평탄한 전용 동선을 확보했습니다. 예매 후 help@pulsefest.kr로 미리 알려 주시면 전용 게이트 이용 안내와 주차 위치를 보내 드립니다. 안내견은 입장 가능합니다.</div></div></div>
+      </div>
+      <div class="q">
+        <h3><button class="q-btn" aria-expanded="false" aria-controls="a8" id="q8"><span class="n">08</span><span>티켓을 다른 사람에게 양도해도 되나요?</span><span class="q-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+        <div class="q-panel" id="a8" role="region" aria-labelledby="q8"><div><div class="q-body">예매처 앱의 "안전 양도" 기능을 통해서만 가능합니다(정가 이하, 1회). SNS·중고거래 플랫폼을 통한 개인 거래는 위·변조 티켓 피해가 잦아 보호해 드릴 수 없고, 동일 QR이 중복 스캔되면 최초 입장자만 인정됩니다.</div></div></div>
+      </div>
+    </div>
+    <p class="faq-foot">여기 없는 질문은 <a href="mailto:help@pulsefest.kr">help@pulsefest.kr</a>로 보내 주세요. 평일 기준 24시간 안에 답합니다.</p>
+  </div>
+</section>
+
+<!-- ================= 마지막 CTA ================= -->
+<section class="sec final" aria-labelledby="final-title">
+  <div class="wrap final-in">
+    <h2 class="final-title" id="final-title"><small>1차 얼리버드 오픈</small>8.20<br>12:00</h2>
+    <div class="final-body">
+      <p>1일권 99,000원, 2일권 189,000원, VIP 349,000원. 차수마다 수량이 정해져 있고, 다 팔리면 다음 차수 가격으로 넘어갑니다.</p>
+      <div class="hero-cta">
+        <a href="#tickets" class="btn btn-dark">티켓 구매하기</a>
+        <a href="#timetable" class="btn btn-line">타임테이블 다시 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= 푸터 ================= -->
+<footer class="ftr" id="footer">
+  <div class="wrap">
+    <div class="ftr-big" aria-hidden="true">Pulse <span>Fest</span> 2026</div>
+    <div class="ftr-grid">
+      <div>
+        <a href="#top" class="logo" aria-label="PULSE FEST 2026 홈">PULSE<span>FEST</span><em>’26</em></a>
+        <p style="margin-top:1rem">10월 10일과 11일, 인천 송도달빛축제공원. 세 무대에서 48팀이 낮 12시부터 밤 11시까지 이어지는 일렉트로닉 뮤직 페스티벌입니다.</p>
+      </div>
+      <div>
+        <h4>바로가기</h4>
+        <ul>
+          <li><a href="#lineup">라인업</a></li>
+          <li><a href="#stages">스테이지</a></li>
+          <li><a href="#timetable">타임테이블</a></li>
+          <li><a href="#tickets">티켓</a></li>
+          <li><a href="#info">오시는 길 · 안전 안내</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>고객센터</h4>
+        <ul>
+          <li><a href="tel:1544-2026">1544-2026</a></li>
+          <li>평일 10:00 – 18:00 (점심 12:30–13:30)</li>
+          <li><a href="mailto:help@pulsefest.kr">help@pulsefest.kr</a></li>
+          <li>행사 당일 인포센터 11:00 – 23:30</li>
+        </ul>
+      </div>
+      <div>
+        <h4>주최 · 주관</h4>
+        <ul>
+          <li>펄스 엔터테인먼트 주식회사</li>
+          <li>대표 김도윤 · 사업자등록번호 128-87-02614</li>
+          <li>통신판매업 신고 2026-인천연수-0412</li>
+          <li>인천광역시 연수구 컨벤시아대로 165, 12층</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-bot">
+      <span>© 2026 PULSE FEST · Pulse Entertainment Inc. All rights reserved.</span>
+      <span><a href="#">이용약관</a> · <a href="#">개인정보처리방침</a> · <a href="#">공연 관람 규정</a></span>
+      <span class="sns"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">X</a><a href="#">TikTok</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- 모바일 하단 고정 CTA -->
+<div class="mcta" aria-hidden="false">
+  <div class="p">1일권 얼리버드<b>99,000원~</b></div>
+  <a href="#tickets" class="btn btn-mag btn-sm">티켓 구매</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 헤더: 스크롤 시 진해지고 낮아짐 ---------- */
+  var hdr = document.getElementById('hdr');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    if (y > 24) hdr.classList.add('is-scrolled'); else hdr.classList.remove('is-scrolled');
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---------- 모바일 메뉴 ---------- */
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  function closeNav(){
+    nav.classList.remove('is-open');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','메뉴 열기');
+  }
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  });
+  nav.addEventListener('click', function(e){ if (e.target.tagName === 'A') closeNav(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeNav(); });
+  window.addEventListener('resize', function(){ if (window.innerWidth > 860) closeNav(); });
+
+  /* ---------- 얼리버드 오픈 카운트다운 (2026-08-20 12:00 KST, 지나면 "판매 중") ---------- */
+  var cd = document.getElementById('cd');
+  if (cd){
+    var cdTarget = new Date('2026-08-20T12:00:00+09:00').getTime();
+    var cdEl = {};
+    Array.prototype.slice.call(cd.querySelectorAll('[data-cd]')).forEach(function(el){ cdEl[el.getAttribute('data-cd')] = el; });
+    function pad2(n){ return (n < 10 ? '0' : '') + n; }
+    function cdTick(){
+      var diff = cdTarget - Date.now();
+      if (diff <= 0){
+        cd.innerHTML = '<span class="cd-l">1차 얼리버드</span><span class="cd-open">판매 중 · 수량 소진 시 종료</span>';
+        return;
+      }
+      var s = Math.floor(diff / 1000);
+      cdEl.d.textContent = Math.floor(s / 86400);
+      cdEl.h.textContent = pad2(Math.floor(s % 86400 / 3600));
+      cdEl.m.textContent = pad2(Math.floor(s % 3600 / 60));
+      cdEl.s.textContent = pad2(s % 60);
+      window.setTimeout(cdTick, 1000 - (Date.now() % 1000));
+    }
+    cdTick();
+  }
+
+  /* ---------- 스크롤 리빌 ---------- */
+  var rvEls = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:.12});
+    rvEls.forEach(function(el){ io.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 카운트업 ---------- */
+  var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  function fmt(n, suffix){ return n.toLocaleString('ko-KR') + (suffix || ''); }
+  function runCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (reduce){ el.textContent = fmt(target, suffix); return; }
+    var dur = 1300, start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * eased), suffix);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = fmt(target, suffix);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ runCount(en.target); cio.unobserve(en.target); }
+      });
+    }, {threshold:.5});
+    counters.forEach(function(el){ cio.observe(el); });
+  } else {
+    counters.forEach(runCount);
+  }
+
+  /* ---------- 타임테이블 탭 (Day1 / Day2) ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab[role="tab"]'));
+  function activate(tab, focus){
+    tabs.forEach(function(t){
+      var sel = t === tab;
+      t.setAttribute('aria-selected', sel ? 'true' : 'false');
+      t.setAttribute('tabindex', sel ? '0' : '-1');
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (!panel) return;
+      if (sel){
+        panel.hidden = false;
+        if (!reduce){
+          panel.classList.remove('in');
+          panel.classList.add('rv');
+          void panel.offsetWidth; // 리플로우 후 재등장
+          panel.classList.add('in');
+        }
+      } else {
+        panel.hidden = true;
+      }
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ activate(t, false); });
+    t.addEventListener('keydown', function(e){
+      var n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') n = tabs[0];
+      else if (e.key === 'End') n = tabs[tabs.length - 1];
+      if (n){ e.preventDefault(); activate(n, true); }
+    });
+  });
+
+  /* ---------- FAQ 아코디언 ---------- */
+  var qBtns = Array.prototype.slice.call(document.querySelectorAll('.q-btn'));
+  qBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      // 하나만 열기
+      qBtns.forEach(function(b){
+        if (b !== btn){
+          b.setAttribute('aria-expanded','false');
+          var p = document.getElementById(b.getAttribute('aria-controls'));
+          if (p) p.classList.remove('open');
+        }
+      });
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      if (panel) panel.classList.toggle('open', !open);
+    });
+  });
+
+  /* ---------- 티켓 구매 버튼 (예매처 이동 대신 데모 안내) ---------- */
+  var buyBtns = Array.prototype.slice.call(document.querySelectorAll('[data-buy]'));
+  buyBtns.forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.preventDefault();
+      var name = b.getAttribute('data-buy');
+      var orig = b.textContent;
+      b.textContent = name + ' · 8.20 12:00 오픈';
+      b.setAttribute('aria-live','polite');
+      window.setTimeout(function(){ b.textContent = orig; }, 1800);
+    });
+  });
+
+  /* ---------- 마키: 트랙 폭이 화면보다 좁으면 복제해서 끊김 방지 ---------- */
+  Array.prototype.slice.call(document.querySelectorAll('.marquee-track')).forEach(function(track){
+    var w = track.scrollWidth, vw = window.innerWidth, guard = 0;
+    while (w < vw * 2 && guard < 4){
+      Array.prototype.slice.call(track.children).slice(0, 2).forEach(function(c){ track.appendChild(c.cloneNode(true)); });
+      w = track.scrollWidth; guard++;
+    }
+  });
+})();
+</script>
+</body>
+</html>

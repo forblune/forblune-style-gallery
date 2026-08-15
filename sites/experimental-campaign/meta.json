@@ -1,0 +1,51 @@
+{
+  "slug": "experimental-campaign",
+  "brand": "물의 기억 — 담수(淡水) 캠페인",
+  "industry": "생수 브랜드 캠페인 마이크로사이트",
+  "primaryStyle": "Experimental",
+  "productType": "Campaign Microsite",
+  "tone": "Poetic · Bold · Immersive",
+  "secondary": "Editorial",
+  "accent": "Cinematic",
+  "coreMessage": "스크롤 한 번이 물 한 방울의 여정이 되어, 이 물이 어디서 왔는지를 몸으로 느끼게 한다",
+  "naming": "Experimental / Campaign Microsite / Poetic · Bold · Immersive",
+  "palette": {
+    "bg-start": "#04122b",
+    "bg-soil": "#06234f",
+    "bg-rock": "#0b3a5c",
+    "bg-spring": "#0e6f7f",
+    "bg-bottle": "#128e9c",
+    "bg-end": "#19a8b5",
+    "ink": "#ffffff",
+    "neon": "#5cf6ff",
+    "navy-panel": "#071a33",
+    "note": "배경은 스크롤 진행률에 따라 아주 짙은 블루에서 밝은 청록으로 JS 보간. 형광 시안은 리드아웃·CTA·선 요소에만 소량."
+  },
+  "sections": [
+    "인트로 오버레이 (2.6초 자동 종료 · 건너뛰기 버튼 · 키/휠로 스킵)",
+    "고정 헤더 (깊이·경과시간·챕터 리드아웃, 스크롤 시 반투명 남색 배경) + 상단 진행 바 + 우측 챕터 레일",
+    "스크롤텔링 01 빗방울 — 낙하·파문 SVG, 타이포 확대, 배경 #04122b",
+    "스크롤텔링 02 지하 — 지층 패럴랙스·뿌리 드로잉·침투 궤적",
+    "스크롤텔링 03 암반 — 균열 스트로크 드로잉, 42년 카운터, 미네랄 점등",
+    "스크롤텔링 04 샘 — 기포 상승·용출 파문·빛줄기",
+    "스크롤텔링 05 병 — 병 아웃라인 드로잉·물 채움·라벨 등장",
+    "수원지 기록 (Editorial 비대칭 그리드 · Cinematic 흑백 사진 · 관리인 인용)",
+    "핵심 정보 블록 (캠페인 기간 · 참여 방법 4단계 · 판매처 · 제품/가격 · 수원지 스펙 8항목 · 유의사항)",
+    "참여 CTA (참여하기 모달 · 판매처 보기 · 발급 현황 · 기금 게이지)",
+    "크레딧 + 푸터 (사업자 정보 · 고객센터 · 정책 링크)"
+  ],
+  "interactions": [
+    "스크롤 이벤트 + rAF로 챕터별 --p(0~1) 계산 → 배경색 보간, 타이포 크기, SVG 변형(transform·dashoffset·clip) 연동",
+    "IntersectionObserver로 활성 챕터(레일·aria-current) 및 섹션 리빌",
+    "헤더 리드아웃: 깊이(+1,200 m → −240 m → 0 m)·경과 시간(0일 → 42년)·챕터 번호 실시간 갱신",
+    "포인터 위치 기반 SVG 패럴랙스 (pointer: fine 환경, 모션 허용 시)",
+    "인트로 오버레이: 3초 이내 자동 종료, 건너뛰기 버튼·Esc/Enter/휠/터치로 스킵",
+    "참여 모달: 코드 자동 포맷(DS-0000-0000)·유효성 검사·동의 체크·포커스 트랩·Esc 닫기·결정적 여정 카드 생성",
+    "우측 레일 클릭 시 해당 챕터 스티키 구간으로 스크롤",
+    "기금 게이지: 노출 시 38.4 %까지 채움",
+    "prefers-reduced-motion: 인트로 제거·스티키 해제·챕터별 정적 배경·--p 고정·애니메이션 제거",
+    "스킵 링크 2종(본문·핵심 정보) · 헤더 CTA 이동 후 참여 버튼 포커스",
+    "noscript 폴백: 인트로·진행 바·레일 숨김, 스크롤 잠금 해제, 챕터 정적 배경으로 전 내용 열람 가능"
+  ],
+  "path": "sites/experimental-campaign/index.html"
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "editorial-perfume",
+  "brand": "무향 MUHYANG",
+  "industry": "니치 향수 브랜드",
+  "primaryStyle": "Editorial",
+  "productType": "Commerce",
+  "tone": "Soft · Quiet · Curated",
+  "secondary": "Commerce",
+  "accent": "Product",
+  "coreMessage": "향을 팔기 전에 이 브랜드가 어떤 취향으로 냄새를 고르는지 먼저 느끼게 한다",
+  "naming": "Editorial / Commerce / Soft · Quiet · Curated",
+  "palette": {
+    "background": "#F4F1EC",
+    "backgroundSoft": "#EDE8E0",
+    "backgroundDeep": "#E4DDD2",
+    "ink": "#2B2A28",
+    "ink2": "#5E5A54",
+    "ink3": "#8A857D",
+    "line": "#DAD3C8",
+    "apricot": "#E9CDB9",
+    "apricotDeep": "#CFA88E",
+    "sand": "#D6C8B2",
+    "imageFilter": "saturate(.75) contrast(.95)"
+  },
+  "sections": [
+    "얇은 헤더(Shop · New · Editorial · About, 단색 배경, 스크롤 시 축소 고정, 장바구니 카운트)",
+    "화보형 Hero — 4:5 대형 컷 + 한 문장 + 컬렉션 보기 + 리넨 질감 보조 컷",
+    "이번 시즌 노트 — 우디 / 시트러스 / 머스크 무드 탭(이미지·문장·Top/Heart/Base 노트·지속 시간)",
+    "큐레이션 상품 그리드 — 6종(이름·노트·가격·용량·재고, 호버 시 다른 컷, 작은 New 배지, 무드 필터, 사진 클릭 시 해당 계열 노트로 이동)",
+    "에디토리얼 — 「향을 고르는 기준」 짧은 글 + 원칙 4개 + 비대칭 이미지 3장 + 인용",
+    "디스커버리 세트 — 여섯 병 전부 / 세 병 골라 담기 선택 UI + 차감 정책",
+    "브랜드 노트 — 이름의 뜻, 시작·연간 출시·리필·쇼룸·시향을 표 형태로",
+    "푸터 — 뉴스레터(새 셀렉션 소식), 둘러보기 링크, 쇼룸·연락처, 사업자 정보"
+  ],
+  "interactions": [
+    "스크롤 시 헤더 축소·하단선 표시",
+    "모바일 햄버거 메뉴(aria-expanded, Esc 닫기)",
+    "무드 탭 전환(role=tablist, 방향키 이동)",
+    "상품 무드 필터(전체/우디/시트러스/머스크, 개수 표시, 시즌 노트 링크와 연동)",
+    "상품 사진 클릭 → 시즌 노트 섹션의 해당 계열 탭 활성화",
+    "상품 카드 호버 시 다른 컷으로 크로스페이드",
+    "장바구니 담기 → 헤더 카운트 증가 + 토스트",
+    "디스커버리 세트 구성 선택(전체 / 3병 골라 담기, 선택 수 제한·요약 갱신)",
+    "뉴스레터 폼 유효성 검사(이메일·수신 동의) 및 상태 메시지",
+    "IntersectionObserver 기반 느린 페이드 — 에디토리얼·디스커버리·브랜드의 큰 사진 5장에만(prefers-reduced-motion 시 비활성)"
+  ],
+  "images": "loremflickr 키워드(perfume,bottle / fragrance,glass / linen,texture 외 장면별 키워드) + 고유 lock, saturate(.75) 필터",
+  "path": "sites/editorial-perfume/index.html"
+}

@@ -1,0 +1,59 @@
+{
+  "slug": "commerce-grocery",
+  "brand": "새벽밭",
+  "industry": "산지직송 식료품 온라인 마켓",
+  "primaryStyle": "Commerce",
+  "productType": "Storefront",
+  "tone": "Fresh · Clear · Trustworthy",
+  "secondary": "Editorial",
+  "accent": "Product",
+  "coreMessage": "오늘 뭘 사면 좋은지 빠르게 찾고, 산지·배송을 믿고 담게 한다",
+  "naming": "Commerce / Storefront / Fresh · Clear · Trustworthy",
+  "palette": {
+    "background": "#ffffff",
+    "surface": "#f5f7f5",
+    "brand": "#1e8a4a",
+    "brandDark": "#166b39",
+    "accentSale": "#e85d10",
+    "ink": "#171b18",
+    "muted": "#727d76",
+    "line": "#e5e9e6",
+    "star": "#f2a516",
+    "editorialTint": "#fbfaf6"
+  },
+  "sections": [
+    "혜택 안내 바 (3만원 이상 무료배송 · 오후 2시 마감 · 첫 주문 쿠폰)",
+    "헤더 (로고 · 큰 검색창 + 인기 검색어 · 카테고리 내비 + 전체 카테고리 패널 · 찜/장바구니 배지)",
+    "Hero 기획전 슬라이더 3장 (주제 일치 사진 · 좌측 정렬 카피) + 새벽배송 주문 마감·첫 주문 혜택 카드",
+    "카테고리 바로가기 8개 (원형 사진 썸네일 + 라벨)",
+    "오늘의 특가 4개 (할인율 · 할인 전후 가격 · 단위가 · 마감 시각 사실형 표기 · 준비 수량 대비 남은 수량)",
+    "이번 주 베스트 8개 그리드 (순위 · 산지 · 이름 · 가격 · 별점 · 리뷰수 · 재구매율 · 배송 라벨 · 찜 · 담기 · 카테고리 필터)",
+    "밭에서 온 이야기 — 농부·어민 2인, 인용문 + 사실 항목 (Editorial 20%)",
+    "배송·신선 보장 — 약속 5항목 표(수확→포장 · 마감·도착 · 권역 · 수산·정육 · 신선 보장) + 주문 상세 배송 조회 화면 (Product 10%)",
+    "리뷰 하이라이트 (평점 요약 · 최근 30일 리뷰/사진 리뷰 수 · 재구매율 · 사진 리뷰 4개 · 마스킹 이름·날짜·구매 횟수, 아바타 없음)",
+    "푸터 (고객센터 · 회사 · 이용 안내 · 정책 · 사업자 정보 · 에스크로/ISMS 텍스트)",
+    "모바일 하단 고정 장바구니 바 · 장바구니 드로어 · 토스트"
+  ],
+  "interactions": [
+    "Hero 슬라이더: 자동 재생(5초)·일시정지 토글·이전/다음·도트·키보드 화살표·스와이프, hover/focus 시 정지, reduced-motion 시 자동재생 없음",
+    "장바구니: 담기 → 배지·하단 바·드로어 동기화, 수량 증감·삭제, 무료배송 잔여 금액 미터, 결제 예정 금액 계산, 포커스 트랩·ESC 닫기",
+    "찜 토글(aria-pressed) + 헤더 찜 배지",
+    "검색: 큰 검색창 + 인기 검색어 팝오버, 검색어로 베스트 그리드 필터 및 스크롤 이동",
+    "베스트 카테고리 필터 칩 + 결과 수 상태 + 빈 결과 안내 + 초기화",
+    "전체 카테고리 드롭다운 패널(aria-expanded), 외부 클릭/ESC 닫기",
+    "헤더 sticky + 스크롤 시 그림자·검색창 축소",
+    "현재 섹션 내비 하이라이트(IntersectionObserver)",
+    "주문 마감 시각·특가 마감 표기 실시간 갱신(사실형, 분 단위 카운트다운 없음)",
+    "이미지 지연 로드 페이드 인 + 실패 시 배경색 유지",
+    "토스트 알림(담기·찜·주문)",
+    "배송 조회 화면의 '배송 문의'·'신선 보장 신청' 버튼 → 안내 토스트 (버튼처럼 보이는 요소는 모두 동작)"
+  ],
+  "path": "sites/commerce-grocery/index.html",
+  "images": "loremflickr 키워드 이미지 41개 (peach,fruit / abalone,seafood / vegetables,market / eggs,basket / farmer,orchard / fisherman,sea 등, lock 고유), picsum 0",
+  "radius": "사각 8px 단일 + 원형 요소만 999px",
+  "fonts": "Pretendard 단일 (CDN CSS) + 시스템 폴백",
+  "audit": {
+    "date": "2026-08-16",
+    "aiTells": "§8 16항목 점검 — 위반 0, 미세 수정(리뷰 요약 3-통계 리듬 완화, 특가 재고 사실 표기 추가, 히어로 dot aria-selected, 검색 팝오버 h3→p, 미참조 aria-describedby 제거, 토스트 문구)"
+  }
+}

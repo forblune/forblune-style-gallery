@@ -1,0 +1,58 @@
+{
+  "slug": "editorial-select",
+  "brand": "고요 GOYO",
+  "industry": "문구·리빙 편집숍",
+  "primaryStyle": "Editorial",
+  "productType": "Commerce",
+  "tone": "Curated · Neutral · Calm",
+  "secondary": "Commerce",
+  "accent": "Product",
+  "coreMessage": "많이 파는 곳이 아니라 천천히 고른 것만 두는 곳이라는 인상을 만든다",
+  "naming": "Editorial / Commerce / Curated · Neutral · Calm",
+  "palette": {
+    "background": "#F4F1EC",
+    "backgroundSoft": "#EDE8E1",
+    "backgroundDeep": "#E4DED5",
+    "line": "#D9D2C8",
+    "ink": "#2A2825",
+    "ink2": "#57524B",
+    "muted": "#6F685F",
+    "brown": "#8B6E52",
+    "brownSoft": "#B39A82",
+    "paper": "#FBF9F5"
+  },
+  "typography": {
+    "heading": "Noto Serif KR 300/400 (Google Fonts)",
+    "body": "Pretendard 400/500 (jsDelivr CDN) + system fallback"
+  },
+  "sections": [
+    "얇은 헤더 (Shop · New · Editorial · About, 스크롤 시 축소·고정)",
+    "Hero — 큰 정물 이미지(좌측 텍스트·우측 이미지) + “천천히 고른 것들.” + 제안형 CTA 하나",
+    "이번 주 셀렉션 (4점, 큐레이터 노트·호버 시 다른 컷)",
+    "카테고리 무드 블록 — 문구 / 리빙 / 책 (비정형 12열 배치 + 인용문)",
+    "상품 그리드 (8점: 이름·제작자·가격, 카테고리 필터)",
+    "Editorial — ‘고르는 기준’ 인터뷰 (Q&A 5개, 풀쿼트, 원칙 5가지)",
+    "매장 안내 (주소·영업시간·오시는 길·SVG 약도·오늘 영업 상태)",
+    "푸터 (새 셀렉션 소식 뉴스레터, 링크, 사업자 정보, 브랜드 문장)",
+    "장바구니 드로어 (Product 액센트 — 수량 조절·배송비 계산)"
+  ],
+  "interactions": [
+    "헤더 스크롤 시 높이 축소 + 불투명 배경 고정",
+    "모바일 햄버거 메뉴 토글 (aria-expanded, Esc 닫기)",
+    "내비 aria-current 자동 표시 (IntersectionObserver)",
+    "스크롤 리빌 — 이미지 블록(셀렉션 4점·무드 3장·인터뷰 사진·매장 사진)에만 느린 페이드 (prefers-reduced-motion 시 비활성)",
+    "상품 카드 호버 시 다른 컷으로 크로스페이드",
+    "카테고리 필터 (전체·문구·리빙·책, 무드 블록·푸터 링크에서도 적용)",
+    "장바구니 담기 → 카운트 배지·토스트, 드로어에서 수량 ±·빼기·소계·배송비(5만원 이상 무료) 계산",
+    "드로어 포커스 트랩·Esc/스크림 클릭 닫기",
+    "뉴스레터 이메일 유효성 검사 후 안내 문구",
+    "매장 영업 상태 — 현재 요일·시간 기준 자동 표시, 오늘 요일 행 강조"
+  ],
+  "path": "sites/editorial-select/index.html",
+  "images": "loremflickr 키워드 이미지 (stationery,notebook / ceramic,cup / bookshelf,minimal 등, lock 고유), 저채도 필터",
+  "audit": {
+    "date": "2026-08-15",
+    "picsumReplaced": 43,
+    "notes": "eyebrow 대문자 라벨 제거·섹션 헤드 형태 다양화, 히어로 CTA 1개, 화살표 2곳, reveal 이미지 한정, 헤더 blur 제거, 상태 dot→정사각 마커, 무드 이미지 hover는 링크에만"
+  }
+}

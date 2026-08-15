@@ -1,0 +1,59 @@
+{
+  "slug": "kinetic-festival",
+  "brand": "PULSE FEST 2026",
+  "industry": "일렉트로닉 뮤직 페스티벌",
+  "primaryStyle": "Kinetic",
+  "productType": "Event Landing",
+  "tone": "Bold · Energetic · Colorful",
+  "secondary": "Experimental",
+  "accent": "Corporate",
+  "coreMessage": "이틀 동안 얼마나 크고 빠른 무대가 펼쳐지는지 즉시 느끼게 하고 티켓으로 보낸다",
+  "naming": "Kinetic / Event Landing / Bold · Energetic · Colorful",
+  "palette": {
+    "background": "#070A1C",
+    "backgroundAlt": "#0D1130",
+    "ink": "#F4F5FF",
+    "magenta": "#FF2D95 — 01 PULSE 스테이지 · 핵심 CTA · 최종 CTA 블록",
+    "cyan": "#19E6FF — 02 WAVE 스테이지 · 정보 링크",
+    "yellow": "#FFE600 — 03 VOLT 스테이지 · 강조 · 포커스 링 · 카운트다운 숫자"
+  },
+  "fonts": {
+    "display": "Anton (Google Fonts) — 라틴 압축 디스플레이, 페스티벌 포스터·라인업 벽 관습. 400 단일 굵기·라틴 전용",
+    "body": "Pretendard (CDN) — 한국어 본문·라벨·버튼, 한글 디스플레이는 Pretendard 900 폴백. 서체 총 2개"
+  },
+  "radius": "2px 단일 (--r)",
+  "images": "loremflickr 키워드 고정(lock): hero festival,crowd / PULSE concert,lights / WAVE festival,crowd / VOLT dj,stage",
+  "sections": [
+    "고정 헤더 (투명 → 스크롤 시 진해지고 낮아짐, 우상단 티켓 CTA 상시, 모바일 햄버거)",
+    "풀스크린 Hero (날짜·장소·연령 텍스트 메타 + 정사각 마커, 초대형 3줄 타이포 PULSE / FEST / 2026, 줄 단위 마스크 리빌, 티켓 CTA. 배경은 사진 + 하단 단색 어둡힘만)",
+    "기울어진 옐로 마키 밴드",
+    "라인업 텍스트 벽 48팀 (제목 '48팀' 카운트업, 오른쪽에 무대 범례, 헤드라이너 대형, 호버 시 무대 색·스큐·무대 라벨)",
+    "마젠타 마키 밴드",
+    "스테이지 3개 (01 PULSE 마젠타 / 02 WAVE 시안 / 03 VOLT 옐로, 번호·듀오톤 이미지·단색 태그·호버 시 본문 배경 활성색, 카드 전체 링크)",
+    "타임테이블 (제목 옆 Day 1 / Day 2 탭, 3 스테이지 × 8 슬롯, 헤드라이너 강조)",
+    "시안 마키 밴드 (얼리버드 가격)",
+    "티켓 3종 (1일권 99,000 / 2일권 189,000 추천 / VIP 2일권 349,000) + 오픈 카운트다운 + 판매 일정표 + 취소·환불 규정표",
+    "정적 정보 구간 — Corporate accent, 등장 모션 없음 (일반 제목 / 2열: 오시는 길 SVG 약도·주소·지하철·셔틀·주차 | 안전·진행 안내 7항목 / 전폭: 반입 금지·가능 물품 / 운영 시간·문의)",
+    "FAQ 아코디언 8문항 + 문의 안내 문장",
+    "최종 CTA (마젠타 단색 블록, 좌측 정렬 큰 숫자 8.20 12:00 + 가격 문장 + 버튼 2개)",
+    "푸터 (대형 아웃라인 워드마크, 바로가기, 고객센터, 주최·주관 사업자 정보, 정책 링크, SNS)",
+    "모바일 하단 고정 티켓 CTA"
+  ],
+  "interactions": [
+    "헤더 스크롤 상태 전환 (높이 84→64px, 배경 블러)",
+    "모바일 햄버거 메뉴 열기/닫기 (ESC·링크 클릭·리사이즈 시 닫힘)",
+    "히어로 줄 단위 마스크 리빌 + 슬라이드 인 + 주기적 글리치 텍스트섀도(Experimental)",
+    "CSS 마키 3종 (트랙 폭 자동 복제로 끊김 방지)",
+    "IntersectionObserver 스크롤 리빌 — 섹션 제목·라인업 벽·스테이지 카드·티켓 카드에만 (정보·FAQ·푸터는 즉시 표시)",
+    "라인업 제목 '48팀' 카운트업 (easeOutCubic, 뷰포트 진입 시 1회)",
+    "라인업 이름 호버: 무대 색 변경 · 스큐 · 무대·날짜 라벨 표시",
+    "스테이지 카드 호버: 이미지 확대 · 듀오톤 진해짐 · 본문 배경 활성색 · 번호 이동 · 태그 반전",
+    "타임테이블 Day1/Day2 탭 (role=tablist, 방향키·Home/End 키보드 지원, 패널 재등장 애니메이션)",
+    "얼리버드 오픈 카운트다운 (2026-08-20 12:00 KST까지 일·시·분·초 실시간, 지나면 '판매 중' 표시)",
+    "티켓 구매 버튼 클릭 시 오픈 일시 안내 토글 (카드 자체 hover 없음)",
+    "FAQ 아코디언 (한 번에 하나, aria-expanded, grid-template-rows 애니메이션)",
+    "prefers-reduced-motion 시 모든 애니메이션·리빌·마키 제거",
+    "버튼·링크 :focus-visible 옐로 포커스 링(마젠타 블록에서는 다크), 스킵 링크"
+  ],
+  "path": "sites/kinetic-festival/index.html"
+}

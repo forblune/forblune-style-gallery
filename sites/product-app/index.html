@@ -1,0 +1,1524 @@
+<!-- forblune-style: {"slug":"product-app","primaryStyle":"Product","productType":"App Landing","tone":"Soft · Clear · Reassuring","secondary":"Editorial","accent":"Utility","brand":"잠결","industry":"수면 트래킹 모바일 앱","coreMessage":"앱이 내 수면을 어떻게 읽고 무엇을 바꿔주는지 화면으로 보여주어 설치하게 한다","naming":"Product / App Landing / Soft · Clear · Reassuring"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>잠결 — 내 수면을 읽고 아침을 바꾸는 수면 트래킹 앱</title>
+<meta name="description" content="잠결은 스마트폰만으로 수면 단계를 분석하고, 얕은 잠에 맞춰 깨우는 스마트 알람과 주간 리포트로 수면 습관을 바꾸는 수면 트래킹 앱입니다. 무료로 시작할 수 있으며 iOS와 Android를 지원합니다.">
+<meta name="theme-color" content="#6b5ce7">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<style>
+/* ==========================================================================
+   0. Design tokens — Product / App Landing / Soft · Clear · Reassuring
+   흰 배경 + 옅은 라벤더 틴트 한 단계, 브랜드 색은 보라 1개(CTA·강조·차트).
+   폰 목업 안쪽만 네이비 야간 톤. 페이지 표면은 단색으로만 깊이를 만든다.
+   radius 규칙: 페이지 요소 16(카드) / 12(버튼·컨트롤) / 8(작은 조각). 폰 목업은 기기 곡률 별도.
+   ========================================================================== */
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f8f7fd;
+  --bg-tint:#efecfb;
+  --line:#e6e3f1;
+  --line-strong:#cfcae4;
+  --ink:#1e1b34;
+  --ink-2:#4a4762;
+  --ink-3:#6f6c86;
+  --ink-4:#9a97b0;
+  --brand:#6b5ce7;
+  --brand-dark:#5344cf;
+  --brand-ink:#3b2f9c;
+  --brand-soft:#e6e1fb;
+  --night:#1b1940;
+  --night-2:#25225a;
+  --night-3:#332f70;
+  --night-line:rgba(255,255,255,.08);
+  --night-text:#f2f0ff;
+  --night-muted:#a7a2d6;
+  --stage-awake:#f0bf6a;
+  --stage-rem:#bdb1f7;
+  --stage-light:#8f7ff0;
+  --stage-deep:#5a4ad8;
+  --ok:#2f9a6f;
+  --radius-lg:16px;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow-sm:0 1px 2px rgba(30,27,52,.05);
+  --shadow-md:0 8px 24px rgba(30,27,52,.08);
+  --container:1160px;
+  --gutter:24px;
+  --font:"Pretendard", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --header-h:68px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg);
+  font-size:16px;
+  line-height:1.65;
+  letter-spacing:-0.01em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul,ol{list-style:none}
+table{border-collapse:collapse;width:100%}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:var(--radius-sm)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding-inline:var(--gutter)}
+.skip-link{position:absolute;left:16px;top:-48px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:8px;z-index:300;font-weight:600}
+.skip-link:focus{top:12px}
+.num{font-variant-numeric:tabular-nums}
+
+/* Type scale */
+h1,h2,h3,h4{font-weight:700;line-height:1.25;letter-spacing:-0.025em;color:var(--ink)}
+h1{font-size:clamp(32px,4.6vw,54px)}
+h2{font-size:clamp(26px,3vw,38px)}
+h3{font-size:20px}
+h4{font-size:16px}
+p{color:var(--ink-2)}
+.lead{font-size:18px;color:var(--ink-2);max-width:60ch}
+.section{padding:96px 0}
+.section--soft{background:var(--bg-soft)}
+.section-head{max-width:640px;margin-bottom:56px}
+.section-head p{margin-top:14px;font-size:17px}
+.section-head--center{margin-inline:auto;text-align:center}
+.section-head .kicker{display:block;font-size:14px;font-weight:600;color:var(--brand-dark);margin-bottom:12px}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:48px;padding:0 22px;border-radius:var(--radius);font-weight:600;font-size:15px;
+  border:1px solid transparent;
+  transition:background-color .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease),transform .18s var(--ease);
+}
+.btn--primary{background:var(--brand);color:#fff}
+.btn--primary:hover{background:var(--brand-dark)}
+.btn--ghost{background:#fff;color:var(--ink);border-color:var(--line-strong)}
+.btn--ghost:hover{border-color:var(--brand);color:var(--brand-dark)}
+.btn--sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn:active{transform:translateY(1px)}
+
+/* Store badges (CSS drawn) */
+.store{
+  display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 18px 0 14px;
+  border-radius:var(--radius);background:var(--ink);color:#fff;
+  transition:background-color .18s var(--ease);
+}
+.store:hover{background:#2c2850}
+.store svg{width:24px;height:24px;flex:none}
+.store__txt{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+.store__txt small{font-size:10.5px;font-weight:500;opacity:.8;letter-spacing:.02em}
+.store__txt strong{font-size:16px;font-weight:700;letter-spacing:-0.01em}
+.store--light{background:#fff;color:var(--ink);border:1px solid var(--line-strong)}
+.store--light:hover{background:var(--bg-soft)}
+
+/* ==========================================================================
+   1. Header
+   ========================================================================== */
+.header{
+  position:sticky;top:0;z-index:100;height:var(--header-h);
+  background:var(--bg);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s var(--ease);
+}
+.header.is-scrolled{border-bottom-color:var(--line)}
+.header__inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:20px;letter-spacing:-0.03em;color:var(--ink)}
+.logo__mark{width:30px;height:30px;border-radius:var(--radius-sm);background:var(--brand);display:grid;place-items:center}
+.logo__mark svg{width:18px;height:18px}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{padding:8px 14px;border-radius:var(--radius-sm);font-size:15px;font-weight:500;color:var(--ink-2);transition:color .18s var(--ease),background-color .18s var(--ease)}
+.nav a:hover{color:var(--ink);background:var(--bg-tint)}
+.nav a.is-active{color:var(--brand-dark);font-weight:600}
+.header__actions{display:flex;align-items:center;gap:8px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:var(--radius-sm);place-items:center;color:var(--ink)}
+.menu-btn svg{width:22px;height:22px}
+.mobile-menu{display:none;position:fixed;inset:var(--header-h) 0 auto 0;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md);padding:12px 24px 20px;z-index:99}
+.mobile-menu.is-open{display:block}
+.mobile-menu a{display:block;padding:14px 4px;font-size:17px;font-weight:600;border-bottom:1px solid var(--line)}
+.mobile-menu a:last-of-type{border-bottom:0}
+.mobile-menu .btn{width:100%;margin-top:14px}
+
+/* ==========================================================================
+   2. Hero
+   ========================================================================== */
+.hero{
+  position:relative;overflow:hidden;
+  padding:72px 0 40px;
+  background:var(--bg);
+}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero__copy{max-width:560px}
+.hero h1 .accent{color:var(--brand)}
+.hero .lead{margin-top:20px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero__trust{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:22px;font-size:14px;color:var(--ink-3)}
+.hero__trust strong{color:var(--ink);font-weight:600}
+.hero__visual{position:relative;min-height:600px;display:flex;justify-content:center;align-items:flex-end}
+.hero__visual .phone--night{position:relative;z-index:2;transform:translateX(-14%) rotate(-3deg)}
+.hero__visual .phone--day{position:absolute;right:2%;bottom:24px;z-index:1;transform:translateX(0) rotate(4deg) scale(.94);transform-origin:bottom center}
+.hero__float{position:absolute;z-index:3;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:10px 14px;box-shadow:var(--shadow-md);font-size:13px;display:flex;align-items:center;gap:10px}
+.hero__float .rec{width:8px;height:8px;border-radius:2px;background:var(--ok);flex:none}
+.hero__float--1{left:0;top:18%}
+.hero__float--2{right:0;bottom:36%}
+.hero__float b{display:block;font-weight:600;color:var(--ink)}
+.hero__float span{color:var(--ink-3);font-size:12px}
+.hero__stage{position:absolute;inset:auto 10% 0 10%;height:56%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;background:var(--bg-tint);z-index:0}
+
+/* ==========================================================================
+   3. Phone mockup (shared)
+   ========================================================================== */
+.phone{width:min(272px,78vw);aspect-ratio:9/19.6;flex:none;filter:drop-shadow(0 30px 40px rgba(30,27,52,.22))}
+.phone__frame{position:relative;width:100%;height:100%;border-radius:40px;background:#111025;padding:9px;box-shadow:inset 0 0 0 2px #2b2950,inset 0 0 0 4px #0b0a18}
+.phone__screen{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;background:var(--night);color:var(--night-text);display:flex;flex-direction:column}
+.phone__screen--light{background:#faf9ff;color:var(--ink)}
+.phone__notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:84px;height:24px;border-radius:14px;background:#0b0a18;z-index:5}
+.status{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:600;padding:14px 20px 0;letter-spacing:.01em}
+.status__icons{display:inline-flex;gap:4px;align-items:center}
+.status__icons svg{width:14px;height:12px}
+.screen{padding:14px 14px 14px;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+.screen__top{display:flex;justify-content:space-between;align-items:baseline}
+.screen__top strong{font-size:15px;font-weight:700;letter-spacing:-0.02em}
+.screen__top small{font-size:11px;color:var(--night-muted)}
+.phone__screen--light .screen__top small{color:var(--ink-3)}
+.card{border-radius:16px;padding:12px;background:var(--night-2);border:1px solid var(--night-line)}
+.phone__screen--light .card{background:#fff;border-color:var(--line);box-shadow:var(--shadow-sm)}
+.card__label{font-size:10.5px;color:var(--night-muted);font-weight:600;letter-spacing:.02em}
+.phone__screen--light .card__label{color:var(--ink-3)}
+.score{display:flex;align-items:center;gap:12px}
+.ring{position:relative;width:68px;height:68px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:7;stroke-linecap:round}
+.ring .ring__bg{stroke:rgba(255,255,255,.1)}
+.phone__screen--light .ring .ring__bg{stroke:var(--bg-tint)}
+.ring .ring__val{stroke:var(--brand);stroke-dasharray:201;stroke-dashoffset:32;transition:stroke-dashoffset 1s var(--ease)}
+.ring__num{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;font-weight:800;letter-spacing:-0.03em;line-height:1}
+.ring__num small{font-size:9px;font-weight:600;color:var(--night-muted);letter-spacing:.02em}
+.phone__screen--light .ring__num small{color:var(--ink-3)}
+.score__meta{display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--night-muted)}
+.score__meta b{display:block;font-size:14px;color:var(--night-text);font-weight:700;letter-spacing:-0.02em}
+.phone__screen--light .score__meta{color:var(--ink-3)}
+.phone__screen--light .score__meta b{color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px;background:rgba(107,92,231,.22);color:#d9d3ff}
+.chip--ok{background:rgba(47,154,111,.18);color:#8fe0bb}
+.phone__screen--light .chip{background:var(--brand-soft);color:var(--brand-ink)}
+.phone__screen--light .chip--ok{background:#dff5ea;color:#1f7a55}
+.hypno{width:100%;height:auto}
+.hypno .grid line{stroke:rgba(255,255,255,.08);stroke-width:1}
+.phone__screen--light .hypno .grid line{stroke:var(--line)}
+.hypno .lbl{font:600 7px var(--font);fill:var(--night-muted)}
+.phone__screen--light .hypno .lbl{fill:var(--ink-3)}
+.hypno .path{fill:none;stroke:rgba(255,255,255,.28);stroke-width:1.2}
+.phone__screen--light .hypno .path{stroke:var(--line-strong)}
+.hypno rect{rx:3;transition:opacity .3s var(--ease)}
+.st-awake{fill:var(--stage-awake)}
+.st-rem{fill:var(--stage-rem)}
+.st-light{fill:var(--stage-light)}
+.st-deep{fill:var(--stage-deep)}
+.hypno[data-focus="deep"] rect:not(.st-deep),
+.hypno[data-focus="rem"] rect:not(.st-rem),
+.hypno[data-focus="light"] rect:not(.st-light),
+.hypno[data-focus="awake"] rect:not(.st-awake){opacity:.18}
+.legend{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:10px;color:var(--night-muted)}
+.phone__screen--light .legend{color:var(--ink-3)}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{border-radius:12px;padding:9px 10px;background:var(--night-2);border:1px solid var(--night-line)}
+.phone__screen--light .stat{background:#fff;border-color:var(--line)}
+.stat small{display:block;font-size:9.5px;color:var(--night-muted);font-weight:600}
+.phone__screen--light .stat small{color:var(--ink-3)}
+.stat b{display:block;font-size:13.5px;font-weight:700;margin-top:2px;letter-spacing:-0.02em}
+.stat .delta{font-size:9.5px;font-weight:600;color:#8fe0bb}
+.phone__screen--light .stat .delta{color:var(--ok)}
+.tabbar{margin-top:auto;display:flex;justify-content:space-around;padding:8px 6px 4px;border-top:1px solid var(--night-line);font-size:9px;color:var(--night-muted)}
+.phone__screen--light .tabbar{border-top-color:var(--line);color:var(--ink-4)}
+.tabbar span{display:flex;flex-direction:column;align-items:center;gap:3px}
+.tabbar svg{width:16px;height:16px}
+.tabbar .on{color:var(--brand)}
+.phone__screen--light .tabbar .on{color:var(--brand)}
+.insight{display:flex;gap:10px;align-items:flex-start}
+.insight__icon{width:28px;height:28px;border-radius:var(--radius-sm);flex:none;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand)}
+.insight__icon svg{width:16px;height:16px}
+.insight p{font-size:11.5px;line-height:1.5;color:var(--ink-2)}
+.insight p b{color:var(--ink);font-weight:700}
+.night .insight p{color:var(--night-muted)}
+.mini-list{display:flex;flex-direction:column;gap:6px}
+.mini-list li{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;padding:5px 0;border-bottom:1px solid var(--line)}
+.mini-list li:last-child{border-bottom:0}
+.mini-list li b{font-weight:700}
+.mini-list li span{color:var(--ink-3)}
+.toggle{width:34px;height:20px;border-radius:999px;background:var(--brand);position:relative;flex:none}
+.toggle::after{content:"";position:absolute;top:2px;left:16px;width:16px;height:16px;border-radius:50%;background:#fff}
+.toggle--off{background:rgba(255,255,255,.18)}
+.toggle--off::after{left:2px}
+
+/* ==========================================================================
+   4. Features (alternating)
+   ========================================================================== */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;padding:56px 0}
+.feature + .feature{border-top:1px solid var(--line)}
+.feature__visual{display:flex;justify-content:center;position:relative}
+.feature__visual::before{content:"";position:absolute;inset:8% 6% 0;border-radius:var(--radius-lg);background:var(--bg-tint);z-index:0}
+.feature__visual .phone{position:relative;z-index:1}
+.feature--rev .feature__visual{order:2}
+.feature__copy .tab-ref{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink-3);margin-bottom:14px}
+.feature__copy .tab-ref svg{width:16px;height:16px;color:var(--brand)}
+.feature__copy h3{font-size:clamp(24px,2.4vw,30px);margin-bottom:14px}
+.feature__copy p{font-size:16.5px}
+.feature__points{margin-top:22px;border-top:1px solid var(--line)}
+.feature__points div{display:grid;grid-template-columns:132px minmax(0,1fr);gap:4px 16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
+.feature__points dt{color:var(--ink);font-weight:600}
+.feature__points dd{margin:0}
+.feature__control{margin-top:24px;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+.feature__control legend,.feature__control .ctl-label{font-size:13px;font-weight:600;color:var(--ink-3);margin-bottom:10px;display:block}
+.seg{display:inline-flex;padding:4px;border-radius:var(--radius);background:var(--bg-tint);gap:4px;flex-wrap:wrap}
+.seg button{padding:8px 14px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;color:var(--ink-2);transition:background-color .18s var(--ease),color .18s var(--ease),box-shadow .18s var(--ease)}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--brand-dark);box-shadow:var(--shadow-sm)}
+.seg button:hover{color:var(--ink)}
+.range-wrap{display:flex;align-items:center;gap:14px}
+.range-wrap input[type=range]{flex:1;accent-color:var(--brand);height:28px}
+.range-wrap output{font-weight:700;font-variant-numeric:tabular-nums;min-width:56px;text-align:right;color:var(--brand-dark)}
+.range-hint{font-size:13px;color:var(--ink-3);margin-top:8px}
+
+/* Alarm screen bits */
+.alarm-time{font-size:34px;font-weight:800;letter-spacing:-0.04em;line-height:1}
+.alarm-time small{font-size:12px;font-weight:600;color:var(--night-muted);letter-spacing:0;margin-left:6px}
+.alarm-window{position:relative;height:50px;border-radius:12px;background:rgba(255,255,255,.05);overflow:hidden;margin-top:6px}
+.alarm-window svg{position:absolute;inset:0;width:100%;height:100%}
+.alarm-window .win{position:absolute;top:0;bottom:0;background:rgba(107,92,231,.28);border-inline:1.5px solid var(--brand);transition:left .35s var(--ease),width .35s var(--ease)}
+.alarm-window .mark{position:absolute;top:0;bottom:0;width:2px;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25);transition:left .35s var(--ease)}
+.alarm-window .mark::after{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:#fff}
+.alarm-axis{display:flex;justify-content:space-between;font-size:9.5px;color:var(--night-muted);margin-top:4px;font-variant-numeric:tabular-nums}
+.alarm-row{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;padding:6px 0;border-bottom:1px solid var(--night-line)}
+.alarm-row:last-child{border-bottom:0}
+.alarm-row span{color:var(--night-muted)}
+.alarm-row b{font-weight:600}
+.alarm-note{font-size:10.5px;color:var(--night-muted);line-height:1.5}
+.alarm-note b{color:var(--night-text);font-weight:700}
+
+/* Weekly report screen bits */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;height:108px;align-items:end;padding:0 2px}
+.week button{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%;border-radius:8px;padding:2px;transition:background-color .18s var(--ease)}
+.week button:hover{background:rgba(107,92,231,.06)}
+.week button[aria-pressed="true"]{background:var(--brand-soft)}
+.week .bar{width:100%;max-width:18px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:6px;overflow:hidden;background:var(--bg-tint)}
+.week .bar i{display:block;width:100%}
+.week .bar .b-deep{background:var(--stage-deep)}
+.week .bar .b-light{background:var(--stage-light)}
+.week .bar .b-rem{background:var(--stage-rem)}
+.week small{font-size:9.5px;font-weight:600;color:var(--ink-3)}
+.week button[aria-pressed="true"] small{color:var(--brand-dark)}
+.day-detail{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;font-size:11px}
+.day-detail dt{color:var(--ink-3);font-weight:600}
+.day-detail dd{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.day-detail .full{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:2px}
+.day-detail .full b{font-size:13px}
+
+/* ==========================================================================
+   5. How it works
+   ========================================================================== */
+.how{border-top:1px solid var(--line-strong)}
+.how__step{display:grid;grid-template-columns:72px minmax(0,1.1fr) minmax(0,1fr);gap:16px 40px;padding:32px 0;border-bottom:1px solid var(--line-strong)}
+.how__step .n{font-size:40px;font-weight:800;line-height:1;letter-spacing:-0.04em;color:var(--brand);font-variant-numeric:tabular-nums}
+.how__step h3{font-size:21px;margin-bottom:10px}
+.how__step p{font-size:15.5px}
+.how__facts{display:flex;flex-direction:column;font-size:14px;color:var(--ink-2)}
+.how__facts div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.how__facts div:last-child{border-bottom:0}
+.how__facts dt{color:var(--ink-3);font-weight:600}
+.how__facts dd{margin:0;color:var(--ink);font-variant-numeric:tabular-nums}
+.how__note{margin-top:28px;display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.how__note svg{width:20px;height:20px;color:var(--brand);flex:none;margin-top:1px}
+.how__note b{color:var(--ink);font-weight:600}
+/* signal strip diagram */
+.signal{margin-top:40px;border:1px solid var(--line);border-radius:var(--radius-lg);background:#fff;padding:24px}
+.signal__head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.signal__head h4{font-size:15px}
+.signal__head span{font-size:13px;color:var(--ink-3)}
+.signal svg{width:100%;height:auto}
+.signal .wave{fill:none;stroke:var(--brand);stroke-width:1.5;opacity:.9}
+.signal .wave2{fill:none;stroke:var(--stage-awake);stroke-width:1.5;opacity:.9}
+.signal .band{fill:var(--brand-soft);opacity:.7}
+.signal .band-lbl{font:600 11px var(--font);fill:var(--brand-ink)}
+.signal .axis{stroke:var(--line);stroke-width:1}
+.signal .axis-lbl{font:600 10px var(--font);fill:var(--ink-3)}
+.signal__legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px;font-size:13px;color:var(--ink-3)}
+.signal__legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+
+/* ==========================================================================
+   6. Results / stats
+   ========================================================================== */
+.results{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px;align-items:start}
+.result-table{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:#fff}
+.result-table__scroll{overflow-x:auto}
+.result-table table{min-width:540px}
+.result-table th,.result-table td{padding:14px 18px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line);vertical-align:top}
+.result-table thead th{background:var(--bg-soft);font-size:13px;color:var(--ink-3);font-weight:600;white-space:nowrap}
+.result-table th:nth-child(n+2),.result-table td:nth-child(n+2){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.result-table tbody tr:last-child td{border-bottom:0}
+.result-table td .lbl{display:block;font-weight:600;color:var(--ink)}
+.result-table td .basis{display:block;font-size:12.5px;color:var(--ink-4);margin-top:2px;white-space:normal}
+.result-table td.delta{font-weight:800;color:var(--brand-dark);font-size:17px;letter-spacing:-0.02em}
+.stats__note{margin-top:18px;font-size:12.5px;color:var(--ink-4);line-height:1.6;max-width:820px}
+.quotes{display:flex;flex-direction:column;border-top:1px solid var(--line-strong)}
+.quote{padding:22px 0;border-bottom:1px solid var(--line-strong);display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.quote__metric{display:flex;align-items:baseline;gap:8px;font-size:13px;color:var(--ink-3)}
+.quote__metric b{font-size:19px;font-weight:800;color:var(--brand-dark);letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
+.quote p{font-size:15px;color:var(--ink-2)}
+.quote footer{font-size:13px;color:var(--ink-3)}
+.quote footer b{color:var(--ink);font-weight:600;margin-right:6px}
+
+/* ==========================================================================
+   7. Pricing
+   ========================================================================== */
+.billing{display:inline-flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius);background:var(--bg-tint);margin:0 auto 40px}
+.billing button{padding:9px 18px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;color:var(--ink-2);transition:background-color .18s var(--ease),color .18s var(--ease),box-shadow .18s var(--ease)}
+.billing button[aria-pressed="true"]{background:#fff;color:var(--brand-dark);box-shadow:var(--shadow-sm)}
+.billing .save{font-size:12px;font-weight:600;color:var(--ok);margin-left:6px}
+.pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:860px;margin:0 auto}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px;display:flex;flex-direction:column;position:relative}
+.plan--pro{border-color:var(--brand);border-width:2px;padding:31px}
+.plan h3{font-size:20px}
+.plan .desc{font-size:14px;color:var(--ink-3);margin-top:6px}
+.plan__price{margin:22px 0 6px;display:flex;align-items:baseline;gap:6px}
+.plan__price .amt{font-size:40px;font-weight:800;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums}
+.plan__price .per{font-size:14px;color:var(--ink-3);font-weight:500}
+.plan__sub{font-size:13px;color:var(--ink-3);min-height:20px}
+.plan .btn{margin:22px 0 22px;width:100%}
+.plan__list-title{font-size:12.5px;font-weight:600;color:var(--ink-3);padding-bottom:8px;border-bottom:1px solid var(--line)}
+.plan ul{display:flex;flex-direction:column}
+.plan li{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
+.plan li:last-child{border-bottom:0}
+.plan li.off{color:var(--ink-4);text-decoration:line-through;text-decoration-color:var(--line-strong)}
+.compare{max-width:860px;margin:40px auto 0;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:#fff}
+.compare__scroll{overflow-x:auto}
+.compare table{min-width:560px}
+.compare th,.compare td{padding:14px 18px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{background:var(--bg-soft);font-size:13px;color:var(--ink-3);font-weight:600}
+.compare thead th:nth-child(n+2){text-align:center;width:22%}
+.compare tbody td:nth-child(n+2){text-align:center;font-weight:600;color:var(--ink)}
+.compare tbody td:first-child{color:var(--ink-2)}
+.compare tbody tr:last-child td{border-bottom:0}
+.compare tbody th{font-weight:600;color:var(--ink);background:var(--bg-soft);font-size:13px;padding:10px 18px;border-bottom:1px solid var(--line)}
+.compare .yes{color:var(--brand)}
+.compare .yes svg{width:18px;height:18px;display:inline-block;vertical-align:middle}
+.compare .no{color:var(--ink-4)}
+.compare small{display:block;font-size:12px;color:var(--ink-4);font-weight:400;margin-top:2px}
+.pricing__note{max-width:860px;margin:16px auto 0;font-size:12.5px;color:var(--ink-4);line-height:1.6}
+
+/* ==========================================================================
+   8. FAQ
+   ========================================================================== */
+.faq-layout{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:start}
+.faq-layout .section-head{margin-bottom:0;position:sticky;top:calc(var(--header-h) + 24px)}
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line-strong)}
+.faq__item{border-bottom:1px solid var(--line-strong);background:transparent}
+.faq__q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;padding:18px 4px;font-size:16px;font-weight:600;color:var(--ink)}
+.faq__q:hover{color:var(--brand-dark)}
+.faq__q svg{width:20px;height:20px;flex:none;color:var(--ink-3);transition:transform .25s var(--ease)}
+.faq__item.is-open .faq__q svg{transform:rotate(45deg);color:var(--brand)}
+.faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--ease)}
+.faq__item.is-open .faq__a{grid-template-rows:1fr}
+.faq__a > div{overflow:hidden}
+.faq__a p{padding:0 4px 20px;font-size:15px;color:var(--ink-2);max-width:62ch}
+.faq__a p + p{margin-top:-8px}
+.section-head .faq__more{margin-top:24px;font-size:14px;color:var(--ink-3);padding-top:16px;border-top:1px solid var(--line)}
+.faq__more a{color:var(--brand-dark);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ==========================================================================
+   9. Download CTA
+   ========================================================================== */
+.download{padding:0 0 96px}
+.download__box{
+  position:relative;overflow:hidden;border-radius:var(--radius-lg);padding:64px 56px;
+  background:var(--night);
+  color:var(--night-text);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;
+}
+.download__box h2{color:#fff}
+.download__box p{color:var(--night-muted);font-size:17px;margin-top:14px;max-width:48ch}
+.download__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.download__box p.download__meta{margin-top:18px;font-size:13px;color:var(--night-muted);max-width:none}
+.download__visual{display:flex;justify-content:center;align-items:center;gap:20px}
+.qr{width:132px;height:132px;background:#fff;border-radius:var(--radius);padding:12px;flex:none}
+.qr svg{width:100%;height:100%}
+.qr-hint{font-size:13px;color:var(--night-muted);max-width:18ch;line-height:1.5}
+.qr-hint b{color:#fff;font-weight:600;display:block;margin-bottom:4px}
+
+/* ==========================================================================
+   10. Footer
+   ========================================================================== */
+.footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:56px 0 32px;font-size:14px;color:var(--ink-3)}
+.footer__grid{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:32px}
+.footer__brand p{margin-top:14px;max-width:34ch;font-size:14px;color:var(--ink-3)}
+.footer h4{font-size:13.5px;color:var(--ink);margin-bottom:14px;letter-spacing:.01em}
+.footer ul{display:flex;flex-direction:column;gap:9px}
+.footer a:hover{color:var(--brand-dark)}
+.footer__bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;font-size:12.5px;color:var(--ink-4)}
+.footer__legal{font-size:12.5px;color:var(--ink-4);margin-top:16px;line-height:1.7}
+.footer__policy{display:flex;flex-wrap:wrap;gap:6px 16px}
+.footer__policy a{color:var(--ink-3)}
+.footer__disclaimer{margin-top:14px;font-size:12px;color:var(--ink-4);line-height:1.6;max-width:70ch}
+
+/* ==========================================================================
+   11. Misc
+   ========================================================================== */
+.to-top{position:fixed;right:20px;bottom:20px;width:44px;height:44px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-md);display:grid;place-items:center;color:var(--ink);opacity:0;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);transform:translateY(8px);z-index:90}
+.to-top.is-show{opacity:1;pointer-events:auto;transform:none}
+.to-top svg{width:18px;height:18px}
+
+/* ==========================================================================
+   12. Responsive
+   ========================================================================== */
+@media (max-width:1024px){
+  .hero__grid{gap:32px}
+  .hero__visual{min-height:540px}
+  .hero__visual .phone--night{transform:translateX(-18%) rotate(-3deg) scale(.92)}
+  .hero__visual .phone--day{transform:rotate(4deg) scale(.86)}
+  .feature{gap:40px}
+  .results{grid-template-columns:1fr;gap:40px}
+  .how__step{grid-template-columns:56px minmax(0,1fr);gap:12px 24px}
+  .how__step .how__facts{grid-column:2}
+  .faq-layout{grid-template-columns:1fr;gap:28px}
+  .faq-layout .section-head{position:static}
+}
+@media (max-width:860px){
+  .nav{display:none}
+  .header__actions .btn{display:none}
+  .menu-btn{display:grid}
+  .hero{padding-top:48px}
+  .hero__grid{grid-template-columns:1fr}
+  .hero__copy{max-width:none}
+  .hero__visual{min-height:0;margin-top:16px;padding-top:24px}
+  .hero__visual .phone--night{transform:translateX(-30%) rotate(-3deg)}
+  .hero__visual .phone--day{right:auto;left:50%;transform:translateX(8%) rotate(4deg) scale(.92);bottom:16px}
+  .hero__float--1{left:-6px;top:6%}
+  .hero__float--2{right:-6px;bottom:22%}
+  .feature{grid-template-columns:1fr;gap:32px;padding:44px 0}
+  .feature--rev .feature__visual{order:0}
+  .feature__visual::before{inset:6% 10% 0}
+  .pricing{grid-template-columns:1fr}
+  .download__box{grid-template-columns:1fr;padding:44px 28px}
+  .download__visual{justify-content:flex-start}
+  .section{padding:72px 0}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .footer__brand{grid-column:1/-1}
+}
+@media (max-width:520px){
+  :root{--gutter:18px}
+  .hero__visual{justify-content:flex-start;height:520px;min-height:0;padding-top:0;margin-top:0}
+  .hero__visual .phone{width:272px}
+  .hero__visual .phone--night{transform:scale(.8) rotate(-3deg);transform-origin:bottom left}
+  .hero__visual .phone--day{left:auto;right:14px;bottom:0;transform:scale(.78) rotate(4deg);transform-origin:bottom right}
+  .hero__float{font-size:12px;padding:8px 10px}
+  .hero__float--1{left:auto;right:0;top:0}
+  .hero__float--2{right:auto;left:0;bottom:6%}
+  .feature__points div{grid-template-columns:1fr}
+  .how__step{grid-template-columns:1fr;gap:8px}
+  .how__step .how__facts{grid-column:1}
+  .how__step .n{font-size:28px}
+  .footer__grid{grid-template-columns:1fr}
+  .download__box{padding:36px 22px}
+  .download__visual{flex-direction:row}
+  .qr{width:104px;height:104px;padding:9px}
+  .store{min-height:50px}
+  .hero__cta .store{flex:1 1 auto}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+<!-- ======================================================================
+     Header
+     ====================================================================== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="logo" href="#top" aria-label="잠결 홈">
+      <span class="logo__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M15.5 3.5a8.5 8.5 0 1 0 5 15.2A8.5 8.5 0 0 1 15.5 3.5Z" fill="#fff"/><circle cx="6.5" cy="7.5" r="1.2" fill="#fff" opacity=".8"/></svg>
+      </span>
+      잠결
+    </a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#features">기능</a>
+      <a href="#science">작동 원리</a>
+      <a href="#pricing">요금</a>
+      <a href="#download">다운로드</a>
+    </nav>
+    <div class="header__actions">
+      <a class="btn btn--primary btn--sm" href="#download">앱 다운로드</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="ico-open" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">기능</a>
+    <a href="#science">작동 원리</a>
+    <a href="#pricing">요금</a>
+    <a href="#download">다운로드</a>
+    <a class="btn btn--primary" href="#download">앱 다운로드</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- ======================================================================
+     Hero
+     ====================================================================== -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <h1 id="heroTitle">밤새 잠든 나를 읽고,<br><span class="accent">아침을 조금 더 가볍게.</span></h1>
+      <p class="lead">잠결은 머리맡에 둔 스마트폰으로 수면 단계를 분석하고, 얕은 잠에 맞춰 깨우고, 매주 무엇을 바꾸면 좋을지 알려주는 수면 트래킹 앱입니다. 웨어러블 없이, 첫날 밤부터 바로 기록됩니다.</p>
+      <div class="hero__cta">
+        <a class="store" href="https://apps.apple.com/kr/" target="_blank" rel="noopener" aria-label="App Store에서 다운로드(새 창)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2ZM14 5.3c.7-.8 1.2-2 1-3.1-1 .1-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg>
+          <span class="store__txt"><small>Download on the</small><strong>App Store</strong></span>
+        </a>
+        <a class="store" href="https://play.google.com/store/apps?hl=ko" target="_blank" rel="noopener" aria-label="Google Play에서 다운로드(새 창)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.3v17.4c0 .5.5.8.9.5l9.6-8.7L4.9 2.8c-.4-.3-.9 0-.9.5Z" opacity=".95"/><path d="M17.6 9.9 6.4 3.6l8.1 8.9 3.1-2.6Z" opacity=".75"/><path d="m17.6 14.1-3.1-2.6-8.1 8.9 11.2-6.3Z" opacity=".85"/><path d="M20.4 10.9 17.6 9.9l-3.1 2.1 3.1 2.1 2.8-1c.8-.4.8-1.8 0-2.2Z" opacity=".65"/></svg>
+          <span class="store__txt"><small>GET IT ON</small><strong>Google Play</strong></span>
+        </a>
+      </div>
+      <div class="hero__trust">
+        <span><strong>무료</strong>로 시작 · 카드 등록 없음</span>
+        <span>iOS 16 · Android 10 이상, 앱 용량 48MB</span>
+      </div>
+    </div>
+
+    <div class="hero__visual" role="group" aria-label="잠결 앱 화면 미리보기: 수면 그래프와 아침 리포트">
+      <div class="hero__stage" aria-hidden="true"></div>
+
+      <div class="hero__float hero__float--1" aria-hidden="true">
+        <span class="rec"></span>
+        <div><b>기록 중 · 02:14</b><span>깊은 잠 감지 · 소음 없음</span></div>
+      </div>
+      <div class="hero__float hero__float--2" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#6b5ce7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+        <div><b>06:42 알람</b><span>얕은 잠 구간에서 깨움</span></div>
+      </div>
+
+      <!-- Phone 1: 밤 · 수면 그래프 화면 -->
+      <div class="phone phone--night" role="img" aria-label="수면 그래프 화면: 수면 점수 84점, 총 수면 7시간 12분, 단계별 그래프">
+        <div class="phone__frame">
+          <div class="phone__notch"></div>
+          <div class="phone__screen night">
+            <div class="status"><span>07:05</span><span class="status__icons" aria-hidden="true">
+              <svg viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx=".5"/><rect x="4.5" y="5" width="3" height="7" rx=".5"/><rect x="9" y="2" width="3" height="10" rx=".5"/><rect x="13" y="0" width="3" height="12" rx=".5" opacity=".4"/></svg>
+              <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><rect x=".6" y="1.6" width="12" height="8.8" rx="2"/><rect x="2" y="3" width="8.5" height="6" fill="currentColor" stroke="none"/><path d="M14 4.5v3" stroke-linecap="round"/></svg>
+            </span></div>
+            <div class="screen">
+              <div class="screen__top"><strong>어젯밤 수면</strong><small>8월 14일 목 – 15일 금</small></div>
+              <div class="card">
+                <div class="score">
+                  <div class="ring">
+                    <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="ring__bg" cx="40" cy="40" r="32"/><circle class="ring__val" cx="40" cy="40" r="32"/></svg>
+                    <div class="ring__num">84<small>수면 점수</small></div>
+                  </div>
+                  <div class="score__meta">
+                    <span>총 수면 <b>7시간 12분</b></span>
+                    <span>취침 23:41 · 기상 07:02</span>
+                    <span><span class="chip chip--ok">지난주 평균 +3점</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card__label" style="margin-bottom:8px">수면 단계</div>
+                <svg class="hypno" viewBox="0 0 240 104" aria-hidden="true">
+                  <g class="grid">
+                    <line x1="0" y1="14" x2="240" y2="14"/><line x1="0" y1="36" x2="240" y2="36"/><line x1="0" y1="58" x2="240" y2="58"/><line x1="0" y1="80" x2="240" y2="80"/>
+                  </g>
+                  <path class="path" d="M0,14 H14.4 V58 H33.6 V80 H72 V58 H86.4 V36 H105.6 V58 H124.8 V80 H148.8 V58 H168 V36 H196.8 V58 H211.2 V36 H225.6 V14 H240"/>
+                  <rect class="st-awake" x="0" y="6" width="14.4" height="16"/>
+                  <rect class="st-light" x="14.4" y="50" width="19.2" height="16"/>
+                  <rect class="st-deep" x="33.6" y="72" width="38.4" height="16"/>
+                  <rect class="st-light" x="72" y="50" width="14.4" height="16"/>
+                  <rect class="st-rem" x="86.4" y="28" width="19.2" height="16"/>
+                  <rect class="st-light" x="105.6" y="50" width="19.2" height="16"/>
+                  <rect class="st-deep" x="124.8" y="72" width="24" height="16"/>
+                  <rect class="st-light" x="148.8" y="50" width="19.2" height="16"/>
+                  <rect class="st-rem" x="168" y="28" width="28.8" height="16"/>
+                  <rect class="st-light" x="196.8" y="50" width="14.4" height="16"/>
+                  <rect class="st-rem" x="211.2" y="28" width="14.4" height="16"/>
+                  <rect class="st-awake" x="225.6" y="6" width="14.4" height="16"/>
+                  <text class="lbl" x="0" y="101">23:41</text><text class="lbl" x="104" y="101">03:20</text><text class="lbl" x="216" y="101">07:02</text>
+                </svg>
+                <div class="legend" style="margin-top:6px">
+                  <span><i style="background:var(--stage-awake)"></i>깸 21분</span>
+                  <span><i style="background:var(--stage-rem)"></i>렘 1시간 34분</span>
+                  <span><i style="background:var(--stage-light)"></i>얕은 잠 3시간 39분</span>
+                  <span><i style="background:var(--stage-deep)"></i>깊은 잠 1시간 38분</span>
+                </div>
+              </div>
+              <div class="stat-row">
+                <div class="stat"><small>입면 시간</small><b>14분</b><span class="delta">−6분</span></div>
+                <div class="stat"><small>깊은 잠 비율</small><b>23%</b><span class="delta">+2%p</span></div>
+                <div class="stat"><small>밤중 깸</small><b>1회</b><span class="delta">평균 이하</span></div>
+              </div>
+              <div class="tabbar" aria-hidden="true">
+                <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15.5 3.5a8.5 8.5 0 1 0 5 15.2A8.5 8.5 0 0 1 15.5 3.5Z"/></svg>수면</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>알람</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V10M10 19V5M16 19v-8M22 19H2"/></svg>리포트</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>내 정보</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone 2: 아침 · 리포트 화면 -->
+      <div class="phone phone--day" role="img" aria-label="아침 리포트 화면: 좋은 아침이에요, 어젯밤 요약과 오늘의 제안">
+        <div class="phone__frame">
+          <div class="phone__notch"></div>
+          <div class="phone__screen phone__screen--light">
+            <div class="status"><span>07:06</span><span class="status__icons" aria-hidden="true">
+              <svg viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx=".5"/><rect x="4.5" y="5" width="3" height="7" rx=".5"/><rect x="9" y="2" width="3" height="10" rx=".5"/><rect x="13" y="0" width="3" height="12" rx=".5" opacity=".4"/></svg>
+              <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><rect x=".6" y="1.6" width="12" height="8.8" rx="2"/><rect x="2" y="3" width="8.5" height="6" fill="currentColor" stroke="none"/><path d="M14 4.5v3" stroke-linecap="round"/></svg>
+            </span></div>
+            <div class="screen">
+              <div class="screen__top"><strong>좋은 아침이에요, 지원 님</strong><small>8월 15일 금</small></div>
+              <div class="card">
+                <div class="card__label">아침 리포트</div>
+                <div class="score" style="margin-top:8px">
+                  <div class="ring">
+                    <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="ring__bg" cx="40" cy="40" r="32"/><circle class="ring__val" cx="40" cy="40" r="32"/></svg>
+                    <div class="ring__num">84<small>수면 점수</small></div>
+                  </div>
+                  <div class="score__meta">
+                    <span>회복 정도 <b>좋음</b></span>
+                    <span>깊은 잠이 목표(1시간 30분)를 채웠어요.</span>
+                    <span><span class="chip">7일 연속 기록</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="insight">
+                  <div class="insight__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2Z"/></svg></div>
+                  <p><b>어젯밤 렘 수면이 평소보다 18분 길었어요.</b> 취침 3시간 전 카페인을 피한 날에 반복되는 패턴이에요.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card__label" style="margin-bottom:6px">오늘의 제안</div>
+                <ul class="mini-list">
+                  <li><b>카페인은 14:00 전까지</b><span>렘 수면 유지</span></li>
+                  <li><b>취침 목표 23:30</b><span>편차 −11분</span></li>
+                  <li><b>알람 창 06:30–07:00</b><span>유지</span></li>
+                </ul>
+              </div>
+              <div class="tabbar" aria-hidden="true">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15.5 3.5a8.5 8.5 0 1 0 5 15.2A8.5 8.5 0 0 1 15.5 3.5Z"/></svg>수면</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>알람</span>
+                <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V10M10 19V5M16 19v-8M22 19H2"/></svg>리포트</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>내 정보</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Features
+     ====================================================================== -->
+<section class="section" id="features" aria-labelledby="featuresTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="featuresTitle">기록만 하는 앱이 아니라,<br>내일 밤을 바꾸는 앱</h2>
+      <p>수면을 재는 것은 시작일 뿐입니다. 잠결은 읽어낸 결과를 알람과 제안으로 바로 연결해, 사용자가 다음 밤에 무엇을 하면 되는지 알게 합니다. 아래 화면은 모두 실제 앱 구성 그대로이고, 컨트롤을 움직이면 화면이 바뀝니다.</p>
+    </div>
+
+    <!-- Feature 1: 수면 단계 분석 -->
+    <article class="feature" aria-labelledby="f1Title">
+      <div class="feature__visual">
+        <div class="phone" role="group" aria-label="수면 단계 분석 화면: 밤새 깸·렘·얕은 잠·깊은 잠 단계 그래프">
+          <div class="phone__frame">
+            <div class="phone__notch"></div>
+            <div class="phone__screen night">
+              <div class="status"><span>07:05</span><span class="status__icons" aria-hidden="true">
+                <svg viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx=".5"/><rect x="4.5" y="5" width="3" height="7" rx=".5"/><rect x="9" y="2" width="3" height="10" rx=".5"/><rect x="13" y="0" width="3" height="12" rx=".5" opacity=".4"/></svg>
+              </span></div>
+              <div class="screen">
+                <div class="screen__top"><strong>수면 단계</strong><small>8월 14일 밤</small></div>
+                <div class="card">
+                  <div class="card__label" style="margin-bottom:8px" id="hypnoCaption">밤새 단계 흐름</div>
+                  <svg class="hypno" id="hypnoSvg" viewBox="0 0 240 104" data-focus="all" aria-labelledby="hypnoCaption">
+                    <g class="grid">
+                      <line x1="0" y1="14" x2="240" y2="14"/><line x1="0" y1="36" x2="240" y2="36"/><line x1="0" y1="58" x2="240" y2="58"/><line x1="0" y1="80" x2="240" y2="80"/>
+                    </g>
+                    <path class="path" d="M0,14 H14.4 V58 H33.6 V80 H72 V58 H86.4 V36 H105.6 V58 H124.8 V80 H148.8 V58 H168 V36 H196.8 V58 H211.2 V36 H225.6 V14 H240"/>
+                    <rect class="st-awake" x="0" y="6" width="14.4" height="16"/>
+                    <rect class="st-light" x="14.4" y="50" width="19.2" height="16"/>
+                    <rect class="st-deep" x="33.6" y="72" width="38.4" height="16"/>
+                    <rect class="st-light" x="72" y="50" width="14.4" height="16"/>
+                    <rect class="st-rem" x="86.4" y="28" width="19.2" height="16"/>
+                    <rect class="st-light" x="105.6" y="50" width="19.2" height="16"/>
+                    <rect class="st-deep" x="124.8" y="72" width="24" height="16"/>
+                    <rect class="st-light" x="148.8" y="50" width="19.2" height="16"/>
+                    <rect class="st-rem" x="168" y="28" width="28.8" height="16"/>
+                    <rect class="st-light" x="196.8" y="50" width="14.4" height="16"/>
+                    <rect class="st-rem" x="211.2" y="28" width="14.4" height="16"/>
+                    <rect class="st-awake" x="225.6" y="6" width="14.4" height="16"/>
+                    <text class="lbl" x="0" y="101">23:41</text><text class="lbl" x="104" y="101">03:20</text><text class="lbl" x="216" y="101">07:02</text>
+                  </svg>
+                </div>
+                <div class="card" id="stageCard" aria-live="polite">
+                  <div class="card__label">선택한 단계</div>
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px">
+                    <b id="stageName" style="font-size:16px;font-weight:700;letter-spacing:-0.02em">전체 수면</b>
+                    <b id="stageTime" style="font-size:16px;font-weight:700;letter-spacing:-0.02em">7시간 12분</b>
+                  </div>
+                  <p id="stageDesc" style="font-size:11px;color:var(--night-muted);margin-top:6px;line-height:1.5">4단계로 나눠 30초 단위로 분류합니다. 깊은 잠은 대부분 전반부, 렘 수면은 후반부에 몰려 있어요.</p>
+                </div>
+                <div class="stat-row">
+                  <div class="stat"><small>수면 효율</small><b>91%</b><span class="delta">좋음</span></div>
+                  <div class="stat"><small>단계 전환</small><b>11회</b><span class="delta">보통</span></div>
+                  <div class="stat"><small>코골이</small><b>0분</b><span class="delta">감지 없음</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature__copy">
+        <span class="tab-ref"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15.5 3.5a8.5 8.5 0 1 0 5 15.2A8.5 8.5 0 0 1 15.5 3.5Z"/></svg>앱의 ‘수면’ 탭</span>
+        <h3 id="f1Title">밤새 네 단계로 나눠 읽는 수면 그래프</h3>
+        <p>머리맡의 스마트폰이 소리와 미세한 움직임을 30초 단위로 읽어 깸·렘·얕은 잠·깊은 잠을 구분합니다. 몇 시에 얼마나 깊이 잤는지, 언제 뒤척였는지 한 화면에서 보입니다.</p>
+        <dl class="feature__points">
+          <div><dt>필요한 기기</dt><dd>스마트폰만. Apple Watch·Galaxy Watch를 연결하면 심박 데이터가 더해져 4단계 일치율이 78%에서 84%로 올라갑니다.</dd></div>
+          <div><dt>수면 점수</dt><dd>총 수면, 깊은 잠 비율, 밤중 깸, 입면 시간을 합산한 0–100점. 어젯밤 84점은 지난주 평균보다 3점 높은 값입니다.</dd></div>
+        </dl>
+        <div class="feature__control">
+          <span class="ctl-label" id="stageCtlLabel">화면에서 강조할 수면 단계</span>
+          <div class="seg" role="group" aria-labelledby="stageCtlLabel" id="stageSeg">
+            <button type="button" data-stage="all" aria-pressed="true">전체</button>
+            <button type="button" data-stage="deep" aria-pressed="false">깊은 잠</button>
+            <button type="button" data-stage="light" aria-pressed="false">얕은 잠</button>
+            <button type="button" data-stage="rem" aria-pressed="false">렘 수면</button>
+            <button type="button" data-stage="awake" aria-pressed="false">깸</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Feature 2: 스마트 알람 -->
+    <article class="feature feature--rev" aria-labelledby="f2Title">
+      <div class="feature__visual">
+        <div class="phone" role="img" aria-label="스마트 알람 화면: 06:30부터 07:00 사이 얕은 잠 구간에서 알람이 울리도록 설정">
+          <div class="phone__frame">
+            <div class="phone__notch"></div>
+            <div class="phone__screen night">
+              <div class="status"><span>23:38</span><span class="status__icons" aria-hidden="true">
+                <svg viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx=".5"/><rect x="4.5" y="5" width="3" height="7" rx=".5"/><rect x="9" y="2" width="3" height="10" rx=".5"/><rect x="13" y="0" width="3" height="12" rx=".5" opacity=".4"/></svg>
+              </span></div>
+              <div class="screen">
+                <div class="screen__top"><strong>스마트 알람</strong><small>내일 · 금요일</small></div>
+                <div class="card">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div class="card__label">기상 목표</div>
+                    <span class="toggle" role="img" aria-label="스마트 알람 켜짐"></span>
+                  </div>
+                  <div class="alarm-time" style="margin-top:8px"><span id="alarmEnd">07:00</span><small>까지</small></div>
+                  <p class="alarm-note" style="margin-top:6px"><b id="alarmStart">06:30</b>부터 <b id="alarmEndInline">07:00</b> 사이, 얕은 잠이 감지되는 순간에 깨워요. 창 안에서 감지되지 않으면 정시에 울립니다.</p>
+                  <div class="alarm-window" aria-hidden="true">
+                    <svg viewBox="0 0 240 56" preserveAspectRatio="none">
+                      <path d="M0,40 H30 V22 H60 V40 H96 V16 H120 V32 H150 V12 H176 V30 H206 V10 H240" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
+                      <path d="M0,40 H30 V22 H60 V40 H96 V16 H120 V32 H150 V12 H176 V30 H206 V10 H240 V56 H0 Z" fill="rgba(143,127,240,.18)"/>
+                    </svg>
+                    <span class="win" id="alarmWin" style="left:50%;width:50%"></span>
+                    <span class="mark" id="alarmMark" style="left:70%"></span>
+                  </div>
+                  <div class="alarm-axis"><span>06:00</span><span>06:30</span><span>07:00</span></div>
+                </div>
+                <div class="card">
+                  <div class="alarm-row"><span>알람 창</span><b id="alarmWinLabel">30분</b></div>
+                  <div class="alarm-row"><span>소리</span><b>새벽 숲 · 서서히 커짐</b></div>
+                  <div class="alarm-row"><span>진동</span><b>켜짐</b></div>
+                  <div class="alarm-row"><span>반복</span><b>월–금</b></div>
+                </div>
+                <div class="card">
+                  <div class="insight">
+                    <div class="insight__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div>
+                    <p>지난 2주 동안 이 창에서 <b>평균 06:41</b>에 깼고, 아침 컨디션 응답은 <b>“가벼움” 9회 / 14일</b>이었어요.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature__copy">
+        <span class="tab-ref"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>앱의 ‘알람’ 탭</span>
+        <h3 id="f2Title">깊은 잠 한가운데가 아니라, 얕아진 순간에 깨우는 알람</h3>
+        <p>기상 목표 시각 앞으로 알람 창을 열어 두면, 그 안에서 얕은 잠으로 올라오는 순간을 잡아 깨웁니다. 같은 시간을 자도 어느 단계에서 깨느냐에 따라 아침의 무게가 다릅니다. 창 안에서 얕은 잠이 감지되지 않으면 설정한 시각에 반드시 울리므로 늦게 깨울 일은 없습니다.</p>
+        <dl class="feature__points">
+          <div><dt>알람 창</dt><dd>10–45분. 출근처럼 늦으면 안 되는 날은 10분, 주말은 45분처럼 요일별로 다르게 둘 수 있습니다.</dd></div>
+          <div><dt>소리</dt><dd>40초에 걸쳐 볼륨이 올라갑니다. 폰을 뒤집으면 5분 뒤 다시 울리고, 무음·방해 금지 모드에서도 울리도록 첫 실행 때 권한을 안내합니다.</dd></div>
+          <div><dt>지난 2주</dt><dd>이 사용자는 창 안에서 평균 06:41에 깼고, 14일 중 9일을 “가벼움”으로 기록했습니다.</dd></div>
+        </dl>
+        <div class="feature__control">
+          <label class="ctl-label" for="alarmRange">알람 창 길이 바꿔 보기</label>
+          <div class="range-wrap">
+            <input type="range" id="alarmRange" min="10" max="45" step="5" value="30" aria-describedby="alarmRangeHint">
+            <output for="alarmRange" id="alarmRangeOut">30분</output>
+          </div>
+          <p class="range-hint" id="alarmRangeHint">기상 목표 07:00 기준 — 화면의 알람 창이 <b id="alarmRangeHintStart">06:30</b>부터 열립니다.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Feature 3: 주간 리포트 -->
+    <article class="feature" aria-labelledby="f3Title">
+      <div class="feature__visual">
+        <div class="phone" role="group" aria-label="주간 리포트 화면: 일주일 수면 시간 막대 그래프와 요일별 상세">
+          <div class="phone__frame">
+            <div class="phone__notch"></div>
+            <div class="phone__screen phone__screen--light">
+              <div class="status"><span>09:12</span><span class="status__icons" aria-hidden="true">
+                <svg viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx=".5"/><rect x="4.5" y="5" width="3" height="7" rx=".5"/><rect x="9" y="2" width="3" height="10" rx=".5"/><rect x="13" y="0" width="3" height="12" rx=".5" opacity=".4"/></svg>
+              </span></div>
+              <div class="screen">
+                <div class="screen__top"><strong>주간 리포트</strong><small>8월 9일 – 15일</small></div>
+                <div class="card">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline">
+                    <div><div class="card__label">평균 수면</div><b style="font-size:20px;font-weight:800;letter-spacing:-0.03em">7시간 04분</b></div>
+                    <span class="chip chip--ok">지난주 +22분</span>
+                  </div>
+                  <div class="week" style="margin-top:12px" role="group" aria-label="요일별 수면 시간">
+                    <button type="button" data-day="0" aria-pressed="false" aria-label="토요일 7시간 48분"><span class="bar" style="height:92%"><i class="b-rem" style="height:22%"></i><i class="b-light" style="height:52%"></i><i class="b-deep" style="height:26%"></i></span><small>토</small></button>
+                    <button type="button" data-day="1" aria-pressed="false" aria-label="일요일 8시간 10분"><span class="bar" style="height:100%"><i class="b-rem" style="height:24%"></i><i class="b-light" style="height:50%"></i><i class="b-deep" style="height:26%"></i></span><small>일</small></button>
+                    <button type="button" data-day="2" aria-pressed="false" aria-label="월요일 6시간 20분"><span class="bar" style="height:70%"><i class="b-rem" style="height:18%"></i><i class="b-light" style="height:58%"></i><i class="b-deep" style="height:24%"></i></span><small>월</small></button>
+                    <button type="button" data-day="3" aria-pressed="false" aria-label="화요일 6시간 45분"><span class="bar" style="height:76%"><i class="b-rem" style="height:20%"></i><i class="b-light" style="height:55%"></i><i class="b-deep" style="height:25%"></i></span><small>화</small></button>
+                    <button type="button" data-day="4" aria-pressed="false" aria-label="수요일 6시간 58분"><span class="bar" style="height:80%"><i class="b-rem" style="height:21%"></i><i class="b-light" style="height:53%"></i><i class="b-deep" style="height:26%"></i></span><small>수</small></button>
+                    <button type="button" data-day="5" aria-pressed="false" aria-label="목요일 6시간 27분"><span class="bar" style="height:72%"><i class="b-rem" style="height:19%"></i><i class="b-light" style="height:57%"></i><i class="b-deep" style="height:24%"></i></span><small>목</small></button>
+                    <button type="button" data-day="6" aria-pressed="true" aria-label="금요일 7시간 12분"><span class="bar" style="height:84%"><i class="b-rem" style="height:22%"></i><i class="b-light" style="height:51%"></i><i class="b-deep" style="height:27%"></i></span><small>금</small></button>
+                  </div>
+                  <div class="legend" style="margin-top:10px">
+                    <span><i style="background:var(--stage-deep)"></i>깊은 잠</span>
+                    <span><i style="background:var(--stage-light)"></i>얕은 잠</span>
+                    <span><i style="background:var(--stage-rem)"></i>렘</span>
+                  </div>
+                </div>
+                <div class="card">
+                  <dl class="day-detail" id="dayDetail" aria-live="polite">
+                    <div class="full"><span class="card__label">금요일 · 8월 15일</span><b>7시간 12분</b></div>
+                    <dt>수면 점수</dt><dd>84</dd>
+                    <dt>취침 · 기상</dt><dd>23:41 · 07:02</dd>
+                    <dt>깊은 잠</dt><dd>1시간 38분</dd>
+                    <dt>입면 시간</dt><dd>14분</dd>
+                  </dl>
+                </div>
+                <div class="card">
+                  <div class="insight">
+                    <div class="insight__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V10M10 19V5M16 19v-8M22 19H2"/></svg></div>
+                    <p><b>평일 취침이 주말보다 평균 52분 늦어요.</b> 다음 주 목표: 월–목 취침 23:30 이전 3회.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature__copy">
+        <span class="tab-ref"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 19V10M10 19V5M16 19v-8M22 19H2"/></svg>앱의 ‘리포트’ 탭</span>
+        <h3 id="f3Title">한 주를 돌아보고, 다음 주 목표 하나를 정해 주는 리포트</h3>
+        <p>매주 토요일 아침, 지난 7일의 수면 시간·점수·취침 편차를 정리하고 가장 효과가 클 습관 하나를 다음 주 목표로 제안합니다. 숫자 나열이 아니라 “무엇을 바꿀지”가 남습니다. 카페인·운동·늦은 식사 기록과 수면 점수의 관계는 4주 단위로 따로 정리되고, 월간 리포트는 PDF로 저장해 진료나 상담 때 보여줄 수 있습니다(플러스).</p>
+        <div class="feature__control">
+          <span class="ctl-label">화면의 막대를 눌러 요일별 상세를 확인해 보세요</span>
+          <p style="font-size:14px;color:var(--ink-2)">이번 주 요약 — 평균 <b class="num">7시간 04분</b>, 평균 점수 <b class="num">79</b>, 취침 편차 <b class="num">±38분</b>. 가장 짧았던 밤은 월요일(6시간 20분)입니다.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ======================================================================
+     How it works / Science
+     ====================================================================== -->
+<section class="section section--soft" id="science" aria-labelledby="scienceTitle">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">작동 원리</span>
+      <h2 id="scienceTitle">머리맡의 스마트폰이<br>밤새 하는 일</h2>
+      <p>수면 단계 그래프 한 장이 만들어지기까지의 과정입니다. 전부 기기 안에서 끝나며, 원본 소리는 서버로 올라가지 않고 분석에 필요한 특징값만 남깁니다.</p>
+    </div>
+
+    <ol class="how">
+      <li class="how__step">
+        <span class="n" aria-hidden="true">1</span>
+        <div>
+          <h3>센서가 소리와 움직임을 읽습니다</h3>
+          <p>머리맡의 스마트폰 마이크와 가속도 센서가 호흡 리듬, 뒤척임, 코골이 같은 소리 이벤트를 30초 구간으로 나눠 기록합니다. 마이크는 음량과 주파수 특징만 뽑아내고 원본 오디오는 남기지 않습니다.</p>
+        </div>
+        <dl class="how__facts">
+          <div><dt>입력</dt><dd>마이크 음량·주파수 포락선, 가속도 3축</dd></div>
+          <div><dt>워치 연결 시</dt><dd>심박·HRV 추가(Apple Watch, Galaxy Watch)</dd></div>
+          <div><dt>배터리</dt><dd>8시간 기록에 약 6–8%(iPhone 14·Galaxy S23 자체 측정)</dd></div>
+        </dl>
+      </li>
+      <li class="how__step">
+        <span class="n" aria-hidden="true">2</span>
+        <div>
+          <h3>기기 안의 모델이 4단계로 분류합니다</h3>
+          <p>분류 모델이 각 30초 구간을 깸·렘·얕은 잠·깊은 잠 중 하나로 판단하고, 이어 붙여 밤 전체 그래프를 만듭니다. 서버 왕복이 없어 비행기 모드에서도 똑같이 동작합니다.</p>
+        </div>
+        <dl class="how__facts">
+          <div><dt>학습 데이터</dt><dd>수면다원검사(PSG) 1,240박</dd></div>
+          <div><dt>4단계 일치율</dt><dd>스마트폰 단독 78% · 워치 연결 84%</dd></div>
+        </dl>
+      </li>
+      <li class="how__step">
+        <span class="n" aria-hidden="true">3</span>
+        <div>
+          <h3>다음 밤에 할 일 하나를 제안합니다</h3>
+          <p>수면 점수와 습관 기록을 비교해 효과가 큰 순서대로 한 번에 하나씩만 제안합니다. 알람 창 길이와 취침 목표 시각도 여기서 자동 조정됩니다. 진단이 아니라 습관 제안이며, 증상이 이어지면 수면 전문의 상담을 안내합니다.</p>
+        </div>
+        <dl class="how__facts">
+          <div><dt>상관 계산</dt><dd>취침 시각·카페인·운동·화면 사용, 4주 단위</dd></div>
+          <div><dt>제안 빈도</dt><dd>하루 최대 1개. 무시하면 다음 주에 다시 평가하고, 알람 창 길이·취침 알림 시각은 별도 확인 없이 조정</dd></div>
+        </dl>
+      </li>
+    </ol>
+
+    <div class="signal" aria-labelledby="signalTitle">
+      <div class="signal__head"><h4 id="signalTitle">한 구간이 분류되는 방식 — 02:10 부근 5분</h4><span>실제 데이터를 단순화한 예시</span></div>
+      <svg viewBox="0 0 720 150" role="img" aria-label="호흡 리듬과 움직임 신호가 30초 구간별로 깊은 잠 또는 얕은 잠으로 분류되는 도식">
+        <rect class="band" x="0" y="20" width="240" height="90" rx="6"/>
+        <rect class="band" x="480" y="20" width="240" height="90" rx="6" opacity=".35"/>
+        <text class="band-lbl" x="12" y="38">깊은 잠 · 호흡 규칙 · 움직임 없음</text>
+        <text class="band-lbl" x="252" y="38">얕은 잠 · 뒤척임 2회</text>
+        <text class="band-lbl" x="492" y="38">깊은 잠</text>
+        <path class="wave" d="M0,80 C10,60 20,60 30,80 S50,100 60,80 S80,60 90,80 S110,100 120,80 S140,60 150,80 S170,100 180,80 S200,60 210,80 S230,100 240,80 C246,66 252,64 258,80 S268,104 278,78 S294,60 300,82 S312,98 320,78 S334,60 342,84 S356,100 366,80 S382,62 392,82 S406,100 416,80 S432,64 440,82 S454,98 464,80 S476,62 486,80 S506,100 516,80 S536,60 546,80 S566,100 576,80 S596,60 606,80 S626,100 636,80 S656,60 666,80 S686,100 696,80 S712,64 720,80"/>
+        <path class="wave2" d="M0,104 H250 L256,90 L262,104 H330 L336,94 L342,104 H480 L484,100 L488,104 H720"/>
+        <line class="axis" x1="0" y1="118" x2="720" y2="118"/>
+        <g class="axis-lbl">
+          <text x="0" y="134">02:10</text><text x="118" y="134">02:11</text><text x="238" y="134">02:12</text><text x="358" y="134">02:13</text><text x="478" y="134">02:14</text><text x="598" y="134">02:15</text>
+        </g>
+        <g stroke="var(--line-strong)" stroke-dasharray="3 4">
+          <line x1="120" y1="20" x2="120" y2="110"/><line x1="240" y1="20" x2="240" y2="110"/><line x1="360" y1="20" x2="360" y2="110"/><line x1="480" y1="20" x2="480" y2="110"/><line x1="600" y1="20" x2="600" y2="110"/>
+        </g>
+      </svg>
+      <div class="signal__legend">
+        <span><i style="background:var(--brand)"></i>호흡 리듬(마이크 음량 포락선)</span>
+        <span><i style="background:var(--stage-awake)"></i>움직임(가속도)</span>
+        <span><i style="background:var(--brand-soft);height:10px"></i>30초 구간 분류 결과</span>
+      </div>
+    </div>
+
+    <div class="how__note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      <p><b>데이터는 기기에 남습니다.</b> 원본 오디오는 저장·전송되지 않고, 계정 동기화를 켠 경우에만 단계 그래프와 점수가 암호화되어 백업됩니다. 설정 &gt; 데이터에서 전체 삭제할 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Results / Testimonials
+     ====================================================================== -->
+<section class="section" id="results" aria-labelledby="resultsTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="resultsTitle">8주 동안 꾸준히 쓴 사용자에게<br>실제로 달라진 숫자</h2>
+      <p>2026년 3월 2일부터 5월 24일까지 8주 이상 매일 기록한 사용자 6,812명의 앱 데이터와 자가 보고 설문을 정리했습니다. 개인차가 있으며 의학적 효과를 보증하지 않습니다.</p>
+    </div>
+    <div class="results">
+      <div>
+        <div class="result-table">
+          <div class="result-table__scroll">
+            <table>
+              <caption class="sr-only">8주 사용 전후 지표 비교</caption>
+              <thead>
+                <tr><th scope="col">지표</th><th scope="col">첫 주</th><th scope="col">8주차</th><th scope="col">변화</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="lbl">평균 입면 시간</span><span class="basis">취침 목표 알림을 켠 사용자 4,210명</span></td>
+                  <td>27분</td><td>15분</td><td class="delta">−12분</td>
+                </tr>
+                <tr>
+                  <td><span class="lbl">수면 점수(100점 자체 지표)</span><span class="basis">전체 6,812명</span></td>
+                  <td>71점</td><td>80점</td><td class="delta">+9점</td>
+                </tr>
+                <tr>
+                  <td><span class="lbl">요일별 취침 시각 표준편차</span><span class="basis">주간 리포트 목표를 설정한 사용자 2,988명</span></td>
+                  <td>61분</td><td>38분</td><td class="delta">−23분</td>
+                </tr>
+                <tr>
+                  <td><span class="lbl">“아침이 덜 무겁다” 응답 비율</span><span class="basis">스마트 알람 4주 이상 사용자 3,905명, 5점 척도 4점 이상</span></td>
+                  <td>31%</td><td>74%</td><td class="delta">+43%p</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="stats__note">자체 집계이며 외부 기관의 검증을 거치지 않았습니다. 수면 점수는 잠결의 자체 지표로 임상 지표가 아닙니다. 수면 장애가 의심되면 수면 전문의 진료를 권합니다.</p>
+      </div>
+
+      <div class="quotes">
+        <article class="quote">
+          <div class="quote__metric"><b>27분에서 13분으로</b>입면 시간, 6주</div>
+          <p>“누워서 30분씩 뒤척이는 게 당연한 줄 알았어요. 취침 알림 시간을 앱이 조금씩 앞으로 당겨 줬는데, 어느 순간 눕고 15분 안에 잠들고 있더라고요.”</p>
+          <footer><b>김서연</b>34세 · 마케터 · 사용 6주차</footer>
+        </article>
+        <article class="quote">
+          <div class="quote__metric"><b>14일 중 11일</b>알람 창 안에서 기상</div>
+          <p>“정시 알람은 늘 깊은 잠에서 끌려 나오는 느낌이었는데, 20분 창으로 바꾸고 나서는 울리기 전에 눈이 먼저 떠지는 날이 많아졌어요. 회의 있는 날은 창을 10분으로 줄입니다.”</p>
+          <footer><b>박준호</b>41세 · 개발자 · 사용 3개월</footer>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Pricing
+     ====================================================================== -->
+<section class="section section--soft" id="pricing" aria-labelledby="pricingTitle">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <h2 id="pricingTitle">기록과 알람은 무료,<br>더 깊이 보고 싶을 때만 플러스</h2>
+      <p>무료 플랜에도 기간 제한이 없습니다. 플러스는 앱 스토어 구독 관리에서 해지할 수 있고, 남은 기간까지 그대로 사용됩니다.</p>
+    </div>
+
+    <div style="text-align:center">
+      <div class="billing" role="group" aria-label="결제 주기 선택" id="billing">
+        <button type="button" data-cycle="monthly" aria-pressed="false">월간 결제</button>
+        <button type="button" data-cycle="yearly" aria-pressed="true">연간 결제<span class="save">34% 절약</span></button>
+      </div>
+    </div>
+
+    <div class="pricing">
+      <article class="plan" aria-labelledby="planFree">
+        <h3 id="planFree">무료</h3>
+        <p class="desc">수면 기록과 스마트 알람의 기본기</p>
+        <div class="plan__price"><span class="amt num">₩0</span><span class="per">/ 계속 무료</span></div>
+        <p class="plan__sub">카드 등록 없이 바로 시작</p>
+        <a class="btn btn--ghost" href="#download">무료로 시작하기</a>
+        <div class="plan__list-title">포함</div>
+        <ul>
+          <li>수면 기록·수면 점수·4단계 그래프</li>
+          <li>스마트 알람(알람 창 30분 고정)</li>
+          <li>최근 7일 리포트</li>
+          <li>취침 목표 알림·아침 컨디션 기록</li>
+          <li class="off">습관 상관 분석·월간 리포트</li>
+          <li class="off">코골이·소음 이벤트 재생</li>
+        </ul>
+      </article>
+      <article class="plan plan--pro" aria-labelledby="planPro">
+        <h3 id="planPro">플러스</h3>
+        <p class="desc">습관까지 바꾸고 싶은 사람을 위한 전체 기능</p>
+        <div class="plan__price"><span class="amt num" id="proPrice">₩3,250</span><span class="per" id="proPer">/ 월</span></div>
+        <p class="plan__sub" id="proSub">연 ₩39,000 일시 결제 · 월간 결제 시 ₩4,900</p>
+        <a class="btn btn--primary" href="#download">7일 무료 체험 시작</a>
+        <div class="plan__list-title">무료 플랜에 더해</div>
+        <ul>
+          <li>알람 창 10–45분 자유 설정 · 요일별 프로필</li>
+          <li>주간·월간 리포트 + PDF 내보내기</li>
+          <li>습관 상관 분석(카페인·운동·식사·화면)</li>
+          <li>코골이·소음 이벤트 감지와 구간 재생</li>
+          <li>웨어러블 연동(심박·HRV) · 무제한 기록 보관</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="compare">
+      <div class="compare__scroll">
+        <table>
+          <caption class="sr-only">무료 플랜과 플러스 플랜 기능 비교표</caption>
+          <thead>
+            <tr><th scope="col">기능</th><th scope="col">무료</th><th scope="col">플러스</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="rowgroup" colspan="3">기록과 분석</th></tr>
+            <tr><td>수면 단계 그래프(깸·렘·얕은 잠·깊은 잠)</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><td>수면 점수·입면 시간·밤중 깸</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><td>기록 보관 기간</td><td>90일</td><td>무제한</td></tr>
+            <tr><td>웨어러블 심박·HRV 연동</td><td class="no">—</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><td>코골이·소음 이벤트 감지·재생<small>구간별 최대 20초, 기기 내 저장</small></td><td class="no">—</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><th scope="rowgroup" colspan="3">알람</th></tr>
+            <tr><td>스마트 알람(얕은 잠 감지 기상)</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><td>알람 창 길이</td><td>30분 고정</td><td>10–45분</td></tr>
+            <tr><td>요일별 알람 프로필·기상 소리 12종</td><td>기본 3종</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><th scope="rowgroup" colspan="3">리포트와 제안</th></tr>
+            <tr><td>주간 리포트</td><td>최근 7일</td><td>전체 기간</td></tr>
+            <tr><td>월간 리포트·PDF 내보내기</td><td class="no">—</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><td>습관 상관 분석(카페인·운동·식사·화면)</td><td class="no">—</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="포함"><path d="m5 12 5 5L20 7"/></svg></td></tr>
+            <tr><td>취침 목표·오늘의 제안</td><td>주 1개</td><td>매일 1개</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="pricing__note">가격은 부가세 포함이며 App Store·Google Play 결제 기준입니다. 7일 무료 체험은 최초 1회 제공되고, 체험 종료 24시간 전까지 해지하면 청구되지 않습니다. 가족 공유(최대 5명)는 연간 플랜에서 지원됩니다.</p>
+  </div>
+</section>
+
+<!-- ======================================================================
+     FAQ
+     ====================================================================== -->
+<section class="section" id="faq" aria-labelledby="faqTitle">
+  <div class="container faq-layout">
+    <div class="section-head">
+      <h2 id="faqTitle">시작하기 전에<br>궁금한 것들</h2>
+      <p>침대 위치, 배터리, 녹음 데이터, 정확도, 해지까지. 답이 없으면 아래 주소로 물어보세요.</p>
+      <p class="faq__more">문의는 <a href="mailto:help@jamgyeol.app">help@jamgyeol.app</a>로 보내 주세요. 평일 10:00–18:00, 보통 하루 안에 답변합니다.</p>
+    </div>
+    <div class="faq" id="faqList">
+      <div class="faq__item">
+        <h3><button class="faq__q" aria-expanded="false" aria-controls="faq1" id="faq1btn">스마트폰을 어디에 두면 되나요? 침대 옆 탁자도 괜찮나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+        <div class="faq__a" id="faq1" role="region" aria-labelledby="faq1btn"><div><p>머리에서 1m 이내, 매트리스 위나 침대 옆 탁자에 화면을 아래로 두면 됩니다. 마이크가 이불에 막히지 않도록 베개 밑은 피해 주세요. 매트리스 위에 두면 가속도 센서로 뒤척임까지 읽어 정확도가 조금 더 올라갑니다.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <h3><button class="faq__q" aria-expanded="false" aria-controls="faq2" id="faq2btn">두 사람이 같은 침대에서 자면 누구 수면이 기록되나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+        <div class="faq__a" id="faq2" role="region" aria-labelledby="faq2btn"><div><p>스마트폰과 가까운 쪽 사람의 호흡·움직임이 우선 반영됩니다. 정확히 나누고 싶다면 워치를 연결하는 것이 가장 확실하고, 워치가 없다면 각자 자기 쪽에 스마트폰을 두고 기록하면 됩니다. 옆 사람 코골이는 소음 이벤트로 따로 표시됩니다.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <h3><button class="faq__q" aria-expanded="false" aria-controls="faq3" id="faq3btn">배터리는 얼마나 쓰나요? 밤새 충전해야 하나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+        <div class="faq__a" id="faq3" role="region" aria-labelledby="faq3btn"><div><p>화면을 끈 상태로 8시간 기록 시 배터리 약 6~8%를 사용합니다(iPhone 14·Galaxy S23 기준 자체 측정). 충전하며 써도 되고, 배터리가 20% 아래로 내려가면 기록을 유지한 채 알림으로 알려 드립니다.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <h3><button class="faq__q" aria-expanded="false" aria-controls="faq4" id="faq4btn">녹음이 서버로 올라가나요? 개인정보는 어떻게 다뤄지나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+        <div class="faq__a" id="faq4" role="region" aria-labelledby="faq4btn"><div><p>원본 오디오는 서버로 전송되지 않고 기기 안에서 음량·주파수 특징값으로만 처리됩니다. 플러스의 코골이 구간 재생도 기기 안에만 저장되며 최대 20초 단위입니다.</p><p>계정 동기화를 켜면 단계 그래프·점수·설정만 암호화되어 백업되고, 설정 &gt; 데이터에서 언제든 전체 삭제할 수 있습니다. 자세한 내용은 개인정보처리방침에서 확인하세요.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <h3><button class="faq__q" aria-expanded="false" aria-controls="faq5" id="faq5btn">수면 단계는 얼마나 정확한가요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+        <div class="faq__a" id="faq5" role="region" aria-labelledby="faq5btn"><div><p>수면다원검사(PSG) 1,240박 데이터와 비교했을 때 4단계 일치율은 스마트폰 단독 78%, 워치 연결 시 84%였습니다. 병원 검사를 대체하는 수준은 아니지만, 매일의 경향(입면 시간, 깊은 잠 비율, 취침 편차)을 추적하기에는 충분합니다. 잠결은 의료기기가 아니며 진단 목적으로 사용할 수 없습니다.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <h3><button class="faq__q" aria-expanded="false" aria-controls="faq6" id="faq6btn">스마트 알람이 창 안에서 못 깨우면 어떻게 되나요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+        <div class="faq__a" id="faq6" role="region" aria-labelledby="faq6btn"><div><p>설정한 기상 목표 시각에는 반드시 울립니다. 알람 창은 “그 전에 얕은 잠이 오면 조금 일찍 깨운다”는 뜻이고, 늦게 깨우는 일은 없습니다. 무음 모드·방해 금지 모드에서도 알람은 울리도록 앱 권한을 처음 실행 때 안내합니다.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <h3><button class="faq__q" aria-expanded="false" aria-controls="faq7" id="faq7btn">플러스는 언제든 해지할 수 있나요? 환불은요?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
+        <div class="faq__a" id="faq7" role="region" aria-labelledby="faq7btn"><div><p>App Store 또는 Google Play의 구독 관리에서 언제든 해지할 수 있고, 남은 기간까지는 플러스가 유지됩니다. 환불은 각 스토어의 정책을 따르며, 결제 후 7일 이내 미사용 건은 스토어를 통해 요청할 수 있습니다. 해지 후에도 무료 플랜으로 기록은 계속됩니다.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Download CTA
+     ====================================================================== -->
+<section class="download" id="download" aria-labelledby="downloadTitle">
+  <div class="container">
+    <div class="download__box">
+      <div>
+        <h2 id="downloadTitle">오늘 밤부터 기록해 보세요.<br>첫 아침 리포트는 내일 도착합니다.</h2>
+        <p>설치 후 기상 목표 시각만 정하면 준비 끝. 첫날 밤부터 수면 그래프가 그려지고, 무료 플랜은 기간 제한이 없습니다.</p>
+        <div class="download__cta">
+          <a class="store store--light" href="https://apps.apple.com/kr/" target="_blank" rel="noopener" aria-label="App Store에서 다운로드(새 창)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2ZM14 5.3c.7-.8 1.2-2 1-3.1-1 .1-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg>
+            <span class="store__txt"><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="store store--light" href="https://play.google.com/store/apps?hl=ko" target="_blank" rel="noopener" aria-label="Google Play에서 다운로드(새 창)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.3v17.4c0 .5.5.8.9.5l9.6-8.7L4.9 2.8c-.4-.3-.9 0-.9.5Z" opacity=".95"/><path d="M17.6 9.9 6.4 3.6l8.1 8.9 3.1-2.6Z" opacity=".75"/><path d="m17.6 14.1-3.1-2.6-8.1 8.9 11.2-6.3Z" opacity=".85"/><path d="M20.4 10.9 17.6 9.9l-3.1 2.1 3.1 2.1 2.8-1c.8-.4.8-1.8 0-2.2Z" opacity=".65"/></svg>
+            <span class="store__txt"><small>GET IT ON</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+        <p class="download__meta">iOS 16 이상 · Android 10 이상 · 앱 용량 48MB · 한국어·영어·일본어 지원</p>
+      </div>
+      <div class="download__visual">
+        <div class="qr" role="img" aria-label="앱 다운로드 QR 코드 자리 표시(예시)">
+          <svg viewBox="0 0 29 29" shape-rendering="crispEdges" fill="#1b1940">
+            <path d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM22 0h7v7h-7zM23 1v5h5V1zM24 2h3v3h-3zM0 22h7v7H0zM1 23v5h5v-5zM2 24h3v3H2z" fill-rule="evenodd"/>
+            <path d="M9 0h1v1H9zM11 0h2v1h-2zM14 0h1v1h-1zM17 0h2v1h-2zM8 1h1v1H8zM10 1h1v1h-1zM13 1h3v1h-3zM19 1h1v1h-1zM9 2h2v1H9zM12 2h1v1h-1zM15 2h1v1h-1zM17 2h3v1h-3zM8 3h1v1H8zM11 3h1v1h-1zM13 3h2v1h-2zM16 3h1v1h-1zM18 3h1v1h-1zM10 4h1v1h-1zM12 4h3v1h-3zM17 4h1v1h-1zM19 4h1v1h-1zM8 5h2v1H8zM11 5h1v1h-1zM14 5h1v1h-1zM16 5h3v1h-3zM8 6h1v1H8zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1z"/>
+            <path d="M0 8h1v1H0zM2 8h1v1H2zM4 8h2v1H4zM8 8h2v1H8zM12 8h1v1h-1zM14 8h2v1h-2zM18 8h1v1h-1zM20 8h1v1h-1zM23 8h1v1h-1zM25 8h2v1h-2zM28 8h1v1h-1zM1 9h1v1H1zM3 9h1v1H3zM6 9h1v1H6zM9 9h1v1H9zM11 9h1v1h-1zM13 9h2v1h-2zM17 9h1v1h-1zM19 9h2v1h-2zM22 9h1v1h-1zM24 9h1v1h-1zM27 9h1v1h-1zM0 10h2v1H0zM4 10h1v1H4zM7 10h2v1H7zM10 10h1v1h-1zM12 10h1v1h-1zM15 10h2v1h-2zM18 10h1v1h-1zM21 10h1v1h-1zM23 10h2v1h-2zM26 10h1v1h-1zM28 10h1v1h-1zM2 11h1v1H2zM5 11h1v1H5zM8 11h1v1H8zM11 11h2v1h-2zM14 11h1v1h-1zM17 11h1v1h-1zM19 11h1v1h-1zM22 11h1v1h-1zM25 11h1v1h-1zM27 11h1v1h-1zM0 12h1v1H0zM3 12h1v1H3zM6 12h1v1H6zM9 12h2v1H9zM13 12h1v1h-1zM16 12h1v1h-1zM18 12h2v1h-2zM21 12h1v1h-1zM24 12h1v1h-1zM26 12h2v1h-2zM1 13h2v1H1zM4 13h1v1H4zM7 13h1v1H7zM10 13h1v1h-1zM12 13h1v1h-1zM14 13h2v1h-2zM17 13h1v1h-1zM20 13h1v1h-1zM23 13h1v1h-1zM25 13h1v1h-1zM28 13h1v1h-1zM0 14h1v1H0zM3 14h2v1H3zM6 14h1v1H6zM8 14h1v1H8zM11 14h1v1h-1zM13 14h1v1h-1zM16 14h2v1h-2zM19 14h1v1h-1zM22 14h1v1h-1zM24 14h2v1h-2zM27 14h1v1h-1zM2 15h1v1H2zM5 15h1v1H5zM7 15h1v1H7zM9 15h2v1H9zM12 15h1v1h-1zM15 15h1v1h-1zM18 15h1v1h-1zM20 15h2v1h-2zM23 15h1v1h-1zM26 15h1v1h-1zM28 15h1v1h-1zM0 16h2v1H0zM4 16h1v1H4zM6 16h1v1H6zM8 16h1v1H8zM10 16h1v1h-1zM13 16h2v1h-2zM17 16h1v1h-1zM19 16h1v1h-1zM22 16h1v1h-1zM24 16h1v1h-1zM27 16h1v1h-1zM1 17h1v1H1zM3 17h1v1H3zM5 17h1v1H5zM9 17h1v1H9zM11 17h2v1h-2zM14 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM20 17h1v1h-1zM23 17h2v1h-2zM26 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1H0zM2 18h2v1H2zM6 18h1v1H6zM8 18h1v1H8zM10 18h1v1h-1zM12 18h1v1h-1zM15 18h1v1h-1zM17 18h2v1h-2zM21 18h1v1h-1zM24 18h1v1h-1zM27 18h1v1h-1zM1 19h1v1H1zM4 19h1v1H4zM7 19h1v1H7zM9 19h2v1H9zM13 19h1v1h-1zM16 19h1v1h-1zM19 19h1v1h-1zM22 19h1v1h-1zM25 19h2v1h-2zM28 19h1v1h-1zM0 20h1v1H0zM3 20h1v1H3zM5 20h2v1H5zM8 20h1v1H8zM11 20h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM20 20h2v1h-2zM23 20h1v1h-1zM26 20h1v1h-1z"/>
+            <path d="M9 22h1v1H9zM11 22h2v1h-2zM15 22h1v1h-1zM17 22h1v1h-1zM19 22h1v1h-1zM8 23h1v1H8zM10 23h1v1h-1zM13 23h1v1h-1zM16 23h2v1h-2zM20 23h1v1h-1zM9 24h1v1H9zM12 24h1v1h-1zM14 24h2v1h-2zM18 24h1v1h-1zM8 25h2v1H8zM11 25h1v1h-1zM13 25h1v1h-1zM16 25h1v1h-1zM19 25h2v1h-2zM10 26h1v1h-1zM12 26h2v1h-2zM15 26h1v1h-1zM17 26h1v1h-1zM8 27h1v1H8zM11 27h1v1h-1zM14 27h1v1h-1zM16 27h2v1h-2zM19 27h1v1h-1zM9 28h2v1H9zM12 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM20 28h1v1h-1z"/>
+            <path d="M22 22h1v1h-1zM24 22h2v1h-2zM27 22h1v1h-1zM23 23h1v1h-1zM26 23h1v1h-1zM28 23h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM25 24h2v1h-2zM23 25h2v1h-2zM27 25h1v1h-1zM22 26h1v1h-1zM25 26h1v1h-1zM28 26h1v1h-1zM23 27h1v1h-1zM26 27h2v1h-2zM22 28h2v1h-2zM25 28h1v1h-1zM27 28h1v1h-1z"/>
+          </svg>
+        </div>
+        <p class="qr-hint"><b>카메라로 스캔</b>기기에 맞는 스토어로 바로 이동합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================================================================
+     Footer
+     ====================================================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="#top" aria-label="잠결 홈">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M15.5 3.5a8.5 8.5 0 1 0 5 15.2A8.5 8.5 0 0 1 15.5 3.5Z" fill="#fff"/><circle cx="6.5" cy="7.5" r="1.2" fill="#fff" opacity=".8"/></svg>
+          </span>
+          잠결
+        </a>
+        <p>수면을 읽고, 아침을 바꾸는 앱. 잠결은 밤사이 데이터를 다음 밤을 위한 작은 제안으로 바꿉니다.</p>
+        <p class="footer__legal">(주)잠결랩 · 대표 한지우<br>사업자등록번호 512-88-01947 · 통신판매업 신고 2025-서울성동-1183<br>서울특별시 성동구 왕십리로 83-21, 6층<br>고객센터 help@jamgyeol.app · 02-6959-2210 (평일 10:00–18:00)</p>
+      </div>
+      <div>
+        <h4>제품</h4>
+        <ul>
+          <li><a href="#features">수면 단계 분석</a></li>
+          <li><a href="#features">스마트 알람</a></li>
+          <li><a href="#features">주간 리포트</a></li>
+          <li><a href="#science">작동 원리와 정확도</a></li>
+          <li><a href="#pricing">요금</a></li>
+          <li><a href="#download">앱 다운로드</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>지원</h4>
+        <ul>
+          <li><a href="#faq">자주 묻는 질문</a></li>
+          <li><a href="#faq">녹음 데이터 처리</a></li>
+          <li><a href="#faq">해지와 환불</a></li>
+          <li><a href="mailto:help@jamgyeol.app">이메일 문의</a></li>
+          <li><a href="tel:0269592210">02-6959-2210</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__disclaimer">잠결은 의료기기가 아니며 수면 장애의 진단·치료·예방을 목적으로 하지 않습니다. 수면 점수와 단계 분석은 참고용 지표이며, 지속되는 불면·과다졸림·호흡 이상은 수면 전문의와 상담하세요.</p>
+    <div class="footer__bottom">
+      <span>© 2026 Jamgyeol Lab Inc. All rights reserved.</span>
+      <nav class="footer__policy" aria-label="정책">
+        <a href="#top">이용약관</a>
+        <a href="#top"><b>개인정보처리방침</b></a>
+        <a href="#top">수면 데이터 처리 안내</a>
+        <a href="#top">오픈소스 라이선스</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="맨 위로">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function(){
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Header scroll state + to-top ---------- */
+  var header = document.getElementById('header');
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    header.classList.toggle('is-scrolled', y > 8);
+    toTop.classList.toggle('is-show', y > 700);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: reduceMotion ? 'auto' : 'smooth'});
+  });
+
+  /* ---------- Mobile menu ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function setMenu(open){
+    mobileMenu.classList.toggle('is-open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    var path = menuBtn.querySelector('path');
+    path.setAttribute('d', open ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16');
+  }
+  menuBtn.addEventListener('click', function(){ setMenu(!mobileMenu.classList.contains('is-open')); });
+  mobileMenu.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && mobileMenu.classList.contains('is-open')){ setMenu(false); menuBtn.focus(); } });
+  window.addEventListener('resize', function(){ if(window.innerWidth > 860) setMenu(false); });
+
+  /* ---------- Anchor offset for sticky header ---------- */
+  var headerH = 68;
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      if(!id) return;
+      var target = document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - headerH - 8;
+      if(id === 'top') top = 0;
+      window.scrollTo({top: top, behavior: reduceMotion ? 'auto' : 'smooth'});
+      if(history.pushState) history.pushState(null, '', '#' + id);
+    });
+  });
+
+  /* ---------- Active nav highlight ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var sectionIds = navLinks.map(function(a){ return a.getAttribute('href').slice(1); });
+  var sections = sectionIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  if('IntersectionObserver' in window && sections.length){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          navLinks.forEach(function(a){ a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id); });
+        }
+      });
+    }, {rootMargin: '-40% 0px -55% 0px', threshold: 0});
+    sections.forEach(function(s){ navObs.observe(s); });
+  }
+
+  /* ---------- Feature 1: sleep stage focus ---------- */
+  var stageSeg = document.getElementById('stageSeg');
+  var hypno = document.getElementById('hypnoSvg');
+  var stageName = document.getElementById('stageName');
+  var stageTime = document.getElementById('stageTime');
+  var stageDesc = document.getElementById('stageDesc');
+  var stageData = {
+    all:   {name:'전체 수면', time:'7시간 12분', desc:'4단계로 나눠 30초 단위로 분류합니다. 깊은 잠은 대부분 전반부, 렘 수면은 후반부에 몰려 있어요.'},
+    deep:  {name:'깊은 잠', time:'1시간 38분 · 23%', desc:'취침 후 첫 3시간에 두 번 크게 나타났어요. 신체 회복과 관련이 깊은 단계로, 목표(1시간 30분)를 채웠습니다.'},
+    light: {name:'얕은 잠', time:'3시간 39분 · 51%', desc:'단계 사이를 잇는 구간이에요. 스마트 알람은 기상 창 안에서 이 단계로 올라오는 순간을 노려 깨웁니다.'},
+    rem:   {name:'렘 수면', time:'1시간 34분 · 22%', desc:'새벽 3시 이후에 길게 이어졌어요. 기억 정리·감정 조절과 관련되며, 평소보다 18분 길었습니다.'},
+    awake: {name:'깸', time:'21분 · 4%', desc:'잠들기 전 14분과 새벽 6시 40분경 짧은 뒤척임 1회예요. 밤중 깸 1회는 평균보다 적은 편입니다.'}
+  };
+  if(stageSeg && hypno){
+    stageSeg.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-stage]');
+      if(!btn) return;
+      var key = btn.getAttribute('data-stage');
+      stageSeg.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      hypno.setAttribute('data-focus', key);
+      var d = stageData[key];
+      stageName.textContent = d.name;
+      stageTime.textContent = d.time;
+      stageDesc.textContent = d.desc;
+    });
+    stageSeg.addEventListener('keydown', function(e){
+      if(e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var btns = Array.prototype.slice.call(stageSeg.querySelectorAll('button'));
+      var i = btns.indexOf(document.activeElement);
+      if(i < 0) return;
+      e.preventDefault();
+      var n = (i + (e.key === 'ArrowRight' ? 1 : -1) + btns.length) % btns.length;
+      btns[n].focus(); btns[n].click();
+    });
+  }
+
+  /* ---------- Feature 2: alarm window range ---------- */
+  var range = document.getElementById('alarmRange');
+  var rangeOut = document.getElementById('alarmRangeOut');
+  var rangeHintStart = document.getElementById('alarmRangeHintStart');
+  var alarmStart = document.getElementById('alarmStart');
+  var alarmEndInline = document.getElementById('alarmEndInline');
+  var alarmWin = document.getElementById('alarmWin');
+  var alarmMark = document.getElementById('alarmMark');
+  var alarmWinLabel = document.getElementById('alarmWinLabel');
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function updateAlarm(){
+    var mins = parseInt(range.value, 10);            // window length in minutes
+    var endMin = 7 * 60;                              // 07:00
+    var startMin = endMin - mins;
+    var startStr = pad(Math.floor(startMin / 60)) + ':' + pad(startMin % 60);
+    rangeOut.value = mins + '분';
+    rangeOut.textContent = mins + '분';
+    rangeHintStart.textContent = startStr;
+    alarmStart.textContent = startStr;
+    alarmEndInline.textContent = '07:00';
+    alarmWinLabel.textContent = mins + '분';
+    // axis 06:00–07:00 == 0%–100%
+    var leftPct = ((startMin - 6 * 60) / 60) * 100;
+    alarmWin.style.left = leftPct + '%';
+    alarmWin.style.width = (100 - leftPct) + '%';
+    // detected wake mark: ~40% into the window, but never before window start
+    var markPct = leftPct + (100 - leftPct) * 0.4;
+    alarmMark.style.left = markPct + '%';
+  }
+  if(range){
+    range.addEventListener('input', updateAlarm);
+    updateAlarm();
+  }
+
+  /* ---------- Feature 3: weekly report day detail ---------- */
+  var week = document.querySelector('.week');
+  var dayDetail = document.getElementById('dayDetail');
+  var days = [
+    {label:'토요일 · 8월 9일',  total:'7시간 48분', score:'86', times:'00:12 · 08:00', deep:'1시간 52분', onset:'11분'},
+    {label:'일요일 · 8월 10일', total:'8시간 10분', score:'88', times:'23:58 · 08:08', deep:'1시간 58분', onset:'9분'},
+    {label:'월요일 · 8월 11일', total:'6시간 20분', score:'71', times:'00:41 · 07:01', deep:'1시간 21분', onset:'22분'},
+    {label:'화요일 · 8월 12일', total:'6시간 45분', score:'75', times:'00:10 · 06:55', deep:'1시간 29분', onset:'18분'},
+    {label:'수요일 · 8월 13일', total:'6시간 58분', score:'78', times:'23:52 · 06:50', deep:'1시간 33분', onset:'16분'},
+    {label:'목요일 · 8월 14일', total:'6시간 27분', score:'72', times:'00:33 · 07:00', deep:'1시간 20분', onset:'19분'},
+    {label:'금요일 · 8월 15일', total:'7시간 12분', score:'84', times:'23:41 · 07:02', deep:'1시간 38분', onset:'14분'}
+  ];
+  if(week && dayDetail){
+    week.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-day]');
+      if(!btn) return;
+      var d = days[parseInt(btn.getAttribute('data-day'), 10)];
+      week.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      dayDetail.innerHTML =
+        '<div class="full"><span class="card__label">' + d.label + '</span><b>' + d.total + '</b></div>' +
+        '<dt>수면 점수</dt><dd>' + d.score + '</dd>' +
+        '<dt>취침 · 기상</dt><dd>' + d.times + '</dd>' +
+        '<dt>깊은 잠</dt><dd>' + d.deep + '</dd>' +
+        '<dt>입면 시간</dt><dd>' + d.onset + '</dd>';
+    });
+  }
+
+  /* ---------- Pricing billing toggle ---------- */
+  var billing = document.getElementById('billing');
+  var proPrice = document.getElementById('proPrice');
+  var proPer = document.getElementById('proPer');
+  var proSub = document.getElementById('proSub');
+  if(billing){
+    billing.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-cycle]');
+      if(!btn) return;
+      var cycle = btn.getAttribute('data-cycle');
+      billing.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      if(cycle === 'yearly'){
+        proPrice.textContent = '₩3,250';
+        proPer.textContent = '/ 월';
+        proSub.textContent = '연 ₩39,000 일시 결제 · 월간 결제 시 ₩4,900';
+      } else {
+        proPrice.textContent = '₩4,900';
+        proPer.textContent = '/ 월';
+        proSub.textContent = '매월 자동 갱신 · 연간 결제로 바꾸면 월 ₩3,250';
+      }
+    });
+  }
+
+  /* ---------- FAQ accordion (one open at a time) ---------- */
+  var faqList = document.getElementById('faqList');
+  if(faqList){
+    faqList.addEventListener('click', function(e){
+      var btn = e.target.closest('.faq__q');
+      if(!btn) return;
+      var item = btn.closest('.faq__item');
+      var isOpen = item.classList.contains('is-open');
+      faqList.querySelectorAll('.faq__item.is-open').forEach(function(it){
+        it.classList.remove('is-open');
+        it.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+      });
+      if(!isOpen){
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    // open first item by default so the pattern is discoverable
+    var first = faqList.querySelector('.faq__item');
+    if(first){ first.classList.add('is-open'); first.querySelector('.faq__q').setAttribute('aria-expanded', 'true'); }
+  }
+
+  /* ---------- Score ring gentle fill on hero visibility ---------- */
+  var rings = document.querySelectorAll('.ring__val');
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    rings.forEach(function(r){ r.style.strokeDashoffset = '201'; });
+    var ringObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.style.strokeDashoffset = '32'; ringObs.unobserve(en.target); }
+      });
+    }, {threshold: 0.3});
+    rings.forEach(function(r){ ringObs.observe(r); });
+  }
+})();
+</script>
+</body>
+</html>

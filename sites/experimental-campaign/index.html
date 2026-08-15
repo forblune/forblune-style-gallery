@@ -1,0 +1,1412 @@
+<!-- forblune-style: {"slug":"experimental-campaign","primaryStyle":"Experimental","productType":"Campaign Microsite","tone":"Poetic · Bold · Immersive","secondary":"Editorial","accent":"Cinematic","brand":"물의 기억 — 담수(淡水) 캠페인","industry":"생수 브랜드 캠페인 마이크로사이트","coreMessage":"스크롤 한 번이 물 한 방울의 여정이 되어, 이 물이 어디서 왔는지를 몸으로 느끼게 한다","naming":"Experimental / Campaign Microsite / Poetic · Bold · Immersive"} -->
+<!DOCTYPE html>
+<html lang="ko" class="is-locked">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>물의 기억 — 담수(淡水) 캠페인 · 스크롤 한 번이 물 한 방울의 여정이 됩니다</title>
+<meta name="description" content="빗방울에서 병까지, 42년의 여정. 담수(淡水)의 물이 어디서 왔는지 스크롤로 내려가며 몸으로 느끼는 캠페인 마이크로사이트. 2026.09.01–10.31, 병 뒷면 QR로 참여하세요.">
+<meta name="theme-color" content="#04122b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   0. Tokens
+   ========================================================= */
+:root{
+  --bg:#04122b;                 /* JS가 스크롤에 따라 갱신 (짙은 블루 → 밝은 청록) */
+  --ink:#ffffff;
+  --ink-80:rgba(255,255,255,.8);
+  --ink-64:rgba(255,255,255,.64);
+  --ink-40:rgba(255,255,255,.4);
+  --ink-16:rgba(255,255,255,.16);
+  --ink-08:rgba(255,255,255,.08);
+  --neon:#5cf6ff;               /* 형광 시안 — 소량 */
+  --neon-ink:#04122b;
+  --navy:#071a33;
+  --navy-2:#0a2447;
+  --teal-end:#19a8b5;
+
+  --font:"Pretendard Variable",Pretendard,system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --serif:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; /* 헤더 리드아웃 숫자·여정 코드 입력에만 */
+
+  --r:4px;    /* 모서리 규칙 하나 — 패널·입력·버튼 모두 4px, 원형 마커만 예외 */
+  --header-h:64px;
+  --gutter:clamp(20px,5vw,72px);
+  --p:0;      /* 각 챕터 진행률 0~1 (JS) */
+  --mx:0;     /* 포인터 위치 -1~1 (JS) */
+  --my:0;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.is-locked{overflow:hidden}
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  font-feature-settings:"ss01","cv11";
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3,p,ul,ol,dl,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--neon);outline-offset:4px;border-radius:2px}
+code{font-family:var(--mono);font-size:.92em;letter-spacing:.04em;color:var(--ink)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* =========================================================
+   1. Skip links
+   ========================================================= */
+.skip{
+  position:fixed;top:12px;left:12px;z-index:200;
+  transform:translateY(-200%);
+  background:var(--neon);color:var(--neon-ink);
+  padding:10px 16px;border-radius:var(--r);font-weight:700;text-decoration:none;
+  transition:transform .2s;
+}
+.skip:focus{transform:none}
+.skip + .skip{left:auto;right:12px}
+
+/* =========================================================
+   2. Intro overlay (≤3s, 스킵 가능)
+   ========================================================= */
+.intro{
+  position:fixed;inset:0;z-index:150;
+  background:#020a1c;color:var(--ink);
+  display:grid;place-items:center;
+  transition:opacity .6s var(--ease),visibility .6s;
+}
+.intro.is-done{opacity:0;visibility:hidden;pointer-events:none}
+.intro-inner{display:grid;justify-items:center;gap:20px;text-align:center;padding:24px}
+.intro-svg{width:min(28vw,150px);height:auto;overflow:visible}
+.intro-drop{transform-box:fill-box;transform-origin:center;animation:introDrop 1.4s var(--ease) .15s both}
+.intro-ring{transform-box:fill-box;transform-origin:center;opacity:0;animation:introRing 1.2s var(--ease) 1.2s both}
+.intro-ring.r2{animation-delay:1.45s}
+.intro-title{
+  font-size:clamp(1.9rem,6vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;
+  opacity:0;animation:fadeUp .8s var(--ease) 1.4s both;
+}
+.intro-title small{display:block;font-family:var(--serif);font-weight:300;font-size:.42em;letter-spacing:.3em;margin-top:.5em;color:var(--ink-64)}
+.intro-hint{font-family:var(--serif);font-weight:300;font-size:clamp(.95rem,1.4vw,1.1rem);letter-spacing:.02em;color:var(--ink-80);opacity:0;animation:fadeUp .8s var(--ease) 1.8s both}
+.intro-hint b{font-weight:400;color:var(--neon)}
+.intro-skip{
+  position:absolute;right:clamp(16px,4vw,40px);bottom:clamp(16px,4vw,40px);
+  background:transparent;border:1px solid var(--ink-40);color:var(--ink);
+  padding:10px 18px;border-radius:var(--r);font-size:13px;letter-spacing:.06em;
+  transition:border-color .2s,background .2s;
+}
+.intro-skip:hover{border-color:var(--ink);background:var(--ink-08)}
+@keyframes introDrop{0%{transform:translateY(-140px) scale(.7);opacity:0}60%{opacity:1}100%{transform:translateY(0) scale(1);opacity:1}}
+@keyframes introRing{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* =========================================================
+   3. Header + progress + rail
+   ========================================================= */
+.progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:120;
+  background:var(--ink-16);
+}
+.progress > i{display:block;height:100%;background:var(--neon);transform-origin:left;transform:scaleX(0)}
+
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:110;
+  height:var(--header-h);
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;
+  padding:0 var(--gutter);
+  transition:background .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+.site-header.is-scrolled{
+  background:rgba(4,18,43,.88);
+  border-color:var(--ink-16);
+}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:17px}
+.brand svg{width:22px;height:22px}
+.brand small{font-family:var(--serif);font-weight:300;font-size:12px;letter-spacing:.24em;color:var(--ink-64);margin-left:2px}
+.readout{
+  justify-self:center;min-width:0;overflow:hidden;
+  display:flex;gap:22px;align-items:baseline;
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-64);
+  white-space:nowrap;
+}
+.readout b{color:var(--neon);font-weight:500;font-variant-numeric:tabular-nums;min-width:6ch;display:inline-block}
+.site-nav{display:flex;align-items:center;gap:6px}
+.site-nav a{
+  text-decoration:none;font-size:14px;font-weight:600;padding:8px 12px;border-radius:var(--r);color:var(--ink-80);
+  transition:color .2s,background .2s;
+}
+.site-nav a:hover{color:var(--ink);background:var(--ink-08)}
+.site-nav .nav-cta{background:var(--neon);color:var(--neon-ink);margin-left:6px}
+.site-nav .nav-cta:hover{background:#8ffaff;color:var(--neon-ink)}
+.nav-toggle{display:none}
+
+@media (max-width:1023px){
+  .readout{gap:14px;font-size:11px}
+  .readout .ro-age{display:none}
+}
+@media (max-width:767px){
+  .site-header{grid-template-columns:auto 1fr auto;padding:0 16px}
+  .readout{justify-self:end;margin-right:4px;font-size:10.5px;letter-spacing:.04em}
+  .readout .ro-ch{display:none}
+  .readout b{min-width:0}
+  .site-nav a:not(.nav-cta){display:none}
+  .site-nav .nav-cta{padding:8px 14px;font-size:13px}
+  .brand small{display:none}
+}
+
+/* 우측 깊이 레일 */
+.rail{
+  position:fixed;right:clamp(14px,2.4vw,34px);top:50%;transform:translateY(-50%);z-index:100;
+  display:grid;gap:18px;
+  opacity:0;pointer-events:none;transition:opacity .4s;
+}
+.rail.is-visible{opacity:1;pointer-events:auto}
+.rail a{
+  display:grid;grid-template-columns:auto 12px;align-items:center;gap:12px;
+  text-decoration:none;font-size:11.5px;letter-spacing:.04em;color:var(--ink-40);font-variant-numeric:tabular-nums;
+  transition:color .2s;
+}
+.rail a span{opacity:0;transform:translateX(6px);transition:opacity .25s,transform .25s;text-align:right;white-space:nowrap}
+.rail a i{width:12px;height:12px;border-radius:50%;border:1px solid var(--ink-40);position:relative;transition:border-color .2s,transform .2s}
+.rail a i::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--neon);opacity:0;transform:scale(.4);transition:opacity .2s,transform .2s}
+.rail a:hover span,.rail:hover a span,.rail a:focus-visible span{opacity:1;transform:none}
+.rail a.is-active{color:var(--ink)}
+.rail a.is-active i{border-color:var(--neon);transform:scale(1.15)}
+.rail a.is-active i::after{opacity:1;transform:scale(1)}
+.rail a.is-active span{opacity:1;transform:none}
+@media (max-width:767px){.rail{display:none}}
+
+/* =========================================================
+   4. Journey (스크롤텔링 5장) — 스크롤이 깊이다
+   ========================================================= */
+.journey{position:relative}
+.chapter{
+  position:relative;
+  height:260vh; /* 스크롤 여정의 길이 = 깊이 */
+}
+.chapter:last-child{height:240vh}
+.stage{
+  position:sticky;top:0;
+  height:100vh;height:100svh;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  align-items:center;
+  padding:calc(var(--header-h) + 8px) var(--gutter) 40px;
+  gap:24px;
+}
+.stage-art{
+  position:absolute;inset:0;
+  display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-items:center;
+  pointer-events:none;
+}
+.stage-art svg{width:min(120vh,110vw);max-width:none;height:auto;overflow:visible;transform:translate(calc(var(--mx) * 10px),calc(var(--my) * 8px))}
+.stage-copy{
+  position:relative;z-index:2;
+  --in:clamp(0,calc(var(--p) * 7),1); /* 무대가 고정된 직후 짧게 등장 — 도형 먼저, 문장 다음 */
+  opacity:var(--in);
+  transform:translateY(calc((1 - var(--in)) * 28px));
+}
+.ch-rain .stage-copy{--in:1} /* 첫 장은 도착 즉시 읽혀야 한다 */
+.chapter-label{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:13px;letter-spacing:.02em;color:var(--ink-64);font-variant-numeric:tabular-nums;
+  margin-bottom:clamp(14px,2.4vh,26px);
+}
+.chapter-label b{color:var(--neon);font-weight:600}
+.chapter-label::before{content:"";width:28px;height:1px;background:var(--neon)}
+.chapter-title{
+  font-weight:800;line-height:.98;
+  /* 타이포 크기가 스크롤 진행에 연동 (0.6배 → 1배) */
+  font-size:calc(clamp(2.9rem,11.5vw,10.5rem) * (0.6 + 0.4 * var(--p)));
+  letter-spacing:calc(-.025em - .02em * var(--p));
+  text-wrap:balance;
+  will-change:font-size;
+}
+.chapter-title .num{font-variant-numeric:tabular-nums;color:var(--neon)}
+.chapter-title .sub{display:block;font-size:.34em;font-weight:500;letter-spacing:-.01em;margin-top:.25em;color:var(--ink-80)}
+.chapter-poem{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.05rem,1.55vw,1.35rem);line-height:1.85;color:var(--ink-80);
+  max-width:34ch;margin-top:clamp(18px,3vh,32px);
+}
+.chapter-poem em{font-style:normal;color:var(--ink);font-weight:400}
+.fact{
+  display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;
+  margin-top:clamp(18px,3vh,30px);padding-top:12px;
+  border-top:1px solid var(--ink-16);max-width:44ch;
+  font-size:13.5px;letter-spacing:.01em;color:var(--ink-80);
+}
+.fact dt{font-size:12px;color:var(--ink-64)}
+.fact dd{margin:0;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.fact dd + dt::before{content:"";display:inline-block;width:1px;height:12px;background:var(--ink-16);margin-right:14px;vertical-align:-1px}
+.stage-aside{
+  position:relative;z-index:2;justify-self:end;align-self:end;
+  font-size:12px;letter-spacing:.02em;color:var(--ink-40);
+  text-align:right;
+}
+.stage-aside b{display:block;color:var(--ink);font-size:clamp(1.6rem,3.5vw,3rem);font-weight:300;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.scroll-hint{
+  position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:3;
+  display:grid;justify-items:center;gap:8px;
+  font-size:12px;letter-spacing:.06em;color:var(--ink-64);
+  opacity:calc(1 - var(--p) * 6);
+}
+.scroll-hint i{width:1px;height:44px;background:linear-gradient(var(--neon),transparent);animation:hintDrip 1.8s ease-in-out infinite}
+@keyframes hintDrip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.skip-journey{
+  position:absolute;left:var(--gutter);bottom:26px;z-index:3;
+  font-size:12px;letter-spacing:.06em;color:var(--ink-64);text-decoration:none;
+  border-bottom:1px solid var(--ink-40);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.skip-journey:hover{color:var(--ink);border-color:var(--ink)}
+
+@media (max-width:1023px){
+  .stage{grid-template-columns:1fr;align-content:end;padding-bottom:64px}
+  .ch-rain .stage{padding-bottom:104px} /* 첫 장은 하단 스크롤 힌트와 사실 행이 겹치지 않게 */
+  .stage-art{align-items:start;padding-top:calc(var(--header-h) + 3vh)}
+  .stage-art svg{width:min(78vh,120vw)}
+  .stage-aside{display:none}
+  .chapter-title{font-size:calc(clamp(2.6rem,13vw,7rem) * (0.6 + 0.4 * var(--p)))}
+  .skip-journey{display:none}
+}
+@media (max-width:767px){
+  .chapter{height:220vh}
+  .stage-art svg{width:min(70vh,140vw)}
+  .stage-art{opacity:.85}
+  .fact{font-size:12.5px;gap:6px 10px}
+}
+
+/* ---- 챕터별 SVG 연동 (모두 --p 로 구동) ---- */
+svg .parallax{transform:translate(calc(var(--mx) * -14px),calc(var(--my) * -10px))}
+/* 01 빗방울 */
+.ch-rain{--drop:clamp(0,calc(var(--p) / 0.55),1);--rip:clamp(0,calc((var(--p) - 0.55) / 0.45),1)}
+.ch-rain .drop{transform:translateY(calc(var(--drop) * 496px)) scaleY(calc(1 + var(--drop) * .35));transform-box:fill-box;transform-origin:50% 100%;opacity:calc(1 - var(--rip) * 1.4)}
+.ch-rain .drop-trail{opacity:calc(var(--drop) * (1 - var(--rip)) * .8)}
+.ch-rain .ripple{--on:min(1,calc(var(--rip) * 12));transform-box:fill-box;transform-origin:center;transform:scale(calc(.15 + var(--rip) * 1.2));opacity:calc(var(--on) * (1 - var(--rip)) * .9)}
+.ch-rain .ripple.r2{transform:scale(calc(.1 + var(--rip) * 1.7));opacity:calc(var(--on) * (1 - var(--rip)) * .6)}
+.ch-rain .ripple.r3{transform:scale(calc(.05 + var(--rip) * 2.3));opacity:calc(var(--on) * (1 - var(--rip)) * .35)}
+.ch-rain .splash{transform-box:fill-box;transform-origin:50% 100%;transform:scale(calc(var(--rip) * 1));opacity:calc(var(--rip) * (1 - var(--rip)) * 4)}
+.ch-rain .rain line{stroke:var(--ink);stroke-opacity:.16;animation:rainFall 1.1s linear infinite}
+.ch-rain .rain line:nth-child(2n){animation-duration:1.5s;animation-delay:-.4s;stroke-opacity:.1}
+.ch-rain .rain line:nth-child(3n){animation-duration:.9s;animation-delay:-.7s}
+.ch-rain .rain line:nth-child(5n){animation-delay:-.2s;stroke-opacity:.22}
+@keyframes rainFall{from{transform:translateY(-120px)}to{transform:translateY(760px)}}
+.ch-rain .cloud{opacity:calc(1 - var(--p) * 1.3)}
+/* 02 지하 */
+.ch-soil .stratum{transform:translateX(calc(var(--p) * var(--dx,-40px)))}
+.ch-soil .seep{transform:translateY(calc(var(--p) * 620px));transform-box:fill-box;transform-origin:center}
+.ch-soil .seep-trail{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--p));opacity:.7}
+.ch-soil .light{opacity:calc(1 - var(--p) * 1.6)}
+.ch-soil .root{stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0,calc(var(--p) * 1.8),1))}
+/* 03 암반 */
+.ch-rock .crack{stroke-dasharray:1;stroke-dashoffset:clamp(0,calc(1 - (var(--p) - var(--d)) / (1 - var(--d))),1)}
+.ch-rock .mineral{opacity:clamp(0,calc((var(--p) - var(--d)) * 3),1);transform-box:fill-box;transform-origin:center;transform:scale(clamp(.2,calc((var(--p) - var(--d)) * 4),1))}
+.ch-rock .rock-drop{transform:translateY(calc(var(--p) * 480px));transform-box:fill-box;transform-origin:center}
+.ch-rock .rock-ring{transform:translateY(calc(var(--p) * 480px)) scale(calc(1 + var(--p) * .6));transform-box:fill-box;transform-origin:center;opacity:calc(.9 - var(--p) * .6)}
+/* 04 샘 */
+.ch-spring .bubble{transform:translateY(calc((1 - var(--p)) * var(--dy,520px)));transform-box:fill-box;transform-origin:center;opacity:calc(var(--p) * .9)}
+.ch-spring .bloom{transform-box:fill-box;transform-origin:center;transform:scale(calc(.2 + var(--p) * .8));opacity:calc(var(--p) * var(--o,.5))}
+.ch-spring .sky{opacity:calc(var(--p) * .55)}
+.ch-spring .ray{opacity:calc(var(--p) * .35);transform-box:fill-box;transform-origin:50% 0;transform:scaleY(calc(var(--p)))}
+.ch-spring .surface{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--p))}
+/* 05 병 */
+.ch-bottle .water{transform:translateY(calc((1 - var(--p)) * 100%));transform-box:fill-box}
+.ch-bottle .water-line{transform:translateY(calc((1 - var(--p)) * 100%));transform-box:fill-box}
+.ch-bottle .outline{stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0,calc(var(--p) * 1.6),1))}
+.ch-bottle .label{opacity:clamp(0,calc((var(--p) - .5) * 3),1)}
+.ch-bottle .shelf{stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0,calc((var(--p) - .3) * 2),1));opacity:.35}
+.ch-bottle .last-drop{transform:translateY(calc(clamp(0,calc(var(--p) * 2.2),1) * 150px));opacity:calc(1 - clamp(0,calc(var(--p) * 2.2),1) * .95);transform-box:fill-box;transform-origin:center}
+
+/* =========================================================
+   5. Editorial interlude — 수원지 기록 (Secondary 20% / Accent Cinematic 10%)
+   ========================================================= */
+.section{position:relative;padding:clamp(72px,12vh,140px) var(--gutter)}
+/* 수원지 기록 — 화보 머리글: 좌측 작은 세리프 메타 + 큰 제목 (Editorial) */
+.section-head{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:16px clamp(20px,4vw,64px);align-items:end;
+  margin-bottom:clamp(32px,6vh,64px);
+}
+.section-meta{font-family:var(--serif);font-weight:300;font-size:14px;line-height:1.7;color:var(--ink-64);font-variant-numeric:tabular-nums}
+.section-meta b{display:block;color:var(--ink);font-weight:400}
+.section-title{font-size:clamp(1.9rem,4.2vw,3.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;text-wrap:balance;max-width:24ch}
+.section-lead{grid-column:2;font-family:var(--serif);font-weight:300;font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.8;color:var(--ink-80);max-width:62ch}
+@media (max-width:767px){
+  .section-head{grid-template-columns:1fr}
+  .section-lead{grid-column:1}
+}
+
+.archive{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,28px);align-items:start;
+}
+.archive figure{position:relative;display:grid;gap:12px}
+.archive .ph{border-radius:var(--r);overflow:hidden;background:#0a2447}
+.archive img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.9)}
+.archive figcaption{display:grid;gap:4px;font-family:var(--serif);font-size:13.5px;line-height:1.7;color:var(--ink-80)}
+.archive figcaption span{font-family:var(--font);font-size:12px;letter-spacing:.01em;color:var(--ink-40);font-variant-numeric:tabular-nums}
+.archive .a1{grid-column:1 / span 7;margin-top:0}
+.archive .a1 .ph{aspect-ratio:4/3}
+.archive .a2{grid-column:9 / span 4;margin-top:clamp(40px,8vh,120px)}
+.archive .a2 .ph{aspect-ratio:3/4}
+.archive .a3{grid-column:3 / span 4;margin-top:clamp(-20px,-2vh,-8px)}
+.archive .a3 .ph{aspect-ratio:1/1}
+.archive .quote{
+  grid-column:8 / span 5;align-self:center;
+  font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.7;color:var(--ink);
+  padding-left:20px;border-left:1px solid var(--neon);
+}
+.archive .quote small{display:block;margin-top:14px;font-family:var(--font);font-size:12.5px;letter-spacing:.01em;color:var(--ink-64)}
+@media (max-width:1023px){
+  .archive .a1{grid-column:1 / span 8}
+  .archive .a2{grid-column:9 / span 4;margin-top:60px}
+  .archive .a3{grid-column:1 / span 5;margin-top:0}
+  .archive .quote{grid-column:6 / span 7}
+}
+@media (max-width:767px){
+  .archive{grid-template-columns:1fr;gap:28px}
+  .archive .a1,.archive .a2,.archive .a3,.archive .quote{grid-column:1 / -1;margin-top:0}
+  .archive .a2 .ph{aspect-ratio:4/5}
+  .archive .a3{max-width:70%}
+}
+
+/* 사진만 느린 크로스페이드로 등장 (Editorial) — 나머지 요소는 즉시 표시 */
+.reveal{opacity:0;transition:opacity 1.4s var(--ease)}
+.reveal.is-in{opacity:1}
+.reveal[data-delay="1"]{transition-delay:.2s}
+.reveal[data-delay="2"]{transition-delay:.4s}
+
+/* =========================================================
+   6. 핵심 정보 블록 — 반드시 읽히게
+   ========================================================= */
+.info{padding-top:clamp(40px,8vh,96px)}
+.info-panel{
+  background:var(--navy);
+  border-radius:var(--r);
+  padding:clamp(28px,4.5vw,64px);
+  display:grid;gap:clamp(28px,4vh,48px);
+}
+.info-top{
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;
+  padding-bottom:clamp(20px,3vh,32px);border-bottom:1px solid var(--ink-16);
+}
+.info-top h2{font-size:clamp(1.9rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.08}
+.info-top h2 span{color:var(--neon)}
+.info-top p{font-size:clamp(.98rem,1.2vw,1.1rem);line-height:1.75;color:var(--ink-80)}
+.period{
+  display:grid;gap:6px;justify-items:start;
+}
+.period-label{font-size:13px;color:var(--ink-64)}
+.period .big{font-size:clamp(1.3rem,2.6vw,2.1rem);letter-spacing:-.02em;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.period .big b{color:var(--neon);font-weight:700}
+.period small{font-size:13px;color:var(--ink-64)}
+/* 본문: 참여 방법(넓게) | 판매처·가격(좁게, 위아래로) — 카드 대신 선과 여백으로 구분 */
+.info-body{
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);
+}
+.info-block{display:grid;gap:14px;align-content:start;min-width:0}
+.info-block + .info-block{margin-top:clamp(24px,4vh,40px);padding-top:clamp(20px,3vh,28px);border-top:1px solid var(--ink-16)}
+.info-block h3{font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
+.info-block p,.info-block li{font-size:15px;line-height:1.7;color:var(--ink-80)}
+.steps{display:grid;gap:0;counter-reset:s}
+.steps li{position:relative;display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:0 8px;padding:14px 0;border-top:1px solid var(--ink-16)}
+.steps li:first-child{border-top:0;padding-top:4px}
+.steps li::before{
+  counter-increment:s;content:counter(s,decimal-leading-zero);
+  font-size:1.6rem;font-weight:300;line-height:1;color:var(--neon);letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+}
+.steps li strong{display:block;color:var(--ink);font-weight:700}
+.steps li span{grid-column:2}
+.stores{display:grid;gap:10px}
+.stores li{display:grid;grid-template-columns:5.2em 1fr;gap:12px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid var(--ink-08)}
+.stores li:last-child{border-bottom:0}
+.stores li span{font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+.venue{display:grid;gap:4px;padding:2px 0 2px 16px;border-left:2px solid var(--neon);font-size:14px}
+.venue b{color:var(--ink)}
+.venue span{color:var(--ink-64);font-size:13px}
+.price-list{display:grid;gap:8px}
+.price-list li{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--ink-80);padding-bottom:8px;border-bottom:1px solid var(--ink-08)}
+.price-list li:last-child{border:0}
+.price-list b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.price-list small{display:block;font-size:12px;color:var(--ink-64)}
+.spec{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,2vw,28px);
+  border-top:1px solid var(--ink-16);
+}
+.spec div{padding:18px 0;display:grid;gap:6px;min-width:0;border-bottom:1px solid var(--ink-08)}
+.spec dt{font-size:12px;letter-spacing:.01em;color:var(--ink-64)}
+.spec dd{font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.spec dd small{display:block;font-size:12px;font-weight:400;color:var(--ink-64);letter-spacing:0;margin-top:2px}
+.info-note{font-size:13px;color:var(--ink-64);line-height:1.7}
+@media (max-width:1023px){
+  .info-top{grid-template-columns:1fr}
+  .info-body{grid-template-columns:1fr}
+  .info-body > .info-block:first-child{padding-bottom:clamp(20px,3vh,28px);border-bottom:1px solid var(--ink-16)}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:767px){
+  .info-panel{padding:22px 18px}
+  .spec{grid-template-columns:1fr 1fr;gap:0 14px}
+}
+
+/* =========================================================
+   7. 참여 CTA
+   ========================================================= */
+.join{padding-top:clamp(64px,10vh,120px);padding-bottom:clamp(64px,10vh,120px);overflow:hidden}
+/* 좌: 큰 문장 / 우: 행동과 현황 — 밴드·글로우 없이 타이포와 선으로 */
+.join-inner{
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,80px);align-items:end;
+}
+.join h2{font-size:clamp(2.4rem,7vw,6rem);font-weight:800;letter-spacing:-.04em;line-height:.98;text-wrap:balance}
+.join h2 em{font-style:normal;font-family:var(--serif);font-weight:300;letter-spacing:0}
+.join-lead{font-family:var(--serif);font-weight:300;font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.8;color:var(--ink-80);max-width:40ch;margin-top:clamp(18px,3vh,28px)}
+.join-act{display:grid;gap:clamp(18px,3vh,26px);align-content:end}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 30px;border-radius:var(--r);font-weight:800;font-size:16px;letter-spacing:-.01em;
+  text-decoration:none;border:1px solid transparent;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.btn-primary{background:var(--neon);color:var(--neon-ink)}
+.btn-primary:hover{background:#8ffaff}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink-40)}
+.btn-ghost:hover{border-color:var(--ink);background:var(--ink-08)}
+.join-meta{display:grid;gap:8px;font-size:13.5px;color:var(--ink-64);border-top:1px solid var(--ink-16);padding-top:14px}
+.join-meta div{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.join-meta b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.join-meta code{color:var(--neon)}
+.pledge{display:grid;gap:8px}
+.pledge .track{height:4px;background:var(--ink-16);overflow:hidden}
+.pledge .track i{display:block;height:100%;width:0;background:var(--neon);transition:width 1.6s var(--ease)}
+.pledge .is-in i{width:38.4%}
+.pledge .row{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;color:var(--ink-64);font-variant-numeric:tabular-nums}
+.pledge .row b{color:var(--ink);font-weight:600}
+@media (max-width:1023px){
+  .join-inner{grid-template-columns:1fr;align-items:start}
+  .join-act{max-width:520px}
+}
+
+/* =========================================================
+   8. 크레딧 + 푸터
+   ========================================================= */
+.credits{background:#020a1c;color:var(--ink);padding-top:clamp(64px,10vh,120px)}
+.credits-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(28px,5vw,80px);align-items:start}
+.credits h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.credits .tagline{font-family:var(--serif);font-weight:300;color:var(--ink-64);margin-top:12px;line-height:1.8}
+.credit-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px}
+.credit-list div{display:grid;gap:4px;padding-top:12px;border-top:1px solid var(--ink-16)}
+.credit-list dt{font-size:12.5px;letter-spacing:.01em;color:var(--neon)}
+.credit-list dd{font-size:14.5px;line-height:1.6;color:var(--ink-80)}
+.credit-list dd small{display:block;color:var(--ink-40);font-size:12px}
+.back-top{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+  text-decoration:none;font-size:13px;letter-spacing:.06em;color:var(--ink-64);
+  border:1px solid var(--ink-16);border-radius:var(--r);padding:10px 16px;transition:color .2s,border-color .2s;
+}
+.back-top:hover{color:var(--ink);border-color:var(--ink)}
+.back-top svg{width:14px;height:14px}
+.site-footer{
+  margin-top:clamp(48px,8vh,96px);padding:28px 0 36px;border-top:1px solid var(--ink-16);
+  display:grid;grid-template-columns:1fr auto;gap:16px 40px;align-items:start;
+  font-size:12.5px;line-height:1.8;color:var(--ink-64);
+}
+.site-footer address{font-style:normal}
+.site-footer ul{display:flex;flex-wrap:wrap;gap:6px 18px}
+.site-footer a{text-decoration:none;color:var(--ink-80)}
+.site-footer a:hover{color:var(--ink);text-decoration:underline}
+@media (max-width:1023px){.credits-grid{grid-template-columns:1fr}}
+@media (max-width:767px){.credit-list{grid-template-columns:1fr}.site-footer{grid-template-columns:1fr}}
+
+/* =========================================================
+   9. 참여 모달
+   ========================================================= */
+.modal{
+  position:fixed;inset:0;z-index:180;display:none;place-items:center;padding:20px;
+  background:rgba(2,10,28,.82);
+}
+.modal.is-open{display:grid}
+.modal-card{
+  width:min(100%,520px);max-height:calc(100vh - 40px);overflow:auto;
+  background:var(--navy);color:var(--ink);border:1px solid var(--ink-16);border-radius:var(--r);
+  padding:clamp(22px,3vw,34px);display:grid;gap:18px;
+  animation:modalIn .35s var(--ease);
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.modal-head{display:flex;justify-content:space-between;align-items:start;gap:16px}
+.modal-head h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.modal-head p{font-size:14px;color:var(--ink-64);margin-top:6px}
+.modal-close{background:transparent;border:1px solid var(--ink-16);width:38px;height:38px;border-radius:var(--r);display:grid;place-items:center;flex:none;transition:border-color .2s,background .2s}
+.modal-close:hover{border-color:var(--ink);background:var(--ink-08)}
+.modal-close svg{width:16px;height:16px}
+.field{display:grid;gap:8px}
+.field label{font-size:13px;font-weight:600;letter-spacing:.01em}
+.field label small{font-weight:400;color:var(--ink-64);margin-left:6px}
+.field input[type="text"],.field input[type="email"]{
+  width:100%;font:inherit;font-size:16px;color:var(--ink);
+  background:rgba(255,255,255,.06);border:1px solid var(--ink-16);border-radius:var(--r);padding:13px 14px;
+  font-family:var(--mono);letter-spacing:.06em;
+  transition:border-color .2s,background .2s;
+}
+.field input[type="email"]{font-family:var(--font);letter-spacing:0}
+.field input::placeholder{color:var(--ink-40)}
+.field input:focus{outline:none;border-color:var(--neon);background:rgba(92,246,255,.06)}
+.field .hint{font-size:12px;color:var(--ink-64)}
+.field .error{display:none;font-size:12.5px;color:#ffb3b3}
+.field.is-invalid input{border-color:#ff7b7b}
+.field.is-invalid .error{display:block}
+.check{display:flex;gap:10px;align-items:start;font-size:13px;color:var(--ink-80);line-height:1.6}
+.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--neon);flex:none}
+.modal-actions{display:grid;gap:10px}
+.modal-actions .btn{justify-content:center;width:100%}
+.result{display:none;gap:16px;text-align:center;justify-items:center}
+.result.is-shown{display:grid}
+.card-ticket{
+  width:100%;border-radius:var(--r);padding:22px;position:relative;overflow:hidden;
+  background:#083a5e;border-top:3px solid var(--neon);
+  color:#fff;text-align:left;display:grid;gap:10px;
+}
+.card-ticket::after{content:"";position:absolute;right:18px;top:18px;width:14px;height:20px;border-radius:50% 50% 50% 50% / 40% 40% 60% 60%;background:#fff;opacity:.9}
+.card-ticket .ct-label{font-family:var(--serif);font-weight:300;font-size:13px;letter-spacing:.04em;opacity:.85}
+.card-ticket .ct-no{font-family:var(--mono);font-size:1.6rem;font-weight:500;letter-spacing:.04em}
+.card-ticket .ct-path{font-family:var(--serif);font-weight:300;font-size:14px;line-height:1.7}
+.card-ticket .ct-path b{font-weight:600}
+.result p{font-size:14px;color:var(--ink-80);line-height:1.7}
+
+/* =========================================================
+   10. Reduced motion — 정적 버전
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .intro{display:none}
+  .progress{display:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .chapter{height:auto!important;--p:1!important;background:var(--ch-bg)}
+  .stage{position:relative;height:auto;min-height:100svh;padding-bottom:72px}
+  .stage-art svg{transform:none}
+  svg .parallax{transform:none}
+  .scroll-hint{display:none}
+  .reveal{opacity:1;transform:none}
+  .pledge .track i{width:38.4%}
+  .rail{opacity:1;pointer-events:auto}
+  .archive img{filter:grayscale(1) brightness(.9)}
+}
+</style>
+<noscript><style>.intro,.progress,.rail{display:none}html.is-locked{overflow:auto}.chapter{height:auto;--p:1;background:var(--ch-bg)}.stage{position:relative;height:auto;min-height:100svh}.reveal{opacity:1}.pledge .track i{width:38.4%}</style></noscript>
+</head>
+<body>
+
+<a class="skip" href="#journey">본문 바로가기</a>
+<a class="skip" href="#info">핵심 정보로 건너뛰기</a>
+
+<!-- ===================== INTRO (≤3초, 스킵 가능) ===================== -->
+<div class="intro" id="intro" role="dialog" aria-label="인트로 — 물의 기억" aria-live="polite">
+  <div class="intro-inner">
+    <svg class="intro-svg" viewBox="0 0 160 160" aria-hidden="true">
+      <circle class="intro-ring" cx="80" cy="128" r="34" fill="none" stroke="#5cf6ff" stroke-width="1.2"/>
+      <circle class="intro-ring r2" cx="80" cy="128" r="34" fill="none" stroke="#5cf6ff" stroke-width="1"/>
+      <path class="intro-drop" d="M80 40 C 66 62, 58 78, 58 94 a22 22 0 0 0 44 0 c0-16-8-32-22-54Z" fill="#fff"/>
+      <line x1="30" y1="128" x2="130" y2="128" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+    </svg>
+    <p class="intro-title">물의 기억<small>淡水 · 담수 캠페인</small></p>
+    <p class="intro-hint">이 한 병은 어디서 왔을까요. <b>스크롤은 깊이입니다.</b></p>
+  </div>
+  <button class="intro-skip" id="introSkip" type="button">건너뛰기</button>
+</div>
+
+<!-- ===================== PROGRESS / HEADER / RAIL ===================== -->
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="#top" aria-label="물의 기억 — 담수 캠페인 처음으로">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C9.5 6.4 6.5 10.2 6.5 14a5.5 5.5 0 0 0 11 0c0-3.8-3-7.6-5.5-11.5Z" fill="#fff"/><path d="M9.2 14.4a2.8 2.8 0 0 0 2.8 2.8" stroke="#04122b" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+    물의 기억 <small>淡水</small>
+  </a>
+  <div class="readout" aria-live="off">
+    <span class="ro-depth">깊이 <b id="depthVal">+1,200 m</b></span>
+    <span class="ro-age">경과 <b id="ageVal">0일</b></span>
+    <span class="ro-ch">장 <b id="chVal">01/05</b></span>
+  </div>
+  <nav class="site-nav" aria-label="주요 메뉴">
+    <a href="#journey">여정</a>
+    <a href="#archive">수원지 기록</a>
+    <a href="#info">캠페인 정보</a>
+    <a class="nav-cta" href="#join">참여하기</a>
+  </nav>
+</header>
+
+<nav class="rail" id="rail" aria-label="여정 챕터 이동">
+  <a href="#ch-rain" data-i="0"><span>01 빗방울</span><i></i></a>
+  <a href="#ch-soil" data-i="1"><span>02 지하</span><i></i></a>
+  <a href="#ch-rock" data-i="2"><span>03 암반</span><i></i></a>
+  <a href="#ch-spring" data-i="3"><span>04 샘</span><i></i></a>
+  <a href="#ch-bottle" data-i="4"><span>05 병</span><i></i></a>
+</nav>
+
+<main id="top">
+
+<!-- ===================== JOURNEY : 스크롤텔링 5장 ===================== -->
+<section class="journey" id="journey" aria-label="물 한 방울의 여정 — 스크롤하면 깊어집니다">
+
+  <!-- 01 빗방울 -->
+  <article class="chapter ch-rain" id="ch-rain" data-i="0" style="--ch-bg:#04122b" aria-labelledby="t-rain">
+    <div class="stage">
+      <div class="stage-art" aria-hidden="true">
+        <svg viewBox="0 0 800 800" fill="none">
+          <defs>
+            <linearGradient id="gRain" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#5cf6ff" stop-opacity="0"/><stop offset="1" stop-color="#5cf6ff" stop-opacity=".9"/>
+            </linearGradient>
+            <radialGradient id="gCloud" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="parallax">
+            <g class="cloud"><ellipse cx="400" cy="60" rx="300" ry="90" fill="url(#gCloud)"/><ellipse cx="260" cy="90" rx="160" ry="60" fill="url(#gCloud)"/><ellipse cx="560" cy="80" rx="180" ry="70" fill="url(#gCloud)"/></g>
+            <g class="rain" stroke-width="1" stroke-linecap="round">
+              <line x1="60" y1="0" x2="52" y2="60"/><line x1="140" y1="0" x2="132" y2="50"/><line x1="220" y1="0" x2="212" y2="70"/><line x1="290" y1="0" x2="282" y2="44"/>
+              <line x1="350" y1="0" x2="342" y2="66"/><line x1="470" y1="0" x2="462" y2="52"/><line x1="530" y1="0" x2="522" y2="72"/><line x1="610" y1="0" x2="602" y2="48"/>
+              <line x1="680" y1="0" x2="672" y2="64"/><line x1="750" y1="0" x2="742" y2="56"/><line x1="100" y1="0" x2="92" y2="40"/><line x1="410" y1="0" x2="402" y2="38"/>
+              <line x1="180" y1="0" x2="172" y2="58"/><line x1="640" y1="0" x2="632" y2="42"/><line x1="720" y1="0" x2="712" y2="66"/>
+            </g>
+          </g>
+          <line x1="80" y1="620" x2="720" y2="620" stroke="rgba(255,255,255,.28)" stroke-width="1"/>
+          <line class="drop-trail" x1="400" y1="20" x2="400" y2="600" stroke="url(#gRain)" stroke-width="1.5"/>
+          <g class="drop">
+            <path d="M400 30 C 384 58, 372 76, 372 96 a28 28 0 0 0 56 0 c0-20-12-38-28-66Z" fill="#fff"/>
+            <path d="M386 98a14 14 0 0 0 14 14" stroke="#04122b" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+          <g class="splash" stroke="#5cf6ff" stroke-width="1.5" stroke-linecap="round">
+            <path d="M400 620 l-30 -30 M400 620 l30 -30 M400 620 l-46 -8 M400 620 l46 -8 M400 620 l-14 -44 M400 620 l14 -44"/>
+          </g>
+          <circle class="ripple" cx="400" cy="620" r="70" stroke="#5cf6ff" stroke-width="1.5"/>
+          <circle class="ripple r2" cx="400" cy="620" r="70" stroke="#fff" stroke-width="1"/>
+          <circle class="ripple r3" cx="400" cy="620" r="70" stroke="#fff" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div class="stage-copy">
+        <p class="chapter-label"><b>01 / 05</b> 빗방울 · 강원 인제 · 고도 1,200 m</p>
+        <h1 class="chapter-title" id="t-rain">한 방울이<br>떨어진다</h1>
+        <p class="chapter-poem">구름의 무게가 견딜 수 없을 만큼 무거워진 밤, 인제 기린면의 산등성이 위로 비가 내립니다. <em>이 한 방울은 아직 아무 이름도 없습니다.</em></p>
+        <dl class="fact"><dt>연평균 강수량</dt><dd>1,340 mm</dd><dt>낙하 속도</dt><dd>초속 9 m</dd></dl>
+      </div>
+      <div class="stage-aside" aria-hidden="true">출발<b>0 %</b></div>
+      <div class="scroll-hint" aria-hidden="true"><i></i>아래로 — 깊이 내려가기</div>
+      <a class="skip-journey" href="#info">여정 건너뛰고 캠페인 정보 보기</a>
+    </div>
+  </article>
+
+  <!-- 02 지하 -->
+  <article class="chapter ch-soil" id="ch-soil" data-i="1" style="--ch-bg:#06234f" aria-labelledby="t-soil">
+    <div class="stage">
+      <div class="stage-art" aria-hidden="true">
+        <svg viewBox="0 0 800 800" fill="none">
+          <defs>
+            <linearGradient id="gLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5cf6ff" stop-opacity=".22"/><stop offset="1" stop-color="#5cf6ff" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect class="light" x="0" y="0" width="800" height="240" fill="url(#gLight)"/>
+          <g class="parallax">
+            <path class="stratum" style="--dx:-40px" d="M-60 120 C 100 90, 220 160, 400 130 S 700 90, 860 130 V 800 H-60Z" fill="rgba(255,255,255,.05)"/>
+            <path class="stratum" style="--dx:36px" d="M-60 260 C 120 230, 260 300, 420 270 S 720 230, 860 270 V 800 H-60Z" fill="rgba(255,255,255,.06)"/>
+            <path class="stratum" style="--dx:-56px" d="M-60 400 C 140 370, 300 430, 460 400 S 740 370, 860 410 V 800 H-60Z" fill="rgba(255,255,255,.07)"/>
+            <path class="stratum" style="--dx:48px" d="M-60 540 C 120 520, 320 580, 480 550 S 760 520, 860 560 V 800 H-60Z" fill="rgba(255,255,255,.08)"/>
+            <path class="stratum" style="--dx:-30px" d="M-60 680 C 100 660, 300 720, 460 690 S 760 660, 860 700 V 800 H-60Z" fill="rgba(255,255,255,.1)"/>
+            <g stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round" fill="none">
+              <path class="root" pathLength="1" d="M180 130 c 10 40, -30 60, -10 110 s 40 60, 20 120"/>
+              <path class="root" pathLength="1" d="M300 130 c -20 50, 20 70, 0 120 s -30 60, -10 100"/>
+              <path class="root" pathLength="1" d="M520 130 c 20 40, -20 80, 10 120 s 30 60, 10 110"/>
+              <path class="root" pathLength="1" d="M640 130 c -10 50, 30 70, 10 130"/>
+              <path class="root" pathLength="1" d="M240 300 c 30 20, 40 60, 20 100"/>
+              <path class="root" pathLength="1" d="M580 300 c -30 30, -20 70, 0 110"/>
+            </g>
+            <g fill="rgba(255,255,255,.35)">
+              <circle cx="120" cy="330" r="2"/><circle cx="700" cy="360" r="1.6"/><circle cx="90" cy="600" r="1.6"/><circle cx="740" cy="620" r="2.2"/><circle cx="330" cy="470" r="1.6"/><circle cx="600" cy="500" r="1.6"/><circle cx="200" cy="740" r="1.6"/><circle cx="660" cy="760" r="1.6"/>
+            </g>
+          </g>
+          <path class="seep-trail" pathLength="1" d="M400 40 C 380 160, 430 260, 400 380 S 370 560, 400 660" stroke="#5cf6ff" stroke-width="1.5" stroke-linecap="round"/>
+          <g class="seep">
+            <circle cx="400" cy="40" r="26" fill="rgba(92,246,255,.14)"/>
+            <circle cx="400" cy="40" r="10" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+      <div class="stage-copy">
+        <p class="chapter-label"><b>02 / 05</b> 지하 · 표토층 · 깊이 12 m</p>
+        <h2 class="chapter-title" id="t-soil">스며든다</h2>
+        <p class="chapter-poem">흙과 낙엽, 잔뿌리 사이를 지나 빛이 닿지 않는 곳으로. <em>여기서부터 시간은 다르게 흐릅니다.</em></p>
+        <dl class="fact"><dt>표토층 통과</dt><dd>약 3일</dd><dt>침투 속도</dt><dd>하루 4 m</dd></dl>
+      </div>
+      <div class="stage-aside" aria-hidden="true">빛의 마지막<b>−12 m</b></div>
+    </div>
+  </article>
+
+  <!-- 03 암반 -->
+  <article class="chapter ch-rock" id="ch-rock" data-i="2" style="--ch-bg:#0b3a5c" aria-labelledby="t-rock">
+    <div class="stage">
+      <div class="stage-art" aria-hidden="true">
+        <svg viewBox="0 0 800 800" fill="none">
+          <g class="parallax" stroke="rgba(255,255,255,.55)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path class="crack" style="--d:0" pathLength="1" d="M400 40 L 392 120 L 420 190 L 396 270 L 430 340 L 404 420 L 436 500 L 410 590 L 420 680"/>
+            <path class="crack" style="--d:.12" pathLength="1" d="M392 120 L 300 160 L 250 240 L 180 260 L 130 340"/>
+            <path class="crack" style="--d:.2" pathLength="1" d="M420 190 L 520 210 L 590 280 L 680 300 L 720 380"/>
+            <path class="crack" style="--d:.34" pathLength="1" d="M396 270 L 330 330 L 300 420 L 220 470 L 190 560"/>
+            <path class="crack" style="--d:.42" pathLength="1" d="M430 340 L 500 400 L 560 410 L 620 500 L 700 540"/>
+            <path class="crack" style="--d:.55" pathLength="1" d="M404 420 L 350 500 L 360 580 L 280 640"/>
+            <path class="crack" style="--d:.66" pathLength="1" d="M436 500 L 520 560 L 540 640 L 620 700"/>
+            <path class="crack" style="--d:.78" pathLength="1" d="M410 590 L 340 680 L 320 760"/>
+            <path class="crack" style="--d:.86" pathLength="1" d="M420 680 L 480 720 L 500 790"/>
+            <g fill="#5cf6ff" stroke="none">
+              <circle class="mineral" style="--d:.15" cx="250" cy="240" r="4"/>
+              <circle class="mineral" style="--d:.28" cx="590" cy="280" r="3.5"/>
+              <circle class="mineral" style="--d:.4" cx="300" cy="420" r="4"/>
+              <circle class="mineral" style="--d:.5" cx="560" cy="410" r="3"/>
+              <circle class="mineral" style="--d:.6" cx="360" cy="580" r="4"/>
+              <circle class="mineral" style="--d:.7" cx="540" cy="640" r="3.5"/>
+              <circle class="mineral" style="--d:.82" cx="340" cy="680" r="3"/>
+            </g>
+          </g>
+          <circle class="rock-ring" cx="400" cy="120" r="22" stroke="#5cf6ff" stroke-width="1"/>
+          <g class="rock-drop">
+            <circle cx="400" cy="120" r="9" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+      <div class="stage-copy">
+        <p class="chapter-label"><b>03 / 05</b> 암반 · 화강암 대수층 · 깊이 240 m</p>
+        <h2 class="chapter-title" id="t-rock"><span class="num" id="yearCount" aria-live="off">0</span>년<span class="sub">을 걸어 내려간다</span></h2>
+        <p class="chapter-poem">화강암의 틈은 사람 머리카락보다 좁습니다. 물은 그 틈을 하루 몇 센티미터씩 지나며 <em>미네랄을 하나씩 기억합니다.</em></p>
+        <dl class="fact"><dt>지하수 연령</dt><dd>약 42년 (동위원소 분석)</dd><dt>실리카</dt><dd>28 mg/L</dd><dt>경도</dt><dd>38 mg/L</dd></dl>
+      </div>
+      <div class="stage-aside" aria-hidden="true">가장 깊은 곳<b>−240 m</b></div>
+    </div>
+  </article>
+
+  <!-- 04 샘 -->
+  <article class="chapter ch-spring" id="ch-spring" data-i="3" style="--ch-bg:#0e6f7f" aria-labelledby="t-spring">
+    <div class="stage">
+      <div class="stage-art" aria-hidden="true">
+        <svg viewBox="0 0 800 800" fill="none">
+          <defs>
+            <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="gRay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect class="sky" x="0" y="0" width="800" height="300" fill="url(#gSky)"/>
+          <g class="parallax">
+            <polygon class="ray" points="330,0 470,0 560,420 240,420" fill="url(#gRay)"/>
+            <polygon class="ray" points="120,0 200,0 330,420 60,420" fill="url(#gRay)" opacity=".5"/>
+            <polygon class="ray" points="600,0 680,0 740,420 470,420" fill="url(#gRay)" opacity=".5"/>
+          </g>
+          <path class="surface" pathLength="1" d="M40 300 C 140 280, 220 320, 320 300 S 500 280, 600 300 S 720 320, 760 300" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+          <circle class="bloom" style="--o:.6" cx="400" cy="300" r="120" stroke="#5cf6ff" stroke-width="1.5"/>
+          <circle class="bloom" style="--o:.35" cx="400" cy="300" r="200" stroke="#fff" stroke-width="1"/>
+          <circle class="bloom" style="--o:.2" cx="400" cy="300" r="290" stroke="#fff" stroke-width=".8"/>
+          <g fill="rgba(255,255,255,.7)" stroke="rgba(255,255,255,.9)" stroke-width="1">
+            <circle class="bubble" style="--dy:520px" cx="400" cy="300" r="12" fill="#fff"/>
+            <circle class="bubble" style="--dy:600px" cx="352" cy="360" r="6"/>
+            <circle class="bubble" style="--dy:440px" cx="452" cy="380" r="8"/>
+            <circle class="bubble" style="--dy:680px" cx="380" cy="420" r="4"/>
+            <circle class="bubble" style="--dy:560px" cx="430" cy="440" r="5"/>
+            <circle class="bubble" style="--dy:720px" cx="330" cy="470" r="3.5"/>
+            <circle class="bubble" style="--dy:640px" cx="480" cy="480" r="4.5"/>
+            <circle class="bubble" style="--dy:760px" cx="405" cy="520" r="3"/>
+            <circle class="bubble" style="--dy:500px" cx="300" cy="500" r="3"/>
+            <circle class="bubble" style="--dy:580px" cx="500" cy="540" r="3.5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="stage-copy">
+        <p class="chapter-label"><b>04 / 05</b> 샘 · 자연 용출 · 깊이 0 m</p>
+        <h2 class="chapter-title" id="t-spring">다시, 빛</h2>
+        <p class="chapter-poem">지층의 압력이 물을 위로 밀어 올립니다.<br>42년 만에 처음 보는 하늘,<br>처음 닿는 바람.<br><em>사람들은 이 자리를 담수(淡水)라 부릅니다.</em></p>
+        <dl class="fact"><dt>용출 수온</dt><dd>연중 11.2 ℃</dd><dt>자연 용출량</dt><dd>하루 1,860 t</dd></dl>
+      </div>
+      <div class="stage-aside" aria-hidden="true">수면으로<b>0 m</b></div>
+    </div>
+  </article>
+
+  <!-- 05 병 -->
+  <article class="chapter ch-bottle" id="ch-bottle" data-i="4" style="--ch-bg:#128e9c" aria-labelledby="t-bottle">
+    <div class="stage">
+      <div class="stage-art" aria-hidden="true">
+        <svg viewBox="0 0 800 800" fill="none">
+          <defs>
+            <clipPath id="clipBottle">
+              <path d="M360 150 h80 v40 c0 20, 40 44, 40 90 v330 a24 24 0 0 1 -24 24 h-112 a24 24 0 0 1 -24 -24 v-330 c0-46, 40-70, 40-90 Z"/>
+            </clipPath>
+            <linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5cf6ff" stop-opacity=".9"/><stop offset="1" stop-color="#ffffff" stop-opacity=".55"/></linearGradient>
+          </defs>
+          <line class="shelf" pathLength="1" x1="120" y1="634" x2="680" y2="634" stroke="#fff" stroke-width="1"/>
+          <g class="parallax">
+            <g clip-path="url(#clipBottle)">
+              <rect class="water" x="300" y="150" width="200" height="490" fill="url(#gWater)"/>
+              <path class="water-line" d="M300 154 C 340 146, 380 162, 420 154 S 480 146, 500 154" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            </g>
+            <path class="outline" pathLength="1" d="M360 150 h80 v40 c0 20, 40 44, 40 90 v330 a24 24 0 0 1 -24 24 h-112 a24 24 0 0 1 -24 -24 v-330 c0-46, 40-70, 40-90 Z" stroke="#fff" stroke-width="2"/>
+            <rect x="352" y="118" width="96" height="34" rx="6" fill="#fff"/>
+            <rect x="352" y="118" width="96" height="6" rx="3" fill="rgba(4,18,43,.25)"/>
+            <g class="label">
+              <rect x="326" y="400" width="148" height="110" rx="4" fill="rgba(255,255,255,.92)"/>
+              <text x="400" y="455" text-anchor="middle" font-family="'Noto Serif KR',serif" font-weight="600" font-size="34" fill="#04122b">淡水</text>
+              <text x="400" y="486" text-anchor="middle" font-family="'Pretendard Variable',Pretendard,system-ui,sans-serif" font-size="10" letter-spacing="1" fill="#0e6f7f">강원 인제 · 지하 240 m · 42년</text>
+            </g>
+            <circle class="last-drop" cx="400" cy="0" r="8" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+      <div class="stage-copy">
+        <p class="chapter-label"><b>05 / 05</b> 병 · 당신의 손 · 깊이 0 m</p>
+        <h2 class="chapter-title" id="t-bottle">담다</h2>
+        <p class="chapter-poem">여정은 여기서 끝나지 않습니다. 뚜껑을 여는 순간, <em>42년의 기억이 한 모금이 됩니다.</em></p>
+        <dl class="fact"><dt>병입</dt><dd>취수 후 72시간 이내</dd><dt>여과</dt><dd>무가열 3단계</dd><dt>용기</dt><dd>재생 PET 100 %</dd></dl>
+      </div>
+      <div class="stage-aside" aria-hidden="true">도착<b>100 %</b></div>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== EDITORIAL INTERLUDE : 수원지 기록 ===================== -->
+<section class="section archive-section" id="archive" aria-labelledby="t-archive">
+  <div class="section-head">
+    <p class="section-meta"><b>수원지 기록</b>강원 인제군 기린면 · 해발 812 m<br>2026.03.14 촬영 · 사진 윤채원</p>
+    <h2 class="section-title" id="t-archive">스크롤로 내려간 그 자리, 실제로는 이렇게 생겼습니다.</h2>
+    <p class="section-lead">취수정 2호 주변을 2026년 3월에 기록했습니다. 화면 속 여정은 이 계곡의 실제 수문 자료를 바탕으로 그렸고, 사진은 그날 새벽 5시부터 오전 10시 사이에 찍은 것입니다.</p>
+  </div>
+  <div class="archive">
+    <figure class="a1 reveal">
+      <div class="ph"><img src="https://loremflickr.com/1200/900/spring,stream?lock=4171" width="1200" height="900" loading="lazy" alt="이끼 낀 바위 사이로 흘러내리는 계곡의 물줄기, 새벽 안개 속 인제 기린면 상류"></div>
+      <figcaption>안개가 걷히기 전의 계곡. 물소리가 먼저 도착한다.<span>2026.03.14 · 05:52 · 취수정 2호 상류 300 m</span></figcaption>
+    </figure>
+    <figure class="a2 reveal" data-delay="1">
+      <div class="ph"><img src="https://loremflickr.com/900/1200/cave,rock?lock=4172" width="900" height="1200" loading="lazy" alt="어두운 화강암 암반의 갈라진 틈, 젖은 바위 표면에 물기가 배어 나온 모습"></div>
+      <figcaption>암반 노두. 이 틈으로 들어간 물이 42년 뒤 취수정에서 나온다.<span>2026.03.14 · 07:40 · 취수정 2호 동쪽 사면</span></figcaption>
+    </figure>
+    <figure class="a3 reveal" data-delay="2">
+      <div class="ph"><img src="https://loremflickr.com/900/900/water,drop?lock=4173" width="900" height="900" loading="lazy" alt="수면에 떨어지는 물방울 한 개와 그 주위로 번지는 파문을 가까이 찍은 사진"></div>
+      <figcaption>첫 장면을 계곡 상류에서 다시 찍었다. 한 방울, 파문 하나.<span>2026.03.14 · 09:15 · 셔터 1/2000 s</span></figcaption>
+    </figure>
+    <blockquote class="quote">
+      "여기 물은 서두르지 않아요. 42년을 내려왔으니까, 하루 이틀 늦게 나온다고 큰일 나지 않죠. 우리가 할 일은 그 속도를 망치지 않는 겁니다."
+      <small>최영남 · 담수 수원지 관리인 · 재직 17년 · 매일 아침 수온을 손으로 먼저 잰다</small>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===================== INFO : 핵심 정보 블록 ===================== -->
+<section class="section info" id="info" aria-labelledby="t-info">
+  <div class="info-panel">
+    <div class="info-top">
+      <div>
+        <h2 id="t-info">물의 기억 캠페인,<br><span>이렇게 참여합니다.</span></h2>
+        <p style="margin-top:16px">담수 병 하나가 여정 카드 한 장이 됩니다. 발급된 카드 1장당 100원이 인제 기린면 계곡 정화 기금으로 적립되며, 목표액과 적립 현황은 매주 월요일 이 페이지에서 공개합니다.</p>
+      </div>
+      <div class="period">
+        <span class="period-label">캠페인 기간</span>
+        <p class="big">2026.<b>09.01</b>(화) — 2026.<b>10.31</b>(토)</p>
+        <small>총 61일 · 온라인 참여 24시간 · 오프라인 전시는 아래 운영시간 참고</small>
+      </div>
+    </div>
+
+    <div class="info-body">
+      <article class="info-block">
+        <h3>참여 방법</h3>
+        <ol class="steps">
+          <li><strong>병 뒷면 QR 스캔</strong><span>캠페인 에디션 라벨(5종) 뒷면의 QR을 스캔하면 이 페이지로 연결됩니다.</span></li>
+          <li><strong>8자리 여정 코드 입력</strong><span>QR 아래 인쇄된 <code>DS-0000-0000</code> 형식의 코드를 참여 창에 입력합니다.</span></li>
+          <li><strong>여정 카드 발급</strong><span>내 병의 취수일·병입일·지하수 연령이 적힌 카드가 발급되고, 이미지로 저장할 수 있습니다.</span></li>
+          <li><strong>100원 기금 적립</strong><span>카드 1장 = 100원. 목표 5,000만 원(50만 장) 달성 시 인제군과 계곡 정화 사업을 진행합니다.</span></li>
+        </ol>
+      </article>
+
+      <div>
+        <article class="info-block">
+          <h3>판매처</h3>
+          <ul class="stores">
+            <li><span>편의점</span>CU · GS25 · 세븐일레븐 · 이마트24 전 지점 (캠페인 에디션 500 mL)</li>
+            <li><span>대형마트</span>이마트 · 롯데마트 · 홈플러스 (500 mL 20입, 2 L 6입 묶음)</li>
+            <li><span>온라인</span>쿠팡 로켓배송 · 컬리 · 네이버 담수 브랜드스토어 · 담수몰 damsu.kr</li>
+            <li><span>현장</span>담수 파빌리온 (전시 방문 시 캠페인 에디션 1병 증정)</li>
+          </ul>
+          <div class="venue">
+            <b>오프라인 전시 「물의 기억관」</b>
+            <span>서울 성동구 연무장길 27 담수 파빌리온 1F · 11:00–20:00 · 월요일 휴관 · 입장 무료</span>
+          </div>
+        </article>
+
+        <article class="info-block">
+          <h3>제품 · 가격</h3>
+          <ul class="price-list">
+            <li><span>담수 500 mL<small>캠페인 에디션 라벨 5종 랜덤</small></span><b>1,200원</b></li>
+            <li><span>담수 1 L<small>온라인 전용</small></span><b>1,900원</b></li>
+            <li><span>담수 2 L<small>가정용 · 6입 15,000원</small></span><b>2,600원</b></li>
+          </ul>
+          <p class="info-note">모든 용기는 재생 PET 100 %, 라벨은 물에 쉽게 분리되는 수용성 접착제를 사용합니다. 편의점 2+1 행사는 9월 한 달간 진행됩니다.</p>
+        </article>
+      </div>
+    </div>
+
+    <dl class="spec">
+      <div><dt>수원지</dt><dd>강원 인제군 기린면<small>해발 812 m · 취수정 2호</small></dd></div>
+      <div><dt>취수 심도</dt><dd>240 m<small>화강암 대수층</small></dd></div>
+      <div><dt>지하수 연령</dt><dd>약 42년<small>삼중수소 동위원소 분석</small></dd></div>
+      <div><dt>수온 · pH</dt><dd>11.2 ℃ · pH 7.4<small>연중 변동 ±0.3</small></dd></div>
+      <div><dt>경도</dt><dd>38 mg/L<small>연수 (soft)</small></dd></div>
+      <div><dt>실리카</dt><dd>28 mg/L</dd></div>
+      <div><dt>수질 검사</dt><dd>월 2회<small>한국환경공단 공인 분석 · 결과 공개</small></dd></div>
+      <div><dt>병입</dt><dd>72시간 이내<small>취수 후 · 무가열 3단계 여과</small></dd></div>
+    </dl>
+    <p class="info-note">* 여정 카드 발급은 1인 1일 최대 10장, 캠페인 기간 종료 후 30일까지 코드 유효. 적립 기금은 (재)담수물환경재단이 관리하며 집행 내역은 2026년 12월 결산 후 공개됩니다.</p>
+  </div>
+</section>
+
+<!-- ===================== JOIN : 참여 CTA ===================== -->
+<section class="section join" id="join" aria-labelledby="t-join">
+  <div class="join-inner">
+    <div>
+      <h2 id="t-join">당신의 손에서<br><em>여정이 이어집니다.</em></h2>
+      <p class="join-lead">병 뒷면의 코드를 입력하면 이 물이 언제 떨어졌고, 얼마나 오래 내려왔고, 언제 병에 담겼는지 적힌 여정 카드를 드립니다. 코드가 없어도 체험 코드로 먼저 열어볼 수 있습니다.</p>
+    </div>
+    <div class="join-act">
+      <div class="cta-row">
+        <button class="btn btn-primary" id="joinOpen" type="button" aria-haspopup="dialog" aria-controls="joinModal">참여하기</button>
+        <a class="btn btn-ghost" href="#info">판매처 보기</a>
+      </div>
+      <div class="join-meta">
+        <div><span>발급된 여정 카드</span><b>192,144장</b></div>
+        <div><span>적립 기금</span><b>19,214,400원</b></div>
+        <div><span>체험 코드</span><code>DS-2026-0000</code></div>
+      </div>
+      <div class="pledge">
+        <div class="row"><span>기금 목표 5,000만 원</span><b>38.4 %</b></div>
+        <div class="track" id="pledgeTrack"><i></i></div>
+        <div class="row"><span>2026.09.28(월) 기준 · 매주 월요일 갱신</span><span>종료까지 33일</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CREDITS + FOOTER ===================== -->
+<section class="section credits" id="credits" aria-labelledby="t-credits">
+  <div class="credits-grid">
+    <div>
+      <h2 id="t-credits">이 여정을 만든 사람들</h2>
+      <p class="tagline">스크롤 한 번이 물 한 방울의 여정이 되도록,<br>지도와 수문 자료를 화면으로 옮겼습니다.</p>
+      <a class="back-top" href="#top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        처음으로 — 다시 떨어지기
+      </a>
+    </div>
+    <dl class="credit-list">
+      <div><dt>주최</dt><dd>주식회사 담수 · 브랜드 캠페인팀<small>캠페인 디렉터 한서윤</small></dd></div>
+      <div><dt>기획 · 카피</dt><dd>스튜디오 물결 (Studio Mulgyeol)<small>기획 정도현 · 카피 이한나</small></dd></div>
+      <div><dt>디자인 · 인터랙션</dt><dd>Forblune Design Lab<small>아트 디렉션 김수아 · 모션 박재이</small></dd></div>
+      <div><dt>프론트엔드</dt><dd>Forblune Engineering<small>단일 HTML · 외부 라이브러리 없음</small></dd></div>
+      <div><dt>사진</dt><dd>윤채원<small>2026.03 인제 기린면 현장 기록</small></dd></div>
+      <div><dt>수문 · 수질 자료</dt><dd>한국환경공단 공인 분석 결과 · 담수 수원지 관리일지<small>지하수 연령: 삼중수소 동위원소 분석(2025.11)</small></dd></div>
+      <div><dt>기금 운영</dt><dd>(재)담수물환경재단<small>인제군 기린면 계곡 정화 사업</small></dd></div>
+      <div><dt>접근성</dt><dd>prefers-reduced-motion 정적 버전 · 키보드 내비게이션 · 스크린리더 라벨<small>WCAG 2.2 AA 기준 자체 점검</small></dd></div>
+    </dl>
+  </div>
+  <footer class="site-footer">
+    <address>
+      <strong style="color:#fff">주식회사 담수</strong> · 대표 한서윤 · 사업자등록번호 214-88-01732 · 통신판매업 2026-서울성동-0418<br>
+      서울특별시 성동구 연무장길 27 담수 파빌리온 3F · 고객센터 080-820-1102 (평일 09:00–18:00) · hello@damsu.kr<br>
+      수원지: 강원특별자치도 인제군 기린면 · 먹는샘물 제조업 허가 강원-제2019-07호
+    </address>
+    <div>
+      <ul>
+        <li><a href="#info">캠페인 안내</a></li>
+        <li><a href="#join">참여하기</a></li>
+        <li><a href="#archive">수원지 기록</a></li>
+        <li><a href="#credits">크레딧</a></li>
+        <li><a href="#top">개인정보처리방침</a></li>
+        <li><a href="#top">이용약관</a></li>
+      </ul>
+      <p style="margin-top:10px">© 2026 주식회사 담수 · 물의 기억 캠페인</p>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<!-- ===================== MODAL : 여정 카드 발급 ===================== -->
+<div class="modal" id="joinModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div>
+        <h2 id="modalTitle">여정 카드 발급</h2>
+        <p>병 뒷면 QR 아래의 8자리 코드를 입력하세요. 체험 코드 <code style="color:#5cf6ff">DS-2026-0000</code>으로도 열어볼 수 있습니다.</p>
+      </div>
+      <button class="modal-close" id="modalClose" type="button" aria-label="닫기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <form id="joinForm" novalidate>
+      <div class="field" id="fCode">
+        <label for="codeInput">여정 코드 <small>형식 DS-0000-0000</small></label>
+        <input type="text" id="codeInput" name="code" inputmode="text" autocomplete="off" placeholder="DS-2026-0000" maxlength="12" spellcheck="false" aria-describedby="codeHint codeError">
+        <span class="hint" id="codeHint">대소문자 구분 없음. 하이픈은 자동으로 채워집니다.</span>
+        <span class="error" id="codeError">코드 형식이 올바르지 않습니다. DS- 뒤에 숫자 4자리-4자리를 입력하세요.</span>
+      </div>
+      <div class="field" id="fEmail" style="margin-top:14px">
+        <label for="emailInput">이메일 <small>선택 · 카드 이미지 발송용</small></label>
+        <input type="email" id="emailInput" name="email" autocomplete="email" placeholder="name@example.com" aria-describedby="emailError">
+        <span class="error" id="emailError">이메일 형식을 확인해 주세요.</span>
+      </div>
+      <div class="field" id="fAgree" style="margin-top:14px">
+        <label class="check"><input type="checkbox" id="agreeInput" name="agree"><span>기금 적립을 위한 참여 기록(코드·발급 시각) 수집에 동의합니다. 이메일은 카드 발송에만 사용하고 캠페인 종료 30일 후 파기합니다.</span></label>
+        <span class="error" id="agreeError">참여를 위해 동의가 필요합니다.</span>
+      </div>
+      <div class="modal-actions" style="margin-top:18px">
+        <button class="btn btn-primary" type="submit">카드 발급하기</button>
+        <button class="btn btn-ghost" type="button" id="modalCancel">나중에</button>
+      </div>
+    </form>
+
+    <div class="result" id="joinResult" aria-live="polite">
+      <div class="card-ticket">
+        <span class="ct-label">물의 기억 · 여정 카드</span>
+        <span class="ct-no" id="ticketNo">#000000</span>
+        <p class="ct-path" id="ticketPath"></p>
+      </div>
+      <p id="resultMsg"></p>
+      <button class="btn btn-ghost" type="button" id="resultClose">닫기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var html = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  /* ---------- 0. 유틸 ---------- */
+  function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
+  function fmt(n){ return Math.round(n).toLocaleString('ko-KR'); }
+
+  /* ---------- 1. 인트로 (≤3초, 스킵 가능) ---------- */
+  var intro = document.getElementById('intro');
+  var introSkip = document.getElementById('introSkip');
+  var introDone = false;
+  var introTimer = null;
+  function endIntro(){
+    if (introDone) return;
+    introDone = true;
+    if (introTimer) clearTimeout(introTimer);
+    intro.classList.add('is-done');
+    intro.setAttribute('aria-hidden', 'true');
+    html.classList.remove('is-locked');
+    window.setTimeout(function(){ if (intro && intro.parentNode) intro.parentNode.removeChild(intro); }, 700);
+    update();
+  }
+  if (reduce) {
+    if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+    html.classList.remove('is-locked');
+    introDone = true;
+  } else {
+    introTimer = window.setTimeout(endIntro, 2600);
+    introSkip.addEventListener('click', endIntro);
+    try { introSkip.focus({ preventScroll: true }); } catch (e) { introSkip.focus(); }
+    window.addEventListener('keydown', function(e){
+      if (introDone) return;
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { endIntro(); }
+    });
+    window.addEventListener('wheel', function(){ if (!introDone) endIntro(); }, { passive: true });
+    window.addEventListener('touchmove', function(){ if (!introDone) endIntro(); }, { passive: true });
+  }
+
+  /* ---------- 2. 스크롤 엔진: 스크롤이 깊이다 ---------- */
+  var journey = document.getElementById('journey');
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('.chapter'));
+  var header = document.getElementById('siteHeader');
+  var bar = document.getElementById('progressBar');
+  var rail = document.getElementById('rail');
+  var railLinks = Array.prototype.slice.call(rail.querySelectorAll('a'));
+  var depthEl = document.getElementById('depthVal');
+  var ageEl = document.getElementById('ageVal');
+  var chEl = document.getElementById('chVal');
+  var yearEl = document.getElementById('yearCount');
+
+  /* 배경 색 스톱: 아주 짙은 블루 → 밝은 청록 (챕터 5 + 종착) */
+  var stops = [
+    [4, 18, 43],     // 01 빗방울
+    [6, 35, 79],     // 02 지하
+    [11, 58, 92],    // 03 암반
+    [14, 111, 127],  // 04 샘
+    [18, 142, 156],  // 05 병
+    [25, 168, 181]   // 종착 (정보·CTA 배경)
+  ];
+  var chapterLabels = ['01/05', '02/05', '03/05', '04/05', '05/05'];
+  var staticDepth = ['+1,200 m', '−12 m', '−240 m', '0 m', '0 m'];
+  var staticAge = ['0일', '3일', '42년', '42년', '42년'];
+
+  var lastYear = -1, lastDepth = '', lastAge = '', lastCh = '';
+  var ticking = false;
+
+  function depthAt(jp){
+    /* 구간별 깊이(m): +1200 → 0 → -12 → -240 → 0 → 0 */
+    var seg = clamp(Math.floor(jp * 5), 0, 4);
+    var t = clamp(jp * 5 - seg, 0, 1);
+    var e = easeOut(t);
+    var v;
+    if (seg === 0) v = lerp(1200, 0, e);
+    else if (seg === 1) v = lerp(0, -12, e);
+    else if (seg === 2) v = lerp(-12, -240, e);
+    else if (seg === 3) v = lerp(-240, 0, e);
+    else v = 0;
+    var r = Math.round(v);
+    if (r > 0) return '+' + fmt(r) + ' m';
+    if (r < 0) return '−' + fmt(Math.abs(r)) + ' m';
+    return '0 m';
+  }
+  function ageAt(jp){
+    /* 경과 시간: 0일 → 3일 → 42년 */
+    var seg = clamp(Math.floor(jp * 5), 0, 4);
+    var t = clamp(jp * 5 - seg, 0, 1);
+    var days;
+    if (seg === 0) days = 0;
+    else if (seg === 1) days = lerp(0, 3, t);
+    else if (seg === 2) days = lerp(3, 42 * 365, easeOut(t));
+    else days = 42 * 365;
+    if (days < 365) return Math.round(days) + '일';
+    var y = days / 365;
+    return (y < 42 ? y.toFixed(y < 10 ? 1 : 0) : '42') + '년';
+  }
+
+  function update(){
+    ticking = false;
+    var vh = window.innerHeight || 1;
+    var jr = journey.getBoundingClientRect();
+    var jspan = Math.max(1, jr.height - vh);
+    var jp = clamp(-jr.top / jspan, 0, 1);
+
+    /* 헤더 상태 */
+    if (window.scrollY > 40) header.classList.add('is-scrolled'); else header.classList.remove('is-scrolled');
+
+    /* 레일 가시성: 여정 안에서만 */
+    if (jr.top < vh * 0.6 && jr.bottom > vh * 0.4) rail.classList.add('is-visible'); else rail.classList.remove('is-visible');
+
+    if (reduce) return; /* 정적 버전: 이하 연속 갱신 없음 */
+
+    /* 배경: 스크롤 위치에 따라 색 보간 */
+    var seg = clamp(Math.floor(jp * 5), 0, 4);
+    var t = clamp(jp * 5 - seg, 0, 1);
+    var a = stops[seg], b = stops[seg + 1];
+    var col = 'rgb(' + Math.round(lerp(a[0], b[0], t)) + ',' + Math.round(lerp(a[1], b[1], t)) + ',' + Math.round(lerp(a[2], b[2], t)) + ')';
+    html.style.setProperty('--bg', col);
+    bar.style.transform = 'scaleX(' + jp.toFixed(4) + ')';
+
+    /* 챕터별 진행률 --p */
+    for (var i = 0; i < chapters.length; i++) {
+      var ch = chapters[i];
+      var r = ch.getBoundingClientRect();
+      var span = Math.max(1, r.height - vh);
+      var p = clamp(-r.top / span, 0, 1);
+      ch.style.setProperty('--p', p.toFixed(4));
+      if (i === 2) {
+        var yr = Math.round(easeOut(p) * 42);
+        if (yr !== lastYear) { yearEl.textContent = yr; lastYear = yr; }
+      }
+    }
+
+    /* 헤더 리드아웃 */
+    var d = depthAt(jp); if (d !== lastDepth) { depthEl.textContent = d; lastDepth = d; }
+    var ag = ageAt(jp); if (ag !== lastAge) { ageEl.textContent = ag; lastAge = ag; }
+    var cl = chapterLabels[seg]; if (cl !== lastCh) { chEl.textContent = cl; lastCh = cl; }
+  }
+  function onScroll(){ if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  /* ---------- 3. IntersectionObserver: 활성 챕터(레일·정적 리드아웃) ---------- */
+  function setActive(i){
+    railLinks.forEach(function(l, k){
+      if (k === i) { l.classList.add('is-active'); l.setAttribute('aria-current', 'true'); }
+      else { l.classList.remove('is-active'); l.removeAttribute('aria-current'); }
+    });
+    if (reduce) {
+      depthEl.textContent = staticDepth[i];
+      ageEl.textContent = staticAge[i];
+      chEl.textContent = chapterLabels[i];
+    }
+  }
+  if ('IntersectionObserver' in window) {
+    var chObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) setActive(parseInt(en.target.getAttribute('data-i'), 10));
+      });
+    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    chapters.forEach(function(c){ chObs.observe(c); });
+
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('is-in'); revObs.unobserve(en.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function(el){ revObs.observe(el); });
+  } else {
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function(el){ el.classList.add('is-in'); });
+    setActive(0);
+  }
+
+  /* ---------- 4. 포인터 패럴랙스 (fine pointer, 모션 허용 시) ---------- */
+  if (finePointer && !reduce) {
+    var pmTick = false, px = 0, py = 0;
+    window.addEventListener('pointermove', function(e){
+      px = (e.clientX / window.innerWidth) * 2 - 1;
+      py = (e.clientY / window.innerHeight) * 2 - 1;
+      if (!pmTick) {
+        pmTick = true;
+        window.requestAnimationFrame(function(){
+          pmTick = false;
+          html.style.setProperty('--mx', px.toFixed(3));
+          html.style.setProperty('--my', py.toFixed(3));
+        });
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- 5. 레일 클릭: 스크롤 이동 ---------- */
+  railLinks.forEach(function(l){
+    l.addEventListener('click', function(e){
+      var id = l.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      /* 챕터 진행률이 살짝 시작된 지점(0.15)으로 이동 — 스티키 무대가 화면에 고정된 상태 */
+      var top = target.getBoundingClientRect().top + window.scrollY + (target.offsetHeight - window.innerHeight) * 0.15;
+      window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* ---------- 6. 참여 모달 ---------- */
+  var modal = document.getElementById('joinModal');
+  var openBtn = document.getElementById('joinOpen');
+  var closeBtn = document.getElementById('modalClose');
+  var cancelBtn = document.getElementById('modalCancel');
+  var resultClose = document.getElementById('resultClose');
+  var form = document.getElementById('joinForm');
+  var result = document.getElementById('joinResult');
+  var codeInput = document.getElementById('codeInput');
+  var emailInput = document.getElementById('emailInput');
+  var agreeInput = document.getElementById('agreeInput');
+  var fCode = document.getElementById('fCode');
+  var fEmail = document.getElementById('fEmail');
+  var fAgree = document.getElementById('fAgree');
+  var lastFocus = null;
+
+  function openModal(){
+    lastFocus = document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    html.classList.add('is-locked');
+    form.style.display = '';
+    result.classList.remove('is-shown');
+    window.setTimeout(function(){ codeInput.focus(); }, 30);
+  }
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    html.classList.remove('is-locked');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+  resultClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if (!modal.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+    if (e.key === 'Tab') {
+      var focusables = modal.querySelectorAll('button:not([disabled]), input:not([disabled]), a[href]');
+      var list = Array.prototype.filter.call(focusables, function(el){ return el.offsetParent !== null; });
+      if (!list.length) return;
+      var first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* 코드 입력 자동 포맷: DS-0000-0000 */
+  codeInput.addEventListener('input', function(){
+    var raw = codeInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (raw.indexOf('DS') === 0) raw = raw.slice(2);
+    raw = raw.replace(/[^0-9]/g, '').slice(0, 8);
+    var out = 'DS';
+    if (raw.length) out += '-' + raw.slice(0, 4);
+    if (raw.length > 4) out += '-' + raw.slice(4);
+    if (codeInput.value.length === 0) out = '';
+    codeInput.value = out;
+    fCode.classList.remove('is-invalid');
+  });
+  emailInput.addEventListener('input', function(){ fEmail.classList.remove('is-invalid'); });
+  agreeInput.addEventListener('change', function(){ fAgree.classList.remove('is-invalid'); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    var code = codeInput.value.trim().toUpperCase();
+    if (!/^DS-\d{4}-\d{4}$/.test(code)) { fCode.classList.add('is-invalid'); ok = false; }
+    var email = emailInput.value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { fEmail.classList.add('is-invalid'); ok = false; }
+    if (!agreeInput.checked) { fAgree.classList.add('is-invalid'); ok = false; }
+    if (!ok) {
+      var firstInvalid = modal.querySelector('.field.is-invalid input');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+    /* 코드 기반의 결정적(가상) 여정 데이터 생성 */
+    var digits = code.replace(/\D/g, '');
+    var seed = 0;
+    for (var i = 0; i < digits.length; i++) seed = (seed * 31 + digits.charCodeAt(i)) % 100000;
+    var fallDay = new Date(1984, 5, 1 + (seed % 120));           // 1984년 여름 어느 날 떨어진 비
+    var bottleDay = new Date(2026, 7, 1 + (seed % 14));           // 2026년 8월 병입
+    var years = 41 + ((seed % 3) === 0 ? 1 : 0) + ((seed % 7) === 0 ? 1 : 0); // 41~43년
+    var ticket = 192145 + (seed % 5000);
+    var fmtDate = function(d){ return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0'); };
+
+    document.getElementById('ticketNo').textContent = '#' + String(ticket).padStart(6, '0');
+    document.getElementById('ticketPath').innerHTML =
+      '<b>' + fmtDate(fallDay) + '</b> 인제 기린면에 내린 비 · 화강암 대수층 <b>' + years + '년</b> · <b>' + fmtDate(bottleDay) + '</b> 취수정 2호 취수 · 72시간 이내 병입<br>코드 <b>' + code + '</b>';
+    document.getElementById('resultMsg').textContent = email
+      ? '여정 카드가 발급되었습니다. 카드 이미지는 ' + email + '(으)로 몇 분 안에 도착합니다. 100원이 인제 계곡 정화 기금에 적립되었습니다.'
+      : '여정 카드가 발급되었습니다. 100원이 인제 계곡 정화 기금에 적립되었습니다. 이 화면을 캡처해 두시면 파빌리온 방문 시 에디션 1병으로 교환할 수 있습니다.';
+    form.style.display = 'none';
+    result.classList.add('is-shown');
+    window.setTimeout(function(){ resultClose.focus(); }, 30);
+  });
+
+  /* ---------- 7. 기금 게이지: 노출 시 채움 ---------- */
+  var pledge = document.getElementById('pledgeTrack');
+  if (pledge && 'IntersectionObserver' in window) {
+    var pObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { pledge.classList.add('is-in'); pObs.disconnect(); } });
+    }, { threshold: 0.6 });
+    pObs.observe(pledge);
+  } else if (pledge) { pledge.classList.add('is-in'); }
+
+  /* ---------- 8. 헤더 CTA(참여하기)로 이동 시 버튼에 포커스 (키보드 도달 보장) ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('a[href="#join"]'), function(a){
+    a.addEventListener('click', function(){
+      window.setTimeout(function(){ try { openBtn.focus({ preventScroll: true }); } catch (e) { openBtn.focus(); } }, reduce ? 0 : 700);
+    });
+  });
+})();
+</script>
+</body>
+</html>

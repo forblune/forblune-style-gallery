@@ -1,0 +1,17 @@
+name = "forblune-style-gallery"
+compatibility_date = "2026-08-01"
+account_id = "8e7db1ee168c06561f422235363c977c"
+
+# 정적 자산 배포 (Workers Static Assets). dist/ 는 deploy.sh 가 sites/ + index.html 만 복사해 만든다.
+[assets]
+directory = "./dist"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
+
+# 커스텀 도메인: forblune.com 존이 같은 계정에 있으므로 DNS 레코드와 인증서를 wrangler 가 자동 생성한다.
+routes = [
+  { pattern = "gallery.forblune.com", custom_domain = true }
+]
+
+[observability]
+enabled = true

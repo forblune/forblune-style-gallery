@@ -1,0 +1,1250 @@
+<!-- forblune-style: {"slug":"editorial-perfume","primaryStyle":"Editorial","productType":"Commerce","tone":"Soft · Quiet · Curated","secondary":"Commerce","accent":"Product","brand":"무향 MUHYANG","industry":"니치 향수 브랜드","coreMessage":"향을 팔기 전에 이 브랜드가 어떤 취향으로 냄새를 고르는지 먼저 느끼게 한다","naming":"Editorial / Commerce / Soft · Quiet · Curated"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>무향 MUHYANG — 천천히 고른 냄새들</title>
+  <meta name="description" content="무향 MUHYANG은 서울 연희동의 작은 니치 향수 브랜드입니다. 우디·시트러스·머스크, 세 갈래의 무드로 이번 시즌의 향을 천천히 골랐습니다. 디스커버리 세트로 먼저 만나보세요.">
+  <meta name="theme-color" content="#F4F1EC">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ------------------------------------------------------------
+       무향 MUHYANG — Editorial / Commerce / Soft · Quiet · Curated
+       팔레트: 아이보리 배경 · 차콜 텍스트 · 살구/모래 저채도 포인트
+       ------------------------------------------------------------ */
+    :root {
+      --bg: #F4F1EC;
+      --bg-soft: #EDE8E0;
+      --bg-deep: #E4DDD2;
+      --ink: #2B2A28;
+      --ink-2: #5E5A54;
+      --ink-3: #8A857D;
+      --line: #DAD3C8;
+      --line-soft: #E7E1D7;
+      --apricot: #E9CDB9;
+      --apricot-deep: #CFA88E;
+      --sand: #D6C8B2;
+      --sand-deep: #B9A88E;
+      --white: #FBF9F6;
+
+      --serif: "Noto Serif KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", serif;
+      --sans: "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+
+      --wrap: 1320px;
+      --gutter: clamp(20px, 4vw, 56px);
+      --section: clamp(88px, 12vw, 168px);
+      --ease: cubic-bezier(.22, .61, .36, 1);
+      --img-filter: saturate(.75) contrast(.95);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: anywhere;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    h1, h2, h3, h4, p { margin: 0; }
+    :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 4px; }
+    ::selection { background: var(--apricot); color: var(--ink); }
+
+    .wrap { width: min(100% - var(--gutter) * 2, var(--wrap)); margin-inline: auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* 사진 톤 통일 */
+    .ph { position: relative; overflow: hidden; background: var(--bg-deep); }
+    .ph img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: var(--img-filter);
+      transition: opacity 1.1s var(--ease), transform 1.6s var(--ease);
+    }
+
+    /* 타이포 — 섹션 소제는 작은 세리프. 대문자 라벨을 쓰지 않는다 */
+    .eyebrow {
+      font-family: var(--serif);
+      font-size: 13px; font-weight: 400;
+      letter-spacing: .02em;
+      color: var(--ink-3);
+    }
+    .eyebrow::before { content: ""; display: inline-block; width: 18px; height: 1px; background: var(--ink-3); vertical-align: middle; margin-right: 10px; }
+    .h-serif {
+      font-family: var(--serif);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+    .h-lg { font-size: clamp(30px, 3.6vw, 48px); }
+    .h-md { font-size: clamp(24px, 2.6vw, 34px); }
+    .h-sm { font-size: clamp(19px, 1.7vw, 24px); }
+    .lead { font-size: clamp(15px, 1.15vw, 17px); color: var(--ink-2); line-height: 1.95; }
+    .muted { color: var(--ink-3); }
+
+    .link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 400; letter-spacing: .04em;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line);
+      transition: border-color .5s var(--ease), color .5s var(--ease);
+    }
+    .link:hover, .link:focus-visible { border-color: var(--ink); }
+    .link svg { width: 14px; height: 14px; transition: transform .6s var(--ease); }
+    .link:hover svg { transform: translateX(3px); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 46px; padding: 0 26px;
+      font-size: 13px; font-weight: 400; letter-spacing: .06em;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      transition: background .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease);
+    }
+    .btn:hover, .btn:focus-visible { background: var(--ink); color: var(--bg); }
+    .btn--fill { background: var(--ink); color: var(--bg); }
+    .btn--fill:hover, .btn--fill:focus-visible { background: #45423D; border-color: #45423D; }
+    .btn--ghost { border-color: var(--line); }
+    .btn--ghost:hover, .btn--ghost:focus-visible { border-color: var(--ink); background: transparent; color: var(--ink); }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .btn:disabled:hover { background: transparent; color: inherit; }
+    .btn--fill:disabled:hover { background: var(--ink); color: var(--bg); }
+
+    /* 스크롤 리빌 — 큰 사진 몇 장에만 느린 페이드. 텍스트·카드는 즉시 표시 */
+    .reveal { opacity: 0; transition: opacity 1.4s var(--ease); }
+    .reveal.is-in { opacity: 1; }
+
+    /* ------------------------------------------------------------
+       헤더 — 얇게, 스크롤 시 축소 고정
+       ------------------------------------------------------------ */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color .6s var(--ease), background .6s var(--ease);
+    }
+    .header__in {
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding-block: 26px;
+      transition: padding .6s var(--ease);
+    }
+    .header.is-scrolled { border-bottom-color: var(--line-soft); }
+    .header.is-scrolled .header__in { padding-block: 14px; }
+
+    .nav ul { display: flex; gap: 32px; }
+    .nav a {
+      font-size: 12.5px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ink-2); position: relative; padding-block: 4px;
+      transition: color .5s var(--ease);
+    }
+    .nav a::after {
+      content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--ink);
+      transition: right .6s var(--ease);
+    }
+    .nav a:hover, .nav a:focus-visible { color: var(--ink); }
+    .nav a:hover::after { right: 0; }
+
+    .logo { justify-self: center; text-align: center; line-height: 1; }
+    .logo__ko { display: block; font-family: var(--serif); font-weight: 400; font-size: 21px; letter-spacing: .32em; margin-left: .32em; }
+    .logo__en { display: block; font-size: 9px; letter-spacing: .34em; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; margin-left: .34em; }
+
+    .header__util { justify-self: end; display: flex; align-items: center; gap: 24px; }
+    .header__util a, .header__util button {
+      font-size: 12.5px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .header__util a:hover, .header__util button:hover { color: var(--ink); }
+    .cart-count {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 18px; height: 18px; padding: 0 5px;
+      font-size: 10px; letter-spacing: 0;
+      background: var(--apricot); color: var(--ink);
+      transition: transform .5s var(--ease);
+    }
+    .cart-count.is-bump { transform: scale(1.18); }
+
+    .menu-toggle { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; }
+    .menu-toggle span { display: block; width: 20px; height: 1px; background: var(--ink); position: relative; transition: background .3s; }
+    .menu-toggle span::before, .menu-toggle span::after { content: ""; position: absolute; left: 0; width: 20px; height: 1px; background: var(--ink); transition: transform .5s var(--ease), top .5s var(--ease); }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+    .menu-toggle[aria-expanded="true"] span { background: transparent; }
+    .menu-toggle[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
+
+    .mobile-nav {
+      display: none; border-top: 1px solid var(--line-soft);
+      background: var(--bg);
+    }
+    .mobile-nav ul { display: flex; flex-direction: column; padding: 18px 0 26px; }
+    .mobile-nav a { display: block; padding: 12px 0; font-family: var(--serif); font-size: 20px; font-weight: 300; }
+    .mobile-nav .mobile-nav__meta { margin-top: 12px; font-size: 12px; color: var(--ink-3); }
+    .mobile-nav.is-open { display: block; }
+
+    /* ------------------------------------------------------------
+       Hero — 화보형. 이미지가 주인공
+       ------------------------------------------------------------ */
+    .hero { padding-top: 10px; }
+    .hero__grid {
+      display: grid; grid-template-columns: 7fr 5fr; gap: clamp(20px, 3vw, 48px); align-items: end;
+    }
+    .hero__main { aspect-ratio: 4 / 5; max-height: 86vh; }
+    .hero__main img { transform: scale(1.02); }
+    .hero.is-ready .hero__main img { transform: scale(1); }
+    .hero__side { display: flex; flex-direction: column; justify-content: flex-end; gap: clamp(24px, 3vw, 48px); padding-bottom: 6px; }
+    .hero__thumb { aspect-ratio: 4 / 3; width: min(100%, 360px); }
+    .hero__copy .eyebrow { margin-bottom: 20px; }
+    .hero__title { font-size: clamp(30px, 3.4vw, 46px); max-width: 15ch; }
+    .hero__title em { font-style: normal; color: var(--ink-2); }
+    .hero__desc { margin-top: 22px; max-width: 34ch; }
+    .hero__cta { display: flex; align-items: center; gap: 24px; margin-top: 34px; flex-wrap: wrap; }
+    .hero__caption {
+      display: flex; justify-content: space-between; gap: 16px;
+      margin-top: 14px; font-size: 11.5px; color: var(--ink-3); letter-spacing: .04em;
+    }
+
+    /* ------------------------------------------------------------
+       이번 시즌 노트 — 우디 / 시트러스 / 머스크 (탭)
+       ------------------------------------------------------------ */
+    .season { padding-top: var(--section); }
+    .season__head { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 48px; }
+    .season__head p { max-width: 46ch; justify-self: end; }
+    .mood-tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 44px; }
+    .mood-tab {
+      position: relative; padding: 14px 22px 16px;
+      font-family: var(--serif); font-size: clamp(17px, 1.5vw, 21px); font-weight: 300;
+      color: var(--ink-3); transition: color .5s var(--ease);
+    }
+    .mood-tab small { display: block; font-family: var(--sans); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; margin-top: 2px; }
+    .mood-tab::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: -1px; height: 1px; background: var(--ink); opacity: 0; transition: opacity .5s var(--ease); }
+    .mood-tab:hover { color: var(--ink-2); }
+    .mood-tab[aria-selected="true"] { color: var(--ink); }
+    .mood-tab[aria-selected="true"]::after { opacity: 1; }
+
+    .mood-panel { display: none; }
+    .mood-panel.is-active { display: grid; }
+    .mood-panel {
+      grid-template-columns: 5fr 4fr 3fr; gap: clamp(20px, 3vw, 48px); align-items: start;
+      animation: moodIn 1s var(--ease) both;
+    }
+    @keyframes moodIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .mood-panel__img { aspect-ratio: 5 / 4; }
+    .mood-panel__img--tall { aspect-ratio: 3 / 4; margin-top: clamp(24px, 6vw, 96px); }
+    .mood-panel__text { padding-top: 6px; }
+    .mood-panel__text h3 { margin-bottom: 18px; }
+    .mood-panel__text p + p { margin-top: 12px; }
+    .note-list { margin-top: 28px; border-top: 1px solid var(--line-soft); }
+    .note-list li { display: grid; grid-template-columns: 76px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); font-size: 13.5px; }
+    .note-list li span:first-child { color: var(--ink-3); letter-spacing: .06em; font-size: 11.5px; padding-top: 3px; }
+    .mood-panel__text .link { margin-top: 28px; }
+
+    /* ------------------------------------------------------------
+       큐레이션 상품 그리드
+       ------------------------------------------------------------ */
+    .shop { padding-top: var(--section); }
+    .shop__head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+    .shop__head h2 { margin-top: 14px; }
+    .filters { display: flex; gap: 4px 22px; flex-wrap: wrap; align-items: center; }
+    .filter {
+      font-size: 12.5px; letter-spacing: .08em; color: var(--ink-3); padding: 6px 0;
+      border-bottom: 1px solid transparent; transition: color .5s var(--ease), border-color .5s var(--ease);
+    }
+    .filter:hover { color: var(--ink-2); }
+    .filter[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+    .filters__count { font-size: 12px; color: var(--ink-3); margin-left: 8px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px clamp(20px, 2.6vw, 40px); }
+    .card { display: flex; flex-direction: column; }
+    .card.is-hidden { display: none; }
+    .card__media { display: block; aspect-ratio: 4 / 5; }
+    .card__media img { position: absolute; inset: 0; }
+    .card__media img.alt { opacity: 0; }
+    .card:hover .card__media img.alt, .card:focus-within .card__media img.alt { opacity: 1; }
+    .card:hover .card__media img.main { opacity: 0; }
+    .badge {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      font-size: 9px; letter-spacing: .2em; text-transform: uppercase; font-weight: 400;
+      color: var(--ink-2); background: rgba(251, 249, 246, .85); padding: 3px 7px;
+    }
+    .card__body { padding-top: 16px; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; }
+    .card__name { font-family: var(--serif); font-size: 17px; font-weight: 400; letter-spacing: -0.005em; }
+    .card__name span { display: block; font-family: var(--sans); font-size: 11.5px; letter-spacing: .04em; color: var(--ink-3); margin-top: 3px; }
+    .card__price { text-align: right; font-size: 14px; font-weight: 400; font-variant-numeric: tabular-nums; }
+    .card__price small { display: block; font-size: 11px; color: var(--ink-3); font-weight: 300; margin-top: 3px; letter-spacing: .04em; }
+    .card__notes { grid-column: 1 / -1; font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+    .card__notes b { font-weight: 400; color: var(--ink-3); font-size: 11.5px; margin-right: 8px; }
+    .card__actions { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 12px; }
+    .card__add {
+      font-size: 12px; letter-spacing: .08em; color: var(--ink-2);
+      border-bottom: 1px solid var(--line); padding-bottom: 3px;
+      transition: color .5s var(--ease), border-color .5s var(--ease);
+    }
+    .card__add:hover, .card__add:focus-visible { color: var(--ink); border-color: var(--ink); }
+    .card__add.is-done { color: var(--ink-3); border-color: transparent; }
+    .card__stock { font-size: 11px; color: var(--ink-3); letter-spacing: .04em; }
+    .shop__foot { display: flex; justify-content: center; margin-top: 64px; }
+    .shop__empty { grid-column: 1 / -1; padding: 48px 0; text-align: center; color: var(--ink-3); font-size: 13.5px; display: none; }
+    .shop__empty.is-show { display: block; }
+
+    /* ------------------------------------------------------------
+       에디토리얼 — 향을 고르는 기준 (비대칭)
+       ------------------------------------------------------------ */
+    .editorial { padding-top: var(--section); }
+    .editorial__grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2.4vw, 36px); align-items: start; }
+    .editorial__img-a { grid-column: 1 / span 5; grid-row: 1; aspect-ratio: 3 / 4; }
+    .editorial__text { grid-column: 7 / span 5; grid-row: 1; padding-top: clamp(16px, 4vw, 72px); }
+    .editorial__img-b { grid-column: 8 / span 4; grid-row: 2; aspect-ratio: 4 / 3; margin-top: clamp(8px, 2vw, 32px); }
+    .editorial__img-c { grid-column: 2 / span 3; grid-row: 2; aspect-ratio: 1; margin-top: clamp(-120px, -8vw, -24px); }
+    .editorial__text h2 { margin: 18px 0 26px; }
+    .editorial__text p + p { margin-top: 16px; }
+    .principles { margin-top: 40px; border-top: 1px solid var(--line); }
+    .principles li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 20px 0; border-bottom: 1px solid var(--line-soft); }
+    .principles li span:first-child { font-family: var(--serif); font-size: 13px; color: var(--ink-3); padding-top: 4px; }
+    .principles h3 { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 6px; }
+    .principles p { font-size: 13.5px; color: var(--ink-2); }
+    .editorial__quote {
+      grid-column: 1 / span 6; grid-row: 3; margin-top: clamp(24px, 4vw, 56px);
+      font-family: var(--serif); font-size: clamp(19px, 1.9vw, 26px); font-weight: 300; line-height: 1.7; color: var(--ink-2);
+      max-width: 22ch;
+    }
+    .editorial__quote cite { display: block; font-family: var(--sans); font-style: normal; font-size: 11.5px; letter-spacing: .1em; color: var(--ink-3); margin-top: 16px; }
+
+    /* ------------------------------------------------------------
+       디스커버리 세트 — 세 가지 골라 담기 (Product accent)
+       ------------------------------------------------------------ */
+    .discovery { padding-top: var(--section); }
+    .discovery__box {
+      background: var(--bg-soft);
+      display: grid; grid-template-columns: 5fr 7fr; gap: clamp(24px, 4vw, 64px);
+      padding: clamp(24px, 3.5vw, 56px);
+    }
+    .discovery__img { aspect-ratio: 4 / 5; }
+    .discovery__text h2 { margin: 16px 0 18px; }
+    .discovery__text .lead { max-width: 46ch; }
+    .set-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+    .set-option {
+      text-align: left; padding: 18px 20px; border: 1px solid var(--line); background: transparent;
+      display: flex; flex-direction: column; gap: 6px; transition: border-color .5s var(--ease), background .5s var(--ease);
+    }
+    .set-option:hover { border-color: var(--sand-deep); }
+    .set-option[aria-pressed="true"] { border-color: var(--ink); background: var(--white); }
+    .set-option strong { font-weight: 400; font-size: 15px; }
+    .set-option span { font-size: 12.5px; color: var(--ink-2); }
+    .set-option em { font-style: normal; font-size: 14px; font-weight: 400; margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+    .vials { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .vial {
+      text-align: left; padding: 14px 14px 12px; border: 1px solid var(--line-soft); background: var(--white);
+      display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: start;
+      transition: border-color .5s var(--ease), background .5s var(--ease);
+    }
+    .vial:hover { border-color: var(--sand-deep); }
+    .vial[aria-pressed="true"] { border-color: var(--apricot-deep); background: #F7EBE0; }
+    .vial:disabled { opacity: .5; cursor: not-allowed; }
+    .vial:disabled:hover { border-color: var(--line-soft); }
+    .vial__name { font-family: var(--serif); font-size: 15px; font-weight: 400; }
+    .vial__mood { grid-column: 1; font-size: 11.5px; color: var(--ink-3); }
+    .vial__check { grid-row: 1 / span 2; width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--line); position: relative; margin-top: 3px; }
+    .vial[aria-pressed="true"] .vial__check { border-color: var(--apricot-deep); background: var(--apricot-deep); }
+    .vial[aria-pressed="true"] .vial__check::after { content: ""; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px; border: solid var(--white); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
+    .vials.is-hidden { display: none; }
+
+    .set-summary {
+      margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .set-summary__text { font-size: 13px; color: var(--ink-2); }
+    .set-summary__text strong { font-weight: 400; color: var(--ink); font-size: 15px; font-variant-numeric: tabular-nums; }
+    .set-summary__hint { font-size: 11.5px; color: var(--ink-3); display: block; margin-top: 2px; }
+    .set-note { margin-top: 18px; font-size: 12px; color: var(--ink-3); line-height: 1.7; }
+
+    /* ------------------------------------------------------------
+       브랜드 노트
+       ------------------------------------------------------------ */
+    .brand { padding-top: var(--section); }
+    .brand__grid { display: grid; grid-template-columns: 4fr 1fr 6fr; gap: clamp(20px, 3vw, 48px); align-items: center; }
+    .brand__img { aspect-ratio: 3 / 4; }
+    .brand__text { grid-column: 3; }
+    .brand__text h2 { margin: 16px 0 24px; }
+    .brand__text p + p { margin-top: 14px; }
+    .visit { margin-top: 36px; font-size: 13.5px; color: var(--ink-2); border-top: 1px solid var(--line); }
+    .visit > div { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line-soft); }
+    .visit dt { color: var(--ink-3); letter-spacing: .04em; font-size: 12px; padding-top: 2px; }
+    .visit dd { margin: 0; }
+    .visit dd small { display: block; font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+
+    /* ------------------------------------------------------------
+       푸터 — 중성색, 뉴스레터 = 새 셀렉션 소식
+       ------------------------------------------------------------ */
+    .footer { margin-top: var(--section); background: var(--bg-soft); border-top: 1px solid var(--line-soft); }
+    .footer__top { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 5vw, 96px); padding-block: clamp(56px, 7vw, 96px) clamp(40px, 5vw, 64px); }
+    .newsletter h2 { margin: 12px 0 14px; }
+    .newsletter p { max-width: 38ch; }
+    .newsletter form { margin-top: 26px; display: flex; gap: 0; border-bottom: 1px solid var(--ink); max-width: 420px; }
+    .newsletter input {
+      flex: 1; min-width: 0; height: 46px; border: 0; background: transparent; padding: 0;
+      font: inherit; font-size: 14px; color: var(--ink);
+    }
+    .newsletter input::placeholder { color: var(--ink-3); }
+    .newsletter input:focus { outline: none; }
+    .newsletter button { font-size: 12.5px; letter-spacing: .08em; padding: 0 0 0 16px; white-space: nowrap; }
+    .newsletter__msg { margin-top: 12px; font-size: 12.5px; color: var(--ink-2); min-height: 1.6em; }
+    .newsletter__msg.is-error { color: #9A5B4B; }
+    .newsletter__consent { margin-top: 12px; font-size: 11.5px; color: var(--ink-3); display: flex; gap: 8px; align-items: flex-start; }
+    .newsletter__consent input { margin: 5px 0 0; accent-color: var(--ink); }
+    .footer__cols { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; }
+    .footer__cols h3 { font-family: var(--serif); font-size: 13px; color: var(--ink-3); font-weight: 400; margin-bottom: 16px; }
+    .footer__cols li { margin-bottom: 8px; font-size: 13.5px; }
+    .footer__cols a { color: var(--ink-2); transition: color .5s var(--ease); }
+    .footer__cols a:hover { color: var(--ink); }
+    .footer__cols address { font-style: normal; font-size: 13.5px; color: var(--ink-2); line-height: 1.85; }
+    .footer__bottom {
+      border-top: 1px solid var(--line); padding-block: 28px 36px;
+      display: grid; grid-template-columns: 1fr auto; gap: 16px 32px; align-items: end;
+    }
+    .footer__brand { display: flex; align-items: baseline; gap: 18px; }
+    .footer__brand .logo__ko { font-size: 18px; }
+    .footer__brand p { font-size: 13px; color: var(--ink-2); }
+    .footer__legal { font-size: 11px; color: var(--ink-3); line-height: 1.9; }
+    .footer__legal span { display: inline-block; margin-right: 14px; }
+    .footer__copy { grid-column: 1 / -1; font-size: 11px; color: var(--ink-3); letter-spacing: .04em; }
+
+    /* 토스트 */
+    .toast {
+      position: fixed; left: 50%; bottom: 28px; z-index: 60;
+      transform: translate(-50%, 12px); opacity: 0; pointer-events: none;
+      background: var(--ink); color: var(--bg); font-size: 12.5px; letter-spacing: .04em;
+      padding: 12px 20px;
+      width: max-content; max-width: calc(100vw - 32px); text-align: center;
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+    .toast.is-show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ------------------------------------------------------------
+       반응형
+       ------------------------------------------------------------ */
+    @media (max-width: 1080px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .mood-panel { grid-template-columns: 1fr 1fr; }
+      .mood-panel__img--tall { display: none; }
+      .brand__grid { grid-template-columns: 5fr 7fr; }
+      .brand__text { grid-column: 2; }
+      .footer__top { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .nav { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .header__in { grid-template-columns: auto 1fr auto; padding-block: 18px; }
+      .logo { justify-self: center; }
+      .header__util .util-hide { display: none; }
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__main { max-height: none; aspect-ratio: 4 / 5; }
+      .hero__side { flex-direction: column-reverse; }
+      .hero__thumb { display: none; }
+      .season__head { grid-template-columns: 1fr; }
+      .season__head p { justify-self: start; }
+      .mood-tabs { overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+      .mood-tabs::-webkit-scrollbar { display: none; }
+      .mood-tab { padding-inline: 14px; white-space: nowrap; }
+      .mood-tab::after { left: 14px; right: 14px; }
+      .mood-panel { grid-template-columns: 1fr; }
+      .editorial__grid { grid-template-columns: repeat(6, 1fr); }
+      .editorial__img-a { grid-column: 1 / span 4; grid-row: 1; }
+      .editorial__text { grid-column: 1 / -1; grid-row: 2; padding-top: 0; }
+      .editorial__img-b { grid-column: 3 / span 4; grid-row: 3; margin-top: 0; }
+      .editorial__img-c { grid-column: 1 / span 2; grid-row: 3; margin-top: 0; align-self: end; }
+      .editorial__quote { grid-column: 1 / -1; grid-row: 4; max-width: 30ch; }
+      .discovery__box { grid-template-columns: 1fr; }
+      .discovery__img { aspect-ratio: 5 / 4; }
+      .brand__grid { grid-template-columns: 1fr; }
+      .brand__text { grid-column: 1; }
+      .footer__cols { grid-template-columns: 1fr 1fr; }
+      .footer__bottom { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 14.5px; }
+      .grid { gap: 40px 14px; }
+      .card__body { grid-template-columns: 1fr; }
+      .card__price { text-align: left; margin-top: 4px; }
+      .card__actions { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .set-options { grid-template-columns: 1fr; }
+      .vials { grid-template-columns: 1fr 1fr; }
+      .footer__cols { grid-template-columns: 1fr; }
+      .footer__brand { flex-direction: column; gap: 6px; }
+      .hero__cta { gap: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; }
+      .hero__main img { transform: none; }
+      .card__media img.alt { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="header" id="header">
+    <div class="wrap header__in">
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="메뉴 열기">
+        <span></span>
+      </button>
+
+      <nav class="nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#new">New</a></li>
+          <li><a href="#editorial">Editorial</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <a class="logo" href="#top" aria-label="무향 홈으로">
+        <span class="logo__ko">무향</span>
+        <span class="logo__en">Muhyang</span>
+      </a>
+
+      <div class="header__util">
+        <a class="util-hide" href="#discovery">Discovery</a>
+        <button type="button" id="cartBtn" aria-label="장바구니, 담긴 상품 0개">
+          Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴">
+      <ul class="wrap">
+        <li><a href="#shop" data-nav-close>Shop</a></li>
+        <li><a href="#new" data-nav-close>New</a></li>
+        <li><a href="#editorial" data-nav-close>Editorial</a></li>
+        <li><a href="#about" data-nav-close>About</a></li>
+        <li><a href="#discovery" data-nav-close>Discovery Set</a></li>
+        <li class="mobile-nav__meta">쇼룸 · 서울 연희동 · 12:00–19:00 · 월요일 휴무</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         HERO — 화보형
+         ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="wrap hero__grid">
+        <figure class="ph hero__main">
+          <img src="https://loremflickr.com/1200/1500/perfume,bottle?lock=7101" width="1200" height="1500" alt="아이보리 리넨 위에 놓인 무향의 유리 향수병과 아침 빛" fetchpriority="high">
+        </figure>
+
+        <div class="hero__side">
+          <div class="hero__copy">
+            <p class="eyebrow">2026 늦여름 셀렉션</p>
+            <h1 class="h-serif hero__title" id="heroTitle">향보다 먼저, <em>냄새를 고르는 태도를</em> 보여드립니다.</h1>
+            <p class="lead hero__desc">무향은 서울 연희동에서 한 해에 네 가지 이하의 향만 만듭니다. 이번 시즌은 여름의 끝에서 고른 여섯 병입니다.</p>
+            <div class="hero__cta">
+              <a class="btn" href="#shop">컬렉션 보기</a>
+              <a class="link" href="#season">이번 시즌의 노트 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+
+          <figure class="ph hero__thumb">
+            <img src="https://loremflickr.com/840/630/linen,texture?lock=7102" width="840" height="630" alt="창가에 놓인 아이보리 리넨 천의 결" loading="lazy">
+            <figcaption class="sr-only">이번 시즌 노트 소재</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="wrap hero__caption">
+        <span>No. 01 — 06 · 50ml / 30ml</span>
+        <span>연희동 쇼룸에서 시향할 수 있습니다</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         이번 시즌 노트 — 무드 탭
+         ============================================================ -->
+    <section class="season" id="season" aria-labelledby="seasonTitle">
+      <div class="wrap">
+        <div class="season__head">
+          <h2 class="h-serif h-lg" id="seasonTitle">이번 시즌의 노트.<br>세 갈래, 여섯 병.</h2>
+          <p class="lead">우디는 오후 늦게, 시트러스는 아침, 머스크는 밤에 뿌리도록 골라 두었습니다. 계열마다 두 병씩 남겼고, 하루의 어느 장면에 놓을지 먼저 떠올려 보시면 고르기 쉽습니다.</p>
+        </div>
+
+        <div class="mood-tabs" role="tablist" aria-label="이번 시즌 무드">
+          <button class="mood-tab" role="tab" id="tab-woody" aria-selected="true" aria-controls="panel-woody" data-mood="woody">우디<small>Woody</small></button>
+          <button class="mood-tab" role="tab" id="tab-citrus" aria-selected="false" aria-controls="panel-citrus" data-mood="citrus" tabindex="-1">시트러스<small>Citrus</small></button>
+          <button class="mood-tab" role="tab" id="tab-musk" aria-selected="false" aria-controls="panel-musk" data-mood="musk" tabindex="-1">머스크<small>Musk</small></button>
+        </div>
+
+        <!-- 우디 -->
+        <div class="mood-panel is-active" role="tabpanel" id="panel-woody" aria-labelledby="tab-woody">
+          <figure class="ph mood-panel__img">
+            <img src="https://loremflickr.com/1000/800/perfume,wood?lock=7111" width="1000" height="800" alt="오래된 나무 서랍장 위에 놓인 향수병" loading="lazy">
+          </figure>
+          <div class="mood-panel__text">
+            <p class="eyebrow">우디 · 오후 두 시 이후</p>
+            <h3 class="h-serif h-md">비 그친 뒤 마른 나무의 냄새.</h3>
+            <p class="lead">따뜻하지만 달지 않게. 우디 계열은 종종 무거워지기 쉬워서, 올해는 샌달우드의 크림 같은 결을 시더와 베티버로 눌러 두었습니다. 낮 두 시 이후, 조용한 자리에 어울립니다.</p>
+            <ul class="note-list">
+              <li><span>Top</span><span>블랙 페퍼, 카다멈</span></li>
+              <li><span>Heart</span><span>시더우드, 가이악우드, 아이리스</span></li>
+              <li><span>Base</span><span>샌달우드, 베티버, 앰버</span></li>
+              <li><span>지속</span><span>피부 위 6–8시간 · 옷에는 하루 이상</span></li>
+            </ul>
+            <a class="link" href="#shop" data-filter-link="woody">우디 계열 두 병 보기</a>
+          </div>
+          <figure class="ph mood-panel__img mood-panel__img--tall">
+            <img src="https://loremflickr.com/600/800/sandalwood,wood?lock=7112" width="600" height="800" alt="샌달우드 조각과 종이 위에 떨어진 오일" loading="lazy">
+          </figure>
+        </div>
+
+        <!-- 시트러스 -->
+        <div class="mood-panel" role="tabpanel" id="panel-citrus" aria-labelledby="tab-citrus" hidden>
+          <figure class="ph mood-panel__img">
+            <img src="https://loremflickr.com/1000/800/citrus,glass?lock=7113" width="1000" height="800" alt="아침 햇빛이 드는 창가의 유자와 유리잔" loading="lazy">
+          </figure>
+          <div class="mood-panel__text">
+            <p class="eyebrow">시트러스 · 아침, 씻고 난 직후</p>
+            <h3 class="h-serif h-md">껍질을 벗기다 손에 남은 것.</h3>
+            <p class="lead">가볍고 짧은 대신, 사라지는 방식이 예뻐야 한다고 생각합니다. 베르가못과 유자를 그린 티, 네롤리로 이어 두었고, 끝에는 얇은 머스크가 남습니다. 출근길이나 씻고 난 직후에 어울립니다.</p>
+            <ul class="note-list">
+              <li><span>Top</span><span>베르가못, 유자, 핑크 페퍼</span></li>
+              <li><span>Heart</span><span>그린 티, 네롤리, 오렌지 블라썸</span></li>
+              <li><span>Base</span><span>화이트 머스크, 통카빈</span></li>
+              <li><span>지속</span><span>피부 위 3–5시간 · 겹쳐 뿌리기 좋음</span></li>
+            </ul>
+            <a class="link" href="#shop" data-filter-link="citrus">시트러스 계열 두 병 보기</a>
+          </div>
+          <figure class="ph mood-panel__img mood-panel__img--tall">
+            <img src="https://loremflickr.com/600/800/linen,curtain?lock=7114" width="600" height="800" alt="리넨 커튼 사이로 들어오는 아침 빛" loading="lazy">
+          </figure>
+        </div>
+
+        <!-- 머스크 -->
+        <div class="mood-panel" role="tabpanel" id="panel-musk" aria-labelledby="tab-musk" hidden>
+          <figure class="ph mood-panel__img">
+            <img src="https://loremflickr.com/1000/800/linen,bed?lock=7115" width="1000" height="800" alt="구겨진 흰 침구 위에 놓인 작은 향수병" loading="lazy">
+          </figure>
+          <div class="mood-panel__text">
+            <p class="eyebrow">머스크 · 잠들기 전</p>
+            <h3 class="h-serif h-md">아무 냄새도 없는 것 같은 냄새.</h3>
+            <p class="lead">무향이라는 이름을 짓게 한 계열입니다. 향수를 뿌렸다는 사실보다 사람이 좋게 느껴지는 쪽을 택했습니다. 코튼 머스크와 스킨 머스크에 아이리스와 헬리오트로프를 아주 조금 섞었습니다. 잠들기 전, 혹은 가까운 사람을 만나는 날에.</p>
+            <ul class="note-list">
+              <li><span>Top</span><span>알데하이드, 배</span></li>
+              <li><span>Heart</span><span>아이리스, 헬리오트로프, 바이올렛 리프</span></li>
+              <li><span>Base</span><span>코튼 머스크, 스킨 머스크, 샌달우드</span></li>
+              <li><span>지속</span><span>피부 위 5–7시간 · 가까이에서만 느껴짐</span></li>
+            </ul>
+            <a class="link" href="#shop" data-filter-link="musk">머스크 계열 두 병 보기</a>
+          </div>
+          <figure class="ph mood-panel__img mood-panel__img--tall">
+            <img src="https://loremflickr.com/600/800/perfume,bedroom?lock=7116" width="600" height="800" alt="어두운 방 안, 침대 옆 협탁의 향수병" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         큐레이션 상품 그리드
+         ============================================================ -->
+    <section class="shop" id="shop" aria-labelledby="shopTitle">
+      <div class="wrap">
+        <div class="shop__head">
+          <div>
+            <p class="eyebrow">No. 01 — 06 · 50ml / 30ml</p>
+            <h2 class="h-serif h-lg" id="shopTitle">이번 시즌의 여섯 병.</h2>
+          </div>
+          <div class="filters" role="group" aria-label="무드별로 보기">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">전체</button>
+            <button class="filter" type="button" data-filter="woody" aria-pressed="false">우디</button>
+            <button class="filter" type="button" data-filter="citrus" aria-pressed="false">시트러스</button>
+            <button class="filter" type="button" data-filter="musk" aria-pressed="false">머스크</button>
+            <span class="filters__count" id="filterCount" aria-live="polite">6개</span>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid">
+
+          <!-- 01 -->
+          <article class="card" data-mood="citrus" data-name="아침 안개" data-price="128000">
+            <a class="ph card__media" href="#season" data-mood-link="citrus" aria-label="아침 안개의 노트 보기">
+              <img class="main" src="https://loremflickr.com/800/1000/perfume,bottle?lock=7121" width="800" height="1000" alt="아침 안개 — 아이보리 배경 위 유리 향수병" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/fragrance,glass?lock=7122" width="800" height="1000" alt="아침 안개 — 창가 빛을 받은 유리병 컷" loading="lazy" aria-hidden="true">
+            </a>
+            <div class="card__body">
+              <h3 class="card__name">아침 안개<span>Morning Haze · No. 01</span></h3>
+              <p class="card__price">128,000원<small>50ml · 오 드 퍼퓸</small></p>
+              <p class="card__notes"><b>노트</b>베르가못 · 그린 티 · 화이트 머스크</p>
+              <div class="card__actions">
+                <button class="card__add" type="button" data-add>장바구니에 담기</button>
+                <span class="card__stock">쇼룸 재고 있음</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 -->
+          <article class="card" data-mood="woody" data-name="마른 나무" data-price="142000">
+            <a class="ph card__media" href="#season" data-mood-link="woody" aria-label="마른 나무의 노트 보기">
+              <img class="main" src="https://loremflickr.com/800/1000/perfume,wood?lock=7123" width="800" height="1000" alt="마른 나무 — 나무 선반 위 향수병" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/cedar,wood?lock=7124" width="800" height="1000" alt="마른 나무 — 시더 조각과 함께 놓인 컷" loading="lazy" aria-hidden="true">
+            </a>
+            <div class="card__body">
+              <h3 class="card__name">마른 나무<span>Dry Wood · No. 02</span></h3>
+              <p class="card__price">142,000원<small>50ml · 오 드 퍼퓸</small></p>
+              <p class="card__notes"><b>노트</b>시더우드 · 샌달우드 · 베티버</p>
+              <div class="card__actions">
+                <button class="card__add" type="button" data-add>장바구니에 담기</button>
+                <span class="card__stock">쇼룸 재고 있음</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03 -->
+          <article class="card" data-mood="musk" data-name="빈 방" data-price="136000">
+            <a class="ph card__media" href="#season" data-mood-link="musk" aria-label="빈 방의 노트 보기">
+              <img class="main" src="https://loremflickr.com/800/1000/perfume,linen?lock=7125" width="800" height="1000" alt="빈 방 — 흰 침구 위 향수병" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/fragrance,bottle?lock=7126" width="800" height="1000" alt="빈 방 — 창가에서 역광으로 찍은 컷" loading="lazy" aria-hidden="true">
+            </a>
+            <div class="card__body">
+              <h3 class="card__name">빈 방<span>Empty Room · No. 03</span></h3>
+              <p class="card__price">136,000원<small>50ml · 오 드 퍼퓸</small></p>
+              <p class="card__notes"><b>노트</b>코튼 머스크 · 아이리스 · 앰버</p>
+              <div class="card__actions">
+                <button class="card__add" type="button" data-add>장바구니에 담기</button>
+                <span class="card__stock">쇼룸 재고 있음</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04 -->
+          <article class="card" data-mood="citrus" data-name="여름 끝" data-price="88000" id="new">
+            <a class="ph card__media" href="#season" data-mood-link="citrus" aria-label="여름 끝의 노트 보기">
+              <span class="badge">New</span>
+              <img class="main" src="https://loremflickr.com/800/1000/perfume,citrus?lock=7127" width="800" height="1000" alt="여름 끝 — 유자 껍질 옆에 놓인 작은 병" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/fragrance,glass?lock=7128" width="800" height="1000" alt="여름 끝 — 오후 빛이 든 테이블 위 컷" loading="lazy" aria-hidden="true">
+            </a>
+            <div class="card__body">
+              <h3 class="card__name">여름 끝<span>Late Summer · No. 04</span></h3>
+              <p class="card__price">88,000원<small>30ml · 오 드 퍼퓸</small></p>
+              <p class="card__notes"><b>노트</b>유자 · 네롤리 · 통카빈</p>
+              <div class="card__actions">
+                <button class="card__add" type="button" data-add>장바구니에 담기</button>
+                <span class="card__stock">8월 20일부터 발송</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05 -->
+          <article class="card" data-mood="woody" data-name="서고" data-price="148000">
+            <a class="ph card__media" href="#season" data-mood-link="woody" aria-label="서고의 노트 보기">
+              <img class="main" src="https://loremflickr.com/800/1000/perfume,books?lock=7129" width="800" height="1000" alt="서고 — 오래된 책 더미 위 향수병" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/paper,texture?lock=7130" width="800" height="1000" alt="서고 — 종이와 잉크가 함께 놓인 컷" loading="lazy" aria-hidden="true">
+            </a>
+            <div class="card__body">
+              <h3 class="card__name">서고<span>Archive · No. 05</span></h3>
+              <p class="card__price">148,000원<small>50ml · 오 드 퍼퓸</small></p>
+              <p class="card__notes"><b>노트</b>페이퍼 어코드 · 가이악우드 · 바닐라</p>
+              <div class="card__actions">
+                <button class="card__add" type="button" data-add>장바구니에 담기</button>
+                <span class="card__stock">쇼룸 재고 있음</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 06 -->
+          <article class="card" data-mood="musk" data-name="흐린 피부" data-price="92000">
+            <a class="ph card__media" href="#season" data-mood-link="musk" aria-label="흐린 피부의 노트 보기">
+              <span class="badge">New</span>
+              <img class="main" src="https://loremflickr.com/800/1000/perfume,bottle?lock=7131" width="800" height="1000" alt="흐린 피부 — 살구색 천 위에 놓인 향수병" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/linen,texture?lock=7132" width="800" height="1000" alt="흐린 피부 — 살구색 리넨 결 클로즈업" loading="lazy" aria-hidden="true">
+            </a>
+            <div class="card__body">
+              <h3 class="card__name">흐린 피부<span>Faint Skin · No. 06</span></h3>
+              <p class="card__price">92,000원<small>30ml · 오 드 퍼퓸</small></p>
+              <p class="card__notes"><b>노트</b>스킨 머스크 · 헬리오트로프 · 샌달우드</p>
+              <div class="card__actions">
+                <button class="card__add" type="button" data-add>장바구니에 담기</button>
+                <span class="card__stock">쇼룸 재고 있음</span>
+              </div>
+            </div>
+          </article>
+
+          <p class="shop__empty" id="shopEmpty">이 무드에 해당하는 향이 없습니다.</p>
+        </div>
+
+        <div class="shop__foot">
+          <a class="link" href="#discovery">여섯 병을 먼저 시향하고 싶다면, 디스커버리 세트 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         에디토리얼 — 향을 고르는 기준
+         ============================================================ -->
+    <section class="editorial" id="editorial" aria-labelledby="editorialTitle">
+      <div class="wrap editorial__grid">
+        <figure class="ph editorial__img-a reveal">
+          <img src="https://loremflickr.com/900/1200/perfume,laboratory?lock=7141" width="900" height="1200" alt="조향 작업대 위 시향지와 유리 피펫" loading="lazy">
+        </figure>
+
+        <div class="editorial__text">
+          <p class="eyebrow">에디토리얼 — 향을 고르는 기준</p>
+          <h2 class="h-serif h-lg" id="editorialTitle">좋은 냄새보다,<br>오래 두고 싶은 냄새.</h2>
+          <p class="lead">한 해 동안 만드는 시제품은 스무 개 남짓입니다. 그중 남기는 것은 네 개를 넘지 않습니다. 고르는 방식은 단순합니다. 병을 책상 위에 두고 두 달을 지냅니다. 처음 좋았던 것이 아니라, 두 달 뒤에도 손이 가는 것을 남깁니다.</p>
+          <p class="lead">첫인상이 강한 향은 대체로 빨리 질립니다. 우리는 인사말 같은 향보다 방 안의 공기 같은 향을 찾습니다. 그래서 무향의 병은 뿌린 직후보다 한 시간 뒤가 더 좋기를 바라며 만듭니다.</p>
+
+          <ol class="principles">
+            <li>
+              <span>01</span>
+              <div>
+                <h3>두 달을 같이 지내본다</h3>
+                <p>시제품은 작업실 책상, 침대 옆, 외투 안감에 놓아둡니다. 어느 자리에서도 거슬리지 않아야 남깁니다.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>착향의 끝을 먼저 본다</h3>
+                <p>탑노트는 나중에 정합니다. 여섯 시간 뒤 피부에 남는 잔향이 마음에 들지 않으면 처음부터 다시 만듭니다.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>말로 설명할 수 있어야 한다</h3>
+                <p>"비 그친 뒤 마른 나무" 처럼 한 문장으로 장면이 떠오르지 않는 향은 아직 우리 것이 아니라고 봅니다.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <h3>두 사람 다 거슬리지 않아야 한다</h3>
+                <p>조향사 둘이 각자 열흘씩 뿌려 봅니다. 한 사람이라도 사흘째부터 손이 덜 가면, 그 향은 그해 목록에서 빠집니다.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <figure class="ph editorial__img-b reveal">
+          <img src="https://loremflickr.com/800/600/perfume,bottles?lock=7142" width="800" height="600" alt="책상 위에 두 달째 놓여 있는 시제품 병들" loading="lazy">
+        </figure>
+
+        <figure class="ph editorial__img-c reveal">
+          <img src="https://loremflickr.com/600/600/paper,handwriting?lock=7143" width="600" height="600" alt="손글씨로 노트를 적어 둔 시향지" loading="lazy">
+        </figure>
+
+        <blockquote class="editorial__quote">
+          “향수는 처음 만났을 때보다 헤어질 때 더 좋아야 한다고 믿습니다.”
+          <cite>— 무향 조향 노트, 2024년 가을</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         디스커버리 세트
+         ============================================================ -->
+    <section class="discovery" id="discovery" aria-labelledby="discoveryTitle">
+      <div class="wrap">
+        <div class="discovery__box reveal">
+          <figure class="ph discovery__img">
+            <img src="https://loremflickr.com/900/1125/perfume,vials?lock=7151" width="900" height="1125" alt="종이 상자에 담긴 여섯 개의 2ml 시향 바이알" loading="lazy">
+          </figure>
+
+          <div class="discovery__text">
+            <p class="eyebrow">디스커버리 세트 · 2ml 바이알</p>
+            <h2 class="h-serif h-lg" id="discoveryTitle">먼저 며칠 지내보고 고르셔도 됩니다.</h2>
+            <p class="lead">향수는 종이 시향지보다 자기 피부 위에서, 하루 이틀 지내보고 고르는 편이 낫다고 생각합니다. 여섯 병 전부, 혹은 세 병을 골라 2ml 바이알로 보내드립니다.</p>
+
+            <div class="set-options" role="group" aria-label="세트 구성 선택">
+              <button class="set-option" type="button" data-set="full" aria-pressed="true">
+                <strong>여섯 병 전부</strong>
+                <span>2ml × 6 · 이번 시즌 셀렉션 전체</span>
+                <em>38,000원</em>
+              </button>
+              <button class="set-option" type="button" data-set="pick" aria-pressed="false">
+                <strong>세 병 골라 담기</strong>
+                <span>2ml × 3 · 원하는 무드로 직접 구성</span>
+                <em>21,000원</em>
+              </button>
+            </div>
+
+            <div class="vials is-hidden" id="vials" role="group" aria-label="세 병을 골라 주세요">
+              <button class="vial" type="button" data-vial="아침 안개" aria-pressed="false"><span class="vial__name">아침 안개</span><span class="vial__check" aria-hidden="true"></span><span class="vial__mood">시트러스</span></button>
+              <button class="vial" type="button" data-vial="마른 나무" aria-pressed="false"><span class="vial__name">마른 나무</span><span class="vial__check" aria-hidden="true"></span><span class="vial__mood">우디</span></button>
+              <button class="vial" type="button" data-vial="빈 방" aria-pressed="false"><span class="vial__name">빈 방</span><span class="vial__check" aria-hidden="true"></span><span class="vial__mood">머스크</span></button>
+              <button class="vial" type="button" data-vial="여름 끝" aria-pressed="false"><span class="vial__name">여름 끝</span><span class="vial__check" aria-hidden="true"></span><span class="vial__mood">시트러스</span></button>
+              <button class="vial" type="button" data-vial="서고" aria-pressed="false"><span class="vial__name">서고</span><span class="vial__check" aria-hidden="true"></span><span class="vial__mood">우디</span></button>
+              <button class="vial" type="button" data-vial="흐린 피부" aria-pressed="false"><span class="vial__name">흐린 피부</span><span class="vial__check" aria-hidden="true"></span><span class="vial__mood">머스크</span></button>
+            </div>
+
+            <div class="set-summary">
+              <p class="set-summary__text" id="setSummary" aria-live="polite">
+                <strong>38,000원</strong> · 여섯 병 전부
+                <span class="set-summary__hint">아침 안개 · 마른 나무 · 빈 방 · 여름 끝 · 서고 · 흐린 피부</span>
+              </p>
+              <button class="btn btn--fill" type="button" id="setAdd">세트 담기</button>
+            </div>
+
+            <p class="set-note">세트 상자 안에 넣어 드리는 카드의 코드로, 이후 50ml 또는 30ml 정품 구매 시 세트 금액만큼 차감됩니다. 사용 기한은 따로 두지 않습니다. 배송은 주문 후 2–3일, 5만 원 이상 무료입니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         브랜드 노트
+         ============================================================ -->
+    <section class="brand" id="about" aria-labelledby="brandTitle">
+      <div class="wrap brand__grid">
+        <figure class="ph brand__img reveal">
+          <img src="https://loremflickr.com/900/1200/perfume,shop?lock=7161" width="900" height="1200" alt="연희동 쇼룸 창가, 오후 빛이 드는 시향 테이블" loading="lazy">
+        </figure>
+
+        <div class="brand__text">
+          <h2 class="h-serif h-lg" id="brandTitle">무향(無香)이라는 이름은<br>냄새가 없다는 뜻이 아닙니다.</h2>
+          <p class="lead">향수를 뿌렸다는 사실이 먼저 느껴지기보다, 그 사람이 원래 그런 냄새였던 것처럼 스며들기를 바라는 마음입니다. 2021년 가을, 조향사 둘이 연희동의 오래된 주택 1층을 빌려 시작했습니다.</p>
+          <p class="lead">지금도 모든 향은 이곳에서 소량으로 조합하고 병에 담습니다. 착색은 하지 않고, 병과 상자는 재사용할 수 있게 만듭니다. 한 해에 네 가지 이하만 내놓는 대신, 내놓은 것은 오래 만듭니다.</p>
+
+          <dl class="visit">
+            <div><dt>시작</dt><dd>2021년 10월, 연희동 주택 1층에서 조향사 둘이</dd></div>
+            <div><dt>한 해에</dt><dd>새로 내놓는 향은 넷을 넘지 않습니다<small>2025년 3종 · 2026년 늦여름 현재 2종</small></dd></div>
+            <div><dt>병과 상자</dt><dd>빈 병을 가져오시면 리필 20% 할인, 상자는 회수해 다시 씁니다</dd></div>
+            <div><dt>쇼룸</dt><dd>서울 서대문구 연희로11길 24, 1층<small>12:00–19:00 · 월요일 휴무</small></dd></div>
+            <div><dt>시향</dt><dd>예약 없이 오셔도 되고, 조용히 둘러보셔도 됩니다.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" id="footer">
+    <div class="wrap footer__top">
+      <div class="newsletter">
+        <h2 class="h-serif h-md">새 셀렉션이 나올 때만<br>알려드립니다.</h2>
+        <p class="lead">한 해에 네 번을 넘지 않습니다. 새 향의 이름과 노트, 쇼룸에 시향 병이 놓이는 날짜를 보내드립니다.</p>
+        <form id="newsletterForm" novalidate>
+          <label class="sr-only" for="newsletterEmail">이메일 주소</label>
+          <input type="email" id="newsletterEmail" name="email" placeholder="이메일 주소" autocomplete="email" required>
+          <button type="submit">받아보기</button>
+        </form>
+        <label class="newsletter__consent">
+          <input type="checkbox" id="newsletterConsent">
+          <span>새 셀렉션 소식 수신에 동의합니다. 언제든 메일 하단에서 해지할 수 있습니다.</span>
+        </label>
+        <p class="newsletter__msg" id="newsletterMsg" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="footer__cols">
+        <div>
+          <h3>둘러보기</h3>
+          <ul>
+            <li><a href="#shop">이번 시즌 셀렉션</a></li>
+            <li><a href="#new">새로 나온 병</a></li>
+            <li><a href="#discovery">디스커버리 세트</a></li>
+            <li><a href="#season">이번 시즌의 노트</a></li>
+            <li><a href="#editorial">향을 고르는 기준</a></li>
+            <li><a href="#about">브랜드 노트 · 리필</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>쇼룸 · 연락</h3>
+          <address>
+            서울 서대문구 연희로11길 24, 1층<br>
+            12:00–19:00 · 월요일 휴무<br>
+            <a href="mailto:hello@muhyang.kr">hello@muhyang.kr</a><br>
+            <a href="tel:0233245570">02-3324-5570</a>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap footer__bottom">
+      <div class="footer__brand">
+        <span class="logo__ko">무향</span>
+        <p>천천히 고른 냄새들.</p>
+      </div>
+      <p class="footer__legal">
+        <span>주식회사 무향</span><span>대표 이서진 · 정하람</span><span>사업자등록번호 214-88-01937</span><br>
+        <span>통신판매업신고 2021-서울서대문-1142</span><span>배송 2–3일 · 5만 원 이상 무료</span><span>개봉 전 14일 이내 교환·반품</span>
+      </p>
+      <p class="footer__copy">© 2026 MUHYANG. 개인정보처리방침 · 이용약관</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ------------------------------------------------------------
+         헤더 — 스크롤 시 축소 고정
+         ------------------------------------------------------------ */
+      var header = document.getElementById('header');
+      var lastState = false;
+      function onScroll() {
+        var scrolled = window.scrollY > 24;
+        if (scrolled !== lastState) {
+          header.classList.toggle('is-scrolled', scrolled);
+          lastState = scrolled;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* 모바일 메뉴 */
+      var menuToggle = document.getElementById('menuToggle');
+      var mobileNav = document.getElementById('mobileNav');
+      function setMenu(open) {
+        menuToggle.setAttribute('aria-expanded', String(open));
+        menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        mobileNav.classList.toggle('is-open', open);
+      }
+      menuToggle.addEventListener('click', function () {
+        setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+      });
+      mobileNav.querySelectorAll('[data-nav-close]').forEach(function (a) {
+        a.addEventListener('click', function () { setMenu(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) { setMenu(false); menuToggle.focus(); }
+      });
+
+      /* Hero 이미지 — 로드 후 아주 느린 스케일 정착 */
+      var hero = document.getElementById('hero');
+      var heroImg = hero.querySelector('.hero__main img');
+      function heroReady() { hero.classList.add('is-ready'); }
+      if (heroImg.complete) { heroReady(); } else { heroImg.addEventListener('load', heroReady); heroImg.addEventListener('error', heroReady); }
+
+      /* ------------------------------------------------------------
+         스크롤 리빌 (느린 페이드)
+         ------------------------------------------------------------ */
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-in'); });
+      }
+
+      /* ------------------------------------------------------------
+         무드 탭 (우디 / 시트러스 / 머스크)
+         ------------------------------------------------------------ */
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.mood-tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.mood-panel'));
+      function activateTab(tab, focus) {
+        tabs.forEach(function (t) {
+          var selected = t === tab;
+          t.setAttribute('aria-selected', String(selected));
+          t.setAttribute('tabindex', selected ? '0' : '-1');
+        });
+        panels.forEach(function (p) {
+          var active = p.id === tab.getAttribute('aria-controls');
+          p.classList.toggle('is-active', active);
+          if (active) { p.removeAttribute('hidden'); } else { p.setAttribute('hidden', ''); }
+        });
+        if (focus) tab.focus();
+      }
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { activateTab(tab, false); });
+        tab.addEventListener('keydown', function (e) {
+          var next;
+          if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+          else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+          else if (e.key === 'Home') next = tabs[0];
+          else if (e.key === 'End') next = tabs[tabs.length - 1];
+          if (next) { e.preventDefault(); activateTab(next, true); }
+        });
+      });
+      /* 상품 사진을 누르면 시즌 노트의 해당 계열 탭으로 이동해 노트를 보여준다 */
+      document.querySelectorAll('[data-mood-link]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var tab = document.getElementById('tab-' + a.getAttribute('data-mood-link'));
+          if (tab) activateTab(tab, false);
+        });
+      });
+
+      /* ------------------------------------------------------------
+         상품 필터
+         ------------------------------------------------------------ */
+      var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('#productGrid .card'));
+      var filterCount = document.getElementById('filterCount');
+      var shopEmpty = document.getElementById('shopEmpty');
+      var moodLabel = { all: '전체', woody: '우디', citrus: '시트러스', musk: '머스크' };
+
+      function applyFilter(mood) {
+        var visible = 0;
+        filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === mood)); });
+        cards.forEach(function (card) {
+          var show = mood === 'all' || card.getAttribute('data-mood') === mood;
+          card.classList.toggle('is-hidden', !show);
+          if (show) visible++;
+        });
+        filterCount.textContent = (mood === 'all' ? '' : moodLabel[mood] + ' · ') + visible + '개';
+        shopEmpty.classList.toggle('is-show', visible === 0);
+      }
+      filterBtns.forEach(function (b) {
+        b.addEventListener('click', function () { applyFilter(b.getAttribute('data-filter')); });
+      });
+      /* 시즌 노트에서 "두 병 보기" 링크로 진입 시 필터 적용 */
+      document.querySelectorAll('[data-filter-link]').forEach(function (a) {
+        a.addEventListener('click', function () { applyFilter(a.getAttribute('data-filter-link')); });
+      });
+
+      /* ------------------------------------------------------------
+         장바구니 (카운트 + 토스트)
+         ------------------------------------------------------------ */
+      var cartCount = document.getElementById('cartCount');
+      var cartBtn = document.getElementById('cartBtn');
+      var toast = document.getElementById('toast');
+      var cart = 0;
+      var toastTimer;
+
+      function showToast(text) {
+        toast.textContent = text;
+        toast.classList.add('is-show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('is-show'); }, 2600);
+      }
+      function addToCart(qty, label) {
+        cart += qty;
+        cartCount.textContent = String(cart);
+        cartBtn.setAttribute('aria-label', '장바구니, 담긴 상품 ' + cart + '개');
+        cartCount.classList.add('is-bump');
+        setTimeout(function () { cartCount.classList.remove('is-bump'); }, 500);
+        showToast(label + ' — 장바구니에 담았습니다.');
+      }
+      document.querySelectorAll('[data-add]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var card = btn.closest('.card');
+          addToCart(1, card.getAttribute('data-name'));
+          btn.textContent = '담겼습니다 · 하나 더 담기';
+          btn.classList.add('is-done');
+          setTimeout(function () { btn.classList.remove('is-done'); }, 1800);
+        });
+      });
+      cartBtn.addEventListener('click', function () {
+        showToast(cart === 0 ? '장바구니가 비어 있습니다.' : '장바구니에 ' + cart + '개가 담겨 있습니다.');
+      });
+
+      /* ------------------------------------------------------------
+         디스커버리 세트 — 전체 / 세 병 골라 담기
+         ------------------------------------------------------------ */
+      var setOptions = Array.prototype.slice.call(document.querySelectorAll('.set-option'));
+      var vialsWrap = document.getElementById('vials');
+      var vials = Array.prototype.slice.call(document.querySelectorAll('.vial'));
+      var setSummary = document.getElementById('setSummary');
+      var setAdd = document.getElementById('setAdd');
+      var allNames = vials.map(function (v) { return v.getAttribute('data-vial'); });
+      var setMode = 'full';
+      var picked = [];
+      var PRICE_FULL = 38000, PRICE_PICK = 21000, PICK_MAX = 3;
+
+      function won(n) { return n.toLocaleString('ko-KR') + '원'; }
+
+      function renderSet() {
+        var html;
+        if (setMode === 'full') {
+          html = '<strong>' + won(PRICE_FULL) + '</strong> · 여섯 병 전부' +
+                 '<span class="set-summary__hint">' + allNames.join(' · ') + '</span>';
+          setAdd.disabled = false;
+          setAdd.textContent = '세트 담기';
+        } else {
+          var remain = PICK_MAX - picked.length;
+          html = '<strong>' + won(PRICE_PICK) + '</strong> · 세 병 골라 담기 (' + picked.length + '/' + PICK_MAX + ')' +
+                 '<span class="set-summary__hint">' + (picked.length ? picked.join(' · ') : '아래에서 세 병을 골라 주세요.') +
+                 (remain > 0 && picked.length ? ' · ' + remain + '병 더' : '') + '</span>';
+          setAdd.disabled = picked.length !== PICK_MAX;
+          setAdd.textContent = picked.length === PICK_MAX ? '세트 담기' : remain + '병 더 골라 주세요';
+        }
+        setSummary.innerHTML = html;
+        vials.forEach(function (v) {
+          var on = picked.indexOf(v.getAttribute('data-vial')) !== -1;
+          v.setAttribute('aria-pressed', String(on));
+          v.disabled = !on && picked.length >= PICK_MAX;
+        });
+      }
+      setOptions.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          setMode = opt.getAttribute('data-set');
+          setOptions.forEach(function (o) { o.setAttribute('aria-pressed', String(o === opt)); });
+          vialsWrap.classList.toggle('is-hidden', setMode !== 'pick');
+          renderSet();
+        });
+      });
+      vials.forEach(function (v) {
+        v.addEventListener('click', function () {
+          var name = v.getAttribute('data-vial');
+          var idx = picked.indexOf(name);
+          if (idx !== -1) picked.splice(idx, 1);
+          else if (picked.length < PICK_MAX) picked.push(name);
+          renderSet();
+        });
+      });
+      setAdd.addEventListener('click', function () {
+        if (setMode === 'full') addToCart(1, '디스커버리 세트 (여섯 병)');
+        else addToCart(1, '디스커버리 세트 (' + picked.join(' · ') + ')');
+      });
+      renderSet();
+
+      /* ------------------------------------------------------------
+         뉴스레터 — 새 셀렉션 소식
+         ------------------------------------------------------------ */
+      var form = document.getElementById('newsletterForm');
+      var emailInput = document.getElementById('newsletterEmail');
+      var consent = document.getElementById('newsletterConsent');
+      var msg = document.getElementById('newsletterMsg');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var value = emailInput.value.trim();
+        var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+        msg.classList.remove('is-error');
+        if (!ok) {
+          msg.textContent = '이메일 주소를 다시 확인해 주세요.';
+          msg.classList.add('is-error');
+          emailInput.focus();
+          return;
+        }
+        if (!consent.checked) {
+          msg.textContent = '소식 수신에 동의해 주시면 보내드릴 수 있습니다.';
+          msg.classList.add('is-error');
+          consent.focus();
+          return;
+        }
+        msg.textContent = '고맙습니다. 다음 셀렉션이 정해지면 ' + value + ' 로 먼저 알려드리겠습니다.';
+        emailInput.value = '';
+        consent.checked = false;
+      });
+    })();
+  </script>
+</body>
+</html>

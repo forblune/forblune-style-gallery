@@ -1,0 +1,47 @@
+{
+  "slug": "cinematic-chef",
+  "brand": "화로 火爐",
+  "industry": "셰프 오마카세 레스토랑",
+  "primaryStyle": "Cinematic",
+  "productType": "Brand Site (예약 문의)",
+  "tone": "Serious · Warm · Human",
+  "secondary": "Editorial",
+  "accent": "Commerce",
+  "coreMessage": "셰프가 재료와 불을 대하는 태도를 보여주어 한 끼를 맡길 수 있다고 믿게 한다",
+  "naming": "Cinematic / Brand Site (예약 문의) / Serious · Warm · Human",
+  "palette": {
+    "black": "#141110 (웜 블랙 — 기본 배경)",
+    "blackDeep": "#0e0c0b (푸터)",
+    "warmGray": "#e7e1d8 (밝은 섹션 — 철학·과정·예약)",
+    "ink": "#ede7de",
+    "inkDim": "#aca298",
+    "amber": "#c9873a (앰버 1색 — 번호·얇은 선·링크·CTA에만)"
+  },
+  "typography": {
+    "sans": "Pretendard Variable (본문·제목, 제목 -0.03em 압축형)",
+    "cond": "Barlow Condensed (숫자·시각·가격·섹션 번호에만 — 압축형 산세리프)"
+  },
+  "sections": [
+    "헤더 (투명 → 스크롤 시 웜 블랙 단색, 작은 예약 문의 버튼)",
+    "Hero — 불·손·시장 저채도 3장면 크로스페이드, 느린 켄번즈 줌 + 필름 그레인, 좌측 정렬 한 문장 + 조용한 CTA",
+    "셰프 소개 — 스티키 인물 사진, 이름 크게·직무 작게, 하는 일 → 판단 방식 → 경력 → 철학 인용, 크레딧형 약력 4줄",
+    "철학 3원칙 — 재료·불·타이밍, 각각 신념 → 과정 → 증거, 번호·얇은 선, 대형 인용문 (웜 그레이 밝은 섹션)",
+    "오늘의 코스 — 디너 12접시 / 런치 8접시 탭, 시간·소요·가격·페어링 사실, 숯불 표기, 유의 사항 (Commerce 10%)",
+    "과정 — 장보기 → 손질 → 숙성 → 불 → 마무리, 시각 표기, 단계별 '확인하는 것' 목록(개수 2~4 가변)",
+    "공간과 좌석 — 카운터 사진 3장, SVG 좌석 배치도(화로·셰프·좌석 1–8·입구), 좌석·카운터·동반·위치·주차 사실",
+    "예약 안내 — 운영 시간, 예약 방법 4단계, 취소·노쇼 정책과 이유, 예약 문의 폼(검증·접수 안내), FAQ 5개",
+    "푸터 — 가장 짙은 색, 철학 한 줄, 사업자 정보, 바로가기·연락, © 지역 작게"
+  ],
+  "interactions": [
+    "헤더 스크롤 상태 전환 (투명 → 웜 블랙 단색 + 하단 선, 패딩 축소) + 현재 섹션 aria-current",
+    "모바일 햄버거 메뉴 (aria-expanded, ESC 닫기)",
+    "히어로 3장면 8초 크로스페이드 + 24초 켄번즈 줌, 장면 선택 버튼(aria-current), 캡션 갱신",
+    "IntersectionObserver 긴 페이드 — 이미지·인용문 6곳에만 (텍스트는 즉시 표시)",
+    "코스 탭 (디너/런치) — role=tab, 방향키·Home/End 지원",
+    "FAQ 아코디언 — grid-template-rows 트랜지션, aria-expanded",
+    "예약 문의 폼 — 과거 날짜 차단, 일·월 휴무 검증, 연락처 자릿수 검증, 시간대에 따른 코스 자동 정리, 접수 메시지",
+    "prefers-reduced-motion 시 리빌·켄번즈·크로스페이드·트랜지션 제거"
+  ],
+  "images": "loremflickr 키워드(fire,grill / chef,kitchen / fish,market / omakase,sushi / restaurant,counter) lock 71301~71309, grayscale(0.85) sepia 저채도 필터(코스 사진만 saturate 0.55), 컨테이너 배경색 + aspect-ratio, loading=lazy",
+  "path": "sites/cinematic-chef/index.html"
+}

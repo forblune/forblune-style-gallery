@@ -1,0 +1,1286 @@
+<!-- forblune-style: {"slug":"utility-admin","primaryStyle":"Utility","productType":"Admin Console","tone":"Neutral · Dark · Focused","secondary":"Product","accent":"Corporate","brand":"헬프데스크 콘솔","industry":"고객지원 티켓 관리 콘솔","coreMessage":"밀린 티켓을 우선순위대로 빠르게 처리하게 한다","naming":"Utility / Admin Console / Neutral · Dark · Focused"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>받은 편지함 (11) · 온다마켓 고객지원 · 헬프데스크 콘솔</title>
+<meta name="description" content="온다마켓 고객지원팀의 티켓 처리 콘솔. 우선순위와 SLA 순으로 밀린 문의를 처리합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* ---------- 토큰 ---------- */
+:root{
+  color-scheme:dark;
+  --bg:#111318;        /* 앱 바닥 */
+  --panel:#15181f;     /* 컬럼 배경 */
+  --raised:#1b1f28;    /* 입력·팝오버·선택 행 */
+  --hover:#1e232d;
+  --line:#242a35;
+  --line-2:#303845;
+  --ink:#e4e7ee;
+  --ink-2:#a3abba;
+  --ink-3:#7d8799;     /* 보조 텍스트 — 패널 위 4.9:1, 입력·선택 행 위 4.55:1 */
+  --brand:#8b7cf6;     /* 바이올렛 — 선택 표시·포커스 링·링크 텍스트에만 */
+  --brand-fill:#6455d6;      /* 채운 버튼·마크 배경 — 흰 글자 5.5:1 */
+  --brand-fill-hover:#5b4bcf;
+  --on-brand:#ffffff;
+  --ok:#3fa46a;
+  --warn:#d9a441;
+  --danger:#e5534b;
+  --info:#5b9cf5;
+  --r:4px;
+  --t:120ms;
+  --font:"Pretendard Variable", Pretendard, system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  --mono:ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --side-w:224px;
+  --list-w:392px;
+  --top-h:44px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--font);
+  font-size:13px;
+  line-height:1.5;
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+[hidden]{display:none !important}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+::selection{background:rgba(139,124,246,.35)}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:0}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+kbd{
+  display:inline-block;min-width:18px;padding:0 5px;
+  font-family:var(--mono);font-size:11px;line-height:18px;text-align:center;
+  color:var(--ink-2);background:var(--raised);border:1px solid var(--line-2);border-bottom-width:2px;border-radius:var(--r);
+}
+
+/* ---------- 앱 골격 ---------- */
+.app{
+  display:grid;height:100vh;height:100dvh;
+  grid-template-columns:var(--side-w) var(--list-w) minmax(0,1fr);
+  grid-template-rows:var(--top-h) minmax(0,1fr);
+  grid-template-areas:"top top top" "side list detail";
+}
+.topbar{grid-area:top}
+.side{grid-area:side}
+.list{grid-area:list}
+.detail{grid-area:detail}
+
+/* ---------- 상단 바 ---------- */
+.topbar{
+  display:flex;align-items:center;gap:8px;padding:0 12px 0 8px;
+  background:var(--panel);border-bottom:1px solid var(--line);
+}
+.iconbtn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:var(--r);color:var(--ink-2);
+  transition:background var(--t),color var(--t);
+}
+.iconbtn:hover{background:var(--hover);color:var(--ink)}
+.iconbtn[aria-expanded="true"]{background:var(--raised);color:var(--ink)}
+.ws{
+  display:flex;align-items:center;gap:8px;padding:4px 8px 4px 4px;border-radius:var(--r);
+  transition:background var(--t);
+}
+.ws:hover{background:var(--hover)}
+.ws-mark{
+  width:22px;height:22px;border-radius:var(--r);background:var(--brand-fill);color:var(--on-brand);
+  font-weight:700;font-size:12px;display:grid;place-items:center;
+}
+.ws-name{font-weight:600}
+.ws-sub{color:var(--ink-3);font-size:12px}
+.crumb{color:var(--ink-3);display:flex;align-items:center;gap:6px;margin-left:4px;white-space:nowrap;overflow:hidden}
+.crumb b{color:var(--ink-2);font-weight:500}
+.crumb .sep{color:var(--line-2)}
+.top-spacer{flex:1}
+.cmdk-btn{
+  display:flex;align-items:center;gap:8px;width:280px;height:30px;padding:0 8px 0 10px;
+  color:var(--ink-3);background:var(--bg);border:1px solid var(--line);border-radius:var(--r);
+  transition:border-color var(--t),color var(--t);
+}
+.cmdk-btn:hover{border-color:var(--line-2);color:var(--ink-2)}
+.cmdk-btn span{flex:1;text-align:left}
+.cmdk-btn kbd{margin-left:2px}
+.pop-anchor{position:relative}
+.pop{
+  position:absolute;top:calc(100% + 6px);right:0;z-index:40;min-width:260px;
+  background:var(--raised);border:1px solid var(--line-2);border-radius:var(--r);
+  box-shadow:0 8px 24px rgba(0,0,0,.45);padding:6px;
+}
+.pop h4{font-size:11px;font-weight:600;color:var(--ink-3);padding:4px 8px 6px;letter-spacing:.02em}
+.pop-item{display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;padding:7px 8px;border-radius:var(--r);transition:background var(--t)}
+.pop-item:hover{background:var(--hover)}
+.pop-item small{color:var(--ink-3);font-size:11px}
+.pop-item .num{color:var(--ink-3);font-size:11px}
+.pop-sep{height:1px;background:var(--line);margin:4px 0}
+.me{
+  display:flex;align-items:center;gap:8px;height:30px;padding:0 8px 0 4px;border-radius:var(--r);transition:background var(--t);
+}
+.me:hover{background:var(--hover)}
+.me-dot{width:8px;height:8px;border-radius:2px;background:var(--ok)}
+.me-name{font-weight:500}
+
+/* ---------- 사이드바 ---------- */
+.side{
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--panel);border-right:1px solid var(--line);
+}
+.side-scroll{flex:1;overflow-y:auto;padding:10px 8px}
+.side h3{
+  font-size:11px;font-weight:600;color:var(--ink-3);padding:12px 8px 4px;letter-spacing:.02em;
+}
+.side h3:first-child{padding-top:2px}
+.nav-item{
+  display:flex;align-items:center;gap:8px;width:100%;height:30px;padding:0 8px;
+  border-radius:var(--r);color:var(--ink-2);text-align:left;
+  transition:background var(--t),color var(--t);
+}
+.nav-item:hover{background:var(--hover);color:var(--ink)}
+.nav-item[aria-current="true"]{background:var(--raised);color:var(--ink);box-shadow:inset 2px 0 0 var(--brand)}
+.nav-item .lbl{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-item .cnt{color:var(--ink-3);font-size:12px}
+.nav-item[aria-current="true"] .cnt{color:var(--ink-2)}
+.nav-item .cnt.hot{color:var(--danger);font-weight:600}
+.nav-item .sq{width:8px;height:8px;border-radius:2px;background:var(--ink-3);flex:none;margin:0 4px}
+.side-foot{border-top:1px solid var(--line);padding:10px 12px;color:var(--ink-3);font-size:12px}
+.side-foot .frow{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:6px}
+.side-foot .frow span:first-child{white-space:nowrap}
+.side-foot .frow span:last-child{text-align:right}
+.side-foot .frow:first-child{margin-top:0}
+.side-foot button.linkish{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+.side-foot button.linkish:hover{color:var(--ink)}
+.side-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:29}
+
+/* ---------- 티켓 목록 ---------- */
+.list{
+  display:flex;flex-direction:column;min-height:0;overflow:hidden;
+  background:var(--panel);border-right:1px solid var(--line);
+}
+.list-head{padding:10px 12px 0;border-bottom:1px solid var(--line)}
+.list-title{display:flex;align-items:baseline;gap:8px}
+.list-title h2{font-size:15px;font-weight:600}
+.list-title .num{color:var(--ink-3)}
+.list-title .sortsel{margin-left:auto}
+.field{
+  display:flex;align-items:center;gap:6px;height:30px;padding:0 8px;
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--r);
+  transition:border-color var(--t);
+}
+.field:focus-within{border-color:var(--brand)}
+.field .ico{color:var(--ink-3)}
+.field input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--ink)}
+.field input::placeholder{color:var(--ink-3)}
+.field kbd{margin-left:auto}
+.list-search{margin-top:8px}
+select.sel{
+  height:26px;padding:0 6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);
+  color:var(--ink-2);font-size:12px;
+}
+select.sel:hover{border-color:var(--line-2)}
+.tabs{display:flex;gap:2px;margin-top:8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  height:32px;padding:0 8px;color:var(--ink-3);white-space:nowrap;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color var(--t),border-color var(--t);
+}
+.tab:hover{color:var(--ink-2)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brand)}
+.tab .num{color:var(--ink-3);margin-left:4px;font-size:12px}
+.bulk{
+  display:flex;align-items:center;gap:8px;padding:6px 12px;font-size:12px;
+  background:var(--raised);border-bottom:1px solid var(--line);
+}
+.bulk .num{font-weight:600}
+.bulk select.sel{height:24px}
+.bulk .spacer{flex:1}
+.rows{flex:1;overflow-y:auto;list-style:none;overscroll-behavior:contain}
+.row{
+  position:relative;display:grid;grid-template-columns:20px 6px minmax(0,1fr);gap:0 8px;
+  padding:9px 12px 9px 8px;border-bottom:1px solid var(--line);cursor:pointer;
+  transition:background var(--t);
+}
+.row:hover{background:var(--hover)}
+.row[aria-selected="true"]{background:var(--raised);box-shadow:inset 2px 0 0 var(--brand)}
+.row.is-checked{background:rgba(139,124,246,.08)}
+.row-check{display:flex;align-items:flex-start;padding-top:2px}
+.row-check input{width:14px;height:14px;accent-color:var(--brand);cursor:pointer}
+.prio{width:6px;height:6px;border-radius:1px;margin-top:6px;background:var(--line-2)}
+.prio-urgent{background:var(--danger)}
+.prio-high{background:var(--warn)}
+.prio-normal{background:var(--ink-3)}
+.prio-low{background:var(--line-2)}
+.row-main{min-width:0}
+.row-top{display:flex;align-items:baseline;gap:8px}
+.row-subject{flex:1;min-width:0;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-unread .row-subject{font-weight:700}
+.row-time{color:var(--ink-3);font-size:12px;white-space:nowrap}
+.row-sub{color:var(--ink-3);font-size:12px;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-sub b{color:var(--ink-2);font-weight:500}
+.row-sub .unassigned{color:var(--warn)}
+.row-snip{color:var(--ink-2);font-size:12px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-foot{display:flex;align-items:center;flex-wrap:wrap;gap:4px 6px;margin-top:6px;font-size:11px}
+.row-foot .grow{flex:1;min-width:6px}
+.st{
+  display:inline-block;padding:0 5px;line-height:17px;border-radius:var(--r);font-weight:500;
+  border:1px solid transparent;
+}
+.st-open{color:var(--info);border-color:rgba(91,156,245,.4)}
+.st-pending{color:var(--warn);border-color:rgba(217,164,65,.4)}
+.st-solved{color:var(--ok);border-color:rgba(63,164,106,.4)}
+.st-closed{color:var(--ink-3);border-color:var(--line-2)}
+.tag{color:var(--ink-3);padding:0 5px;line-height:17px;border-radius:var(--r);background:var(--bg)}
+button.tag{transition:color var(--t),background var(--t)}
+button.tag:hover{color:var(--ink);background:var(--line)}
+.sla{color:var(--ink-3);white-space:nowrap;font-family:var(--mono)}
+.sla-warn{color:var(--warn)}
+.sla-over{color:var(--danger);font-weight:600}
+.sla-ok{color:var(--ink-3)}
+.empty{padding:48px 20px;text-align:center;color:var(--ink-3)}
+.empty b{display:block;color:var(--ink-2);font-weight:500;margin-bottom:4px}
+.empty button{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- 상세 패널 ---------- */
+.detail{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden;background:var(--bg)}
+.d-head{padding:12px 20px 0;border-bottom:1px solid var(--line);background:var(--panel)}
+.d-title{display:flex;align-items:flex-start;gap:12px}
+.d-back{display:none}
+.d-title h1{flex:1;min-width:0;font-size:16px;font-weight:600;line-height:1.35}
+.d-actions{display:flex;gap:6px;flex:none}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;
+  border:1px solid var(--line-2);border-radius:var(--r);background:var(--raised);color:var(--ink);
+  font-weight:500;white-space:nowrap;transition:background var(--t),border-color var(--t);
+}
+.btn:hover{background:var(--hover);border-color:#3a4351}
+.btn kbd{margin-left:2px}
+.btn-primary{background:var(--brand-fill);border-color:var(--brand-fill);color:var(--on-brand)}
+.btn-primary:hover{background:var(--brand-fill-hover);border-color:var(--brand-fill-hover)}
+.btn-primary kbd{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:var(--on-brand)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.d-meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px;color:var(--ink-3);font-size:12px}
+.d-meta b{color:var(--ink-2);font-weight:500}
+.props{display:flex;flex-wrap:wrap;gap:8px 20px;padding:10px 0}
+.prop{display:flex;align-items:center;gap:8px;font-size:12px}
+.prop label,.prop .plabel{color:var(--ink-3)}
+.prop select.sel{min-width:96px;color:var(--ink)}
+.prop .sla{font-size:12px}
+.prop-tags{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.prop-tags .tag{line-height:20px;background:var(--raised);color:var(--ink-2)}
+.prop-tags .tag button{color:var(--ink-3);margin-left:4px;font-size:12px;line-height:1}
+.prop-tags .tag button:hover{color:var(--danger)}
+.prop-tags input{
+  width:76px;height:22px;padding:0 6px;background:var(--bg);border:1px dashed var(--line-2);border-radius:var(--r);
+  font-size:12px;color:var(--ink);
+}
+.prop-tags input:focus{outline:0;border-color:var(--brand);border-style:solid}
+.d-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);overflow:hidden}
+.thread{overflow-y:auto;padding:16px 20px 24px}
+.msg{
+  max-width:760px;margin:0 0 12px;padding:10px 14px 12px;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+}
+.msg-agent{border-color:var(--line-2);background:var(--raised)}
+.msg-note{border-color:rgba(217,164,65,.35);background:rgba(217,164,65,.06)}
+.msg-sys{border:0;background:none;padding:2px 0 8px;color:var(--ink-3);font-size:12px;max-width:none}
+.msg-sys time{margin-left:8px}
+.msg header{display:flex;align-items:baseline;gap:8px;font-size:12px;margin-bottom:6px}
+.msg header b{font-weight:600;color:var(--ink);font-size:13px}
+.msg header .role{color:var(--ink-3)}
+.msg-note header .role{color:var(--warn)}
+.msg header time{margin-left:auto;color:var(--ink-3);white-space:nowrap}
+.msg p{margin:0 0 6px;color:var(--ink);white-space:pre-line}
+.msg p:last-child{margin-bottom:0}
+.msg .att{
+  display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:4px 8px;
+  border:1px solid var(--line-2);border-radius:var(--r);font-size:12px;color:var(--ink-2);background:var(--bg);
+}
+.msg .att:hover{color:var(--ink);border-color:#3a4351}
+.att .size{color:var(--ink-3)}
+
+/* 요청자 정보 */
+.cust{
+  display:none;border-left:1px solid var(--line);background:var(--panel);overflow-y:auto;padding:14px 16px;font-size:12px;
+}
+.cust h3{font-size:12px;font-weight:600;color:var(--ink-3);margin:14px 0 6px}
+.cust h3:first-child{margin-top:0}
+.cust dl{display:grid;grid-template-columns:64px 1fr;gap:4px 8px}
+.cust dt{color:var(--ink-3)}
+.cust dd{color:var(--ink)}
+.cust .order{padding:6px 0;border-top:1px solid var(--line)}
+.cust .order:first-of-type{border-top:0}
+.cust .order b{display:block;font-weight:500;color:var(--ink)}
+.cust .order span{color:var(--ink-3)}
+.cust-toggle{display:inline-flex}
+
+/* 답장 작성 */
+.compose{border-top:1px solid var(--line);background:var(--panel);padding:8px 20px 12px}
+.compose-tabs{display:flex;gap:2px;margin-bottom:6px}
+.compose-tabs button{
+  height:26px;padding:0 8px;color:var(--ink-3);border-bottom:2px solid transparent;
+  transition:color var(--t),border-color var(--t);
+}
+.compose-tabs button:hover{color:var(--ink-2)}
+.compose-tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brand)}
+.compose-tabs .to{margin-left:auto;align-self:center;color:var(--ink-3);font-size:12px}
+.compose textarea{
+  display:block;width:100%;min-height:88px;max-height:220px;resize:vertical;padding:8px 10px;
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--r);color:var(--ink);line-height:1.55;
+  transition:border-color var(--t);
+}
+.compose textarea:focus{outline:0;border-color:var(--brand)}
+.compose.note-mode textarea{border-color:rgba(217,164,65,.45);background:rgba(217,164,65,.05)}
+.compose textarea::placeholder{color:var(--ink-3)}
+.compose-foot{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.compose-foot .grow{flex:1}
+.compose-foot label.chk{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);font-size:12px;cursor:pointer}
+.compose-foot input[type=checkbox]{accent-color:var(--brand)}
+.att-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.att-list .att{margin-top:0}
+.att-list .att button{color:var(--ink-3)}
+.att-list .att button:hover{color:var(--danger)}
+
+/* ---------- 명령 팔레트 ---------- */
+.cmdk{
+  position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);
+  display:flex;align-items:flex-start;justify-content:center;padding:12vh 16px 0;
+}
+.cmdk-box{
+  width:min(600px,100%);max-height:70vh;display:flex;flex-direction:column;
+  background:var(--raised);border:1px solid var(--line-2);border-radius:var(--r);
+  box-shadow:0 20px 50px rgba(0,0,0,.55);overflow:hidden;
+}
+.cmdk-in{display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border-bottom:1px solid var(--line)}
+.cmdk-in .ico{color:var(--ink-3)}
+.cmdk-in input{flex:1;background:none;border:0;outline:0;font-size:14px;color:var(--ink)}
+.cmdk-in input::placeholder{color:var(--ink-3)}
+.cmdk-list{list-style:none;overflow-y:auto;padding:6px;flex:1}
+.cmdk-group{font-size:11px;font-weight:600;color:var(--ink-3);padding:8px 8px 4px;letter-spacing:.02em}
+.cmdk-item{
+  display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:var(--r);cursor:pointer;
+}
+.cmdk-item .ico{color:var(--ink-3)}
+.cmdk-item[aria-selected="true"]{background:var(--hover);box-shadow:inset 2px 0 0 var(--brand)}
+.cmdk-item .lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmdk-item .lbl small{color:var(--ink-3);margin-left:8px}
+.cmdk-item .hint{color:var(--ink-3);font-size:11px;white-space:nowrap}
+.cmdk-empty{padding:24px;text-align:center;color:var(--ink-3)}
+.cmdk-foot{display:flex;gap:14px;padding:8px 12px;border-top:1px solid var(--line);color:var(--ink-3);font-size:11px}
+.cmdk-foot span{display:inline-flex;align-items:center;gap:4px}
+
+/* ---------- 단축키 안내 ---------- */
+.keys{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.keys-box{width:min(520px,100%);background:var(--raised);border:1px solid var(--line-2);border-radius:var(--r);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.keys-box header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line)}
+.keys-box h2{font-size:14px;font-weight:600}
+.keys-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;padding:12px 16px 16px}
+.keys-grid dl{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;font-size:12px}
+.keys-grid dt{color:var(--ink-2)}
+.keys-grid dd{text-align:right;white-space:nowrap}
+.keys-grid h3{font-size:11px;font-weight:600;color:var(--ink-3);margin:8px 0 8px}
+
+/* ---------- 토스트 ---------- */
+.toasts{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;flex-direction:column;gap:8px;max-width:min(380px,calc(100vw - 32px))}
+.toast{
+  display:flex;align-items:center;gap:10px;padding:9px 10px 9px 12px;
+  background:var(--raised);border:1px solid var(--line-2);border-left:3px solid var(--ink-3);border-radius:var(--r);
+  box-shadow:0 8px 24px rgba(0,0,0,.45);font-size:12px;
+  animation:toast-in var(--t) ease-out;
+}
+.toast-ok{border-left-color:var(--ok)}
+.toast-warn{border-left-color:var(--warn)}
+.toast-danger{border-left-color:var(--danger)}
+.toast-brand{border-left-color:var(--brand)}
+.toast .msg-t{flex:1}
+.toast .msg-t b{font-weight:600}
+.toast button{color:var(--brand);font-weight:600;padding:2px 4px;border-radius:var(--r)}
+.toast button:hover{background:var(--hover)}
+.toast .x{color:var(--ink-3);font-weight:400}
+@keyframes toast-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- 반응형 ---------- */
+@media (min-width:1400px){
+  .d-body{grid-template-columns:minmax(0,1fr) 272px}
+  .cust{display:block}
+  .cust-toggle{display:none}
+}
+@media (max-width:1399px){
+  .detail.cust-open .d-body{grid-template-columns:minmax(0,1fr)}
+  .detail.cust-open .cust{display:block;border-left:0;border-bottom:1px solid var(--line);max-height:220px}
+  .detail.cust-open .d-body{grid-template-rows:auto minmax(0,1fr)}
+  .detail.cust-open .cust{order:-1}
+}
+.side-toggle{display:none}
+@media (max-width:1180px){
+  /* 태블릿: 사이드바를 아이콘 레일로 접음 */
+  :root{--side-w:52px;--list-w:340px}
+  .side .lbl,.side .cnt,.side h3,.side-foot,#navTags,#navAgents{display:none}
+  .nav-item{justify-content:center;padding:0;height:34px}
+  .side-scroll{padding:8px 6px}
+  .crumb{display:none}
+  .cmdk-btn{width:200px}
+}
+@media (max-width:840px){
+  /* 모바일·세로 태블릿: 목록/상세 단일 컬럼, 사이드바는 드로어 */
+  .app{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "list"}
+  .side{position:fixed;top:var(--top-h);bottom:0;left:0;width:224px;z-index:30;transform:translateX(-100%);transition:transform 150ms ease}
+  .side .lbl,.side .cnt,.side h3,.side-foot,#navTags,#navAgents{display:revert}
+  .side-foot{display:block}
+  .side .lbl{display:inline}
+  .nav-item{justify-content:flex-start;padding:0 8px;height:30px}
+  .side-scroll{padding:10px 8px}
+  .side-toggle{display:inline-flex}
+  .app.side-open .side{transform:none}
+  .detail{display:none}
+  .app.show-detail .list{display:none}
+  .app.show-detail .detail{display:flex;grid-area:list}
+  .d-back{display:inline-flex}
+  .cmdk-btn{width:auto}
+  .cmdk-btn span{display:none}
+  .me-name{display:none}
+  .ws-sub{display:none}
+  .d-head{padding:10px 12px 0}
+  .thread{padding:12px}
+  .compose{padding:8px 12px 10px}
+  .keys-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .d-title{flex-wrap:wrap;gap:8px}
+  .d-title h1{flex:1 1 calc(100% - 42px);font-size:15px}
+  .d-actions{width:100%;justify-content:flex-end}
+  .d-actions .btn kbd{display:none}
+  .props{gap:8px 12px}
+  .bulk{gap:6px;padding:6px 8px}
+  .bulk select.sel{max-width:104px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-inbox" viewBox="0 0 16 16"><path d="M2 9.5h3.2l1 1.8h3.6l1-1.8H14M3.5 3.5h9l1.5 6v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-3z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.6"/><path d="M2.8 13.5c.6-2.6 2.6-4 5.2-4s4.6 1.4 5.2 4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 16 16"><circle cx="6" cy="5.5" r="2.3"/><path d="M1.8 13c.5-2.3 2.1-3.5 4.2-3.5s3.7 1.2 4.2 3.5M10.5 3.6a2.3 2.3 0 0 1 0 3.8M11.6 9.7c1.6.3 2.6 1.4 3 3.3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.4 1.6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></symbol>
+  <symbol id="i-check-c" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M5.3 8.2l1.9 1.9 3.6-3.8"/></symbol>
+  <symbol id="i-archive" viewBox="0 0 16 16"><path d="M2.5 3.5h11v3h-11zM3.5 6.5v6h9v-6M6.5 9.5h3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 16 16"><path d="M4 11V7.5a4 4 0 0 1 8 0V11l1 1.5H3zM6.5 14h3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 16 16"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></symbol>
+  <symbol id="i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></symbol>
+  <symbol id="i-back" viewBox="0 0 16 16"><path d="M9.5 3.5 5 8l4.5 4.5"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 16 16"><path d="M10.5 5 6.2 9.3a1.3 1.3 0 0 0 1.8 1.8l4.6-4.6a2.6 2.6 0 0 0-3.7-3.7L4 7.7a3.9 3.9 0 0 0 5.5 5.5l3-3"/></symbol>
+  <symbol id="i-send" viewBox="0 0 16 16"><path d="M13.5 2.5 2 7l5 2 2 5zM7 9l6.5-6.5"/></symbol>
+  <symbol id="i-note" viewBox="0 0 16 16"><path d="M3.5 2.5h9v8l-3 3h-6zM9.5 13.5v-3h3M5.5 6h5M5.5 8.5h3"/></symbol>
+  <symbol id="i-cmd" viewBox="0 0 16 16"><path d="M5.5 5.5v5h5v-5zM5.5 5.5H4a1.5 1.5 0 1 1 1.5-1.5zM10.5 5.5H12a1.5 1.5 0 1 0-1.5-1.5zM5.5 10.5H4A1.5 1.5 0 1 0 5.5 12zM10.5 10.5H12a1.5 1.5 0 1 1-1.5 1.5z"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 16 16"><path d="M3.5 14V2.5h8l-1.6 3 1.6 3h-8"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 16 16"><path d="M2.5 2.5h5.5l5.5 5.5-5.5 5.5L2.5 8zM5.5 5.5h.01"/></symbol>
+  <symbol id="i-go" viewBox="0 0 16 16"><path d="M6.5 3.5 11 8l-4.5 4.5"/></symbol>
+  <symbol id="i-file" viewBox="0 0 16 16"><path d="M4 2.5h5l3 3v8H4zM9 2.5v3h3"/></symbol>
+  <symbol id="i-info" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7.2v3.6M8 5.2h.01"/></symbol>
+</svg>
+
+<div class="app" id="app">
+
+  <header class="topbar">
+    <button class="iconbtn side-toggle" id="sideToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="side">
+      <svg class="ico"><use href="#i-menu"/></svg>
+    </button>
+    <button class="ws" id="wsBtn" aria-haspopup="true" aria-expanded="false">
+      <span class="ws-mark" aria-hidden="true">온</span>
+      <span class="ws-name">온다마켓 고객지원</span>
+      <span class="ws-sub">헬프데스크 콘솔</span>
+    </button>
+    <div class="crumb" id="crumb"><span class="sep">/</span><b id="crumbView">받은 편지함</b><span class="sep">/</span><span id="crumbTicket" class="mono">T-4832</span></div>
+    <div class="top-spacer"></div>
+    <button class="cmdk-btn" id="cmdkOpen" aria-haspopup="dialog">
+      <svg class="ico"><use href="#i-search"/></svg>
+      <span>검색 또는 명령</span>
+      <kbd class="modkey">⌘</kbd><kbd>K</kbd>
+    </button>
+    <div class="pop-anchor">
+      <button class="iconbtn" id="bellBtn" aria-label="알림 3건" aria-haspopup="true" aria-expanded="false">
+        <svg class="ico"><use href="#i-bell"/></svg>
+      </button>
+      <div class="pop" id="bellPop" hidden role="menu">
+        <h4 role="presentation">알림</h4>
+        <button class="pop-item" role="menuitem" data-open="4826">장예린 님이 T-4826에 답장했습니다 <small>4분 전 · 계정 잠김 문의</small></button>
+        <button class="pop-item" role="menuitem" data-open="4832">박도현 님이 T-4832를 나에게 배정했습니다 <small>31분 전 · 중복 결제</small></button>
+        <button class="pop-item" role="menuitem" data-open="4823">T-4823 첫 응답 SLA를 1시간 49분 초과했습니다 <small>오배송 · 미배정 · 높음</small></button>
+      </div>
+    </div>
+    <div class="pop-anchor">
+      <button class="me" id="meBtn" aria-haspopup="true" aria-expanded="false">
+        <span class="me-dot" aria-hidden="true"></span>
+        <span class="me-name">김서연</span>
+      </button>
+      <div class="pop" id="mePop" hidden role="menu">
+        <h4 role="presentation">김서연 · 상담 2팀</h4>
+        <button class="pop-item" role="menuitem" data-presence="online">온라인 <small>새 채팅 배정을 받습니다</small></button>
+        <button class="pop-item" role="menuitem" data-presence="away">자리 비움 <small>채팅 배정을 일시 중지합니다</small></button>
+        <div class="pop-sep" role="separator"></div>
+        <button class="pop-item" role="menuitem" data-keys="1">단축키 안내 <small>? 키로도 열 수 있습니다</small></button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="side" id="side" aria-label="티켓 뷰">
+    <div class="side-scroll">
+      <h3>티켓</h3>
+      <nav id="navViews" aria-label="기본 뷰"></nav>
+      <h3>태그</h3>
+      <nav id="navTags" aria-label="태그 뷰"></nav>
+      <h3>상담원</h3>
+      <nav id="navAgents" aria-label="상담원별 뷰"></nav>
+    </div>
+    <div class="side-foot">
+      <div class="frow"><span>기준 시각</span><span class="mono num">08.15 14:20</span></div>
+      <div class="frow"><span>첫 응답 SLA</span><span class="num">긴급 1h · 높음 2h<br>보통 4h · 낮음 8h</span></div>
+      <div class="frow"><span>단축키</span><button class="linkish keys-btn" data-keys="1">? 키</button></div>
+    </div>
+  </aside>
+  <div class="side-backdrop" id="sideBackdrop" hidden></div>
+
+  <section class="list" aria-label="티켓 목록">
+    <div class="list-head">
+      <div class="list-title">
+        <h2 id="listTitle">받은 편지함</h2>
+        <span class="num" id="listCount">11건</span>
+        <select class="sel sortsel" id="sortSel" aria-label="정렬">
+          <option value="updated">최근 업데이트순</option>
+          <option value="sla">SLA 임박순</option>
+          <option value="priority">우선순위순</option>
+          <option value="created">접수순</option>
+        </select>
+      </div>
+      <label class="field list-search">
+        <svg class="ico"><use href="#i-search"/></svg>
+        <input id="q" type="search" placeholder="제목·요청자·번호·태그 검색" autocomplete="off">
+        <kbd>/</kbd>
+      </label>
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab" role="tab" data-tab="all" aria-selected="true">전체<span class="num">0</span></button>
+        <button class="tab" role="tab" data-tab="open" aria-selected="false">열림<span class="num">0</span></button>
+        <button class="tab" role="tab" data-tab="pending" aria-selected="false">대기<span class="num">0</span></button>
+        <button class="tab" role="tab" data-tab="solved" aria-selected="false">해결<span class="num">0</span></button>
+      </div>
+    </div>
+    <div class="bulk" id="bulk" hidden>
+      <span><span class="num" id="bulkCount">0</span>건 선택</span>
+      <select class="sel" id="bulkStatus" aria-label="선택 티켓 상태 변경">
+        <option value="">상태 변경</option>
+        <option value="open">열림</option>
+        <option value="pending">대기</option>
+        <option value="solved">해결</option>
+        <option value="closed">종료</option>
+      </select>
+      <select class="sel" id="bulkAssign" aria-label="선택 티켓 담당자 배정">
+        <option value="">담당자 배정</option>
+      </select>
+      <span class="spacer"></span>
+      <button class="iconbtn" id="bulkClear" aria-label="선택 해제"><svg class="ico"><use href="#i-x"/></svg></button>
+    </div>
+    <ul class="rows" id="rows" role="listbox" aria-label="티켓" tabindex="0"></ul>
+  </section>
+
+  <section class="detail" id="detail" aria-label="티켓 상세">
+    <div class="d-head">
+      <div class="d-title">
+        <button class="iconbtn d-back" id="backBtn" aria-label="목록으로"><svg class="ico"><use href="#i-back"/></svg></button>
+        <h1 id="dSubject">티켓을 선택하세요</h1>
+        <div class="d-actions">
+          <button class="btn cust-toggle" id="custToggle" aria-pressed="false" aria-controls="cust">요청자 정보</button>
+          <button class="btn" id="pendingBtn" title="대기로 변경">대기</button>
+          <button class="btn btn-primary" id="solveBtn">해결로 변경 <kbd>E</kbd></button>
+        </div>
+      </div>
+      <div class="d-meta" id="dMeta"></div>
+      <div class="props" id="props">
+        <div class="prop"><label for="pStatus">상태</label>
+          <select class="sel" id="pStatus"><option value="open">열림</option><option value="pending">대기</option><option value="solved">해결</option><option value="closed">종료</option></select></div>
+        <div class="prop"><label for="pPrio">우선순위</label>
+          <select class="sel" id="pPrio"><option value="urgent">긴급</option><option value="high">높음</option><option value="normal">보통</option><option value="low">낮음</option></select></div>
+        <div class="prop"><label for="pAssignee">담당자</label>
+          <select class="sel" id="pAssignee"><option value="">미배정</option></select></div>
+        <div class="prop"><span class="plabel" id="pSlaLabel">SLA</span><span class="sla" id="pSla" aria-labelledby="pSlaLabel"></span></div>
+        <div class="prop prop-tags"><label for="tagInput">태그</label><span id="pTags"></span><input id="tagInput" placeholder="태그 추가" aria-label="태그 추가"></div>
+      </div>
+    </div>
+    <div class="d-body">
+      <div class="thread" id="thread"></div>
+      <aside class="cust" id="cust" aria-label="요청자 정보"></aside>
+    </div>
+    <form class="compose" id="compose">
+      <div class="compose-tabs" role="tablist">
+        <button type="button" role="tab" data-mode="reply" aria-selected="true">답장</button>
+        <button type="button" role="tab" data-mode="note" aria-selected="false">내부 메모</button>
+        <span class="to" id="composeTo"></span>
+      </div>
+      <textarea id="composeText" placeholder="답장을 입력하세요." aria-label="답장 내용"></textarea>
+      <div class="att-list" id="attList"></div>
+      <div class="compose-foot">
+        <select class="sel" id="macroSel" aria-label="빠른 답변 삽입">
+          <option value="">빠른 답변</option>
+        </select>
+        <button type="button" class="btn" id="attBtn"><svg class="ico"><use href="#i-clip"/></svg>첨부</button>
+        <input type="file" id="attInput" class="vh" multiple tabindex="-1">
+        <span class="grow"></span>
+        <label class="chk"><input type="checkbox" id="afterPending" checked>보낸 후 대기로 변경</label>
+        <button type="submit" class="btn btn-primary" id="sendBtn"><svg class="ico"><use href="#i-send"/></svg>답장 보내기 <kbd class="modkey">⌘</kbd><kbd>↵</kbd></button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="명령 팔레트">
+  <div class="cmdk-box">
+    <div class="cmdk-in">
+      <svg class="ico"><use href="#i-search"/></svg>
+      <input id="cmdkInput" placeholder="명령 실행 또는 티켓 검색" autocomplete="off" role="combobox" aria-controls="cmdkList" aria-expanded="true" aria-autocomplete="list">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="cmdk-list" id="cmdkList" role="listbox"></ul>
+    <div class="cmdk-foot"><span><kbd>↑</kbd><kbd>↓</kbd> 이동</span><span><kbd>↵</kbd> 실행</span><span><kbd>Esc</kbd> 닫기</span></div>
+  </div>
+</div>
+
+<div class="keys" id="keys" hidden role="dialog" aria-modal="true" aria-labelledby="keysTitle">
+  <div class="keys-box">
+    <header><h2 id="keysTitle">단축키</h2><button class="iconbtn" id="keysClose" aria-label="닫기"><svg class="ico"><use href="#i-x"/></svg></button></header>
+    <div class="keys-grid">
+      <section class="keys-col">
+        <h3>이동</h3>
+        <dl>
+          <dt>다음 티켓</dt><dd><kbd>J</kbd></dd>
+          <dt>이전 티켓</dt><dd><kbd>K</kbd></dd>
+          <dt>티켓 열기(모바일)</dt><dd><kbd>↵</kbd></dd>
+          <dt>검색으로 이동</dt><dd><kbd>/</kbd></dd>
+          <dt>명령 팔레트</dt><dd><kbd class="modkey">⌘</kbd> <kbd>K</kbd></dd>
+        </dl>
+      </section>
+      <section class="keys-col">
+        <h3>처리</h3>
+        <dl>
+          <dt>해결로 변경</dt><dd><kbd>E</kbd></dd>
+          <dt>답장 작성</dt><dd><kbd>R</kbd></dd>
+          <dt>답장 보내기</dt><dd><kbd class="modkey">⌘</kbd> <kbd>↵</kbd></dd>
+          <dt>선택 토글</dt><dd><kbd>X</kbd></dd>
+          <dt>닫기·선택 해제</dt><dd><kbd>Esc</kbd></dd>
+        </dl>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- 기준 데이터 ---------- */
+const NOW = new Date('2026-08-15T14:20:00+09:00');
+const ME = '김서연';
+const IS_MAC = /Mac|iPhone|iPad/.test(navigator.platform || '');
+const MOD = IS_MAC ? '⌘' : 'Ctrl';   /* 단축키 표기는 실제 OS 기준 */
+const AGENTS = ['김서연','박도현','이하람','최윤재','정민아'];
+const STATUS = {open:'열림', pending:'대기', solved:'해결', closed:'종료'};
+const PRIO = {urgent:'긴급', high:'높음', normal:'보통', low:'낮음'};
+const PRIO_RANK = {urgent:0, high:1, normal:2, low:3};
+const MIN = 60000;
+
+const MACROS = [
+  {k:'greet', label:'인사', text:'안녕하세요, 온다마켓 고객지원 김서연입니다. 문의 주신 내용 확인했습니다.\n\n'},
+  {k:'refund', label:'환불 안내', text:'환불은 취소 승인 후 카드사 기준 영업일 3~5일 안에 처리됩니다. 승인 시각과 카드사에 따라 명세서 반영이 하루 이틀 더 걸릴 수 있습니다.'},
+  {k:'track', label:'배송 조회 안내', text:'주문 상세 페이지의 [배송 조회] 버튼에서 실시간 위치를 확인할 수 있습니다. 송장 등록 후 최대 6시간까지 반영이 지연될 수 있습니다.'},
+  {k:'need', label:'추가 정보 요청', text:'정확한 확인을 위해 주문번호와 문제가 발생한 시각, 가능하다면 화면 캡처를 함께 보내주시면 바로 확인하겠습니다.'},
+  {k:'close', label:'마무리', text:'추가로 궁금한 점이 있으면 이 대화에 이어서 답장 주세요. 이용해 주셔서 감사합니다.'}
+];
+
+/* thread: c=고객, a=상담원, n=내부 메모, s=시스템 */
+const TICKETS = [
+  {id:'4832', subject:'결제는 됐는데 주문이 취소로 표시돼요 (두 번 결제된 것 같습니다)', name:'최민지', email:'minji.choi@daum.net', ch:'이메일', status:'open', prio:'urgent', assignee:'김서연', tags:['결제','환불'], created:'2026-08-15T13:48', updated:'2026-08-15T14:08', sla:'2026-08-15T14:48', unread:true, order:'ORD-20260815-1207',
+    cust:{grade:'VIP', joined:'2023-04-11', prev:3, orders:[['ORD-20260815-1207','스테인리스 진공 텀블러 500ml 외 1건','결제 오류',  '08.15'],['ORD-20260802-0451','원두 블렌드 1kg','배송 완료','08.02']]},
+    thread:[
+      {t:'c', at:'2026-08-15T13:48', body:['오늘 오후 1시 40분쯤 텀블러 2개 주문했는데 결제 완료 문자가 두 번 왔어요. 그런데 앱에서 보면 주문이 "취소됨"으로 나옵니다.','카드 승인 내역에는 43,800원이 두 건 찍혀 있어요. 하나는 취소해 주시고 주문은 정상 처리해 주세요.'], att:['카드승인내역.png','212KB']},
+      {t:'n', at:'2026-08-15T13:55', who:'박도현', body:['PG 로그 확인: 13:41:12 승인, 13:41:19 재승인. 첫 건은 타임아웃으로 우리 쪽에서 취소 요청했는데 카드사 취소가 아직 반영 안 됨. 두 번째 건이 유효 결제. 주문 상태는 배치 오류로 취소 표시된 것 같음 — 서연 님께 배정합니다.']},
+      {t:'s', at:'2026-08-15T13:56', body:['박도현 님이 담당자를 김서연 님으로 변경했습니다.']},
+      {t:'c', at:'2026-08-15T14:08', body:['확인 부탁드려요. 선물용이라 오늘 출고돼야 합니다.']}
+    ]},
+  {id:'4831', subject:'파손된 상태로 도착한 세라믹 화분 교환 요청', name:'박준영', email:'jy.park1990@gmail.com', ch:'앱', status:'open', prio:'high', assignee:'', tags:['배송','교환'], created:'2026-08-15T13:31', updated:'2026-08-15T13:31', sla:'2026-08-15T15:31', unread:true, order:'ORD-20260813-2290',
+    cust:{grade:'일반', joined:'2025-01-27', prev:0, orders:[['ORD-20260813-2290','세라믹 화분 대형 (테라코타)','배송 완료','08.13']]},
+    thread:[
+      {t:'c', at:'2026-08-15T13:31', body:['어제 저녁에 받은 화분 박스를 오늘 열어보니 윗부분이 크게 깨져 있었습니다. 박스 겉면은 멀쩡했고 완충재가 한쪽에만 들어 있었어요.','사진 첨부합니다. 같은 제품으로 교환 원합니다. 깨진 건 어떻게 처리하면 되나요?'], att:['화분_파손1.jpg','1.4MB']}
+    ]},
+  {id:'4830', subject:'세금계산서 사업자번호를 잘못 입력했는데 수정 발행이 가능한가요', name:'한지훈', email:'account@daonmulsan.co.kr', ch:'이메일', status:'pending', prio:'normal', assignee:'박도현', tags:['세금계산서','사업자'], created:'2026-08-15T12:50', updated:'2026-08-15T13:20', sla:'2026-08-15T16:50', slaMet:true, order:'ORD-20260811-0093',
+    cust:{grade:'사업자', joined:'2022-09-05', prev:6, orders:[['ORD-20260811-0093','사무용 A4 복사지 80g 20박스','배송 완료','08.11'],['ORD-20260728-0410','토너 카트리지 4종','배송 완료','07.28']]},
+    thread:[
+      {t:'c', at:'2026-08-15T12:50', body:['㈜다온물산 경리팀입니다. 8월 11일 주문 건 세금계산서가 사업자번호 뒷자리가 틀린 채로 발행됐습니다. 수정 발행 가능한지, 가능하면 절차를 알려주세요.']},
+      {t:'a', at:'2026-08-15T13:20', who:'박도현', body:['안녕하세요, 온다마켓 고객지원 박도현입니다.','수정 발행 가능합니다. 다만 국세청 전송이 완료된 건이라 기존 계산서 취소 후 재발행 절차로 진행되며, 정확한 사업자번호와 담당자 성함을 회신 주시면 오늘 중 처리하겠습니다.']}
+    ]},
+  {id:'4829', subject:'앱에서 로그인하면 계속 튕깁니다 (Android 14)', name:'오세훈', email:'sehun.oh@naver.com', ch:'채팅', status:'open', prio:'high', assignee:'이하람', tags:['앱오류','계정'], created:'2026-08-15T12:37', updated:'2026-08-15T13:02', sla:'2026-08-15T14:37', slaMet:true,
+    cust:{grade:'일반', joined:'2024-06-19', prev:1, orders:[['ORD-20260809-1873','무선 이어폰 케이스','배송 완료','08.09']]},
+    thread:[
+      {t:'c', at:'2026-08-15T12:37', body:['오늘 앱 업데이트하고 나서 로그인 버튼 누르면 앱이 그냥 꺼져요. 갤럭시 S24, 안드로이드 14입니다. 세 번 재설치했는데 똑같습니다.']},
+      {t:'a', at:'2026-08-15T12:44', who:'이하람', body:['불편을 드려 죄송합니다. 오늘 배포된 5.12.0 버전에서 일부 안드로이드 14 기기의 로그인 화면 오류가 접수되고 있어 개발팀에서 확인 중입니다.','임시로 모바일 웹(m.ondamarket.kr)에서 로그인은 가능합니다. 원인 확인되는 대로 이 대화로 알려드릴게요.']},
+      {t:'n', at:'2026-08-15T13:02', who:'이하람', body:['개발팀 답변: 5.12.1 핫픽스 오늘 18시 스토어 제출 예정. 관련 티켓 4건 묶어서 안내 예정.']}
+    ]},
+  {id:'4828', subject:'정기배송 다음 회차만 건너뛰려면 어떻게 하나요', name:'윤소라', email:'sora.yoon@kakao.com', ch:'채팅', status:'open', prio:'normal', assignee:'', tags:['정기배송'], created:'2026-08-15T12:12', updated:'2026-08-15T12:12', sla:'2026-08-15T16:12', unread:true,
+    cust:{grade:'일반', joined:'2024-11-02', prev:0, orders:[['SUB-20260501-0088','생수 2L 12병 · 2주 간격 정기배송','다음 회차 08.19','05.01']]},
+    thread:[
+      {t:'c', at:'2026-08-15T12:12', body:['다음 주 여행을 가서 19일 배송분만 건너뛰고 싶어요. 해지 말고 한 번만 쉬는 게 되나요? 앱에서 어디서 하는지 못 찾겠어요.']}
+    ]},
+  {id:'4827', subject:'적립금 소멸 예정 안내 문자를 받았는데 금액이 다릅니다', name:'김태우', email:'taewoo.k@gmail.com', ch:'전화', status:'solved', prio:'low', assignee:'최윤재', tags:['적립금'], created:'2026-08-15T11:58', updated:'2026-08-15T12:30', sla:'2026-08-15T19:58', slaMet:true,
+    cust:{grade:'VIP', joined:'2021-03-15', prev:4, orders:[['ORD-20260810-3320','헤어 드라이어','배송 완료','08.10']]},
+    thread:[
+      {t:'a', at:'2026-08-15T11:58', who:'최윤재', body:['[전화 접수] 8월 말 소멸 예정 적립금 안내 문자에는 4,200원이라고 왔는데 앱에는 2,700원으로 보인다는 문의. 확인 후 회신 약속.']},
+      {t:'a', at:'2026-08-15T12:30', who:'최윤재', body:['확인 결과 8월 12일 주문에서 1,500원을 사용하셔서 문자 발송 시점(8월 11일)과 차이가 났습니다. 현재 소멸 예정 잔액은 2,700원이 맞습니다. 전화로 안내 드렸고 이해하셨습니다.']}
+    ]},
+  {id:'4826', subject:'계정이 잠겼는데 본인인증 문자가 안 와요', name:'장예린', email:'yerin.jang@naver.com', ch:'채팅', status:'open', prio:'urgent', assignee:'김서연', tags:['계정','인증'], created:'2026-08-15T11:40', updated:'2026-08-15T14:16', sla:'2026-08-15T12:40', unread:true,
+    cust:{grade:'일반', joined:'2023-12-08', prev:2, orders:[['ORD-20260814-0975','유아용 물티슈 10팩','배송 중','08.14']]},
+    thread:[
+      {t:'c', at:'2026-08-15T11:40', body:['비밀번호를 5번 틀려서 계정이 잠겼다고 나옵니다. 잠금 해제하려고 본인인증을 누르면 문자가 안 와요. 번호는 010-4*** 그대로예요.']},
+      {t:'a', at:'2026-08-15T12:05', who:'김서연', body:['안녕하세요, 김서연입니다. 인증 문자는 하루 5회까지만 발송되는데 오늘 이미 5회를 모두 사용하셔서 발송이 막힌 상태입니다.','제가 발송 제한을 초기화했으니 다시 한 번 시도해 주세요. 그래도 안 오면 알려주세요.']},
+      {t:'c', at:'2026-08-15T14:16', body:['다시 눌러봤는데 여전히 안 옵니다. 스팸함도 확인했어요. 지금 물티슈 배송지를 바꿔야 해서 급합니다.']}
+    ]},
+  {id:'4825', subject:'쿠폰 적용했는데 결제 금액에 반영이 안 됐어요', name:'서지원', email:'jiwon.seo@outlook.kr', ch:'이메일', status:'open', prio:'normal', assignee:'정민아', tags:['쿠폰','결제'], created:'2026-08-15T11:22', updated:'2026-08-15T11:22', sla:'2026-08-15T15:22', order:'ORD-20260815-0722',
+    cust:{grade:'일반', joined:'2025-05-30', prev:0, orders:[['ORD-20260815-0722','러닝화 270 (그레이)','결제 완료','08.15']]},
+    thread:[
+      {t:'c', at:'2026-08-15T11:22', body:['오늘 아침에 러닝화 주문하면서 8월 회원 10% 쿠폰을 눌러서 적용했는데 최종 결제 금액이 89,000원 그대로였습니다. 쿠폰함에는 "사용 완료"로 바뀌어 있어요.','차액 8,900원 환불이나 쿠폰 복원 중 하나로 처리해 주세요.'], att:['결제내역.png','98KB']}
+    ]},
+  {id:'4824', subject:'배송지 변경 요청 (출고 전이면 새 주소로 부탁드립니다)', name:'이도윤', email:'doyun.lee@gmail.com', ch:'앱', status:'pending', prio:'normal', assignee:'박도현', tags:['배송'], created:'2026-08-15T10:55', updated:'2026-08-15T11:10', sla:'2026-08-15T14:55', slaMet:true, order:'ORD-20260814-2216',
+    cust:{grade:'일반', joined:'2024-02-14', prev:1, orders:[['ORD-20260814-2216','접이식 캠핑 체어 2개','출고 준비','08.14']]},
+    thread:[
+      {t:'c', at:'2026-08-15T10:55', body:['어제 주문한 캠핑 체어를 회사 말고 집으로 받고 싶습니다. 아직 출고 전이면 배송지를 서울 마포구 성산로 92, 302호로 바꿔주세요.']},
+      {t:'a', at:'2026-08-15T11:10', who:'박도현', body:['확인했습니다. 현재 물류센터 출고 준비 단계라 변경 요청을 넣어두었고, 물류팀 확인이 오면 바로 회신드리겠습니다. 오늘 오후 3시 이전에 답변드릴 수 있을 것 같습니다.']}
+    ]},
+  {id:'4823', subject:'주문한 상품과 다른 상품이 왔습니다 (오배송)', name:'조은비', email:'eunbi.cho@naver.com', ch:'이메일', status:'open', prio:'high', assignee:'', tags:['배송','교환'], created:'2026-08-15T10:31', updated:'2026-08-15T10:31', sla:'2026-08-15T12:31', unread:true, order:'ORD-20260812-1544',
+    cust:{grade:'일반', joined:'2023-08-21', prev:1, orders:[['ORD-20260812-1544','면 침구 세트 퀸 (아이보리)','배송 완료','08.12']]},
+    thread:[
+      {t:'c', at:'2026-08-15T10:31', body:['퀸 사이즈 아이보리 침구를 주문했는데 싱글 사이즈 그레이가 왔습니다. 송장에는 제 이름이 맞게 적혀 있어요.','받은 상품은 개봉했지만 사용은 안 했습니다. 회수와 재발송 일정 알려주세요.'], att:['송장.jpg','640KB']}
+    ]},
+  {id:'4822', subject:'리뷰 작성했는데 사진이 안 올라가요', name:'문성호', email:'sh.moon@hanmail.net', ch:'앱', status:'open', prio:'low', assignee:'이하람', tags:['앱오류'], created:'2026-08-15T10:04', updated:'2026-08-15T10:04', sla:'2026-08-15T18:04',
+    cust:{grade:'일반', joined:'2022-05-03', prev:2, orders:[['ORD-20260807-2201','전기 주전자 1.7L','배송 완료','08.07']]},
+    thread:[
+      {t:'c', at:'2026-08-15T10:04', body:['주전자 리뷰에 사진 3장을 붙였는데 "업로드 실패"라고만 뜨고 글만 등록됐어요. 사진 한 장이 4MB 정도인데 용량 제한이 있나요?']}
+    ]},
+  {id:'4821', subject:'카드 취소 환불은 며칠 걸리나요', name:'강수아', email:'sua.kang@gmail.com', ch:'채팅', status:'solved', prio:'normal', assignee:'김서연', tags:['환불'], created:'2026-08-15T09:47', updated:'2026-08-15T09:58', sla:'2026-08-15T13:47', slaMet:true, order:'ORD-20260814-0512',
+    cust:{grade:'일반', joined:'2024-09-09', prev:0, orders:[['ORD-20260814-0512','블루투스 스피커','취소 완료','08.14']]},
+    thread:[
+      {t:'c', at:'2026-08-15T09:47', body:['어제 취소한 스피커 환불이 아직 카드 앱에 안 보여요. 보통 며칠 걸리나요?']},
+      {t:'a', at:'2026-08-15T09:52', who:'김서연', body:['안녕하세요, 온다마켓 고객지원 김서연입니다. 어제 15시 12분에 취소 승인이 완료됐고, 카드사(신한) 기준 영업일 3~5일 안에 승인 취소로 반영됩니다. 이번 주 안에는 확인되실 거예요.']},
+      {t:'c', at:'2026-08-15T09:58', body:['네 알겠습니다. 감사합니다.']}
+    ]},
+  {id:'4820', subject:'사업자 회원으로 전환하고 싶습니다 (세금계산서 자동 발행)', name:'임재현', email:'jaehyun@jaehyunsangsa.kr', ch:'이메일', status:'open', prio:'normal', assignee:'정민아', tags:['계정','사업자'], created:'2026-08-15T09:20', updated:'2026-08-15T09:20', sla:'2026-08-15T13:20', unread:true,
+    cust:{grade:'일반', joined:'2026-07-30', prev:0, orders:[['ORD-20260803-1102','사무용 의자 2개','배송 완료','08.03']]},
+    thread:[
+      {t:'c', at:'2026-08-15T09:20', body:['재현상사 대표 임재현입니다. 개인 계정으로 사무용품을 몇 번 구매했는데 앞으로는 사업자 회원으로 세금계산서를 자동 발행받고 싶습니다. 사업자등록증 첨부합니다. 기존 주문 내역도 유지되나요?'], att:['사업자등록증.pdf','311KB']}
+    ]},
+  {id:'4819', subject:'8월 리뷰 이벤트 당첨 안내 메일을 못 받았어요', name:'배현우', email:'hyunwoo.bae@gmail.com', ch:'이메일', status:'pending', prio:'low', assignee:'최윤재', tags:['이벤트'], created:'2026-08-14T18:12', updated:'2026-08-14T18:40', sla:'2026-08-15T02:12', slaMet:true,
+    cust:{grade:'VIP', joined:'2020-11-23', prev:5, orders:[['ORD-20260801-0033','캠핑 랜턴','배송 완료','08.01']]},
+    thread:[
+      {t:'c', at:'2026-08-14T18:12', body:['당첨자 발표 페이지에 제 아이디가 있는데 안내 메일이 안 왔습니다. 경품 수령 주소를 어디에 입력하나요?']},
+      {t:'a', at:'2026-08-14T18:40', who:'최윤재', body:['축하드립니다. 안내 메일은 8월 14일 오전 10시에 발송됐는데 수신 주소가 gmail이라 프로모션 탭으로 분류됐을 수 있습니다. 확인 부탁드리고, 없으면 회신 주시면 이 대화에서 바로 주소를 받아 처리하겠습니다.']}
+    ]},
+  {id:'4818', subject:'주문 취소 버튼이 비활성화되어 있어요', name:'신유진', email:'yujin.shin@naver.com', ch:'앱', status:'open', prio:'normal', assignee:'', tags:['주문취소'], created:'2026-08-14T17:40', updated:'2026-08-14T17:40', sla:'2026-08-14T21:40', order:'ORD-20260814-3007',
+    cust:{grade:'일반', joined:'2025-10-12', prev:0, orders:[['ORD-20260814-3007','여름 이불 싱글','출고 준비','08.14']]},
+    thread:[
+      {t:'c', at:'2026-08-14T17:40', body:['방금 주문한 이불을 취소하려는데 취소 버튼이 회색으로 눌리지 않아요. 결제 완료된 지 10분도 안 됐습니다.']}
+    ]},
+  {id:'4817', subject:'결제수단 변경 후 정기결제 실패 알림이 계속 옵니다', name:'권나연', email:'nayeon.kwon@kakao.com', ch:'이메일', status:'open', prio:'high', assignee:'박도현', tags:['결제','정기배송'], created:'2026-08-14T16:55', updated:'2026-08-15T09:05', sla:'2026-08-14T18:55', slaMet:true,
+    cust:{grade:'VIP', joined:'2022-01-18', prev:3, orders:[['SUB-20260210-0142','반려동물 사료 7kg · 4주 정기배송','결제 실패','02.10']]},
+    thread:[
+      {t:'c', at:'2026-08-14T16:55', body:['카드를 새로 바꿔서 앱에서 결제수단을 변경했는데, 정기배송 결제가 실패했다는 알림이 어제부터 하루 두 번씩 옵니다. 새 카드는 등록돼 있어요.']},
+      {t:'a', at:'2026-08-14T17:30', who:'박도현', body:['불편을 드려 죄송합니다. 정기배송은 주문 생성 시점의 결제수단이 별도로 저장되어, 결제수단 변경이 자동 반영되지 않습니다. 정기배송 관리 > 결제수단에서 새 카드를 다시 선택해 주시면 다음 시도부터 정상 결제됩니다.']},
+      {t:'c', at:'2026-08-15T09:05', body:['말씀하신 대로 바꿨는데 오늘 아침에도 실패 알림이 왔어요. 재시도가 언제 되나요?']}
+    ]},
+  {id:'4816', subject:'앱 푸시 알림이 너무 자주 와요', name:'황민석', email:'ms.hwang@gmail.com', ch:'앱', status:'solved', prio:'low', assignee:'이하람', tags:['앱설정'], created:'2026-08-14T15:30', updated:'2026-08-14T15:52', sla:'2026-08-14T23:30', slaMet:true,
+    cust:{grade:'일반', joined:'2023-02-27', prev:0, orders:[]},
+    thread:[
+      {t:'c', at:'2026-08-14T15:30', body:['하루에 알림이 5~6개씩 옵니다. 주문 관련 알림만 받고 싶어요.']},
+      {t:'a', at:'2026-08-14T15:52', who:'이하람', body:['설정 > 알림에서 "혜택·이벤트"와 "추천 상품"을 끄시면 주문·배송 알림만 받게 됩니다. 요청하신 대로 제가 계정 설정에서 두 항목을 꺼두었습니다.']}
+    ]},
+  {id:'4815', subject:'휴대폰 번호 변경 방법 문의', name:'노아름', email:'areum.no@daum.net', ch:'전화', status:'closed', prio:'normal', assignee:'정민아', tags:['계정'], created:'2026-08-14T14:02', updated:'2026-08-14T14:10', sla:'2026-08-14T18:02', slaMet:true,
+    cust:{grade:'일반', joined:'2021-07-07', prev:1, orders:[]},
+    thread:[
+      {t:'a', at:'2026-08-14T14:02', who:'정민아', body:['[전화 접수] 번호를 바꿨는데 인증이 안 된다는 문의. 앱 내 마이페이지 > 회원정보 > 휴대폰 번호 변경 경로와 새 번호로 인증하는 방법 안내. 통화 중 변경 완료 확인.']},
+      {t:'s', at:'2026-08-14T14:10', body:['정민아 님이 상태를 해결로 변경했습니다.']},
+      {t:'s', at:'2026-08-15T14:10', body:['24시간 동안 추가 문의가 없어 자동으로 종료되었습니다.']}
+    ]},
+  {id:'4814', subject:'교환 상품 발송 일정 확인 부탁드립니다', name:'유하은', email:'haeun.yoo@naver.com', ch:'채팅', status:'pending', prio:'normal', assignee:'최윤재', tags:['교환','배송'], created:'2026-08-14T11:20', updated:'2026-08-14T11:35', sla:'2026-08-14T15:20', slaMet:true, order:'ORD-20260808-1990',
+    cust:{grade:'일반', joined:'2024-04-01', prev:1, orders:[['ORD-20260808-1990','니트 가디건 M (베이지)','교환 진행','08.08']]},
+    thread:[
+      {t:'c', at:'2026-08-14T11:20', body:['가디건 사이즈 교환 신청하고 어제 반품 택배를 보냈어요. 새 상품은 언제 발송되나요?']},
+      {t:'a', at:'2026-08-14T11:35', who:'최윤재', body:['반품 상품이 물류센터에 도착해 검수가 끝나면 당일 또는 다음 영업일에 출고됩니다. 택배 이동 기준으로 내일(15일) 도착 예정이라 이르면 16일 출고될 것 같습니다. 입고 확인되면 알려드릴게요.']}
+    ]},
+  {id:'4813', subject:'상품 상세 페이지 성분표에 오타가 있어요', name:'안도경', email:'dokyung.ahn@gmail.com', ch:'이메일', status:'solved', prio:'low', assignee:'김서연', tags:['상품정보'], created:'2026-08-13T16:45', updated:'2026-08-13T17:20', sla:'2026-08-14T00:45', slaMet:true,
+    cust:{grade:'일반', joined:'2022-12-12', prev:0, orders:[['ORD-20260805-0731','비타민C 1000mg 180정','배송 완료','08.05']]},
+    thread:[
+      {t:'c', at:'2026-08-13T16:45', body:['비타민C 상세 페이지 성분표에 "1정당 1,000mg"이 "1,00mg"으로 잘못 적혀 있습니다. 확인 부탁드려요.']},
+      {t:'a', at:'2026-08-13T17:20', who:'김서연', body:['제보 감사합니다. 상품팀에 전달해 방금 수정했습니다. 꼼꼼히 봐주셔서 감사합니다.']}
+    ]}
+];
+
+/* ---------- 상태 ---------- */
+const state = {
+  view:'inbox', tab:'all', q:'', sort:'updated',
+  selected:'4832', checked:new Set(), mode:'reply', attachments:[]
+};
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+const byId = id => TICKETS.find(t => t.id === id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const d = iso => new Date(iso + (iso.length === 16 ? ':00+09:00' : ''));
+const pad = n => String(n).padStart(2,'0');
+/* '로/으로' 조사: 받침 없음 또는 ㄹ받침이면 '로' */
+const ro = w => { const c = (String(w).slice(-1).charCodeAt(0) - 0xAC00) % 28; return (c === 0 || c === 8 || c < 0 || c > 27) ? '로' : '으로'; };
+
+/* 시각 표기는 문자열 성분을 직접 읽어 브라우저 시간대와 무관하게 KST로 고정 */
+const TODAY = '2026-08-15', YESTERDAY = '2026-08-14';
+function fmtRel(iso){
+  const diff = NOW - d(iso), day = iso.slice(0,10), hm = iso.slice(11,16);
+  if(day === TODAY){
+    if(diff < MIN) return '방금';
+    if(diff < 60*MIN) return Math.floor(diff/MIN) + '분 전';
+    return hm;
+  }
+  if(day === YESTERDAY) return '어제 ' + hm;
+  return +iso.slice(5,7) + '/' + +iso.slice(8,10) + ' ' + hm;
+}
+function fmtAbs(iso){
+  return +iso.slice(5,7) + '월 ' + +iso.slice(8,10) + '일 ' + iso.slice(11,16);
+}
+function slaInfo(t){
+  if(t.status === 'solved' || t.status === 'closed') return {cls:'sla-ok', text:'—', rank:3, ms:Infinity};
+  if(t.slaMet) return {cls:'sla-ok', text:'응답 완료', rank:2, ms:Infinity};
+  const ms = d(t.sla) - NOW;
+  const abs = Math.abs(ms), h = Math.floor(abs/(60*MIN)), m = Math.round((abs % (60*MIN))/MIN);
+  const span = h ? h + '시간 ' + (m ? m + '분' : '') : m + '분';
+  if(ms < 0) return {cls:'sla-over', text:'SLA ' + span.trim() + ' 초과', rank:0, ms};
+  if(ms < 60*MIN) return {cls:'sla-warn', text:'SLA ' + span.trim() + ' 남음', rank:1, ms};
+  return {cls:'sla-ok', text:'SLA ' + span.trim() + ' 남음', rank:1, ms};
+}
+const isSlaHot = t => t.status === 'open' && !t.slaMet && (d(t.sla) - NOW) < 60*MIN;
+
+const VIEWS = [
+  {k:'inbox', label:'받은 편지함', ico:'i-inbox', f:t => t.status !== 'closed'},
+  {k:'mine', label:'내 담당', ico:'i-user', f:t => t.assignee === ME && t.status !== 'closed'},
+  {k:'unassigned', label:'미배정', ico:'i-users', f:t => !t.assignee && t.status !== 'closed'},
+  {k:'sla', label:'SLA 임박·초과', ico:'i-clock', f:isSlaHot, hot:true},
+  {k:'solved', label:'해결됨', ico:'i-check-c', f:t => t.status === 'solved'},
+  {k:'closed', label:'종료', ico:'i-archive', f:t => t.status === 'closed'}
+];
+const SIDE_TAGS = ['결제','환불','배송','교환','계정','앱오류','정기배송'];
+
+function viewDef(k){
+  if(k.startsWith('tag:')){ const tag = k.slice(4); return {k, label:'태그: ' + tag, f:t => t.tags.includes(tag) && t.status !== 'closed'}; }
+  if(k.startsWith('agent:')){ const a = k.slice(6); return {k, label:a + ' 담당', f:t => t.assignee === a && t.status !== 'closed'}; }
+  return VIEWS.find(v => v.k === k) || VIEWS[0];
+}
+function baseList(){ return TICKETS.filter(viewDef(state.view).f); }
+function visible(){
+  const q = state.q.trim().toLowerCase();
+  let arr = baseList().filter(t => state.tab === 'all' || t.status === state.tab);
+  if(q) arr = arr.filter(t => [t.id, 't-' + t.id, t.subject, t.name, t.email, t.tags.join(' '), t.ch, t.order || ''].join(' ').toLowerCase().includes(q));
+  const cmp = {
+    updated:(a,b) => d(b.updated) - d(a.updated),
+    created:(a,b) => d(b.created) - d(a.created),
+    priority:(a,b) => PRIO_RANK[a.prio] - PRIO_RANK[b.prio] || d(b.updated) - d(a.updated),
+    sla:(a,b) => { const A = slaInfo(a), B = slaInfo(b); return A.rank - B.rank || A.ms - B.ms || PRIO_RANK[a.prio] - PRIO_RANK[b.prio]; }
+  }[state.sort];
+  return arr.sort(cmp);
+}
+
+/* ---------- 렌더: 사이드바 ---------- */
+function navBtn(k, label, count, ico, hot){
+  const cur = state.view === k ? 'true' : 'false';
+  const icon = ico ? '<svg class="ico"><use href="#' + ico + '"/></svg>' : '<span class="sq" aria-hidden="true"></span>';
+  return '<button class="nav-item" data-view="' + esc(k) + '" aria-current="' + cur + '" title="' + esc(label) + '">' + icon +
+    '<span class="lbl">' + esc(label) + '</span><span class="cnt num' + (hot && count ? ' hot' : '') + '">' + count + '</span></button>';
+}
+function renderSide(){
+  $('#navViews').innerHTML = VIEWS.map(v => navBtn(v.k, v.label, TICKETS.filter(v.f).length, v.ico, v.hot)).join('');
+  $('#navTags').innerHTML = SIDE_TAGS.map(tag => navBtn('tag:' + tag, tag, TICKETS.filter(viewDef('tag:' + tag).f).length)).join('');
+  $('#navAgents').innerHTML = AGENTS.map(a => navBtn('agent:' + a, a + (a === ME ? ' (나)' : ''), TICKETS.filter(viewDef('agent:' + a).f).length)).join('');
+  const openCount = TICKETS.filter(t => t.status === 'open').length;
+  document.title = '받은 편지함 (' + openCount + ') · 온다마켓 고객지원 · 헬프데스크 콘솔';
+}
+
+/* ---------- 렌더: 목록 ---------- */
+function rowHTML(t){
+  const s = slaInfo(t);
+  const checked = state.checked.has(t.id);
+  return '<li class="row' + (t.unread ? ' row-unread' : '') + (checked ? ' is-checked' : '') + '" role="option" data-id="' + t.id + '" aria-selected="' + (state.selected === t.id) + '" tabindex="-1">' +
+    '<label class="row-check" aria-label="티켓 선택"><input type="checkbox" data-check="' + t.id + '"' + (checked ? ' checked' : '') + '></label>' +
+    '<span class="prio prio-' + t.prio + '" title="우선순위 ' + PRIO[t.prio] + '"><span class="vh">우선순위 ' + PRIO[t.prio] + '</span></span>' +
+    '<div class="row-main">' +
+      '<div class="row-top"><span class="row-subject">' + esc(t.subject) + '</span><time class="row-time num">' + fmtRel(t.updated) + '</time></div>' +
+      '<div class="row-sub"><b>' + esc(t.name) + '</b> · ' + t.ch + ' · <span class="mono">T-' + t.id + '</span>' + (t.assignee ? ' · ' + esc(t.assignee) : ' · <span class="unassigned">미배정</span>') + '</div>' +
+      '<div class="row-snip">' + esc(lastLine(t)) + '</div>' +
+      '<div class="row-foot"><span class="st st-' + t.status + '">' + STATUS[t.status] + '</span>' +
+        t.tags.slice(0,3).map(x => '<button type="button" class="tag" data-view="tag:' + esc(x) + '" title="태그 ' + esc(x) + ' 티켓만 보기">' + esc(x) + '</button>').join('') +
+        '<span class="grow"></span><span class="sla ' + s.cls + '">' + s.text + '</span></div>' +
+    '</div></li>';
+}
+function lastLine(t){
+  const last = [...t.thread].reverse().find(m => m.t !== 's');
+  if(!last) return '';
+  const who = last.t === 'c' ? t.name : last.t === 'n' ? '메모 · ' + last.who : last.who;
+  return who + ': ' + last.body[0].replace(/\s+/g,' ');
+}
+function renderList(){
+  const arr = visible();
+  const base = baseList();
+  const vd = viewDef(state.view);
+  $('#listTitle').textContent = vd.label;
+  $('#crumbView').textContent = vd.label;
+  $('#listCount').textContent = arr.length + '건';
+  $$('#tabs .tab').forEach(b => {
+    const k = b.dataset.tab;
+    b.setAttribute('aria-selected', String(k === state.tab));
+    b.querySelector('.num').textContent = k === 'all' ? base.length : base.filter(t => t.status === k).length;
+  });
+  const rows = $('#rows');
+  if(!arr.length){
+    rows.innerHTML = '<li class="empty" aria-live="polite"><b>조건에 맞는 티켓이 없습니다</b>' +
+      (state.q ? '검색어를 지우거나 ' : '') + '다른 뷰나 탭을 선택하세요.<br><button type="button" id="resetFilters">필터 초기화</button></li>';
+  } else {
+    rows.innerHTML = arr.map(rowHTML).join('');
+  }
+  renderBulk();
+}
+function renderBulk(){
+  const n = state.checked.size;
+  $('#bulk').hidden = n === 0;
+  $('#bulkCount').textContent = n;
+}
+
+/* ---------- 렌더: 상세 ---------- */
+function msgHTML(t, m){
+  if(m.t === 's') return '<div class="msg msg-sys">' + esc(m.body[0]) + '<time class="num">' + fmtAbs(m.at) + '</time></div>';
+  const cls = m.t === 'c' ? 'msg-customer' : m.t === 'a' ? 'msg-agent' : 'msg-note';
+  const who = m.t === 'c' ? t.name : m.who;
+  const role = m.t === 'c' ? '고객 · ' + t.ch : m.t === 'a' ? '상담원 · ' + (m.via || t.ch) : '내부 메모 · 고객에게 보이지 않음';
+  const att = m.att ? '<button type="button" class="att" data-dl="' + esc(m.att[0]) + '"><svg class="ico"><use href="#i-file"/></svg>' + esc(m.att[0]) + '<span class="size">' + m.att[1] + '</span></button>' : '';
+  return '<article class="msg ' + cls + '"><header><b>' + esc(who) + '</b><span class="role">' + role + '</span><time class="num">' + fmtAbs(m.at) + '</time></header>' +
+    m.body.map(p => '<p>' + esc(p) + '</p>').join('') + att + '</article>';
+}
+function renderDetail(){
+  const t = byId(state.selected);
+  const det = $('#detail');
+  if(!t){ $('#dSubject').textContent = '티켓을 선택하세요'; $('#dMeta').innerHTML=''; $('#thread').innerHTML=''; return; }
+  $('#dSubject').textContent = t.subject;
+  $('#crumbTicket').textContent = 'T-' + t.id;
+  $('#dMeta').innerHTML =
+    '<span class="mono">T-' + t.id + '</span>' +
+    '<span>' + t.ch + '</span>' +
+    '<span><b>' + esc(t.name) + '</b> &lt;' + esc(t.email) + '&gt;</span>' +
+    (t.order ? '<span>주문 <b class="mono">' + t.order + '</b></span>' : '') +
+    '<span>접수 <b class="num">' + fmtAbs(t.created) + '</b></span>' +
+    '<span>업데이트 <b class="num">' + fmtRel(t.updated) + '</b></span>';
+  $('#pStatus').value = t.status;
+  $('#pPrio').value = t.prio;
+  $('#pAssignee').value = t.assignee;
+  const s = slaInfo(t);
+  const sla = $('#pSla'); sla.className = 'sla ' + s.cls; sla.textContent = s.text;
+  $('#pTags').innerHTML = t.tags.map(x => '<span class="tag">' + esc(x) + '<button type="button" data-untag="' + esc(x) + '" aria-label="' + esc(x) + ' 태그 제거">×</button></span>').join('');
+  $('#solveBtn').disabled = t.status === 'solved' || t.status === 'closed';
+  $('#pendingBtn').disabled = t.status !== 'open';
+  const th = $('#thread');
+  th.innerHTML = t.thread.map(m => msgHTML(t, m)).join('');
+  th.scrollTop = th.scrollHeight;
+  const c = t.cust;
+  $('#cust').innerHTML =
+    '<h3>요청자</h3><dl><dt>이름</dt><dd>' + esc(t.name) + '</dd><dt>이메일</dt><dd style="word-break:break-all">' + esc(t.email) + '</dd><dt>등급</dt><dd>' + c.grade + '</dd><dt>가입일</dt><dd class="num">' + c.joined + '</dd><dt>채널</dt><dd>' + t.ch + '</dd></dl>' +
+    '<h3>최근 주문</h3>' + (c.orders.length ? c.orders.map(o => '<div class="order"><b>' + esc(o[1]) + '</b><span class="mono">' + o[0] + '</span> · <span>' + o[2] + '</span> · <span class="num">' + o[3] + '</span></div>').join('') : '<div class="order"><span>주문 이력 없음</span></div>') +
+    '<h3>이전 문의</h3><div class="prev">' + (c.prev ? '최근 12개월 <span class="num">' + c.prev + '</span>건' : '없음') + '</div>';
+  $('#composeTo').textContent = state.mode === 'reply' ? '받는 사람: ' + t.email : '팀 내부에만 표시';
+  det.dataset.id = t.id;
+}
+
+/* ---------- 조작 ---------- */
+function select(id, opts={}){
+  const t = byId(id); if(!t) return;
+  state.selected = id;
+  if(t.unread){ t.unread = false; }
+  if(!opts.keepCompose){ $('#composeText').value = ''; state.attachments = []; renderAtt(); }
+  renderList(); renderDetail();
+  if(opts.open !== false) $('#app').classList.add('show-detail');
+  const row = $('#rows [data-id="' + id + '"]');
+  if(row && !opts.noScroll) row.scrollIntoView({block:'nearest'});
+}
+function move(dir){
+  const arr = visible(); if(!arr.length) return;
+  const i = arr.findIndex(t => t.id === state.selected);
+  const next = arr[Math.min(arr.length-1, Math.max(0, i < 0 ? 0 : i + dir))];
+  select(next.id, {open:false});
+}
+function setStatus(id, status, opts={}){
+  const t = byId(id); if(!t || t.status === status) return;
+  const prev = t.status, prevUpdated = t.updated;
+  const before = visible();                     /* 변경 전 목록 순서 기준으로 다음 티켓 결정 */
+  const idx = before.findIndex(x => x.id === id);
+  t.status = status;
+  t.updated = '2026-08-15T14:20';
+  const sys = {t:'s', at:'2026-08-15T14:20', body:[ME + ' 님이 상태를 ' + STATUS[status] + ro(STATUS[status]) + ' 변경했습니다.']};
+  t.thread.push(sys);
+  /* 해결·대기 처리 후 자동 이동: 현재 위치 다음의 미처리(열림) 티켓, 없으면 앞쪽에서 찾음 */
+  let advanced = null;
+  if(opts.advance && state.selected === id){
+    const pool = before.filter(x => x.id !== id && x.status === 'open');
+    advanced = pool.find(x => before.indexOf(x) > idx) || pool[0] || null;
+  }
+  const stillVisible = visible().some(x => x.id === id);
+  if(!advanced && !stillVisible && state.selected === id && !opts.noAdvance){
+    const rest = visible();
+    if(rest.length) advanced = rest[Math.min(Math.max(idx, 0), rest.length - 1)];
+  }
+  renderSide(); renderList();
+  if(advanced) select(advanced.id, {open:false}); else renderDetail();
+  if(!opts.silent){
+    toast('<b>T-' + id + '</b> 상태를 ' + STATUS[status] + ro(STATUS[status]) + ' 변경했습니다.' + (advanced ? ' 다음 티켓 <b>T-' + advanced.id + '</b>로 이동했습니다.' : ''),
+      status === 'solved' ? 'ok' : status === 'pending' ? 'warn' : 'brand',
+      {label:'실행 취소', fn:() => { t.status = prev; t.updated = prevUpdated; t.thread = t.thread.filter(m => m !== sys); renderSide(); select(id, {open:false, keepCompose:true}); }});
+  }
+}
+function setAssignee(id, who, opts={}){
+  const t = byId(id); if(!t || t.assignee === who) return;
+  t.assignee = who; t.updated = '2026-08-15T14:20';
+  t.thread.push({t:'s', at:'2026-08-15T14:20', body:[ME + ' 님이 담당자를 ' + (who || '미배정') + ro(who || '미배정') + ' 변경했습니다.']});
+  renderSide(); renderList(); renderDetail();
+  if(!opts.silent) toast('<b>T-' + id + '</b> 담당자를 ' + (who || '미배정') + ro(who || '미배정') + ' 변경했습니다.', 'brand');
+}
+function setPrio(id, prio){
+  const t = byId(id); if(!t || t.prio === prio) return;
+  t.prio = prio; renderList(); renderDetail();
+  toast('<b>T-' + id + '</b> 우선순위를 ' + PRIO[prio] + ro(PRIO[prio]) + ' 변경했습니다.', 'brand');
+}
+function sendReply(){
+  const t = byId(state.selected); if(!t) return;
+  const text = $('#composeText').value.trim();
+  if(!text){ $('#composeText').focus(); toast('내용을 입력한 뒤 보내세요.', 'danger'); return; }
+  const m = {t: state.mode === 'reply' ? 'a' : 'n', at:'2026-08-15T14:20', who:ME, body:text.split(/\n{2,}/)};
+  if(state.attachments.length) m.att = [state.attachments[0].name, fmtSize(state.attachments[0].size)];
+  t.thread.push(m); t.updated = '2026-08-15T14:20';
+  $('#composeText').value = ''; state.attachments = []; renderAtt();
+  const afterPending = state.mode === 'reply' && $('#afterPending').checked && t.status === 'open';
+  if(afterPending){ setStatus(t.id, 'pending', {silent:true, noAdvance:true}); }
+  renderSide(); renderList(); renderDetail();
+  toast(state.mode === 'reply'
+    ? '<b>T-' + t.id + '</b> ' + esc(t.name) + ' 님에게 답장을 보냈습니다.' + (afterPending ? ' 상태: 대기' : '')
+    : '<b>T-' + t.id + '</b>에 내부 메모를 남겼습니다.', state.mode === 'reply' ? 'ok' : 'warn');
+}
+function fmtSize(n){ return n > 1048576 ? (n/1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(n/1024)) + 'KB'; }
+function renderAtt(){
+  $('#attList').innerHTML = state.attachments.map((f, i) => '<span class="att"><svg class="ico"><use href="#i-file"/></svg>' + esc(f.name) + '<span class="size">' + fmtSize(f.size) + '</span><button type="button" data-rmatt="' + i + '" aria-label="첨부 제거">×</button></span>').join('');
+}
+function setView(k){
+  state.view = k; state.tab = 'all'; state.checked.clear();
+  renderSide(); renderList();
+  const arr = visible();
+  if(arr.length && !arr.some(t => t.id === state.selected)) select(arr[0].id, {open:false});
+  else renderDetail();
+  closeSide();
+}
+function closeSide(){ $('#app').classList.remove('side-open'); $('#sideBackdrop').hidden = true; $('#sideToggle').setAttribute('aria-expanded','false'); }
+function openSide(){ $('#app').classList.add('side-open'); $('#sideBackdrop').hidden = false; $('#sideToggle').setAttribute('aria-expanded','true'); }
+
+/* ---------- 토스트 ---------- */
+function toast(html, kind='brand', action){
+  const wrap = $('#toasts');
+  const el = document.createElement('div');
+  el.className = 'toast toast-' + kind; el.setAttribute('role','status');
+  el.innerHTML = '<span class="msg-t">' + html + '</span>' + (action ? '<button type="button" class="act">' + esc(action.label) + '</button>' : '') + '<button type="button" class="x" aria-label="닫기">닫기</button>';
+  const kill = () => { if(el.parentNode) el.remove(); };
+  const timer = setTimeout(kill, action ? 6000 : 3500);
+  el.querySelector('.x').addEventListener('click', () => { clearTimeout(timer); kill(); });
+  if(action) el.querySelector('.act').addEventListener('click', () => { clearTimeout(timer); kill(); action.fn(); });
+  wrap.appendChild(el);
+  while(wrap.children.length > 3) wrap.firstChild.remove();
+}
+
+/* ---------- 명령 팔레트 ---------- */
+let cmdkIndex = 0, cmdkItems = [];
+function commands(){
+  const t = byId(state.selected);
+  const cur = t ? 'T-' + t.id : '';
+  const list = [];
+  if(t){
+    Object.keys(STATUS).forEach(k => list.push({g:'현재 티켓 · ' + cur, label:'상태를 ' + STATUS[k] + ro(STATUS[k]) + ' 변경', ico:'i-flag', kw:'status 상태 ' + STATUS[k], top:true, run:() => setStatus(t.id, k, {advance: k === 'solved' || k === 'pending'}), hint: k === 'solved' ? 'E' : ''}));
+    Object.keys(PRIO).forEach(k => list.push({g:'현재 티켓 · ' + cur, label:'우선순위를 ' + PRIO[k] + ro(PRIO[k]) + ' 설정', ico:'i-flag', kw:'priority 우선순위 ' + PRIO[k], run:() => setPrio(t.id, k)}));
+    list.push({g:'현재 티켓 · ' + cur, label:'나에게 배정', ico:'i-user', kw:'assign 배정 담당', top:true, run:() => setAssignee(t.id, ME)});
+    AGENTS.filter(a => a !== ME).forEach(a => list.push({g:'현재 티켓 · ' + cur, label:a + ' 님에게 배정', ico:'i-users', kw:'assign 배정 담당 ' + a, run:() => setAssignee(t.id, a)}));
+    list.push({g:'현재 티켓 · ' + cur, label:'배정 해제', ico:'i-users', kw:'unassign 미배정', run:() => setAssignee(t.id, '')});
+    list.push({g:'현재 티켓 · ' + cur, label:'답장 작성', ico:'i-send', kw:'reply 답장', hint:'R', top:true, run:() => { setMode('reply'); $('#composeText').focus(); }});
+    list.push({g:'현재 티켓 · ' + cur, label:'내부 메모 작성', ico:'i-note', kw:'note 메모', run:() => { setMode('note'); $('#composeText').focus(); }});
+  }
+  VIEWS.forEach(v => list.push({g:'이동', label:v.label + ' 보기', ico:v.ico, kw:'view 뷰 이동 ' + v.label, hint:TICKETS.filter(v.f).length + '건', top:true, run:() => setView(v.k)}));
+  list.push({g:'이동', label:'단축키 안내', ico:'i-cmd', kw:'help 도움말 shortcut', hint:'?', top:true, run:() => openKeys()});
+  TICKETS.forEach(x => list.push({g:'티켓', label:'T-' + x.id, sub:x.subject, ico:'i-go', kw:'ticket 티켓 t-' + x.id + ' ' + x.id + ' ' + x.subject + ' ' + x.name + ' ' + x.tags.join(' '), hint:STATUS[x.status] + ' · ' + x.name, run:() => select(x.id)}));
+  return list;
+}
+function renderCmdk(){
+  const q = $('#cmdkInput').value.trim().toLowerCase();
+  const all = commands();
+  /* 입력 전에는 자주 쓰는 명령만, 입력 후에는 명령·티켓 전체에서 검색 */
+  cmdkItems = (q ? all.filter(c => (c.label + ' ' + (c.sub || '') + ' ' + c.kw).toLowerCase().includes(q)) : all.filter(c => c.top)).slice(0, 16);
+  cmdkIndex = Math.min(cmdkIndex, Math.max(0, cmdkItems.length - 1));
+  let html = '', lastG = '';
+  cmdkItems.forEach((c, i) => {
+    if(c.g !== lastG){ html += '<li class="cmdk-group" role="presentation">' + esc(c.g) + '</li>'; lastG = c.g; }
+    html += '<li class="cmdk-item" role="option" data-i="' + i + '" aria-selected="' + (i === cmdkIndex) + '"><svg class="ico"><use href="#' + c.ico + '"/></svg><span class="lbl">' + esc(c.label) + (c.sub ? '<small>' + esc(c.sub) + '</small>' : '') + '</span>' + (c.hint ? '<span class="hint">' + esc(c.hint) + '</span>' : '') + '</li>';
+  });
+  $('#cmdkList').innerHTML = html || '<li class="cmdk-empty">일치하는 명령이나 티켓이 없습니다.</li>';
+  const sel = $('#cmdkList [aria-selected="true"]'); if(sel) sel.scrollIntoView({block:'nearest'});
+}
+function openCmdk(prefill=''){
+  $('#cmdk').hidden = false; $('#cmdkInput').value = prefill; cmdkIndex = 0; renderCmdk(); $('#cmdkInput').focus();
+}
+function closeCmdk(){ $('#cmdk').hidden = true; }
+function runCmdk(){ const c = cmdkItems[cmdkIndex]; if(!c) return; closeCmdk(); c.run(); }
+function openKeys(){ $('#keys').hidden = false; $('#keysClose').focus(); }
+function closeKeys(){ $('#keys').hidden = true; }
+function setMode(mode){
+  state.mode = mode;
+  $$('#compose [role=tab]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.mode === mode)));
+  $('#compose').classList.toggle('note-mode', mode === 'note');
+  $('#composeText').placeholder = mode === 'reply' ? '답장을 입력하세요. ' + MOD + '+Enter로 보냅니다.' : '팀에게 남길 메모를 입력하세요. 고객에게는 보이지 않습니다.';
+  $('#sendBtn').innerHTML = mode === 'reply' ? '<svg class="ico"><use href="#i-send"/></svg>답장 보내기 <kbd>' + MOD + '</kbd><kbd>↵</kbd>' : '<svg class="ico"><use href="#i-note"/></svg>메모 저장 <kbd>' + MOD + '</kbd><kbd>↵</kbd>';
+  $('#afterPending').closest('label').style.visibility = mode === 'reply' ? 'visible' : 'hidden';
+  const t = byId(state.selected); if(t) $('#composeTo').textContent = mode === 'reply' ? '받는 사람: ' + t.email : '팀 내부에만 표시';
+}
+
+/* ---------- 이벤트 ---------- */
+function init(){
+  const asg = ['<option value="">미배정</option>'].concat(AGENTS.map(a => '<option value="' + a + '">' + a + (a === ME ? ' (나)' : '') + '</option>')).join('');
+  $('#pAssignee').innerHTML = asg;
+  $('#bulkAssign').innerHTML = '<option value="">담당자 배정</option>' + asg;
+  $('#macroSel').innerHTML = '<option value="">빠른 답변</option>' + MACROS.map(m => '<option value="' + m.k + '">' + m.label + '</option>').join('');
+  $$('kbd.modkey').forEach(k => { k.textContent = MOD; });
+  setMode('reply');
+  renderSide(); renderList(); renderDetail();
+
+  document.addEventListener('click', e => {
+    const nav = e.target.closest('[data-view]'); if(nav){ setView(nav.dataset.view); return; }
+    const tab = e.target.closest('#tabs .tab'); if(tab){ state.tab = tab.dataset.tab; renderList(); return; }
+    const chk = e.target.closest('input[data-check]');
+    if(chk){ chk.checked ? state.checked.add(chk.dataset.check) : state.checked.delete(chk.dataset.check); renderList(); return; }
+    if(e.target.closest('.row-check')) return;
+    const row = e.target.closest('.row[data-id]'); if(row){ select(row.dataset.id); return; }
+    const reset = e.target.closest('#resetFilters'); if(reset){ state.q = ''; $('#q').value=''; setView('inbox'); return; }
+    const untag = e.target.closest('[data-untag]'); if(untag){ const t = byId(state.selected); t.tags = t.tags.filter(x => x !== untag.dataset.untag); renderSide(); renderList(); renderDetail(); return; }
+    const rm = e.target.closest('[data-rmatt]'); if(rm){ state.attachments.splice(+rm.dataset.rmatt, 1); renderAtt(); return; }
+    const dl = e.target.closest('[data-dl]'); if(dl){ toast('<b>' + esc(dl.dataset.dl) + '</b> 다운로드를 시작했습니다.', 'brand'); return; }
+    const op = e.target.closest('[data-open]'); if(op){ closePops(); select(op.dataset.open); return; }
+    const pr = e.target.closest('[data-presence]'); if(pr){ closePops(); $('.me-dot').style.background = pr.dataset.presence === 'online' ? 'var(--ok)' : 'var(--warn)'; toast('상태를 ' + (pr.dataset.presence === 'online' ? '온라인' : '자리 비움') + ro(pr.dataset.presence === 'online' ? '온라인' : '자리 비움') + ' 변경했습니다.', 'brand'); return; }
+    const ks = e.target.closest('[data-keys]'); if(ks){ closePops(); openKeys(); return; }
+    const ci = e.target.closest('.cmdk-item'); if(ci){ cmdkIndex = +ci.dataset.i; runCmdk(); return; }
+    if(!e.target.closest('.pop-anchor')) closePops();
+  });
+  $('#cmdk').addEventListener('click', e => { if(e.target === e.currentTarget) closeCmdk(); });
+  $('#keys').addEventListener('click', e => { if(e.target === e.currentTarget) closeKeys(); });
+  $('#keysClose').addEventListener('click', closeKeys);
+  $('#cmdkOpen').addEventListener('click', () => openCmdk());
+  $('#cmdkInput').addEventListener('input', () => { cmdkIndex = 0; renderCmdk(); });
+  $('#cmdkInput').addEventListener('keydown', e => {
+    if(e.key === 'ArrowDown'){ e.preventDefault(); cmdkIndex = Math.min(cmdkItems.length-1, cmdkIndex+1); renderCmdk(); }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); cmdkIndex = Math.max(0, cmdkIndex-1); renderCmdk(); }
+    else if(e.key === 'Enter'){ e.preventDefault(); runCmdk(); }
+    else if(e.key === 'Escape'){ closeCmdk(); }
+  });
+  $('#cmdkList').addEventListener('mousemove', e => { const li = e.target.closest('.cmdk-item'); if(li && +li.dataset.i !== cmdkIndex){ cmdkIndex = +li.dataset.i; renderCmdk(); } });
+
+  $('#q').addEventListener('input', e => { state.q = e.target.value; renderList(); });
+  $('#q').addEventListener('keydown', e => { if(e.key === 'Escape'){ e.target.value=''; state.q=''; renderList(); e.target.blur(); } });
+  $('#sortSel').addEventListener('change', e => { state.sort = e.target.value; renderList(); });
+  $('#bulkStatus').addEventListener('change', e => {
+    const v = e.target.value; if(!v) return; const ids = [...state.checked]; ids.forEach(id => setStatus(id, v, {silent:true, noAdvance:true}));
+    state.checked.clear(); e.target.value=''; renderList(); renderDetail();
+    toast('<b>' + ids.length + '건</b>의 상태를 ' + STATUS[v] + ro(STATUS[v]) + ' 변경했습니다.', v === 'solved' ? 'ok' : 'brand');
+  });
+  $('#bulkAssign').addEventListener('change', e => {
+    const v = e.target.value; if(e.target.selectedIndex === 0) return; const ids = [...state.checked]; ids.forEach(id => setAssignee(id, v, {silent:true}));
+    state.checked.clear(); e.target.selectedIndex = 0; renderList(); renderDetail();
+    toast('<b>' + ids.length + '건</b>을 ' + (v || '미배정') + ro(v || '미배정') + ' 배정했습니다.', 'brand');
+  });
+  $('#bulkClear').addEventListener('click', () => { state.checked.clear(); renderList(); });
+
+  $('#pStatus').addEventListener('change', e => setStatus(state.selected, e.target.value));
+  $('#pPrio').addEventListener('change', e => setPrio(state.selected, e.target.value));
+  $('#pAssignee').addEventListener('change', e => setAssignee(state.selected, e.target.value));
+  $('#solveBtn').addEventListener('click', () => setStatus(state.selected, 'solved', {advance:true}));
+  $('#pendingBtn').addEventListener('click', () => setStatus(state.selected, 'pending', {advance:true}));
+  $('#backBtn').addEventListener('click', () => $('#app').classList.remove('show-detail'));
+  $('#custToggle').addEventListener('click', e => { const on = $('#detail').classList.toggle('cust-open'); e.currentTarget.setAttribute('aria-pressed', String(on)); });
+  $('#tagInput').addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ e.preventDefault(); const v = e.target.value.trim().replace(/^#/, ''); const t = byId(state.selected);
+      if(v && t && !t.tags.includes(v)){ t.tags.push(v); e.target.value=''; renderSide(); renderList(); renderDetail(); toast('<b>T-' + t.id + '</b>에 태그 ' + esc(v) + '을(를) 추가했습니다.', 'brand'); } }
+  });
+
+  $$('#compose [role=tab]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+  $('#compose').addEventListener('submit', e => { e.preventDefault(); sendReply(); });
+  $('#composeText').addEventListener('keydown', e => { if((e.metaKey || e.ctrlKey) && e.key === 'Enter'){ e.preventDefault(); sendReply(); } });
+  $('#macroSel').addEventListener('change', e => {
+    const m = MACROS.find(x => x.k === e.target.value); if(!m) return;
+    const ta = $('#composeText'); const cur = ta.value; ta.value = cur + (cur && !cur.endsWith('\n') ? '\n' : '') + m.text; e.target.value=''; ta.focus(); ta.selectionStart = ta.selectionEnd = ta.value.length;
+  });
+  $('#attBtn').addEventListener('click', () => $('#attInput').click());
+  $('#attInput').addEventListener('change', e => { state.attachments = state.attachments.concat(Array.from(e.target.files).slice(0, 3)); e.target.value=''; renderAtt(); });
+
+  $('#sideToggle').addEventListener('click', () => $('#app').classList.contains('side-open') ? closeSide() : openSide());
+  $('#sideBackdrop').addEventListener('click', closeSide);
+  const pops = [['#wsBtn', null], ['#bellBtn', '#bellPop'], ['#meBtn', '#mePop']];
+  pops.forEach(([b, p]) => $(b).addEventListener('click', e => {
+    e.stopPropagation();
+    if(!p){ toast('연결된 워크스페이스는 온다마켓 고객지원 하나입니다.', 'brand'); return; }
+    const pop = $(p), open = pop.hidden; closePops(); pop.hidden = !open; $(b).setAttribute('aria-expanded', String(open));
+  }));
+
+  document.addEventListener('keydown', e => {
+    const mod = e.metaKey || e.ctrlKey;
+    if(mod && (e.key === 'k' || e.key === 'K')){ e.preventDefault(); $('#cmdk').hidden ? openCmdk() : closeCmdk(); return; }
+    if(!$('#cmdk').hidden) return;
+    if(e.key === 'Escape'){
+      if(!$('#keys').hidden){ closeKeys(); return; }
+      if($('#app').classList.contains('side-open')){ closeSide(); return; }
+      closePops();
+      if(state.checked.size){ state.checked.clear(); renderList(); return; }
+      if(document.activeElement && document.activeElement.matches('input,textarea,select')){ document.activeElement.blur(); return; }
+      $('#app').classList.remove('show-detail'); return;
+    }
+    const el = e.target instanceof Element ? e.target : null;
+    const typing = !!el && (el.matches('input,textarea,select') || el.isContentEditable);
+    if(typing || mod || e.altKey) return;
+    switch(e.key){
+      case 'j': case 'J': case 'ArrowDown': e.preventDefault(); move(1); break;
+      case 'k': case 'K': case 'ArrowUp': e.preventDefault(); move(-1); break;
+      case 'Enter': if(state.selected){ $('#app').classList.add('show-detail'); } break;
+      case 'e': case 'E': if(state.selected) setStatus(state.selected, 'solved', {advance:true}); break;
+      case 'r': case 'R': e.preventDefault(); setMode('reply'); $('#app').classList.add('show-detail'); $('#composeText').focus(); break;
+      case 'x': case 'X': if(state.selected){ state.checked.has(state.selected) ? state.checked.delete(state.selected) : state.checked.add(state.selected); renderList(); } break;
+      case '/': e.preventDefault(); $('#q').focus(); $('#q').select(); break;
+      case '?': e.preventDefault(); $('#keys').hidden ? openKeys() : closeKeys(); break;
+    }
+  });
+}
+function closePops(){ $$('.pop').forEach(p => p.hidden = true); $$('[aria-haspopup="true"]').forEach(b => b.setAttribute('aria-expanded','false')); }
+
+init();
+})();
+</script>
+</body>
+</html>

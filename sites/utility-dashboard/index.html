@@ -1,0 +1,885 @@
+<!-- forblune-style: {"slug":"utility-dashboard","primaryStyle":"Utility","productType":"Dashboard","tone":"Neutral · Dense · Calm","secondary":"Product","accent":"Corporate","brand":"브루잉 OS — 매장 운영 대시보드","industry":"카페 체인 매장 운영 대시보드","coreMessage":"오늘 전 매장 상황을 한 화면에서 파악하고 이상 매장을 바로 찾게 한다","naming":"Utility / Dashboard / Neutral · Dense · Calm"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>브루잉 OS — 전체 매장 현황 · 2026-08-13</title>
+<meta name="description" content="온두커피 12개 매장의 오늘 매출, 주문, 대기 시간, 재고, 알림을 한 화면에서 확인하는 운영 대시보드.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --page:#f3f4f3; --card:#ffffff; --rule:#e2e5e2; --rule-2:#c9cecb; --hover:#f6f8f6;
+  --ink:#171a18; --ink-2:#454a47; --ink-3:#656b68; --ink-4:#9aa09c;
+  --brand:#1e5a3d; --brand-ink:#164a31; --brand-soft:#e6efe9;
+  --ok:#287a4d; --warn:#9a5b00; --err:#bf331a; --err-bg:#fbe5e0; --info:#2b5f9e;
+  --r:2px; --sb:224px; --top:48px; --fs:13px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"Pretendard Variable",Pretendard,system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;font-size:var(--fs);line-height:1.45;color:var(--ink);background:var(--page);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+[hidden]{display:none !important}
+.skip{position:absolute;left:8px;top:-40px;background:var(--ink);color:#fff;padding:6px 10px;z-index:100;border-radius:var(--r)}
+.skip:focus{top:8px}
+kbd{font-family:inherit;font-size:11px;color:var(--ink-3);border:1px solid var(--rule-2);border-radius:var(--r);padding:0 4px;line-height:16px;background:#fff}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--ink-3)}
+.small{font-size:12px}
+
+/* 앱 프레임 */
+.app{display:flex;min-height:100vh}
+.sb{width:var(--sb);flex:none;background:var(--card);border-right:1px solid var(--rule);position:sticky;top:0;height:100vh;display:flex;flex-direction:column}
+.sb-brand{display:flex;align-items:center;gap:10px;height:var(--top);padding:0 14px;border-bottom:1px solid var(--rule)}
+.sb-brand .mark{width:22px;height:22px;background:var(--brand);border-radius:var(--r);display:grid;place-items:center;flex:none}
+.sb-brand .mark svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round}
+.sb-brand strong{display:block;font-size:13px;font-weight:650;line-height:1.2}
+.sb-brand span{display:block;font-size:11px;color:var(--ink-3)}
+.sb nav{padding:8px;flex:1;overflow-y:auto}
+.sb nav ul{list-style:none}
+.sb nav a{display:flex;align-items:center;gap:10px;height:32px;padding:0 8px;border-radius:var(--r);color:var(--ink-2);font-weight:500}
+.sb nav a:hover{background:var(--hover);color:var(--ink)}
+.sb nav a.is-active{background:var(--brand-soft);color:var(--brand-ink)}
+.sb nav a .cnt{margin-left:auto;font-size:11px;color:var(--ink-3)}
+.sb nav a.is-active .cnt{color:var(--brand-ink)}
+.sb-group{font-size:11px;color:var(--ink-3);padding:12px 8px 4px;font-weight:500}
+.sb-foot{border-top:1px solid var(--rule);padding:10px 12px;display:flex;align-items:center;gap:8px}
+.sb-foot .who strong{display:block;font-size:12px;font-weight:600}
+.sb-foot .who span{display:block;font-size:11px;color:var(--ink-3)}
+.sb-foot .out{margin-left:auto;font-size:11px;color:var(--ink-3);text-decoration:underline;text-underline-offset:2px}
+.uchip{width:24px;height:24px;border-radius:var(--r);background:var(--brand-soft);color:var(--brand-ink);display:grid;place-items:center;font-size:11px;font-weight:600;flex:none}
+.sb-scrim{position:fixed;inset:0;background:rgba(23,26,24,.35);z-index:30}
+.frame{flex:1;min-width:0;display:flex;flex-direction:column}
+
+/* 상단 바 */
+.top{height:var(--top);background:var(--card);border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:12px;padding:0 16px;position:sticky;top:0;z-index:20}
+.icon-btn{width:30px;height:30px;display:grid;place-items:center;border-radius:var(--r);color:var(--ink-2);position:relative}
+.icon-btn:hover{background:var(--hover);color:var(--ink)}
+.icon-btn .cnt{position:absolute;top:2px;right:2px;min-width:14px;height:14px;padding:0 3px;font-size:10px;line-height:14px;text-align:center;background:var(--err);color:#fff;border-radius:var(--r);font-weight:600}
+.menu{display:none}
+.crumbs{font-size:13px;color:var(--ink-3);margin-right:auto}
+.crumbs span{margin:0 6px;color:var(--rule-2)}
+.crumbs strong{color:var(--ink);font-weight:600}
+.top-date{font-size:12px;color:var(--ink-3);white-space:nowrap}
+.search{display:flex;align-items:center;gap:8px;height:30px;padding:0 8px 0 10px;border:1px solid var(--rule);border-radius:var(--r);color:var(--ink-3);width:240px;background:var(--page)}
+.search:hover{border-color:var(--rule-2);color:var(--ink-2)}
+.search span{flex:1;text-align:left;font-size:12px}
+
+/* 메인 */
+main{padding:16px 20px 32px;max-width:1440px;width:100%}
+.page-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.page-head h1{font-size:16px;font-weight:650;margin-right:auto}
+.page-head .sub{font-size:12px;color:var(--ink-3);width:100%;margin-top:-6px}
+.btn{height:30px;padding:0 10px;border:1px solid var(--rule-2);border-radius:var(--r);background:var(--card);display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--ink-2);white-space:nowrap}
+.btn:hover{background:var(--hover);color:var(--ink);border-color:var(--ink-4)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-ink);border-color:var(--brand-ink)}
+.btn.sm{height:24px;padding:0 8px;font-size:11px}
+.btn.link{border-color:transparent;background:transparent;color:var(--brand-ink);text-decoration:underline;text-underline-offset:2px;padding:0 4px}
+.btn.link:hover{background:transparent;color:var(--brand)}
+select.ctl,input.ctl{height:30px;padding:0 8px;border:1px solid var(--rule-2);border-radius:var(--r);background:var(--card);font-size:12px;color:var(--ink)}
+select.ctl:hover{border-color:var(--ink-4)}
+input.ctl::placeholder{color:var(--ink-4)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
+.card-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--rule);min-height:44px;flex-wrap:wrap}
+.card-head h2{font-size:13px;font-weight:650;scroll-margin-top:64px}
+.card-head .desc{font-size:12px;color:var(--ink-3)}
+.card-head .right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card-body{padding:14px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.col-12{grid-column:span 12}.col-7{grid-column:span 7}.col-5{grid-column:span 5}.col-3{grid-column:span 3}
+
+/* KPI */
+.kpi{padding:12px 14px 10px;display:flex;flex-direction:column;gap:6px;min-height:118px}
+.kpi .lbl{font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;gap:8px}
+.kpi .val{font-size:22px;font-weight:650;letter-spacing:-.01em;line-height:1.1}
+.kpi .val small{font-size:13px;font-weight:500;color:var(--ink-3);margin-left:2px}
+.kpi .delta{font-size:12px;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.kpi .delta b{font-weight:600}
+.kpi .delta .muted{color:var(--ink-3)}
+.kpi .foot{font-size:11px;color:var(--ink-3);margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:8px}
+.kpi svg.spark{width:72px;height:22px;flex:none}
+.up{color:var(--ok)}.down{color:var(--err)}
+.kpi.kpi-flag .val{color:var(--err)}
+.kpi .split{display:flex;gap:10px;font-size:12px}
+.kpi .split span{display:inline-flex;align-items:center;gap:5px}
+
+/* 상태 마커 */
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;white-space:nowrap}
+.st i{width:8px;height:8px;border-radius:var(--r);flex:none;background:var(--ink-4)}
+.st-ok i{background:var(--ok)}.st-warn i{background:var(--warn)}.st-err i{background:var(--err)}.st-info i{background:var(--info)}
+.st-warn{color:var(--warn)}.st-err{color:var(--err)}
+
+/* 탭 */
+.tabs{display:inline-flex;border:1px solid var(--rule-2);border-radius:var(--r);overflow:hidden}
+.tabs button{height:26px;padding:0 10px;font-size:12px;color:var(--ink-3);border-right:1px solid var(--rule-2);background:var(--card)}
+.tabs button:last-child{border-right:0}
+.tabs button:hover{background:var(--hover);color:var(--ink)}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.tabs button[aria-pressed="true"]:hover{background:var(--ink)}
+.legend{display:flex;gap:14px;font-size:11px;color:var(--ink-3);flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:0;border-top:2px solid var(--brand);display:inline-block}
+.legend i.prev{border-top:1px dashed var(--ink-4)}
+.legend i.box{width:10px;height:10px;border:0;background:var(--brand);border-radius:var(--r)}
+.legend i.box.prev{background:#e4e7e5;border:1px solid var(--rule-2)}
+.legend i.box.part{background:repeating-linear-gradient(135deg,var(--brand) 0 2px,transparent 2px 4px)}
+
+/* 차트 */
+.trend-wrap{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:0}
+.chart{position:relative;min-height:220px;padding:14px 8px 8px 8px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:inherit;font-size:11px;fill:var(--ink-3)}
+.chart .grid-line{stroke:var(--rule);stroke-width:1}
+.chart .axis{stroke:var(--rule-2)}
+.chart .line-cur{fill:none;stroke:var(--brand);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.chart .line-cur.part{stroke-dasharray:3 3;stroke-width:1.5}
+.chart .line-prev{fill:none;stroke:var(--ink-4);stroke-width:1;stroke-dasharray:3 3}
+.chart .area{fill:var(--brand-soft);opacity:.55}
+.chart .pt{fill:#fff;stroke:var(--brand);stroke-width:2}
+.chart .pt.part{stroke-dasharray:2 1.5}
+.chart .guide{stroke:var(--ink-4);stroke-width:1;stroke-dasharray:2 2}
+.chart .hit,.chart .hit-col{pointer-events:all}
+.chart .hit{fill:transparent}
+.chart .bar-prev{fill:#e4e7e5;stroke:var(--rule-2);stroke-width:1}
+.chart .bar-cur{fill:var(--brand)}
+.chart .bar-cur.part{fill:url(#hatch)}
+.chart .hit-col{fill:transparent}
+.chart .hit-col:hover{fill:rgba(23,26,24,.04)}
+.tip{position:fixed;z-index:60;background:var(--ink);color:#fff;font-size:11px;line-height:1.4;padding:6px 8px;border-radius:var(--r);pointer-events:none;max-width:240px;white-space:nowrap}
+.tip b{font-weight:600}
+.tip .row{display:flex;justify-content:space-between;gap:12px}
+.tip .row + .row{margin-top:1px}
+.trend-sum{border-left:1px solid var(--rule);padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.trend-sum dl{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:12px}
+.trend-sum dt{color:var(--ink-3)}
+.trend-sum dd{text-align:right;font-weight:500}
+.trend-sum dd small{display:block;font-weight:400;color:var(--ink-3);font-size:11px}
+.trend-sum h3{font-size:12px;font-weight:600;color:var(--ink-2)}
+.trend-sum p{font-size:11px;color:var(--ink-3);margin-top:auto;line-height:1.5}
+
+/* 테이블 */
+.tbl-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.check{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);cursor:pointer;height:30px;padding:0 4px}
+.check input{width:14px;height:14px;accent-color:var(--brand);margin:0}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:960px}
+th,td{padding:0 12px;height:38px;border-bottom:1px solid var(--rule);text-align:left;white-space:nowrap;vertical-align:middle}
+th{font-size:11.5px;font-weight:600;color:var(--ink-3);background:var(--page);height:34px}
+th.r,td.r{text-align:right}
+th button{display:inline-flex;align-items:center;gap:4px;font-weight:600;color:inherit;height:100%;border-radius:var(--r);padding:0 2px}
+th button:hover{color:var(--ink)}
+th button svg{width:12px;height:12px;stroke-width:1.6;opacity:.45}
+th[aria-sort] button{color:var(--ink)}
+th[aria-sort] button svg{opacity:1}
+th[aria-sort="ascending"] button svg .dn,th[aria-sort="descending"] button svg .up{display:none}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--hover)}
+tbody tr.flag td:first-child{box-shadow:inset 2px 0 0 var(--err)}
+tbody tr.flag.warn td:first-child{box-shadow:inset 2px 0 0 var(--warn)}
+tbody tr.is-hl td{background:var(--brand-soft)}
+td .name{font-weight:600}
+td .meta{display:block;font-size:11px;color:var(--ink-3);font-weight:400;line-height:1.2;margin-top:1px}
+td.warn-t{color:var(--warn);font-weight:500}
+td.err-t{color:var(--err);font-weight:500}
+.stock{display:inline-flex;align-items:center;gap:8px;justify-content:flex-end}
+.stock .bar{width:56px;height:6px;background:var(--rule);border-radius:var(--r);overflow:hidden;display:inline-block}
+.stock .bar i{display:block;height:100%;background:var(--ok)}
+.stock.warn .bar i{background:var(--warn)}.stock.err .bar i{background:var(--err)}
+.stock.warn{color:var(--warn)}.stock.err{color:var(--err);font-weight:500}
+tfoot td{background:var(--page);font-weight:600;color:var(--ink-2);height:34px;font-size:12px}
+.tbl-foot{display:flex;align-items:center;gap:12px;padding:8px 14px;font-size:12px;color:var(--ink-3);border-top:1px solid var(--rule);flex-wrap:wrap}
+.tbl-foot .pg{margin-left:auto}
+.empty-row td{height:96px;text-align:center;color:var(--ink-3);white-space:normal}
+.empty-row td strong{display:block;color:var(--ink-2);font-weight:600;margin-bottom:2px}
+
+/* 알림 */
+.alerts .list{list-style:none;max-height:420px;overflow-y:auto}
+.alert{display:grid;grid-template-columns:44px 8px minmax(0,1fr);gap:0 10px;padding:10px 14px;border-bottom:1px solid var(--rule);align-items:start}
+.alert:last-child{border-bottom:0}
+.alert time{font-size:11px;color:var(--ink-3);padding-top:2px}
+.alert i.m{width:8px;height:8px;border-radius:var(--r);margin-top:5px;background:var(--ink-4)}
+.alert.err i.m{background:var(--err)}.alert.warn i.m{background:var(--warn)}.alert.info i.m{background:var(--info)}
+.alert .ttl{font-size:12.5px;font-weight:600;line-height:1.35}
+.alert .ttl .store{color:var(--ink-3);font-weight:500;margin-right:6px}
+.alert .ttl .store button{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px;font-weight:500}
+.alert .ttl .store button:hover{color:var(--brand-ink)}
+.alert .body{font-size:12px;color:var(--ink-2);margin-top:2px;line-height:1.5}
+.alert .acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.alert.done{opacity:.72}
+.alert.done .ttl{font-weight:500}
+.alert .done-note{font-size:11px;color:var(--ok);margin-top:4px}
+.alerts .empty{padding:32px 14px;text-align:center;color:var(--ink-3);font-size:12px}
+.sev{display:flex;gap:10px;font-size:11px;color:var(--ink-3)}
+.sev span{display:inline-flex;align-items:center;gap:5px}
+.sev i{width:8px;height:8px;border-radius:var(--r);display:inline-block}
+
+/* 스켈레톤·빈 상태 */
+.sk{display:flex;flex-direction:column;gap:0}
+.sk-row{display:grid;grid-template-columns:2fr 1.4fr .8fr .8fr;gap:16px;height:38px;align-items:center;border-bottom:1px solid var(--rule);padding:0 14px}
+.sk-row:last-child{border-bottom:0}
+.sk-row i{display:block;height:10px;background:#e8eae8;border-radius:var(--r)}
+.sk-row i.short{width:60%}
+.sk-note{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:12px;color:var(--ink-3);border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.sk-note .st{color:var(--warn)}
+.empty{padding:36px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.empty svg{width:36px;height:36px;stroke:var(--ink-4);fill:none;stroke-width:1.2;margin-bottom:6px}
+.empty strong{font-size:13px;font-weight:600;color:var(--ink-2)}
+.empty p{font-size:12px;color:var(--ink-3);max-width:320px;line-height:1.55}
+.empty .acts{display:flex;gap:8px;margin-top:8px}
+.rv-stats{display:flex;border-top:1px solid var(--rule)}
+.rv-stats div{flex:1;padding:10px 14px;font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+.rv-stats div:last-child{border-right:0}
+.rv-stats b{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.rv-stats b small{font-size:11px;font-weight:400}
+@media (max-width:420px){.rv-stats{flex-wrap:wrap}.rv-stats div{flex:1 1 50%;border-bottom:1px solid var(--rule)}.rv-stats div:nth-child(2n){border-right:0}.rv-stats div:nth-child(n+3){border-bottom:0}}
+.mini{width:100%;border-collapse:collapse;font-size:12px}
+.mini th,.mini td{height:34px;padding:0 14px}
+.mini th{background:var(--page)}
+.mini td.r,.mini th.r{text-align:right}
+.tag{display:inline-block;font-size:11px;padding:1px 5px;border-radius:var(--r);background:var(--err-bg);color:var(--err);font-weight:600;margin-left:6px}
+.card-foot{padding:8px 14px;border-top:1px solid var(--rule);display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-3);flex-wrap:wrap}
+.card-foot .right{margin-left:auto}
+
+/* 푸터 */
+.foot{margin-top:20px;padding-top:12px;border-top:1px solid var(--rule);display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--ink-3)}
+.foot span + span::before{content:"·";margin-right:16px;color:var(--rule-2)}
+.foot .ver{margin-left:auto}
+.foot .ver::before{content:none}
+
+/* 드로어·팔레트·토스트 */
+.scrim{position:fixed;inset:0;background:rgba(23,26,24,.35);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:var(--card);border-left:1px solid var(--rule);z-index:50;display:flex;flex-direction:column;overflow-y:auto}
+.drawer .d-head{padding:14px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:10px}
+.drawer h2{font-size:15px;font-weight:650;line-height:1.2}
+.drawer .d-head .meta{font-size:12px;color:var(--ink-3);margin-top:3px}
+.drawer .d-head .icon-btn{margin-left:auto}
+.drawer section{padding:12px 16px;border-bottom:1px solid var(--rule)}
+.drawer h3{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-bottom:8px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.facts div{background:var(--card);padding:8px 10px}
+.facts span{display:block;font-size:11px;color:var(--ink-3)}
+.facts b{display:block;font-size:14px;font-weight:600;margin-top:1px}
+.facts b small{font-size:11px;font-weight:400;color:var(--ink-3);margin-left:4px}
+.d-info{display:grid;grid-template-columns:64px 1fr;gap:6px 10px;font-size:12px}
+.d-info dt{color:var(--ink-3)}
+.d-info dd a{text-decoration:underline;text-underline-offset:2px}
+.d-alerts{list-style:none;font-size:12px}
+.d-alerts li{display:flex;gap:8px;padding:5px 0;align-items:baseline}
+.d-alerts li i{width:8px;height:8px;border-radius:var(--r);flex:none;transform:translateY(-1px)}
+.d-alerts time{color:var(--ink-3);flex:none}
+.d-note{font-size:12px;color:var(--ink-2);background:var(--page);padding:10px;border-radius:var(--r);line-height:1.5}
+.drawer .d-acts{padding:12px 16px;display:flex;gap:8px;margin-top:auto}
+.palette{position:fixed;left:50%;top:80px;transform:translateX(-50%);width:520px;max-width:calc(100vw - 24px);background:var(--card);border:1px solid var(--rule-2);border-radius:var(--r);z-index:50;box-shadow:0 8px 24px rgba(23,26,24,.12)}
+.palette .p-in{display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:1px solid var(--rule);height:44px}
+.palette input{flex:1;height:100%;border:0;background:transparent;font-size:14px;outline:none}
+.palette ul{list-style:none;max-height:360px;overflow-y:auto;padding:6px 0}
+.palette li button{width:100%;text-align:left;display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;font-size:13px}
+.palette li button:hover,.palette li button.is-cur{background:var(--hover)}
+.palette li button .k{margin-left:auto;font-size:11px;color:var(--ink-3)}
+.palette .grp{font-size:11px;color:var(--ink-3);padding:6px 12px 2px;font-weight:500}
+.palette .none{padding:20px 12px;font-size:12px;color:var(--ink-3)}
+.palette .p-foot{border-top:1px solid var(--rule);padding:6px 12px;font-size:11px;color:var(--ink-3);display:flex;gap:12px}
+.toast{position:fixed;left:16px;bottom:16px;z-index:70;background:var(--ink);color:#fff;font-size:12px;padding:8px 12px;border-radius:var(--r);max-width:360px;line-height:1.45}
+
+/* 반응형 */
+@media (max-width:1199px){
+  :root{--sb:56px}
+  .sb-brand{padding:0;justify-content:center}
+  .sb-brand div,.sb nav a span,.sb nav a .cnt,.sb-group,.sb-foot .who,.sb-foot .out{display:none}
+  .sb nav a{justify-content:center;padding:0}
+  .sb-foot{justify-content:center;padding:10px 0}
+  .col-3{grid-column:span 6}
+  .col-7,.col-5{grid-column:span 12}
+  .trend-wrap{grid-template-columns:1fr}
+  .trend-sum{border-left:0;border-top:1px solid var(--rule)}
+  .trend-sum dl{grid-template-columns:auto 1fr auto 1fr;gap:4px 12px}
+  .trend-sum dd{text-align:left}
+  .top-date{display:none}
+  .search{width:auto}
+  .search span{display:none}
+}
+@media (max-width:767px){
+  .sb{position:fixed;left:0;top:0;z-index:35;transform:translateX(-100%);width:224px}
+  .app.sb-open .sb{transform:none}
+  .app.sb-open .sb-brand{padding:0 14px;justify-content:flex-start}
+  .app.sb-open .sb-brand div,.app.sb-open .sb nav a span,.app.sb-open .sb nav a .cnt,.app.sb-open .sb-group,.app.sb-open .sb-foot .who,.app.sb-open .sb-foot .out{display:block}
+  .app.sb-open .sb nav a{justify-content:flex-start;padding:0 8px}
+  .app.sb-open .sb-foot{justify-content:flex-start;padding:10px 12px}
+  .menu{display:grid}
+  .crumbs{display:none}
+  .menu{margin-right:auto}
+  main{padding:12px 12px 24px}
+  .col-3{grid-column:span 6}
+  .kpi .val{font-size:19px}
+  .kpi svg.spark{display:none}
+  .trend-sum dl{grid-template-columns:auto 1fr}
+  .page-head h1{font-size:15px}
+  .drawer{width:100vw}
+  .alert{grid-template-columns:40px 8px minmax(0,1fr)}
+  .toast{right:16px;max-width:none}
+}
+@media (max-width:420px){
+  .kpi{min-height:0}
+  .kpi .split{flex-direction:column;gap:2px}
+  .search{padding:0 7px}
+  .search kbd{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;scroll-behavior:auto !important}}
+@media print{.sb,.top,.foot .ver{display:none}main{padding:0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="app" id="app">
+
+<aside class="sb" id="sidebar" aria-label="주 메뉴">
+  <div class="sb-brand">
+    <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 8h11v6a5 5 0 01-5 5H10a5 5 0 01-5-5zM16 10h2a2 2 0 010 4h-2M4 21h14"/></svg></span>
+    <div><strong>브루잉 OS</strong><span>온두커피 본사 · 12개 매장</span></div>
+  </div>
+  <nav>
+    <ul>
+      <li><a class="is-active" aria-current="page" href="#main"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>대시보드</span></a></li>
+      <li><a href="#" data-nav="매장 관리"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></svg><span>매장</span><span class="cnt">12</span></a></li>
+      <li><a href="#" data-nav="주문 조회"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 21zM9 8h6M9 12h6"/></svg><span>주문</span></a></li>
+      <li><a href="#" data-nav="재고·발주"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4-9-4zM3 8v8l9 4 9-4V8M12 12v8"/></svg><span>재고·발주</span><span class="cnt">2</span></a></li>
+      <li><a href="#" data-nav="근무·인력"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3 3 0 010 6M17 14.2c2.4.5 4 2.5 4 5.8"/></svg><span>근무·인력</span></a></li>
+      <li><a href="#" data-nav="리뷰"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>리뷰</span></a></li>
+      <li><a href="#" data-nav="정산"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13"/><path d="M3 10h18M7 15h4"/></svg><span>정산</span></a></li>
+    </ul>
+    <div class="sb-group">시스템</div>
+    <ul>
+      <li><a href="#" data-nav="설정"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span>설정</span></a></li>
+    </ul>
+  </nav>
+  <div class="sb-foot">
+    <span class="uchip" aria-hidden="true">김</span>
+    <div class="who"><strong>김서연</strong><span>운영팀장 · 본사</span></div>
+    <button class="out" type="button" data-nav="로그아웃">로그아웃</button>
+  </div>
+</aside>
+<div class="sb-scrim" id="sbScrim" hidden></div>
+
+<div class="frame">
+  <header class="top">
+    <button class="icon-btn menu" type="button" id="menuBtn" aria-controls="sidebar" aria-expanded="false" aria-label="메뉴 열기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav class="crumbs" aria-label="현재 위치">운영 현황<span>/</span><strong>전체 매장</strong></nav>
+    <div class="top-date">2026년 8월 13일 (목) · <span id="asOf">14:32</span> 동기화</div>
+    <button class="search" type="button" id="openPalette" aria-haspopup="dialog"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><span>매장·화면 검색</span><kbd>Ctrl K</kbd></button>
+    <button class="icon-btn" type="button" id="bellBtn" aria-label="미처리 알림 7건"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16v-5a6 6 0 0112 0v5l1.5 2h-15zM10 20a2 2 0 004 0"/></svg><span class="cnt" id="bellCnt">7</span></button>
+    <button class="icon-btn" type="button" data-nav="도움말·단축키" aria-label="도움말과 단축키"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg></button>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <h1>전체 매장 현황</h1>
+      <label class="small muted" for="regionSel">지역</label>
+      <select class="ctl" id="regionSel"><option value="all">전체 (12)</option><option value="서울">서울 (9)</option><option value="경기">경기 (2)</option><option value="인천">인천 (1)</option></select>
+      <button class="btn" type="button" id="refreshBtn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0113.7-5.7L20 8M20 3v5h-5M20 12a8 8 0 01-13.7 5.7L4 16M4 21v-5h5"/></svg>새로고침</button>
+      <button class="btn" type="button" id="csvBtn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>CSV 내보내기</button>
+      <p class="sub">오늘 14:30까지 집계. 비교 기준은 전주 동요일(8월 6일 목) 같은 시각. POS 동기화 주기 60초.</p>
+    </div>
+
+    <section class="grid" aria-label="핵심 지표" style="margin-bottom:12px">
+      <article class="card kpi col-3">
+        <div class="lbl"><span>오늘 매출 누계</span><span>14:30 기준</span></div>
+        <div class="val">₩18,462,300</div>
+        <div class="delta"><b class="down">−1.5%</b><span class="muted">전주 목 동시간 −289,500</span></div>
+        <div class="foot"><span>이상 4개 매장 제외 시 <b class="up">+5.0%</b></span><svg class="spark" data-spark="19010,15120,13240,17590,17860,18220,18462" aria-label="최근 7일 같은 시각 매출 추이"></svg></div>
+      </article>
+      <article class="card kpi col-3">
+        <div class="lbl"><span>주문 건수</span><span>14:30 기준</span></div>
+        <div class="val">3,294<small>건</small></div>
+        <div class="delta"><b class="down">−2.0%</b><span class="muted">전주 목 동시간 −66건</span></div>
+        <div class="foot"><span>시간당 최고 12시대 612건</span><svg class="spark" data-spark="3390,2710,2380,3140,3190,3250,3294" aria-label="최근 7일 같은 시각 주문 추이"></svg></div>
+      </article>
+      <article class="card kpi col-3">
+        <div class="lbl"><span>객단가</span><span>매출 ÷ 주문</span></div>
+        <div class="val">₩5,605</div>
+        <div class="delta"><b class="up">+0.4%</b><span class="muted">전주 목 동시간 +24원</span></div>
+        <div class="foot"><span>세트 주문 비중 31%</span><svg class="spark" data-spark="5608,5580,5563,5602,5599,5606,5605" aria-label="최근 7일 객단가 추이"></svg></div>
+      </article>
+      <article class="card kpi kpi-flag col-3">
+        <div class="lbl"><span>이상 매장</span><span>실시간</span></div>
+        <div class="val">4<small>/ 12</small></div>
+        <div class="split"><span class="st st-err"><i></i>오류 1</span><span class="st st-warn"><i></i>주의 3</span></div>
+        <div class="foot"><span>전일 동시간 1개 · 미처리 알림 <b id="kpiAlerts">7</b>건</span><button class="btn sm" type="button" id="kpiFlagBtn">이상 매장만 보기</button></div>
+      </article>
+    </section>
+
+    <section class="card" aria-labelledby="trendTitle" style="margin-bottom:12px">
+      <div class="card-head">
+        <h2 id="trendTitle">매출 추이</h2>
+        <span class="desc" id="trendDesc">전 매장 합계 · 일별 · 오늘은 14:30까지 집계</span>
+        <div class="right">
+          <div class="legend"><span><i></i>이번 기간</span><span><i class="prev"></i><span id="legendPrev">전주 동요일</span></span></div>
+          <div class="tabs" role="group" aria-label="기간">
+            <button type="button" aria-pressed="true" data-range="7">7일</button>
+            <button type="button" aria-pressed="false" data-range="30">30일</button>
+          </div>
+        </div>
+      </div>
+      <div class="trend-wrap">
+        <div class="chart" id="trendChart" role="img" aria-label="최근 7일 일별 매출 선 그래프"></div>
+        <aside class="trend-sum" aria-label="기간 요약">
+          <h3 id="sumTitle">최근 7일 요약</h3>
+          <dl id="sumList"></dl>
+          <p id="sumNote"></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="storesTitle" style="margin-bottom:12px">
+      <div class="card-head">
+        <h2 id="storesTitle">매장별 현황</h2>
+        <span class="desc">12개 매장 · 14:30 기준 · 기본 정렬 상태순(오류·주의 먼저)</span>
+        <div class="right tbl-tools">
+          <input class="ctl" type="search" id="storeSearch" placeholder="매장명·점장 검색" aria-label="매장 검색" style="width:170px">
+          <label class="check"><input type="checkbox" id="flagOnly"> 이상 매장만</label>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <table id="storeTable">
+          <thead>
+            <tr>
+              <th scope="col"><button type="button" data-sort="name">매장 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col"><button type="button" data-sort="status">상태 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col" class="r"><button type="button" data-sort="sales">오늘 매출 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col" class="r"><button type="button" data-sort="delta">전주 동요일 대비 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col" class="r"><button type="button" data-sort="orders">주문 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col" class="r"><button type="button" data-sort="aov">객단가 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col" class="r"><button type="button" data-sort="wait">평균 대기 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col" class="r"><button type="button" data-sort="stock">원두 재고 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col" class="r"><button type="button" data-sort="sync">동기화 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path class="up" d="M8 10l4-4 4 4"/><path class="dn" d="M8 14l4 4 4-4"/></svg></button></th>
+              <th scope="col"><span class="small">상세</span></th>
+            </tr>
+          </thead>
+          <tbody id="storeBody"></tbody>
+          <tfoot><tr id="storeFoot"></tr></tfoot>
+        </table>
+      </div>
+      <div class="tbl-foot">
+        <span id="tblCount"></span>
+        <span>대기 기준 6분 · 재고 기준 2일분</span>
+        <span class="pg">한 페이지에 전체 표시</span>
+      </div>
+    </section>
+
+    <div class="grid" style="margin-bottom:12px">
+      <section class="card alerts col-5" aria-labelledby="alertsTitle">
+        <div class="card-head">
+          <h2 id="alertsTitle">알림</h2>
+          <div class="tabs" role="group" aria-label="알림 상태">
+            <button type="button" aria-pressed="true" aria-controls="alertList" data-atab="open">미처리 <span id="openCnt">7</span></button>
+            <button type="button" aria-pressed="false" aria-controls="alertList" data-atab="done">처리됨 <span id="doneCnt">1</span></button>
+          </div>
+          <div class="right sev"><span><i style="background:var(--err)"></i>오류</span><span><i style="background:var(--warn)"></i>주의</span><span><i style="background:var(--info)"></i>정보</span></div>
+        </div>
+        <ul class="list" id="alertList"></ul>
+        <div class="card-foot"><span>알림 규칙 14개 활성 · 오늘 발생 8건</span><button class="btn link sm right" type="button" data-nav="알림 규칙 설정">규칙 편집</button></div>
+      </section>
+
+      <section class="card col-7" aria-labelledby="hourTitle">
+        <div class="card-head">
+          <h2 id="hourTitle">시간대별 매출</h2>
+          <span class="desc">07–22시 · 천원 단위 반올림</span>
+          <div class="right">
+            <div class="legend"><span><i class="box"></i>오늘</span><span><i class="box prev"></i>전주 목</span><span><i class="box part"></i>14시 집계 중</span></div>
+            <label class="small muted" for="hourStore">매장</label>
+            <select class="ctl" id="hourStore">
+              <option value="all">전체 매장</option>
+              <option value="gangnam">강남역점</option>
+              <option value="seongsu">성수점</option>
+              <option value="guro">구로디지털단지점</option>
+            </select>
+          </div>
+        </div>
+        <div class="chart" id="hourChart" role="img" aria-label="시간대별 매출 막대 그래프, 오늘과 전주 목요일 비교"></div>
+        <div class="card-foot" id="hourNote"></div>
+      </section>
+    </div>
+
+    <div class="grid">
+      <section class="card col-7" aria-labelledby="orderTitle">
+        <div class="card-head">
+          <h2 id="orderTitle">발주 제안</h2>
+          <span class="desc">원두·부자재 · 잔여 3일분 미만</span>
+          <div class="right"><button class="btn sm" type="button" id="loadOrders">지금 계산</button></div>
+        </div>
+        <div id="orderBox">
+          <div class="sk-note"><span class="st st-warn"><i></i>집계 중</span><span>마곡나루점 재고 응답 대기 (14:12 이후 미수신). 11개 매장 데이터로 먼저 계산할 수 있습니다.</span></div>
+          <div class="sk" aria-busy="true" aria-label="발주 제안 불러오는 중">
+            <div class="sk-row"><i></i><i class="short"></i><i></i><i></i></div>
+            <div class="sk-row"><i class="short"></i><i></i><i></i><i class="short"></i></div>
+            <div class="sk-row"><i></i><i class="short"></i><i></i><i></i></div>
+            <div class="sk-row"><i class="short"></i><i></i><i class="short"></i><i></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card col-5" aria-labelledby="rvTitle">
+        <div class="card-head">
+          <h2 id="rvTitle">고객 리뷰</h2>
+          <span class="desc">네이버·카카오맵 · 오늘</span>
+        </div>
+        <div class="empty">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10h22v14H16l-6 5v-5H8z"/><path d="M34 20h6v14h-2v5l-6-5H20v-4"/></svg>
+          <strong>오늘 수집된 신규 리뷰가 없습니다</strong>
+          <p>리뷰는 매시 정각에 수집됩니다. 다음 수집은 15:00, 수집 후 이 영역에 매장별로 표시됩니다.</p>
+          <div class="acts"><button class="btn sm" type="button" data-nav="리뷰 · 최근 7일">최근 7일 리뷰 보기</button><button class="btn sm link" type="button" data-nav="리뷰 수집 설정">수집 설정</button></div>
+        </div>
+        <div class="rv-stats">
+          <div>최근 7일<b>84건</b></div>
+          <div>평균 별점<b>4.6</b></div>
+          <div>3점 이하<b>5건 <small class="muted">구로 3</small></b></div>
+          <div>미답변<b>3건 <small class="muted">48시간 초과 1</small></b></div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="foot">
+      <span>데이터 기준 2026-08-13 <span id="asOf2">14:32</span></span>
+      <span>POS 동기화 60초 · 재고 5분 · 리뷰 60분</span>
+      <span>㈜온두에프앤비 운영지원팀 내선 4021</span>
+      <span class="ver">브루잉 OS v3.8.2</span>
+    </footer>
+  </main>
+</div>
+</div>
+
+<div class="scrim" id="drawerScrim" hidden></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+  <div class="d-head">
+    <div><h2 id="drawerTitle"></h2><div class="meta" id="drawerMeta"></div></div>
+    <button class="icon-btn" type="button" id="drawerClose" aria-label="닫기"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <section><h3>오늘 14:30 기준</h3><div class="facts" id="drawerFacts"></div></section>
+  <section id="drawerNoteWrap"><h3>현재 상태</h3><div class="d-note" id="drawerNote"></div></section>
+  <section><h3>관련 알림</h3><ul class="d-alerts" id="drawerAlerts"></ul></section>
+  <section><h3>매장 정보</h3><dl class="d-info" id="drawerInfo"></dl></section>
+  <div class="d-acts">
+    <button class="btn primary" type="button" id="drawerGo">매장 상세 화면</button>
+    <a class="btn" id="drawerCall" href="tel:">매장 통화</a>
+    <button class="btn" type="button" data-close-drawer>닫기</button>
+  </div>
+</div>
+
+<div class="scrim" id="palScrim" hidden></div>
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="매장·화면 검색" hidden>
+  <div class="p-in"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><input type="text" id="palInput" placeholder="매장명, 점장, 화면 이름" autocomplete="off" aria-label="검색어"><kbd>Esc</kbd></div>
+  <ul id="palList" role="listbox"></ul>
+  <div class="p-foot"><span>↑↓ 이동</span><span>Enter 열기</span><span>Esc 닫기</span></div>
+</div>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+'use strict';
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const fmtWon=n=>'₩'+Math.round(n).toLocaleString('ko-KR');
+const fmtNum=n=>Math.round(n).toLocaleString('ko-KR');
+const fmtMan=k=>{const m=Math.round(k/10);if(m>=10000){const eok=Math.floor(m/10000),rest=m%10000;return eok+'억'+(rest?' '+rest.toLocaleString('ko-KR')+'만':'')+'원';}return m.toLocaleString('ko-KR')+'만원';};
+const pct=(a,b)=>b?((a-b)/b*100):0;
+const fmtPct=v=>(v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(1)+'%';
+
+/* ---------- 데이터 ---------- */
+const STORES=[
+ {id:'gangnam',name:'강남역점',area:'오피스·유동',region:'서울',mgr:'박지훈',tel:'02-538-2201',addr:'서울 강남구 강남대로 396, 1층',hours:'07:00–22:00',sales:2384500,prev:2251000,orders:402,wait:4.2,stock:6.1,sync:'14:31',syncState:'ok',status:'ok'},
+ {id:'pangyo',name:'판교테크노밸리점',area:'오피스',region:'경기',mgr:'이수민',tel:'031-706-3384',addr:'경기 성남시 분당구 판교역로 235, 1층',hours:'07:00–21:00',sales:2215000,prev:2060700,orders:388,wait:5.8,stock:4.3,sync:'14:31',syncState:'ok',status:'ok'},
+ {id:'yeouido',name:'여의도IFC점',area:'오피스',region:'서울',mgr:'최민재',tel:'02-782-5610',addr:'서울 영등포구 국제금융로 10, 지하 1층',hours:'07:00–21:00',sales:2102300,prev:1998400,orders:361,wait:3.9,stock:5.5,sync:'14:30',syncState:'ok',status:'ok'},
+ {id:'seongsu',name:'성수점',area:'유동·관광',region:'서울',mgr:'정하은',tel:'02-467-1129',addr:'서울 성동구 연무장길 41, 1층',hours:'08:00–22:00',sales:1214800,prev:1742600,orders:231,wait:null,stock:3.8,sync:'13:34',syncState:'off',status:'err',note:'POS 2번 단말이 13:34부터 오프라인입니다. 1번 단말은 정상 결제 중이나 대기 시간 집계가 중단되어 있고, 오프라인 구간 매출은 복구 후 일괄 반영됩니다. 점장 통화 시도 14:07 (미응답), 14:20 (통화 완료 · 재부팅 진행 중).'},
+ {id:'hongdae',name:'홍대입구점',area:'유동',region:'서울',mgr:'김도윤',tel:'02-336-7742',addr:'서울 마포구 양화로 160, 1층',hours:'08:00–23:00',sales:1563200,prev:1489900,orders:297,wait:6.4,stock:0.8,sync:'14:31',syncState:'ok',status:'warn',note:'하우스 블렌드 원두 잔여 0.8일분. 매출은 정상이며 내일 10시경 소진 예상. 물류센터 마감 16:00 전 발주 시 내일 07:30 입고됩니다.'},
+ {id:'jamsil',name:'잠실롯데월드몰점',area:'쇼핑몰',region:'서울',mgr:'오세린',tel:'02-3213-4408',addr:'서울 송파구 올림픽로 300, 지하 1층',hours:'10:30–22:00',sales:1921700,prev:1833000,orders:322,wait:7.1,stock:4.9,sync:'14:31',syncState:'ok',status:'ok'},
+ {id:'gwanghwamun',name:'광화문점',area:'오피스',region:'서울',mgr:'한지우',tel:'02-737-0918',addr:'서울 종로구 세종대로 175, 1층',hours:'07:00–21:00',sales:1876400,prev:1802300,orders:319,wait:4.5,stock:5.2,sync:'14:31',syncState:'ok',status:'ok'},
+ {id:'bundang',name:'분당서현점',area:'주거·역세권',region:'경기',mgr:'윤서준',tel:'031-708-2265',addr:'경기 성남시 분당구 황새울로 335, 1층',hours:'08:00–22:00',sales:1190600,prev:1148200,orders:214,wait:3.1,stock:6.8,sync:'14:30',syncState:'ok',status:'ok'},
+ {id:'songdo',name:'송도센트럴파크점',area:'주거·관광',region:'인천',mgr:'서예린',tel:'032-851-9037',addr:'인천 연수구 컨벤시아대로 165, 1층',hours:'08:00–22:00',sales:1042300,prev:1006900,orders:189,wait:3.6,stock:5.9,sync:'14:31',syncState:'ok',status:'ok'},
+ {id:'guro',name:'구로디지털단지점',area:'오피스',region:'서울',mgr:'임태양',tel:'02-864-5521',addr:'서울 구로구 디지털로 300, 1층',hours:'07:00–21:00',sales:1308900,prev:1596700,orders:246,wait:9.8,stock:5.1,sync:'14:31',syncState:'ok',status:'warn',note:'에스프레소 머신 2번 압력 이상으로 1대만 운영 중. 12시 이후 평균 대기 9.8분으로 기준(6분)을 넘었고 매출은 전주 대비 −18.0%. 서비스 접수 SV-26081, 기사 방문 15:30 예정.'},
+ {id:'sinchon',name:'신촌점',area:'대학가',region:'서울',mgr:'조아라',tel:'02-393-6174',addr:'서울 서대문구 연세로 12, 2층',hours:'08:00–22:00',sales:823400,prev:811700,orders:171,wait:2.8,stock:7.4,sync:'14:31',syncState:'ok',status:'ok'},
+ {id:'magok',name:'마곡나루점',area:'오피스·주거',region:'서울',mgr:'강민호',tel:'02-2668-8103',addr:'서울 강서구 마곡중앙로 161, 1층',hours:'07:30–21:30',sales:819200,prev:1010400,orders:154,wait:3.4,stock:4.6,sync:'14:12',syncState:'late',status:'warn',note:'매출 동기화가 14:12 이후 지연되고 있습니다(15분). 지연 구간 매출이 빠져 있어 전주 대비 수치(−18.9%)는 실제보다 낮게 표시될 수 있습니다. 네트워크 점검 요청 자동 발송 14:27.'}
+];
+const STATUS_ORDER={err:0,warn:1,ok:2};
+const STATUS_LABEL={ok:'정상',warn:'주의',err:'오류'};
+const byId=id=>STORES.find(s=>s.id===id);
+
+const ALERTS=[
+ {id:1,t:'14:27',lvl:'warn',store:'magok',title:'매출 동기화 15분 지연',body:'마지막 수신 14:12. 네트워크 점검 요청을 자동 발송했습니다. 지연 구간 매출은 집계에서 빠져 있을 수 있습니다.',acts:['ack']},
+ {id:2,t:'14:05',lvl:'err',store:'seongsu',title:'POS 2번 단말 오프라인 31분',body:'13:34 이후 결제 집계 없음. 1번 단말은 정상. 점장 통화 14:20 — 단말 재부팅 진행 중.',acts:['call','ack']},
+ {id:3,t:'13:52',lvl:'warn',store:'hongdae',title:'하우스 블렌드 원두 0.8일분',body:'내일 10시경 소진 예상. 물류센터 마감 16:00 전 발주 시 내일 07:30 입고.',acts:['order','ack']},
+ {id:4,t:'13:40',lvl:'warn',store:'guro',title:'에스프레소 머신 2번 압력 이상',body:'1대로 운영 중. 12시 이후 평균 대기 9.8분(기준 6분). 서비스 접수 SV-26081, 기사 방문 15:30 예정.',acts:['ack']},
+ {id:5,t:'12:48',lvl:'info',store:'jamsil',title:'12시대 주문 118건, 8월 최고',body:'평균 대기 7.1분. 오후 인력 1명 추가 배치를 점장이 요청했습니다.',acts:['ack']},
+ {id:6,t:'11:30',lvl:'info',store:null,title:'신메뉴 흑임자 크림 라떼 오전 412잔',body:'전 매장 합계. 오전 목표 350잔 대비 118%. 판교·여의도 두 매장 비중 41%.',acts:['ack']},
+ {id:7,t:'09:15',lvl:'warn',store:'pangyo',title:'오전 근무자 지각 처리',body:'09:00 배정 근무자 09:15 출근. 근무표에 반영됨. 사유: 신분당선 지연.',acts:['ack']},
+ {id:8,t:'08:12',lvl:'err',store:'sinchon',title:'냉장 쇼케이스 온도 9.2°C',body:'기준 5°C 초과. 문 밀폐 불량 조치 후 08:40 4.1°C로 복귀.',acts:[],done:true,doneAt:'08:40 조아라'}
+];
+
+const TREND={
+ '7':{title:'최근 7일 요약',legend:'전주 동요일',labels:['8/7 금','8/8 토','8/9 일','8/10 월','8/11 화','8/12 수','8/13 목'],
+      cur:[34620,27460,23900,31980,32470,33120,18462],prev:[37140,27880,23640,33010,32540,32880,33150],partial:6},
+ '30':{title:'최근 30일 요약',legend:'4주 전 동요일',labels:['7/15 수','7/16 목','7/17 금','7/18 토','7/19 일','7/20 월','7/21 화','7/22 수','7/23 목','7/24 금','7/25 토','7/26 일','7/27 월','7/28 화','7/29 수','7/30 목','7/31 금','8/1 토','8/2 일','8/3 월','8/4 화','8/5 수','8/6 목','8/7 금','8/8 토','8/9 일','8/10 월','8/11 화','8/12 수','8/13 목'],
+      cur:[34120,34860,36240,26310,22480,33150,33920,34410,35080,36770,27020,23110,28740,33480,34950,35210,37140,27880,23640,33010,32540,32880,33150,34620,27460,23900,31980,32470,33120,18462],
+      prev:[33960,34220,35870,26140,22310,32540,33120,33780,34410,36020,26530,22760,33050,33690,34180,34730,36410,26900,23010,33270,33840,34290,34900,36650,27180,22930,33420,33960,34120,34860],partial:29}
+};
+const HOURS=['07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22'];
+const HOURLY={
+ all:{name:'전체 매장',cur:[980,3260,2610,1720,1890,3640,2980,1382],prev:[1010,3300,2540,1780,1960,3900,3090,2340,2180,1890,1760,1880,1970,1480,1290,780]},
+ gangnam:{name:'강남역점',cur:[130,470,360,210,240,480,340,155],prev:[135,445,345,205,235,420,320,300,265,230,220,260,270,210,165,95]},
+ seongsu:{name:'성수점',cur:[60,210,190,150,175,260,170,0],prev:[85,300,260,170,190,330,258,300,290,250,220,240,230,180,130,70],note:'13:34 이후 POS 2번 오프라인 — 14시대는 1번 단말 결제만 반영 예정'},
+ guro:{name:'구로디지털단지점',cur:[95,310,210,120,130,240,140,64],prev:[100,340,250,150,170,330,177,160,140,120,130,150,110,110,0,0],note:'12시 이후 머신 1대 운영 — 12·13시대가 전주 대비 각각 −27%, −21%'}
+};
+const PALETTE_PAGES=[['재고·발주','재고·발주 화면'],['근무표','근무·인력 화면'],['일 정산 리포트','정산 화면'],['알림 규칙','설정 · 알림 규칙']];
+
+/* ---------- 공용 UI ---------- */
+let toastTimer;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{t.hidden=true;},3200);}
+$$('[data-nav]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();const n=el.dataset.nav;toast(n==='로그아웃'?'로그아웃은 이 데모에서 비활성화되어 있습니다.':n+' 화면은 이 데모 빌드에 포함되어 있지 않습니다.');}));
+
+const tip=$('#tip');
+function showTip(html,x,y){tip.innerHTML=html;tip.hidden=false;const r=tip.getBoundingClientRect();let left=x+12,top=y-r.height-10;if(left+r.width>window.innerWidth-8)left=x-r.width-12;if(top<8)top=y+16;tip.style.left=left+'px';tip.style.top=top+'px';}
+function hideTip(){tip.hidden=true;}
+window.addEventListener('scroll',hideTip,{passive:true});
+
+/* 사이드바 (모바일) */
+const app=$('#app'),menuBtn=$('#menuBtn'),sbScrim=$('#sbScrim');
+function setSb(open){app.classList.toggle('sb-open',open);sbScrim.hidden=!open;menuBtn.setAttribute('aria-expanded',String(open));menuBtn.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');}
+menuBtn.addEventListener('click',()=>setSb(!app.classList.contains('sb-open')));
+sbScrim.addEventListener('click',()=>setSb(false));
+
+/* KPI 스파크라인 */
+$$('svg.spark').forEach(svg=>{
+  const v=svg.dataset.spark.split(',').map(Number),W=72,H=22,min=Math.min(...v),max=Math.max(...v),span=(max-min)||1;
+  const pts=v.map((n,i)=>[(i/(v.length-1))*(W-4)+2,H-3-((n-min)/span)*(H-6)]);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.innerHTML=`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#9aa09c" stroke-width="1.25" stroke-linejoin="round"/><circle cx="${pts[pts.length-1][0]}" cy="${pts[pts.length-1][1]}" r="2" fill="#1e5a3d"/>`;
+});
+
+/* ---------- 매출 추이 ---------- */
+let trendRange='7';
+function renderTrend(){
+  const box=$('#trendChart'),d=TREND[trendRange],n=d.cur.length;
+  const W=Math.max(320,box.clientWidth-16),H=228,pl=52,pr=14,pt=12,pb=26,iw=W-pl-pr,ih=H-pt-pb;
+  const yMax=Math.ceil(Math.max(...d.cur,...d.prev)/10000)*10000;
+  const x=i=>pl+(i/(n-1))*iw, y=v=>pt+(1-v/yMax)*ih;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">`;
+  for(let t=0;t<=yMax;t+=10000){s+=`<line class="grid-line" x1="${pl}" x2="${W-pr}" y1="${y(t)}" y2="${y(t)}"/><text x="${pl-8}" y="${y(t)+4}" text-anchor="end">${t?fmtNum(t/10)+'만':'0'}</text>`;}
+  const step=n>10?5:1;
+  d.labels.forEach((l,i)=>{if(i%step===0||i===n-1){const lab=n>10?l.split(' ')[0]:l;s+=`<text x="${x(i)}" y="${H-8}" text-anchor="${i===n-1&&n>10?'end':i===0?'start':'middle'}">${lab}</text>`;}});
+  s+=`<polyline class="line-prev" points="${d.prev.map((v,i)=>x(i)+','+y(v)).join(' ')}"/>`;
+  const done=d.cur.slice(0,d.partial+1);
+  s+=`<path class="area" d="M${x(0)},${y(0)} ${done.map((v,i)=>'L'+x(i)+','+y(v)).join(' ')} L${x(d.partial)},${y(0)}Z"/>`;
+  s+=`<polyline class="line-cur" points="${done.slice(0,-1).map((v,i)=>x(i)+','+y(v)).join(' ')}"/>`;
+  s+=`<line class="line-cur part" x1="${x(d.partial-1)}" y1="${y(d.cur[d.partial-1])}" x2="${x(d.partial)}" y2="${y(d.cur[d.partial])}"/>`;
+  if(n<=10)d.cur.forEach((v,i)=>{s+=`<circle class="pt${i===d.partial?' part':''}" cx="${x(i)}" cy="${y(v)}" r="3"/>`;});
+  else s+=`<circle class="pt part" cx="${x(d.partial)}" cy="${y(d.cur[d.partial])}" r="3"/>`;
+  s+=`<text x="${x(d.partial)-2}" y="${y(d.cur[d.partial])+16}" text-anchor="end" style="fill:#1e5a3d;font-weight:600">집계 중</text>`;
+  s+=`<line id="trendGuide" class="guide" x1="0" x2="0" y1="${pt}" y2="${H-pb}" visibility="hidden"/><circle id="trendDot" class="pt" r="4" visibility="hidden"/>`;
+  s+=`<rect class="hit" x="${pl}" y="${pt}" width="${iw}" height="${ih}"/></svg>`;
+  box.innerHTML=s;
+  box.setAttribute('aria-label',`최근 ${trendRange}일 일별 매출 선 그래프. 이번 기간 실선, ${d.legend} 점선.`);
+  const svg=box.firstElementChild,hit=svg.querySelector('.hit'),guide=$('#trendGuide'),dot=$('#trendDot');
+  hit.addEventListener('mousemove',e=>{
+    const rect=svg.getBoundingClientRect(),sx=(e.clientX-rect.left)*(W/rect.width);
+    const i=Math.max(0,Math.min(n-1,Math.round((sx-pl)/iw*(n-1))));
+    guide.setAttribute('x1',x(i));guide.setAttribute('x2',x(i));guide.setAttribute('visibility','visible');
+    dot.setAttribute('cx',x(i));dot.setAttribute('cy',y(d.cur[i]));dot.setAttribute('visibility','visible');
+    const cur=d.cur[i],pv=d.prev[i],part=i===d.partial;
+    showTip(`<b>${d.labels[i]}${part?' · 14:30까지':''}</b><div class="row"><span>이번 기간</span><b>${fmtMan(cur)}</b></div><div class="row"><span>${d.legend}${part?' 종일':''}</span><span>${fmtMan(pv)}</span></div>${part?'':`<div class="row"><span>차이</span><span>${fmtPct(pct(cur,pv))}</span></div>`}`,e.clientX,e.clientY);
+  });
+  hit.addEventListener('mouseleave',()=>{guide.setAttribute('visibility','hidden');dot.setAttribute('visibility','hidden');hideTip();});
+  // 요약
+  const doneCur=d.cur.slice(0,d.partial),donePrev=d.prev.slice(0,d.partial);
+  const sum=a=>a.reduce((p,c)=>p+c,0);
+  const sc=sum(doneCur),sp=sum(donePrev),maxI=doneCur.indexOf(Math.max(...doneCur)),minI=doneCur.indexOf(Math.min(...doneCur));
+  $('#sumTitle').textContent=d.title;
+  $('#legendPrev').textContent=d.legend;
+  $('#sumList').innerHTML=`<dt>기간 합계</dt><dd>${fmtMan(sc)}<small>완료일 ${doneCur.length}일</small></dd><dt>일평균</dt><dd>${fmtMan(sc/doneCur.length)}</dd><dt>${d.legend} 대비</dt><dd class="${sc<sp?'down':'up'}">${fmtPct(pct(sc,sp))}<small>${fmtMan(Math.abs(sc-sp))} ${sc<sp?'감소':'증가'}</small></dd><dt>최고일</dt><dd>${d.labels[maxI]}<small>${fmtMan(doneCur[maxI])}</small></dd><dt>최저일</dt><dd>${d.labels[minI]}<small>${fmtMan(doneCur[minI])}</small></dd>`;
+  $('#sumNote').textContent=trendRange==='7'?'8월 둘째 주부터 오피스 상권 5개 매장이 휴가철 영향으로 전주 대비 2~4% 낮습니다. 오늘 수치는 14:30까지의 부분 집계입니다.':'주말 매출은 평일의 80% 수준(토)·70% 수준(일)입니다. 7월 27일(월) −13%는 수도권 집중호우(호우경보) 영향, 8월 3일 이후 완만한 하락은 휴가철 오피스 상권 영향입니다.';
+}
+$$('[data-range]').forEach(b=>b.addEventListener('click',()=>{trendRange=b.dataset.range;$$('[data-range]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderTrend();}));
+
+/* ---------- 시간대별 막대 ---------- */
+let hourSel='all';
+function renderHourly(){
+  const box=$('#hourChart'),d=HOURLY[hourSel],n=HOURS.length;
+  const W=Math.max(320,box.clientWidth-16),H=228,pl=44,pr=10,pt=12,pb=26,iw=W-pl-pr,ih=H-pt-pb,gw=iw/n;
+  const maxV=Math.max(...d.cur,...d.prev);
+  const step=[100,200,500,1000,2000].find(s=>maxV/s<=5)||2000,yMax=Math.ceil(maxV/step)*step;
+  const y=v=>pt+(1-v/yMax)*ih;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"><defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="2" height="4" fill="#1e5a3d"/></pattern></defs>`;
+  for(let t=0;t<=yMax;t+=step){s+=`<line class="grid-line" x1="${pl}" x2="${W-pr}" y1="${y(t)}" y2="${y(t)}"/><text x="${pl-8}" y="${y(t)+4}" text-anchor="end">${t?fmtNum(t/10)+'만':'0'}</text>`;}
+  const every=gw<30?2:1;
+  HOURS.forEach((h,i)=>{
+    const cx=pl+gw*i+gw/2,pw=gw*0.68,cw=gw*0.4;
+    s+=`<rect class="bar-prev" x="${cx-pw/2}" y="${y(d.prev[i])}" width="${pw}" height="${ih-(y(d.prev[i])-pt)}"/>`;
+    if(i<d.cur.length){const v=d.cur[i],part=i===d.cur.length-1;s+=`<rect class="bar-cur${part?' part':''}" x="${cx-cw/2}" y="${y(v)}" width="${cw}" height="${ih-(y(v)-pt)}"/>`;}
+    if(i%every===0)s+=`<text x="${cx}" y="${H-8}" text-anchor="middle">${h}시</text>`;
+    s+=`<rect class="hit-col" data-i="${i}" x="${pl+gw*i}" y="${pt}" width="${gw}" height="${ih}"/>`;
+  });
+  s+=`<line class="axis" x1="${pl}" x2="${W-pr}" y1="${y(0)}" y2="${y(0)}"/></svg>`;
+  box.innerHTML=s;
+  $$('.hit-col',box).forEach(r=>{
+    r.addEventListener('mousemove',e=>{const i=+r.dataset.i,cur=d.cur[i],pv=d.prev[i],part=i===d.cur.length-1;
+      let html=`<b>${HOURS[i]}시대 · ${d.name}</b>`;
+      if(cur!==undefined)html+=`<div class="row"><span>오늘${part?' (14:30까지)':''}</span><b>${fmtMan(cur)}</b></div>`;
+      html+=`<div class="row"><span>전주 목</span><span>${fmtMan(pv)}</span></div>`;
+      if(cur!==undefined&&!part&&pv)html+=`<div class="row"><span>차이</span><span>${fmtPct(pct(cur,pv))}</span></div>`;
+      showTip(html,e.clientX,e.clientY);});
+    r.addEventListener('mouseleave',hideTip);
+  });
+  const curSum=d.cur.reduce((a,b)=>a+b,0),prevSame=d.prev.slice(0,d.cur.length-1).reduce((a,b)=>a+b,0)+d.prev[d.cur.length-1]/2;
+  $('#hourNote').innerHTML=`<span>${d.name} 07–14:30 누계 ${fmtMan(curSum)} · 전주 동시간 ${fmtMan(prevSame)} (${fmtPct(pct(curSum,prevSame))})</span>${d.note?`<span class="right">${d.note}</span>`:'<span class="right">피크 08시·12시대. 오후 피크(18–19시)는 전주 패턴 참고.</span>'}`;
+}
+$('#hourStore').addEventListener('change',e=>{hourSel=e.target.value;renderHourly();});
+
+/* ---------- 매장 테이블 ---------- */
+let sortKey='status',sortDir='asc',region='all',query='',flagOnly=false;
+const rowVal=(s,k)=>{switch(k){case 'name':return s.name;case 'status':return STATUS_ORDER[s.status];case 'sales':return s.sales;case 'delta':return pct(s.sales,s.prev);case 'orders':return s.orders;case 'aov':return s.sales/s.orders;case 'wait':return s.wait==null?-1:s.wait;case 'stock':return s.stock;case 'sync':return s.sync;}};
+function visibleStores(){
+  const q=query.trim();
+  let rows=STORES.filter(s=>(region==='all'||s.region===region)&&(!flagOnly||s.status!=='ok')&&(!q||s.name.includes(q)||s.mgr.includes(q)||s.area.includes(q)));
+  rows.sort((a,b)=>{let va=rowVal(a,sortKey),vb=rowVal(b,sortKey);let c=typeof va==='string'?va.localeCompare(vb,'ko'):va-vb;if(c===0&&sortKey!=='sales')c=b.sales-a.sales;return sortDir==='asc'?c:-c;});
+  return rows;
+}
+function rowHTML(s){
+  const d=pct(s.sales,s.prev),aov=s.sales/s.orders;
+  const waitCls=s.wait==null?'':s.wait>=6?' warn-t':'',stockCls=s.stock<2?' err':s.stock<3?' warn':'';
+  const syncTxt=s.syncState==='off'?`${s.sync} <span class="meta">오프라인</span>`:s.syncState==='late'?`${s.sync} <span class="meta">지연 15분</span>`:s.sync;
+  return `<tr data-id="${s.id}" tabindex="0" class="${s.status!=='ok'?'flag '+s.status:''}">
+    <td><span class="name">${s.name}</span><span class="meta">${s.area} · ${s.mgr}</span></td>
+    <td><span class="st st-${s.status}"><i></i>${STATUS_LABEL[s.status]}</span></td>
+    <td class="r">${fmtWon(s.sales)}</td>
+    <td class="r${d<0?' err-t':''}">${fmtPct(d)}</td>
+    <td class="r">${fmtNum(s.orders)}</td>
+    <td class="r">${fmtWon(aov)}</td>
+    <td class="r${waitCls}">${s.wait==null?'<span class="muted">—</span>':s.wait.toFixed(1)+'분'}</td>
+    <td class="r"><span class="stock${stockCls}"><span class="bar" aria-hidden="true"><i style="width:${Math.min(100,s.stock/8*100)}%"></i></span>${s.stock.toFixed(1)}일</span></td>
+    <td class="r${s.syncState==='off'?' err-t':s.syncState==='late'?' warn-t':''}">${syncTxt}</td>
+    <td><button class="btn sm" type="button" data-open="${s.id}">상세</button></td></tr>`;
+}
+function renderTable(){
+  const rows=visibleStores(),body=$('#storeBody');
+  if(!rows.length){body.innerHTML=`<tr class="empty-row"><td colspan="10"><strong>조건에 맞는 매장이 없습니다</strong>${query?`'${query}'`:'선택한 지역'}${flagOnly?' 중 이상 매장':''}으로 검색된 결과가 없습니다. 검색어나 필터를 바꿔 보세요.</td></tr>`;}
+  else body.innerHTML=rows.map(rowHTML).join('');
+  const sales=rows.reduce((a,s)=>a+s.sales,0),prev=rows.reduce((a,s)=>a+s.prev,0),orders=rows.reduce((a,s)=>a+s.orders,0);
+  const flagged=rows.filter(s=>s.status!=='ok').length;
+  $('#storeFoot').innerHTML=rows.length?`<td>합계 ${rows.length}개 매장</td><td>이상 ${flagged}</td><td class="r">${fmtWon(sales)}</td><td class="r${sales<prev?' err-t':''}">${fmtPct(pct(sales,prev))}</td><td class="r">${fmtNum(orders)}</td><td class="r">${fmtWon(sales/orders)}</td><td class="r">${(rows.filter(s=>s.wait!=null).reduce((a,s)=>a+s.wait,0)/Math.max(1,rows.filter(s=>s.wait!=null).length)).toFixed(1)}분</td><td class="r">${(rows.reduce((a,s)=>a+s.stock,0)/rows.length).toFixed(1)}일</td><td class="r"></td><td></td>`:'';
+  $('#tblCount').textContent=`${STORES.length}개 중 ${rows.length}개 표시`;
+  $$('thead th').forEach(th=>{const b=th.querySelector('[data-sort]');if(!b)return;if(b.dataset.sort===sortKey)th.setAttribute('aria-sort',sortDir==='asc'?'ascending':'descending');else th.removeAttribute('aria-sort');});
+}
+$$('th button[data-sort]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.sort;if(sortKey===k)sortDir=sortDir==='asc'?'desc':'asc';else{sortKey=k;sortDir=(k==='name'||k==='status'||k==='sync')?'asc':'desc';}renderTable();}));
+$('#storeSearch').addEventListener('input',e=>{query=e.target.value;renderTable();});
+$('#flagOnly').addEventListener('change',e=>{flagOnly=e.target.checked;renderTable();});
+$('#regionSel').addEventListener('change',e=>{region=e.target.value;renderTable();});
+$('#kpiFlagBtn').addEventListener('click',()=>{$('#flagOnly').checked=true;flagOnly=true;renderTable();$('#storesTitle').scrollIntoView({block:'start'});});
+$('#storeBody').addEventListener('click',e=>{const tr=e.target.closest('tr[data-id]');if(tr)openDrawer(tr.dataset.id,e.target.closest('button')||tr);});
+$('#storeBody').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('tr[data-id]'))openDrawer(e.target.dataset.id,e.target);});
+$('#refreshBtn').addEventListener('click',()=>{renderTable();renderAlerts();renderTrend();renderHourly();toast('최신 데이터입니다. 마지막 POS 동기화 14:32, 다음 동기화는 60초 후 자동으로 실행됩니다.');});
+$('#csvBtn').addEventListener('click',()=>{
+  const head=['매장','지역','상권','점장','상태','오늘 매출','전주 동요일 동시간','대비(%)','주문','객단가','평균 대기(분)','원두 재고(일)','동기화'];
+  const lines=[head.join(',')].concat(visibleStores().map(s=>[s.name,s.region,s.area,s.mgr,STATUS_LABEL[s.status],s.sales,s.prev,pct(s.sales,s.prev).toFixed(1),s.orders,Math.round(s.sales/s.orders),s.wait==null?'':s.wait,s.stock,s.sync+(s.syncState==='off'?' 오프라인':s.syncState==='late'?' 지연':'')].join(',')));
+  const blob=new Blob(['\uFEFF'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ondu-stores-2026-08-13-1430.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  toast(`CSV ${visibleStores().length}행을 내려받았습니다 (ondu-stores-2026-08-13-1430.csv).`);
+});
+
+/* ---------- 알림 ---------- */
+let alertTab='open';
+function alertHTML(a){
+  const st=a.store?byId(a.store):null;
+  const acts=a.done?'':a.acts.map(k=>k==='ack'?`<button class="btn sm" type="button" data-ack="${a.id}">확인</button>`:k==='call'?`<a class="btn sm" href="tel:${st.tel.replace(/-/g,'')}">매장 통화 ${st.tel}</a>`:`<button class="btn sm primary" type="button" data-order="${a.id}">발주 초안</button>`).join('');
+  return `<li class="alert ${a.lvl}${a.done?' done':''}"><time datetime="2026-08-13T${a.t}">${a.t}</time><i class="m" aria-hidden="true"></i><div>
+    <div class="ttl"><span class="store">${st?`<button type="button" data-open="${st.id}">${st.name}</button>`:'전체 매장'}</span>${a.title}</div>
+    <div class="body">${a.body}</div>
+    ${a.done?`<div class="done-note">처리됨 · ${a.doneAt}</div>`:`<div class="acts">${acts}</div>`}</div></li>`;
+}
+function renderAlerts(){
+  const list=$('#alertList'),open=ALERTS.filter(a=>!a.done),done=ALERTS.filter(a=>a.done);
+  const rows=alertTab==='open'?open:done;
+  list.innerHTML=rows.length?rows.map(alertHTML).join(''):`<li class="empty">${alertTab==='open'?'미처리 알림이 없습니다. 새 알림은 60초 주기로 확인됩니다.':'오늘 처리된 알림이 없습니다.'}</li>`;
+  $('#openCnt').textContent=open.length;$('#doneCnt').textContent=done.length;$('#bellCnt').textContent=open.length;$('#kpiAlerts').textContent=open.length;
+  $('#bellCnt').hidden=!open.length;$('#bellBtn').setAttribute('aria-label',`미처리 알림 ${open.length}건`);
+}
+$$('[data-atab]').forEach(b=>b.addEventListener('click',()=>{alertTab=b.dataset.atab;$$('[data-atab]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderAlerts();}));
+$('#alertList').addEventListener('click',e=>{
+  const ack=e.target.closest('[data-ack]'),ord=e.target.closest('[data-order]');
+  if(ack){const a=ALERTS.find(x=>x.id===+ack.dataset.ack);a.done=true;a.doneAt='14:32 김서연';renderAlerts();toast(`확인 처리했습니다 — ${a.title}`);}
+  if(ord){const a=ALERTS.find(x=>x.id===+ord.dataset.order);toast('발주 초안을 만들었습니다 — 홍대입구점 하우스 블렌드 1kg × 12. 재고·발주 > 초안에서 승인하세요.');ord.textContent='초안 생성됨';ord.disabled=true;ord.classList.remove('primary');}
+});
+$('#bellBtn').addEventListener('click',()=>{alertTab='open';$$('[data-atab]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.atab==='open')));renderAlerts();$('#alertsTitle').scrollIntoView({block:'start'});});
+
+/* ---------- 매장 상세 드로어 ---------- */
+const drawer=$('#drawer'),drawerScrim=$('#drawerScrim');let lastFocus=null;
+function openDrawer(id,from){
+  const s=byId(id);if(!s)return;lastFocus=from||document.activeElement;
+  const d=pct(s.sales,s.prev);
+  $('#drawerTitle').textContent=s.name;
+  $('#drawerMeta').innerHTML=`${s.area} · ${s.region} · <span class="st st-${s.status}"><i></i>${STATUS_LABEL[s.status]}</span>`;
+  $('#drawerFacts').innerHTML=`<div><span>오늘 매출</span><b>${fmtWon(s.sales)}</b></div><div><span>전주 동요일 대비</span><b class="${d<0?'down':''}">${fmtPct(d)}<small>${fmtWon(s.prev)}</small></b></div><div><span>주문</span><b>${fmtNum(s.orders)}건</b></div><div><span>객단가</span><b>${fmtWon(s.sales/s.orders)}</b></div><div><span>평균 대기</span><b class="${s.wait>=6?'down':''}">${s.wait==null?'집계 중단':s.wait.toFixed(1)+'분'}<small>기준 6분</small></b></div><div><span>원두 재고</span><b class="${s.stock<2?'down':''}">${s.stock.toFixed(1)}일분</b></div><div><span>마지막 동기화</span><b>${s.sync}<small>${s.syncState==='off'?'오프라인':s.syncState==='late'?'지연':'정상'}</small></b></div><div><span>영업시간</span><b>${s.hours}</b></div>`;
+  $('#drawerNoteWrap').hidden=!s.note;$('#drawerNote').textContent=s.note||'';
+  const rel=ALERTS.filter(a=>a.store===id);
+  $('#drawerAlerts').innerHTML=rel.length?rel.map(a=>`<li><i style="background:var(--${a.lvl==='info'?'info':a.lvl})"></i><time datetime="2026-08-13T${a.t}">${a.t}</time><span>${a.title}${a.done?' <span class="muted">(처리됨)</span>':''}</span></li>`).join(''):'<li class="muted">오늘 발생한 알림이 없습니다.</li>';
+  $('#drawerInfo').innerHTML=`<dt>주소</dt><dd>${s.addr}</dd><dt>점장</dt><dd>${s.mgr}</dd><dt>전화</dt><dd><a href="tel:${s.tel.replace(/-/g,'')}">${s.tel}</a></dd><dt>POS</dt><dd>단말 2대 · 키오스크 ${s.id==='jamsil'||s.id==='gangnam'?'2대':'1대'}</dd>`;
+  $('#drawerCall').href='tel:'+s.tel.replace(/-/g,'');
+  $('#drawerGo').onclick=()=>toast(`${s.name} 상세 화면은 이 데모 빌드에 포함되어 있지 않습니다.`);
+  drawer.hidden=false;drawerScrim.hidden=false;$('#drawerClose').focus();
+  $$('#storeBody tr').forEach(tr=>tr.classList.toggle('is-hl',tr.dataset.id===id));
+}
+function closeDrawer(){drawer.hidden=true;drawerScrim.hidden=true;$$('#storeBody tr.is-hl').forEach(tr=>tr.classList.remove('is-hl'));if(lastFocus&&document.contains(lastFocus))lastFocus.focus();}
+$('#drawerClose').addEventListener('click',closeDrawer);$('[data-close-drawer]').addEventListener('click',closeDrawer);drawerScrim.addEventListener('click',closeDrawer);
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b&&!b.closest('#storeBody'))openDrawer(b.dataset.open,b);});
+drawer.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=$$('button,a[href],input,select',drawer).filter(el=>!el.hidden&&el.offsetParent!==null);const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+
+/* ---------- 검색 팔레트 ---------- */
+const pal=$('#palette'),palScrim=$('#palScrim'),palInput=$('#palInput'),palList=$('#palList');let palIdx=0,palItems=[],palFrom=null;
+function palRender(){
+  const q=palInput.value.trim();
+  const stores=STORES.filter(s=>!q||s.name.includes(q)||s.mgr.includes(q)||s.area.includes(q)||s.region.includes(q));
+  const pages=PALETTE_PAGES.filter(p=>!q||p[0].includes(q)||p[1].includes(q));
+  palItems=[...stores.map(s=>({type:'store',id:s.id})),...pages.map(p=>({type:'page',label:p[0]}))];
+  palIdx=Math.min(palIdx,Math.max(0,palItems.length-1));
+  let h='';
+  if(stores.length){h+='<li class="grp">매장</li>'+stores.map((s,i)=>`<li role="option" aria-selected="${i===palIdx}"><button type="button" data-pi="${i}" class="${i===palIdx?'is-cur':''}"><span class="st st-${s.status}"><i></i></span>${s.name}<span class="muted small">${s.mgr} · ${s.area}</span><span class="k">${fmtWon(s.sales)}</span></button></li>`).join('');}
+  if(pages.length){h+='<li class="grp">화면</li>'+pages.map((p,j)=>{const i=stores.length+j;return `<li role="option" aria-selected="${i===palIdx}"><button type="button" data-pi="${i}" class="${i===palIdx?'is-cur':''}">${p[0]}<span class="k">${p[1]}</span></button></li>`;}).join('');}
+  palList.innerHTML=h||`<li class="none">'${q}'과 일치하는 매장이나 화면이 없습니다.</li>`;
+}
+function palOpen(){palFrom=document.activeElement;pal.hidden=false;palScrim.hidden=false;palInput.value='';palIdx=0;palRender();palInput.focus();}
+function palClose(){pal.hidden=true;palScrim.hidden=true;if(palFrom&&document.contains(palFrom))palFrom.focus();}
+function palGo(i){const it=palItems[i];if(!it)return;palClose();if(it.type==='store'){$('#storesTitle').scrollIntoView({block:'start'});openDrawer(it.id,$('#openPalette'));}else toast(it.label+' 화면은 이 데모 빌드에 포함되어 있지 않습니다.');}
+$('#openPalette').addEventListener('click',palOpen);palScrim.addEventListener('click',palClose);
+palInput.addEventListener('input',()=>{palIdx=0;palRender();});
+palInput.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();palIdx=Math.min(palItems.length-1,palIdx+1);palRender();}else if(e.key==='ArrowUp'){e.preventDefault();palIdx=Math.max(0,palIdx-1);palRender();}else if(e.key==='Enter'){e.preventDefault();palGo(palIdx);}});
+palList.addEventListener('click',e=>{const b=e.target.closest('[data-pi]');if(b)palGo(+b.dataset.pi);});
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.hidden?palOpen():palClose();}
+  if(e.key==='Escape'){if(!pal.hidden)palClose();else if(!drawer.hidden)closeDrawer();else if(app.classList.contains('sb-open'))setSb(false);}
+});
+
+/* ---------- 발주 제안 (스켈레톤에서 표로 전환) ---------- */
+$('#loadOrders').addEventListener('click',function(){
+  const btn=this;btn.disabled=true;btn.textContent='계산 중';
+  setTimeout(()=>{
+    $('#orderBox').innerHTML=`<table class="mini"><thead><tr><th>품목</th><th>매장</th><th class="r">잔여</th><th class="r">제안 수량</th><th class="r">입고 예정</th></tr></thead><tbody>
+      <tr><td>하우스 블렌드 원두 1kg<span class="tag">긴급</span></td><td>홍대입구점</td><td class="r" style="color:var(--err)">0.8일</td><td class="r">12 kg</td><td class="r">내일 07:30</td></tr>
+      <tr><td>오트 밀크 1L</td><td>성수점</td><td class="r">1.6일</td><td class="r">48 개</td><td class="r">내일 07:30</td></tr>
+      <tr><td>흑임자 페이스트 500g</td><td>여의도IFC점</td><td class="r">1.9일</td><td class="r">8 개</td><td class="r">내일 07:30</td></tr>
+      <tr><td>디카페인 원두 1kg</td><td>판교테크노밸리점</td><td class="r">2.1일</td><td class="r">6 kg</td><td class="r">8/15 07:30</td></tr>
+      <tr><td>12oz 종이컵 (1,000개)</td><td>잠실롯데월드몰점</td><td class="r">2.4일</td><td class="r">3 박스</td><td class="r">8/15 07:30</td></tr>
+    </tbody></table><div class="card-foot"><span>11개 매장 기준 · 마곡나루점 제외(재고 응답 없음) · 물류센터 마감 16:00</span><button class="btn sm primary right" type="button" id="draftAll">발주 초안 5건 만들기</button></div>`;
+    btn.textContent='다시 계산';btn.disabled=false;
+    $('#draftAll').addEventListener('click',()=>{toast('발주 초안 5건을 만들었습니다. 재고·발주 > 초안에서 수량을 확인하고 승인하세요.');$('#draftAll').textContent='초안 생성됨';$('#draftAll').disabled=true;});
+  },800);
+});
+
+/* ---------- 초기 렌더·리사이즈 ---------- */
+let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{renderTrend();renderHourly();},120);});
+renderTable();renderAlerts();renderTrend();renderHourly();
+})();
+</script>
+</body>
+</html>

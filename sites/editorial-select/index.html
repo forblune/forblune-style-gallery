@@ -1,0 +1,1533 @@
+<!-- forblune-style: {"slug":"editorial-select","primaryStyle":"Editorial","productType":"Commerce","tone":"Curated · Neutral · Calm","secondary":"Commerce","accent":"Product","brand":"고요 GOYO","industry":"문구·리빙 편집숍","coreMessage":"많이 파는 곳이 아니라 천천히 고른 것만 두는 곳이라는 인상을 만든다","naming":"Editorial / Commerce / Curated · Neutral · Calm"} -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고요 GOYO — 천천히 고른 문구와 리빙</title>
+  <meta name="description" content="고요 GOYO는 서울 성산동의 문구·리빙 편집숍입니다. 많이 두지 않고, 오래 쓸 만한 것만 천천히 골라 둡니다. 이번 주의 셀렉션과 고르는 기준을 소개합니다.">
+  <meta name="theme-color" content="#F4F1EC">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400&display=swap" rel="stylesheet">
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+  <style>
+    /* ------------------------------------------------------------
+       0. 토큰 — 오프화이트 + 웜 그레이, 포인트는 먹색·연갈색
+       ------------------------------------------------------------ */
+    :root {
+      --bg: #F4F1EC;
+      --bg-soft: #EDE8E1;
+      --bg-deep: #E4DED5;
+      --line: #D9D2C8;
+      --line-soft: #E7E1D9;
+      --ink: #2A2825;
+      --ink-2: #57524B;
+      --muted: #6F685F;
+      --brown: #8B6E52;
+      --brown-soft: #B39A82;
+      --paper: #FBF9F5;
+
+      --font-sans: "Pretendard", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+      --font-serif: "Noto Serif KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", serif;
+
+      --gutter: clamp(20px, 5vw, 72px);
+      --section: clamp(72px, 12vw, 160px);
+      --header-h: 72px;
+      --header-h-compact: 56px;
+
+      --ease: cubic-bezier(.22, .61, .36, 1);
+      --dur: 480ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: anywhere;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+    ul, ol { margin: 0; padding: 0; list-style: none; }
+    h1, h2, h3, h4, p, figure, blockquote, dl { margin: 0; }
+    address { font-style: normal; }
+
+    :focus-visible {
+      outline: 1.5px solid var(--ink);
+      outline-offset: 4px;
+      border-radius: 1px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: absolute; left: var(--gutter); top: -48px;
+      background: var(--ink); color: var(--paper);
+      padding: 10px 14px; font-size: 13px; z-index: 200;
+      transition: top 200ms var(--ease);
+    }
+    .skip-link:focus { top: 12px; }
+
+    .wrap { width: 100%; max-width: 1440px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+    /* 공통 타이포 */
+    /* 섹션 위 작은 표기 — 날짜·호수만 쓴다. 대문자·모노 라벨 아님 */
+    .eyebrow {
+      display: block; font-family: var(--font-serif); font-size: 13px;
+      color: var(--muted); font-weight: 400; letter-spacing: .01em;
+      font-variant-numeric: tabular-nums;
+    }
+    .h-serif {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .lead { color: var(--ink-2); max-width: 44ch; }
+    .link-quiet {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--ink);
+      padding-bottom: 3px; border-bottom: 1px solid var(--line);
+      transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .link-quiet:hover { border-color: var(--ink); }
+    .link-quiet svg { width: 14px; height: 14px; transition: transform var(--dur) var(--ease); }
+    .link-quiet:hover svg { transform: translateX(3px); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 46px; padding: 0 22px;
+      font-size: 13.5px; letter-spacing: .02em;
+      border: 1px solid var(--ink); color: var(--ink); background: transparent;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .btn:hover { background: var(--ink); color: var(--paper); }
+    .btn--fill { background: var(--ink); color: var(--paper); }
+    .btn--fill:hover { background: #3B3833; border-color: #3B3833; }
+    .btn svg { width: 14px; height: 14px; }
+
+    /* 사진 프레임 — 로드 실패 대비 배경 + 저채도 필터 */
+    .ph {
+      position: relative; overflow: hidden;
+      background: var(--bg-deep);
+    }
+    .ph img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: saturate(.78) contrast(.96) brightness(1.02);
+      transition: opacity 700ms var(--ease), transform 1200ms var(--ease);
+    }
+    .ph--warm::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(139,110,82,.04), rgba(42,40,37,.06));
+      pointer-events: none;
+    }
+
+    /* 스크롤 리빌 — 느린 페이드, 미세한 이동 */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 900ms var(--ease), transform 900ms var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal[data-delay="1"] { transition-delay: 90ms; }
+    .reveal[data-delay="2"] { transition-delay: 180ms; }
+    .reveal[data-delay="3"] { transition-delay: 270ms; }
+
+    /* ------------------------------------------------------------
+       1. 헤더 — 얇게, 스크롤 시 축소 고정
+       ------------------------------------------------------------ */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--header-h);
+      background: rgba(244, 241, 236, 0);
+      border-bottom: 1px solid transparent;
+      transition: height 360ms var(--ease), background 360ms var(--ease), border-color 360ms var(--ease);
+    }
+    .header.is-scrolled {
+      height: var(--header-h-compact);
+      background: rgba(244, 241, 236, .97);
+      border-bottom-color: var(--line-soft);
+    }
+    .header__inner {
+      height: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    }
+    .brand {
+      display: inline-flex; align-items: baseline; gap: 8px; justify-self: start;
+      font-family: var(--font-serif); font-weight: 400; font-size: 19px; letter-spacing: .02em;
+    }
+    .brand small { font-family: var(--font-sans); font-size: 10px; letter-spacing: .22em; color: var(--muted); font-weight: 500; }
+    .nav { display: flex; gap: clamp(20px, 3vw, 40px); }
+    .nav a {
+      position: relative; font-size: 13px; letter-spacing: .04em; color: var(--ink-2);
+      padding: 6px 0; transition: color var(--dur) var(--ease);
+    }
+    .nav a::after {
+      content: ""; position: absolute; left: 0; right: 100%; bottom: 2px; height: 1px; background: var(--ink);
+      transition: right var(--dur) var(--ease);
+    }
+    .nav a:hover, .nav a[aria-current="true"] { color: var(--ink); }
+    .nav a:hover::after { right: 0; }
+    .header__tools { display: flex; align-items: center; gap: 18px; justify-self: end; }
+    .icon-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12.5px; letter-spacing: .04em; color: var(--ink-2); padding: 6px 2px;
+      transition: color var(--dur) var(--ease);
+    }
+    .icon-btn:hover { color: var(--ink); }
+    .icon-btn svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+    .cart-count {
+      min-width: 18px; height: 18px; padding: 0 5px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10.5px; font-weight: 600; background: var(--ink); color: var(--paper);
+      transform: scale(0); transition: transform 320ms var(--ease);
+    }
+    .cart-count.is-on { transform: scale(1); }
+    .menu-btn { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; }
+    .menu-btn span { display: block; width: 20px; height: 1px; background: var(--ink); position: relative; transition: transform 300ms var(--ease), background 300ms var(--ease); }
+    .menu-btn span::before, .menu-btn span::after { content: ""; position: absolute; left: 0; width: 20px; height: 1px; background: var(--ink); transition: transform 300ms var(--ease), top 300ms var(--ease); }
+    .menu-btn span::before { top: -6px; }
+    .menu-btn span::after { top: 6px; }
+    .menu-btn[aria-expanded="true"] span { background: transparent; }
+    .menu-btn[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
+    .menu-btn[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
+
+    .mobile-nav {
+      position: fixed; top: var(--header-h-compact); left: 0; right: 0; z-index: 90;
+      background: var(--bg); border-bottom: 1px solid var(--line-soft);
+      padding: 20px var(--gutter) 28px;
+      transform: translateY(-8px); opacity: 0; visibility: hidden;
+      transition: opacity 320ms var(--ease), transform 320ms var(--ease), visibility 0s linear 320ms;
+    }
+    .mobile-nav.is-open { transform: none; opacity: 1; visibility: visible; transition-delay: 0s; }
+    .mobile-nav a { display: block; padding: 12px 0; font-family: var(--font-serif); font-size: 22px; font-weight: 300; border-bottom: 1px solid var(--line-soft); }
+    .mobile-nav a:last-child { border-bottom: 0; }
+    .mobile-nav p { margin-top: 18px; font-size: 12px; color: var(--muted); }
+
+    /* ------------------------------------------------------------
+       2. 히어로 — 주인공은 이미지. 로고·한 문장·CTA만.
+       ------------------------------------------------------------ */
+    .hero { padding-top: calc(var(--header-h) + clamp(28px, 6vw, 88px)); }
+    .hero__grid {
+      display: grid; grid-template-columns: repeat(12, 1fr); column-gap: clamp(16px, 2.5vw, 40px); align-items: end;
+    }
+    .hero__text { grid-column: 1 / 5; padding-bottom: clamp(24px, 4vw, 64px); }
+    .hero__title { font-size: clamp(38px, 5.4vw, 76px); margin: 22px 0 22px; }
+    .hero__title em { font-style: normal; color: var(--brown); }
+    .hero__lead { font-size: 15.5px; max-width: 30ch; margin-bottom: 34px; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+    .hero__media { grid-column: 5 / 13; }
+    .hero__frame { aspect-ratio: 16 / 11; }
+    .hero__caption {
+      display: flex; justify-content: space-between; gap: 16px;
+      margin-top: 12px; font-size: 12px; color: var(--muted); letter-spacing: .02em;
+    }
+    .hero__note {
+      grid-column: 1 / 5; margin-top: 18px; font-size: 12.5px; color: var(--muted);
+      display: flex; gap: 6px 14px; align-items: center; flex-wrap: wrap;
+    }
+    .hero__note b { font-weight: 500; color: var(--ink-2); }
+    .hero__note a { color: var(--ink-2); border-bottom: 1px solid var(--line); transition: border-color var(--dur) var(--ease); }
+    .hero__note a:hover { border-color: var(--ink); }
+
+    /* ------------------------------------------------------------
+       3. 이번 주 셀렉션 (4개)
+       ------------------------------------------------------------ */
+    .section { padding-top: var(--section); }
+    .section-head {
+      display: grid; grid-template-columns: repeat(12, 1fr); column-gap: clamp(16px, 2.5vw, 40px); align-items: end;
+      margin-bottom: clamp(32px, 4.5vw, 64px);
+    }
+    .section-head__main { grid-column: 1 / 8; }
+    .section-head__side { grid-column: 9 / 13; justify-self: end; text-align: right; }
+    .section-head h2 { font-size: clamp(26px, 3vw, 40px); margin-top: 14px; }
+    .section-head .lead { margin-top: 14px; font-size: 14.5px; }
+
+    .sel-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      column-gap: clamp(16px, 2.5vw, 40px); row-gap: 48px;
+    }
+    .card { position: relative; }
+    .card__media { aspect-ratio: 4 / 5; }
+    .card__media img.alt { position: absolute; inset: 0; opacity: 0; }
+    .card:hover .card__media img.alt, .card:focus-within .card__media img.alt { opacity: 1; }
+    .card:hover .card__media img.main { transform: scale(1.02); }
+    .card__body { padding-top: 14px; }
+    .card__row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .card__name { font-size: 14.5px; font-weight: 500; letter-spacing: -0.01em; }
+    .card__name a::after { content: ""; position: absolute; inset: 0; }
+    .card__maker { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+    .card__price { font-size: 13.5px; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+    .card__note { margin-top: 12px; font-size: 13px; color: var(--ink-2); line-height: 1.65; border-top: 1px solid var(--line-soft); padding-top: 12px; }
+    .badge {
+      position: absolute; top: 10px; left: 10px; z-index: 2;
+      font-size: 10px; letter-spacing: .12em; padding: 4px 7px;
+      background: rgba(251, 249, 245, .9); color: var(--ink-2);
+    }
+    .card__add {
+      position: absolute; right: 10px; bottom: 10px; z-index: 3;
+      font-size: 11.5px; letter-spacing: .06em; padding: 8px 12px;
+      background: rgba(251, 249, 245, .92); color: var(--ink);
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 320ms var(--ease), transform 320ms var(--ease), background 320ms var(--ease);
+    }
+    .card:hover .card__add, .card:focus-within .card__add, .card__add:focus-visible { opacity: 1; transform: none; }
+    .card__add:hover { background: var(--ink); color: var(--paper); }
+    .sel-foot { margin-top: 44px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+
+    /* ------------------------------------------------------------
+       4. 카테고리 무드 블록 — 비정형 배치
+       ------------------------------------------------------------ */
+    .mood {
+      display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: auto;
+      column-gap: clamp(16px, 2.5vw, 40px); row-gap: clamp(28px, 4vw, 56px);
+    }
+    .mood__item { position: relative; }
+    .mood__item--a { grid-column: 1 / 8; grid-row: 1 / 3; }
+    .mood__item--b { grid-column: 8 / 13; grid-row: 1; margin-top: clamp(40px, 8vw, 120px); }
+    .mood__item--c { grid-column: 9 / 13; grid-row: 2; }
+    .mood__item--a .ph { aspect-ratio: 4 / 5; }
+    .mood__item--b .ph { aspect-ratio: 5 / 4; }
+    .mood__item--c .ph { aspect-ratio: 1 / 1; }
+    .mood__label {
+      display: flex; align-items: baseline; gap: 12px; margin-top: 16px;
+    }
+    .mood__label .num { font-size: 11px; letter-spacing: .14em; color: var(--muted); }
+    .mood__label h3 { font-family: var(--font-serif); font-weight: 300; font-size: clamp(22px, 2.4vw, 32px); }
+    .mood__label .en { font-size: 12px; letter-spacing: .04em; color: var(--muted); font-family: var(--font-serif); }
+    .mood__copy { margin-top: 8px; color: var(--ink-2); font-size: 14px; max-width: 38ch; }
+    .mood__link { margin-top: 14px; }
+    .mood__pic { display: block; }
+    .mood__pic .ph img { transition: transform 1600ms var(--ease), filter 700ms var(--ease); }
+    .mood__pic:hover .ph img { transform: scale(1.025); }
+    .mood__quote {
+      grid-column: 1 / 8; grid-row: 3; align-self: start;
+      font-family: var(--font-serif); font-weight: 300; font-size: clamp(18px, 1.9vw, 24px);
+      color: var(--ink-2); max-width: 30ch; line-height: 1.6;
+      padding-left: 22px; border-left: 1px solid var(--brown-soft);
+    }
+
+    /* ------------------------------------------------------------
+       5. 상품 그리드 (8개) + 필터
+       ------------------------------------------------------------ */
+    .filter { display: flex; gap: 6px 22px; flex-wrap: wrap; align-items: center; }
+    .chip {
+      position: relative; font-size: 13px; color: var(--muted); padding: 6px 0; letter-spacing: .02em;
+      transition: color var(--dur) var(--ease);
+    }
+    .chip::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 2px; height: 1px; background: var(--ink); transition: right var(--dur) var(--ease); }
+    .chip:hover { color: var(--ink); }
+    .chip[aria-pressed="true"] { color: var(--ink); }
+    .chip[aria-pressed="true"]::after { right: 0; }
+    .filter__count { font-size: 12px; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+    .prod-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      column-gap: clamp(16px, 2.5vw, 40px); row-gap: 52px;
+      margin-top: clamp(28px, 4vw, 48px);
+    }
+    .prod-grid .card { transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
+    .prod-grid .card.is-hidden { display: none; }
+    .prod-grid .card.is-fading { opacity: 0; transform: translateY(6px); }
+    .prod-grid .card__media { aspect-ratio: 1 / 1.15; }
+    .prod-grid .card__note { display: none; }
+    .prod-foot { margin-top: 56px; display: flex; justify-content: center; }
+    .prod-empty { grid-column: 1 / -1; padding: 40px 0; color: var(--muted); font-size: 14px; text-align: center; display: none; }
+
+    /* ------------------------------------------------------------
+       6. 에디토리얼 — 고르는 기준 (인터뷰)
+       ------------------------------------------------------------ */
+    .journal { background: var(--bg-soft); margin-top: var(--section); padding: var(--section) 0; }
+    .journal__grid {
+      display: grid; grid-template-columns: repeat(12, 1fr); column-gap: clamp(16px, 2.5vw, 40px);
+    }
+    .journal__meta { grid-column: 1 / 5; }
+    .journal__sticky { position: sticky; top: calc(var(--header-h-compact) + 32px); }
+    .journal__meta h2 { font-size: clamp(30px, 3.6vw, 48px); margin-top: 16px; }
+    .journal__meta .lead { margin-top: 18px; font-size: 14.5px; }
+    .journal__facts { margin-top: 28px; display: grid; grid-template-columns: auto 1fr; gap: 8px 22px; font-size: 12.5px; }
+    .journal__facts dt { color: var(--muted); }
+    .journal__facts dd { margin: 0; color: var(--ink-2); }
+    .journal__portrait { margin-top: 36px; width: min(100%, 320px); }
+    .journal__portrait .ph { aspect-ratio: 4 / 5; }
+    .journal__portrait figcaption { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .journal__body { grid-column: 6 / 12; }
+    .qa { padding: 8px 0 40px; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+    .qa:last-of-type { border-bottom: 0; margin-bottom: 0; }
+    .qa__q {
+      font-family: var(--font-serif); font-weight: 400; font-size: clamp(18px, 1.7vw, 22px);
+      line-height: 1.5; color: var(--ink); display: grid; grid-template-columns: 28px 1fr; gap: 12px;
+    }
+    .qa__q .mark { color: var(--brown); font-family: var(--font-sans); font-size: 12px; letter-spacing: .1em; padding-top: 6px; }
+    .qa__a { margin-top: 18px; padding-left: 40px; color: var(--ink-2); font-size: 15px; line-height: 1.85; }
+    .qa__a p + p { margin-top: 14px; }
+    .qa__a strong { font-weight: 500; color: var(--ink); }
+    .pull {
+      margin: 48px 0 48px 40px; padding: 4px 0 4px 24px; border-left: 1px solid var(--brown-soft);
+      font-family: var(--font-serif); font-weight: 300; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.55; color: var(--ink);
+    }
+    .journal__inline { margin: 40px 0 40px 40px; }
+    .journal__inline .ph { aspect-ratio: 3 / 2; }
+    .journal__inline figcaption { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .journal__end { margin-top: 44px; padding-left: 40px; display: flex; gap: 12px 28px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+    .journal__end a { color: var(--ink); }
+    .principles { margin-top: 56px; padding-left: 40px; }
+    .principles h3 { font-family: var(--font-serif); font-size: 15px; color: var(--ink); font-weight: 400; }
+    .principles ol { margin-top: 18px; display: grid; gap: 14px; counter-reset: p; }
+    .principles li { counter-increment: p; display: grid; grid-template-columns: 30px 1fr; gap: 12px; font-size: 14.5px; color: var(--ink-2); padding-bottom: 14px; border-bottom: 1px solid var(--line-soft); }
+    .principles li::before { content: counter(p, decimal-leading-zero); font-size: 11px; letter-spacing: .1em; color: var(--brown); padding-top: 4px; }
+    .principles li b { font-weight: 500; color: var(--ink); }
+
+    /* ------------------------------------------------------------
+       7. 매장 안내
+       ------------------------------------------------------------ */
+    .store { padding: var(--section) 0 0; }
+    .store__grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: clamp(16px, 2.5vw, 40px); align-items: start; }
+    .store__media { grid-column: 1 / 8; }
+    .store__media .ph { aspect-ratio: 3 / 2; }
+    .store__media figcaption { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .store__info { grid-column: 9 / 13; }
+    .store__info h2 { font-size: clamp(26px, 3vw, 38px); margin-top: 14px; }
+    .store__status { margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
+    .store__status .dot { width: 6px; height: 6px; background: var(--brown-soft); }
+    .store__status.is-open .dot { background: #6F8B6A; }
+    .store__list { margin-top: 26px; }
+    .store__list > div { padding: 16px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 76px 1fr; gap: 12px; font-size: 14px; }
+    .store__list > div:last-child { border-bottom: 1px solid var(--line); }
+    .store__list dt { color: var(--muted); font-size: 12.5px; padding-top: 2px; }
+    .store__list dd { margin: 0; color: var(--ink-2); }
+    .store__list dd b { font-weight: 500; color: var(--ink); }
+    .hours { display: grid; gap: 4px; }
+    .hours div { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+    .hours .today { color: var(--ink); font-weight: 500; }
+    .store__actions { margin-top: 24px; display: flex; gap: 12px 24px; flex-wrap: wrap; align-items: center; }
+    .store__map { margin-top: 26px; }
+    .store__map svg { width: 100%; height: auto; display: block; }
+    .store__map figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+    /* ------------------------------------------------------------
+       8. 푸터
+       ------------------------------------------------------------ */
+    .footer { margin-top: var(--section); border-top: 1px solid var(--line); background: var(--bg); }
+    .footer__top { padding-top: clamp(48px, 6vw, 80px); padding-bottom: clamp(36px, 5vw, 64px); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: clamp(16px, 2.5vw, 40px); row-gap: 40px; }
+    .footer__news { grid-column: 1 / 6; }
+    .footer__news h2 { font-family: var(--font-serif); font-weight: 300; font-size: clamp(22px, 2.2vw, 28px); }
+    .footer__news p { margin-top: 12px; font-size: 13.5px; color: var(--ink-2); max-width: 40ch; }
+    .news-form { margin-top: 22px; display: flex; gap: 0; max-width: 420px; border-bottom: 1px solid var(--ink); }
+    .news-form input {
+      flex: 1; min-width: 0; font: inherit; font-size: 14px; color: var(--ink);
+      background: transparent; border: 0; padding: 12px 0; outline: none;
+    }
+    .news-form input::placeholder { color: var(--muted); }
+    .news-form button { font-size: 12.5px; letter-spacing: .06em; padding: 0 4px; white-space: nowrap; }
+    .news-form button:hover { color: var(--brown); }
+    .news-msg { margin-top: 10px; font-size: 12.5px; min-height: 20px; color: var(--muted); }
+    .news-msg.ok { color: #5C7358; }
+    .news-msg.err { color: #9C5A45; }
+    .footer__col { grid-column: span 2; }
+    .footer__col:nth-of-type(2) { grid-column: 7 / 9; }
+    .footer__col:nth-of-type(3) { grid-column: 9 / 11; }
+    .footer__col:nth-of-type(4) { grid-column: 11 / 13; }
+    .footer__col h3 { font-size: 12.5px; letter-spacing: .02em; color: var(--muted); font-weight: 500; }
+    .footer__col ul { margin-top: 16px; display: grid; gap: 9px; }
+    .footer__col a { font-size: 13.5px; color: var(--ink-2); transition: color var(--dur) var(--ease); }
+    .footer__col a:hover { color: var(--ink); }
+    .footer__bottom { border-top: 1px solid var(--line-soft); padding-top: 28px; padding-bottom: 40px; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: clamp(16px, 2.5vw, 40px); row-gap: 20px; align-items: end; }
+    .footer__brand { grid-column: 1 / 6; }
+    .footer__brand .brand { font-size: 22px; }
+    .footer__brand p { margin-top: 12px; font-size: 13.5px; color: var(--ink-2); max-width: 36ch; }
+    .footer__legal { grid-column: 7 / 13; font-size: 11.5px; color: var(--muted); line-height: 1.8; }
+    .footer__legal span { display: inline-block; margin-right: 14px; }
+    .footer__copy { grid-column: 1 / 13; font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    /* ------------------------------------------------------------
+       9. 장바구니 드로어 (Product 액센트 — 실제로 동작하는 UI)
+       ------------------------------------------------------------ */
+    .scrim {
+      position: fixed; inset: 0; z-index: 110; background: rgba(42, 40, 37, .28);
+      opacity: 0; visibility: hidden; transition: opacity 400ms var(--ease), visibility 0s linear 400ms;
+    }
+    .scrim.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
+    .drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; z-index: 120;
+      width: min(420px, 100%); background: var(--paper);
+      display: flex; flex-direction: column;
+      transform: translateX(100%); visibility: hidden;
+      transition: transform 480ms var(--ease), visibility 0s linear 480ms;
+      box-shadow: -20px 0 60px rgba(42, 40, 37, .06);
+    }
+    .drawer.is-open { transform: none; visibility: visible; transition-delay: 0s; }
+    .drawer__head { display: flex; justify-content: space-between; align-items: center; padding: 22px 26px 18px; border-bottom: 1px solid var(--line-soft); }
+    .drawer__head h2 { font-family: var(--font-serif); font-weight: 400; font-size: 18px; }
+    .drawer__head span { font-size: 12px; color: var(--muted); margin-left: 8px; }
+    .drawer__close { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+    .drawer__close svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+    .drawer__list { flex: 1; overflow-y: auto; padding: 8px 26px; }
+    .drawer__empty { padding: 60px 0; text-align: center; color: var(--muted); font-size: 13.5px; }
+    .drawer__empty a { display: inline-block; margin-top: 12px; color: var(--ink); border-bottom: 1px solid var(--line); }
+    .ci { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); align-items: start; }
+    .ci .ph { width: 64px; height: 76px; }
+    .ci__name { font-size: 13.5px; font-weight: 500; }
+    .ci__maker { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .ci__qty { margin-top: 10px; display: inline-flex; align-items: center; border: 1px solid var(--line); }
+    .ci__qty button { width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; color: var(--ink-2); }
+    .ci__qty button:hover { color: var(--ink); background: var(--bg-soft); }
+    .ci__qty output { min-width: 28px; text-align: center; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+    .ci__right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .ci__price { font-size: 13.5px; font-variant-numeric: tabular-nums; }
+    .ci__remove { font-size: 11.5px; color: var(--muted); border-bottom: 1px solid transparent; }
+    .ci__remove:hover { color: var(--ink); border-color: var(--ink); }
+    .drawer__foot { padding: 18px 26px 26px; border-top: 1px solid var(--line-soft); background: var(--paper); }
+    .drawer__sum { display: grid; gap: 8px; font-size: 13px; color: var(--ink-2); }
+    .drawer__sum div { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+    .drawer__sum .total { font-size: 15px; color: var(--ink); font-weight: 500; padding-top: 10px; border-top: 1px solid var(--line-soft); margin-top: 4px; }
+    .drawer__foot .btn { width: 100%; margin-top: 16px; }
+    .drawer__hint { margin-top: 12px; font-size: 11.5px; color: var(--muted); text-align: center; }
+
+    .toast {
+      position: fixed; left: 50%; bottom: 28px; z-index: 130; transform: translate(-50%, 12px);
+      background: var(--ink); color: var(--paper); font-size: 13px; padding: 12px 18px;
+      opacity: 0; visibility: hidden; transition: opacity 360ms var(--ease), transform 360ms var(--ease), visibility 0s linear 360ms;
+      max-width: calc(100% - 40px); text-align: center;
+    }
+    .toast.is-on { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition-delay: 0s; }
+
+    /* ------------------------------------------------------------
+       10. 반응형
+       ------------------------------------------------------------ */
+    @media (max-width: 1100px) {
+      .hero__text { grid-column: 1 / 6; }
+      .hero__media { grid-column: 6 / 13; }
+      .journal__meta { grid-column: 1 / 5; }
+      .journal__body { grid-column: 5 / 13; }
+      .store__media { grid-column: 1 / 8; }
+      .store__info { grid-column: 8 / 13; }
+      .footer__news { grid-column: 1 / 7; }
+      .footer__col:nth-of-type(2) { grid-column: 7 / 9; }
+    }
+    @media (max-width: 900px) {
+      .nav, .header__tools .icon-btn--search { display: none; }
+      .menu-btn { display: inline-flex; }
+      .header__inner { grid-template-columns: 1fr auto; }
+      .hero { padding-top: calc(var(--header-h) + 8px); }
+      .hero__grid { row-gap: 26px; }
+      .hero__text { grid-column: 1 / 13; grid-row: 2; padding-bottom: 0; }
+      .hero__media { grid-column: 1 / 13; grid-row: 1; }
+      .hero__frame { aspect-ratio: 4 / 3; }
+      .hero__note { grid-column: 1 / 13; grid-row: 3; }
+      .section-head__main { grid-column: 1 / 13; }
+      .section-head__side { grid-column: 1 / 13; justify-self: start; text-align: left; margin-top: 18px; }
+      .sel-grid, .prod-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+      .mood__item--a { grid-column: 1 / 10; grid-row: auto; }
+      .mood__item--b { grid-column: 3 / 13; grid-row: auto; margin-top: 0; }
+      .mood__item--c { grid-column: 1 / 8; grid-row: auto; }
+      .mood__quote { grid-column: 1 / 13; grid-row: auto; }
+      .journal__meta { grid-column: 1 / 13; }
+      .journal__sticky { position: static; }
+      .journal__portrait { display: none; }
+      .journal__body { grid-column: 1 / 13; margin-top: 44px; }
+      .store__media { grid-column: 1 / 13; }
+      .store__info { grid-column: 1 / 13; margin-top: 36px; }
+      .footer__news { grid-column: 1 / 13; }
+      .footer__col:nth-of-type(2), .footer__col:nth-of-type(3), .footer__col:nth-of-type(4) { grid-column: span 4; }
+      .footer__brand { grid-column: 1 / 13; }
+      .footer__legal { grid-column: 1 / 13; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 14.5px; }
+      .brand { font-size: 17px; }
+      .hero__title { font-size: clamp(34px, 11vw, 44px); }
+      .hero__frame { aspect-ratio: 4 / 5; }
+      .sel-grid { column-gap: 14px; row-gap: 32px; }
+      .prod-grid { column-gap: 14px; row-gap: 34px; }
+      .card__row { flex-direction: column; gap: 4px; }
+      .card__add { opacity: 1; transform: none; padding: 7px 10px; }
+      .card__note { display: none; }
+      .mood__item--a { grid-column: 1 / 13; }
+      .mood__item--b { grid-column: 2 / 13; }
+      .mood__item--c { grid-column: 1 / 10; }
+      .qa__q { grid-template-columns: 24px 1fr; gap: 8px; }
+      .qa__a, .pull, .journal__inline, .journal__end, .principles { padding-left: 0; margin-left: 0; }
+      .pull { padding-left: 18px; }
+      .store__list > div { grid-template-columns: 64px 1fr; }
+      .footer__col:nth-of-type(2), .footer__col:nth-of-type(3), .footer__col:nth-of-type(4) { grid-column: span 6; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; transition-delay: 0s !important; }
+      .reveal { opacity: 1; transform: none; }
+      .ph img, .mood__pic .ph img { transition: none; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <!-- ============================================================
+       헤더
+       ============================================================ -->
+  <header class="header" id="header">
+    <div class="wrap header__inner">
+      <a class="brand" href="#top" aria-label="고요 GOYO 홈으로">고요 <small>GOYO</small></a>
+
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="#shop">Shop</a>
+        <a href="#new">New</a>
+        <a href="#editorial">Editorial</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-btn icon-btn--search" type="button" aria-label="검색">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" type="button" id="cartOpen" aria-haspopup="dialog" aria-controls="cartDrawer" aria-label="장바구니 열기">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span>장바구니</span>
+          <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+        </button>
+        <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="메뉴 열기"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴">
+    <a href="#shop">Shop</a>
+    <a href="#new">New</a>
+    <a href="#editorial">Editorial</a>
+    <a href="#about">About</a>
+    <p>성산동 매장 · 화–일 12:00–19:00 · 월요일 휴무</p>
+  </nav>
+
+  <main id="main">
+    <!-- ============================================================
+         히어로
+         ============================================================ -->
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <span class="eyebrow">2026년 8월 셋째 주</span>
+          <h1 class="h-serif hero__title" id="heroTitle">천천히<br>고른 것들<em>.</em></h1>
+          <p class="lead hero__lead">많이 두지 않습니다. 오래 곁에 두고 싶은 것만, 한 번 더 써 보고 들여옵니다.</p>
+          <div class="hero__actions">
+            <a class="btn" href="#new">이번 주 셀렉션 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <div class="ph ph--warm hero__frame">
+            <img src="https://loremflickr.com/1600/1100/stationery,notebook?lock=4101" width="1600" height="1100" alt="책상 위에 펼쳐 둔 노트와 연필, 접힌 린넨 티타월의 정물" fetchpriority="high">
+          </div>
+          <div class="hero__caption">
+            <span>정물: 노트, 연필, 티타월</span>
+            <span>고요 성산점, 오후 3시의 빛</span>
+          </div>
+        </div>
+
+        <p class="hero__note"><b>매주 목요일</b> 새 셀렉션이 들어옵니다 <span aria-hidden="true">·</span> 대부분 열 점을 넘지 않습니다 <span aria-hidden="true">·</span> <a href="#editorial">고르는 기준 읽기</a></p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         이번 주 셀렉션
+         ============================================================ -->
+    <section class="section" id="new" aria-labelledby="newTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head__main">
+            <h2 class="h-serif" id="newTitle">이번 주의 셀렉션</h2>
+            <p class="lead">8월 13일 목요일에 들어온 네 점. 잉크 냄새가 나는 것들과 손에 닿는 천을 골랐습니다. 네 점뿐이지만, 각각 이유가 있습니다.</p>
+          </div>
+          <div class="section-head__side">
+            <a class="link-quiet" href="#shop">전체 상품 보기
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <ul class="sel-grid" aria-label="이번 주 셀렉션 4점">
+          <li class="card reveal" data-delay="0">
+            <span class="badge">NEW</span>
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/1000/ink,pen?lock=4111" width="800" height="1000" alt="투명 유리 잉크병과 나무 손잡이 딥펜" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/fountainpen,writing?lock=4112" width="800" height="1000" alt="딥펜으로 쓴 글씨가 놓인 책상 위 다른 각도 컷" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="s1" data-name="유리 잉크병과 딥펜 세트" data-maker="유리공방 물빛" data-price="58000" data-img="https://loremflickr.com/200/250/ink,pen?lock=4111">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">유리 잉크병과 딥펜 세트</a></h3>
+                <span class="card__price">58,000원</span>
+              </div>
+              <p class="card__maker">유리공방 물빛 · 경기 양평</p>
+              <p class="card__note">병 입구가 넓어 펜촉을 담글 때 벽에 닿지 않습니다. 뚜껑은 코르크.</p>
+            </div>
+          </li>
+
+          <li class="card reveal" data-delay="1">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/1000/linen,fabric?lock=4113" width="800" height="1000" alt="접어 쌓아 둔 소창 손수건 세 장" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/linen,textile?lock=4114" width="800" height="1000" alt="소창 손수건의 직조 질감 클로즈업" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="s2" data-name="소창 손수건 3장" data-maker="오후직물" data-price="21000" data-img="https://loremflickr.com/200/250/linen,fabric?lock=4113">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">소창 손수건 3장</a></h3>
+                <span class="card__price">21,000원</span>
+              </div>
+              <p class="card__maker">오후직물 · 전북 전주</p>
+              <p class="card__note">처음엔 뻣뻣하고, 열 번쯤 빨면 부드러워집니다. 그때부터가 시작.</p>
+            </div>
+          </li>
+
+          <li class="card reveal" data-delay="2">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/1000/envelope,paper?lock=4115" width="800" height="1000" alt="회색 화지 봉투 열 장이 겹쳐 놓인 모습" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/paper,texture?lock=4116" width="800" height="1000" alt="봉투 안쪽 결이 보이는 클로즈업" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="s3" data-name="그레이 화지 봉투 10매" data-maker="종이공방 여백" data-price="9000" data-img="https://loremflickr.com/200/250/envelope,paper?lock=4115">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">그레이 화지 봉투 10매</a></h3>
+                <span class="card__price">9,000원</span>
+              </div>
+              <p class="card__maker">종이공방 여백 · 서울 은평</p>
+              <p class="card__note">풀칠 없이 접어 넣는 방식. 우표는 붙지만 우체국에서 한 번 더 확인해 주세요.</p>
+            </div>
+          </li>
+
+          <li class="card reveal" data-delay="3">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/1000/ceramic,stone?lock=4117" width="800" height="1000" alt="자갈 모양의 무광 도자 문진 두 개" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/1000/ceramic,notebook?lock=4118" width="800" height="1000" alt="펼친 노트 위에 올려 둔 문진" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="s4" data-name="도자 문진 (자갈)" data-maker="도예가 김하연" data-price="36000" data-img="https://loremflickr.com/200/250/ceramic,stone?lock=4117">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">도자 문진 (자갈)</a></h3>
+                <span class="card__price">36,000원</span>
+              </div>
+              <p class="card__maker">도예가 김하연 · 경기 이천</p>
+              <p class="card__note">모양이 조금씩 다릅니다. 손에 쥐어 보고 고르시길 권합니다.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="sel-foot">
+          <span>이번 주 셀렉션은 8월 20일(목)까지 매장과 온라인에 함께 놓입니다.</span>
+          <span>이후에는 상품 그리드로 옮겨집니다.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         카테고리 무드 블록 — 문구 / 리빙 / 책
+         ============================================================ -->
+    <section class="section" aria-labelledby="moodTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head__main">
+            <h2 class="h-serif" id="moodTitle">세 개의 방</h2>
+            <p class="lead">고요의 매장은 작은 세 개의 방으로 나뉘어 있습니다. 온라인도 같은 순서로 걸어 보세요.</p>
+          </div>
+        </div>
+
+        <div class="mood">
+          <article class="mood__item mood__item--a reveal">
+            <a class="mood__pic" href="#shop" data-jump="stationery" tabindex="-1">
+            <div class="ph ph--warm">
+              <img src="https://loremflickr.com/1200/1500/stationery,notebook?lock=4121" width="1200" height="1500" alt="창가 책상 위에 가지런히 놓인 연필, 노트, 황동 클립" loading="lazy">
+            </div>
+            </a>
+            <div class="mood__label"><span class="num">01</span><h3>문구</h3><span class="en">Stationery</span></div>
+            <p class="mood__copy">쓰는 도구는 손이 먼저 압니다. 무게, 굵기, 종이와 만나는 소리까지 직접 써 보고 골랐습니다.</p>
+            <a class="link-quiet mood__link" href="#shop" data-jump="stationery">문구 둘러보기</a>
+          </article>
+
+          <article class="mood__item mood__item--b reveal" data-delay="1">
+            <a class="mood__pic" href="#shop" data-jump="living" tabindex="-1">
+            <div class="ph ph--warm">
+              <img src="https://loremflickr.com/1200/960/ceramic,cup?lock=4122" width="1200" height="960" alt="린넨 천 위의 백자 그릇과 나무 트레이" loading="lazy">
+            </div>
+            </a>
+            <div class="mood__label"><span class="num">02</span><h3>리빙</h3><span class="en">Living</span></div>
+            <p class="mood__copy">화려하지 않아도 매일 손이 가는 물건. 식탁과 책상 사이 어딘가에 놓일 것들입니다.</p>
+            <a class="link-quiet mood__link" href="#shop" data-jump="living">리빙 둘러보기</a>
+          </article>
+
+          <article class="mood__item mood__item--c reveal" data-delay="2">
+            <a class="mood__pic" href="#shop" data-jump="books" tabindex="-1">
+            <div class="ph ph--warm">
+              <img src="https://loremflickr.com/1000/1000/bookshelf,minimal?lock=4123" width="1000" height="1000" alt="낮은 나무 선반에 표지가 보이도록 세워 둔 책 몇 권" loading="lazy">
+            </div>
+            </a>
+            <div class="mood__label"><span class="num">03</span><h3>책</h3><span class="en">Books</span></div>
+            <p class="mood__copy">서점이 아니라서 많지 않습니다. 물건과 같은 온도의 책만 스무 권쯤 둡니다.</p>
+            <a class="link-quiet mood__link" href="#shop" data-jump="books">책 둘러보기</a>
+          </article>
+
+          <p class="mood__quote reveal">“좋은 물건은 자리를 많이 차지하지 않습니다. 대신 오래 머뭅니다.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         상품 그리드 (8개) — 이름 · 제작자 · 가격
+         ============================================================ -->
+    <section class="section" id="shop" aria-labelledby="shopTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head__main">
+            <h2 class="h-serif" id="shopTitle">지금 매장에 있는 것들</h2>
+            <p class="lead">전부 여덟 점. 재고는 매장과 같이 씁니다. 품절이면 다음 입고 시기를 알려드립니다.</p>
+          </div>
+        </div>
+
+        <div class="filter" role="group" aria-label="카테고리 필터">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">전체</button>
+          <button class="chip" type="button" data-filter="stationery" aria-pressed="false">문구</button>
+          <button class="chip" type="button" data-filter="living" aria-pressed="false">리빙</button>
+          <button class="chip" type="button" data-filter="books" aria-pressed="false">책</button>
+          <span class="filter__count" id="filterCount" aria-live="polite">8점</span>
+        </div>
+
+        <ul class="prod-grid" id="prodGrid" aria-label="상품 목록">
+          <li class="card" data-cat="stationery">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/pen,aluminum?lock=4131" width="800" height="920" alt="무광 알루미늄 볼펜 한 자루" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/pen,hand?lock=4132" width="800" height="920" alt="볼펜을 손에 쥔 모습" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p1" data-name="무광 알루미늄 볼펜" data-maker="스튜디오 담" data-price="28000" data-img="https://loremflickr.com/200/250/pen,aluminum?lock=4131">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">무광 알루미늄 볼펜</a></h3>
+                <span class="card__price">28,000원</span>
+              </div>
+              <p class="card__maker">스튜디오 담</p>
+            </div>
+          </li>
+
+          <li class="card" data-cat="stationery">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/notebook,paper?lock=4133" width="800" height="920" alt="코튼지 데일리 노트 A5 표지" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/notebook,open?lock=4134" width="800" height="920" alt="펼친 노트의 내지 결" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p2" data-name="코튼지 데일리 노트 A5" data-maker="종이공방 여백" data-price="14000" data-img="https://loremflickr.com/200/250/notebook,paper?lock=4133">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">코튼지 데일리 노트 A5</a></h3>
+                <span class="card__price">14,000원</span>
+              </div>
+              <p class="card__maker">종이공방 여백</p>
+            </div>
+          </li>
+
+          <li class="card" data-cat="living">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/ceramic,jar?lock=4135" width="800" height="920" alt="뚜껑이 있는 백자 소금단지" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/ceramic,table?lock=4136" width="800" height="920" alt="식탁 위에 놓인 소금단지" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p3" data-name="백자 소금단지" data-maker="도예가 김하연" data-price="62000" data-img="https://loremflickr.com/200/250/ceramic,jar?lock=4135">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">백자 소금단지</a></h3>
+                <span class="card__price">62,000원</span>
+              </div>
+              <p class="card__maker">도예가 김하연</p>
+            </div>
+          </li>
+
+          <li class="card" data-cat="living">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/linen,towel?lock=4137" width="800" height="920" alt="접힌 린넨 티타월 두 장" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/linen,kitchen?lock=4138" width="800" height="920" alt="걸어 둔 린넨 티타월" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p4" data-name="린넨 티타월 (2장)" data-maker="오후직물" data-price="24000" data-img="https://loremflickr.com/200/250/linen,towel?lock=4137">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">린넨 티타월 (2장)</a></h3>
+                <span class="card__price">24,000원</span>
+              </div>
+              <p class="card__maker">오후직물</p>
+            </div>
+          </li>
+
+          <li class="card" data-cat="stationery">
+            <span class="badge">NEW</span>
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/brass,clip?lock=4139" width="800" height="920" alt="황동 클립 여러 개가 담긴 작은 접시" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/paperclip,desk?lock=4140" width="800" height="920" alt="서류를 물린 황동 클립" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p5" data-name="황동 클립 세트 (12개)" data-maker="스튜디오 담" data-price="18000" data-img="https://loremflickr.com/200/250/brass,clip?lock=4139">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">황동 클립 세트 (12개)</a></h3>
+                <span class="card__price">18,000원</span>
+              </div>
+              <p class="card__maker">스튜디오 담</p>
+            </div>
+          </li>
+
+          <li class="card" data-cat="books">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/book,cover?lock=4141" width="800" height="920" alt="『느린 아침의 도구들』 표지" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/book,pages?lock=4142" width="800" height="920" alt="펼쳐 둔 책의 본문 페이지" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p6" data-name="느린 아침의 도구들" data-maker="이수민 지음 · 조용한책" data-price="19800" data-img="https://loremflickr.com/200/250/book,cover?lock=4141">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">느린 아침의 도구들</a></h3>
+                <span class="card__price">19,800원</span>
+              </div>
+              <p class="card__maker">이수민 지음 · 조용한책</p>
+            </div>
+          </li>
+
+          <li class="card" data-cat="living">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/wood,pencil?lock=4143" width="800" height="920" alt="오크 원목 연필꽂이" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/pencils,desk?lock=4144" width="800" height="920" alt="연필이 꽂힌 연필꽂이의 윗면" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p7" data-name="오크 연필꽂이" data-maker="목수 박정우" data-price="45000" data-img="https://loremflickr.com/200/250/wood,pencil?lock=4143">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">오크 연필꽂이</a></h3>
+                <span class="card__price">45,000원</span>
+              </div>
+              <p class="card__maker">목수 박정우</p>
+            </div>
+          </li>
+
+          <li class="card" data-cat="books">
+            <div class="ph ph--warm card__media">
+              <img class="main" src="https://loremflickr.com/800/920/book,minimal?lock=4145" width="800" height="920" alt="『종이의 온도』 표지" loading="lazy">
+              <img class="alt" src="https://loremflickr.com/800/920/books,spine?lock=4146" width="800" height="920" alt="책등이 보이도록 세워 둔 책" loading="lazy">
+            </div>
+            <button class="card__add" type="button" data-add data-id="p8" data-name="종이의 온도" data-maker="한지수 지음 · 조용한책" data-price="17000" data-img="https://loremflickr.com/200/250/book,minimal?lock=4145">담기</button>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name"><a href="#shop">종이의 온도</a></h3>
+                <span class="card__price">17,000원</span>
+              </div>
+              <p class="card__maker">한지수 지음 · 조용한책</p>
+            </div>
+          </li>
+
+          <li class="prod-empty" id="prodEmpty">이 방에는 지금 놓인 것이 없습니다. 다음 목요일에 다시 들러 주세요.</li>
+        </ul>
+
+        <div class="prod-foot">
+          <p style="font-size:13px;color:var(--muted);text-align:center;max-width:44ch;">
+            5만원 이상 무료 배송 · 주문 후 2일 안에 보냅니다 · 도자와 유리는 뽁뽁이 대신 종이 완충재로 포장합니다
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         에디토리얼 — 고르는 기준
+         ============================================================ -->
+    <section class="journal" id="editorial" aria-labelledby="journalTitle">
+      <div class="wrap journal__grid">
+        <aside class="journal__meta">
+          <div class="journal__sticky">
+            <span class="eyebrow">인터뷰 · 열네 번째 글</span>
+            <h2 class="h-serif" id="journalTitle">고르는 기준</h2>
+            <p class="lead">고요를 시작한 윤서현 대표와, 물건 하나가 매장에 들어오기까지의 이야기를 나눴습니다.</p>
+            <dl class="journal__facts">
+              <dt>대담</dt><dd>윤서현 (고요 대표)</dd>
+              <dt>정리</dt><dd>고요 편집팀</dd>
+              <dt>날짜</dt><dd>2026년 8월 6일, 성산점 안쪽 방</dd>
+              <dt>읽는 시간</dt><dd>약 6분</dd>
+            </dl>
+            <figure class="journal__portrait">
+              <div class="ph ph--warm">
+                <img src="https://loremflickr.com/640/800/woman,portrait?lock=4151" width="640" height="800" alt="매장 안쪽 방에서 노트를 넘기고 있는 윤서현 대표" loading="lazy">
+              </div>
+              <figcaption>윤서현. 문구 회사에서 9년을 일하고, 2021년 고요를 열었다.</figcaption>
+            </figure>
+          </div>
+        </aside>
+
+        <div class="journal__body">
+          <article>
+            <div class="qa">
+              <h3 class="qa__q"><span class="mark">Q1</span><span>가게 이름이 ‘고요’입니다. 처음부터 조용한 가게를 생각하셨나요?</span></h3>
+              <div class="qa__a">
+                <p>조용한 가게라기보다, <strong>물건이 조용히 있을 수 있는 가게</strong>를 생각했어요. 문구 회사에 있을 때 매 시즌 신상품을 수십 개씩 냈는데, 정작 저는 그중에 하나도 오래 쓰지 못했거든요. 물건이 너무 많으면 물건이 안 보여요. 그래서 처음부터 ‘많이 두지 않는다’를 규칙으로 정했습니다.</p>
+                <p>지금도 매장에 놓이는 품목은 늘 60점 안쪽입니다. 새 것이 들어오면 무언가는 나가야 해요. 그 순서를 정하는 게 제 일의 대부분입니다.</p>
+              </div>
+            </div>
+
+            <div class="qa">
+              <h3 class="qa__q"><span class="mark">Q2</span><span>‘고르는 기준’을 한 줄로 말한다면요?</span></h3>
+              <div class="qa__a">
+                <p>“한 달을 써 보고도 계속 손이 가는가.” 그게 전부예요. 그래서 새로운 물건이 오면 바로 진열하지 않고 제가 먼저 씁니다. 볼펜이면 한 달, 노트면 한 권을 다 쓸 때까지, 그릇이면 설거지를 서른 번쯤 할 때까지요.</p>
+                <p>그 사이에 대부분이 걸러져요. 처음에는 예뻤는데 손에서 미끄러지거나, 잉크가 뒷면에 비치거나, 뚜껑이 잘 안 맞거나. 그런 건 아무리 사진이 잘 나와도 두지 않습니다.</p>
+              </div>
+            </div>
+
+            <blockquote class="pull">“사진이 예쁜 물건과, 한 달 뒤에도 책상 위에 남아 있는 물건은 다릅니다. 저희는 뒤쪽만 둡니다.”</blockquote>
+
+            <div class="qa">
+              <h3 class="qa__q"><span class="mark">Q3</span><span>제작자를 고를 때는 무엇을 보시나요?</span></h3>
+              <div class="qa__a">
+                <p>물건보다 <strong>고치는 방식</strong>을 봐요. 예를 들어 스튜디오 담의 볼펜은 리필 규격이 흔한 것이라 어디서든 심을 구할 수 있고, 오후직물은 올이 풀린 손수건을 보내면 감침질을 다시 해서 돌려보내 줍니다. 오래 쓰라고 만든 사람들인지가 대화 몇 번이면 보이더라고요.</p>
+                <p>그리고 대부분 작은 곳입니다. 한 번에 서른 개 이상 만들기 어려운 분들이 많아서, 저희 쪽 재고도 자연히 적어요. 그건 불편이라기보다 저희 리듬에 맞는 일이라고 생각합니다.</p>
+              </div>
+            </div>
+
+            <figure class="journal__inline reveal">
+              <div class="ph ph--warm">
+                <img src="https://loremflickr.com/1200/800/desk,notebook?lock=4152" width="1200" height="800" alt="매장 뒷방 작업대 위에 시험 삼아 써 보고 있는 노트와 볼펜, 잉크 자국" loading="lazy">
+              </div>
+              <figcaption>뒷방 작업대. 진열되기 전의 물건들이 한 달쯤 여기서 머문다.</figcaption>
+            </figure>
+
+            <div class="qa">
+              <h3 class="qa__q"><span class="mark">Q4</span><span>할인이나 이벤트를 거의 하지 않으시죠.</span></h3>
+              <div class="qa__a">
+                <p>가격은 제작자와 정한 값이라 저희 마음대로 내리기 어렵기도 하고, 무엇보다 <strong>급하게 사게 하고 싶지 않아요.</strong> 손님이 두 번, 세 번 와서 만져 보고 고민하다가 사 가는 게 저희한테는 제일 좋은 장면이에요. 그래서 온라인에도 ‘마감 임박’ 같은 말은 쓰지 않습니다.</p>
+                <p>대신 매주 목요일에 새 셀렉션이 들어오는 건 꾸준히 지키고 있어요. 그게 저희가 하는 유일한 ‘이벤트’인 셈이죠.</p>
+              </div>
+            </div>
+
+            <div class="qa">
+              <h3 class="qa__q"><span class="mark">Q5</span><span>앞으로 고요가 어떤 곳이면 좋겠습니까?</span></h3>
+              <div class="qa__a">
+                <p>몇 년 뒤에도 매장에 놓인 게 60점을 넘지 않는 곳. 그리고 그중 절반은 지금과 같은 물건인 곳이요. 새로 들여오는 것보다 계속 두는 게 더 어렵다는 걸 요즘 배우고 있어요.</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="principles">
+            <h3>고요가 물건을 두기 전에 확인하는 다섯 가지</h3>
+            <ol>
+              <li><span><b>한 달을 써 보았는가.</b> 대표와 직원이 실제로 사용한 뒤에만 진열합니다.</span></li>
+              <li><span><b>고칠 수 있는가.</b> 소모품 규격이 흔하고, 제작자가 수선을 받는지 확인합니다.</span></li>
+              <li><span><b>이미 있는 것과 겹치지 않는가.</b> 같은 쓰임의 물건은 한 종류만 둡니다.</span></li>
+              <li><span><b>가격을 설명할 수 있는가.</b> 재료·공정·제작자 몫을 손님께 그대로 말할 수 있어야 합니다.</span></li>
+              <li><span><b>계속 만들 수 있는 사람인가.</b> 한 시즌짜리 협업보다 오래 이어질 관계를 우선합니다.</span></li>
+            </ol>
+          </div>
+
+          <div class="journal__end">
+            <span>다음 글 · <a href="#editorial">종이공방 여백의 작업실, 은평</a></span>
+            <span>이전 글 · <a href="#editorial">린넨을 빨래하는 법에 대하여</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         매장 안내
+         ============================================================ -->
+    <section class="store" id="about" aria-labelledby="storeTitle">
+      <div class="wrap store__grid">
+        <figure class="store__media reveal">
+          <div class="ph ph--warm">
+            <img src="https://loremflickr.com/1500/1000/shop,interior?lock=4161" width="1500" height="1000" alt="오후 햇빛이 드는 고요 성산점 내부, 낮은 나무 선반과 흰 벽" loading="lazy">
+          </div>
+          <figcaption>고요 성산점. 1층 안쪽으로 세 개의 방이 이어집니다.</figcaption>
+        </figure>
+
+        <div class="store__info">
+          <h2 class="h-serif" id="storeTitle">성산동에 있습니다</h2>
+          <p class="store__status" id="storeStatus"><span class="dot" aria-hidden="true"></span><span id="storeStatusText">영업시간을 확인하고 있습니다</span></p>
+
+          <dl class="store__list">
+            <div>
+              <dt>주소</dt>
+              <dd><address><b>서울특별시 마포구 성미산로23길 14, 1층</b><br>(성산동 250-7) · 우편번호 03966</address></dd>
+            </div>
+            <div>
+              <dt>영업시간</dt>
+              <dd>
+                <div class="hours" id="hoursList">
+                  <div data-day="2"><span>화 – 금</span><span>12:00 – 19:00</span></div>
+                  <div data-day="6"><span>토 · 일</span><span>11:00 – 19:00</span></div>
+                  <div data-day="1"><span>월요일</span><span>휴무</span></div>
+                </div>
+                <p style="margin-top:8px;font-size:12.5px;color:var(--muted);">명절 연휴와 임시 휴무는 인스타그램에 미리 알립니다.</p>
+              </dd>
+            </div>
+            <div>
+              <dt>오시는 길</dt>
+              <dd>6호선 망원역 2번 출구에서 도보 9분. 마포구청역 방향으로 성미산로를 따라 오시면 됩니다.<br>매장 앞 주차는 어렵고, 성산동 공영주차장(도보 4분)을 이용해 주세요.</dd>
+            </div>
+            <div>
+              <dt>연락</dt>
+              <dd><a href="tel:0223340512">02-334-0512</a> · <a href="mailto:hello@goyo.kr">hello@goyo.kr</a><br>전화는 영업시간 안에만 받습니다.</dd>
+            </div>
+          </dl>
+
+          <figure class="store__map" aria-label="약도">
+            <svg viewBox="0 0 400 200" role="img" aria-labelledby="mapTitle">
+              <title id="mapTitle">망원역에서 고요 성산점까지의 약도</title>
+              <rect width="400" height="200" fill="#EDE8E1"/>
+              <path d="M0 140 L400 120" stroke="#D9D2C8" stroke-width="10" fill="none"/>
+              <path d="M60 0 L90 200" stroke="#D9D2C8" stroke-width="7" fill="none"/>
+              <path d="M240 0 L260 200" stroke="#D9D2C8" stroke-width="7" fill="none"/>
+              <path d="M0 60 L400 40" stroke="#E4DED5" stroke-width="5" fill="none"/>
+              <path d="M78 134 L250 125 L252 84" stroke="#8B6E52" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+              <circle cx="78" cy="134" r="6" fill="#FBF9F5" stroke="#2A2825" stroke-width="1.2"/>
+              <text x="78" y="160" font-size="10" text-anchor="middle" fill="#57524B" font-family="Pretendard, sans-serif">망원역 2번 출구</text>
+              <rect x="244" y="72" width="16" height="16" fill="#2A2825"/>
+              <text x="252" y="64" font-size="10.5" text-anchor="middle" fill="#2A2825" font-family="Pretendard, sans-serif" font-weight="500">고요 GOYO</text>
+              <text x="330" y="118" font-size="9.5" fill="#8A837A" font-family="Pretendard, sans-serif">성미산로</text>
+              <text x="266" y="190" font-size="9.5" fill="#8A837A" font-family="Pretendard, sans-serif">성미산로23길</text>
+              <text x="140" y="127" font-size="9" fill="#8B6E52" font-family="Pretendard, sans-serif">도보 9분</text>
+            </svg>
+            <figcaption>약도. 정확한 위치는 지도 앱에서 ‘고요 성산점’으로 검색해 주세요.</figcaption>
+          </figure>
+
+          <div class="store__actions">
+            <a class="btn" href="https://map.naver.com/" target="_blank" rel="noopener">지도 앱에서 열기</a>
+            <a class="link-quiet" href="https://www.instagram.com/" target="_blank" rel="noopener">인스타그램 @goyo.seoul</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       푸터
+       ============================================================ -->
+  <footer class="footer">
+    <div class="wrap footer__top">
+      <div class="footer__news">
+        <h2>새 셀렉션 소식</h2>
+        <p>할인 소식은 보내지 않습니다. 목요일에 무엇이 들어왔는지, 한 달에 서너 번 짧게 씁니다.</p>
+        <form class="news-form" id="newsForm" novalidate>
+          <label class="sr-only" for="newsEmail">이메일 주소</label>
+          <input type="email" id="newsEmail" name="email" placeholder="이메일 주소" autocomplete="email" required>
+          <button type="submit">받아보기</button>
+        </form>
+        <p class="news-msg" id="newsMsg" aria-live="polite"></p>
+      </div>
+
+      <div class="footer__col">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#shop">전체 상품</a></li>
+          <li><a href="#new">이번 주 셀렉션</a></li>
+          <li><a href="#shop" data-jump="stationery">문구</a></li>
+          <li><a href="#shop" data-jump="living">리빙</a></li>
+          <li><a href="#shop" data-jump="books">책</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3>고요</h3>
+        <ul>
+          <li><a href="#editorial">Editorial</a></li>
+          <li><a href="#about">매장 안내</a></li>
+          <li><a href="#editorial">제작자들</a></li>
+          <li><a href="#about">입점 문의</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3>안내</h3>
+        <ul>
+          <li><a href="#about">배송 · 교환</a></li>
+          <li><a href="#about">수선 문의</a></li>
+          <li><a href="#about">개인정보 처리방침</a></li>
+          <li><a href="#about">이용약관</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wrap footer__bottom">
+      <div class="footer__brand">
+        <span class="brand">고요 <small>GOYO</small></span>
+        <p>많이 파는 곳이 아니라, 천천히 고른 것만 두는 곳.</p>
+      </div>
+      <div class="footer__legal">
+        <span>상호 고요 GOYO</span><span>대표 윤서현</span><span>사업자등록번호 512-38-01947</span><br>
+        <span>통신판매업신고 2021-서울마포-1183</span><span>서울특별시 마포구 성미산로23길 14, 1층</span><br>
+        <span>02-334-0512</span><span>hello@goyo.kr</span>
+      </div>
+      <div class="footer__copy">
+        <span>© 2026 GOYO. All rights reserved.</span>
+        <span>배송은 우체국택배, 교환·반품은 받은 날로부터 7일 안에.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       장바구니 드로어 + 토스트
+       ============================================================ -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+    <div class="drawer__head">
+      <h2 id="drawerTitle">장바구니 <span id="drawerCount">0점</span></h2>
+      <button class="drawer__close" type="button" id="cartClose" aria-label="장바구니 닫기">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer__list" id="drawerList">
+      <p class="drawer__empty">아직 담긴 것이 없습니다.<br><a href="#new" data-close-drawer>이번 주 셀렉션 보기</a></p>
+    </div>
+    <div class="drawer__foot">
+      <div class="drawer__sum">
+        <div><span>상품 합계</span><span id="sumItems">0원</span></div>
+        <div><span>배송비</span><span id="sumShip">3,000원</span></div>
+        <div class="total"><span>합계</span><span id="sumTotal">0원</span></div>
+      </div>
+      <button class="btn btn--fill" type="button" id="checkoutBtn">주문하기</button>
+      <p class="drawer__hint">5만원 이상이면 배송비를 받지 않습니다 · 주문 후 2일 안에 발송</p>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var won = function (n) { return n.toLocaleString('ko-KR') + '원'; };
+
+      /* ------------------------------------------------------------
+         헤더 — 스크롤 시 축소 고정
+         ------------------------------------------------------------ */
+      var header = document.getElementById('header');
+      var lastState = null;
+      function onScroll() {
+        var scrolled = window.scrollY > 24;
+        if (scrolled !== lastState) {
+          header.classList.toggle('is-scrolled', scrolled);
+          lastState = scrolled;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ------------------------------------------------------------
+         모바일 메뉴
+         ------------------------------------------------------------ */
+      var menuBtn = document.getElementById('menuBtn');
+      var mobileNav = document.getElementById('mobileNav');
+      function setMenu(open) {
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        mobileNav.classList.toggle('is-open', open);
+        if (open) header.classList.add('is-scrolled');
+        else onScroll();
+      }
+      menuBtn.addEventListener('click', function () {
+        setMenu(menuBtn.getAttribute('aria-expanded') !== 'true');
+      });
+      mobileNav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) setMenu(false);
+      });
+
+      /* ------------------------------------------------------------
+         현재 위치 표시 (내비 aria-current)
+         ------------------------------------------------------------ */
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+      var sectionIds = ['shop', 'new', 'editorial', 'about'];
+      var sections = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+      if ('IntersectionObserver' in window) {
+        var navObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            navLinks.forEach(function (a) {
+              var on = a.getAttribute('href') === '#' + id;
+              if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+            });
+          });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+        sections.forEach(function (s) { navObs.observe(s); });
+      }
+
+      /* ------------------------------------------------------------
+         스크롤 리빌 — 느린 페이드
+         ------------------------------------------------------------ */
+      var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var revObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              revObs.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        reveals.forEach(function (el) { revObs.observe(el); });
+      }
+
+      /* ------------------------------------------------------------
+         상품 필터 (전체 / 문구 / 리빙 / 책)
+         ------------------------------------------------------------ */
+      var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+      var grid = document.getElementById('prodGrid');
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+      var emptyMsg = document.getElementById('prodEmpty');
+      var countEl = document.getElementById('filterCount');
+      var filterTimer = null;
+
+      function applyFilter(cat) {
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-filter') === cat ? 'true' : 'false'); });
+        var visible = 0;
+        cards.forEach(function (card) { card.classList.add('is-fading'); });
+        clearTimeout(filterTimer);
+        filterTimer = setTimeout(function () {
+          cards.forEach(function (card) {
+            var show = cat === 'all' || card.getAttribute('data-cat') === cat;
+            card.classList.toggle('is-hidden', !show);
+            if (show) visible++;
+          });
+          emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+          countEl.textContent = visible + '점';
+          // 강제 리플로우 후 페이드인
+          void grid.offsetWidth;
+          cards.forEach(function (card) { card.classList.remove('is-fading'); card.classList.add('in'); });
+        }, reduceMotion ? 0 : 260);
+      }
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () { applyFilter(chip.getAttribute('data-filter')); });
+      });
+      // 무드 블록 / 푸터의 "문구 둘러보기" 등 → 필터 적용 후 이동
+      document.addEventListener('click', function (e) {
+        var jump = e.target.closest('[data-jump]');
+        if (!jump) return;
+        applyFilter(jump.getAttribute('data-jump'));
+      });
+
+      /* ------------------------------------------------------------
+         장바구니 — 상태, 드로어, 토스트
+         ------------------------------------------------------------ */
+      var cart = [];
+      var cartCount = document.getElementById('cartCount');
+      var drawer = document.getElementById('cartDrawer');
+      var scrim = document.getElementById('scrim');
+      var drawerList = document.getElementById('drawerList');
+      var drawerCount = document.getElementById('drawerCount');
+      var sumItems = document.getElementById('sumItems');
+      var sumShip = document.getElementById('sumShip');
+      var sumTotal = document.getElementById('sumTotal');
+      var toast = document.getElementById('toast');
+      var toastTimer = null;
+      var lastFocus = null;
+      var FREE_SHIP = 50000;
+      var SHIP_FEE = 3000;
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('is-on');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('is-on'); }, 2200);
+      }
+
+      function totalQty() { return cart.reduce(function (s, i) { return s + i.qty; }, 0); }
+      function subtotal() { return cart.reduce(function (s, i) { return s + i.qty * i.price; }, 0); }
+
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, function (m) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+        });
+      }
+
+      function renderCart() {
+        var qty = totalQty();
+        cartCount.textContent = qty;
+        cartCount.classList.toggle('is-on', qty > 0);
+        drawerCount.textContent = qty + '점';
+
+        if (cart.length === 0) {
+          drawerList.innerHTML = '<p class="drawer__empty">아직 담긴 것이 없습니다.<br><a href="#new" data-close-drawer>이번 주 셀렉션 보기</a></p>';
+        } else {
+          drawerList.innerHTML = cart.map(function (item) {
+            return '' +
+              '<div class="ci" data-id="' + escapeHtml(item.id) + '">' +
+                '<div class="ph"><img src="' + escapeHtml(item.img) + '" alt="" loading="lazy" width="64" height="76"></div>' +
+                '<div>' +
+                  '<p class="ci__name">' + escapeHtml(item.name) + '</p>' +
+                  '<p class="ci__maker">' + escapeHtml(item.maker) + '</p>' +
+                  '<div class="ci__qty" aria-label="수량">' +
+                    '<button type="button" data-qty="-1" aria-label="수량 줄이기">−</button>' +
+                    '<output aria-live="polite">' + item.qty + '</output>' +
+                    '<button type="button" data-qty="1" aria-label="수량 늘리기">+</button>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="ci__right">' +
+                  '<span class="ci__price">' + won(item.price * item.qty) + '</span>' +
+                  '<button type="button" class="ci__remove" data-remove>빼기</button>' +
+                '</div>' +
+              '</div>';
+          }).join('');
+        }
+
+        var sub = subtotal();
+        var ship = sub === 0 ? 0 : (sub >= FREE_SHIP ? 0 : SHIP_FEE);
+        sumItems.textContent = won(sub);
+        sumShip.textContent = ship === 0 ? (sub === 0 ? '—' : '무료') : won(ship);
+        sumTotal.textContent = won(sub + ship);
+      }
+
+      function addToCart(btn) {
+        var id = btn.getAttribute('data-id');
+        var found = cart.filter(function (i) { return i.id === id; })[0];
+        if (found) {
+          found.qty += 1;
+        } else {
+          cart.push({
+            id: id,
+            name: btn.getAttribute('data-name'),
+            maker: btn.getAttribute('data-maker'),
+            price: parseInt(btn.getAttribute('data-price'), 10) || 0,
+            img: btn.getAttribute('data-img'),
+            qty: 1
+          });
+        }
+        renderCart();
+        showToast(btn.getAttribute('data-name') + ' 담았습니다. 장바구니에서 확인하세요.');
+      }
+
+      function openDrawer() {
+        lastFocus = document.activeElement;
+        scrim.hidden = false;
+        // hidden 해제 직후 강제 리플로우 → 트랜지션이 확실히 재생되도록
+        void scrim.offsetWidth;
+        scrim.classList.add('is-open');
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { document.getElementById('cartClose').focus(); }, reduceMotion ? 0 : 200);
+      }
+      function closeDrawer() {
+        scrim.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(function () { scrim.hidden = true; }, reduceMotion ? 0 : 420);
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      }
+
+      document.getElementById('cartOpen').addEventListener('click', openDrawer);
+      document.getElementById('cartClose').addEventListener('click', closeDrawer);
+      scrim.addEventListener('click', closeDrawer);
+
+      document.addEventListener('click', function (e) {
+        var add = e.target.closest('[data-add]');
+        if (add) { e.preventDefault(); addToCart(add); return; }
+        if (e.target.closest('[data-close-drawer]')) { closeDrawer(); return; }
+      });
+
+      drawerList.addEventListener('click', function (e) {
+        var row = e.target.closest('.ci');
+        if (!row) return;
+        var id = row.getAttribute('data-id');
+        var item = cart.filter(function (i) { return i.id === id; })[0];
+        if (!item) return;
+        var qtyBtn = e.target.closest('[data-qty]');
+        if (qtyBtn) {
+          item.qty += parseInt(qtyBtn.getAttribute('data-qty'), 10);
+          if (item.qty <= 0) cart = cart.filter(function (i) { return i.id !== id; });
+          renderCart();
+          return;
+        }
+        if (e.target.closest('[data-remove]')) {
+          cart = cart.filter(function (i) { return i.id !== id; });
+          renderCart();
+        }
+      });
+
+      document.getElementById('checkoutBtn').addEventListener('click', function () {
+        if (cart.length === 0) { showToast('먼저 담아 주세요. 천천히 골라도 괜찮습니다.'); return; }
+        showToast('주문 페이지는 예시 사이트에서 제공되지 않습니다.');
+      });
+
+      // 드로어 안에서 Tab 순환 (간단한 포커스 트랩)
+      drawer.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') return;
+        var focusables = drawer.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        var first = focusables[0], last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (drawer.classList.contains('is-open')) closeDrawer();
+        if (mobileNav.classList.contains('is-open')) setMenu(false);
+      });
+
+      renderCart();
+
+      /* ------------------------------------------------------------
+         뉴스레터 — 유효성 검사 후 안내 (실제 전송 없음)
+         ------------------------------------------------------------ */
+      var newsForm = document.getElementById('newsForm');
+      var newsEmail = document.getElementById('newsEmail');
+      var newsMsg = document.getElementById('newsMsg');
+      newsForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = newsEmail.value.trim();
+        var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+        newsMsg.classList.remove('ok', 'err');
+        if (!ok) {
+          newsMsg.textContent = '이메일 주소를 다시 확인해 주세요.';
+          newsMsg.classList.add('err');
+          newsEmail.focus();
+          return;
+        }
+        newsMsg.textContent = '고맙습니다. 다음 목요일 소식부터 ' + v + '로 보내드릴게요.';
+        newsMsg.classList.add('ok');
+        newsForm.reset();
+      });
+
+      /* ------------------------------------------------------------
+         매장 영업 상태 — 오늘 요일/시간 기준
+         화–금 12:00–19:00 · 토·일 11:00–19:00 · 월 휴무
+         ------------------------------------------------------------ */
+      (function storeStatus() {
+        var el = document.getElementById('storeStatus');
+        var txt = document.getElementById('storeStatusText');
+        var rows = document.querySelectorAll('#hoursList > div');
+        var now = new Date();
+        var day = now.getDay(); // 0 일 ~ 6 토
+        var mins = now.getHours() * 60 + now.getMinutes();
+        var names = ['일', '월', '화', '수', '목', '금', '토'];
+        var open = null, close = 19 * 60;
+        if (day === 0 || day === 6) open = 11 * 60;
+        else if (day >= 2 && day <= 5) open = 12 * 60;
+
+        var rowKey = day === 1 ? '1' : (day === 0 || day === 6 ? '6' : '2');
+        Array.prototype.forEach.call(rows, function (r) {
+          r.classList.toggle('today', r.getAttribute('data-day') === rowKey);
+        });
+
+        var pad = function (m) { var h = Math.floor(m / 60), mm = m % 60; return h + ':' + (mm < 10 ? '0' + mm : mm); };
+        if (open === null) {
+          txt.textContent = '오늘(' + names[day] + ')은 쉬는 날입니다 · 내일 12:00에 엽니다';
+          el.classList.remove('is-open');
+        } else if (mins >= open && mins < close) {
+          txt.textContent = '오늘(' + names[day] + ') 영업 중 · ' + pad(close) + '까지';
+          el.classList.add('is-open');
+        } else if (mins < open) {
+          txt.textContent = '오늘(' + names[day] + ') ' + pad(open) + '에 엽니다';
+          el.classList.remove('is-open');
+        } else {
+          var next = (day + 1) % 7;
+          var nextOpen = next === 1 ? '화요일 12:00' : (next === 0 || next === 6 ? '내일 11:00' : '내일 12:00');
+          txt.textContent = '오늘(' + names[day] + ') 영업 종료 · ' + nextOpen + '에 엽니다';
+          el.classList.remove('is-open');
+        }
+      })();
+    })();
+  </script>
+</body>
+</html>

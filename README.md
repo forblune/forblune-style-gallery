@@ -92,8 +92,11 @@ python -m http.server 8080
 
 ## 배포
 
-- 배포 URL: 배포 후 갱신 (`wrangler.toml`의 custom_domain은 `gallery.forblune.com`)
-- `./deploy.sh` — `dist/`에 `index.html` + `sites/**`(meta.json 제외)를 복사한 뒤 `wrangler deploy`
+- 정본 URL: **https://gallery.forblune.com** (Cloudflare Workers Static Assets, 계정 Rjsgml13486@gmail.com, `wrangler.toml`의 `custom_domain` 라우트로 DNS·인증서 자동 생성 — 2026-08-16 배포)
+- 백업 URL: https://forblune-style-gallery.rjsgml13486.workers.dev
+- 소스: https://github.com/forblune/forblune-style-gallery
+- 개별 사이트: `https://gallery.forblune.com/sites/<slug>/` (예: https://gallery.forblune.com/sites/kinetic-sneaker/)
+- 재배포: `bash deploy.sh` — `dist/`에 `index.html` + `sites/**`(meta.json 제외)를 복사한 뒤 `wrangler deploy` (사전에 `npx wrangler login` 필요)
 
 ## 허브 갱신
 

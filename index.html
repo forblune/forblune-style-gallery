@@ -92,6 +92,8 @@ h1,h2,h3,p,dl,dd,figure{margin:0}
 .shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--paper-2);border-bottom:1px solid var(--rule);border-radius:var(--r) var(--r) 0 0}
 .shot iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none;background:#fff;opacity:0;transition:opacity .3s}
 .shot iframe.is-ready{opacity:1}
+.shot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;z-index:1;transition:opacity .3s}
+.shot iframe.is-ready ~ .shot-img{opacity:0}
 .shot .ph{position:absolute;inset:0;display:grid;place-items:center;padding:16px;text-align:center;font-size:13px;color:var(--ink-3)}
 .shot iframe.is-ready ~ .ph{visibility:hidden}
 .shot-link{position:absolute;inset:0;z-index:2}
@@ -227,7 +229,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="editorial" style="--cc:var(--c-editorial)">
-  <div class="shot" data-slug="editorial-perfume"><iframe data-src="sites/editorial-perfume/index.html" src="about:blank" loading="lazy" title="무향 MUHYANG 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">무향 MUHYANG</span><a class="shot-link" href="sites/editorial-perfume/index.html" target="_blank" rel="noopener" aria-label="무향 MUHYANG 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="editorial-perfume"><iframe data-src="sites/editorial-perfume/index.html" src="about:blank" loading="lazy" title="무향 MUHYANG 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/editorial-perfume.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">무향 MUHYANG</span><a class="shot-link" href="sites/editorial-perfume/index.html" target="_blank" rel="noopener" aria-label="무향 MUHYANG 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Editorial · 에디토리얼</p>
     <h3 class="brand">무향 MUHYANG</h3>
@@ -239,7 +241,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/editorial-perfume/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="editorial" style="--cc:var(--c-editorial)">
-  <div class="shot" data-slug="editorial-stay"><iframe data-src="sites/editorial-stay/index.html" src="about:blank" loading="lazy" title="숲결 스테이 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">숲결 스테이</span><a class="shot-link" href="sites/editorial-stay/index.html" target="_blank" rel="noopener" aria-label="숲결 스테이 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="editorial-stay"><iframe data-src="sites/editorial-stay/index.html" src="about:blank" loading="lazy" title="숲결 스테이 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/editorial-stay.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">숲결 스테이</span><a class="shot-link" href="sites/editorial-stay/index.html" target="_blank" rel="noopener" aria-label="숲결 스테이 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Editorial · 에디토리얼</p>
     <h3 class="brand">숲결 스테이</h3>
@@ -251,7 +253,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/editorial-stay/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="editorial" style="--cc:var(--c-editorial)">
-  <div class="shot" data-slug="editorial-select"><iframe data-src="sites/editorial-select/index.html" src="about:blank" loading="lazy" title="고요 GOYO 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">고요 GOYO</span><a class="shot-link" href="sites/editorial-select/index.html" target="_blank" rel="noopener" aria-label="고요 GOYO 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="editorial-select"><iframe data-src="sites/editorial-select/index.html" src="about:blank" loading="lazy" title="고요 GOYO 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/editorial-select.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">고요 GOYO</span><a class="shot-link" href="sites/editorial-select/index.html" target="_blank" rel="noopener" aria-label="고요 GOYO 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Editorial · 에디토리얼</p>
     <h3 class="brand">고요 GOYO</h3>
@@ -283,7 +285,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="kinetic" style="--cc:var(--c-kinetic)">
-  <div class="shot" data-slug="kinetic-sneaker"><iframe data-src="sites/kinetic-sneaker/index.html" src="about:blank" loading="lazy" title="VOLT LAB 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">VOLT LAB</span><a class="shot-link" href="sites/kinetic-sneaker/index.html" target="_blank" rel="noopener" aria-label="VOLT LAB 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="kinetic-sneaker"><iframe data-src="sites/kinetic-sneaker/index.html" src="about:blank" loading="lazy" title="VOLT LAB 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/kinetic-sneaker.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">VOLT LAB</span><a class="shot-link" href="sites/kinetic-sneaker/index.html" target="_blank" rel="noopener" aria-label="VOLT LAB 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Kinetic · 키네틱</p>
     <h3 class="brand">VOLT LAB</h3>
@@ -295,7 +297,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/kinetic-sneaker/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="kinetic" style="--cc:var(--c-kinetic)">
-  <div class="shot" data-slug="kinetic-festival"><iframe data-src="sites/kinetic-festival/index.html" src="about:blank" loading="lazy" title="PULSE FEST 2026 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">PULSE FEST 2026</span><a class="shot-link" href="sites/kinetic-festival/index.html" target="_blank" rel="noopener" aria-label="PULSE FEST 2026 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="kinetic-festival"><iframe data-src="sites/kinetic-festival/index.html" src="about:blank" loading="lazy" title="PULSE FEST 2026 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/kinetic-festival.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">PULSE FEST 2026</span><a class="shot-link" href="sites/kinetic-festival/index.html" target="_blank" rel="noopener" aria-label="PULSE FEST 2026 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Kinetic · 키네틱</p>
     <h3 class="brand">PULSE FEST 2026</h3>
@@ -307,7 +309,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/kinetic-festival/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="kinetic" style="--cc:var(--c-kinetic)">
-  <div class="shot" data-slug="kinetic-esports"><iframe data-src="sites/kinetic-esports/index.html" src="about:blank" loading="lazy" title="APEX NINE 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">APEX NINE</span><a class="shot-link" href="sites/kinetic-esports/index.html" target="_blank" rel="noopener" aria-label="APEX NINE 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="kinetic-esports"><iframe data-src="sites/kinetic-esports/index.html" src="about:blank" loading="lazy" title="APEX NINE 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/kinetic-esports.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">APEX NINE</span><a class="shot-link" href="sites/kinetic-esports/index.html" target="_blank" rel="noopener" aria-label="APEX NINE 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Kinetic · 키네틱</p>
     <h3 class="brand">APEX NINE</h3>
@@ -339,7 +341,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="cinematic" style="--cc:var(--c-cinematic)">
-  <div class="shot" data-slug="cinematic-architecture"><iframe data-src="sites/cinematic-architecture/index.html" src="about:blank" loading="lazy" title="온결 건축 ONGYEOL 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">온결 건축 ONGYEOL</span><a class="shot-link" href="sites/cinematic-architecture/index.html" target="_blank" rel="noopener" aria-label="온결 건축 ONGYEOL 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="cinematic-architecture"><iframe data-src="sites/cinematic-architecture/index.html" src="about:blank" loading="lazy" title="온결 건축 ONGYEOL 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/cinematic-architecture.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">온결 건축 ONGYEOL</span><a class="shot-link" href="sites/cinematic-architecture/index.html" target="_blank" rel="noopener" aria-label="온결 건축 ONGYEOL 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Cinematic · 시네마틱</p>
     <h3 class="brand">온결 건축 ONGYEOL</h3>
@@ -351,7 +353,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/cinematic-architecture/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="cinematic" style="--cc:var(--c-cinematic)">
-  <div class="shot" data-slug="cinematic-chef"><iframe data-src="sites/cinematic-chef/index.html" src="about:blank" loading="lazy" title="화로 火爐 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">화로 火爐</span><a class="shot-link" href="sites/cinematic-chef/index.html" target="_blank" rel="noopener" aria-label="화로 火爐 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="cinematic-chef"><iframe data-src="sites/cinematic-chef/index.html" src="about:blank" loading="lazy" title="화로 火爐 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/cinematic-chef.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">화로 火爐</span><a class="shot-link" href="sites/cinematic-chef/index.html" target="_blank" rel="noopener" aria-label="화로 火爐 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Cinematic · 시네마틱</p>
     <h3 class="brand">화로 火爐</h3>
@@ -363,7 +365,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/cinematic-chef/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="cinematic" style="--cc:var(--c-cinematic)">
-  <div class="shot" data-slug="cinematic-photographer"><iframe data-src="sites/cinematic-photographer/index.html" src="about:blank" loading="lazy" title="정하늘 JEONG HANEUL 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">정하늘 JEONG HANEUL</span><a class="shot-link" href="sites/cinematic-photographer/index.html" target="_blank" rel="noopener" aria-label="정하늘 JEONG HANEUL 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="cinematic-photographer"><iframe data-src="sites/cinematic-photographer/index.html" src="about:blank" loading="lazy" title="정하늘 JEONG HANEUL 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/cinematic-photographer.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">정하늘 JEONG HANEUL</span><a class="shot-link" href="sites/cinematic-photographer/index.html" target="_blank" rel="noopener" aria-label="정하늘 JEONG HANEUL 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Cinematic · 시네마틱</p>
     <h3 class="brand">정하늘 JEONG HANEUL</h3>
@@ -395,7 +397,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="corporate" style="--cc:var(--c-corporate)">
-  <div class="shot" data-slug="corporate-hospital"><iframe data-src="sites/corporate-hospital/index.html" src="about:blank" loading="lazy" title="바른마디 정형외과 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">바른마디 정형외과</span><a class="shot-link" href="sites/corporate-hospital/index.html" target="_blank" rel="noopener" aria-label="바른마디 정형외과 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="corporate-hospital"><iframe data-src="sites/corporate-hospital/index.html" src="about:blank" loading="lazy" title="바른마디 정형외과 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/corporate-hospital.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">바른마디 정형외과</span><a class="shot-link" href="sites/corporate-hospital/index.html" target="_blank" rel="noopener" aria-label="바른마디 정형외과 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Corporate · 코퍼레이트</p>
     <h3 class="brand">바른마디 정형외과</h3>
@@ -407,7 +409,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/corporate-hospital/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="corporate" style="--cc:var(--c-corporate)">
-  <div class="shot" data-slug="corporate-lawfirm"><iframe data-src="sites/corporate-lawfirm/index.html" src="about:blank" loading="lazy" title="법무법인 서로 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">법무법인 서로</span><a class="shot-link" href="sites/corporate-lawfirm/index.html" target="_blank" rel="noopener" aria-label="법무법인 서로 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="corporate-lawfirm"><iframe data-src="sites/corporate-lawfirm/index.html" src="about:blank" loading="lazy" title="법무법인 서로 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/corporate-lawfirm.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">법무법인 서로</span><a class="shot-link" href="sites/corporate-lawfirm/index.html" target="_blank" rel="noopener" aria-label="법무법인 서로 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Corporate · 코퍼레이트</p>
     <h3 class="brand">법무법인 서로</h3>
@@ -419,7 +421,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/corporate-lawfirm/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="corporate" style="--cc:var(--c-corporate)">
-  <div class="shot" data-slug="corporate-b2b"><iframe data-src="sites/corporate-b2b/index.html" src="about:blank" loading="lazy" title="한결정밀 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">한결정밀</span><a class="shot-link" href="sites/corporate-b2b/index.html" target="_blank" rel="noopener" aria-label="한결정밀 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="corporate-b2b"><iframe data-src="sites/corporate-b2b/index.html" src="about:blank" loading="lazy" title="한결정밀 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/corporate-b2b.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">한결정밀</span><a class="shot-link" href="sites/corporate-b2b/index.html" target="_blank" rel="noopener" aria-label="한결정밀 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Corporate · 코퍼레이트</p>
     <h3 class="brand">한결정밀</h3>
@@ -451,7 +453,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="product" style="--cc:var(--c-product)">
-  <div class="shot" data-slug="product-saas"><iframe data-src="sites/product-saas/index.html" src="about:blank" loading="lazy" title="인보이스플로우 InvoiceFlow 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">인보이스플로우 InvoiceFlow</span><a class="shot-link" href="sites/product-saas/index.html" target="_blank" rel="noopener" aria-label="인보이스플로우 InvoiceFlow 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="product-saas"><iframe data-src="sites/product-saas/index.html" src="about:blank" loading="lazy" title="인보이스플로우 InvoiceFlow 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/product-saas.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">인보이스플로우 InvoiceFlow</span><a class="shot-link" href="sites/product-saas/index.html" target="_blank" rel="noopener" aria-label="인보이스플로우 InvoiceFlow 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Product · 프로덕트</p>
     <h3 class="brand">인보이스플로우 InvoiceFlow</h3>
@@ -463,7 +465,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/product-saas/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="product" style="--cc:var(--c-product)">
-  <div class="shot" data-slug="product-app"><iframe data-src="sites/product-app/index.html" src="about:blank" loading="lazy" title="잠결 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">잠결</span><a class="shot-link" href="sites/product-app/index.html" target="_blank" rel="noopener" aria-label="잠결 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="product-app"><iframe data-src="sites/product-app/index.html" src="about:blank" loading="lazy" title="잠결 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/product-app.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">잠결</span><a class="shot-link" href="sites/product-app/index.html" target="_blank" rel="noopener" aria-label="잠결 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Product · 프로덕트</p>
     <h3 class="brand">잠결</h3>
@@ -475,7 +477,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/product-app/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="product" style="--cc:var(--c-product)">
-  <div class="shot" data-slug="product-devtool"><iframe data-src="sites/product-devtool/index.html" src="about:blank" loading="lazy" title="Relay API 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">Relay API</span><a class="shot-link" href="sites/product-devtool/index.html" target="_blank" rel="noopener" aria-label="Relay API 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="product-devtool"><iframe data-src="sites/product-devtool/index.html" src="about:blank" loading="lazy" title="Relay API 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/product-devtool.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">Relay API</span><a class="shot-link" href="sites/product-devtool/index.html" target="_blank" rel="noopener" aria-label="Relay API 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Product · 프로덕트</p>
     <h3 class="brand">Relay API</h3>
@@ -507,7 +509,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="commerce" style="--cc:var(--c-commerce)">
-  <div class="shot" data-slug="commerce-grocery"><iframe data-src="sites/commerce-grocery/index.html" src="about:blank" loading="lazy" title="새벽밭 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">새벽밭</span><a class="shot-link" href="sites/commerce-grocery/index.html" target="_blank" rel="noopener" aria-label="새벽밭 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="commerce-grocery"><iframe data-src="sites/commerce-grocery/index.html" src="about:blank" loading="lazy" title="새벽밭 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/commerce-grocery.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">새벽밭</span><a class="shot-link" href="sites/commerce-grocery/index.html" target="_blank" rel="noopener" aria-label="새벽밭 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Commerce · 커머스</p>
     <h3 class="brand">새벽밭</h3>
@@ -519,7 +521,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/commerce-grocery/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="commerce" style="--cc:var(--c-commerce)">
-  <div class="shot" data-slug="commerce-booking"><iframe data-src="sites/commerce-booking/index.html" src="about:blank" loading="lazy" title="무브룸 MOVEROOM 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">무브룸 MOVEROOM</span><a class="shot-link" href="sites/commerce-booking/index.html" target="_blank" rel="noopener" aria-label="무브룸 MOVEROOM 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="commerce-booking"><iframe data-src="sites/commerce-booking/index.html" src="about:blank" loading="lazy" title="무브룸 MOVEROOM 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/commerce-booking.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">무브룸 MOVEROOM</span><a class="shot-link" href="sites/commerce-booking/index.html" target="_blank" rel="noopener" aria-label="무브룸 MOVEROOM 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Commerce · 커머스</p>
     <h3 class="brand">무브룸 MOVEROOM</h3>
@@ -531,7 +533,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/commerce-booking/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="commerce" style="--cc:var(--c-commerce)">
-  <div class="shot" data-slug="commerce-furniture"><iframe data-src="sites/commerce-furniture/index.html" src="about:blank" loading="lazy" title="결 가구 GYEOL 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">결 가구 GYEOL</span><a class="shot-link" href="sites/commerce-furniture/index.html" target="_blank" rel="noopener" aria-label="결 가구 GYEOL 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="commerce-furniture"><iframe data-src="sites/commerce-furniture/index.html" src="about:blank" loading="lazy" title="결 가구 GYEOL 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/commerce-furniture.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">결 가구 GYEOL</span><a class="shot-link" href="sites/commerce-furniture/index.html" target="_blank" rel="noopener" aria-label="결 가구 GYEOL 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Commerce · 커머스</p>
     <h3 class="brand">결 가구 GYEOL</h3>
@@ -563,7 +565,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="experimental" style="--cc:var(--c-experimental)">
-  <div class="shot" data-slug="experimental-campaign"><iframe data-src="sites/experimental-campaign/index.html" src="about:blank" loading="lazy" title="물의 기억 — 담수(淡水) 캠페인 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">물의 기억 — 담수(淡水) 캠페인</span><a class="shot-link" href="sites/experimental-campaign/index.html" target="_blank" rel="noopener" aria-label="물의 기억 — 담수(淡水) 캠페인 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="experimental-campaign"><iframe data-src="sites/experimental-campaign/index.html" src="about:blank" loading="lazy" title="물의 기억 — 담수(淡水) 캠페인 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/experimental-campaign.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">물의 기억 — 담수(淡水) 캠페인</span><a class="shot-link" href="sites/experimental-campaign/index.html" target="_blank" rel="noopener" aria-label="물의 기억 — 담수(淡水) 캠페인 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Experimental · 익스페리멘털</p>
     <h3 class="brand">물의 기억 — 담수(淡水) 캠페인</h3>
@@ -575,7 +577,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/experimental-campaign/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="experimental" style="--cc:var(--c-experimental)">
-  <div class="shot" data-slug="experimental-art"><iframe data-src="sites/experimental-art/index.html" src="about:blank" loading="lazy" title="빛의 잔향 AFTERGLOW 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">빛의 잔향 AFTERGLOW</span><a class="shot-link" href="sites/experimental-art/index.html" target="_blank" rel="noopener" aria-label="빛의 잔향 AFTERGLOW 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="experimental-art"><iframe data-src="sites/experimental-art/index.html" src="about:blank" loading="lazy" title="빛의 잔향 AFTERGLOW 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/experimental-art.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">빛의 잔향 AFTERGLOW</span><a class="shot-link" href="sites/experimental-art/index.html" target="_blank" rel="noopener" aria-label="빛의 잔향 AFTERGLOW 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Experimental · 익스페리멘털</p>
     <h3 class="brand">빛의 잔향 AFTERGLOW</h3>
@@ -587,7 +589,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/experimental-art/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="experimental" style="--cc:var(--c-experimental)">
-  <div class="shot" data-slug="experimental-launch"><iframe data-src="sites/experimental-launch/index.html" src="about:blank" loading="lazy" title="ORBIT ONE 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">ORBIT ONE</span><a class="shot-link" href="sites/experimental-launch/index.html" target="_blank" rel="noopener" aria-label="ORBIT ONE 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="experimental-launch"><iframe data-src="sites/experimental-launch/index.html" src="about:blank" loading="lazy" title="ORBIT ONE 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/experimental-launch.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">ORBIT ONE</span><a class="shot-link" href="sites/experimental-launch/index.html" target="_blank" rel="noopener" aria-label="ORBIT ONE 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Experimental · 익스페리멘털</p>
     <h3 class="brand">ORBIT ONE</h3>
@@ -619,7 +621,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   </header>
   <div class="grid">
 <article class="card" data-cat="utility" style="--cc:var(--c-utility)">
-  <div class="shot" data-slug="utility-dashboard"><iframe data-src="sites/utility-dashboard/index.html" src="about:blank" loading="lazy" title="브루잉 OS — 매장 운영 대시보드 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">브루잉 OS — 매장 운영 대시보드</span><a class="shot-link" href="sites/utility-dashboard/index.html" target="_blank" rel="noopener" aria-label="브루잉 OS — 매장 운영 대시보드 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="utility-dashboard"><iframe data-src="sites/utility-dashboard/index.html" src="about:blank" loading="lazy" title="브루잉 OS — 매장 운영 대시보드 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/utility-dashboard.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">브루잉 OS — 매장 운영 대시보드</span><a class="shot-link" href="sites/utility-dashboard/index.html" target="_blank" rel="noopener" aria-label="브루잉 OS — 매장 운영 대시보드 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Utility · 유틸리티</p>
     <h3 class="brand">브루잉 OS — 매장 운영 대시보드</h3>
@@ -631,7 +633,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/utility-dashboard/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="utility" style="--cc:var(--c-utility)">
-  <div class="shot" data-slug="utility-erp"><iframe data-src="sites/utility-erp/index.html" src="about:blank" loading="lazy" title="스톡플로우 — 재고·발주 관리 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">스톡플로우 — 재고·발주 관리</span><a class="shot-link" href="sites/utility-erp/index.html" target="_blank" rel="noopener" aria-label="스톡플로우 — 재고·발주 관리 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="utility-erp"><iframe data-src="sites/utility-erp/index.html" src="about:blank" loading="lazy" title="스톡플로우 — 재고·발주 관리 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/utility-erp.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">스톡플로우 — 재고·발주 관리</span><a class="shot-link" href="sites/utility-erp/index.html" target="_blank" rel="noopener" aria-label="스톡플로우 — 재고·발주 관리 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Utility · 유틸리티</p>
     <h3 class="brand">스톡플로우 — 재고·발주 관리</h3>
@@ -643,7 +645,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   <div class="foot"><a class="open" href="sites/utility-erp/index.html" target="_blank" rel="noopener">열기</a></div>
 </article>
 <article class="card" data-cat="utility" style="--cc:var(--c-utility)">
-  <div class="shot" data-slug="utility-admin"><iframe data-src="sites/utility-admin/index.html" src="about:blank" loading="lazy" title="헬프데스크 콘솔 미리보기" tabindex="-1" aria-hidden="true"></iframe><span class="ph">헬프데스크 콘솔</span><a class="shot-link" href="sites/utility-admin/index.html" target="_blank" rel="noopener" aria-label="헬프데스크 콘솔 새 탭에서 열기"></a></div>
+  <div class="shot" data-slug="utility-admin"><iframe data-src="sites/utility-admin/index.html" src="about:blank" loading="lazy" title="헬프데스크 콘솔 미리보기" tabindex="-1" aria-hidden="true"></iframe><img class="shot-img" src="shots/utility-admin.webp" alt="" width="960" height="600" loading="lazy" decoding="async"><span class="ph">헬프데스크 콘솔</span><a class="shot-link" href="sites/utility-admin/index.html" target="_blank" rel="noopener" aria-label="헬프데스크 콘솔 새 탭에서 열기"></a></div>
   <div class="body">
     <p class="cat-tag">Utility · 유틸리티</p>
     <h3 class="brand">헬프데스크 콘솔</h3>

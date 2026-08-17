@@ -1,13 +1,13 @@
 # 이미지 출처 (Image Credits)
 
-이 갤러리의 이미지 파일 234개(고유 사진 221장)는 모두 저장소에 직접 포함되어 있으며
+이 갤러리의 이미지 파일 234개(고유 사진 220장)는 모두 저장소에 직접 포함되어 있으며
 외부 이미지 서비스에 의존하지 않는다.
 출처는 [Openverse](https://openverse.org) 를 통해 수집한 **StockSnap.io · Rawpixel** 의 사진이고,
 라이선스는 전부 **CC0 1.0 (퍼블릭 도메인 헌정)** 이라 상업적 사용이 가능하며 출처 표기 의무가 없다.
 아래 목록은 의무가 아니라 추적을 위한 기록이다.
 
-- 총 222개 렌디션 / 고유 사진 221장
-- 수집일: 2026-08-17
+- 총 222개 렌디션 / 고유 사진 220장
+- 수집일: 2026-08-17 (2026-08-18 단색 텍스처 3장 교체)
 - 라이선스: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
 
 ## cinematic-architecture
@@ -175,8 +175,8 @@
 | `linen-curtain-7114.webp` | rawpixel | [Cloth Fabric](https://www.rawpixel.com/image/5969613/cloth-fabric) |
 | `linen-texture-7102.webp` | rawpixel | [Handkerchief](https://www.rawpixel.com/image/9293682/handkerchief) |
 | `linen-texture-7132.webp` | rawpixel | [Handkerchief](https://www.rawpixel.com/image/9313363/handkerchief) |
-| `paper-handwriting-7143.webp` | rawpixel | [Paper texture, beige background, simple](https://www.rawpixel.com/image/6153130/paper-texture-beige-background-simple-design) |
-| `paper-texture-7130.webp` | rawpixel | [Paper texture, beige background, simple](https://www.rawpixel.com/image/6152559/paper-texture-beige-background-simple-design) |
+| `paper-handwriting-7143.webp` | rawpixel | [Whitw wrinkled paper texture](https://www.rawpixel.com/image/5907962/image-background-paper-texture) |
+| `paper-texture-7130.webp` | rawpixel | [Free paper texture background image](https://www.rawpixel.com/image/5912000/image-background-texture-paper) |
 | `perfume-bedroom-7116.webp` | rawpixel | [Bedroom Interior by Louis Fleckenstein](https://www.rawpixel.com/image/14282074/bedroom-interior-louis-fleckenstein) |
 | `perfume-books-7129.webp` | rawpixel | [Several children's books shelf](https://www.rawpixel.com/image/3289927/free-photo-image-book-bookcase-cc0) |
 | `perfume-bottle-7101.webp` | stocksnap | [Perfume Bottle](https://stocksnap.io/photo/perfume-bottle-0BZ1W3NNQK) |
@@ -223,7 +223,7 @@
 | `notebook-open-4134.webp` | stocksnap | [Notebook Paper](https://stocksnap.io/photo/notebook-paper-DXP038JQNB) |
 | `notebook-paper-4133-200x250.webp` | rawpixel | [Plain notebook, paper book photo](https://www.rawpixel.com/image/5905566/photo-image-book-public-domain-notes) |
 | `notebook-paper-4133-800x920.webp` | stocksnap | [Notebook Paper](https://stocksnap.io/photo/notebook-paper-TZGBHSA8DD) |
-| `paper-texture-4116.webp` | rawpixel | [Paper texture, beige background, simple](https://www.rawpixel.com/image/6130393/paper-texture-beige-background-simple-design) |
+| `paper-texture-4116.webp` | rawpixel | [Whitw wrinkled paper texture](https://www.rawpixel.com/image/5907962/image-background-paper-texture) |
 | `paperclip-desk-4140.webp` | stocksnap | [Paper Clip](https://stocksnap.io/photo/paper-clip-NHBIJ8NGTB) |
 | `pen-aluminum-4131-200x250.webp` | stocksnap | [Eyeglasses Pen](https://stocksnap.io/photo/eyeglasses-pen-FRMYNQBRB2) |
 | `pen-aluminum-4131-800x920.webp` | stocksnap | [Pen Notepad](https://stocksnap.io/photo/pen-notepad-EEJM42JAOO) |

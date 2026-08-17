@@ -56,6 +56,9 @@ for site in sorted({g["site"] for g in groups.values()}):
         q = query_for(g["kw"])
         strict = [c for c in cands.get(q, []) if is_photo(c)]
         pool = filter_pool(strict or cands.get(q, []), q)   # 관련성 우선, 비면 원본 풀로 폴백
+        # 사실상 단색인 후보는 화면에서 "빈칸"으로 보이므로 배제
+        lively = [c for c in pool if (TONES.get(c["id"]) or {}).get("contrast", 0) >= 0.03]
+        pool = lively or pool
         if site.startswith("editorial"):          # 에디토리얼 톤에 안 맞는 소재 배제
             block = {"laptop","computer","technology","office","keyboard"}
             filt = [c for c in pool

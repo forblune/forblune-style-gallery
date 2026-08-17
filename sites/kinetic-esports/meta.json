@@ -56,7 +56,7 @@
     "굿즈 사이즈 선택(aria-pressed) → 장바구니 담기 시 선택 사이즈 포함 토스트(한국어 조사 자동 처리, 영문·숫자 끝소리 대응) + 헤더 카운트 bump",
     "prefers-reduced-motion 시 마키·리빌·카운트업·줌·슬래시 애니메이션 제거"
   ],
-  "images": "loremflickr 키워드 이미지 10장 — hero arena,lights(lock 90101) / roster esports,gaming(90111~90115) / goods esports,jersey · hoodie,black · gaming,keyboard · cap,black(90121~90124). 컨테이너 배경색 + aspect-ratio + loading=lazy(히어로 제외), alt 서술형",
+  "images": "로컬 이미지 키워드 이미지 10장 — hero arena,lights(lock 90101) / roster esports,gaming(90111~90115) / goods esports,jersey · hoodie,black · gaming,keyboard · cap,black(90121~90124). 컨테이너 배경색 + aspect-ratio + loading=lazy(히어로 제외), alt 서술형",
   "responsive": "375 / 768 / 1440 확인 — 가로 스크롤 없음(body overflow-x: clip, 마키·슬래시는 overflow 컨테이너 내부), 모바일 로스터 2열+풀폭 5번 카드, 태블릿 3열, 데스크톱 5열 오프셋",
   "verified": "코드 검사: 태그 균형·중복 id 없음·CSS 중괄호 420/420·JS 구문 OK. 브라우저 1280px 히어로 렌더 확인(공유 브라우저로 이후 스크롤 확인은 생략)",
   "path": "sites/kinetic-esports/index.html",
@@ -65,7 +65,7 @@
     "aiTellsFixed": [
       "pill+pulse dot 배지 제거",
       "히어로 12열 그리드 라인·글래스 패널·카운트다운 글로우 제거",
-      "picsum 9장 → loremflickr 키워드 10장",
+      "picsum 9장 → 로컬 이미지 키워드 10장",
       "Archivo 제거(서체 2종)",
       "체크 아이콘 리스트 → 배송·교환 안내 표",
       "클릭 불가 사이즈 칩 → 실제 선택 버튼",

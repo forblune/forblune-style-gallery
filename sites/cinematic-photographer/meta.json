@@ -48,6 +48,6 @@
     "전시·출판 이력 종류 필터 (전체/개인전/단체전/출판/수상, 밑줄 탭, 순차 페이드, 빈 결과 메시지)",
     "의뢰 폼 클라이언트 검증 (필수·이메일 형식·20자 이상·동의) + 제출 후 이름·범위·회신 기대치 확인 메시지, 상태 영역 포커스 이동"
   ],
-  "images": "loremflickr 키워드 고정(lock 101–134): hero village,people · about documentary,portrait · 시리즈01 village,people · 시리즈02 factory,workers · 시리즈03 harbor,workers. 흑백 grayscale 필터 기본, 시리즈03만 saturate(0.58) 저채도 컬러. 모든 프레임 배경색 + aspect-ratio 고정, loading=lazy, 서술형 alt",
+  "images": "로컬 이미지 키워드 고정(lock 101–134): hero village,people · about documentary,portrait · 시리즈01 village,people · 시리즈02 factory,workers · 시리즈03 harbor,workers. 흑백 grayscale 필터 기본, 시리즈03만 saturate(0.58) 저채도 컬러. 모든 프레임 배경색 + aspect-ratio 고정, loading=lazy, 서술형 alt",
   "path": "sites/cinematic-photographer/index.html"
 }

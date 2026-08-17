@@ -49,7 +49,7 @@
     "배송 조회 화면의 '배송 문의'·'신선 보장 신청' 버튼 → 안내 토스트 (버튼처럼 보이는 요소는 모두 동작)"
   ],
   "path": "sites/commerce-grocery/index.html",
-  "images": "loremflickr 키워드 이미지 41개 (peach,fruit / abalone,seafood / vegetables,market / eggs,basket / farmer,orchard / fisherman,sea 등, lock 고유), picsum 0",
+  "images": "로컬 이미지 키워드 이미지 41개 (peach,fruit / abalone,seafood / vegetables,market / eggs,basket / farmer,orchard / fisherman,sea 등, lock 고유), picsum 0",
   "radius": "사각 8px 단일 + 원형 요소만 999px",
   "fonts": "Pretendard 단일 (CDN CSS) + 시스템 폴백",
   "audit": {

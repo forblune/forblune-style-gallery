@@ -42,6 +42,6 @@
     "예약 문의 폼 — 과거 날짜 차단, 일·월 휴무 검증, 연락처 자릿수 검증, 시간대에 따른 코스 자동 정리, 접수 메시지",
     "prefers-reduced-motion 시 리빌·켄번즈·크로스페이드·트랜지션 제거"
   ],
-  "images": "loremflickr 키워드(fire,grill / chef,kitchen / fish,market / omakase,sushi / restaurant,counter) lock 71301~71309, grayscale(0.85) sepia 저채도 필터(코스 사진만 saturate 0.55), 컨테이너 배경색 + aspect-ratio, loading=lazy",
+  "images": "로컬 이미지 키워드(fire,grill / chef,kitchen / fish,market / omakase,sushi / restaurant,counter) lock 71301~71309, grayscale(0.85) sepia 저채도 필터(코스 사진만 saturate 0.55), 컨테이너 배경색 + aspect-ratio, loading=lazy",
   "path": "sites/cinematic-chef/index.html"
 }

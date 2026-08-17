@@ -59,7 +59,7 @@
     "등장 애니메이션·카운트업 없음(Corporate: 즉시 표시)"
   ],
   "images": {
-    "provider": "loremflickr",
+    "provider": "로컬 이미지",
     "keywords": ["lawyer,office", "lawyer,portrait", "meeting,room", "apartment,construction", "law,books"],
     "filter": "히어로·구성원 grayscale(Cinematic 10%), 인사이트 saturate .35(Editorial 20%)"
   },

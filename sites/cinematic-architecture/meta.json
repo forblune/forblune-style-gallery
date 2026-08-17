@@ -44,7 +44,7 @@
     "이미지 로드 실패 시 컨테이너 배경색 유지",
     "본문 건너뛰기 링크(포커스 시 표시)"
   ],
-  "images": "loremflickr 키워드 이미지: hero interior,light lock=2101 · 소장 architect,studio lock=2102 · 겹집 architecture,concrete lock=2103 · 느린 가마 building,facade lock=2104 · 사천 서가 architecture,brick lock=2105 · 활자의 집 interior,light lock=2106. 기본 grayscale(1), 겹집·사천 서가 2건만 저채도 컬러(grayscale .55 saturate .7). 컨테이너 배경색·aspect-ratio 지정, loading=lazy, alt 서술형",
+  "images": "로컬 이미지 키워드 이미지: hero interior,light lock=2101 · 소장 architect,studio lock=2102 · 겹집 architecture,concrete lock=2103 · 느린 가마 building,facade lock=2104 · 사천 서가 architecture,brick lock=2105 · 활자의 집 interior,light lock=2106. 기본 grayscale(1), 겹집·사천 서가 2건만 저채도 컬러(grayscale .55 saturate .7). 컨테이너 배경색·aspect-ratio 지정, loading=lazy, alt 서술형",
   "path": "sites/cinematic-architecture/index.html",
   "antiAiSlop": "pill+dot 0 · 이모지 0 · 그라데이션 텍스트/글로우/글래스 0 · 화살표 아이콘 2곳(히어로 링크만) · 통계 행 대신 기준일 있는 사실 한 줄 · 3열 카드 없음(원칙은 서술+증거 아사이드) · 체크 아이콘 리스트 없음(번호) · hover는 링크·버튼에만 · 서체 Pretendard+Noto Serif KR 2개 · 리빌 11개 요소만"
 }

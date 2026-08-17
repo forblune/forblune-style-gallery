@@ -44,6 +44,6 @@
     "뉴스레터 폼 유효성 검사(이메일·수신 동의) 및 상태 메시지",
     "IntersectionObserver 기반 느린 페이드 — 에디토리얼·디스커버리·브랜드의 큰 사진 5장에만(prefers-reduced-motion 시 비활성)"
   ],
-  "images": "loremflickr 키워드(perfume,bottle / fragrance,glass / linen,texture 외 장면별 키워드) + 고유 lock, saturate(.75) 필터",
+  "images": "로컬 이미지 키워드(perfume,bottle / fragrance,glass / linen,texture 외 장면별 키워드) + 고유 lock, saturate(.75) 필터",
   "path": "sites/editorial-perfume/index.html"
 }

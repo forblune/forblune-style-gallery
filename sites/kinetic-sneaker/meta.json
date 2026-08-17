@@ -19,7 +19,7 @@
     "danger": "#FF4D4D (품절 표시 전용)"
   },
   "fonts": "Archivo Black(대형 영문 디스플레이, Kinetic Black 규격) + Pretendard(한국어 본문·소제목). 그라데이션 텍스트·글로우 없음",
-  "images": "loremflickr 키워드 고정(lock 7101·7111–7113·7121–7126): sneakers,streetwear / sneaker,closeup / skateboard,street. 히어로는 라임 단색 멀티플라이 오버레이",
+  "images": "로컬 이미지 키워드 고정(lock 7101·7111–7113·7121–7126): sneakers,streetwear / sneaker,closeup / skateboard,street. 히어로는 라임 단색 멀티플라이 오버레이",
   "sections": [
     "풀스크린 Hero — 초대형 'DROP 07' 마스크 리빌 타이포 + 대각선 클립 이미지(라임 단색 오버레이) + 채움형 사각 상태 태그 'Drop 07 · Now Open' + 다음 드롭(DROP 08 · 2026.09.12 SAT 10:00 KST) 카운트다운 + 드롭 기록 4수치(기준일·근거 명시, 아카이브 수치와 일치)",
     "더블 마키 — 모델명·사이즈 (블랙) / 드롭 조건·다음 일정 (라임, 역방향)",

@@ -22,7 +22,7 @@
     "body": "Pretendard (CDN) — 한국어 본문·라벨·버튼, 한글 디스플레이는 Pretendard 900 폴백. 서체 총 2개"
   },
   "radius": "2px 단일 (--r)",
-  "images": "loremflickr 키워드 고정(lock): hero festival,crowd / PULSE concert,lights / WAVE festival,crowd / VOLT dj,stage",
+  "images": "로컬 이미지 키워드 고정(lock): hero festival,crowd / PULSE concert,lights / WAVE festival,crowd / VOLT dj,stage",
   "sections": [
     "고정 헤더 (투명 → 스크롤 시 진해지고 낮아짐, 우상단 티켓 CTA 상시, 모바일 햄버거)",
     "풀스크린 Hero (날짜·장소·연령 텍스트 메타 + 정사각 마커, 초대형 3줄 타이포 PULSE / FEST / 2026, 줄 단위 마스크 리빌, 티켓 CTA. 배경은 사진 + 하단 단색 어둡힘만)",

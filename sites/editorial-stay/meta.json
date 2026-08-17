@@ -46,8 +46,8 @@
     "하우스 노트 아코디언(aria-expanded, max-height 전환)",
     "푸터 뉴스레터 폼 유효성 검사 + 완료 메시지"
   ],
-  "images": "loremflickr 키워드 이미지 16장(cabin,forest / bedroom,linen / jeju,stone / cabin,interior / hottub,forest / bathroom,tile 등) lock=8101~8141 고유, saturate 0.82 · sepia 0.06 필터, 컨테이너 배경색+aspect-ratio 지정, lazy loading",
+  "images": "로컬 이미지 키워드 이미지 16장(cabin,forest / bedroom,linen / jeju,stone / cabin,interior / hottub,forest / bathroom,tile 등) lock=8101~8141 고유, saturate 0.82 · sepia 0.06 필터, 컨테이너 배경색+aspect-ratio 지정, lazy loading",
   "path": "sites/editorial-stay/index.html",
   "radiusRule": "2px 단일(버튼·달력·필드·사진 프레임)",
-  "reviewed": "2026-08-15 AI 티 감사: pill 태그·화살표 아이콘·스크롤 큐·글래스 헤더·전 요소 fade-up 제거, picsum→loremflickr, 3개 나열 리듬 해소"
+  "reviewed": "2026-08-15 AI 티 감사: pill 태그·화살표 아이콘·스크롤 큐·글래스 헤더·전 요소 fade-up 제거, picsum→로컬 이미지, 3개 나열 리듬 해소"
 }

@@ -71,3 +71,8 @@ KWMAP.update({
 })
 
 KWMAP.update({'fragrance,glass':'perfume bottle','perfume,bedroom':'bedroom interior'})
+
+KWMAP.update({
+ 'ceramic,cup':'ceramic mug','ceramic,jar':'ceramic bowl','ceramic,notebook':'ceramic mug desk',
+ 'ceramic,stone':'ceramic bowl','ceramic,table':'ceramic tableware',
+})

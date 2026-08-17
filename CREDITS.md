@@ -1,13 +1,13 @@
 # 이미지 출처 (Image Credits)
 
-이 갤러리의 이미지 파일 234개(고유 사진 220장)는 모두 저장소에 직접 포함되어 있으며
+이 갤러리의 이미지 파일 234개(고유 사진 217장)는 모두 저장소에 직접 포함되어 있으며
 외부 이미지 서비스에 의존하지 않는다.
 출처는 [Openverse](https://openverse.org) 를 통해 수집한 **StockSnap.io · Rawpixel** 의 사진이고,
 라이선스는 전부 **CC0 1.0 (퍼블릭 도메인 헌정)** 이라 상업적 사용이 가능하며 출처 표기 의무가 없다.
 아래 목록은 의무가 아니라 추적을 위한 기록이다.
 
-- 총 222개 렌디션 / 고유 사진 220장
-- 수집일: 2026-08-17 (2026-08-18 단색 텍스처 3장 교체)
+- 총 222개 렌디션 / 고유 사진 217장
+- 수집일: 2026-08-17 (2026-08-18 단색 텍스처·기관 소장품 교체)
 - 라이선스: CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
 
 ## cinematic-architecture
@@ -80,12 +80,12 @@
 | `bookshelf-room-3403.webp` | stocksnap | [Book Bookshelf](https://stocksnap.io/photo/book-bookshelf-1XAJHYVE9L) |
 | `dining-chair-3105.webp` | stocksnap | [Dining Room](https://stocksnap.io/photo/dining-room-DYTXNUKGP2) |
 | `dining-table-3110.webp` | stocksnap | [Dining Table](https://stocksnap.io/photo/dining-table-NCEEGGU7W4) |
-| `dresser-drawer-3109.webp` | rawpixel | [Dressing Table by Artist unknown](https://www.rawpixel.com/image/8941148/dressing-table-artist-unknown) |
+| `dresser-drawer-3109.webp` | rawpixel | [Chest Drawers Unidentified Maker](https://www.rawpixel.com/image/9265139/chest-drawers-unidentified-maker) |
 | `furniture-sofa-3201.webp` | stocksnap | [Couple Food](https://stocksnap.io/photo/couple-food-IHQGVIHK7L) |
 | `kitchen-table-3402.webp` | rawpixel | [Free kitchen table image](https://www.rawpixel.com/image/5905417/photo-image-background-public-domain-kitchen) |
 | `leather-armchair-3103.webp` | rawpixel | [brown leather chair throw pillow](https://www.rawpixel.com/image/3303026/free-photo-image-window-sphere-rocking-chair) |
 | `oak-table-3102.webp` | rawpixel | [business book turned wooden table](https://www.rawpixel.com/image/3337336/free-photo-image-wooden-desk-table) |
-| `rattan-chair-3112.webp` | rawpixel | [Armchair used President Paul Kruger](https://www.rawpixel.com/image/13754251/armchair-used-president-paul-kruger-in-before-1900-anonymous) |
+| `rattan-chair-3112.webp` | rawpixel | [wicker seat; curved back (central](https://www.rawpixel.com/image/7467006/image-wood-furniture-public-domain) |
 | `sofa-fabric-3101.webp` | stocksnap | [House Interior](https://stocksnap.io/photo/house-interior-M235DH8I3H) |
 | `sofa-living-3108.webp` | stocksnap | [Couch Furniture](https://stocksnap.io/photo/couch-furniture-TQNWBTLHLY) |
 | `sofa-livingroom-3301.webp` | stocksnap | [Living Room](https://stocksnap.io/photo/living-room-Q3N84SQ4YQ) |
@@ -130,7 +130,7 @@
 
 | 파일 | 출처 | 원본 |
 |---|---|---|
-| `cnc-machine-26071.webp` | rawpixel | [Machines van de Wolseley Motor](https://www.rawpixel.com/image/13760218/photo-image-technology-public-domain-factory) |
+| `cnc-machine-26071.webp` | rawpixel | [Milling machine](https://www.rawpixel.com/image/6021283/milling-machine-free-public-domain-cc0-photo) |
 | `factory-metal-26072.webp` | stocksnap | [Aerial Industrial](https://stocksnap.io/photo/aerial-industrial-1RNGUH53J0) |
 | `factory-metal-26075.webp` | stocksnap | [Industrial Factory](https://stocksnap.io/photo/industrial-factory-5AAHIZ4CUH) |
 | `metal-anodized-26073.webp` | stocksnap | [Metal Texture](https://stocksnap.io/photo/metal-texture-8HECDADK1P) |
@@ -169,23 +169,23 @@
 | `cedar-wood-7124.webp` | stocksnap | [Wood Texture](https://stocksnap.io/photo/wood-texture-XEGFGHAM9H) |
 | `citrus-glass-7113.webp` | rawpixel | [Citrus fruit](https://www.rawpixel.com/image/3286113/free-photo-image-fruit-grapefruit-cc0) |
 | `fragrance-bottle-7126.webp` | rawpixel | [Perfume bottles white flower](https://www.rawpixel.com/image/6033727/photo-image-flower-public-domain-plant) |
-| `fragrance-glass-7122.webp` | rawpixel | [Jug](https://www.rawpixel.com/image/9305527/jug) |
-| `fragrance-glass-7128.webp` | stocksnap | [Chanel Perfume](https://stocksnap.io/photo/chanel-perfume-KFMR70XLYS) |
-| `linen-bed-7115.webp` | rawpixel | [Linen Cloth](https://www.rawpixel.com/image/9186094/linen-cloth) |
-| `linen-curtain-7114.webp` | rawpixel | [Cloth Fabric](https://www.rawpixel.com/image/5969613/cloth-fabric) |
-| `linen-texture-7102.webp` | rawpixel | [Handkerchief](https://www.rawpixel.com/image/9293682/handkerchief) |
-| `linen-texture-7132.webp` | rawpixel | [Handkerchief](https://www.rawpixel.com/image/9313363/handkerchief) |
+| `fragrance-glass-7122.webp` | stocksnap | [Chanel Perfume](https://stocksnap.io/photo/chanel-perfume-KFMR70XLYS) |
+| `fragrance-glass-7128.webp` | stocksnap | [Perfume Bottle](https://stocksnap.io/photo/perfume-bottle-0BZ1W3NNQK) |
+| `linen-bed-7115.webp` | rawpixel | [Cloth Fabric](https://www.rawpixel.com/image/5969613/cloth-fabric) |
+| `linen-curtain-7114.webp` | rawpixel | [Aswan Textile](https://www.rawpixel.com/image/8883526/aswan-textile) |
+| `linen-texture-7102.webp` | stocksnap | [Textile Material](https://stocksnap.io/photo/textile-material-SFNV6NKNWA) |
+| `linen-texture-7132.webp` | rawpixel | [Piece loosely woven linen material](https://www.rawpixel.com/image/7654277/image-flower-leaves-vintage) |
 | `paper-handwriting-7143.webp` | rawpixel | [Whitw wrinkled paper texture](https://www.rawpixel.com/image/5907962/image-background-paper-texture) |
 | `paper-texture-7130.webp` | rawpixel | [Free paper texture background image](https://www.rawpixel.com/image/5912000/image-background-texture-paper) |
-| `perfume-bedroom-7116.webp` | rawpixel | [Bedroom Interior by Louis Fleckenstein](https://www.rawpixel.com/image/14282074/bedroom-interior-louis-fleckenstein) |
+| `perfume-bedroom-7116.webp` | stocksnap | [Bed Bedroom](https://stocksnap.io/photo/bed-bedroom-U8QOG5XQA4) |
 | `perfume-books-7129.webp` | rawpixel | [Several children's books shelf](https://www.rawpixel.com/image/3289927/free-photo-image-book-bookcase-cc0) |
-| `perfume-bottle-7101.webp` | stocksnap | [Perfume Bottle](https://stocksnap.io/photo/perfume-bottle-0BZ1W3NNQK) |
-| `perfume-bottle-7121.webp` | rawpixel | [Decanter and Stopper](https://www.rawpixel.com/image/9289064/decanter-and-stopper) |
-| `perfume-bottle-7131.webp` | rawpixel | [Perfume bottle](https://www.rawpixel.com/image/7475778/perfume-bottle) |
-| `perfume-bottles-7142.webp` | stocksnap | [Building Perfume](https://stocksnap.io/photo/building-perfume-N4U1VUOPNX) |
+| `perfume-bottle-7101.webp` | rawpixel | [Perfume bottle](https://www.rawpixel.com/image/7475778/perfume-bottle) |
+| `perfume-bottle-7121.webp` | stocksnap | [Building Perfume](https://stocksnap.io/photo/building-perfume-N4U1VUOPNX) |
+| `perfume-bottle-7131.webp` | rawpixel | [Sai Angel perfume bottle, Location](https://www.rawpixel.com/image/6113206/photo-image-public-domain-pink-beauty) |
+| `perfume-bottles-7142.webp` | stocksnap | [Bottle Perfume](https://stocksnap.io/photo/bottle-perfume-CV6AI5T3K5) |
 | `perfume-citrus-7127.webp` | stocksnap | [Yellow Lemons](https://stocksnap.io/photo/yellow-lemons-4CIBHHJOHE) |
 | `perfume-laboratory-7141.webp` | rawpixel | [Glass bottles red & white](https://www.rawpixel.com/image/6024101/photo-image-public-domain-glass-free) |
-| `perfume-linen-7125.webp` | rawpixel | [Aswan Textile](https://www.rawpixel.com/image/8883526/aswan-textile) |
+| `perfume-linen-7125.webp` | stocksnap | [Textile Texture](https://stocksnap.io/photo/textile-texture-JXLLDMKHEE) |
 | `perfume-shop-7161.webp` | rawpixel | [Do Design, Madrid, Spain](https://www.rawpixel.com/image/3300602/free-photo-image-laundry-fashion-store-png-shop-interiors) |
 | `perfume-vials-7151.webp` | rawpixel | [Glass bottles caps top](https://www.rawpixel.com/image/6038265/photo-image-public-domain-free) |
 | `perfume-wood-7111.webp` | stocksnap | [Wood Texture](https://stocksnap.io/photo/wood-texture-AA36391916) |
@@ -203,23 +203,23 @@
 | `book-pages-4142.webp` | stocksnap | [Books Library](https://stocksnap.io/photo/books-library-EB9B6BC1F6) |
 | `books-spine-4146.webp` | stocksnap | [Books Shelf](https://stocksnap.io/photo/books-shelf-9PZ3E9U67E) |
 | `bookshelf-minimal-4123.webp` | rawpixel | [Bookshelf library](https://www.rawpixel.com/image/6027567/photo-image-book-public-domain-room) |
-| `brass-clip-4139-200x250.webp` | rawpixel | [Ornate brass medieval container](https://www.rawpixel.com/image/11801157/tankard) |
-| `brass-clip-4139-800x920.webp` | rawpixel | [Cornet horn, gold brass musical](https://www.rawpixel.com/image/6035750/photo-image-public-domain-gold-free) |
-| `ceramic-cup-4122.webp` | rawpixel | [Celadon Jardiniere, ceramic, Ming](https://www.rawpixel.com/image/7468062/celadon-jardiniere-ceramic-ming) |
-| `ceramic-jar-4135-200x250.webp` | rawpixel | [Oenochoe](https://www.rawpixel.com/image/9305361/oenochoe) |
-| `ceramic-jar-4135-800x920.webp` | rawpixel | [Vase](https://www.rawpixel.com/image/9185522/vase) |
-| `ceramic-notebook-4118.webp` | rawpixel | [Covered Box](https://www.rawpixel.com/image/9281675/covered-box) |
-| `ceramic-stone-4117.webp` | rawpixel | [pitcher, ceramic-porcelain, one pair, fluted](https://www.rawpixel.com/image/7476552/image-art-public-domain-photo) |
-| `ceramic-table-4136.webp` | rawpixel | [Dish Design Seven Jars](https://www.rawpixel.com/image/9087419/dish-with-design-seven-jars) |
+| `brass-clip-4139-200x250.webp` | rawpixel | [Cornet horn, gold brass musical](https://www.rawpixel.com/image/6035750/photo-image-public-domain-gold-free) |
+| `brass-clip-4139-800x920.webp` | rawpixel | [Brass Plate unidentified man, Chancel](https://www.rawpixel.com/image/9201845/image-watercolors-vintage-public-domain) |
+| `ceramic-cup-4122.webp` | stocksnap | [Kitchen Cabinet](https://stocksnap.io/photo/kitchen-cabinet-CTKGR7O9UB) |
+| `ceramic-jar-4135-200x250.webp` | rawpixel | [Antique Islamic ceramic bowl art](https://www.rawpixel.com/image/11797338/bowl) |
+| `ceramic-jar-4135-800x920.webp` | rawpixel | [Bowl](https://www.rawpixel.com/image/8549109/bowl) |
+| `ceramic-notebook-4118.webp` | stocksnap | [Notepad Business](https://stocksnap.io/photo/notepad-business-9QCBXHKCYO) |
+| `ceramic-stone-4117.webp` | rawpixel | [Paradise, Giovanni Lanfranco, cupola Chapel](https://www.rawpixel.com/image/3340896/free-photo-image-architecture-art-bowl) |
+| `ceramic-table-4136.webp` | stocksnap | [Stacked Bowls](https://stocksnap.io/photo/stacked-bowls-FTFTNXN41H) |
 | `desk-notebook-4152.webp` | stocksnap | [Office Work](https://stocksnap.io/photo/office-work-4ALWT6KXM0) |
-| `envelope-paper-4115.webp` | rawpixel | [Philatelic 'cover' [envelope] (23 February](https://www.rawpixel.com/image/9963507/philatelic-cover-envelope-23-february-1871) |
+| `envelope-paper-4115.webp` | rawpixel | [Scattered sheets white paper covering](https://www.rawpixel.com/image/3302168/free-photo-image-cc0-creative-commons) |
 | `fountainpen-writing-4112.webp` | rawpixel | [Fountain pen](https://www.rawpixel.com/image/6037024/fountain-pen-free-public-domain-cc0-photo) |
 | `ink-pen-4111.webp` | rawpixel | [glossy tip fountain pen next](https://www.rawpixel.com/image/3283818/free-photo-image-ink-desk-website) |
-| `linen-fabric-4113.webp` | rawpixel | [Fichu](https://www.rawpixel.com/image/9293397/fichu) |
-| `linen-kitchen-4138.webp` | rawpixel | [Cloth Fabric](https://www.rawpixel.com/image/5969613/cloth-fabric) |
-| `linen-textile-4114.webp` | rawpixel | [Handkerchief](https://www.rawpixel.com/image/9293677/handkerchief) |
-| `linen-towel-4137-200x250.webp` | stocksnap | [Textile Material](https://stocksnap.io/photo/textile-material-SFNV6NKNWA) |
-| `linen-towel-4137-800x920.webp` | rawpixel | [Handkerchief](https://www.rawpixel.com/image/9295203/handkerchief) |
+| `linen-fabric-4113.webp` | rawpixel | [Cloth Fabric](https://www.rawpixel.com/image/5969613/cloth-fabric) |
+| `linen-kitchen-4138.webp` | rawpixel | [Close white blanket](https://www.rawpixel.com/image/3301005/free-photo-image-stain-cozy-sleep) |
+| `linen-textile-4114.webp` | stocksnap | [Textile Material](https://stocksnap.io/photo/textile-material-SFNV6NKNWA) |
+| `linen-towel-4137-200x250.webp` | rawpixel | [Aswan Textile](https://www.rawpixel.com/image/8883526/aswan-textile) |
+| `linen-towel-4137-800x920.webp` | rawpixel | [Piece loosely woven linen material](https://www.rawpixel.com/image/7654277/image-flower-leaves-vintage) |
 | `notebook-open-4134.webp` | stocksnap | [Notebook Paper](https://stocksnap.io/photo/notebook-paper-DXP038JQNB) |
 | `notebook-paper-4133-200x250.webp` | rawpixel | [Plain notebook, paper book photo](https://www.rawpixel.com/image/5905566/photo-image-book-public-domain-notes) |
 | `notebook-paper-4133-800x920.webp` | stocksnap | [Notebook Paper](https://stocksnap.io/photo/notebook-paper-TZGBHSA8DD) |
@@ -242,10 +242,10 @@
 |---|---|---|
 | `bathroom-mirror-8126.webp` | rawpixel | [Modern bathroom interior](https://www.rawpixel.com/image/6042774/photo-image-public-domain-house-home) |
 | `bathroom-tile-8125.webp` | stocksnap | [Modern Bathroom](https://stocksnap.io/photo/modern-bathroom-F4CZ0LN5OO) |
-| `bedroom-lamp-8124.webp` | rawpixel | [Bedroom Interior by Louis Fleckenstein](https://www.rawpixel.com/image/14281728/bedroom-interior-louis-fleckenstein) |
+| `bedroom-lamp-8124.webp` | rawpixel | [Bedroom interior design](https://www.rawpixel.com/image/5920688/photo-image-public-domain-house-home) |
 | `bedroom-linen-8102.webp` | stocksnap | [House Home](https://stocksnap.io/photo/house-home-QXRZLX36A5) |
-| `bedroom-linen-8111.webp` | rawpixel | [Bedroom interior design](https://www.rawpixel.com/image/5920688/photo-image-public-domain-house-home) |
-| `bedroom-linen-8123.webp` | stocksnap | [Bed Bedroom](https://stocksnap.io/photo/bed-bedroom-UJCTKDCTXC) |
+| `bedroom-linen-8111.webp` | stocksnap | [Bed Bedroom](https://stocksnap.io/photo/bed-bedroom-UJCTKDCTXC) |
+| `bedroom-linen-8123.webp` | stocksnap | [Apartment Bed](https://stocksnap.io/photo/apartment-bed-EGXWIV409M) |
 | `bookshelf-wood-8122.webp` | rawpixel | [Bookshelf library](https://www.rawpixel.com/image/6027572/photo-image-book-public-domain-room) |
 | `cabin-forest-8101.webp` | rawpixel | [wooden hut middle forest](https://www.rawpixel.com/image/3291838/free-photo-image-forest-nature-cottage-wood-building) |
 | `cabin-interior-8112.webp` | rawpixel | [(무제)](https://www.rawpixel.com/image/5935671/free-public-domain-cc0-photo) |

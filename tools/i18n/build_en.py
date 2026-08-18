@@ -7,7 +7,7 @@ import json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ATTRS = ("alt", "title", "aria-label", "placeholder", "content", "data-caption", "value",
-         "data-nav", "data-label", "data-title", "aria-description", "label")
+         "data-nav", "data-label", "data-title", "data-addr", "aria-description", "label")
 
 SWITCH_CSS = """<style id="lang-switch-style">
 .langswitch{position:fixed;bottom:14px;right:14px;z-index:99999;display:flex;gap:1px;

@@ -1,11 +1,11 @@
-<!-- forblune-style: {"slug":"corporate-hospital","primaryStyle":"Corporate","productType":"Information Site","tone":"Trustworthy · Calm · Clear","secondary":"Cinematic","accent":"Product","brand":"바른마디 정형외과","industry":"정형외과 의원","coreMessage":"어떤 진료를 누가 어떤 절차로 하는지 바로 이해되어 안심하고 예약하게 한다","naming":"Corporate / Information Site / Trustworthy · Calm · Clear"} -->
+<!-- forblune-style: {"slug":"corporate-hospital","primaryStyle":"Corporate","productType":"Information Site","tone":"Trustworthy · Calm · Clear","secondary":"Cinematic","accent":"Product","brand":"Bareunmadi Orthopaedics","industry":"정형외과 의원","coreMessage":"어떤 진료를 누가 어떤 절차로 하는지 바로 이해되어 안심하고 예약하게 한다","naming":"Corporate / Information Site / Trustworthy · Calm · Clear"} -->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>바른마디 정형외과 — 무릎·어깨·척추 진료와 도수·재활치료, 마포구 망원동 정형외과 의원</title>
-<meta name="description" content="바른마디 정형외과는 서울 마포구 망원동에 있는 정형외과 의원입니다. 정형외과 전문의 3명이 무릎·어깨·척추·스포츠 손상을 진료하고, 도수치료와 재활치료를 함께 진행합니다. 진료 절차, 장비, 비급여 항목, 진료시간과 오시는 길을 안내합니다.">
+<title>Bareunmadi Orthopaedics — knee, shoulder, and spine care with manual and rehabilitation therapy, in Mangwon-dong, Mapo-gu</title>
+<meta name="description" content="Bareunmadi Orthopaedics is a clinic in Mangwon-dong, Mapo-gu, Seoul. Three orthopaedic specialists treat knee, shoulder, spine, and sports injuries alongside manual and rehabilitation therapy. Here you will find how an appointment runs, what equipment we have, what is charged privately, opening hours, and how to get here.">
 <meta name="theme-color" content="#1f7a6f">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
@@ -208,7 +208,7 @@ strong{font-weight:600}
 }
 
 /* ==========================================================================
-   4. 진료 과목 — 표 형태 목록. 부위·질환·검사와 치료·담당 의사를 그대로 읽게 한다
+   4. 진료 과목 — 표 형태 목록. 부위·질환·Tests and treatment·담당 의사를 그대로 읽게 한다
    ========================================================================== */
 .grid{display:grid;gap:20px}
 .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -559,24 +559,24 @@ text-decoration:none}
 @media print{.langswitch{display:none}}
 </style>
 </head>
-<body><div class="langswitch" role="group" aria-label="Language"><a href="./" hreflang="ko" lang="ko" aria-current="true">KO</a><a href="en/" hreflang="en" lang="en">EN</a></div>
-<a class="skip-link" href="#main">본문으로 바로가기</a>
+<body><div class="langswitch" role="group" aria-label="Language"><a href="../" hreflang="ko" lang="ko">KO</a><a href="./" hreflang="en" lang="en" aria-current="true">EN</a></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============================ 상단 유틸리티 바 ============================ -->
-<div class="utilbar" role="region" aria-label="진료 안내 요약">
+<div class="utilbar" role="region" aria-label="At a glance">
   <div class="container">
     <ul>
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        <span class="hide-m">진료 예약·문의</span> <a href="tel:02-312-7788" class="num">02-312-7788</a>
+        <span class="hide-m">Bookings and enquiries</span> <a href="tel:02-312-7788" class="num">02-312-7788</a>
       </li>
       <li class="hide-m">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        평일 09:00–18:30 · 토 09:00–13:30 · 화·목 야간 20:00까지
+        Weekdays 09:00–18:30 · Sat 09:00–13:30 · until 20:00 Tue and Thu
       </li>
     </ul>
     <div class="right">
-      <span class="status" id="openStatus"><i class="dot"></i><span id="openStatusText">진료시간 확인 중</span></span>
+      <span class="status" id="openStatus"><i class="dot"></i><span id="openStatusText">Checking hours</span></span>
     </div>
   </div>
 </div>
@@ -584,28 +584,28 @@ text-decoration:none}
 <!-- ============================ 헤더 ============================ -->
 <header class="header" id="header">
   <div class="container">
-    <a class="logo" href="#top" aria-label="바른마디 정형외과 홈">
+    <a class="logo" href="#top" aria-label="Bareunmadi Orthopaedics home">
       <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true">
         <rect x="1" y="1" width="32" height="32" rx="8" fill="#1f7a6f"/>
         <path d="M11 24V10h5.2c2.6 0 4.2 1.3 4.2 3.5 0 1.4-.8 2.5-2 2.9 1.6.4 2.6 1.6 2.6 3.3 0 2.5-1.8 4.3-4.6 4.3H11zm3-8.3h1.9c1 0 1.6-.6 1.6-1.5s-.6-1.5-1.6-1.5H14v3zm0 5.8h2.2c1.2 0 1.9-.7 1.9-1.7s-.7-1.7-1.9-1.7H14v3.4z" fill="#fff"/>
         <circle cx="25.5" cy="9.5" r="2.2" fill="#9fd9cd"/>
       </svg>
-      <span>바른마디 정형외과<small>BAREUNMADI ORTHOPEDICS</small></span>
+      <span>Bareunmadi Orthopaedics<small>BAREUNMADI ORTHOPEDICS</small></span>
     </a>
 
-    <nav class="nav" id="nav" aria-label="주요 메뉴">
+    <nav class="nav" id="nav" aria-label="Main menu">
       <ul>
-        <li><a href="#services">진료안내</a></li>
-        <li><a href="#doctors">의료진</a></li>
-        <li><a href="#process">진료절차</a></li>
-        <li><a href="#equipment">장비</a></li>
-        <li><a href="#pricing">비급여안내</a></li>
-        <li><a href="#faq">자주 묻는 질문</a></li>
-        <li><a href="#access">오시는 길</a></li>
+        <li><a href="#services">Visiting</a></li>
+        <li><a href="#doctors">Our doctors</a></li>
+        <li><a href="#process">How a visit runs</a></li>
+        <li><a href="#equipment">Equipment</a></li>
+        <li><a href="#pricing">Private fees</a></li>
+        <li><a href="#faq">Frequently asked</a></li>
+        <li><a href="#access">Getting here</a></li>
       </ul>
       <div class="nav-cta">
-        <a class="btn btn-secondary" href="tel:02-312-7788">전화 걸기</a>
-        <a class="btn btn-primary" href="#booking">진료 예약</a>
+        <a class="btn btn-secondary" href="tel:02-312-7788">Call</a>
+        <a class="btn btn-primary" href="#booking">Book an appointment</a>
       </div>
     </nav>
 
@@ -614,8 +614,8 @@ text-decoration:none}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
         <span class="num">02-312-7788</span>
       </a>
-      <a class="btn btn-primary btn-sm btn-book" href="#booking">진료 예약</a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="메뉴 열기">
+      <a class="btn btn-primary btn-sm btn-book" href="#booking">Book an appointment</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
         <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
@@ -630,30 +630,30 @@ text-decoration:none}
 <section class="hero" aria-labelledby="hero-title">
   <div class="container">
     <div class="hero-copy">
-      <p class="kicker">서울 마포구 망원동 · 정형외과 의원</p>
-      <h1 id="hero-title">무릎·어깨·척추 통증, 원인을 확인하고 필요한 만큼만 치료합니다.</h1>
-      <p class="lead">바른마디 정형외과는 정형외과 전문의 3명이 진료하는 의원입니다. 진찰과 영상 검사로 원인을 먼저 확인하고, 약물·주사·도수치료·재활 중 필요한 방법을 설명드린 뒤 함께 결정합니다.</p>
+      <p class="kicker">Mangwon-dong, Mapo-gu, Seoul · orthopaedic clinic</p>
+      <h1 id="hero-title">Knee, shoulder, and spine pain — we find the cause and treat only as much as is needed.</h1>
+      <p class="lead">Three orthopaedic specialists practise here. We establish the cause through examination and imaging first, then explain which of medication, injection, manual therapy, or rehabilitation is called for — and decide it with you.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="#booking">진료 예약하기</a>
+        <a class="btn btn-primary btn-lg" href="#booking">Book an appointment</a>
         <a class="btn btn-secondary btn-lg" href="tel:02-312-7788">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-          전화 문의 <span class="num">02-312-7788</span>
+          Call us <span class="num">02-312-7788</span>
         </a>
       </div>
-      <p class="hero-note">예약 없이 방문하셔도 진료 가능하며, 예약 환자 우선으로 안내됩니다. 초진은 신분증을 지참해 주세요.</p>
-      <ul class="hero-stats" aria-label="핵심 정보">
-        <li><span class="v num">12<small>년</small></span><span class="k">2014년 개원, 같은 자리에서 진료</span></li>
-        <li><span class="v num">3<small>명</small></span><span class="k">정형외과 전문의 상근</span></li>
-        <li><span class="v num">6<small>명</small></span><span class="k">물리치료사 · 도수·재활치료 1:1 담당</span></li>
+      <p class="hero-note">Walk-ins are welcome, though booked patients are seen first. Bring photo ID for a first visit.</p>
+      <ul class="hero-stats" aria-label="Key information">
+        <li><span class="v num">12<small> yrs</small></span><span class="k">Opened in 2014, practising in the same place since</span></li>
+        <li><span class="v num">3<small></small></span><span class="k">Full-time orthopaedic specialists</span></li>
+        <li><span class="v num">6<small></small></span><span class="k">Physiotherapist · one-to-one manual and rehabilitation therapy</span></li>
       </ul>
     </div>
     <div class="hero-visual">
       <div class="photo">
-        <img src="assets/img/hospital-doctor-41127.webp" width="1200" height="900" alt="진료실에서 의사가 환자와 마주 앉아 무릎 상태를 확인하며 설명하는 모습" loading="lazy">
+        <img src="../assets/img/hospital-doctor-41127.webp" width="1200" height="900" alt="A doctor sitting with a patient, checking a knee and explaining what she sees" loading="lazy">
       </div>
       <div class="caption">
-        <strong>진료실 3실 · 물리치료실 12베드 · 도수치료실 4실</strong>
-        마포하나빌딩 3층(접수·진료·검사) / 4층(도수·물리·재활치료)
+        <strong>3 consulting rooms · 12 physical therapy beds · 4 manual therapy rooms</strong>
+        Mapo Hana Building, 3rd floor (reception, consultation, imaging) / 4th floor (manual, physical, and rehabilitation therapy)
       </div>
     </div>
   </div>
@@ -663,55 +663,55 @@ text-decoration:none}
 <section class="section" id="services" aria-labelledby="services-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="services-title">진료 과목</h2>
-      <p>부위별로 어떤 증상을 보는지, 어떤 검사와 치료를 하는지 정리했습니다. 증상이 어느 과목인지 애매하면 접수 시 말씀해 주세요. 담당 의사를 안내해 드립니다.</p>
+      <h2 id="services-title">Specialties</h2>
+      <p>What we look for in each area, and how we test and treat it. If you are not sure which it falls under, say so at reception and we will point you to the right doctor.</p>
     </div>
 
     <div class="svc-list">
       <div class="svc-head" aria-hidden="true">
-        <span>부위 · 과목</span><span>주로 보는 증상과 질환</span><span>검사와 치료 방법</span><span>담당</span>
+        <span>Area · specialty</span><span>What we commonly see</span><span>How we test and treat</span><span>Doctor</span>
       </div>
 
       <article class="svc-row">
-        <div class="part"><h3>무릎 관절<span class="sub">퇴행성 관절염부터 인대 손상까지</span></h3></div>
-        <div><span class="cell-label">주로 보는 증상과 질환</span><p>계단 오르내릴 때의 통증, 붓기와 소리, 잠김 증상. 퇴행성 관절염, 반월상 연골 손상, 전방십자인대 손상, 슬개골 연골연화증.</p></div>
-        <div><span class="cell-label">검사와 치료</span><p>X-ray로 관절 간격을 확인하고 필요하면 초음파로 연골·인대를 봅니다. 약물과 물리치료로 시작해 관절 상태에 따라 연골주사, 운동치료 순으로 진행합니다. 인대 손상은 보조기 착용 기간을 정해 드립니다.</p></div>
-        <div class="who"><span class="cell-label">담당</span><strong><a href="#doctors">김도현 원장</a></strong>월·화·목·금·토</div>
+        <div class="part"><h3>Knee<span class="sub">From osteoarthritis to ligament injury</span></h3></div>
+        <div><span class="cell-label">What we commonly see</span><p>Pain on stairs, swelling, clicking, and locking. Osteoarthritis, meniscal tears, ACL injuries, chondromalacia patellae.</p></div>
+        <div><span class="cell-label">Tests and treatment</span><p>We check joint space on X-ray and look at cartilage and ligaments on ultrasound if needed. Treatment starts with medication and physical therapy, moving to viscosupplementation and exercise therapy depending on the joint. For ligament injuries we set how long a brace should be worn.</p></div>
+        <div class="who"><span class="cell-label">Doctor</span><strong><a href="#doctors">Dr Dohyun Kim</a></strong>Mon · Tue · Thu · Fri · Sat</div>
       </article>
 
       <article class="svc-row">
-        <div class="part"><h3>어깨 관절<span class="sub">회전근개 · 오십견 · 석회성 건염</span></h3></div>
-        <div><span class="cell-label">주로 보는 증상과 질환</span><p>팔을 올리거나 뒤로 돌릴 때의 통증, 밤에 심해지는 어깨 통증. 회전근개 파열, 오십견(유착성 관절낭염), 석회성 건염, 충돌증후군.</p></div>
-        <div><span class="cell-label">검사와 치료</span><p>초음파로 힘줄 파열 범위와 석회 크기를 진료실에서 바로 확인합니다. 관절 가동 범위 운동, 초음파 유도 주사, 석회성 건염은 체외충격파를 우선합니다. 파열이 크면 협력 병원 수술 여부를 함께 상의합니다.</p></div>
-        <div class="who"><span class="cell-label">담당</span><strong><a href="#doctors">이서윤 원장</a></strong>월·수·목·금·토</div>
+        <div class="part"><h3>Shoulder<span class="sub">Rotator cuff · frozen shoulder · calcific tendinitis</span></h3></div>
+        <div><span class="cell-label">What we commonly see</span><p>Pain lifting the arm or reaching behind, and shoulder pain that worsens at night. Rotator cuff tears, frozen shoulder, calcific tendinitis, impingement.</p></div>
+        <div><span class="cell-label">Tests and treatment</span><p>Ultrasound shows the extent of a tear and the size of any calcification, right there in the room. Range-of-motion work and ultrasound-guided injection come first, with shockwave for calcific tendinitis. For a large tear we discuss surgery at a partner hospital together.</p></div>
+        <div class="who"><span class="cell-label">Doctor</span><strong><a href="#doctors">Dr Seoyoon Lee</a></strong>Mon · Wed · Thu · Fri · Sat</div>
       </article>
 
       <article class="svc-row">
-        <div class="part"><h3>척추(목·허리)<span class="sub">디스크 · 협착증 · 급성 요통</span></h3></div>
-        <div><span class="cell-label">주로 보는 증상과 질환</span><p>다리나 팔로 뻗치는 저림, 오래 걸으면 심해지는 허리 통증, 아침에 굳는 목. 목·허리 디스크, 척추관 협착증, 급성 요통, 거북목 증후군.</p></div>
-        <div><span class="cell-label">검사와 치료</span><p>저림·근력 저하 같은 신경 증상을 먼저 확인한 뒤 X-ray를 찍고, MRI가 필요하면 협력 영상의학과에 당일 의뢰합니다. 약물·물리치료·도수치료를 우선하고, 통증이 심하면 C-arm 유도 신경차단술을 시행합니다.</p></div>
-        <div class="who"><span class="cell-label">담당</span><strong><a href="#doctors">박준영 원장</a></strong>월·화·수·금·토</div>
+        <div class="part"><h3>Spine (neck and back)<span class="sub">Disc · stenosis · acute low back pain</span></h3></div>
+        <div><span class="cell-label">What we commonly see</span><p>Numbness running into a leg or arm, back pain that worsens the longer you walk, a neck that stiffens overnight. Disc herniation, spinal stenosis, acute low back pain, forward head posture.</p></div>
+        <div><span class="cell-label">Tests and treatment</span><p>We check for nerve signs such as numbness and weakness first, then X-ray, and refer for an MRI the same day if needed. Medication, physical therapy, and manual therapy come first; where pain is severe we perform a C-arm guided nerve block.</p></div>
+        <div class="who"><span class="cell-label">Doctor</span><strong><a href="#doctors">Dr Junyoung Park</a></strong>Mon · Tue · Wed · Fri · Sat</div>
       </article>
 
       <article class="svc-row">
-        <div class="part"><h3>스포츠 손상<span class="sub">발목 · 발바닥 · 팔꿈치 · 허벅지</span></h3></div>
-        <div><span class="cell-label">주로 보는 증상과 질환</span><p>운동 중 다친 뒤 붓거나 힘이 빠지는 관절, 아침 첫발의 발바닥 통증. 발목 염좌, 아킬레스건염, 족저근막염, 테니스·골프 엘보, 햄스트링 파열.</p></div>
-        <div><span class="cell-label">검사와 치료</span><p>초음파로 인대·힘줄 손상 정도를 확인하고 골절이 의심되면 X-ray를 추가합니다. 보조기 고정 기간과 운동 복귀 시점을 주 단위로 정해 드리며, 만성 건염은 체외충격파를 계획합니다.</p></div>
-        <div class="who"><span class="cell-label">담당</span><strong><a href="#doctors">김도현 원장</a></strong>월·화·목·금·토</div>
+        <div class="part"><h3>Sports injuries<span class="sub">Ankle · sole · elbow · thigh</span></h3></div>
+        <div><span class="cell-label">What we commonly see</span><p>A joint that swells or gives way after a sporting injury, and heel pain on the first step of the morning. Ankle sprains, Achilles tendinitis, plantar fasciitis, tennis and golfer's elbow, hamstring tears.</p></div>
+        <div><span class="cell-label">Tests and treatment</span><p>Ultrasound shows how far a ligament or tendon is damaged, with an X-ray added if a fracture is suspected. We set how many weeks to brace and when to return to sport, and plan shockwave therapy for chronic tendinitis.</p></div>
+        <div class="who"><span class="cell-label">Doctor</span><strong><a href="#doctors">Dr Dohyun Kim</a></strong>Mon · Tue · Thu · Fri · Sat</div>
       </article>
 
       <article class="svc-row">
-        <div class="part"><h3>도수치료<span class="sub">의사 처방 후 물리치료사 1:1</span></h3></div>
-        <div><span class="cell-label">대상</span><p>만성 목·허리 통증, 관절 가동 범위가 줄어든 어깨·무릎, 자세 불균형으로 반복되는 통증. 진료 후 의사가 필요하다고 판단한 경우에만 처방합니다.</p></div>
-        <div><span class="cell-label">진행 방법</span><p>물리치료사가 30분 또는 50분 세션으로 관절 가동과 근육 긴장을 조절합니다. 회당 계획과 반응을 기록해 다음 세션에 반영합니다. 비급여이며 30분 70,000원, 50분 100,000원입니다.</p></div>
-        <div class="who"><span class="cell-label">담당</span><strong>물리치료사 6명</strong>4층 도수치료실 4실 · <a href="#pricing">비용 안내</a></div>
+        <div class="part"><h3>Manual therapy<span class="sub">One-to-one with a physiotherapist, on prescription</span></h3></div>
+        <div><span class="cell-label">For</span><p>Chronic neck and back pain, shoulders and knees that have lost range, pain that keeps returning from postural imbalance. Prescribed only when the doctor judges it necessary after examination.</p></div>
+        <div><span class="cell-label">How it works</span><p>A physiotherapist works on joint mobility and muscle tension in 30- or 50-minute sessions, recording the plan and your response each time to shape the next one. Not covered by insurance: KRW 70,000 for 30 minutes, KRW 100,000 for 50.</p></div>
+        <div class="who"><span class="cell-label">Doctor</span><strong>6 physiotherapists</strong>Four manual therapy rooms on the fourth floor · <a href="#pricing">Costs</a></div>
       </article>
 
       <article class="svc-row">
-        <div class="part"><h3>재활·운동치료<span class="sub">수술 후 · 만성 통증 · 자세 교정</span></h3></div>
-        <div><span class="cell-label">대상</span><p>수술 후 관절 각도 회복, 만성 통증으로 약해진 근력, 반복되는 부상의 원인이 되는 자세 문제.</p></div>
-        <div><span class="cell-label">진행 방법</span><p>통증 점수(NRS)와 관절 각도를 매 회 측정해 지난번과 비교합니다. 물리치료 12베드, 체외충격파와 근력·균형 운동을 처방에 따라 조합하며, 집에서 할 운동은 그림 안내지로 드립니다.</p></div>
-        <div class="who"><span class="cell-label">담당</span><strong>4층 재활치료실</strong>물리치료사 · <a href="#equipment">장비 안내</a></div>
+        <div class="part"><h3>Rehabilitation and exercise therapy<span class="sub">Post-surgical · chronic pain · posture</span></h3></div>
+        <div><span class="cell-label">For</span><p>Recovering joint angles after surgery, strength lost to chronic pain, and the postural problems behind repeated injury.</p></div>
+        <div><span class="cell-label">How it works</span><p>Pain score and joint angle are measured every session and compared with the last. Across 12 physical therapy beds we combine shockwave with strength and balance work as prescribed, and send you home with illustrated exercises.</p></div>
+        <div class="who"><span class="cell-label">Doctor</span><strong>Fourth-floor rehabilitation rooms</strong>Physiotherapist · <a href="#equipment">Equipment</a></div>
       </article>
     </div>
   </div>
@@ -721,86 +721,86 @@ text-decoration:none}
 <section class="section section-soft" id="doctors" aria-labelledby="doctors-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="doctors-title">진료하는 의사</h2>
-      <p>세 명 모두 정형외과 전문의이며 상근합니다. 부위별 담당 의사와 진료 요일을 확인하시고 예약 시 지정하실 수 있습니다.</p>
+      <h2 id="doctors-title">Who you will see</h2>
+      <p>All three are full-time orthopaedic specialists. Check who covers which area and on which days, and you can ask for them by name when booking.</p>
     </div>
 
     <div class="doctors">
       <!-- 김도현 -->
       <article class="card doctor">
         <div class="photo">
-          <img src="assets/img/doctor-portrait-41220.webp" width="450" height="600" alt="김도현 대표원장이 진료실에서 X-ray 필름을 들어 확인하는 모습" loading="lazy">
+          <img src="../assets/img/doctor-portrait-41220.webp" width="450" height="600" alt="Dr Dohyun Kim holding an X-ray up to the light in the consulting room" loading="lazy">
         </div>
         <div>
-          <p class="role">대표원장 · 무릎 · 스포츠 손상</p>
-          <h3>김도현</h3>
-          <p class="title">정형외과 전문의 · 의학박사</p>
-          <p class="focus"><strong>주로 보는 질환</strong>퇴행성 관절염, 반월상 연골 손상, 십자인대 손상, 발목·아킬레스건 스포츠 손상</p>
-          <p class="schedule"><strong>진료 요일</strong> 월·화·목·금·토 (수 휴진)</p>
+          <p class="role">Director · knee · sports injuries</p>
+          <h3>Dohyun Kim</h3>
+          <p class="title">Orthopaedic specialist · PhD</p>
+          <p class="focus"><strong>Commonly treated</strong>Osteoarthritis, meniscal tears, cruciate ligament injuries, ankle and Achilles sports injuries</p>
+          <p class="schedule"><strong>Days</strong> Mon · Tue · Thu · Fri · Sat (closed Wed)</p>
         </div>
         <dl>
-          <dt>학력·수련</dt>
-          <dd>연세대학교 의과대학 졸업</dd>
-          <dd>연세대학교 세브란스병원 정형외과 전공의 수료</dd>
-          <dd>서울대학교병원 슬관절 분과 전임의</dd>
-          <dt>경력</dt>
-          <dd>前 국민건강보험 일산병원 정형외과 과장(2011–2014)</dd>
-          <dd>대한슬관절학회 정회원 · 대한스포츠의학회 인정의</dd>
+          <dt>Education and training</dt>
+          <dd>MD, Yonsei University</dd>
+          <dd>Orthopaedic residency, Severance Hospital, Yonsei University</dd>
+          <dd>Knee fellowship, Seoul National University Hospital</dd>
+          <dt>Experience</dt>
+          <dd>Formerly Head of Orthopaedics, NHIS Ilsan Hospital (2011–2014)</dd>
+          <dd>Full member, Korean Knee Society · certified by the Korean Society of Sports Medicine</dd>
         </dl>
       </article>
 
       <!-- 이서윤 -->
       <article class="card doctor">
         <div class="photo">
-          <img src="assets/img/doctor-portrait-41222.webp" width="450" height="600" alt="이서윤 원장이 손 X-ray 영상을 가리키며 설명하는 모습" loading="lazy">
+          <img src="../assets/img/doctor-portrait-41222.webp" width="450" height="600" alt="Dr Seoyoon Lee pointing to a hand X-ray while explaining it" loading="lazy">
         </div>
         <div>
-          <p class="role">원장 · 어깨 · 상지</p>
-          <h3>이서윤</h3>
-          <p class="title">정형외과 전문의</p>
-          <p class="focus"><strong>주로 보는 질환</strong>회전근개 파열, 오십견, 석회성 건염, 팔꿈치·손목 통증</p>
-          <p class="schedule"><strong>진료 요일</strong> 월·수·목·금·토 (화 휴진)</p>
+          <p class="role">Consultant · shoulder · upper limb</p>
+          <h3>Seoyoon Lee</h3>
+          <p class="title">Orthopaedic specialist</p>
+          <p class="focus"><strong>Commonly treated</strong>Rotator cuff tears, frozen shoulder, calcific tendinitis, elbow and wrist pain</p>
+          <p class="schedule"><strong>Days</strong> Mon · Wed · Thu · Fri · Sat (closed Tue)</p>
         </div>
         <dl>
-          <dt>학력·수련</dt>
-          <dd>고려대학교 의과대학 졸업</dd>
-          <dd>고려대학교 안암병원 정형외과 전공의 수료 · 견주관절 분과 전임의</dd>
-          <dt>경력</dt>
-          <dd>前 인천 나은병원 정형외과 과장(2016–2020)</dd>
-          <dd>대한견주관절학회 정회원 · 대한수부외과학회 회원</dd>
-          <dd>근골격계 초음파 인증의(대한임상초음파학회, 2019)</dd>
-          <dd>2020년부터 본원 근무</dd>
+          <dt>Education and training</dt>
+          <dd>MD, Korea University</dd>
+          <dd>Orthopaedic residency, Korea University Anam Hospital · shoulder and elbow fellowship</dd>
+          <dt>Experience</dt>
+          <dd>Formerly Head of Orthopaedics, Naeun Hospital Incheon (2016–2020)</dd>
+          <dd>Full member, Korean Shoulder and Elbow Society · member, Korean Society for Surgery of the Hand</dd>
+          <dd>Certified in musculoskeletal ultrasound, Korean Society of Clinical Ultrasound (2019)</dd>
+          <dd>At this clinic since 2020</dd>
         </dl>
       </article>
 
       <!-- 박준영 -->
       <article class="card doctor">
         <div class="photo">
-          <img src="assets/img/doctor-portrait-41226.webp" width="450" height="600" alt="박준영 원장이 X-ray 영상을 판독하는 모습" loading="lazy">
+          <img src="../assets/img/doctor-portrait-41226.webp" width="450" height="600" alt="Dr Junyoung Park reading an X-ray" loading="lazy">
         </div>
         <div>
-          <p class="role">원장 · 척추 · 통증</p>
-          <h3>박준영</h3>
-          <p class="title">정형외과 전문의</p>
-          <p class="focus"><strong>주로 보는 질환</strong>허리·목 디스크, 척추관 협착증, 급성 요통, 신경차단술이 필요한 신경근 통증</p>
-          <p class="schedule"><strong>진료 요일</strong> 월·화·수·금·토 (목 휴진)</p>
+          <p class="role">Consultant · spine · pain</p>
+          <h3>Junyoung Park</h3>
+          <p class="title">Orthopaedic specialist</p>
+          <p class="focus"><strong>Commonly treated</strong>Lumbar and cervical disc disease, spinal stenosis, acute low back pain, and radicular pain needing a nerve block</p>
+          <p class="schedule"><strong>Days</strong> Mon · Tue · Wed · Fri · Sat (closed Thu)</p>
         </div>
         <dl>
-          <dt>학력·수련</dt>
-          <dd>가톨릭대학교 의과대학 졸업</dd>
-          <dd>가톨릭대학교 서울성모병원 정형외과 전공의 수료</dd>
-          <dd>같은 병원 척추 분과 전임의</dd>
-          <dt>경력</dt>
-          <dd>前 부천 세종병원 정형외과 척추센터 과장(2017–2022)</dd>
-          <dd>대한척추외과학회 정회원 · 대한통증학회 회원</dd>
-          <dd>C-arm 유도 신경차단술 시술 경력 9년, 2022년부터 본원 근무</dd>
+          <dt>Education and training</dt>
+          <dd>MD, Catholic University of Korea</dd>
+          <dd>Orthopaedic residency, Seoul St. Mary's Hospital, Catholic University</dd>
+          <dd>Spine fellowship at the same hospital</dd>
+          <dt>Experience</dt>
+          <dd>Formerly Head of the Spine Centre, Sejong Hospital Bucheon (2017–2022)</dd>
+          <dd>Full member, Korean Society of Spine Surgery · member, Korean Pain Society</dd>
+          <dd>Nine years performing C-arm guided nerve blocks; at this clinic since 2022</dd>
         </dl>
       </article>
     </div>
 
     <p class="doctors-note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <span>학회 참석 등으로 진료 요일이 변경될 경우 예약 환자분께 문자로 개별 안내드립니다. 화·목 야간진료(18:30–20:00)는 당일 진료 의사가 담당합니다.</span>
+      <span>If a doctor's days change for a conference or similar, booked patients are texted individually. Evening sessions on Tuesday and Thursday (18:30–20:00) are covered by whichever doctor is on that day.</span>
     </p>
   </div>
 </section>
@@ -809,62 +809,62 @@ text-decoration:none}
 <section class="section" id="process" aria-labelledby="process-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="process-title">방문부터 재활까지, 5단계</h2>
-      <p>처음 오시는 분이 무엇을 준비하고 어떤 순서로 진행되는지 미리 알 수 있도록 정리했습니다. 각 단계의 소요 시간은 평균값이며 검사 항목에 따라 달라질 수 있습니다.</p>
+      <h2 id="process-title">From arrival to rehabilitation, in five steps</h2>
+      <p>What to bring and how it runs, so a first visit holds no surprises. The times are averages and vary with what needs testing.</p>
     </div>
 
     <ol class="steps">
       <li class="step">
         <span class="no">1</span>
-        <h3>접수</h3>
-        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>약 5분</span>
-        <p>3층 접수 데스크에서 신분증을 제시하고 증상 문진표를 작성합니다.</p>
+        <h3>Registration</h3>
+        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>About 5 min</span>
+        <p>Show ID at the third-floor reception desk and fill in a symptom questionnaire.</p>
         <ul>
-          <li>신분증(초진 필수), 타 병원 영상 CD·소견서가 있으면 함께</li>
-          <li>예약 환자는 키오스크 접수 가능</li>
+          <li>Photo ID (required at a first visit), plus any imaging discs and reports from elsewhere</li>
+          <li>Booked patients can check in at the kiosk</li>
         </ul>
       </li>
       <li class="step">
         <span class="no">2</span>
-        <h3>진료</h3>
-        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>약 10–15분</span>
-        <p>담당 의사가 병력을 듣고 이학적 검사(관절 각도·압통·근력)를 진행합니다.</p>
+        <h3>Consultation</h3>
+        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>About 10–15 min</span>
+        <p>The doctor takes your history and examines you — joint angles, tenderness, strength.</p>
         <ul>
-          <li>통증 시작 시점, 다친 상황, 복용 중인 약을 여쭙니다</li>
-          <li>필요한 검사만 골라 이유를 설명하고, 검사 없이 처방으로 끝나는 경우도 있습니다</li>
+          <li>We ask when it started, how it happened, and what you are taking</li>
+          <li>We choose only the tests that are needed and say why — sometimes a prescription is the whole of it</li>
         </ul>
       </li>
       <li class="step">
         <span class="no">3</span>
-        <h3>검사</h3>
-        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>약 10–20분</span>
-        <p>X-ray는 촬영 즉시, 초음파는 진료실에서 의사가 직접 시행하고 화면을 보며 설명합니다.</p>
+        <h3>Tests</h3>
+        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>About 10–20 min</span>
+        <p>X-rays are ready the moment they are taken; ultrasound is performed by the doctor in the consulting room, explained on screen as it happens.</p>
         <ul>
-          <li>X-ray · 근골격계 초음파 · 골밀도</li>
-          <li>MRI가 필요하면 협력 영상의학과 의뢰</li>
-          <li>결과는 같은 날 진료실에서 설명</li>
+          <li>X-ray · musculoskeletal ultrasound · bone density</li>
+          <li>Referred to a partner radiology clinic if an MRI is needed</li>
+          <li>Results explained the same day in the consulting room</li>
         </ul>
       </li>
       <li class="step">
         <span class="no">4</span>
-        <h3>치료</h3>
-        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>약 20–50분</span>
-        <p>약물·주사·물리치료·체외충격파·도수치료 중 필요한 방법을 비용과 함께 안내한 뒤 진행합니다.</p>
+        <h3>Treatment</h3>
+        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>About 20–50 min</span>
+        <p>We set out which of medication, injection, physical therapy, shockwave, or manual therapy is needed — with the cost — before starting.</p>
         <ul>
-          <li>비급여 항목은 시행 전 비용을 먼저 고지합니다</li>
-          <li>주사 치료는 초음파로 위치를 확인하며 시행</li>
-          <li>물리치료는 4층에서 당일 진행</li>
-          <li>실손보험 청구 예정이면 이때 말씀해 주세요</li>
+          <li>The cost of anything not covered is stated before it is done</li>
+          <li>Injections are placed under ultrasound guidance</li>
+          <li>Physical therapy happens the same day on the fourth floor</li>
+          <li>Tell us at this point if you plan to claim on indemnity insurance</li>
         </ul>
       </li>
       <li class="step">
         <span class="no">5</span>
-        <h3>재활·경과 확인</h3>
-        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>2–8주 계획</span>
-        <p>재방문 주기와 집에서 할 운동을 안내하고, 통증 점수와 관절 각도를 기록해 경과를 비교합니다.</p>
+        <h3>Rehabilitation and follow-up</h3>
+        <span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>planned over 2–8 weeks</span>
+        <p>We set how often to come back and what to do at home, and record pain scores and joint angles so progress can be compared.</p>
         <ul>
-          <li>그림이 있는 운동 안내지를 드립니다</li>
-          <li>2회 이상 호전이 없으면 치료 계획을 다시 세웁니다</li>
+          <li>You go home with an illustrated exercise sheet</li>
+          <li>If there is no improvement after two sessions, we rebuild the plan</li>
         </ul>
       </li>
     </ol>
@@ -872,17 +872,17 @@ text-decoration:none}
     <div class="process-more">
       <figure>
         <div class="photo">
-          <img src="assets/img/physiotherapy-clinic-41305.webp" width="900" height="600" alt="4층 물리치료실에서 치료사가 환자의 다리 재활 운동을 돕고 있는 모습" loading="lazy">
+          <img src="../assets/img/physiotherapy-clinic-41305.webp" width="900" height="600" alt="A therapist guiding a patient through leg rehabilitation on the fourth floor" loading="lazy">
         </div>
-        <figcaption>4층 물리치료실(12베드)과 도수치료실(4실). 치료 후 같은 층에서 다음 예약을 잡습니다.</figcaption>
+        <figcaption>Physical therapy (12 beds) and manual therapy (4 rooms) on the fourth floor. You book the next session on the same floor.</figcaption>
       </figure>
       <div>
-        <h3>미리 알아 두시면 좋은 것</h3>
+        <h3>Worth knowing beforehand</h3>
         <dl>
-          <div><dt>예약 방문 시 평균 대기 15분 이내</dt><dd>2025년 하반기 접수 기록 기준 평균값입니다. 검사가 몰리는 월요일 오전과 토요일은 더 걸릴 수 있습니다.</dd></div>
-          <div><dt>진료 후 서류는 당일 발급</dt><dd>진단서·소견서·진료비 세부내역서·영상 CD를 접수 데스크에서 발급합니다. 실손보험용 서류도 같은 자리에서 요청하세요.</dd></div>
-          <div><dt>수술은 하지 않습니다</dt><dd>수술이 필요하다고 판단되면 협력 병원(연세대학교 세브란스병원·서울대학교병원 등)으로 진료 의뢰서와 영상을 보내 드립니다.</dd></div>
-          <div><dt>화·목 야간진료는 20:00까지</dt><dd>18:30 이후는 야간 가산이 붙으며, 당일 진료 의사가 담당합니다. 접수는 19:30에 마감합니다.</dd></div>
+          <div><dt>Booked patients wait 15 minutes on average</dt><dd>Averages from registration records in the second half of 2025. Monday mornings and Saturdays, when tests cluster, can take longer.</dd></div>
+          <div><dt>Paperwork issued the same day</dt><dd>Certificates, reports, itemised bills, and imaging discs are issued at reception. Ask there for indemnity claim paperwork too.</dd></div>
+          <div><dt>We do not perform surgery</dt><dd>If surgery is indicated, we send a referral and your images to a partner hospital such as Severance or Seoul National University Hospital.</dd></div>
+          <div><dt>Evening clinics until 20:00 on Tue and Thu</dt><dd>After 18:30 an evening surcharge applies and whichever doctor is on that day sees you. Registration closes at 19:30.</dd></div>
         </dl>
       </div>
     </div>
@@ -893,62 +893,62 @@ text-decoration:none}
 <section class="section section-soft" id="equipment" aria-labelledby="equipment-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="equipment-title">검사·치료 장비</h2>
-      <p>보유 장비와 용도, 검사에 걸리는 시간, 급여 여부를 안내합니다. 장비 이름보다 "어떤 상황에서 왜 쓰는지"를 기준으로 정리했습니다.</p>
+      <h2 id="equipment-title">Diagnostic and treatment equipment</h2>
+      <p>What we have, what it is for, how long it takes, and whether insurance covers it — organised by when and why it is used rather than by equipment name.</p>
     </div>
 
     <div class="equip-layout">
       <div class="equip-list">
         <figure class="equip-photo">
           <div class="photo">
-            <img src="assets/img/medical-equipment-41410.webp" width="1200" height="520" alt="3층 검사실의 디지털 X-ray 촬영 장비와 초음파 진단기가 놓인 모습" loading="lazy">
+            <img src="../assets/img/medical-equipment-41410.webp" width="1200" height="520" alt="Digital X-ray equipment and an ultrasound scanner in the third-floor imaging room" loading="lazy">
           </div>
-          <figcaption>3층 검사실. X-ray는 촬영실에서, 초음파는 진료실 안에서 의사가 직접 시행합니다.</figcaption>
+          <figcaption>Third-floor imaging. X-rays are taken in the radiography room; ultrasound is performed by the doctor in the consulting room.</figcaption>
         </figure>
         <article class="card equip">
-          <div class="head"><h3>디지털 X-ray (DR)</h3><span class="cat">검사 · 급여</span></div>
-          <p>뼈의 정렬, 관절 간격, 골절 여부를 확인하는 기본 검사입니다. 촬영 후 바로 진료실 화면에서 확인합니다.</p>
-          <dl><dt>소요</dt><dd>촬영 3–5분</dd><dt>장비</dt><dd>삼성 GC85A · 2022년 도입</dd><dt>대상</dt><dd>무릎·어깨·척추·발목 등 전 부위</dd></dl>
+          <div class="head"><h3>Digital X-ray (DR)</h3><span class="cat">Test · covered</span></div>
+          <p>The basic look at alignment, joint space, and fractures. It goes up on the consulting room screen straight after.</p>
+          <dl><dt>Time</dt><dd>3–5 min to take</dd><dt>Equipment</dt><dd>Samsung GC85A · installed 2022</dd><dt>For</dt><dd>Knee, shoulder, spine, ankle, and everything between</dd></dl>
         </article>
         <article class="card equip">
-          <div class="head"><h3>근골격계 초음파</h3><span class="cat">검사 · 급여/비급여</span></div>
-          <p>힘줄·인대·근육·관절액 상태를 실시간으로 봅니다. 의사가 진료실에서 직접 시행하고 주사 치료 시 바늘 위치 확인에도 사용합니다.</p>
-          <dl><dt>소요</dt><dd>부위당 5–10분</dd><dt>장비</dt><dd>GE LOGIQ P10 · 2대</dd><dt>대상</dt><dd>어깨 회전근개, 무릎, 발목, 팔꿈치</dd></dl>
+          <div class="head"><h3>Musculoskeletal ultrasound</h3><span class="cat">Test · covered/private</span></div>
+          <p>Shows tendons, ligaments, muscle, and joint fluid in real time. The doctor performs it in the room, and uses it to place injections.</p>
+          <dl><dt>Time</dt><dd>5–10 min per site</dd><dt>Equipment</dt><dd>GE LOGIQ P10 · 2 units</dd><dt>For</dt><dd>Rotator cuff, knee, ankle, elbow</dd></dl>
         </article>
         <article class="card equip">
-          <div class="head"><h3>골밀도 검사 (DXA)</h3><span class="cat">검사 · 급여</span></div>
-          <p>골다공증 여부와 골절 위험을 수치로 확인합니다. 만 65세 이상 여성·70세 이상 남성은 건강보험 적용 조건에 해당할 수 있습니다.</p>
-          <dl><dt>소요</dt><dd>약 10분</dd><dt>장비</dt><dd>Hologic Horizon Wi</dd><dt>대상</dt><dd>요추·대퇴골</dd></dl>
+          <div class="head"><h3>Bone density scan (DXA)</h3><span class="cat">Test · covered</span></div>
+          <p>Puts a number on bone density and fracture risk. Women 65 and over and men 70 and over may qualify for insurance coverage.</p>
+          <dl><dt>Time</dt><dd>About 10 min</dd><dt>Equipment</dt><dd>Hologic Horizon Wi</dd><dt>For</dt><dd>Lumbar spine and femur</dd></dl>
         </article>
         <article class="card equip">
-          <div class="head"><h3>체외충격파 (ESWT)</h3><span class="cat">치료 · 비급여</span></div>
-          <p>족저근막염, 석회성 건염, 테니스 엘보처럼 힘줄 부착부에 생긴 만성 통증에 사용합니다. 보통 주 1회, 3–5회를 계획합니다.</p>
-          <dl><dt>소요</dt><dd>회당 10–15분</dd><dt>장비</dt><dd>Storz Duolith SD1 · 2대</dd><dt>비용</dt><dd><a href="#pricing" style="color:var(--brand);font-weight:600">비급여 안내 참고</a></dd></dl>
+          <div class="head"><h3>Shockwave therapy (ESWT)</h3><span class="cat">Treatment · private</span></div>
+          <p>Used for chronic pain where tendons attach — plantar fasciitis, calcific tendinitis, tennis elbow. Usually once a week for three to five sessions.</p>
+          <dl><dt>Time</dt><dd>10–15 min per session</dd><dt>Equipment</dt><dd>Storz Duolith SD1 · 2 units</dd><dt>Cost</dt><dd><a href="#pricing" style="color:var(--brand);font-weight:600">See the private fee list</a></dd></dl>
         </article>
         <article class="card equip">
-          <div class="head"><h3>C-arm (이동형 투시)</h3><span class="cat">시술 보조 · 급여</span></div>
-          <p>척추 신경차단술 등 주사 시술 시 바늘 위치를 실시간 영상으로 확인합니다. 시술은 박준영 원장이 시행합니다.</p>
-          <dl><dt>소요</dt><dd>시술 포함 15–20분</dd><dt>장비</dt><dd>Ziehm Solo</dd><dt>대상</dt><dd>경추·요추 신경근 차단</dd></dl>
+          <div class="head"><h3>C-arm (mobile fluoroscopy)</h3><span class="cat">Procedure support · covered</span></div>
+          <p>Live imaging confirms needle placement during spinal nerve blocks and similar procedures. Dr Junyoung Park performs these.</p>
+          <dl><dt>Time</dt><dd>15–20 min including the procedure</dd><dt>Equipment</dt><dd>Ziehm Solo</dd><dt>For</dt><dd>Cervical and lumbar nerve root block</dd></dl>
         </article>
         <article class="card equip">
-          <div class="head"><h3>물리치료 장비</h3><span class="cat">치료 · 급여</span></div>
-          <p>4층 물리치료실 12베드에서 온열·전기·견인·레이저 치료를 진행합니다. 처방에 따라 조합이 달라집니다.</p>
-          <dl><dt>소요</dt><dd>20–30분</dd><dt>구성</dt><dd>간섭파(ICT), 초음파, 견인기, 고출력 레이저, 온열</dd><dt>대상</dt><dd>급성·만성 근골격계 통증</dd></dl>
+          <div class="head"><h3>Physical therapy equipment</h3><span class="cat">Treatment · covered</span></div>
+          <p>Heat, electrical, traction, and laser therapy across 12 beds on the fourth floor. The combination depends on the prescription.</p>
+          <dl><dt>Time</dt><dd>20–30 min</dd><dt>Includes</dt><dd>Interferential current, ultrasound, traction, high-power laser, heat</dd><dt>For</dt><dd>Acute and chronic musculoskeletal pain</dd></dl>
         </article>
       </div>
 
       <!-- Product accent: 검사 결과 안내 화면 목업 (CSS/SVG) -->
-      <aside class="mock" aria-label="진료실 검사 결과 안내 화면 예시">
-        <div class="mock-bar"><span class="sys">바른마디 진료실 · 결과 안내</span><span class="title">진료실 1 · 김도현 · 예시 화면</span></div>
+      <aside class="mock" aria-label="Sample of the results screen used in the consulting room">
+        <div class="mock-bar"><span class="sys">Bareunmadi consulting room · explaining results</span><span class="title">Room 1 · Dr Dohyun Kim · sample screen</span></div>
         <div class="mock-body">
           <div class="mock-head">
-            <div class="pt">홍○○ 님 (52세)<small>2026-08-14 · 우측 무릎 · 담당 김도현</small></div>
-            <span class="mock-badge">당일 설명 완료</span>
+            <div class="pt">Mr Hong (52)<small>2026-08-14 · right knee · Dr Dohyun Kim</small></div>
+            <span class="mock-badge">Explained the same day</span>
           </div>
-          <div class="mock-tabs" role="tablist" aria-label="검사 결과 보기">
+          <div class="mock-tabs" role="tablist" aria-label="See the results">
             <button type="button" role="tab" id="mtab-xray" aria-selected="true" aria-controls="mpanel-xray">X-ray</button>
-            <button type="button" role="tab" id="mtab-us" aria-selected="false" aria-controls="mpanel-us" tabindex="-1">초음파</button>
-            <button type="button" role="tab" id="mtab-plan" aria-selected="false" aria-controls="mpanel-plan" tabindex="-1">치료 계획</button>
+            <button type="button" role="tab" id="mtab-us" aria-selected="false" aria-controls="mpanel-us" tabindex="-1">Ultrasound</button>
+            <button type="button" role="tab" id="mtab-plan" aria-selected="false" aria-controls="mpanel-plan" tabindex="-1">Treatment plan</button>
           </div>
 
           <div class="mock-panel" id="mpanel-xray" role="tabpanel" aria-labelledby="mtab-xray">
@@ -960,14 +960,14 @@ text-decoration:none}
                 <path d="M158 92 L242 92 C258 110 252 130 250 150 L150 150 C148 130 142 110 158 92 Z" fill="url(#bone)"/>
                 <line x1="120" y1="85" x2="280" y2="85" stroke="#7fd1c1" stroke-width="1" stroke-dasharray="4 3"/>
                 <circle cx="205" cy="85" r="10" fill="none" stroke="#7fd1c1" stroke-width="1.5"/>
-                <text x="222" y="80" font-size="10" fill="#7fd1c1" font-family="system-ui">관절 간격 3.1mm</text>
+                <text x="222" y="80" font-size="10" fill="#7fd1c1" font-family="system-ui">Joint space 3.1mm</text>
               </svg>
               <span class="lbl2">2026-08-14 10:42</span>
             </div>
             <div class="mock-rows">
-              <div class="mock-row"><span class="k">내측 관절 간격</span><span class="v num">3.1 mm · 경도 협착</span><span class="bar"><i style="width:62%"></i></span></div>
-              <div class="mock-row"><span class="k">굴곡 각도(ROM)</span><span class="v num">125° / 정상 135°</span><span class="bar"><i style="width:82%"></i></span></div>
-              <div class="mock-row"><span class="k">통증 점수(NRS)</span><span class="v num">5 / 10</span><span class="bar"><i style="width:50%"></i></span></div>
+              <div class="mock-row"><span class="k">Medial joint space</span><span class="v num">3.1 mm · mild narrowing</span><span class="bar"><i style="width:62%"></i></span></div>
+              <div class="mock-row"><span class="k">Flexion (range of motion)</span><span class="v num">125° / normal 135°</span><span class="bar"><i style="width:82%"></i></span></div>
+              <div class="mock-row"><span class="k">Pain score (NRS)</span><span class="v num">5 / 10</span><span class="bar"><i style="width:50%"></i></span></div>
             </div>
           </div>
 
@@ -981,33 +981,33 @@ text-decoration:none}
                 <path d="M150 55 C175 62 225 62 250 55 L250 60 C225 67 175 67 150 60 Z" fill="#8fa3aa" fill-opacity=".55"/>
                 <ellipse cx="200" cy="112" rx="34" ry="9" fill="#0d1416" fill-opacity=".9"/>
                 <line x1="166" y1="112" x2="234" y2="112" stroke="#7fd1c1" stroke-width="1" stroke-dasharray="4 3"/>
-                <text x="242" y="116" font-size="10" fill="#7fd1c1" font-family="system-ui">관절액 4.2mm</text>
+                <text x="242" y="116" font-size="10" fill="#7fd1c1" font-family="system-ui">Joint effusion 4.2mm</text>
               </svg>
               <span class="lbl2">2026-08-14 10:51</span>
             </div>
             <div class="mock-rows">
-              <div class="mock-row"><span class="k">관절액(삼출) 깊이</span><span class="v num">4.2 mm · 소량</span><span class="bar"><i style="width:35%"></i></span></div>
-              <div class="mock-row"><span class="k">내측 반월상 연골</span><span class="v">변성 · 돌출 2 mm</span><span class="bar"><i style="width:40%"></i></span></div>
-              <div class="mock-row"><span class="k">내측측부인대(MCL)</span><span class="v">연속성 유지 · 정상</span><span class="bar"><i style="width:100%"></i></span></div>
+              <div class="mock-row"><span class="k">Effusion depth</span><span class="v num">4.2 mm · small amount</span><span class="bar"><i style="width:35%"></i></span></div>
+              <div class="mock-row"><span class="k">Medial meniscus</span><span class="v">Degeneration · 2 mm protrusion</span><span class="bar"><i style="width:40%"></i></span></div>
+              <div class="mock-row"><span class="k">Medial collateral ligament (MCL)</span><span class="v">Intact · normal</span><span class="bar"><i style="width:100%"></i></span></div>
             </div>
           </div>
 
           <div class="mock-panel" id="mpanel-plan" role="tabpanel" aria-labelledby="mtab-plan" hidden>
-            <ul class="mock-plan" aria-label="치료 계획 예시">
-              <li><span class="wk">오늘</span><span class="what">소염진통제 2주 처방 · 물리치료(온열·간섭파) 4층에서 시행</span><span class="fee">급여</span></li>
-              <li><span class="wk">1주차</span><span class="what">물리치료 주 2회 · 대퇴사두근 운동 안내지(3종) 자가 운동</span><span class="fee">급여</span></li>
-              <li><span class="wk">2주차</span><span class="what">재진 · 통증 점수 재측정, 3 이하 미도달 시 연골주사(히알루론산) 1차</span><span class="fee">급여 기준 확인</span></li>
-              <li><span class="wk">4주차</span><span class="what">X-ray 없이 ROM·NRS 비교. 호전 없으면 도수치료 30분 처방 상의</span><span class="fee pay">비급여 70,000</span></li>
+            <ul class="mock-plan" aria-label="Sample treatment plan">
+              <li><span class="wk">Today</span><span class="what">Two weeks of anti-inflammatories · physical therapy (heat, interferential) on the fourth floor</span><span class="fee">Covered</span></li>
+              <li><span class="wk">Week 1</span><span class="what">Physical therapy twice a week · three quadriceps exercises to do at home</span><span class="fee">Covered</span></li>
+              <li><span class="wk">Week 2</span><span class="what">Follow-up · pain score remeasured; if it is not below 3, first hyaluronic acid injection</span><span class="fee">Check coverage criteria</span></li>
+              <li><span class="wk">Week 4</span><span class="what">Range of motion and pain score compared without a new X-ray. If there is no improvement, we discuss a 30-minute manual therapy prescription</span><span class="fee pay">Private, KRW 70,000</span></li>
             </ul>
-            <p class="mock-plan-note">비급여 항목은 이 화면에서 비용을 먼저 보여드리고 동의 후 진행합니다.</p>
+            <p class="mock-plan-note">For anything not covered, the cost is shown on this screen and we proceed only with your consent.</p>
           </div>
 
           <div class="mock-foot">
-            <a class="b" href="#pricing">영상 CD 발급 · 10,000원</a>
-            <button type="button" class="b p" id="mockPlanBtn">치료 계획 보기</button>
+            <a class="b" href="#pricing">Imaging disc · KRW 10,000</a>
+            <button type="button" class="b p" id="mockPlanBtn">See the plan</button>
           </div>
         </div>
-        <div class="mock-cap">검사 결과는 이렇게 화면으로 함께 보며 설명드립니다. 수치는 예시이며 탭을 눌러 화면을 바꿔 볼 수 있습니다.</div>
+        <div class="mock-cap">This is how results are shown and explained on screen. The figures are examples; use the tabs to switch views.</div>
       </aside>
     </div>
   </div>
@@ -1018,62 +1018,62 @@ text-decoration:none}
   <div class="container">
     <div class="section-head row">
       <div>
-        <h2 id="pricing-title">비급여 진료비용 안내</h2>
-        <p>건강보험이 적용되지 않는 항목의 비용을 안내합니다. 아래 금액은 부가가치세 포함 1회 기준이며, 시행 전 접수 데스크와 진료실에서 다시 고지합니다.</p>
+        <h2 id="pricing-title">Private fees</h2>
+        <p>Costs for items national health insurance does not cover. Prices below are per session including VAT, and are stated again at reception and in the consulting room before anything is done.</p>
       </div>
       <span class="price-updated">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        2026년 7월 1일 기준
+        As of July 1, 2026
       </span>
     </div>
 
-    <div class="filter-tabs" role="tablist" aria-label="비급여 항목 분류">
-      <button role="tab" aria-selected="true" data-filter="all">전체</button>
-      <button role="tab" aria-selected="false" data-filter="therapy">도수·치료</button>
-      <button role="tab" aria-selected="false" data-filter="exam">검사</button>
-      <button role="tab" aria-selected="false" data-filter="injection">주사</button>
-      <button role="tab" aria-selected="false" data-filter="cert">제증명</button>
+    <div class="filter-tabs" role="tablist" aria-label="Private fee categories">
+      <button role="tab" aria-selected="true" data-filter="all">All</button>
+      <button role="tab" aria-selected="false" data-filter="therapy">Manual therapy</button>
+      <button role="tab" aria-selected="false" data-filter="exam">Tests</button>
+      <button role="tab" aria-selected="false" data-filter="injection">Injections</button>
+      <button role="tab" aria-selected="false" data-filter="cert">Certificates</button>
     </div>
 
     <div class="table-wrap">
       <table class="price-table" id="priceTable">
-        <caption class="sr-only">비급여 진료비용 목록</caption>
+        <caption class="sr-only">Private fee list</caption>
         <thead>
           <tr>
-            <th scope="col">분류</th>
-            <th scope="col">항목</th>
-            <th scope="col">기준</th>
-            <th scope="col" class="price">비용(원)</th>
-            <th scope="col">비고</th>
+            <th scope="col">Category</th>
+            <th scope="col">Item</th>
+            <th scope="col">Basis</th>
+            <th scope="col" class="price">Cost (KRW)</th>
+            <th scope="col">Notes</th>
           </tr>
         </thead>
         <tbody>
-          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">도수·치료</span></td><td class="item">도수치료 30분<span class="sub">물리치료사 1:1</span></td><td class="basis">1회</td><td class="price num">70,000</td><td class="note">의사 처방 후 시행. 실손보험 청구 서류 발급 가능</td></tr>
-          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">도수·치료</span></td><td class="item">도수치료 50분<span class="sub">물리치료사 1:1</span></td><td class="basis">1회</td><td class="price num">100,000</td><td class="note">척추·다부위 또는 수술 후 재활 시 권장</td></tr>
-          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">도수·치료</span></td><td class="item">체외충격파 치료(ESWT)</td><td class="basis">1회 · 1부위</td><td class="price num">60,000</td><td class="note">3회 계획 시 150,000원(회당 50,000원)</td></tr>
-          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">도수·치료</span></td><td class="item">고출력 레이저 치료</td><td class="basis">1회 · 1부위</td><td class="price num">30,000</td><td class="note">급성 염좌·건염</td></tr>
-          <tr data-cat="exam"><td class="cat-cell"><span class="cat">검사</span></td><td class="item">근골격계 초음파(비급여 적용 시)<span class="sub">단순 통증 평가 등 급여 기준 외</span></td><td class="basis">1부위</td><td class="price num">50,000</td><td class="note">급여 기준에 해당하면 건강보험 적용(본인부담 약 20,000원 내외)</td></tr>
-          <tr data-cat="exam"><td class="cat-cell"><span class="cat">검사</span></td><td class="item">체성분·자세 분석 검사</td><td class="basis">1회</td><td class="price num">15,000</td><td class="note">재활 운동치료 시작 전 시행</td></tr>
-          <tr data-cat="injection"><td class="cat-cell"><span class="cat">주사</span></td><td class="item">증식치료(프롤로테라피)</td><td class="basis">1회 · 1부위</td><td class="price num">80,000</td><td class="note">인대·건 부착부 만성 통증. 보통 2–4주 간격 3회</td></tr>
-          <tr data-cat="injection"><td class="cat-cell"><span class="cat">주사</span></td><td class="item">PDRN(폴리데옥시리보뉴클레오티드) 주사</td><td class="basis">1회 · 1부위</td><td class="price num">120,000</td><td class="note">초음파 유도 시행. 회전근개·족저근막</td></tr>
-          <tr data-cat="injection"><td class="cat-cell"><span class="cat">주사</span></td><td class="item">연골주사(히알루론산) 급여 기준 외</td><td class="basis">1회</td><td class="price num">45,000</td><td class="note">6개월 이내 재투여 등 급여 횟수 초과 시</td></tr>
-          <tr data-cat="injection"><td class="cat-cell"><span class="cat">주사</span></td><td class="item">대상포진 예방접종(싱그릭스)</td><td class="basis">1회</td><td class="price num">230,000</td><td class="note">2회 접종 필요(2–6개월 간격)</td></tr>
-          <tr data-cat="cert"><td class="cat-cell"><span class="cat">제증명</span></td><td class="item">일반 진단서</td><td class="basis">1통</td><td class="price num">20,000</td><td class="note">추가 발급 시 통당 1,000원</td></tr>
-          <tr data-cat="cert"><td class="cat-cell"><span class="cat">제증명</span></td><td class="item">상해 진단서(3주 미만)</td><td class="basis">1통</td><td class="price num">100,000</td><td class="note">3주 이상 150,000원</td></tr>
-          <tr data-cat="cert"><td class="cat-cell"><span class="cat">제증명</span></td><td class="item">영문 진단서</td><td class="basis">1통</td><td class="price num">20,000</td><td class="note">발급까지 1–2일 소요</td></tr>
-          <tr data-cat="cert"><td class="cat-cell"><span class="cat">제증명</span></td><td class="item">소견서·진료의뢰서</td><td class="basis">1통</td><td class="price num">10,000</td><td class="note">협력 병원 의뢰 시 무료</td></tr>
-          <tr data-cat="cert"><td class="cat-cell"><span class="cat">제증명</span></td><td class="item">진료확인서 · 통원확인서</td><td class="basis">1통</td><td class="price num">3,000</td><td class="note">실손보험 청구용</td></tr>
-          <tr data-cat="cert"><td class="cat-cell"><span class="cat">제증명</span></td><td class="item">영상 CD 복사</td><td class="basis">1장</td><td class="price num">10,000</td><td class="note">X-ray·초음파 영상. 즉시 발급</td></tr>
+          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">Manual therapy</span></td><td class="item">Manual therapy, 30 min<span class="sub">One-to-one with a physiotherapist</span></td><td class="basis">1 session</td><td class="price num">70,000</td><td class="note">Performed on prescription. Paperwork for indemnity claims available</td></tr>
+          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">Manual therapy</span></td><td class="item">Manual therapy, 50 min<span class="sub">One-to-one with a physiotherapist</span></td><td class="basis">1 session</td><td class="price num">100,000</td><td class="note">Recommended for the spine, multiple sites, or post-surgical rehabilitation</td></tr>
+          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">Manual therapy</span></td><td class="item">Shockwave therapy (ESWT)</td><td class="basis">1 session · 1 site</td><td class="price num">60,000</td><td class="note">KRW 150,000 for a course of three (KRW 50,000 each)</td></tr>
+          <tr data-cat="therapy"><td class="cat-cell"><span class="cat">Manual therapy</span></td><td class="item">High-power laser therapy</td><td class="basis">1 session · 1 site</td><td class="price num">30,000</td><td class="note">Acute sprains and tendinitis</td></tr>
+          <tr data-cat="exam"><td class="cat-cell"><span class="cat">Tests</span></td><td class="item">Musculoskeletal ultrasound (when not covered)<span class="sub">Outside coverage criteria, such as simple pain assessment</span></td><td class="basis">1 site</td><td class="price num">50,000</td><td class="note">Covered by insurance where criteria are met (around KRW 20,000 out of pocket)</td></tr>
+          <tr data-cat="exam"><td class="cat-cell"><span class="cat">Tests</span></td><td class="item">Body composition and posture analysis</td><td class="basis">1 session</td><td class="price num">15,000</td><td class="note">Done before rehabilitation exercise begins</td></tr>
+          <tr data-cat="injection"><td class="cat-cell"><span class="cat">Injections</span></td><td class="item">Prolotherapy</td><td class="basis">1 session · 1 site</td><td class="price num">80,000</td><td class="note">Chronic pain at ligament and tendon attachments. Usually three sessions, 2–4 weeks apart</td></tr>
+          <tr data-cat="injection"><td class="cat-cell"><span class="cat">Injections</span></td><td class="item">PDRN (polydeoxyribonucleotide) injection</td><td class="basis">1 session · 1 site</td><td class="price num">120,000</td><td class="note">Ultrasound-guided. Rotator cuff and plantar fascia</td></tr>
+          <tr data-cat="injection"><td class="cat-cell"><span class="cat">Injections</span></td><td class="item">Viscosupplementation (hyaluronic acid) outside coverage criteria</td><td class="basis">1 session</td><td class="price num">45,000</td><td class="note">When repeated within six months or beyond the covered number of doses</td></tr>
+          <tr data-cat="injection"><td class="cat-cell"><span class="cat">Injections</span></td><td class="item">Shingles vaccination (Shingrix)</td><td class="basis">1 session</td><td class="price num">230,000</td><td class="note">Two doses required, 2–6 months apart</td></tr>
+          <tr data-cat="cert"><td class="cat-cell"><span class="cat">Certificates</span></td><td class="item">Standard medical certificate</td><td class="basis">1 copy</td><td class="price num">20,000</td><td class="note">KRW 1,000 for each additional copy</td></tr>
+          <tr data-cat="cert"><td class="cat-cell"><span class="cat">Certificates</span></td><td class="item">Injury certificate (under 3 weeks)</td><td class="basis">1 copy</td><td class="price num">100,000</td><td class="note">3 weeks or more, KRW 150,000</td></tr>
+          <tr data-cat="cert"><td class="cat-cell"><span class="cat">Certificates</span></td><td class="item">Medical certificate in English</td><td class="basis">1 copy</td><td class="price num">20,000</td><td class="note">Takes 1–2 days to issue</td></tr>
+          <tr data-cat="cert"><td class="cat-cell"><span class="cat">Certificates</span></td><td class="item">Medical report / referral letter</td><td class="basis">1 copy</td><td class="price num">10,000</td><td class="note">Free when referred to a partner hospital</td></tr>
+          <tr data-cat="cert"><td class="cat-cell"><span class="cat">Certificates</span></td><td class="item">Treatment / outpatient attendance certificate</td><td class="basis">1 copy</td><td class="price num">3,000</td><td class="note">For indemnity claims</td></tr>
+          <tr data-cat="cert"><td class="cat-cell"><span class="cat">Certificates</span></td><td class="item">Imaging disc copy</td><td class="basis">1 copy</td><td class="price num">10,000</td><td class="note">X-ray and ultrasound images. Issued on the spot</td></tr>
         </tbody>
       </table>
-      <p class="price-empty" id="priceEmpty">해당 분류에 항목이 없습니다.</p>
+      <p class="price-empty" id="priceEmpty">Nothing in this category.</p>
     </div>
 
     <ul class="price-notes">
-      <li>위 항목은 「의료법」 제45조 및 같은 법 시행규칙 제42조의2에 따라 의료기관이 게시하는 비급여 진료비용 정보입니다.</li>
-      <li>진료 내용에 따라 급여 항목(진찰료·X-ray·물리치료 등)이 별도로 발생하며 본인부담금은 건강보험 기준을 따릅니다.</li>
-      <li>실손의료보험 청구를 위한 진료비 세부내역서·영수증은 접수 데스크에서 당일 발급합니다.</li>
-      <li>비용은 변경될 수 있으며 변경 시 원내 게시판과 이 페이지에 먼저 반영합니다. 문의: <a href="tel:02-312-7788" class="num" style="color:var(--brand);font-weight:600">02-312-7788</a></li>
+      <li>The above is the schedule of private fees that clinics are required to publish under Article 45 of the Medical Service Act and Article 42-2 of its Enforcement Rule.</li>
+      <li>Covered items such as the consultation fee, X-rays, and physical therapy are billed separately, with your share set by national insurance rules.</li>
+      <li>Itemised bills and receipts for indemnity claims are issued at reception the same day.</li>
+      <li>Prices may change; when they do, the clinic noticeboard and this page are updated first. Enquiries: <a href="tel:02-312-7788" class="num" style="color:var(--brand);font-weight:600">02-312-7788</a></li>
     </ul>
   </div>
 </section>
@@ -1084,12 +1084,12 @@ text-decoration:none}
     <div class="faq-layout">
       <div class="faq-aside">
         <div class="section-head" style="margin-bottom:0">
-          <h2 id="faq-title">진료 전에 궁금한 것들</h2>
-          <p>접수 데스크에서 가장 자주 받는 질문을 정리했습니다. 답이 없으면 전화 주세요.</p>
+          <h2 id="faq-title">Before you come</h2>
+          <p>The questions reception hears most. If yours isn't here, call us.</p>
         </div>
         <div class="box">
-          <h3>전화 문의</h3>
-          <p>평일 09:00–18:30 · 토 09:00–13:30<br>점심시간(13:00–14:00)에는 응대가 어렵습니다.</p>
+          <h3>Call us</h3>
+          <p>Weekdays 09:00–18:30 · Sat 09:00–13:30<br>We cannot answer between 13:00 and 14:00.</p>
           <a class="btn btn-secondary btn-sm" href="tel:02-312-7788">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
             <span class="num">02-312-7788</span>
@@ -1099,56 +1099,56 @@ text-decoration:none}
 
       <div class="faq-list" id="faqList">
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">예약 없이 가도 진료를 받을 수 있나요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">Can I come without an appointment?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div>
-            <p>가능합니다. 다만 예약 환자를 우선 안내하기 때문에 방문 접수는 대기가 길어질 수 있습니다. 월요일 오전과 토요일은 특히 붐빕니다. 전화(02-312-7788)로 시간을 잡고 오시면 평균 15분 이내에 진료실로 안내됩니다.</p>
+            <p>Yes. Booked patients are seen first, so walk-ins can wait longer — Monday mornings and Saturdays especially. Call 02-312-7788 to fix a time and you will usually be in a consulting room within 15 minutes.</p>
           </div></div>
         </div>
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">처음 방문할 때 무엇을 준비해야 하나요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">What should I bring to a first visit?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div>
             <ul>
-              <li>신분증(주민등록증·운전면허증·모바일 신분증). 건강보험 본인 확인 의무화에 따라 필요합니다.</li>
-              <li>다른 병원에서 촬영한 X-ray·MRI CD와 소견서가 있으면 가져오세요. 같은 검사를 반복하지 않아도 됩니다.</li>
-              <li>현재 복용 중인 약(혈액 응고제·당뇨약 등)은 주사 치료 전 반드시 알려 주세요.</li>
-              <li>무릎·허리 진료는 갈아입기 쉬운 편한 옷이 좋습니다. 필요 시 진료용 반바지를 드립니다.</li>
+              <li>Photo ID — national ID card, driving licence, or mobile ID. Required under the health insurance identity check rules.</li>
+              <li>Bring any X-ray or MRI discs and reports from another clinic. It saves repeating the same test.</li>
+              <li>Tell us what you are taking — blood thinners, diabetes medication — before any injection.</li>
+              <li>For knee and back appointments, wear something easy to change out of. We can lend you shorts.</li>
             </ul>
           </div></div>
         </div>
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">도수치료는 실손보험이 되나요? 서류는 어떻게 받나요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">Is manual therapy covered by indemnity insurance, and how do I get the paperwork?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div>
-            <p>도수치료는 비급여 항목이며, 가입하신 실손의료보험 약관에 따라 보상 범위가 다릅니다(세대별로 횟수·한도 차이가 있습니다). 보험사에 청구하실 수 있도록 진료비 세부내역서, 영수증, 필요 시 진료확인서를 당일 발급해 드립니다. 보상 여부 자체는 보험사에서 판단하므로 병원에서 "보험이 된다"고 확정해 드릴 수는 없습니다.</p>
+            <p>Manual therapy is not covered by national insurance, and what your indemnity policy pays back depends on its terms — limits and session counts differ by policy generation. We issue the itemised bill, receipt, and a treatment certificate if needed on the same day so you can claim. Whether it is reimbursed is the insurer's decision, so the clinic cannot promise that it will be.</p>
           </div></div>
         </div>
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">MRI 검사도 여기서 할 수 있나요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">Can I have an MRI here?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div>
-            <p>본원에는 MRI 장비가 없습니다. 진료 결과 MRI가 필요하다고 판단되면 도보 7분 거리의 협력 영상의학과(마포영상의학과의원)로 의뢰서를 보내 당일 또는 다음 날 촬영이 가능하도록 예약해 드립니다. 촬영 결과는 본원 진료실에서 담당 의사가 판독 결과와 함께 설명합니다.</p>
+            <p>We do not have an MRI scanner. If one is needed, we send a referral to Mapo Radiology Clinic seven minutes away and book you in for the same or the next day. Your own doctor here then goes through the images and the report with you.</p>
           </div></div>
         </div>
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">주사 치료는 아픈가요? 부작용은 없나요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">Do injections hurt? Are there side effects?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div>
-            <p>초음파로 위치를 확인하며 시행하기 때문에 불필요한 통증을 줄일 수 있지만, 주사 부위에 1–2일 정도 뻐근함이 남을 수 있습니다. 스테로이드 주사는 같은 부위에 연 3–4회를 넘기지 않도록 관리하며, 당뇨가 있는 분은 일시적으로 혈당이 오를 수 있어 시행 전에 확인합니다. 어떤 주사든 시행 전 목적·예상 효과·부작용을 설명드리고 동의를 받습니다.</p>
+            <p>Ultrasound guidance keeps unnecessary pain down, though the site can ache for a day or two. We keep steroid injections to no more than three or four a year in the same place, and check beforehand with anyone diabetic, as blood sugar can rise briefly. Whatever the injection, we explain the purpose, the expected effect, and the risks, and take your consent first.</p>
           </div></div>
         </div>
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">교통사고(자동차보험) 진료도 가능한가요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">Do you treat road traffic injuries under motor insurance?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div>
-            <p>가능합니다. 보험사에서 발급한 지불보증번호를 접수 시 알려 주시면 자동차보험으로 접수됩니다. 입원 시설은 없으며 통원 치료(진료·물리치료·도수치료)만 진행합니다. 산재보험은 근로복지공단 승인 후 진료 가능합니다.</p>
+            <p>Yes. Give us the payment guarantee number from your insurer at registration and we will bill the motor policy. There are no inpatient beds — consultation, physical therapy, and manual therapy on an outpatient basis only. Workers' compensation cases can be seen once approved by COMWEL.</p>
           </div></div>
         </div>
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">주차는 어떻게 하나요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">Where do I park?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a7" role="region" aria-labelledby="faq-q7"><div>
-            <p>건물 지하 1–2층 주차장을 이용하실 수 있습니다. 진료 환자는 2시간 무료이며 접수 데스크에서 차량 번호를 등록해 드립니다. 물리·도수치료까지 받으시면 3시간까지 무료로 연장됩니다. 주차장이 만차인 경우 건물 앞 망원동 공영주차장(도보 3분)을 안내드리며 주차비는 별도입니다.</p>
+            <p>Use the car park on basement levels 1–2. Patients get two hours free; reception registers your plate. If you also have physical or manual therapy, that extends to three hours. When it is full we will point you to the Mangwon public car park three minutes away, which is charged separately.</p>
           </div></div>
         </div>
         <div class="faq-item">
-          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">아이(소아·청소년)도 진료하나요?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
+          <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">Do you see children and teenagers?<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
           <div class="faq-a" id="faq-a8" role="region" aria-labelledby="faq-q8"><div>
-            <p>운동 중 발목 염좌, 성장기 무릎 통증(오스굿병), 단순 골절 등은 진료합니다. 만 7세 미만 아동이나 척추측만증처럼 소아정형외과 전문 진료가 필요한 경우는 진찰 후 소아정형외과 전문의가 있는 병원으로 의뢰해 드립니다. 미성년자는 보호자 동반이 필요합니다.</p>
+            <p>We see sports ankle sprains, growth-related knee pain such as Osgood-Schlatter, and simple fractures. Children under seven, and conditions like scoliosis that need a paediatric orthopaedic specialist, are referred on after examination. Minors must be accompanied by a guardian.</p>
           </div></div>
         </div>
       </div>
@@ -1160,13 +1160,13 @@ text-decoration:none}
 <section class="section" id="access" aria-labelledby="access-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="access-title">위치 · 진료시간 · 주차</h2>
-      <p>서울 마포구 망원동, 6호선 망원역 2번 출구에서 도보 5분입니다. 건물 3층이 접수 데스크이며 엘리베이터가 있습니다.</p>
+      <h2 id="access-title">Location · hours · parking</h2>
+      <p>Mangwon-dong, Mapo-gu, Seoul — five minutes on foot from Mangwon Station Exit 2 on Line 6. Reception is on the third floor and there is a lift.</p>
     </div>
 
     <div class="access-layout">
       <div>
-        <div class="map" role="img" aria-label="바른마디 정형외과 약도. 망원역 2번 출구에서 월드컵로를 따라 북쪽으로 350m, 망원우체국 사거리에서 우회전 후 마포하나빌딩 3층">
+        <div class="map" role="img" aria-label="Map to Bareunmadi Orthopaedics: from Mangwon Station Exit 2, 350m north along World Cup-ro, right at the Mangwon Post Office crossing, third floor of the Mapo Hana Building">
           <svg viewBox="0 0 640 400" aria-hidden="true">
             <rect width="640" height="400" fill="#eef2f1"/>
             <!-- blocks -->
@@ -1180,69 +1180,69 @@ text-decoration:none}
             <rect x="440" y="0" width="24" height="400" fill="#ffffff"/>
             <line x1="0" y1="180" x2="640" y2="180" stroke="#d3dad9" stroke-width="1" stroke-dasharray="10 8"/>
             <line x1="261" y1="0" x2="261" y2="400" stroke="#d3dad9" stroke-width="1" stroke-dasharray="10 8"/>
-            <text x="12" y="176" font-size="11" fill="#66737a" font-family="system-ui">망원로</text>
-            <text x="278" y="16" font-size="11" fill="#66737a" font-family="system-ui">월드컵로</text>
-            <text x="468" y="16" font-size="11" fill="#66737a" font-family="system-ui">포은로</text>
+            <text x="12" y="176" font-size="11" fill="#66737a" font-family="system-ui">Mangwon-ro</text>
+            <text x="278" y="16" font-size="11" fill="#66737a" font-family="system-ui">World Cup-ro</text>
+            <text x="468" y="16" font-size="11" fill="#66737a" font-family="system-ui">Poeun-ro</text>
             <!-- subway line -->
             <path d="M0 330 H640" stroke="#b58a52" stroke-width="6" stroke-opacity=".55"/>
-            <text x="12" y="322" font-size="11" fill="#8a6a3f" font-family="system-ui">6호선</text>
+            <text x="12" y="322" font-size="11" fill="#8a6a3f" font-family="system-ui">Line 6</text>
             <!-- station -->
             <g>
               <circle cx="261" cy="330" r="12" fill="#fff" stroke="#b58a52" stroke-width="3"/>
               <text x="261" y="334" font-size="9" font-weight="700" text-anchor="middle" fill="#8a6a3f" font-family="system-ui">6</text>
-              <text x="280" y="320" font-size="12" font-weight="600" fill="#1b2428" font-family="system-ui">망원역</text>
-              <text x="280" y="352" font-size="10" fill="#66737a" font-family="system-ui">2번 출구</text>
+              <text x="280" y="320" font-size="12" font-weight="600" fill="#1b2428" font-family="system-ui">Mangwon Station</text>
+              <text x="280" y="352" font-size="10" fill="#66737a" font-family="system-ui">Exit 2</text>
             </g>
             <!-- walking route -->
             <path d="M261 318 V195 H360" fill="none" stroke="#1f7a6f" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
-            <text x="272" y="262" font-size="11" fill="#1f7a6f" font-weight="600" font-family="system-ui">도보 5분 (350m)</text>
+            <text x="272" y="262" font-size="11" fill="#1f7a6f" font-weight="600" font-family="system-ui">5 min on foot (350m)</text>
             <!-- landmarks -->
             <g>
               <rect x="120" y="120" width="70" height="30" rx="4" fill="#fff" stroke="#c5ced3"/>
-              <text x="155" y="139" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">망원우체국</text>
+              <text x="155" y="139" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">Mangwon Post Office</text>
               <rect x="470" y="220" width="90" height="30" rx="4" fill="#fff" stroke="#c5ced3"/>
-              <text x="515" y="239" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">망원동 공영주차장</text>
+              <text x="515" y="239" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">Mangwon public car park</text>
               <rect x="60" y="230" width="90" height="30" rx="4" fill="#fff" stroke="#c5ced3"/>
-              <text x="105" y="249" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">망원시장 입구</text>
+              <text x="105" y="249" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">Mangwon Market entrance</text>
               <rect x="300" y="60" width="110" height="30" rx="4" fill="#fff" stroke="#c5ced3"/>
-              <text x="355" y="79" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">마포영상의학과의원</text>
+              <text x="355" y="79" font-size="10" text-anchor="middle" fill="#3d4a51" font-family="system-ui">Mapo Radiology Clinic</text>
             </g>
             <!-- destination -->
             <g>
               <rect x="300" y="205" width="120" height="44" rx="6" fill="#1f7a6f"/>
-              <text x="360" y="223" font-size="12" font-weight="700" text-anchor="middle" fill="#fff" font-family="system-ui">바른마디 정형외과</text>
-              <text x="360" y="239" font-size="10" text-anchor="middle" fill="#d9ebe7" font-family="system-ui">마포하나빌딩 3–4층</text>
+              <text x="360" y="223" font-size="12" font-weight="700" text-anchor="middle" fill="#fff" font-family="system-ui">Bareunmadi Orthopaedics</text>
+              <text x="360" y="239" font-size="10" text-anchor="middle" fill="#d9ebe7" font-family="system-ui">Mapo Hana Building, 3rd–4th floors</text>
               <path d="M360 249 l-8 -1 h16 z" fill="#1f7a6f"/>
               <circle cx="360" cy="196" r="4" fill="#1f7a6f"/>
             </g>
             <!-- bus stop -->
             <g>
               <rect x="180" y="150" width="8" height="8" rx="1" fill="#3b6fb6"/>
-              <text x="192" y="158" font-size="9" fill="#3d4a51" font-family="system-ui">망원우체국 정류장</text>
+              <text x="192" y="158" font-size="9" fill="#3d4a51" font-family="system-ui">Mangwon Post Office stop</text>
             </g>
             <!-- north -->
             <g transform="translate(600 30)"><path d="M0 -14 L6 8 L0 4 L-6 8 Z" fill="#66737a"/><text x="0" y="24" font-size="10" text-anchor="middle" fill="#66737a" font-family="system-ui">N</text></g>
           </svg>
-          <div class="legend"><span><i style="background:#1f7a6f"></i>도보 경로</span><span><i style="background:#b58a52"></i>지하철 6호선</span><span><i style="background:#3b6fb6"></i>버스 정류장</span></div>
+          <div class="legend"><span><i style="background:#1f7a6f"></i>Walking route</span><span><i style="background:#b58a52"></i>Subway Line 6</span><span><i style="background:#3b6fb6"></i>Bus stop</span></div>
         </div>
 
         <div class="grid grid-2" style="margin-top:16px">
           <div class="info-block">
-            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>주소</h3>
-            <p class="addr">서울특별시 마포구 월드컵로 13길 24, 마포하나빌딩 3층·4층</p>
-            <p class="sub">(우 04003) 지번: 망원동 414-12 · 1층 우리은행 망원지점 건물</p>
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Address</h3>
+            <p class="addr">3rd and 4th floors, Mapo Hana Building, 24 World Cup-ro 13-gil, Mapo-gu, Seoul</p>
+            <p class="sub">(04003) Lot: Mangwon-dong 414-12 · the building with Woori Bank Mangwon on the ground floor</p>
             <div class="links">
-              <button class="btn btn-secondary btn-sm" type="button" id="copyAddr" data-addr="서울특별시 마포구 월드컵로 13길 24, 마포하나빌딩 3층">주소 복사</button>
-              <a class="btn btn-ghost btn-sm" href="tel:02-312-7788">전화 <span class="num">02-312-7788</span></a>
+              <button class="btn btn-secondary btn-sm" type="button" id="copyAddr" data-addr="24 World Cup-ro 13-gil, Mapo-gu, Seoul — Mapo Hana Building, 3rd and 4th floors">Copy address</button>
+              <a class="btn btn-ghost btn-sm" href="tel:02-312-7788">Phone <span class="num">02-312-7788</span></a>
             </div>
           </div>
           <div class="info-block">
-            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 12h18"/></svg>주차</h3>
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 12h18"/></svg>Parking</h3>
             <ul>
-              <li>건물 지하 1–2층 주차장 · 진료 시 2시간 무료</li>
-              <li>물리·도수치료 이용 시 3시간까지 무료 연장</li>
-              <li>차량 번호는 접수 데스크에서 등록(주차권 없음)</li>
-              <li>만차 시 망원동 공영주차장(도보 3분, 10분당 300원)</li>
+              <li>Car park on basement levels 1–2 · two hours free for patients</li>
+              <li>Extended to three hours with physical or manual therapy</li>
+              <li>Register your plate at reception — no paper tickets</li>
+              <li>When full, the Mangwon public car park is 3 minutes away at KRW 300 per 10 minutes</li>
             </ul>
           </div>
         </div>
@@ -1250,39 +1250,39 @@ text-decoration:none}
 
       <div class="access-info">
         <div class="info-block">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>진료시간</h3>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Opening hours</h3>
           <table class="hours-table" id="hoursTable">
-            <caption class="sr-only">요일별 진료시간</caption>
+            <caption class="sr-only">Hours by day</caption>
             <tbody>
-              <tr data-day="1"><th scope="row">월요일</th><td>09:00 – 18:30</td></tr>
-              <tr data-day="2"><th scope="row">화요일 <span class="sub" style="font-weight:400">야간</span></th><td>09:00 – 20:00</td></tr>
-              <tr data-day="3"><th scope="row">수요일</th><td>09:00 – 18:30</td></tr>
-              <tr data-day="4"><th scope="row">목요일 <span class="sub" style="font-weight:400">야간</span></th><td>09:00 – 20:00</td></tr>
-              <tr data-day="5"><th scope="row">금요일</th><td>09:00 – 18:30</td></tr>
-              <tr data-day="6"><th scope="row">토요일</th><td>09:00 – 13:30 <span class="sub">(점심시간 없음)</span></td></tr>
-              <tr data-day="0"><th scope="row">일요일 · 공휴일</th><td class="closed">휴진</td></tr>
+              <tr data-day="1"><th scope="row">Monday</th><td>09:00 – 18:30</td></tr>
+              <tr data-day="2"><th scope="row">Tuesday <span class="sub" style="font-weight:400">Evening</span></th><td>09:00 – 20:00</td></tr>
+              <tr data-day="3"><th scope="row">Wednesday</th><td>09:00 – 18:30</td></tr>
+              <tr data-day="4"><th scope="row">Thursday <span class="sub" style="font-weight:400">Evening</span></th><td>09:00 – 20:00</td></tr>
+              <tr data-day="5"><th scope="row">Friday</th><td>09:00 – 18:30</td></tr>
+              <tr data-day="6"><th scope="row">Saturday</th><td>09:00 – 13:30 <span class="sub">(no lunch break)</span></td></tr>
+              <tr data-day="0"><th scope="row">Sunday · public holidays</th><td class="closed">Closed</td></tr>
             </tbody>
           </table>
-          <p class="hours-note">점심시간 13:00–14:00 (평일) · 접수 마감은 진료 종료 30분 전 · 야간진료(화·목 18:30 이후)는 야간 가산이 적용됩니다.</p>
+          <p class="hours-note">Lunch 13:00–14:00 on weekdays · registration closes 30 minutes before the end of the session · an evening surcharge applies after 18:30 on Tuesdays and Thursdays.</p>
         </div>
 
         <div class="info-block">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16M8 19v2M16 19v2M8 15h.01M16 15h.01"/></svg>대중교통</h3>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16M8 19v2M16 19v2M8 15h.01M16 15h.01"/></svg>Public transport</h3>
           <ul>
-            <li><strong>지하철</strong> 6호선 망원역 2번 출구 → 월드컵로 방향 직진 350m, 망원우체국 사거리 우회전 (도보 5분)</li>
-            <li><strong>버스</strong> "망원우체국" 정류장 하차 후 도보 1분</li>
+            <li><strong>Subway</strong> Mangwon Station (Line 6) Exit 2 → 350m straight toward World Cup-ro, right at the Mangwon Post Office crossing (5 min on foot)</li>
+            <li><strong>Bus</strong> One minute on foot from the Mangwon Post Office stop</li>
           </ul>
-          <div class="bus-badges" aria-label="경유 버스 노선">
-            <span class="bus blue">271</span><span class="bus blue">603</span><span class="bus green">7011</span><span class="bus green">7013</span><span class="bus green">7016</span><span class="bus town">마포08</span><span class="bus town">마포15</span>
+          <div class="bus-badges" aria-label="Bus routes">
+            <span class="bus blue">271</span><span class="bus blue">603</span><span class="bus green">7011</span><span class="bus green">7013</span><span class="bus green">7016</span><span class="bus town">Mapo 08</span><span class="bus town">Mapo 15</span>
           </div>
         </div>
 
         <div class="info-block">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="14" cy="4" r="2"/><path d="M13 7v6h5l3 6"/><path d="M13 13H10a5 5 0 1 0 5 5"/></svg>휠체어 · 유모차</h3>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="14" cy="4" r="2"/><path d="M13 7v6h5l3 6"/><path d="M13 13H10a5 5 0 1 0 5 5"/></svg>Wheelchairs & pushchairs</h3>
           <ul>
-            <li>건물 1층 정문 경사로, 엘리베이터 2대(3·4층 정차)</li>
-            <li>3층 장애인 화장실 · 진료실 문 폭 90cm</li>
-            <li>보행이 어려우신 분은 접수 시 말씀해 주시면 휠체어를 준비합니다</li>
+            <li>Ramp at the ground-floor entrance, two lifts serving the third and fourth floors</li>
+            <li>Accessible toilet on the third floor · consulting room doors 90cm wide</li>
+            <li>Tell reception if walking is difficult and we will have a wheelchair ready</li>
           </ul>
         </div>
       </div>
@@ -1294,20 +1294,20 @@ text-decoration:none}
 <section class="booking" id="booking" aria-labelledby="booking-title">
   <div class="container">
     <div>
-      <h2 id="booking-title">진료 예약</h2>
-      <p>전화로 예약하시면 원하는 의사와 시간을 바로 확인해 드립니다. 통화가 어려우시면 문자로 성함·연락처·증상 부위를 남겨 주세요. 진료시간 안에 회신드립니다.</p>
+      <h2 id="booking-title">Book an appointment</h2>
+      <p>Call and we can confirm your doctor and time on the spot. If calling is difficult, text your name, number, and where it hurts, and we will reply within opening hours.</p>
       <dl class="how">
-        <dt>예약 접수 시간</dt><dd>평일 09:00–18:30 · 토 09:00–13:30 (점심 13:00–14:00 제외)</dd>
-        <dt>예약 변경·취소</dt><dd>진료 1시간 전까지 전화 또는 문자로 알려 주시면 됩니다. 별도 수수료는 없습니다.</dd>
+        <dt>Booking hours</dt><dd>Weekdays 09:00–18:30 · Sat 09:00–13:30 (closed 13:00–14:00)</dd>
+        <dt>Change or cancel</dt><dd>Call or text at least an hour before. There is no fee.</dd>
       </dl>
     </div>
     <div class="actions">
       <a class="btn btn-primary btn-lg" href="tel:02-312-7788">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        전화 예약 <span class="num">02-312-7788</span>
+        Book by phone <span class="num">02-312-7788</span>
       </a>
-      <a class="btn btn-secondary btn-lg" href="sms:010-4412-7788?body=%5B%EC%98%88%EC%95%BD%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%B1%ED%95%A8%3A%20%2F%20%EC%97%B0%EB%9D%BD%EC%B2%98%3A%20%2F%20%EC%A6%9D%EC%83%81%20%EB%B6%80%EC%9C%84%3A%20%2F%20%ED%9D%AC%EB%A7%9D%20%EC%9D%BC%EC%8B%9C%3A">문자 문의 <span class="num">010-4412-7788</span></a>
-      <p class="hint">문자에는 성함 · 연락처 · 증상 부위 · 희망 일시를 적어 주시면 한 번에 확인해 드립니다.</p>
+      <a class="btn btn-secondary btn-lg" href="sms:010-4412-7788?body=%5B%EC%98%88%EC%95%BD%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%B1%ED%95%A8%3A%20%2F%20%EC%97%B0%EB%9D%BD%EC%B2%98%3A%20%2F%20%EC%A6%9D%EC%83%81%20%EB%B6%80%EC%9C%84%3A%20%2F%20%ED%9D%AC%EB%A7%9D%20%EC%9D%BC%EC%8B%9C%3A">Text us <span class="num">010-4412-7788</span></a>
+      <p class="hint">Include your name, phone number, where it hurts, and a preferred time, and we can sort it in one message.</p>
     </div>
   </div>
 </section>
@@ -1318,76 +1318,76 @@ text-decoration:none}
   <div class="container">
     <div class="footer-top">
       <div class="brand">
-        <a class="logo" href="#top" aria-label="바른마디 정형외과">
+        <a class="logo" href="#top" aria-label="Bareunmadi Orthopaedics">
           <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true">
             <rect x="1" y="1" width="32" height="32" rx="8" fill="#1f7a6f"/>
             <path d="M11 24V10h5.2c2.6 0 4.2 1.3 4.2 3.5 0 1.4-.8 2.5-2 2.9 1.6.4 2.6 1.6 2.6 3.3 0 2.5-1.8 4.3-4.6 4.3H11zm3-8.3h1.9c1 0 1.6-.6 1.6-1.5s-.6-1.5-1.6-1.5H14v3zm0 5.8h2.2c1.2 0 1.9-.7 1.9-1.7s-.7-1.7-1.9-1.7H14v3.4z" fill="#fff"/>
             <circle cx="25.5" cy="9.5" r="2.2" fill="#9fd9cd"/>
           </svg>
-          <span>바른마디 정형외과<small>BAREUNMADI ORTHOPEDICS</small></span>
+          <span>Bareunmadi Orthopaedics<small>BAREUNMADI ORTHOPEDICS</small></span>
         </a>
-        <p>정형외과 전문의 3명이 진료하는 마포구 망원동의 정형외과 의원입니다. 검사와 치료의 이유를 설명하고, 필요한 만큼만 치료합니다.</p>
+        <p>An orthopaedic clinic in Mangwon-dong, Mapo-gu, with three specialists. We explain why each test and treatment is being done, and treat only as much as is needed.</p>
       </div>
       <div class="sitemap">
-        <h3>바로가기</h3>
+        <h3>Quick links</h3>
         <ul>
-          <li><a href="#services">진료 과목</a></li>
-          <li><a href="#doctors">의료진</a></li>
-          <li><a href="#process">진료 절차</a></li>
-          <li><a href="#equipment">검사·치료 장비</a></li>
-          <li><a href="#pricing">비급여 진료비용</a></li>
-          <li><a href="#faq">자주 묻는 질문</a></li>
-          <li><a href="#access">오시는 길 · 진료시간</a></li>
-          <li><a href="#booking">진료 예약</a></li>
+          <li><a href="#services">Specialties</a></li>
+          <li><a href="#doctors">Our doctors</a></li>
+          <li><a href="#process">How a visit runs</a></li>
+          <li><a href="#equipment">Diagnostic and treatment equipment</a></li>
+          <li><a href="#pricing">Private fees</a></li>
+          <li><a href="#faq">Frequently asked</a></li>
+          <li><a href="#access">Getting here · hours</a></li>
+          <li><a href="#booking">Book an appointment</a></li>
         </ul>
       </div>
       <div>
-        <h3>연락처</h3>
+        <h3>Contact</h3>
         <ul class="contact">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>대표전화 <a href="tel:02-312-7788" class="num">02-312-7788</a><br>팩스 <span class="num">02-312-7789</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Main line <a href="tel:02-312-7788" class="num">02-312-7788</a><br>Fax <span class="num">02-312-7789</span></span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><span><a href="mailto:info@bareunmadi.kr">info@bareunmadi.kr</a></span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>서울특별시 마포구 월드컵로 13길 24<br>마포하나빌딩 3층·4층 (04003)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>24 World Cup-ro 13-gil, Mapo-gu, Seoul<br>Mapo Hana Building, 3rd and 4th floors (04003)</span></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-biz">
       <dl>
-        <dt>상호</dt><dd>바른마디 정형외과의원</dd>
-        <dt>대표자</dt><dd>김도현</dd>
-        <dt>사업자등록번호</dt><dd class="num">105-91-58204</dd>
-        <dt>요양기관기호</dt><dd class="num">11374596</dd>
+        <dt>Name</dt><dd>Bareunmadi Orthopaedic Clinic</dd>
+        <dt>Director</dt><dd>Dohyun Kim</dd>
+        <dt>Business reg.</dt><dd class="num">105-91-58204</dd>
+        <dt>Provider code</dt><dd class="num">11374596</dd>
       </dl>
       <dl>
-        <dt>개설 허가</dt><dd>마포구보건소 제2014-0217호</dd>
-        <dt>진료 과목</dt><dd>정형외과</dd>
-        <dt>개인정보보호책임자</dt><dd>이서윤 (privacy@bareunmadi.kr)</dd>
+        <dt>Licence</dt><dd>Mapo-gu Public Health Centre No. 2014-0217</dd>
+        <dt>Specialties</dt><dd>Orthopaedics</dd>
+        <dt>Data protection officer</dt><dd>Seoyoon Lee (privacy@bareunmadi.kr)</dd>
       </dl>
     </div>
 
     <div class="footer-bottom">
       <div class="policy">
-        <a href="#privacy"><strong>개인정보처리방침</strong></a>
-        <a href="#terms">이용약관</a>
-        <a href="#pricing">비급여 진료비용 고지</a>
-        <a href="#access">찾아오시는 길</a>
+        <a href="#privacy"><strong>Privacy policy</strong></a>
+        <a href="#terms">Terms of use</a>
+        <a href="#pricing">Notice of private fees</a>
+        <a href="#access">Getting here</a>
       </div>
-      <span>© 2026 바른마디 정형외과의원. All rights reserved.</span>
+      <span>© 2026 Bareunmadi Orthopaedic Clinic. All rights reserved.</span>
     </div>
-    <p class="footer-disclaimer">이 페이지의 진료 정보는 일반적인 안내이며 개인의 상태에 따라 검사·치료 내용은 달라질 수 있습니다. 정확한 진단과 치료는 진료실에서 담당 의사와 상담하시기 바랍니다. 표시된 소요 시간·대기 시간은 평균값입니다.</p>
+    <p class="footer-disclaimer">The clinical information on this page is general guidance; what is tested and treated depends on the individual. For a diagnosis and a plan, speak to your doctor in the consulting room. Times and waits shown are averages.</p>
   </div>
 </footer>
 
 <!-- 모바일 하단 고정 바 -->
-<div class="mobile-bar" role="region" aria-label="빠른 연락">
+<div class="mobile-bar" role="region" aria-label="Quick contact">
   <a class="btn btn-secondary" href="tel:02-312-7788">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-    전화 문의
+    Call us
   </a>
-  <a class="btn btn-primary" href="#booking">진료 예약</a>
+  <a class="btn btn-primary" href="#booking">Book an appointment</a>
 </div>
 
-<button class="to-top" id="toTop" aria-label="맨 위로">
+<button class="to-top" id="toTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
@@ -1417,12 +1417,12 @@ text-decoration:none}
   function closeMenu() {
     nav.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', '메뉴 열기');
+    menuToggle.setAttribute('aria-label', 'Open menu');
   }
   menuToggle.addEventListener('click', function () {
     var open = nav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
   nav.addEventListener('click', function (e) {
     if (e.target.closest('a')) closeMenu();
@@ -1472,16 +1472,16 @@ text-decoration:none}
     function fmt(m) { var h = Math.floor(m / 60), mm = m % 60; return (h < 10 ? '0' + h : h) + ':' + (mm < 10 ? '0' + mm : mm); }
 
     if (close === null) {
-      msg = '오늘 휴진 · 월요일 09:00 진료';
+      msg = 'Closed today · open Monday at 09:00';
     } else if (mins < open) {
-      msg = '진료 전 · 오늘 09:00 시작';
+      msg = 'Before opening · today from 09:00';
     } else if (day !== 6 && mins >= lunchStart && mins < lunchEnd) {
-      msg = '점심시간 · 14:00 진료 재개';
+      msg = 'Lunch · back at 14:00';
     } else if (mins < close) {
       isOpen = true;
-      msg = '지금 진료 중 · ' + fmt(close) + ' 종료 (접수 마감 ' + fmt(close - 30) + ')';
+      msg = 'Open now ·' + fmt(close) + 'Closed (registration ended' + fmt(close - 30) + ')';
     } else {
-      msg = '오늘 진료 종료 · ' + (day === 6 ? '월요일' : day === 5 ? '토요일' : '내일') + ' 09:00 진료';
+      msg = 'Closed for today ·' + (day === 6 ? 'Monday' : day === 5 ? 'Saturday' : 'Tomorrow') + 'Opens 09:00';
     }
     statusEl.classList.toggle('closed', !isOpen);
     textEl.textContent = msg;
@@ -1491,7 +1491,7 @@ text-decoration:none}
     if (row) {
       row.classList.add('today');
       var th = row.querySelector('th');
-      if (th) th.insertAdjacentHTML('beforeend', ' <span class="sub" style="color:var(--brand);font-weight:600">오늘</span>');
+      if (th) th.insertAdjacentHTML('beforeend', '<span class="sub" style="color:var(--brand);font-weight:600">Today</span>');
     }
   })();
 
@@ -1581,7 +1581,7 @@ text-decoration:none}
       var addr = copyBtn.getAttribute('data-addr');
       var original = copyBtn.textContent;
       function done(ok) {
-        copyBtn.textContent = ok ? '복사되었습니다' : '복사에 실패했습니다';
+        copyBtn.textContent = ok ? 'Copied' : 'Copy failed';
         setTimeout(function () { copyBtn.textContent = original; }, 1800);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {

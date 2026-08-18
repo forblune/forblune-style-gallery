@@ -111,13 +111,14 @@ def build(slug, table, js_patches=()):
     en = en.replace('="assets/', '="../assets/')
     en = en.replace("'assets/", "'../assets/").replace('"assets/', '"../assets/')
     en = re.sub(r'<html([^>]*)\blang="ko"', r'<html\1lang="en"', en, count=1)
-    if "langswitch" not in en:
+    # 한국어 원본에 이미 스위처가 박혀 있으면 영문본이 그걸 그대로 물려받는다.
+    # (첫 실행에는 없어서 맞게 들어가고, 재실행부터 틀린다 — 실제로 영문 8쪽 전부
+    #  KO 용 링크를 달고 나갔다. EN 링크가 en/ 를 가리켜 /en/en/ → 404.)
+    # 물려받은 것을 먼저 걷어내고 EN 용으로 다시 넣는다.
+    en = re.sub(r'<div class="langswitch".*?</div>', "", en, flags=re.S)
+    if SWITCH_CSS.strip() not in en:
         en = en.replace("</head>", SWITCH_CSS + "\n</head>", 1)
-        en = en.replace("<body", switch_html("../", "./", "en") + "\n<body", 1) \
-            if "<body" not in en else en
-        # body 바로 뒤에 넣는 편이 안전
-        en = re.sub(r"(<body[^>]*>)", r"\1" + switch_html("../", "./", "en"), en, count=1)
-        en = en.replace(switch_html("../", "./", "en") + "\n<body", "<body")
+    en = re.sub(r"(<body[^>]*>)", r"\1" + switch_html("../", "./", "en"), en, count=1)
     os.makedirs(f"{ROOT}/sites/{slug}/en", exist_ok=True)
     open(f"{ROOT}/sites/{slug}/en/index.html", "w", encoding="utf-8").write(en)
 

@@ -755,8 +755,19 @@ text-decoration:none}
    overflow-wrap 은 끊을 수 없는 긴 토큰(URL 등)이 넘칠 때의 안전장치. */
 body{word-break:keep-all;overflow-wrap:break-word}
 </style>
+<style id="lang-switch-style">
+.langswitch{position:fixed;bottom:14px;right:14px;z-index:99999;display:flex;gap:1px;
+font:600 11px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.06em;
+background:rgba(20,20,24,.78);border-radius:999px;padding:3px;backdrop-filter:blur(6px);
+box-shadow:0 2px 10px rgba(0,0,0,.22)}
+.langswitch a{display:block;padding:5px 9px;border-radius:999px;color:rgba(255,255,255,.62);
+text-decoration:none}
+.langswitch a[aria-current="true"]{background:rgba(255,255,255,.92);color:#15181d}
+.langswitch a:focus-visible{outline:2px solid #8fb0ee;outline-offset:2px}
+@media print{.langswitch{display:none}}
+</style>
 </head>
-<body><div class="langswitch" role="group" aria-label="Language"><a href="./" hreflang="ko" lang="ko" aria-current="true">KO</a><a href="en/" hreflang="en" lang="en">EN</a></div>
+<body><div class="langswitch" role="group" aria-label="Language"><a href="../" hreflang="ko" lang="ko">KO</a><a href="./" hreflang="en" lang="en" aria-current="true">EN</a></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="header">

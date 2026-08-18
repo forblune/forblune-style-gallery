@@ -1,4 +1,4 @@
-<!-- forblune-style: {"slug":"editorial-stay","primaryStyle":"Editorial","productType":"Brand Landing (예약 유도)","tone":"Soft · Warm · Slow","secondary":"Commerce","accent":"Cinematic","brand":"숲결 스테이","industry":"제주 독채 스테이(숙소)","coreMessage":"방을 팔기 전에 이곳에서 보내는 하루의 리듬을 먼저 상상하게 한다","naming":"Editorial / Brand Landing (예약 유도) / Soft · Warm · Slow"} -->
+<!-- forblune-style: {"slug":"editorial-stay","primaryStyle":"Editorial","productType":"Brand Landing (예약 유도)","tone":"Soft · Warm · Slow","secondary":"Commerce","accent":"Cinematic","brand":"Supgyeol Stay","industry":"제주 독채 스테이(숙소)","coreMessage":"방을 팔기 전에 이곳에서 보내는 하루의 리듬을 먼저 상상하게 한다","naming":"Editorial / Brand Landing (예약 유도) / Soft · Warm · Slow"} -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +13,7 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <style>
     /* ------------------------------------------------------------------
-       숲결 스테이 · Editorial / Brand Landing / Soft · Warm · Slow
+       Supgyeol Stay · Editorial / Brand Landing / Soft · Warm · Slow
        팔레트: 웜 오프화이트 바탕, 짙은 올리브 그레이 텍스트, 흙색·마른 풀색 포인트
        ------------------------------------------------------------------ */
     :root {
@@ -326,7 +326,7 @@
     .intro-note dt { color: var(--ink-faint); }
     .intro-note dd { margin: 0; color: var(--ink); }
 
-    /* 머무는 하루 — 타임라인 ------------------------------------------- */
+    /* A day here — 타임라인 ------------------------------------------- */
     .day .scene {
       display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
       align-items: start;
@@ -394,7 +394,7 @@
     .space-meta .size { font-size: 12px; letter-spacing: 0.08em; color: var(--ink-faint); }
     .space-meta p { grid-column: 1 / -1; font-size: 14px; color: var(--ink-soft); max-width: 32em; }
 
-    /* 준비된 것들 -------------------------------------------------------- */
+    /* What's here -------------------------------------------------------- */
     .amenity .wrap {
       display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
     }
@@ -554,7 +554,7 @@
     .picker-done strong { font-weight: 500; }
     .picker.is-sent .picker-actions, .picker.is-sent .picker-note { display: none; }
 
-    /* 하우스 노트 (Cinematic 악센트 10%: 웜 블랙 한 구간) --------------------- */
+    /* House notes (Cinematic 악센트 10%: 웜 블랙 한 구간) --------------------- */
     .notes {
       background: var(--dark); color: var(--on-dark);
       padding-block: clamp(96px, 12vw, 176px);
@@ -737,7 +737,8 @@
       .hero-slide img { transform: none; }
       .frame img { transition: none; }
     }
-  </style>
+  
+</style>
 <style id="lang-switch-style">
 .langswitch{position:fixed;bottom:14px;right:14px;z-index:99999;display:flex;gap:1px;
 font:600 11px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.06em;
@@ -748,9 +749,14 @@ text-decoration:none}
 .langswitch a[aria-current="true"]{background:rgba(255,255,255,.92);color:#15181d}
 .langswitch a:focus-visible{outline:2px solid #8fb0ee;outline-offset:2px}
 @media print{.langswitch{display:none}}
+
+
+/* 한글 어절 단위 줄바꿈 — 단어 중간에서 줄이 바뀌면 교정 안 된 티가 난다.
+   overflow-wrap 은 끊을 수 없는 긴 토큰(URL 등)이 넘칠 때의 안전장치. */
+body{word-break:keep-all;overflow-wrap:break-word}
 </style>
 </head>
-<body><div class="langswitch" role="group" aria-label="Language"><a href="../" hreflang="ko" lang="ko">KO</a><a href="./" hreflang="en" lang="en" aria-current="true">EN</a></div>
+<body><div class="langswitch" role="group" aria-label="Language"><a href="./" hreflang="ko" lang="ko" aria-current="true">KO</a><a href="en/" hreflang="en" lang="en">EN</a></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="header">
@@ -831,7 +837,7 @@ text-decoration:none}
       </div>
     </section>
 
-    <!-- ================= 머무는 하루 ================= -->
+    <!-- ================= A day here ================= -->
     <section class="section day" id="day" aria-labelledby="day-title">
       <div class="wrap">
         <div class="section-head">
@@ -952,7 +958,7 @@ text-decoration:none}
       </div>
     </section>
 
-    <!-- ================= 준비된 것들 ================= -->
+    <!-- ================= What's here ================= -->
     <section class="section amenity" id="amenity" aria-labelledby="amenity-title">
       <div class="wrap">
         <div class="amenity-intro">
@@ -1160,7 +1166,7 @@ text-decoration:none}
       </div>
     </section>
 
-    <!-- ================= 하우스 노트 ================= -->
+    <!-- ================= House notes ================= -->
     <section class="notes" id="notes" aria-labelledby="notes-title">
       <div class="wrap">
         <div class="notes-lead">

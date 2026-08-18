@@ -494,7 +494,13 @@
       .hero__main img { transform: none; }
       .card__media img.alt { transition: none; }
     }
-  </style>
+  
+
+
+/* 한글 어절 단위 줄바꿈 — 단어 중간에서 줄이 바뀌면 교정 안 된 티가 난다.
+   overflow-wrap 은 끊을 수 없는 긴 토큰(URL 등)이 넘칠 때의 안전장치. */
+body{word-break:keep-all;overflow-wrap:break-word}
+</style>
 </head>
 <body>
 

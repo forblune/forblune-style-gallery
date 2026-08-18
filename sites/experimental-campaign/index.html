@@ -602,8 +602,14 @@ svg .parallax{transform:translate(calc(var(--mx) * -14px),calc(var(--my) * -10px
   .rail{opacity:1;pointer-events:auto}
   .archive img{filter:grayscale(1) brightness(.9)}
 }
+
+
+/* 한글 어절 단위 줄바꿈 — 단어 중간에서 줄이 바뀌면 교정 안 된 티가 난다.
+   overflow-wrap 은 끊을 수 없는 긴 토큰(URL 등)이 넘칠 때의 안전장치. */
+body{word-break:keep-all;overflow-wrap:break-word}
 </style>
-<noscript><style>.intro,.progress,.rail{display:none}html.is-locked{overflow:auto}.chapter{height:auto;--p:1;background:var(--ch-bg)}.stage{position:relative;height:auto;min-height:100svh}.reveal{opacity:1}.pledge .track i{width:38.4%}</style></noscript>
+<noscript><style>.intro,.progress,.rail{display:none}html.is-locked{overflow:auto}.chapter{height:auto;--p:1;background:var(--ch-bg)}.stage{position:relative;height:auto;min-height:100svh}.reveal{opacity:1}.pledge .track i{width:38.4%}
+</style></noscript>
 </head>
 <body>
 

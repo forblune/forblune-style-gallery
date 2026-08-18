@@ -737,7 +737,8 @@
       .hero-slide img { transform: none; }
       .frame img { transition: none; }
     }
-  </style>
+  
+</style>
 <style id="lang-switch-style">
 .langswitch{position:fixed;bottom:14px;right:14px;z-index:99999;display:flex;gap:1px;
 font:600 11px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.06em;
@@ -748,6 +749,11 @@ text-decoration:none}
 .langswitch a[aria-current="true"]{background:rgba(255,255,255,.92);color:#15181d}
 .langswitch a:focus-visible{outline:2px solid #8fb0ee;outline-offset:2px}
 @media print{.langswitch{display:none}}
+
+
+/* 한글 어절 단위 줄바꿈 — 단어 중간에서 줄이 바뀌면 교정 안 된 티가 난다.
+   overflow-wrap 은 끊을 수 없는 긴 토큰(URL 등)이 넘칠 때의 안전장치. */
+body{word-break:keep-all;overflow-wrap:break-word}
 </style>
 </head>
 <body><div class="langswitch" role="group" aria-label="Language"><a href="./" hreflang="ko" lang="ko" aria-current="true">KO</a><a href="en/" hreflang="en" lang="en">EN</a></div>

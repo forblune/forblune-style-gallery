@@ -533,12 +533,6 @@
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   }
-
-
-
-/* 한글 어절 단위 줄바꿈 — 단어 중간에서 줄이 바뀌면 교정 안 된 티가 난다.
-   overflow-wrap 은 끊을 수 없는 긴 토큰(URL 등)이 넘칠 때의 안전장치. */
-body{word-break:keep-all;overflow-wrap:break-word}
 </style>
 </head>
 <body class="has-mbar">
@@ -1608,6 +1602,31 @@ body{word-break:keep-all;overflow-wrap:break-word}
   for (var di = 0; di < DAYS.length; di++) { if (openCount(DAYS[di]) > 0) { state.day = di; break; } }
   renderDays(); renderList(); renderSummary(); renderMbar(); renderHero();
 })();
+</script>
+
+<script>
+window.addEventListener('load', function(){ setTimeout(function(){
+  var seg=new Intl.Segmenter('ko',{granularity:'word'});
+  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT), n, words=0, hits=[];
+  while((n=w.nextNode())){
+    var t=n.nodeValue; if(!t||!t.trim()) continue;
+    var p=n.parentElement; if(!p) continue;
+    var cs=getComputedStyle(p); if(cs.display==='none'||cs.visibility==='hidden') continue;
+    var segs=seg.segment(t);
+    for(const s of segs){
+      if(!s.isWordLike||s.segment.trim().length<2) continue;
+      words++;
+      var r=document.createRange(); r.setStart(n,s.index); r.setEnd(n,s.index+s.segment.length);
+      var rects=[].slice.call(r.getClientRects()).filter(function(x){return x.width>0.5&&x.height>0.5;});
+      if(rects.length<2) continue;
+      var tops={}; rects.forEach(function(x){tops[Math.round(x.top)]=1;});
+      if(Object.keys(tops).length>1) hits.push(s.segment);
+    }
+  }
+  var d=document.createElement('div'); d.id='__wb';
+  d.textContent=JSON.stringify({words:words,broken:hits.length,sample:hits.slice(0,8)});
+  document.body.appendChild(d);
+},900); });
 </script>
 </body>
 </html>

@@ -522,7 +522,13 @@
       .panel, .form__success.is-shown { animation: none; }
       .header, .btn, .tab, .tab::after, .faq__a, .faq__q svg, .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { transition: none; }
     }
-  </style>
+  
+
+
+/* 한글 어절 단위 줄바꿈 — 단어 중간에서 줄이 바뀌면 교정 안 된 티가 난다.
+   overflow-wrap 은 끊을 수 없는 긴 토큰(URL 등)이 넘칠 때의 안전장치. */
+body{word-break:keep-all;overflow-wrap:break-word}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>

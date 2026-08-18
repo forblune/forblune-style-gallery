@@ -1,11 +1,11 @@
 <!-- forblune-style: {"slug":"product-devtool","primaryStyle":"Product","productType":"Developer Platform Landing","tone":"Technical · Precise · Minimal","secondary":"Utility","accent":"Kinetic","brand":"Relay API","industry":"알림·메시지 발송 API 플랫폼","coreMessage":"몇 줄의 코드로 SMS·이메일·푸시를 보내는 게 얼마나 단순한지 코드로 보여주어 API 키를 발급받게 한다","naming":"Product / Developer Platform Landing / Technical · Precise · Minimal"} -->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Relay API — 몇 줄의 코드로 SMS·이메일·푸시를 보내는 메시지 API</title>
-<meta name="description" content="Relay API는 SMS·이메일·푸시를 하나의 엔드포인트로 발송하는 개발자용 메시지 플랫폼입니다. 멀티채널 라우팅, 템플릿, 웹훅, 자동 재시도를 API 한 번 호출로 사용하세요. 월 4.2억 건 발송, 가동률 99.99%.">
+<title>Relay API — SMS, email, and push in a few lines of code</title>
+<meta name="description" content="Relay API is a developer messaging platform that sends SMS, email, and push through a single endpoint. Multi-channel routing, templates, webhooks, and automatic retries in one API call. 420 million messages a month at 99.99% uptime.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -556,41 +556,41 @@ text-decoration:none}
 @media print{.langswitch{display:none}}
 </style>
 </head>
-<body><div class="langswitch" role="group" aria-label="Language"><a href="./" hreflang="ko" lang="ko" aria-current="true">KO</a><a href="en/" hreflang="en" lang="en">EN</a></div>
+<body><div class="langswitch" role="group" aria-label="Language"><a href="../" hreflang="ko" lang="ko">KO</a><a href="./" hreflang="en" lang="en" aria-current="true">EN</a></div>
 
 <!-- ================= 헤더 ================= -->
 <header class="header" id="header">
   <div class="container header-inner">
-    <a class="logo" href="#top" aria-label="Relay API 홈">
+    <a class="logo" href="#top" aria-label="Relay API home">
       <span class="logo-mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h9"/><path d="M13 12l-3-3"/><path d="M13 12l-3 3"/><path d="M15 6h5v12h-5"/></svg>
       </span>
       <span>Relay API</span>
       <span class="logo-tag">v2</span>
     </a>
-    <nav class="nav" aria-label="주요 메뉴">
-      <a href="#docs">문서</a>
-      <a href="#pricing">요금</a>
-      <a href="#changelog">변경 이력</a>
-      <a href="#status"><span class="marker" aria-hidden="true"></span>상태</a>
+    <nav class="nav" aria-label="Main menu">
+      <a href="#docs">Docs</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#changelog">Changelog</a>
+      <a href="#status"><span class="marker" aria-hidden="true"></span>Status</a>
     </nav>
     <div class="header-actions">
-      <a class="btn btn-ghost" href="#docs">로그인</a>
-      <a class="btn btn-primary" href="#docs">API 키 발급</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileNav">
+      <a class="btn btn-ghost" href="#docs">Log in</a>
+      <a class="btn btn-primary" href="#docs">Get an API key</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
 </header>
-<nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴">
-  <a href="#docs">문서</a>
-  <a href="#pricing">요금</a>
-  <a href="#changelog">변경 이력</a>
-  <a href="#status">상태 <span class="badge ok">정상</span></a>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="#docs">Docs</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#changelog">Changelog</a>
+  <a href="#status">Status <span class="badge ok">Operational</span></a>
   <div class="mobile-cta">
-    <a class="btn btn-secondary" href="#docs">로그인</a>
-    <a class="btn btn-primary" href="#docs">API 키 발급</a>
+    <a class="btn btn-secondary" href="#docs">Log in</a>
+    <a class="btn btn-primary" href="#docs">Get an API key</a>
   </div>
 </nav>
 
@@ -602,32 +602,32 @@ text-decoration:none}
       <div class="hero-copy">
         <a class="release" href="#changelog">
           <span class="ver">v2.4</span>
-          <u>이메일 채널에 예약 발송 <code class="mono">send_at</code> 추가 · 8월 12일</u>
+          <u>Scheduled for the email channel <code class="mono">send_at</code> Added · August 12</u>
         </a>
-        <h1 id="hero-title">호출 한 번으로 SMS·이메일·푸시가 사용자에게 도착합니다.</h1>
-        <p class="lead">채널마다 다른 SDK, 통신사 규격, 실패 처리를 직접 짜지 마세요. Relay API는 하나의 엔드포인트로 세 채널을 보내고, 실패하면 다음 채널로 넘깁니다.</p>
+        <h1 id="hero-title">One call, and SMS, email, or push reaches the user.</h1>
+        <p class="lead">Stop writing a different SDK, carrier spec, and failure path for every channel. Relay API sends all three from one endpoint, and moves to the next when one fails.</p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" href="#docs">
-            API 키 발급받기
+            Get an API key
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn-secondary btn-lg" href="#how">작동 방식 보기</a>
+          <a class="btn btn-secondary btn-lg" href="#how">See how it works</a>
         </div>
-        <p class="hero-meta">테스트 키는 신용카드 없이 발급됩니다. 매월 이메일 10,000건·푸시 100,000건은 무료, SMS는 인증 번호로 100건까지 테스트할 수 있습니다.</p>
+        <p class="hero-meta">Test keys need no credit card. 10,000 emails and 100,000 push messages are free every month, and you can test up to 100 SMS against verified numbers.</p>
       </div>
 
       <div class="hero-demo">
         <div class="code-window">
           <div class="code-bar">
-            <div class="tabs" role="tablist" aria-label="코드 언어 선택">
+            <div class="tabs" role="tablist" aria-label="Choose a language">
               <button class="tab" role="tab" id="tab-node" aria-selected="true" aria-controls="panel-node" data-lang="node">Node.js</button>
               <button class="tab" role="tab" id="tab-python" aria-selected="false" aria-controls="panel-python" data-lang="python" tabindex="-1">Python</button>
               <button class="tab" role="tab" id="tab-go" aria-selected="false" aria-controls="panel-go" data-lang="go" tabindex="-1">Go</button>
               <button class="tab" role="tab" id="tab-curl" aria-selected="false" aria-controls="panel-curl" data-lang="curl" tabindex="-1">cURL</button>
             </div>
-            <button class="copy" id="copyBtn" type="button" aria-label="코드 복사">
+            <button class="copy" id="copyBtn" type="button" aria-label="Copy code">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
-              <span>복사</span>
+              <span>Copy</span>
             </button>
           </div>
 
@@ -637,9 +637,9 @@ text-decoration:none}
 <span class="ln">4</span>
 <span class="ln">5</span><span class="tk">await</span> relay.messages.<span class="tf">send</span>({
 <span class="ln">6</span>  <span class="tf">to</span>: <span class="ts">'+82-10-1234-5678'</span>,
-<span class="ln">7</span>  <span class="tf">channel</span>: [<span class="ts">'sms'</span>, <span class="ts">'push'</span>, <span class="ts">'email'</span>],   <span class="tc">// 순서대로 폴백</span>
+<span class="ln">7</span>  <span class="tf">channel</span>: [<span class="ts">'sms'</span>, <span class="ts">'push'</span>, <span class="ts">'email'</span>],   <span class="tc">// falls back in order</span>
 <span class="ln">8</span>  <span class="tf">template</span>: <span class="ts">'order_shipped'</span>,
-<span class="ln">9</span>  <span class="tf">data</span>: { <span class="tf">orderId</span>: <span class="ts">'A-20481'</span>, <span class="tf">eta</span>: <span class="ts">'내일 오전'</span> }
+<span class="ln">9</span>  <span class="tf">data</span>: { <span class="tf">orderId</span>: <span class="ts">'A-20481'</span>, <span class="tf">eta</span>: <span class="ts">'tomorrow morning'</span> }
 <span class="ln">10</span>});</code></pre>
 
           <pre class="code-panel" role="tabpanel" id="panel-python" aria-labelledby="tab-python" data-lang="python" hidden><code><span class="ln">1</span><span class="tk">from</span> relay_api <span class="tk">import</span> <span class="tf">Relay</span>
@@ -648,9 +648,9 @@ text-decoration:none}
 <span class="ln">4</span>
 <span class="ln">5</span>relay.messages.<span class="tf">send</span>(
 <span class="ln">6</span>    <span class="tf">to</span>=<span class="ts">"+82-10-1234-5678"</span>,
-<span class="ln">7</span>    <span class="tf">channel</span>=[<span class="ts">"sms"</span>, <span class="ts">"push"</span>, <span class="ts">"email"</span>],  <span class="tc"># 순서대로 폴백</span>
+<span class="ln">7</span>    <span class="tf">channel</span>=[<span class="ts">"sms"</span>, <span class="ts">"push"</span>, <span class="ts">"email"</span>],  <span class="tc"># falls back in order</span>
 <span class="ln">8</span>    <span class="tf">template</span>=<span class="ts">"order_shipped"</span>,
-<span class="ln">9</span>    <span class="tf">data</span>={<span class="ts">"order_id"</span>: <span class="ts">"A-20481"</span>, <span class="ts">"eta"</span>: <span class="ts">"내일 오전"</span>},
+<span class="ln">9</span>    <span class="tf">data</span>={<span class="ts">"order_id"</span>: <span class="ts">"A-20481"</span>, <span class="ts">"eta"</span>: <span class="ts">"tomorrow morning"</span>},
 <span class="ln">10</span>)</code></pre>
 
           <pre class="code-panel" role="tabpanel" id="panel-go" aria-labelledby="tab-go" data-lang="go" hidden><code><span class="ln">1</span><span class="tk">import</span> <span class="ts">"github.com/relay-api/relay-go/v2"</span>
@@ -659,9 +659,9 @@ text-decoration:none}
 <span class="ln">4</span>
 <span class="ln">5</span>_, err := client.Messages.<span class="tf">Send</span>(ctx, &amp;relay.<span class="tf">Message</span>{
 <span class="ln">6</span>    <span class="tf">To</span>:       <span class="ts">"+82-10-1234-5678"</span>,
-<span class="ln">7</span>    <span class="tf">Channel</span>:  []<span class="tk">string</span>{<span class="ts">"sms"</span>, <span class="ts">"push"</span>, <span class="ts">"email"</span>}, <span class="tc">// 순서대로 폴백</span>
+<span class="ln">7</span>    <span class="tf">Channel</span>:  []<span class="tk">string</span>{<span class="ts">"sms"</span>, <span class="ts">"push"</span>, <span class="ts">"email"</span>}, <span class="tc">// falls back in order</span>
 <span class="ln">8</span>    <span class="tf">Template</span>: <span class="ts">"order_shipped"</span>,
-<span class="ln">9</span>    <span class="tf">Data</span>:     relay.<span class="tf">Data</span>{<span class="ts">"orderId"</span>: <span class="ts">"A-20481"</span>, <span class="ts">"eta"</span>: <span class="ts">"내일 오전"</span>},
+<span class="ln">9</span>    <span class="tf">Data</span>:     relay.<span class="tf">Data</span>{<span class="ts">"orderId"</span>: <span class="ts">"A-20481"</span>, <span class="ts">"eta"</span>: <span class="ts">"tomorrow morning"</span>},
 <span class="ln">10</span>})</code></pre>
 
           <pre class="code-panel" role="tabpanel" id="panel-curl" aria-labelledby="tab-curl" data-lang="curl" hidden><code><span class="ln">1</span><span class="tf">curl</span> <span class="ts">https://api.relay.dev/v2/messages</span> \
@@ -671,7 +671,7 @@ text-decoration:none}
 <span class="ln">5</span><span class="ts">    "to": "+82-10-1234-5678",</span>
 <span class="ln">6</span><span class="ts">    "channel": ["sms", "push", "email"],</span>
 <span class="ln">7</span><span class="ts">    "template": "order_shipped",</span>
-<span class="ln">8</span><span class="ts">    "data": { "orderId": "A-20481", "eta": "내일 오전" }</span>
+<span class="ln">8</span><span class="ts">    "data": { "orderId": "A-20481", "eta": "tomorrow morning" }</span>
 <span class="ln">9</span><span class="ts">  }'</span></code></pre>
 
           <div class="code-response">
@@ -687,8 +687,8 @@ text-decoration:none}
           </div>
         </div>
 
-        <div class="live-log" aria-label="실시간 발송 로그 예시">
-          <div class="live-log-head"><span class="marker" aria-hidden="true"></span>events · ap-northeast-2 · 최근 4건 (예시 데이터)</div>
+        <div class="live-log" aria-label="Live delivery log, sample">
+          <div class="live-log-head"><span class="marker" aria-hidden="true"></span>events · ap-northeast-2 · last 4 (sample data)</div>
           <ul id="liveLog"></ul>
         </div>
       </div>
@@ -696,24 +696,24 @@ text-decoration:none}
   </section>
 
   <!-- ================= 신뢰 수치 ================= -->
-  <section class="stats" aria-label="플랫폼 지표 (2026년 8월 15일 기준)">
+  <section class="stats" aria-label="Platform metrics (as of August 15, 2026)">
     <div class="container">
       <div class="stats-grid">
-        <p class="stats-lead">아래 수치는 매월 1일 갱신되며, 원본은 <a href="#status">공개 상태 페이지</a>와 월간 운영 리포트에서 확인할 수 있습니다.</p>
+        <p class="stats-lead">The figures below refresh on the first of each month; the source is <a href="#status">Public status page</a> and the monthly operations report.</p>
         <div class="stat">
-          <div class="label">월 발송량</div>
-          <div class="value num">4.2<small>억 건</small></div>
-          <p class="note">2026년 7월 1일~31일 · SMS·이메일·푸시 합산</p>
+          <div class="label">Monthly volume</div>
+          <div class="value num">4.2<small>00 million</small></div>
+          <p class="note">July 1–31, 2026 · SMS, email, and push combined</p>
         </div>
         <div class="stat">
-          <div class="label">가동률 · 최근 90일</div>
+          <div class="label">Uptime · last 90 days</div>
           <div class="value num">99.99<small>%</small></div>
-          <p class="note">5월 17일~8월 15일 · 상태 페이지 기록 기준</p>
+          <p class="note">May 17 – August 15 · from the status page record</p>
         </div>
         <div class="stat">
-          <div class="label">API 응답 시간 · p50</div>
+          <div class="label">API response time · p50</div>
           <div class="value num">184<small>ms</small></div>
-          <p class="note">서울 리전 · 8월 8일~15일 · p99 412 ms</p>
+          <p class="note">Seoul region · August 8–15 · p99 412 ms</p>
         </div>
       </div>
     </div>
@@ -723,84 +723,84 @@ text-decoration:none}
   <section class="section" id="features" aria-labelledby="features-title">
     <div class="container">
       <div class="section-head">
-        <h2 id="features-title">직접 짜던 발송 인프라를 API 한 번으로 대체합니다.</h2>
-        <p>라우팅·템플릿·웹훅·재시도는 어느 팀이든 결국 만들게 되는 코드입니다. Relay가 이미 만들어 두었고, 대시보드에서 바로 확인됩니다.</p>
+        <h2 id="features-title">Replace the delivery infrastructure you were building with a single API call.</h2>
+        <p>Routing, templates, webhooks, retries — every team ends up writing this code. Relay has already written it, and you can see it working in the dashboard.</p>
       </div>
 
       <div class="features-grid">
         <!-- 1. 멀티채널 라우팅 -->
         <article class="feature">
           <div class="feature-ui" aria-hidden="true">
-            <div class="ui-head"><b>routing · order_shipped</b><span>규칙 3개</span></div>
+            <div class="ui-head"><b>routing · order_shipped</b><span>3 rules</span></div>
             <div class="route-line">
               <span class="chip on">sms</span><span class="sep">›</span>
               <span class="chip">push</span><span class="sep">›</span>
               <span class="chip">email</span>
-              <span class="sep" style="margin-left:auto">기본 순서</span>
+              <span class="sep" style="margin-left:auto">Default order</span>
             </div>
-            <div class="rule"><span class="cond">야간 22:00–08:00<small>KST</small></span><span class="chip">push 우선</span><span class="toggle on"></span></div>
-            <div class="rule"><span class="cond">해외 번호<small>+82 제외</small></span><span class="chip">email 우선</span><span class="toggle on"></span></div>
-            <div class="rule"><span class="cond">SMS 수신 거부<small>080 등록</small></span><span class="chip">sms 제외</span><span class="toggle on"></span></div>
+            <div class="rule"><span class="cond">Overnight 22:00–08:00<small>KST</small></span><span class="chip">push first</span><span class="toggle on"></span></div>
+            <div class="rule"><span class="cond">International numbers<small>excluding +82</small></span><span class="chip">email first</span><span class="toggle on"></span></div>
+            <div class="rule"><span class="cond">SMS opt-out<small>Toll-free registration</small></span><span class="chip">sms excluded</span><span class="toggle on"></span></div>
           </div>
-          <h3 class="feature-title">멀티채널 라우팅 <small>routing</small></h3>
-          <p>채널 배열에 순서만 적으면 SMS 실패 시 푸시, 푸시 미설치 시 이메일로 이어집니다. 시간대·국가·수신 거부 규칙은 대시보드에서 코드 수정 없이 바꿉니다.</p>
+          <h3 class="feature-title">Multi-channel routing <small>routing</small></h3>
+          <p>Give the channel array an order and a failed SMS goes to push, an uninstalled app goes to email. Rules for time of day, country, and opt-outs change in the dashboard without touching code.</p>
           <div class="code-hint"><span class="tf">channel</span>: [<span class="ts">'sms'</span>, <span class="ts">'push'</span>, <span class="ts">'email'</span>], <span class="tf">routing</span>: <span class="ts">'auto'</span></div>
         </article>
 
         <!-- 2. 템플릿 -->
         <article class="feature">
           <div class="feature-ui" aria-hidden="true">
-            <div class="ui-head"><b>templates / order_shipped</b><span>v7 · 게시됨</span></div>
+            <div class="ui-head"><b>templates / order_shipped</b><span>v7 · published</span></div>
             <div class="tpl">
               <div>
                 <div class="tpl-lang"><span class="on">ko</span><span>en</span><span>ja</span><span>vi</span></div>
-                <div class="tpl-editor">[<span class="var">{{brand}}</span>] <span class="var">{{name}}</span>님, 주문 <span class="var">{{orderId}}</span> 상품이 출발했습니다. 도착 예정: <span class="var">{{eta}}</span><br>배송 조회 <span class="var">{{link}}</span></div>
+                <div class="tpl-editor">[<span class="var">{{brand}}</span>] <span class="var">{{name}}</span>, order <span class="var">{{orderId}}</span>  has shipped. Expected: <span class="var">{{eta}}</span><br>Track shipment <span class="var">{{link}}</span></div>
               </div>
               <div class="tpl-preview">
-                <div class="device">SMS 미리보기 · 68자 · 1건</div>
-                <div class="bubble">[릴레이몰] 김서연님, 주문 A-20481 상품이 출발했습니다. 도착 예정: 내일 오전<br>배송 조회 rly.kr/t/8f2k<small>1588-0021 · 무료수신거부 080-800-0021</small></div>
+                <div class="device">SMS preview · 68 characters · 1 message</div>
+                <div class="bubble">[RelayMall] Seoyeon, order A-20481 has shipped. Expected: tomorrow morning<br>Track at rly.kr/t/8f2k<small>1588-0021 · free opt-out 080-800-0021</small></div>
               </div>
             </div>
           </div>
-          <h3 class="feature-title">템플릿과 변수 <small>templates</small></h3>
-          <p>채널별·언어별 본문을 한 템플릿 ID로 관리합니다. 변수 누락은 발송 전에 400으로 걸러지고, 버전마다 미리보기와 롤백이 남습니다.</p>
+          <h3 class="feature-title">Templates and variables <small>templates</small></h3>
+          <p>One template ID holds the copy for every channel and language. A missing variable is caught with a 400 before sending, and every version keeps a preview and a rollback.</p>
           <div class="code-hint"><span class="tf">template</span>: <span class="ts">'order_shipped'</span>, <span class="tf">locale</span>: <span class="ts">'ko'</span>, <span class="tf">version</span>: <span class="tk">7</span></div>
         </article>
 
         <!-- 3. 웹훅 -->
         <article class="feature">
           <div class="feature-ui" aria-hidden="true">
-            <div class="ui-head"><b>webhooks · https://api.yourapp.io/relay</b><span>서명 검증 켜짐</span></div>
+            <div class="ui-head"><b>webhooks · https://api.yourapp.io/relay</b><span>Signature verification on</span></div>
             <table class="evt">
               <thead><tr><th>event</th><th class="hide-sm">message</th><th>status</th><th>at</th></tr></thead>
               <tbody>
                 <tr><td>message.delivered</td><td class="hide-sm">msg_01J5Y8K3Q2W7</td><td><span class="badge ok">200</span></td><td>14:02:11</td></tr>
                 <tr><td>message.opened</td><td class="hide-sm">msg_01J5Y8HZ9RA1</td><td><span class="badge ok">200</span></td><td>14:02:04</td></tr>
-                <tr><td>message.failed</td><td class="hide-sm">msg_01J5Y8G2X4C0</td><td><span class="badge warn">재전송 2/5</span></td><td>14:01:58</td></tr>
+                <tr><td>message.failed</td><td class="hide-sm">msg_01J5Y8G2X4C0</td><td><span class="badge warn">Retry 2/5</span></td><td>14:01:58</td></tr>
                 <tr><td>message.bounced</td><td class="hide-sm">msg_01J5Y8F7M1D3</td><td><span class="badge ok">200</span></td><td>14:01:40</td></tr>
-                <tr><td>message.queued</td><td class="hide-sm">msg_01J5Y8F1N9E8</td><td><span class="badge info">전송 중</span></td><td>14:01:39</td></tr>
+                <tr><td>message.queued</td><td class="hide-sm">msg_01J5Y8F1N9E8</td><td><span class="badge info">Sending</span></td><td>14:01:39</td></tr>
               </tbody>
             </table>
           </div>
-          <h3 class="feature-title">웹훅 이벤트 <small>webhooks</small></h3>
-          <p>queued·delivered·opened·failed·bounced 이벤트를 HMAC-SHA256 서명과 함께 보냅니다. 엔드포인트가 5xx를 돌려주면 최대 5회, 지수 백오프로 다시 시도합니다.</p>
+          <h3 class="feature-title">Webhook events <small>webhooks</small></h3>
+          <p>queued, delivered, opened, failed, and bounced events are sent with an HMAC-SHA256 signature. If your endpoint returns a 5xx we retry up to five times with exponential backoff.</p>
           <div class="code-hint"><span class="tf">X-Relay-Signature</span>: <span class="ts">t=1723701731,v1=9c1a…</span> · <span class="tf">events</span>: [<span class="ts">'message.*'</span>]</div>
         </article>
 
         <!-- 4. 재시도 -->
         <article class="feature">
           <div class="feature-ui" aria-hidden="true">
-            <div class="ui-head"><b>retry · msg_01J5Y8G2X4C0</b><span>정책: exponential · max 4</span></div>
+            <div class="ui-head"><b>retry · msg_01J5Y8G2X4C0</b><span>Policy: exponential · max 4</span></div>
             <div class="retry">
-              <div class="retry-row"><span class="n">#1 0.0s</span><div class="bar"><i class="err" style="width:18%"></i></div><span class="st">sms · 통신사 timeout</span></div>
-              <div class="retry-row"><span class="n">#2 +2.0s</span><div class="bar"><i class="err" style="width:32%"></i></div><span class="st">sms · 통신사 timeout</span></div>
-              <div class="retry-row"><span class="n">#3 +6.0s</span><div class="bar"><i class="warn" style="width:56%"></i></div><span class="st">sms에서 push로 폴백</span></div>
+              <div class="retry-row"><span class="n">#1 0.0s</span><div class="bar"><i class="err" style="width:18%"></i></div><span class="st">sms · carrier timeout</span></div>
+              <div class="retry-row"><span class="n">#2 +2.0s</span><div class="bar"><i class="err" style="width:32%"></i></div><span class="st">sms · carrier timeout</span></div>
+              <div class="retry-row"><span class="n">#3 +6.0s</span><div class="bar"><i class="warn" style="width:56%"></i></div><span class="st">fell back from sms to push</span></div>
               <div class="retry-row"><span class="n">#4 +6.4s</span><div class="bar"><i class="ok" style="width:100%"></i></div><span class="st">push · delivered</span></div>
             </div>
-            <div class="retry-legend"><span class="l-err">실패</span><span class="l-warn">채널 전환</span><span class="l-ok">전달 완료</span></div>
+            <div class="retry-legend"><span class="l-err">Failed</span><span class="l-warn">Channel switch</span><span class="l-ok">Delivered</span></div>
           </div>
-          <h3 class="feature-title">자동 재시도와 폴백 <small>retry</small></h3>
-          <p>통신사·SMTP·APNs 오류 코드를 분류해 재시도할 것과 즉시 폴백할 것을 나눕니다. 같은 메시지가 두 번 가지 않도록 멱등 키를 24시간 보관합니다.</p>
+          <h3 class="feature-title">Automatic retries and fallback <small>retry</small></h3>
+          <p>Carrier, SMTP, and APNs error codes are sorted into what to retry and what to fall back on immediately. Idempotency keys are held for 24 hours so the same message never goes twice.</p>
           <div class="code-hint"><span class="tf">Idempotency-Key</span>: <span class="ts">order-A-20481-shipped</span> · <span class="tf">retry</span>: { <span class="tf">max</span>: <span class="tk">4</span>, <span class="tf">backoff</span>: <span class="ts">'exp'</span> }</div>
         </article>
       </div>
@@ -811,14 +811,14 @@ text-decoration:none}
   <section class="section flow" id="how" aria-labelledby="flow-title">
     <div class="container">
       <div class="section-head bare">
-        <h2 id="flow-title">요청 하나가 사용자에게 닿기까지, 네 단계입니다.</h2>
+        <h2 id="flow-title">Four steps from one request to a message in someone's hand.</h2>
       </div>
 
       <div class="flow-wrap">
-        <p class="flow-hint">좌우로 스크롤하면 전체 흐름이 보입니다</p>
+        <p class="flow-hint">Scroll sideways to see the whole flow</p>
         <svg class="flow-svg" viewBox="0 0 960 360" role="img" aria-labelledby="flow-svg-title flow-svg-desc">
-          <title id="flow-svg-title">Relay API 통합 흐름도</title>
-          <desc id="flow-svg-desc">고객 앱이 Relay API로 요청을 보내면 인증·검증, 라우터, 큐·재시도를 거쳐 SMS 통신사, 이메일 서버, 푸시 서비스로 전달되고 결과가 웹훅으로 앱에 돌아옵니다.</desc>
+          <title id="flow-svg-title">Relay API integration flow</title>
+          <desc id="flow-svg-desc">A request from your app passes through auth and validation, the router, and the queue and retry layer, on to the SMS carrier, mail server, or push service — and the result comes back to your app by webhook.</desc>
           <defs>
             <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arr-g" d="M0 0L10 5L0 10z"/></marker>
             <marker id="arr-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arr-a" d="M0 0L10 5L0 10z"/></marker>
@@ -834,33 +834,33 @@ text-decoration:none}
           <!-- Relay core -->
           <rect class="box box-core" x="230" y="40" width="440" height="256" rx="6"/>
           <text class="label label-core" x="250" y="66">Relay API</text>
-          <text class="sub" x="650" y="66" text-anchor="end">ap-northeast-2 · 서울</text>
+          <text class="sub" x="650" y="66" text-anchor="end">ap-northeast-2 · Seoul</text>
 
           <rect class="box" x="250" y="96" width="120" height="72" rx="6"/>
-          <text class="label" x="310" y="126" text-anchor="middle" style="font-size:12.5px">인증 · 검증</text>
-          <text class="sub" x="310" y="146" text-anchor="middle">키 · 스키마 · 템플릿</text>
+          <text class="label" x="310" y="126" text-anchor="middle" style="font-size:12.5px">Auth & validation</text>
+          <text class="sub" x="310" y="146" text-anchor="middle">Key · schema · template</text>
 
           <rect class="box" x="390" y="96" width="120" height="72" rx="6"/>
-          <text class="label" x="450" y="126" text-anchor="middle" style="font-size:12.5px">라우터</text>
-          <text class="sub" x="450" y="146" text-anchor="middle">채널 순서 · 규칙</text>
+          <text class="label" x="450" y="126" text-anchor="middle" style="font-size:12.5px">Router</text>
+          <text class="sub" x="450" y="146" text-anchor="middle">Channel order · rules</text>
 
           <rect class="box" x="530" y="96" width="120" height="72" rx="6"/>
-          <text class="label" x="590" y="126" text-anchor="middle" style="font-size:12.5px">큐 · 재시도</text>
-          <text class="sub" x="590" y="146" text-anchor="middle">멱등 키 · 백오프</text>
+          <text class="label" x="590" y="126" text-anchor="middle" style="font-size:12.5px">Queue & retry</text>
+          <text class="sub" x="590" y="146" text-anchor="middle">Idempotency keys · backoff</text>
 
           <rect class="box" x="250" y="200" width="400" height="72" rx="6"/>
-          <text class="label" x="270" y="228" style="font-size:12.5px">이벤트 · 로그</text>
-          <text class="sub" x="270" y="248">queued · sent · delivered · failed 순으로 기록 · 90일 보관 · 대시보드 · 검색 API</text>
+          <text class="label" x="270" y="228" style="font-size:12.5px">Events & logs</text>
+          <text class="sub" x="270" y="248">Recorded as queued · sent · delivered · failed · kept 90 days · dashboard · search API</text>
           <circle class="node-dot" cx="620" cy="236" r="4"/>
 
           <!-- 채널 -->
           <rect class="box box-ch" x="740" y="40" width="200" height="66" rx="6"/>
           <text class="label" x="760" y="66" style="font-size:12.5px">SMS · LMS</text>
-          <text class="sub" x="760" y="86">SKT · KT · LGU+ 직연동</text>
+          <text class="sub" x="760" y="86">Direct carrier links to SKT, KT, and LGU+</text>
 
           <rect class="box box-ch" x="740" y="135" width="200" height="66" rx="6"/>
           <text class="label" x="760" y="161" style="font-size:12.5px">Email</text>
-          <text class="sub" x="760" y="181">전용 IP · DKIM · SPF · DMARC</text>
+          <text class="sub" x="760" y="181">Dedicated IP · DKIM · SPF · DMARC</text>
 
           <rect class="box box-ch" x="740" y="230" width="200" height="66" rx="6"/>
           <text class="label" x="760" y="256" style="font-size:12.5px">Push</text>
@@ -880,20 +880,20 @@ text-decoration:none}
           <path class="line-active" d="M650 132 H700 C720 132 720 263 740 263" marker-end="url(#arr-a)"/>
           <!-- 웹훅 회귀 -->
           <path class="line-back" d="M620 272 V330 H95 V216" marker-end="url(#arr-b)"/>
-          <text class="sub sub-back" x="360" y="346" text-anchor="middle">webhook · message.delivered / failed · HMAC-SHA256 서명</text>
+          <text class="sub sub-back" x="360" y="346" text-anchor="middle">webhook · message.delivered / failed · HMAC-SHA256 signature</text>
         </svg>
         <div class="flow-legend">
-          <span><i></i>발송 경로</span>
-          <span><i class="b"></i>웹훅 회신</span>
-          <span><i class="g"></i>이벤트 기록</span>
+          <span><i></i>Delivery path</span>
+          <span><i class="b"></i>Webhook callback</span>
+          <span><i class="g"></i>Event log</span>
         </div>
       </div>
 
       <div class="flow-steps">
-        <div class="flow-step"><span class="n">01</span><h3>인증·검증</h3><p>API 키 권한, 요청 스키마, 템플릿 변수를 확인합니다. 문제가 있으면 큐에 넣기 전에 4xx로 즉시 반환합니다.</p></div>
-        <div class="flow-step"><span class="n">02</span><h3>라우팅</h3><p>채널 배열과 규칙(시간대·국가·수신 거부)을 평가해 첫 채널을 고릅니다. 평균 3 ms.</p></div>
-        <div class="flow-step"><span class="n">03</span><h3>전달·재시도</h3><p>통신사·SMTP·APNs에 전달하고 응답 코드를 분류합니다. 재시도 또는 다음 채널 폴백을 자동 처리합니다.</p></div>
-        <div class="flow-step"><span class="n">04</span><h3>웹훅·로그</h3><p>상태 변화를 웹훅으로 앱에 돌려주고, 90일간 이벤트를 보관합니다. 대시보드에서 메시지 ID로 검색됩니다.</p></div>
+        <div class="flow-step"><span class="n">01</span><h3>Auth & validation</h3><p>Checks API key scope, request schema, and template variables. Anything wrong returns a 4xx immediately, before the message reaches the queue.</p></div>
+        <div class="flow-step"><span class="n">02</span><h3>Routing</h3><p>Evaluates your channel array and rules — time of day, country, opt-outs — and picks the first channel. 3 ms on average.</p></div>
+        <div class="flow-step"><span class="n">03</span><h3>Delivery & retry</h3><p>Hands off to the carrier, SMTP, or APNs and classifies the response code, then retries or falls back to the next channel on its own.</p></div>
+        <div class="flow-step"><span class="n">04</span><h3>Webhooks & logs</h3><p>State changes come back to your app by webhook, and events are kept for 90 days. Search by message ID in the dashboard.</p></div>
       </div>
     </div>
   </section>
@@ -902,65 +902,65 @@ text-decoration:none}
   <section class="section" id="sdk" aria-labelledby="sdk-title">
     <div class="container">
       <div class="section-head split">
-        <h2 id="sdk-title">공식 SDK 8종. 쓰는 언어 그대로 설치하면 됩니다.</h2>
-        <p>모두 OpenAPI 스펙에서 생성되고 같은 날 함께 배포됩니다. 타입 정의, 재시도, 멱등 키 헤더가 기본 포함되어 있습니다.</p>
+        <h2 id="sdk-title">Eight official SDKs. Install the one for the language you already use.</h2>
+        <p>All generated from the OpenAPI spec and released the same day. Type definitions, retries, and idempotency key headers are included by default.</p>
       </div>
       <div class="sdk-list">
-        <div class="sdk-head" aria-hidden="true"><span>언어 · 버전</span><span>설치</span><span>포함</span><span></span></div>
+        <div class="sdk-head" aria-hidden="true"><span>Language · version</span><span>Install</span><span>Included</span><span></span></div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">Node.js / TypeScript</div><div class="sdk-ver">v2.4.1 · Node 18 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">Node.js / TypeScript</div><div class="sdk-ver">v2.4.1 · Node 18+</div></div>
           <code class="sdk-cmd"><span class="p">$</span>npm i @relay-api/sdk</code>
-          <span class="sdk-note">ESM · CJS · 타입 정의 포함</span>
-          <a class="sdk-doc" href="#docs" aria-label="Node.js SDK 문서">문서</a>
+          <span class="sdk-note">ESM · CJS · type definitions included</span>
+          <a class="sdk-doc" href="#docs" aria-label="Node.js SDK docs">Docs</a>
         </div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">Python</div><div class="sdk-ver">v2.4.0 · 3.9 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">Python</div><div class="sdk-ver">v2.4.0 · 3.9+</div></div>
           <code class="sdk-cmd"><span class="p">$</span>pip install relay-api</code>
-          <span class="sdk-note">sync · asyncio · pydantic 모델</span>
-          <a class="sdk-doc" href="#docs" aria-label="Python SDK 문서">문서</a>
+          <span class="sdk-note">sync · asyncio · pydantic models</span>
+          <a class="sdk-doc" href="#docs" aria-label="Python SDK docs">Docs</a>
         </div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">Go</div><div class="sdk-ver">v2.4.0 · 1.21 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">Go</div><div class="sdk-ver">v2.4.0 · 1.21+</div></div>
           <code class="sdk-cmd"><span class="p">$</span>go get github.com/relay-api/relay-go/v2</code>
-          <span class="sdk-note">context 지원 · 제네릭 응답 타입</span>
-          <a class="sdk-doc" href="#docs" aria-label="Go SDK 문서">문서</a>
+          <span class="sdk-note">context support · generic response types</span>
+          <a class="sdk-doc" href="#docs" aria-label="Go SDK docs">Docs</a>
         </div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">Java / Kotlin</div><div class="sdk-ver">v2.3.2 · JDK 17 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">Java / Kotlin</div><div class="sdk-ver">v2.3.2 · JDK 17+</div></div>
           <code class="sdk-cmd"><span class="p">&gt;</span>implementation("dev.relay:relay-java:2.3.2")</code>
-          <span class="sdk-note">Spring Boot 스타터 별도 제공</span>
-          <a class="sdk-doc" href="#docs" aria-label="Java SDK 문서">문서</a>
+          <span class="sdk-note">Spring Boot starter available separately</span>
+          <a class="sdk-doc" href="#docs" aria-label="Java SDK docs">Docs</a>
         </div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">Ruby</div><div class="sdk-ver">v2.3.0 · 3.1 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">Ruby</div><div class="sdk-ver">v2.3.0 · 3.1+</div></div>
           <code class="sdk-cmd"><span class="p">$</span>gem install relay-api</code>
-          <span class="sdk-note">Rails 제너레이터 · ActiveJob 어댑터</span>
-          <a class="sdk-doc" href="#docs" aria-label="Ruby SDK 문서">문서</a>
+          <span class="sdk-note">Rails generator · ActiveJob adapter</span>
+          <a class="sdk-doc" href="#docs" aria-label="Ruby SDK docs">Docs</a>
         </div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">PHP</div><div class="sdk-ver">v2.2.4 · 8.1 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">PHP</div><div class="sdk-ver">v2.2.4 · 8.1+</div></div>
           <code class="sdk-cmd"><span class="p">$</span>composer require relay-api/relay-php</code>
-          <span class="sdk-note">Laravel 파사드 · 알림 채널</span>
-          <a class="sdk-doc" href="#docs" aria-label="PHP SDK 문서">문서</a>
+          <span class="sdk-note">Laravel facade · notification channel</span>
+          <a class="sdk-doc" href="#docs" aria-label="PHP SDK docs">Docs</a>
         </div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">.NET</div><div class="sdk-ver">v2.3.1 · .NET 6 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">.NET</div><div class="sdk-ver">v2.3.1 · .NET 6+</div></div>
           <code class="sdk-cmd"><span class="p">$</span>dotnet add package Relay.Api</code>
-          <span class="sdk-note">async · DI 확장 메서드</span>
-          <a class="sdk-doc" href="#docs" aria-label=".NET SDK 문서">문서</a>
+          <span class="sdk-note">async · DI extension methods</span>
+          <a class="sdk-doc" href="#docs" aria-label=".NET SDK docs">Docs</a>
         </div>
         <div class="sdk">
-          <div class="sdk-id"><div class="sdk-name">Rust</div><div class="sdk-ver">v0.9.3 · <span class="beta">beta</span> · 1.75 이상</div></div>
+          <div class="sdk-id"><div class="sdk-name">Rust</div><div class="sdk-ver">v0.9.3 · <span class="beta">beta</span> · 1.75+</div></div>
           <code class="sdk-cmd"><span class="p">$</span>cargo add relay-api</code>
-          <span class="sdk-note">tokio · reqwest · 정식 릴리스 10월 예정</span>
-          <a class="sdk-doc" href="#docs" aria-label="Rust SDK 문서">문서</a>
+          <span class="sdk-note">tokio · reqwest · stable release due in October</span>
+          <a class="sdk-doc" href="#docs" aria-label="Rust SDK docs">Docs</a>
         </div>
       </div>
       <div class="sdk-more">
-        <span>SDK 없이도 쓸 수 있습니다:</span>
-        <a href="#docs">OpenAPI 3.1 스펙</a>
-        <a href="#docs">Postman 컬렉션</a>
-        <a href="#docs">Terraform 프로바이더</a>
+        <span>It works without an SDK too:</span>
+        <a href="#docs">OpenAPI 3.1 spec</a>
+        <a href="#docs">Postman collection</a>
+        <a href="#docs">Terraform provider</a>
         <a href="#docs">CLI (relay send)</a>
       </div>
     </div>
@@ -970,111 +970,111 @@ text-decoration:none}
   <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
     <div class="container">
       <div class="section-head">
-        <h2 id="pricing-title">쓴 만큼만 냅니다. 최소 약정도, 채널별 기본료도 없습니다.</h2>
-        <p>무료 할당을 넘긴 발송량에 대해서만 건당 과금합니다. 월 발송량이 늘수록 단가는 자동으로 내려갑니다.</p>
+        <h2 id="pricing-title">Pay for what you send. No minimum commitment, no per-channel base fee.</h2>
+        <p>You are billed per message only above the free allowance, and the rate drops automatically as monthly volume rises.</p>
       </div>
 
       <div class="plans">
         <article class="plan">
           <div class="plan-name">Free</div>
-          <div class="plan-price">₩0<small>/월</small></div>
-          <p class="plan-desc">사이드 프로젝트와 개발 환경. 신용카드 없이 API 키를 바로 발급합니다.</p>
+          <div class="plan-price">₩0<small>/mo</small></div>
+          <p class="plan-desc">Side projects and development. Get an API key straight away, no credit card.</p>
           <ul>
-            <li>이메일 10,000건 · 푸시 100,000건 / 월</li>
-            <li>SMS 테스트 100건 (인증 번호 3개까지)</li>
-            <li>템플릿 · 웹훅 · 로그 7일 보관</li>
-            <li>커뮤니티 포럼 지원</li>
+            <li>10,000 emails · 100,000 push / month</li>
+            <li>100 test SMS (up to 3 verification numbers)</li>
+            <li>Templates · webhooks · 7-day log retention</li>
+            <li>Community forum support</li>
           </ul>
-          <a class="btn btn-secondary" href="#docs">API 키 발급받기</a>
+          <a class="btn btn-secondary" href="#docs">Get an API key</a>
         </article>
         <article class="plan is-featured">
-          <div class="plan-name">Pay as you go <span class="plan-tag">카드 등록 시 전환</span></div>
-          <div class="plan-price">사용량 과금<small>· 아래 단가</small></div>
-          <p class="plan-desc">프로덕션 서비스. 무료 할당은 그대로 두고, 초과분만 월말에 정산합니다.</p>
+          <div class="plan-name">Pay as you go <span class="plan-tag">Switches when you add a card</span></div>
+          <div class="plan-price">Usage-based pricing<small>· rates below</small></div>
+          <p class="plan-desc">For production. The free allowance stays; only what you send beyond it is settled at month end.</p>
           <ul>
-            <li>모든 채널 · 발신번호 등록 무제한</li>
-            <li>로그 90일 보관 · 이벤트 검색 API</li>
-            <li>SLA 99.95% · 이메일 지원, 영업일 4시간 안에 회신</li>
-            <li>팀원 무제한 · 역할 기반 권한</li>
+            <li>All channels · unlimited sender IDs</li>
+            <li>Logs kept 90 days · event search API</li>
+            <li>99.95% SLA · email support, reply within 4 business hours</li>
+            <li>Unlimited seats · role-based access</li>
           </ul>
-          <a class="btn btn-primary" href="#docs">API 키 발급받기</a>
+          <a class="btn btn-primary" href="#docs">Get an API key</a>
         </article>
         <article class="plan">
           <div class="plan-name">Enterprise</div>
-          <div class="plan-price">별도 견적<small>· 월 1,000만 건 이상</small></div>
-          <p class="plan-desc">전용 인프라, 계약 SLA, 데이터 리전 고정이 필요한 조직.</p>
+          <div class="plan-price">Custom quote<small>· over 10M per month</small></div>
+          <p class="plan-desc">For organisations that need dedicated infrastructure, a contractual SLA, and a pinned data region.</p>
           <ul>
-            <li>SLA 99.99% · 크레딧 보상 조건 계약서에 명시</li>
-            <li>전용 발송 IP · 전용 통신사 회선</li>
-            <li>SSO(SAML) · 감사 로그 · DPA</li>
-            <li>전담 엔지니어 배정 · 야간·주말 온콜 포함</li>
+            <li>99.99% SLA · credit terms written into the contract</li>
+            <li>Dedicated sending IP · dedicated carrier line</li>
+            <li>SSO (SAML) · audit logs · DPA</li>
+            <li>A named engineer · on-call nights and weekends included</li>
           </ul>
-          <a class="btn btn-secondary" href="mailto:sales@relay.dev?subject=Enterprise%20%EB%AC%B8%EC%9D%98">sales@relay.dev 로 문의</a>
+          <a class="btn btn-secondary" href="mailto:sales@relay.dev?subject=Enterprise%20%EB%AC%B8%EC%9D%98">Contact sales@relay.dev</a>
         </article>
       </div>
 
       <div class="price-table-wrap">
         <div class="price-table-head">
-          <h3>채널별 단가 (건당 · 부가세 별도)</h3>
-          <span>월 누적 발송량 구간별 자동 적용 · 2026-08 기준</span>
+          <h3>Per-message rates (excl. VAT)</h3>
+          <span>Applied automatically by monthly volume tier · as of 2026-08</span>
         </div>
         <div class="table-scroll">
           <table class="price-table">
             <thead>
               <tr>
-                <th scope="col">채널</th>
-                <th scope="col">무료 할당 / 월</th>
-                <th scope="col">~100만 건</th>
-                <th scope="col">100만~1,000만 건</th>
-                <th scope="col">1,000만 건+</th>
+                <th scope="col">Channel</th>
+                <th scope="col">Free allowance / month</th>
+                <th scope="col">up to 1M</th>
+                <th scope="col">1M – 10M</th>
+                <th scope="col">10M+</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>SMS<small>국내 · 90바이트 이하</small></td><td>100건 (테스트)</td><td>₩9.9</td><td>₩8.5</td><td>₩7.2</td></tr>
-              <tr><td>LMS<small>국내 · 2,000바이트 이하</small></td><td>—</td><td>₩29.0</td><td>₩26.0</td><td>₩23.0</td></tr>
-              <tr><td>SMS 해외<small>국가별 상이 · 미국 기준</small></td><td>—</td><td>₩68.0</td><td>₩62.0</td><td>₩55.0</td></tr>
-              <tr><td>이메일<small>첨부 10MB · 전용 IP 별도</small></td><td>10,000건</td><td>₩0.90</td><td>₩0.70</td><td>₩0.50</td></tr>
-              <tr><td>푸시<small>APNs · FCM · Web Push</small></td><td>100,000건</td><td>₩0.12</td><td>₩0.09</td><td>₩0.06</td></tr>
-              <tr><td>웹훅 이벤트<small>모든 채널 공통</small></td><td class="free">무제한</td><td class="free">무료</td><td class="free">무료</td><td class="free">무료</td></tr>
-              <tr><td>로그 보관 연장<small>90일에서 1년으로</small></td><td>—</td><td colspan="3">₩49,000 / 월 (프로젝트당)</td></tr>
+              <tr><td>SMS<small>Domestic · up to 90 bytes</small></td><td>100 (test)</td><td>₩9.9</td><td>₩8.5</td><td>₩7.2</td></tr>
+              <tr><td>LMS<small>Domestic · up to 2,000 bytes</small></td><td>—</td><td>₩29.0</td><td>₩26.0</td><td>₩23.0</td></tr>
+              <tr><td>SMS (international)<small>Varies by country · US rate shown</small></td><td>—</td><td>₩68.0</td><td>₩62.0</td><td>₩55.0</td></tr>
+              <tr><td>Email<small>10MB attachments · dedicated IP extra</small></td><td>10,000</td><td>₩0.90</td><td>₩0.70</td><td>₩0.50</td></tr>
+              <tr><td>Push<small>APNs · FCM · Web Push</small></td><td>100,000</td><td>₩0.12</td><td>₩0.09</td><td>₩0.06</td></tr>
+              <tr><td>Webhook events<small>All channels</small></td><td class="free">Unlimited</td><td class="free">Free</td><td class="free">Free</td><td class="free">Free</td></tr>
+              <tr><td>Extended log retention<small>from 90 days to 1 year</small></td><td>—</td><td colspan="3">KRW 49,000 / month (per project)</td></tr>
             </tbody>
           </table>
         </div>
         <div class="price-note">
-          <span>· 발송 실패 건은 과금하지 않습니다. 폴백으로 전환된 경우 최종 전달 채널 1건만 과금됩니다.</span>
-          <span>· 전용 발송 IP는 월 ₩39,000, 통신사 직연동 발신번호 등록은 무료입니다. 결제는 국내 카드·계좌이체·세금계산서를 지원합니다.</span>
+          <span>· Failed sends are not billed. When a message falls back, you are charged once, for the channel that delivered.</span>
+          <span>· A dedicated sending IP is KRW 39,000 a month; registering a sender ID for direct carrier delivery is free. We accept Korean cards, bank transfer, and tax invoices.</span>
         </div>
       </div>
 
       <div class="estimator" aria-labelledby="est-title">
         <div>
-          <h3 id="est-title">월 예상 비용 계산기</h3>
-          <p class="hint">슬라이더를 움직이면 무료 할당과 구간 단가를 반영해 즉시 계산됩니다.</p>
+          <h3 id="est-title">Monthly cost calculator</h3>
+          <p class="hint">Move the slider and it recalculates instantly, including the free allowance and volume tiers.</p>
           <div class="est-rows">
             <div class="est-row">
-              <label for="estSms">SMS (국내) <output id="estSmsOut" for="estSms">50,000건</output></label>
+              <label for="estSms">SMS (domestic) <output id="estSmsOut" for="estSms">50,000</output></label>
               <input type="range" id="estSms" min="0" max="2000000" step="10000" value="50000" data-key="sms">
             </div>
             <div class="est-row">
-              <label for="estEmail">이메일 <output id="estEmailOut" for="estEmail">300,000건</output></label>
+              <label for="estEmail">Email <output id="estEmailOut" for="estEmail">300,000</output></label>
               <input type="range" id="estEmail" min="0" max="20000000" step="50000" value="300000" data-key="email">
             </div>
             <div class="est-row">
-              <label for="estPush">푸시 <output id="estPushOut" for="estPush">1,000,000건</output></label>
+              <label for="estPush">Push <output id="estPushOut" for="estPush">1,000,000</output></label>
               <input type="range" id="estPush" min="0" max="50000000" step="100000" value="1000000" data-key="push">
             </div>
           </div>
         </div>
         <div class="est-total" aria-live="polite">
-          <span class="lbl">월 예상 비용</span>
-          <div class="sum num"><span id="estTotal">₩0</span><small>/ 월 · VAT 별도</small></div>
+          <span class="lbl">Estimated monthly cost</span>
+          <div class="sum num"><span id="estTotal">₩0</span><small>/ month · excl. VAT</small></div>
           <div class="est-break">
             <div><span>SMS</span><span id="estBreakSms">₩0</span></div>
-            <div><span>이메일</span><span id="estBreakEmail">₩0</span></div>
-            <div><span>푸시</span><span id="estBreakPush">₩0</span></div>
-            <div><span>무료 할당 차감</span><span id="estBreakFree">−₩0</span></div>
+            <div><span>Email</span><span id="estBreakEmail">₩0</span></div>
+            <div><span>Push</span><span id="estBreakPush">₩0</span></div>
+            <div><span>Drawn from the free allowance</span><span id="estBreakFree">−₩0</span></div>
           </div>
-          <a class="btn btn-primary" href="#docs">이 조건으로 시작하기</a>
+          <a class="btn btn-primary" href="#docs">Start on this plan</a>
         </div>
       </div>
     </div>
@@ -1084,58 +1084,58 @@ text-decoration:none}
   <section class="section" id="status" aria-labelledby="status-title">
     <div class="container">
       <div class="section-head split">
-        <h2 id="status-title">가동률은 분 단위로 공개하고, 보안 조치는 문서 그대로 적습니다.</h2>
-        <p>아래 상태 보드는 공개 상태 페이지와 같은 데이터입니다. 침투 테스트 보고서와 인증서 사본은 NDA 체결 후 영업일 2일 안에 보내드립니다.</p>
+        <h2 id="status-title">Uptime is published to the minute, and the security measures are written down exactly as they are.</h2>
+        <p>The board below runs on the same data as the public status page. Penetration test reports and certificate copies are sent within two business days of an NDA.</p>
       </div>
 
       <div class="trust-grid">
-        <div class="status-board" role="region" aria-label="최근 90일 서비스 상태">
+        <div class="status-board" role="region" aria-label="Service status, last 90 days">
           <div class="status-top">
-            <span class="all-ok"><span class="marker" aria-hidden="true"></span>모든 시스템 정상 작동 중</span>
-            <span class="upd">업데이트 2026-08-15 14:02 KST</span>
+            <span class="all-ok"><span class="marker" aria-hidden="true"></span>All systems operational</span>
+            <span class="upd">Updated 2026-08-15 14:02 KST</span>
           </div>
           <div id="statusList"></div>
-          <div class="status-foot"><span>최근 90일 · 일 단위</span><span>공개 상태 페이지 status.relay.dev</span></div>
+          <div class="status-foot"><span>Last 90 days · daily</span><span>Public status page at status.relay.dev</span></div>
         </div>
 
         <div class="sec-list">
           <article class="sec-item">
             <div class="k">SLA</div>
             <div>
-              <h3>월 가동률 <code>99.95% · 99.99%</code></h3>
-              <p>월 가동률이 SLA에 미달하면 미달 폭에 따라 해당 월 사용료의 10%·25%·50%를 크레딧으로 돌려드립니다. 계산 기준과 제외 조건은 SLA 문서에 그대로 적혀 있습니다.</p>
+              <h3>Monthly uptime <code>99.95% · 99.99%</code></h3>
+              <p>If monthly uptime falls below the SLA, you get 10%, 25%, or 50% of that month's fee back as credit, depending on the shortfall. How it is calculated and what is excluded is written out in the SLA.</p>
             </div>
           </article>
           <article class="sec-item">
-            <div class="k">암호화</div>
+            <div class="k">Encryption</div>
             <div>
-              <h3>전송 <code>TLS 1.3</code> 저장 <code>AES-256-GCM</code></h3>
-              <p>키는 KMS에서 90일마다 회전되며, 수신자 번호·이메일은 로그에서 마스킹됩니다. API 키는 발급 시 한 번만 표시되고 이후에는 해시만 보관합니다.</p>
+              <h3>Send <code>TLS 1.3</code> Storage <code>AES-256-GCM</code></h3>
+              <p>Keys rotate in KMS every 90 days, and recipient numbers and addresses are masked in logs. An API key is shown once at creation; after that only the hash is stored.</p>
             </div>
           </article>
           <article class="sec-item">
-            <div class="k">리전</div>
+            <div class="k">Regions</div>
             <div>
-              <h3>5곳 · 프로젝트별 데이터 고정</h3>
-              <p>기본 리전은 서울이며, 프로젝트 단위로 데이터가 저장·처리될 리전을 고정할 수 있습니다. 리전 간 자동 페일오버는 선택 사항입니다.</p>
+              <h3>5 regions · data pinned per project</h3>
+              <p>Seoul is the default region, and each project can pin where its data is stored and processed. Cross-region failover is optional.</p>
               <ul class="regions">
-                <li><b>KR</b>ap-northeast-2 서울</li>
-                <li><b>JP</b>ap-northeast-1 도쿄</li>
-                <li><b>SG</b>ap-southeast-1 싱가포르</li>
-                <li><b>DE</b>eu-central-1 프랑크푸르트</li>
-                <li><b>US</b>us-east-1 버지니아</li>
+                <li><b>KR</b>ap-northeast-2 Seoul</li>
+                <li><b>JP</b>ap-northeast-1 Tokyo</li>
+                <li><b>SG</b>ap-southeast-1 Singapore</li>
+                <li><b>DE</b>eu-central-1 Frankfurt</li>
+                <li><b>US</b>us-east-1 Virginia</li>
               </ul>
             </div>
           </article>
           <article class="sec-item">
-            <div class="k">인증</div>
+            <div class="k">Certifications</div>
             <div>
-              <h3>외부 감사와 침투 테스트</h3>
-              <p>연 1회 외부 침투 테스트, 분기별 취약점 스캔을 수행합니다. 개인정보 처리 위탁 계약(DPA)은 표준 양식으로 즉시 체결됩니다.</p>
+              <h3>External audits and penetration testing</h3>
+              <p>External penetration testing once a year, vulnerability scans quarterly. A standard DPA can be signed straight away.</p>
               <ul class="certs">
-                <li><b>ISMS-P</b><span>2025년 11월 인증 · 2028년 11월 갱신</span></li>
-                <li><b>ISO/IEC 27001</b><span>2024년 6월 취득 · 연 1회 사후 심사</span></li>
-                <li><b>SOC 2 Type II</b><span>보고서 매년 발행 · NDA 후 제공</span></li>
+                <li><b>ISMS-P</b><span>Certified November 2025 · renews November 2028</span></li>
+                <li><b>ISO/IEC 27001</b><span>Obtained June 2024 · surveillance audit annually</span></li>
+                <li><b>SOC 2 Type II</b><span>Report issued annually · available under NDA</span></li>
               </ul>
             </div>
           </article>
@@ -1149,20 +1149,20 @@ text-decoration:none}
     <div class="container">
       <div class="docs-cta">
         <div>
-          <h2 id="docs-title">테스트 키 발급부터 첫 발송까지, 세 단계입니다.</h2>
-          <p>가입하면 테스트 키가 즉시 발급됩니다. 문서의 모든 예제는 Node·Python·Go·cURL로 제공되고, 대시보드에서 요청과 응답을 그대로 재생할 수 있습니다.</p>
+          <h2 id="docs-title">Three steps from a test key to your first message.</h2>
+          <p>Sign up and a test key is issued immediately. Every example in the docs comes in Node, Python, Go, and cURL, and the dashboard replays requests and responses exactly as they happened.</p>
           <div class="actions">
             <a class="btn btn-primary btn-lg" href="#top">
-              API 키 발급받기
+              Get an API key
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <a class="btn btn-secondary btn-lg" href="#pricing">요금 먼저 계산하기</a>
+            <a class="btn btn-secondary btn-lg" href="#pricing">Work out the cost first</a>
           </div>
         </div>
-        <div class="quick" aria-label="빠른 시작 3단계">
-          <div class="quick-step"><span class="n">1</span><div><div class="t">API 키 발급</div><code>RELAY_API_KEY=<span class="ts">rly_test_7Fq2…</span> <span class="tc"># 테스트 키 · 발급 시 1회 표시</span></code></div></div>
-          <div class="quick-step"><span class="n">2</span><div><div class="t">SDK 설치</div><code>npm i @relay-api/sdk  <span class="tc"># 또는 pip install relay-api</span></code></div></div>
-          <div class="quick-step"><span class="n">3</span><div><div class="t">첫 메시지 발송</div><code><span class="tk">await</span> relay.messages.<span class="tf">send</span>({ <span class="tf">to</span>, <span class="tf">channel</span>: [<span class="ts">'sms'</span>], <span class="tf">text</span>: <span class="ts">'안녕하세요'</span> })</code></div></div>
+        <div class="quick" aria-label="Quickstart in three steps">
+          <div class="quick-step"><span class="n">1</span><div><div class="t">Get an API key</div><code>RELAY_API_KEY=<span class="ts">rly_test_7Fq2…</span> <span class="tc"># test key · shown once at creation</span></code></div></div>
+          <div class="quick-step"><span class="n">2</span><div><div class="t">Install the SDK</div><code>npm i @relay-api/sdk  <span class="tc"># or pip install relay-api</span></code></div></div>
+          <div class="quick-step"><span class="n">3</span><div><div class="t">Send your first message</div><code><span class="tk">await</span> relay.messages.<span class="tf">send</span>({ <span class="tf">to</span>, <span class="tf">channel</span>: [<span class="ts">'sms'</span>], <span class="tf">text</span>: <span class="ts">'Hello'</span> })</code></div></div>
         </div>
       </div>
     </div>
@@ -1175,55 +1175,55 @@ text-decoration:none}
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="logo" href="#top" aria-label="Relay API 홈">
+        <a class="logo" href="#top" aria-label="Relay API home">
           <span class="logo-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h9"/><path d="M13 12l-3-3"/><path d="M13 12l-3 3"/><path d="M15 6h5v12h-5"/></svg>
           </span>
           <span>Relay API</span>
         </a>
-        <p>SMS·이메일·푸시를 하나의 API로. 발송 인프라는 Relay가 맡고, 개발자는 제품 코드만 씁니다.</p>
-        <a class="status-link" href="#status"><span class="marker" aria-hidden="true"></span>모든 시스템 정상 · 최근 90일 99.99%</a>
+        <p>SMS, email, and push through one API. Relay runs the delivery infrastructure so you can write product code.</p>
+        <a class="status-link" href="#status"><span class="marker" aria-hidden="true"></span>All systems operational · 99.99% over the last 90 days</a>
       </div>
       <div>
-        <h4>제품 · 문서</h4>
+        <h4>Product · docs</h4>
         <ul>
-          <li><a href="#features">메시지 API</a></li>
-          <li><a href="#features">템플릿 · 웹훅</a></li>
-          <li><a href="#sdk">SDK 8종</a></li>
-          <li><a href="#pricing">요금 · 계산기</a></li>
-          <li><a href="#docs">빠른 시작</a></li>
-          <li><a href="#changelog">변경 이력</a></li>
+          <li><a href="#features">Messaging API</a></li>
+          <li><a href="#features">Templates · webhooks</a></li>
+          <li><a href="#sdk">8 SDKs</a></li>
+          <li><a href="#pricing">Pricing · calculator</a></li>
+          <li><a href="#docs">Quickstart</a></li>
+          <li><a href="#changelog">Changelog</a></li>
         </ul>
       </div>
       <div>
-        <h4>회사</h4>
+        <h4>Company</h4>
         <ul>
-          <li><a href="#top">소개</a></li>
-          <li><a href="#top">채용</a></li>
-          <li><a href="mailto:sales@relay.dev">영업 문의</a></li>
-          <li><a href="mailto:support@relay.dev">기술 지원</a></li>
+          <li><a href="#top">About</a></li>
+          <li><a href="#top">Careers</a></li>
+          <li><a href="mailto:sales@relay.dev">Talk to sales</a></li>
+          <li><a href="mailto:support@relay.dev">Technical support</a></li>
         </ul>
       </div>
       <div>
-        <h4>정책</h4>
+        <h4>Policy</h4>
         <ul>
-          <li><a href="#top">이용약관</a></li>
-          <li><a href="#top">개인정보처리방침</a></li>
+          <li><a href="#top">Terms of service</a></li>
+          <li><a href="#top">Privacy policy</a></li>
           <li><a href="#status">SLA · DPA</a></li>
-          <li><a href="mailto:security@relay.dev">보안 취약점 신고</a></li>
+          <li><a href="mailto:security@relay.dev">Report a vulnerability</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div>
         <div>© 2026 Relay API, Inc.</div>
-        <address>서울특별시 강남구 테헤란로 427, 12층 · 사업자등록번호 214-88-01937 · 통신판매업 2026-서울강남-01184</address>
+        <address>12F, 427 Teheran-ro, Gangnam-gu, Seoul · Business reg. 214-88-01937 · E-commerce reg. 2026-Seoul-Gangnam-01184</address>
       </div>
       <div class="legal">
-        <span>대표 박지훈</span>
+        <span>CEO Jihoon Park</span>
         <span>support@relay.dev</span>
         <span>02-6205-0021</span>
-        <span>한국어 · English</span>
+        <span>Korean · English</span>
       </div>
     </div>
   </div>
@@ -1249,12 +1249,12 @@ text-decoration:none}
   function closeMenu() {
     mobileNav.classList.remove('is-open');
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', '메뉴 열기');
+    menuToggle.setAttribute('aria-label', 'Open menu');
   }
   menuToggle.addEventListener('click', function () {
     var open = mobileNav.classList.toggle('is-open');
     menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
   mobileNav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
   window.addEventListener('resize', function () { if (window.innerWidth > 900) closeMenu(); });
@@ -1294,7 +1294,7 @@ text-decoration:none}
   function resetCopy() {
     clearTimeout(copyTimer);
     copyBtn.classList.remove('is-copied');
-    copyLabel.textContent = '복사';
+    copyLabel.textContent = 'Copy';
   }
   function currentCode() {
     var panel = panels.filter(function (p) { return !p.hidden; })[0];
@@ -1307,7 +1307,7 @@ text-decoration:none}
     var text = currentCode();
     function done(ok) {
       copyBtn.classList.toggle('is-copied', ok);
-      copyLabel.textContent = ok ? '복사됨' : '복사 실패';
+      copyLabel.textContent = ok ? 'Copied' : 'Copy failed';
       clearTimeout(copyTimer);
       copyTimer = setTimeout(resetCopy, 1800);
     }
@@ -1359,7 +1359,7 @@ text-decoration:none}
     push:  { free: 100000, tiers: [[1000000, 0.12], [10000000, 0.09], [Infinity, 0.06]] }
   };
   function won(v) { return '₩' + Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-  function cnt(v) { return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '건'; }
+  function cnt(v) { return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ''; }
   function tieredCost(key, volume) {
     var r = RATES[key];
     var billable = Math.max(0, volume - r.free);
@@ -1397,11 +1397,11 @@ text-decoration:none}
   /* ---------- 상태 보드 (90일 바) ---------- */
   var services = [
     { name: 'REST API', sub: 'api.relay.dev', pct: '99.99', bad: {} },
-    { name: 'SMS 게이트웨이', sub: 'SKT · KT · LGU+', pct: '99.97', bad: { 23: 'w', 61: 'w' } },
-    { name: '이메일 발송', sub: 'SMTP · 전용 IP', pct: '99.99', bad: { 47: 'w' } },
-    { name: '푸시 (APNs · FCM)', sub: 'ios · android · web', pct: '100.00', bad: {} },
-    { name: '웹훅 전달', sub: 'HMAC 서명', pct: '99.98', bad: { 12: 'e' } },
-    { name: '대시보드', sub: 'app.relay.dev', pct: '99.95', bad: { 5: 'w', 71: 'e' } }
+    { name: 'SMS gateway', sub: 'SKT · KT · LGU+', pct: '99.97', bad: { 23: 'w', 61: 'w' } },
+    { name: 'Email delivery', sub: 'SMTP · dedicated IP', pct: '99.99', bad: { 47: 'w' } },
+    { name: 'Push (APNs · FCM)', sub: 'ios · android · web', pct: '100.00', bad: {} },
+    { name: 'Webhook delivery', sub: 'HMAC signature', pct: '99.98', bad: { 12: 'e' } },
+    { name: 'Dashboard', sub: 'app.relay.dev', pct: '99.95', bad: { 5: 'w', 71: 'e' } }
   ];
   var statusList = document.getElementById('statusList');
   services.forEach(function (s) {

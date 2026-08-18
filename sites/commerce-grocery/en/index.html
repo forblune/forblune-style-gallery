@@ -1,11 +1,11 @@
 <!-- forblune-style: {"slug":"commerce-grocery","primaryStyle":"Commerce","productType":"Storefront","tone":"Fresh · Clear · Trustworthy","secondary":"Editorial","accent":"Product","brand":"새벽밭","industry":"산지직송 식료품 온라인 마켓","coreMessage":"오늘 뭘 사면 좋은지 빠르게 찾고, 산지·배송을 믿고 담게 한다","naming":"Commerce / Storefront / Fresh · Clear · Trustworthy"} -->
 <!DOCTYPE html>
-<html lang="ko" class="no-js">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>새벽밭 — 산지에서 새벽에 출발하는 식료품 직송 마켓</title>
-<meta name="description" content="새벽밭은 산지 농가·어가에서 수확한 식료품을 다음 날 새벽 문 앞까지 배송하는 온라인 마켓입니다. 3만원 이상 무료배송, 오후 2시 전 주문 시 내일 새벽 도착, 신선하지 않으면 100% 환불.">
+<title>Saebyeokbat — groceries that leave the source before dawn</title>
+<meta name="description" content="Saebyeokbat is an online market that brings food from farms and fisheries to your door before dawn the next day. Free delivery over KRW 30,000, order before 2 PM for tomorrow morning, and a full refund if it isn't fresh.">
 <meta name="theme-color" content="#1e8a4a">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -195,7 +195,7 @@ strong,b{font-weight:700}
 @media (max-width:1023.98px){.cutoff__big{font-size:18px}.cutoff__card{padding:14px}}
 
 /* ==========================================================================
-   4. 카테고리 바로가기 (8개)
+   4. Jump to a category (8개)
    ========================================================================== */
 .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 4px}
 @media (min-width:768px){.cats{grid-template-columns:repeat(8,1fr);gap:12px}}
@@ -207,7 +207,7 @@ strong,b{font-weight:700}
 @media (min-width:768px){.cat__ic{width:72px;height:72px}.cat{font-size:14px}}
 
 /* ==========================================================================
-   5. 오늘의 특가 (4개) — 할인 전후 · 마감 시각 사실 표기
+   5. Today's deals (4개) — 할인 전후 · 마감 시각 사실 표기
    ========================================================================== */
 .deals-sec{background:var(--surface)}
 .deals-note{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
@@ -274,7 +274,7 @@ strong,b{font-weight:700}
 .pgrid-empty[hidden]{display:none}
 
 /* ==========================================================================
-   7. 농부 이야기 — Editorial 20% (여백 넓게 · 채도 낮춤 · 느린 호흡)
+   7. From the growers — Editorial 20% (여백 넓게 · 채도 낮춤 · 느린 호흡)
    ========================================================================== */
 .story-sec{background:#fbfaf6}
 .story-sec .section__title{font-weight:600;font-size:24px}
@@ -476,7 +476,7 @@ text-decoration:none}
 </style>
 </head>
 <body><div class="langswitch" role="group" aria-label="Language"><a href="./" hreflang="ko" lang="ko" aria-current="true">KO</a><a href="en/" hreflang="en" lang="en">EN</a></div>
-<a class="skip" href="#main">본문으로 바로가기</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <!-- 인라인 SVG 스프라이트 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -514,12 +514,12 @@ text-decoration:none}
 </svg>
 
 <!-- ============ 1. 혜택 안내 바 ============ -->
-<div class="benefit" role="region" aria-label="혜택 안내">
+<div class="benefit" role="region" aria-label="Offers">
   <div class="wrap">
-    <span><b>3만원 이상 무료배송</b></span>
+    <span><b>Free delivery over KRW 30,000</b></span>
     <span class="benefit__sep" aria-hidden="true">·</span>
-    <span>오후 2시 전 주문 시 <b>내일 새벽 7시 전 도착</b></span>
-    <span class="benefit__extra"><span class="benefit__sep" aria-hidden="true">·</span> 첫 주문 3,000원 쿠폰</span>
+    <span>Order before 2 PM and <b>Arrives before 7 AM tomorrow</b></span>
+    <span class="benefit__extra"><span class="benefit__sep" aria-hidden="true">·</span> KRW 3,000 off your first order</span>
   </div>
 </div>
 
@@ -527,77 +527,77 @@ text-decoration:none}
 <header class="header" id="site-header">
   <div class="wrap">
     <div class="header__row">
-      <a class="logo" href="#top" aria-label="새벽밭 홈">
+      <a class="logo" href="#top" aria-label="Saebyeokbat home">
         <span class="logo__mark" aria-hidden="true"><svg class="icon"><use href="#i-sprout"/></svg></span>
-        새벽밭 <small>산지직송 마켓</small>
+        Saebyeokbat <small>Direct-from-source market</small>
       </a>
 
       <div class="search" id="search">
         <form class="search__form" role="search" id="search-form" autocomplete="off">
-          <label class="sr-only" for="q">상품 검색</label>
-          <input class="search__input" id="q" type="search" name="q" placeholder="복숭아, 전복, 유정란… 오늘 뭐 드실래요?" enterkeyhint="search">
-          <button class="search__clear" type="button" id="search-clear" aria-label="검색어 지우기"><svg class="icon"><use href="#i-close"/></svg></button>
-          <button class="search__btn" type="submit" aria-label="검색"><svg class="icon"><use href="#i-search"/></svg></button>
+          <label class="sr-only" for="q">Search products</label>
+          <input class="search__input" id="q" type="search" name="q" placeholder="Peaches, abalone, free-range eggs… what will it be today?" enterkeyhint="search">
+          <button class="search__clear" type="button" id="search-clear" aria-label="Clear search"><svg class="icon"><use href="#i-close"/></svg></button>
+          <button class="search__btn" type="submit" aria-label="Search"><svg class="icon"><use href="#i-search"/></svg></button>
         </form>
         <div class="search__pop" id="search-pop">
-          <p class="search__pop-title">인기 검색어 · 8월 3주</p>
+          <p class="search__pop-title">Trending searches · third week of August</p>
           <div class="search__tags">
-            <button type="button" data-q="복숭아">1 복숭아</button>
-            <button type="button" data-q="옥수수">2 옥수수</button>
-            <button type="button" data-q="전복">3 전복</button>
-            <button type="button" data-q="유정란">4 유정란</button>
-            <button type="button" data-q="한우">5 한우</button>
-            <button type="button" data-q="토마토">6 토마토</button>
-            <button type="button" data-q="블루베리">7 블루베리</button>
-            <button type="button" data-q="참외">8 참외</button>
+            <button type="button" data-q="복숭아">1 Peaches</button>
+            <button type="button" data-q="옥수수">2 Corn</button>
+            <button type="button" data-q="전복">3 Abalone</button>
+            <button type="button" data-q="유정란">4 Free-range eggs</button>
+            <button type="button" data-q="한우">5 Hanwoo beef</button>
+            <button type="button" data-q="토마토">6 Tomatoes</button>
+            <button type="button" data-q="블루베리">7 Blueberries</button>
+            <button type="button" data-q="참외">8 Korean melon</button>
           </div>
         </div>
       </div>
 
       <div class="header__actions">
-        <a class="iconbtn" href="#login" aria-label="로그인">
-          <svg class="icon"><use href="#i-user"/></svg><span class="iconbtn__label">로그인</span>
+        <a class="iconbtn" href="#login" aria-label="Log in">
+          <svg class="icon"><use href="#i-user"/></svg><span class="iconbtn__label">Log in</span>
         </a>
-        <a class="iconbtn iconbtn--wish" href="#wish" aria-label="찜한 상품">
-          <svg class="icon"><use href="#i-heart"/></svg><span class="iconbtn__label">찜</span>
+        <a class="iconbtn iconbtn--wish" href="#wish" aria-label="Saved items">
+          <svg class="icon"><use href="#i-heart"/></svg><span class="iconbtn__label">Saved</span>
           <span class="iconbtn__badge num" id="wish-badge" data-zero="true" aria-live="polite">0</span>
         </a>
-        <button class="iconbtn" type="button" id="cart-open" aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="장바구니 열기">
-          <svg class="icon"><use href="#i-cart"/></svg><span class="iconbtn__label">장바구니</span>
+        <button class="iconbtn" type="button" id="cart-open" aria-haspopup="dialog" aria-controls="cart-drawer" aria-label="Open basket">
+          <svg class="icon"><use href="#i-cart"/></svg><span class="iconbtn__label">Basket</span>
           <span class="iconbtn__badge num" id="cart-badge" data-zero="true" aria-live="polite">0</span>
         </button>
       </div>
     </div>
 
-    <nav class="catnav" aria-label="카테고리">
+    <nav class="catnav" aria-label="Categories">
       <div class="catnav__inner">
         <button class="catnav__all" type="button" id="catall-btn" aria-expanded="false" aria-controls="catall-panel">
-          <svg class="icon"><use href="#i-menu"/></svg> 전체 카테고리
+          <svg class="icon"><use href="#i-menu"/></svg> All categories
         </button>
-        <a class="catnav__link" href="#cat-veg">채소</a>
-        <a class="catnav__link" href="#cat-fruit">과일</a>
-        <a class="catnav__link" href="#cat-sea">수산·해산</a>
-        <a class="catnav__link" href="#cat-meat">정육·계란</a>
-        <a class="catnav__link" href="#cat-dairy">유제품·두부</a>
-        <a class="catnav__link" href="#cat-grain">곡물·잡곡</a>
-        <a class="catnav__link" href="#cat-side">김치·반찬</a>
-        <a class="catnav__link" href="#cat-sauce">장·양념</a>
+        <a class="catnav__link" href="#cat-veg">Vegetables</a>
+        <a class="catnav__link" href="#cat-fruit">Fruit</a>
+        <a class="catnav__link" href="#cat-sea">Seafood</a>
+        <a class="catnav__link" href="#cat-meat">Meat & eggs</a>
+        <a class="catnav__link" href="#cat-dairy">Dairy & tofu</a>
+        <a class="catnav__link" href="#cat-grain">Grains</a>
+        <a class="catnav__link" href="#cat-side">Kimchi & side dishes</a>
+        <a class="catnav__link" href="#cat-sauce">Sauces & seasonings</a>
         <span class="catnav__divider" aria-hidden="true"></span>
-        <a class="catnav__link catnav__link--accent" href="#deals">오늘의 특가</a>
-        <a class="catnav__link" href="#best">베스트</a>
-        <a class="catnav__link" href="#stories">농부 이야기</a>
-        <a class="catnav__link" href="#assure">배송·보장</a>
+        <a class="catnav__link catnav__link--accent" href="#deals">Today's deals</a>
+        <a class="catnav__link" href="#best">Best sellers</a>
+        <a class="catnav__link" href="#stories">From the growers</a>
+        <a class="catnav__link" href="#assure">Delivery & guarantee</a>
       </div>
       <div class="catnav__panel" id="catall-panel">
         <ul>
-          <li><a href="#cat-veg"><svg class="icon"><use href="#c-leaf"/></svg>채소 <small>412</small></a></li>
-          <li><a href="#cat-fruit"><svg class="icon"><use href="#c-apple"/></svg>과일 <small>238</small></a></li>
-          <li><a href="#cat-sea"><svg class="icon"><use href="#c-fish"/></svg>수산·해산 <small>167</small></a></li>
-          <li><a href="#cat-meat"><svg class="icon"><use href="#c-egg"/></svg>정육·계란 <small>129</small></a></li>
-          <li><a href="#cat-dairy"><svg class="icon"><use href="#c-milk"/></svg>유제품·두부 <small>96</small></a></li>
-          <li><a href="#cat-grain"><svg class="icon"><use href="#c-wheat"/></svg>곡물·잡곡 <small>84</small></a></li>
-          <li><a href="#cat-side"><svg class="icon"><use href="#c-jar"/></svg>김치·반찬 <small>151</small></a></li>
-          <li><a href="#cat-sauce"><svg class="icon"><use href="#c-bottle"/></svg>장·양념 <small>73</small></a></li>
+          <li><a href="#cat-veg"><svg class="icon"><use href="#c-leaf"/></svg>Vegetables <small>412</small></a></li>
+          <li><a href="#cat-fruit"><svg class="icon"><use href="#c-apple"/></svg>Fruit <small>238</small></a></li>
+          <li><a href="#cat-sea"><svg class="icon"><use href="#c-fish"/></svg>Seafood <small>167</small></a></li>
+          <li><a href="#cat-meat"><svg class="icon"><use href="#c-egg"/></svg>Meat & eggs <small>129</small></a></li>
+          <li><a href="#cat-dairy"><svg class="icon"><use href="#c-milk"/></svg>Dairy & tofu <small>96</small></a></li>
+          <li><a href="#cat-grain"><svg class="icon"><use href="#c-wheat"/></svg>Grains <small>84</small></a></li>
+          <li><a href="#cat-side"><svg class="icon"><use href="#c-jar"/></svg>Kimchi & side dishes <small>151</small></a></li>
+          <li><a href="#cat-sauce"><svg class="icon"><use href="#c-bottle"/></svg>Sauces & seasonings <small>73</small></a></li>
         </ul>
       </div>
     </nav>
@@ -607,184 +607,184 @@ text-decoration:none}
 <main id="main">
   <!-- ============ 3. Hero 기획전 슬라이더 + 주문 마감 카드 ============ -->
   <section class="hero-area" aria-labelledby="hero-title">
-    <h1 class="sr-only" id="hero-title">새벽밭 — 산지에서 새벽에 출발하는 식료품 직송 마켓</h1>
+    <h1 class="sr-only" id="hero-title">Saebyeokbat — groceries that leave the source before dawn</h1>
     <div class="wrap hero-grid">
-      <div class="hero" id="hero-slider" aria-roledescription="carousel" aria-label="기획전 배너">
+      <div class="hero" id="hero-slider" aria-roledescription="carousel" aria-label="Feature banner">
         <div class="hero__track" id="hero-track">
           <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="1 / 3">
-            <img src="assets/img/peach-fruit-1101.webp" width="1400" height="560" alt="여름 햇살 아래 수확한 복숭아와 자두가 담긴 상자" loading="eager" fetchpriority="high">
+            <img src="../assets/img/peach-fruit-1101.webp" width="1400" height="560" alt="A box of peaches and plums picked under summer sun" loading="eager" fetchpriority="high">
             <div class="hero__copy">
-              <span class="hero__eyebrow">여름 과일 기획전 · 8.10 ~ 8.23</span>
-              <h2 class="hero__title">복숭아·자두·블루베리<br>산지 가격 그대로, 최대 25%</h2>
-              <p class="hero__desc">음성·김천·상주 농가에서 <b>새벽에 딴 과일</b>이 다음 날 새벽 도착합니다. 3만원 이상 무료배송.</p>
-              <div class="hero__cta"><a class="btn btn--light" href="#best">기획전 상품 보기</a></div>
+              <span class="hero__eyebrow">Summer fruit feature · Aug 10–23</span>
+              <h2 class="hero__title">Peaches, plums, blueberries<br>Source prices, up to 25% off</h2>
+              <p class="hero__desc">From farms in Eumseong, Gimcheon, and Sangju <b>Fruit picked at dawn</b> arrives before dawn the next day. Free delivery over KRW 30,000.</p>
+              <div class="hero__cta"><a class="btn btn--light" href="#best">See the featured items</a></div>
             </div>
           </div>
           <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="2 / 3" aria-hidden="true">
-            <img src="assets/img/abalone-seafood-1102.webp" width="1400" height="560" alt="완도 바다에서 갓 건져 올린 활전복" loading="lazy">
+            <img src="../assets/img/abalone-seafood-1102.webp" width="1400" height="560" alt="Live abalone just lifted from the sea off Wando" loading="lazy">
             <div class="hero__copy">
-              <span class="hero__eyebrow">완도 수산 직송 · 매주 화·목·토 출고</span>
-              <h2 class="hero__title">완도 활전복<br>바다에서 새벽에 출발합니다</h2>
-              <p class="hero__desc">양식장에서 <b>출하 당일 새벽</b> 선별·포장. 살아 있는 상태로 도착하지 않으면 전액 환불.</p>
-              <div class="hero__cta"><a class="btn btn--light" href="#cat-sea">수산 상품 보기</a></div>
+              <span class="hero__eyebrow">Direct from Wando · ships Tue, Thu, Sat</span>
+              <h2 class="hero__title">Live Wando abalone<br>Leaves the sea before dawn</h2>
+              <p class="hero__desc">From the farm <b>Before dawn on dispatch day</b> Graded and packed. A full refund if it doesn't arrive alive.</p>
+              <div class="hero__cta"><a class="btn btn--light" href="#cat-sea">See seafood</a></div>
             </div>
           </div>
           <div class="hero__slide hero__slide--orange" role="group" aria-roledescription="slide" aria-label="3 / 3" aria-hidden="true">
-            <img src="assets/img/vegetables-market-1103.webp" width="1400" height="560" alt="시장 좌판에 쌓인 갖가지 제철 채소" loading="lazy">
+            <img src="../assets/img/vegetables-market-1103.webp" width="1400" height="560" alt="Seasonal vegetables piled on a market stall" loading="lazy">
             <div class="hero__copy">
-              <span class="hero__eyebrow">첫 주문 혜택</span>
-              <h2 class="hero__title">처음이라면<br>3,000원 쿠폰 + 무료배송</h2>
-              <p class="hero__desc">가입 즉시 지급, 발급일로부터 <b>30일 사용</b>. 첫 주문은 금액과 상관없이 배송비 무료.</p>
-              <div class="hero__cta"><a class="btn btn--light" href="#login">가입하고 쿠폰 받기</a></div>
+              <span class="hero__eyebrow">First order offer</span>
+              <h2 class="hero__title">New here?<br>KRW 3,000 coupon + free delivery</h2>
+              <p class="hero__desc">Issued on sign-up, valid from that day for <b>valid 30 days</b>. Your first order ships free, whatever the total.</p>
+              <div class="hero__cta"><a class="btn btn--light" href="#login">Sign up for the coupon</a></div>
             </div>
           </div>
         </div>
-        <button class="hero__arrow hero__arrow--prev" type="button" id="hero-prev" aria-label="이전 배너"><svg class="icon"><use href="#i-chev-l"/></svg></button>
-        <button class="hero__arrow hero__arrow--next" type="button" id="hero-next" aria-label="다음 배너"><svg class="icon"><use href="#i-chev-r"/></svg></button>
+        <button class="hero__arrow hero__arrow--prev" type="button" id="hero-prev" aria-label="Previous banner"><svg class="icon"><use href="#i-chev-l"/></svg></button>
+        <button class="hero__arrow hero__arrow--next" type="button" id="hero-next" aria-label="Next banner"><svg class="icon"><use href="#i-chev-r"/></svg></button>
         <div class="hero__ctrl">
           <span class="num" id="hero-count" aria-live="polite">1 / 3</span>
-          <div class="hero__dots" role="tablist" aria-label="배너 선택">
-            <button class="hero__dot" type="button" role="tab" aria-selected="true" aria-label="1번 배너" data-index="0"></button>
-            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="2번 배너" data-index="1"></button>
-            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="3번 배너" data-index="2"></button>
+          <div class="hero__dots" role="tablist" aria-label="Choose a banner">
+            <button class="hero__dot" type="button" role="tab" aria-selected="true" aria-label="Banner 1" data-index="0"></button>
+            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="Banner 2" data-index="1"></button>
+            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="Banner 3" data-index="2"></button>
           </div>
-          <button type="button" id="hero-toggle" aria-pressed="false" aria-label="자동 재생 일시정지"><svg class="icon" id="hero-toggle-icon"><use href="#i-pause"/></svg></button>
+          <button type="button" id="hero-toggle" aria-pressed="false" aria-label="Pause autoplay"><svg class="icon" id="hero-toggle-icon"><use href="#i-pause"/></svg></button>
         </div>
       </div>
 
-      <aside class="cutoff" aria-label="주문 마감 및 혜택 안내">
+      <aside class="cutoff" aria-label="Cut-off times and benefits">
         <div class="cutoff__card cutoff__card--green">
-          <span class="cutoff__label"><svg class="icon"><use href="#i-truck"/></svg> 새벽배송 주문 마감</span>
-          <p class="cutoff__big num" id="cutoff-big">오늘 14:00<small>까지</small></p>
-          <p class="cutoff__desc" id="cutoff-desc">지금 주문하면 <b>내일 새벽 7시 전</b> 도착</p>
+          <span class="cutoff__label"><svg class="icon"><use href="#i-truck"/></svg> Dawn delivery cut-off</span>
+          <p class="cutoff__big num" id="cutoff-big">14:00 today<small>until</small></p>
+          <p class="cutoff__desc" id="cutoff-desc">Order now and <b>before 7 AM tomorrow</b> Arrives</p>
           <div class="cutoff__meter" aria-hidden="true"><i id="cutoff-meter" style="width:0%"></i></div>
-          <p class="cutoff__desc" style="font-size:12px;color:var(--muted)">권역: 서울·경기·인천 전역, 대전·세종·충청, 대구·부산 일부. 그 외 지역은 택배 1~2일.</p>
+          <p class="cutoff__desc" style="font-size:12px;color:var(--muted)">Coverage: all of Seoul, Gyeonggi, and Incheon; Daejeon, Sejong, and Chungcheong; parts of Daegu and Busan. Elsewhere, 1–2 days by courier.</p>
         </div>
         <div class="cutoff__card cutoff__coupon">
-          <span class="cutoff__label" style="color:var(--orange)"><svg class="icon"><use href="#i-check"/></svg> 첫 주문 혜택</span>
-          <p class="cutoff__big">3,000원 쿠폰</p>
-          <p class="cutoff__desc">가입 즉시 지급 · 30일 사용 · 첫 주문 배송비 무료</p>
-          <a class="btn btn--ghost btn--sm" href="#login">가입하고 받기</a>
+          <span class="cutoff__label" style="color:var(--orange)"><svg class="icon"><use href="#i-check"/></svg> First order offer</span>
+          <p class="cutoff__big">KRW 3,000 coupon</p>
+          <p class="cutoff__desc">Issued on sign-up · valid 30 days · free delivery on your first order</p>
+          <a class="btn btn--ghost btn--sm" href="#login">Sign up and claim</a>
         </div>
       </aside>
     </div>
   </section>
 
-  <!-- ============ 4. 카테고리 바로가기 ============ -->
+  <!-- ============ 4. Jump to a category ============ -->
   <section class="section" aria-labelledby="cats-title" style="padding-top:36px">
     <div class="wrap">
-      <h2 class="sr-only" id="cats-title">카테고리 바로가기</h2>
+      <h2 class="sr-only" id="cats-title">Jump to a category</h2>
       <ul class="cats">
-        <li><a class="cat" href="#cat-veg" id="cat-veg"><span class="cat__ic"><img src="assets/img/vegetables-market-1601.webp" width="144" height="144" alt="" loading="lazy"></span>채소</a></li>
-        <li><a class="cat" href="#cat-fruit" id="cat-fruit"><span class="cat__ic"><img src="assets/img/fruit-fresh-1602.webp" width="144" height="144" alt="" loading="lazy"></span>과일</a></li>
-        <li><a class="cat" href="#cat-sea" id="cat-sea"><span class="cat__ic"><img src="assets/img/fish-market-1603.webp" width="144" height="144" alt="" loading="lazy"></span>수산·해산</a></li>
-        <li><a class="cat" href="#cat-meat" id="cat-meat"><span class="cat__ic"><img src="assets/img/eggs-basket-1604.webp" width="144" height="144" alt="" loading="lazy"></span>정육·계란</a></li>
-        <li><a class="cat" href="#cat-dairy" id="cat-dairy"><span class="cat__ic"><img src="assets/img/milk-dairy-1605.webp" width="144" height="144" alt="" loading="lazy"></span>유제품·두부</a></li>
-        <li><a class="cat" href="#cat-grain" id="cat-grain"><span class="cat__ic"><img src="assets/img/rice-grain-1606.webp" width="144" height="144" alt="" loading="lazy"></span>곡물·잡곡</a></li>
-        <li><a class="cat" href="#cat-side" id="cat-side"><span class="cat__ic"><img src="assets/img/kimchi-food-1607.webp" width="144" height="144" alt="" loading="lazy"></span>김치·반찬</a></li>
-        <li><a class="cat" href="#cat-sauce" id="cat-sauce"><span class="cat__ic"><img src="assets/img/sauce-jar-1608.webp" width="144" height="144" alt="" loading="lazy"></span>장·양념</a></li>
+        <li><a class="cat" href="#cat-veg" id="cat-veg"><span class="cat__ic"><img src="../assets/img/vegetables-market-1601.webp" width="144" height="144" alt="" loading="lazy"></span>Vegetables</a></li>
+        <li><a class="cat" href="#cat-fruit" id="cat-fruit"><span class="cat__ic"><img src="../assets/img/fruit-fresh-1602.webp" width="144" height="144" alt="" loading="lazy"></span>Fruit</a></li>
+        <li><a class="cat" href="#cat-sea" id="cat-sea"><span class="cat__ic"><img src="../assets/img/fish-market-1603.webp" width="144" height="144" alt="" loading="lazy"></span>Seafood</a></li>
+        <li><a class="cat" href="#cat-meat" id="cat-meat"><span class="cat__ic"><img src="../assets/img/eggs-basket-1604.webp" width="144" height="144" alt="" loading="lazy"></span>Meat & eggs</a></li>
+        <li><a class="cat" href="#cat-dairy" id="cat-dairy"><span class="cat__ic"><img src="../assets/img/milk-dairy-1605.webp" width="144" height="144" alt="" loading="lazy"></span>Dairy & tofu</a></li>
+        <li><a class="cat" href="#cat-grain" id="cat-grain"><span class="cat__ic"><img src="../assets/img/rice-grain-1606.webp" width="144" height="144" alt="" loading="lazy"></span>Grains</a></li>
+        <li><a class="cat" href="#cat-side" id="cat-side"><span class="cat__ic"><img src="../assets/img/kimchi-food-1607.webp" width="144" height="144" alt="" loading="lazy"></span>Kimchi & side dishes</a></li>
+        <li><a class="cat" href="#cat-sauce" id="cat-sauce"><span class="cat__ic"><img src="../assets/img/sauce-jar-1608.webp" width="144" height="144" alt="" loading="lazy"></span>Sauces & seasonings</a></li>
       </ul>
     </div>
   </section>
 
-  <!-- ============ 5. 오늘의 특가 ============ -->
+  <!-- ============ 5. Today's deals ============ -->
   <section class="section deals-sec" id="deals" aria-labelledby="deals-title">
     <div class="wrap">
       <div class="section__head">
         <div>
-          <h2 class="section__title" id="deals-title">오늘의 특가</h2>
-          <p class="section__sub deals-note"><svg class="icon"><use href="#i-clock"/></svg><span id="deals-date">오늘 23:00까지</span> · 매일 자정에 4개 상품이 바뀝니다 · 1인 3개 한정</p>
+          <h2 class="section__title" id="deals-title">Today's deals</h2>
+          <p class="section__sub deals-note"><svg class="icon"><use href="#i-clock"/></svg><span id="deals-date">Until 23:00 today</span> · four items change at midnight · limit 3 per customer</p>
         </div>
-        <a class="section__more" href="#deals">특가 전체 <svg class="icon"><use href="#i-chev-r"/></svg></a>
+        <a class="section__more" href="#deals">All deals <svg class="icon"><use href="#i-chev-r"/></svg></a>
       </div>
 
       <div class="deals">
-        <article class="deal" data-id="d1" data-name="성주 참외 2kg (7~9과)" data-price="13900" data-origin="경북 성주" data-img="assets/img/melon-fruit-1201.webp">
+        <article class="deal" data-id="d1" data-name="Seongju melon 2kg (7–9 fruit)" data-price="13900" data-origin="경북 성주" data-img="../assets/img/melon-fruit-1201.webp">
           <div class="deal__media">
-            <img src="assets/img/melon-fruit-1201.webp" width="600" height="600" alt="노란 성주 참외 2kg 상자" loading="lazy">
-            <span class="deal__off" aria-label="30% 할인">-30%</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="성주 참외 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/melon-fruit-1201.webp" width="600" height="600" alt="A 2kg box of yellow Seongju melon" loading="lazy">
+            <span class="deal__off" aria-label="30% off">-30%</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Seongju melon"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="deal__body">
-            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>경북 성주 · 이만석 농가</p>
-            <h3 class="p-name">성주 참외 2kg (7~9과)</h3>
+            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>Seongju, Gyeongbuk · Manseok Lee's farm</p>
+            <h3 class="p-name">Seongju melon 2kg (7–9 fruit)</h3>
             <div class="p-price">
-              <span class="p-price__now num">13,900<small>원</small></span>
-              <span class="p-price__was num">19,900원</span>
-              <span class="p-price__unit num">100g당 695원</span>
+              <span class="p-price__now num">13,900<small> KRW</small></span>
+              <span class="p-price__was num">KRW 19,900</span>
+              <span class="p-price__unit num">KRW 695 per 100g</span>
             </div>
             <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.7</b> (2,318)</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송</span>
-            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>오늘 23:00까지</span></span>
-            <span class="deal__limit num">오늘 준비 300상자 중 <b>112상자</b> 남음</span>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery</span>
+            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>Until 23:00 today</span></span>
+            <span class="deal__limit num">of 300 boxes prepared today <b>112 boxes</b> left</span>
           </div>
-          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">담기</button></div>
+          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">Add</button></div>
         </article>
 
-        <article class="deal" data-id="d2" data-name="완도 활전복 대 10미 (약 1kg)" data-price="29900" data-origin="전남 완도" data-img="assets/img/abalone-seafood-1202.webp">
+        <article class="deal" data-id="d2" data-name="Live Wando abalone, large, 10 (about 1kg)" data-price="29900" data-origin="전남 완도" data-img="../assets/img/abalone-seafood-1202.webp">
           <div class="deal__media">
-            <img src="assets/img/abalone-seafood-1202.webp" width="600" height="600" alt="얼음 위에 놓인 완도 활전복 10미" loading="lazy">
-            <span class="deal__off" aria-label="23% 할인">-23%</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="완도 활전복 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/abalone-seafood-1202.webp" width="600" height="600" alt="Ten live Wando abalone on ice" loading="lazy">
+            <span class="deal__off" aria-label="23% off">-23%</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save live Wando abalone"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="deal__body">
-            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>전남 완도 · 김성호 어가</p>
-            <h3 class="p-name">완도 활전복 대 10미 (약 1kg)</h3>
+            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>Wando, Jeonnam · Seongho Kim's farm</p>
+            <h3 class="p-name">Live Wando abalone, large, 10 (about 1kg)</h3>
             <div class="p-price">
-              <span class="p-price__now num">29,900<small>원</small></span>
-              <span class="p-price__was num">39,000원</span>
-              <span class="p-price__unit num">1미당 2,990원 · 화·목·토 출고</span>
+              <span class="p-price__now num">29,900<small> KRW</small></span>
+              <span class="p-price__was num">KRW 39,000</span>
+              <span class="p-price__unit num">KRW 2,990 each · ships Tue, Thu, Sat</span>
             </div>
             <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.8</b> (1,102)</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>산지직송 · 다음 출고일 발송</span>
-            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>오늘 23:00까지</span></span>
-            <span class="deal__limit num">이번 출고분 150건 중 <b>41건</b> 남음</span>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Direct from the source · ships on the next dispatch day</span>
+            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>Until 23:00 today</span></span>
+            <span class="deal__limit num">of 150 in this dispatch <b>41</b> left</span>
           </div>
-          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">담기</button></div>
+          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">Add</button></div>
         </article>
 
-        <article class="deal" data-id="d3" data-name="무항생제 동물복지 유정란 30구" data-price="9900" data-origin="충남 홍성" data-img="assets/img/eggs-basket-1203.webp">
+        <article class="deal" data-id="d3" data-name="Antibiotic-free, welfare-certified free-range eggs, 30" data-price="9900" data-origin="충남 홍성" data-img="../assets/img/eggs-basket-1203.webp">
           <div class="deal__media">
-            <img src="assets/img/eggs-basket-1203.webp" width="600" height="600" alt="종이 트레이에 담긴 갈색 유정란 30구" loading="lazy">
-            <span class="deal__off" aria-label="23% 할인">-23%</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="유정란 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/eggs-basket-1203.webp" width="600" height="600" alt="Thirty brown free-range eggs in a paper tray" loading="lazy">
+            <span class="deal__off" aria-label="23% off">-23%</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save free-range eggs"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="deal__body">
-            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>충남 홍성 · 풀무 농장</p>
-            <h3 class="p-name">무항생제 동물복지 유정란 30구</h3>
+            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>Hongseong, Chungnam · Pulmu Farm</p>
+            <h3 class="p-name">Antibiotic-free, welfare-certified free-range eggs, 30</h3>
             <div class="p-price">
-              <span class="p-price__now num">9,900<small>원</small></span>
-              <span class="p-price__was num">12,900원</span>
-              <span class="p-price__unit num">1구당 330원 · 산란일 표기</span>
+              <span class="p-price__now num">9,900<small> KRW</small></span>
+              <span class="p-price__was num">KRW 12,900</span>
+              <span class="p-price__unit num">KRW 330 per egg · lay date shown</span>
             </div>
             <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.9</b> (5,047)</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송</span>
-            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>오늘 23:00까지</span></span>
-            <span class="deal__limit num">오늘 준비 500판 중 <b>263판</b> 남음</span>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery</span>
+            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>Until 23:00 today</span></span>
+            <span class="deal__limit num">of 500 trays prepared today <b>263 trays</b> left</span>
           </div>
-          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">담기</button></div>
+          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">Add</button></div>
         </article>
 
-        <article class="deal" data-id="d4" data-name="해남 햇 밤고구마 3kg (중)" data-price="11900" data-origin="전남 해남" data-img="assets/img/sweetpotato-harvest-1204.webp">
+        <article class="deal" data-id="d4" data-name="Haenam new chestnut sweet potatoes 3kg (medium)" data-price="11900" data-origin="전남 해남" data-img="../assets/img/sweetpotato-harvest-1204.webp">
           <div class="deal__media">
-            <img src="assets/img/sweetpotato-harvest-1204.webp" width="600" height="600" alt="흙이 살짝 묻은 해남 햇 밤고구마" loading="lazy">
-            <span class="deal__off" aria-label="25% 할인">-25%</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="해남 밤고구마 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/sweetpotato-harvest-1204.webp" width="600" height="600" alt="Haenam new sweet potatoes, lightly soiled" loading="lazy">
+            <span class="deal__off" aria-label="25% off">-25%</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Haenam sweet potatoes"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="deal__body">
-            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>전남 해남 · 산이면 작목반</p>
-            <h3 class="p-name">해남 햇 밤고구마 3kg (중)</h3>
+            <p class="p-origin"><svg class="icon" style="width:12px;height:12px"><use href="#i-pin"/></svg>Haenam, Jeonnam · the growers' group, Sani-myeon</p>
+            <h3 class="p-name">Haenam new chestnut sweet potatoes 3kg (medium)</h3>
             <div class="p-price">
-              <span class="p-price__now num">11,900<small>원</small></span>
-              <span class="p-price__was num">15,900원</span>
-              <span class="p-price__unit num">100g당 397원 · 8월 첫 수확분</span>
+              <span class="p-price__now num">11,900<small> KRW</small></span>
+              <span class="p-price__was num">KRW 15,900</span>
+              <span class="p-price__unit num">KRW 397 per 100g · first August harvest</span>
             </div>
             <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.6</b> (863)</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송</span>
-            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>오늘 23:00까지</span></span>
-            <span class="deal__limit num">오늘 준비 240상자 중 <b>58상자</b> 남음</span>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery</span>
+            <span class="deal__time"><svg class="icon"><use href="#i-clock"/></svg><span data-deadline>Until 23:00 today</span></span>
+            <span class="deal__limit num">of 240 boxes prepared today <b>58 boxes</b> left</span>
           </div>
-          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">담기</button></div>
+          <div class="deal__foot"><button class="btn btn--primary add-cart" type="button">Add</button></div>
         </article>
       </div>
     </div>
@@ -795,260 +795,260 @@ text-decoration:none}
     <div class="wrap">
       <div class="section__head">
         <div>
-          <h2 class="section__title" id="best-title">이번 주 베스트</h2>
-          <p class="section__sub">최근 7일 판매량 기준 · 매일 오전 6시 갱신</p>
+          <h2 class="section__title" id="best-title">This week's best sellers</h2>
+          <p class="section__sub">By sales over the last 7 days · refreshed daily at 6 AM</p>
         </div>
-        <a class="section__more" href="#best">베스트 100 <svg class="icon"><use href="#i-chev-r"/></svg></a>
+        <a class="section__more" href="#best">Top 100 <svg class="icon"><use href="#i-chev-r"/></svg></a>
       </div>
 
-      <div class="filters" role="group" aria-label="카테고리 필터" id="filters">
-        <button class="filter" type="button" data-filter="all" aria-pressed="true">전체</button>
-        <button class="filter" type="button" data-filter="veg" aria-pressed="false">채소</button>
-        <button class="filter" type="button" data-filter="fruit" aria-pressed="false">과일</button>
-        <button class="filter" type="button" data-filter="sea" aria-pressed="false">수산·해산</button>
-        <button class="filter" type="button" data-filter="meat" aria-pressed="false">정육·계란</button>
+      <div class="filters" role="group" aria-label="Filter by category" id="filters">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="veg" aria-pressed="false">Vegetables</button>
+        <button class="filter" type="button" data-filter="fruit" aria-pressed="false">Fruit</button>
+        <button class="filter" type="button" data-filter="sea" aria-pressed="false">Seafood</button>
+        <button class="filter" type="button" data-filter="meat" aria-pressed="false">Meat & eggs</button>
       </div>
-      <div class="grid-status" id="grid-status" aria-live="polite"><span id="grid-status-text">8개 상품</span><button type="button" id="grid-reset" hidden>전체 보기</button></div>
+      <div class="grid-status" id="grid-status" aria-live="polite"><span id="grid-status-text">8 items</span><button type="button" id="grid-reset" hidden>See all</button></div>
 
       <div class="pgrid" id="pgrid">
-        <article class="pcard" data-id="p1" data-cat="fruit" data-name="음성 황도 복숭아 2kg (6~8과)" data-price="24900" data-origin="충북 음성" data-img="assets/img/peach-fruit-1301.webp">
+        <article class="pcard" data-id="p1" data-cat="fruit" data-name="Eumseong yellow peaches 2kg (6–8 fruit)" data-price="24900" data-origin="충북 음성" data-img="../assets/img/peach-fruit-1301.webp">
           <div class="pcard__media">
-            <img src="assets/img/peach-fruit-1301.webp" width="600" height="600" alt="붉게 익은 음성 황도 복숭아" loading="lazy">
-            <span class="pcard__rank" aria-label="1위">1</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="음성 황도 복숭아 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/peach-fruit-1301.webp" width="600" height="600" alt="Ripe yellow peaches from Eumseong" loading="lazy">
+            <span class="pcard__rank" aria-label="#1">1</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Eumseong yellow peaches"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">충북 음성 · 이재원 농가</p>
-            <h3 class="p-name">음성 황도 복숭아 2kg (6~8과)</h3>
-            <div class="p-price"><span class="p-price__now num">24,900<small>원</small></span><span class="p-price__unit num">100g당 1,245원</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.8</b> (1,284) · 재구매 41%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송 · 내일 7시 전 도착</span>
+            <p class="p-origin">Eumseong, Chungbuk · Jaewon Lee's farm</p>
+            <h3 class="p-name">Eumseong yellow peaches 2kg (6–8 fruit)</h3>
+            <div class="p-price"><span class="p-price__now num">24,900<small> KRW</small></span><span class="p-price__unit num">KRW 1,245 per 100g</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.8</b> (1,284) · 41% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery · arrives before 7 AM tomorrow</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
-        <article class="pcard" data-id="p2" data-cat="veg" data-name="괴산 초당옥수수 10개" data-price="14900" data-origin="충북 괴산" data-img="assets/img/corn-fresh-1302.webp">
+        <article class="pcard" data-id="p2" data-cat="veg" data-name="Goesan sweet corn, 10 ears" data-price="14900" data-origin="충북 괴산" data-img="../assets/img/corn-fresh-1302.webp">
           <div class="pcard__media">
-            <img src="assets/img/corn-fresh-1302.webp" width="600" height="600" alt="껍질을 벗긴 노란 초당옥수수" loading="lazy">
-            <span class="pcard__rank" aria-label="2위">2</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="괴산 초당옥수수 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/corn-fresh-1302.webp" width="600" height="600" alt="Husked yellow sweet corn" loading="lazy">
+            <span class="pcard__rank" aria-label="#2">2</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Goesan sweet corn"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">충북 괴산 · 박선희 농가</p>
-            <h3 class="p-name">괴산 초당옥수수 10개 (생식 가능)</h3>
-            <div class="p-price"><span class="p-price__now num">14,900<small>원</small></span><span class="p-price__unit num">1개당 1,490원 · 수확 후 12시간 내 발송</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.9</b> (2,051) · 재구매 53%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송 · 내일 7시 전 도착</span>
+            <p class="p-origin">Goesan, Chungbuk · Seonhee Park's farm</p>
+            <h3 class="p-name">Goesan sweet corn, 10 ears (good raw)</h3>
+            <div class="p-price"><span class="p-price__now num">14,900<small> KRW</small></span><span class="p-price__unit num">KRW 1,490 each · shipped within 12 hours of harvest</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.9</b> (2,051) · 53% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery · arrives before 7 AM tomorrow</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
-        <article class="pcard" data-id="p3" data-cat="sea" data-name="완도 활전복 중 12미 (약 1kg)" data-price="32900" data-origin="전남 완도" data-img="assets/img/abalone-shellfish-1303.webp">
+        <article class="pcard" data-id="p3" data-cat="sea" data-name="Live Wando abalone, medium, 12 (about 1kg)" data-price="32900" data-origin="전남 완도" data-img="../assets/img/abalone-shellfish-1303.webp">
           <div class="pcard__media">
-            <img src="assets/img/abalone-shellfish-1303.webp" width="600" height="600" alt="완도 활전복 중 사이즈 12미" loading="lazy">
-            <span class="pcard__rank" aria-label="3위">3</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="완도 활전복 중 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/abalone-shellfish-1303.webp" width="600" height="600" alt="Live Wando abalone, medium, 12" loading="lazy">
+            <span class="pcard__rank" aria-label="#3">3</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save medium Wando abalone"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">전남 완도 · 김성호 어가</p>
-            <h3 class="p-name">완도 활전복 중 12미 (약 1kg)</h3>
-            <div class="p-price"><span class="p-price__now num">32,900<small>원</small></span><span class="p-price__unit num">1미당 2,742원</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.8</b> (1,102) · 재구매 37%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>산지직송 · 화·목·토 출고</span>
+            <p class="p-origin">Wando, Jeonnam · Seongho Kim's farm</p>
+            <h3 class="p-name">Live Wando abalone, medium, 12 (about 1kg)</h3>
+            <div class="p-price"><span class="p-price__now num">32,900<small> KRW</small></span><span class="p-price__unit num">KRW 2,742 each</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.8</b> (1,102) · 37% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Direct from the source · ships Tue, Thu, Sat</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
-        <article class="pcard" data-id="p4" data-cat="meat" data-name="횡성 한우 1++ 등심 구이용 300g" data-price="39800" data-origin="강원 횡성" data-img="assets/img/beef-steak-1304.webp">
+        <article class="pcard" data-id="p4" data-cat="meat" data-name="횡성 한우 1++ 등심 구이용 300g" data-price="39800" data-origin="강원 횡성" data-img="../assets/img/beef-steak-1304.webp">
           <div class="pcard__media">
-            <img src="assets/img/beef-steak-1304.webp" width="600" height="600" alt="마블링이 고른 횡성 한우 등심 구이용" loading="lazy">
-            <span class="pcard__rank" aria-label="4위">4</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="횡성 한우 등심 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/beef-steak-1304.webp" width="600" height="600" alt="Evenly marbled Hoengseong Hanwoo sirloin for grilling" loading="lazy">
+            <span class="pcard__rank" aria-label="#4">4</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Hoengseong Hanwoo sirloin"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">강원 횡성 · 횡성축협 도축</p>
-            <h3 class="p-name">횡성 한우 1++ 등심 구이용 300g (냉장)</h3>
-            <div class="p-price"><span class="p-price__now num">39,800<small>원</small></span><span class="p-price__unit num">100g당 13,267원 · 이력번호 표기</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.9</b> (3,412) · 재구매 46%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송 · 냉장 콜드체인</span>
+            <p class="p-origin">Hoengseong, Gangwon · butchered by the Hoengseong livestock co-op</p>
+            <h3 class="p-name">Hoengseong Hanwoo 1++ sirloin for grilling 300g (chilled)</h3>
+            <div class="p-price"><span class="p-price__now num">39,800<small> KRW</small></span><span class="p-price__unit num">KRW 13,267 per 100g · traceability number shown</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.9</b> (3,412) · 46% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery · chilled cold chain</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
-        <article class="pcard" data-id="p5" data-cat="veg" data-name="화천 완숙 토마토 2.5kg" data-price="13900" data-origin="강원 화천" data-img="assets/img/tomato-fresh-1305.webp">
+        <article class="pcard" data-id="p5" data-cat="veg" data-name="화천 완숙 토마토 2.5kg" data-price="13900" data-origin="강원 화천" data-img="../assets/img/tomato-fresh-1305.webp">
           <div class="pcard__media">
-            <img src="assets/img/tomato-fresh-1305.webp" width="600" height="600" alt="줄기째 붉게 익은 화천 완숙 토마토" loading="lazy">
-            <span class="pcard__rank" aria-label="5위">5</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="화천 토마토 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/tomato-fresh-1305.webp" width="600" height="600" alt="Vine-ripened Hwacheon tomatoes" loading="lazy">
+            <span class="pcard__rank" aria-label="#5">5</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Hwacheon tomatoes"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">강원 화천 · 사내면 하늘농원</p>
-            <h3 class="p-name">화천 완숙 토마토 2.5kg (13~16개)</h3>
-            <div class="p-price"><span class="p-price__now num">13,900<small>원</small></span><span class="p-price__unit num">100g당 556원</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.7</b> (876) · 재구매 44%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송 · 내일 7시 전 도착</span>
+            <p class="p-origin">Hwacheon, Gangwon · Haneul Farm, Sanae-myeon</p>
+            <h3 class="p-name">Hwacheon vine-ripened tomatoes 2.5kg (13–16)</h3>
+            <div class="p-price"><span class="p-price__now num">13,900<small> KRW</small></span><span class="p-price__unit num">KRW 556 per 100g</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.7</b> (876) · 44% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery · arrives before 7 AM tomorrow</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
-        <article class="pcard" data-id="p6" data-cat="fruit" data-name="김천 자두 후무사 1.5kg" data-price="16900" data-origin="경북 김천" data-img="assets/img/plum-fruit-1306.webp">
+        <article class="pcard" data-id="p6" data-cat="fruit" data-name="김천 자두 후무사 1.5kg" data-price="16900" data-origin="경북 김천" data-img="../assets/img/plum-fruit-1306.webp">
           <div class="pcard__media">
-            <img src="assets/img/plum-fruit-1306.webp" width="600" height="600" alt="검붉게 익은 김천 후무사 자두" loading="lazy">
-            <span class="pcard__rank" aria-label="6위">6</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="김천 자두 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/plum-fruit-1306.webp" width="600" height="600" alt="Deep red Formosa plums from Gimcheon" loading="lazy">
+            <span class="pcard__rank" aria-label="#6">6</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Gimcheon plums"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">경북 김천 · 구성면 최영길 농가</p>
-            <h3 class="p-name">김천 자두 후무사 1.5kg (17~22과)</h3>
-            <div class="p-price"><span class="p-price__now num">16,900<small>원</small></span><span class="p-price__unit num">100g당 1,127원 · 8월 하순까지 출하</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.6</b> (534) · 재구매 29%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송 · 내일 7시 전 도착</span>
+            <p class="p-origin">Gimcheon, Gyeongbuk · Younggil Choi's farm, Guseong-myeon</p>
+            <h3 class="p-name">Gimcheon Formosa plums 1.5kg (17–22 fruit)</h3>
+            <div class="p-price"><span class="p-price__now num">16,900<small> KRW</small></span><span class="p-price__unit num">KRW 1,127 per 100g · shipping through late August</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.6</b> (534) · 29% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery · arrives before 7 AM tomorrow</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
-        <article class="pcard" data-id="p7" data-cat="fruit" data-name="상주 무농약 블루베리 500g" data-price="15900" data-origin="경북 상주" data-img="assets/img/blueberry-fresh-1307.webp">
+        <article class="pcard" data-id="p7" data-cat="fruit" data-name="상주 무농약 블루베리 500g" data-price="15900" data-origin="경북 상주" data-img="../assets/img/blueberry-fresh-1307.webp">
           <div class="pcard__media">
-            <img src="assets/img/blueberry-fresh-1307.webp" width="600" height="600" alt="흰 가루가 살아 있는 상주 블루베리" loading="lazy">
-            <span class="pcard__rank" aria-label="7위">7</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="상주 블루베리 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/blueberry-fresh-1307.webp" width="600" height="600" alt="Sangju blueberries with their bloom intact" loading="lazy">
+            <span class="pcard__rank" aria-label="#7">7</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Sangju blueberries"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">경북 상주 · 모동면 정다운 농원</p>
-            <h3 class="p-name">상주 무농약 블루베리 500g (250g × 2팩)</h3>
-            <div class="p-price"><span class="p-price__now num">15,900<small>원</small></span><span class="p-price__unit num">100g당 3,180원 · 무농약 인증</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.7</b> (692) · 재구매 38%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송 · 내일 7시 전 도착</span>
+            <p class="p-origin">Sangju, Gyeongbuk · Jeong Daun Orchard, Modong-myeon</p>
+            <h3 class="p-name">Sangju pesticide-free blueberries 500g (2 × 250g)</h3>
+            <div class="p-price"><span class="p-price__now num">15,900<small> KRW</small></span><span class="p-price__unit num">KRW 3,180 per 100g · certified pesticide-free</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.7</b> (692) · 38% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery · arrives before 7 AM tomorrow</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
-        <article class="pcard" data-id="p8" data-cat="veg" data-name="안동 햇 감자 3kg (중)" data-price="8900" data-origin="경북 안동" data-img="assets/img/potato-harvest-1308.webp">
+        <article class="pcard" data-id="p8" data-cat="veg" data-name="안동 햇 감자 3kg (중)" data-price="8900" data-origin="경북 안동" data-img="../assets/img/potato-harvest-1308.webp">
           <div class="pcard__media">
-            <img src="assets/img/potato-harvest-1308.webp" width="600" height="600" alt="흙이 묻은 안동 햇 감자" loading="lazy">
-            <span class="pcard__rank" aria-label="8위">8</span>
-            <button class="wish" type="button" aria-pressed="false" aria-label="안동 감자 찜하기"><svg class="icon"><use href="#i-heart"/></svg></button>
+            <img src="../assets/img/potato-harvest-1308.webp" width="600" height="600" alt="Andong new potatoes with the soil still on" loading="lazy">
+            <span class="pcard__rank" aria-label="#8">8</span>
+            <button class="wish" type="button" aria-pressed="false" aria-label="Save Andong potatoes"><svg class="icon"><use href="#i-heart"/></svg></button>
           </div>
           <div class="pcard__body">
-            <p class="p-origin">경북 안동 · 풍산읍 감자작목반</p>
-            <h3 class="p-name">안동 햇 감자 3kg (중, 수미)</h3>
-            <div class="p-price"><span class="p-price__now num">8,900<small>원</small></span><span class="p-price__unit num">100g당 297원</span></div>
-            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.6</b> (2,209) · 재구매 51%</div>
-            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>새벽배송 · 내일 7시 전 도착</span>
+            <p class="p-origin">Andong, Gyeongbuk · the potato growers' group, Pungsan-eup</p>
+            <h3 class="p-name">Andong new potatoes 3kg (medium, Sumi)</h3>
+            <div class="p-price"><span class="p-price__now num">8,900<small> KRW</small></span><span class="p-price__unit num">KRW 297 per 100g</span></div>
+            <div class="p-rate"><svg class="icon icon--fill"><use href="#i-star"/></svg><b>4.6</b> (2,209) · 51% reorder</div>
+            <span class="p-ship"><svg class="icon"><use href="#i-truck"/></svg>Dawn delivery · arrives before 7 AM tomorrow</span>
           </div>
-          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>담기</button></div>
+          <div class="pcard__cta"><button class="btn btn--primary add-cart" type="button"><svg class="icon"><use href="#i-cart"/></svg>Add</button></div>
         </article>
 
         <div class="pgrid-empty" id="pgrid-empty" hidden>
-          <b>검색 결과가 없어요</b>
-          다른 검색어로 찾아보거나, 카테고리에서 골라보세요.
+          <b>No results</b>
+          Try another search, or pick a category.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 7. 농부 이야기 (Editorial 20%) ============ -->
+  <!-- ============ 7. From the growers (Editorial 20%) ============ -->
   <section class="section story-sec" id="stories" aria-labelledby="stories-title">
     <div class="wrap">
       <div class="story-head">
-        <h2 class="section__title" id="stories-title">밭에서 온 이야기</h2>
-        <p class="story-head__lead">이번 주 새벽밭에 상품을 보내는 사람들입니다. 새벽밭은 산지 파트너 농가·어가 218곳(2026년 8월 기준)과 직접 계약하고, 매주 담당자가 현장을 방문해 수확과 포장을 확인합니다.</p>
+        <h2 class="section__title" id="stories-title">From the field</h2>
+        <p class="story-head__lead">The people sending food to Saebyeokbat this week. We contract directly with 218 partner farms and fisheries as of August 2026, and someone visits each week to check the harvest and the packing.</p>
       </div>
       <div class="stories">
         <article class="story">
           <div class="story__media">
-            <img src="assets/img/farmer-orchard-1401.webp" width="800" height="1000" alt="이른 아침 복숭아 과수원에서 수확 중인 이재원 농부" loading="lazy">
+            <img src="../assets/img/farmer-orchard-1401.webp" width="800" height="1000" alt="Jaewon Lee picking in the peach orchard in the early morning" loading="lazy">
           </div>
           <div class="story__body">
-            <p class="story__where">충북 음성 · 복숭아</p>
-            <p class="story__quote">복숭아는 해 뜨기 전에 땁니다. 과육 온도가 올라가면 그날 안에 상자에 넣어도 단맛이 흐트러져요.</p>
-            <p class="story__who"><b>이재원</b> · 복숭아 재배 32년, 2대째</p>
+            <p class="story__where">Eumseong, Chungbuk · peaches</p>
+            <p class="story__quote">We pick peaches before sunrise. Once the flesh warms up, the sweetness goes off even if they are boxed the same day.</p>
+            <p class="story__who"><b>Jaewon Lee</b> · 32 years growing peaches, second generation</p>
             <div class="story__facts">
-              <span>품종 <b>황도 · 천중도</b></span>
-              <span>재배 면적 <b>1.2ha</b></span>
-              <span>수확 <b>05:00 ~ 07:30</b></span>
-              <span>새벽밭 입점 <b>2023년 7월</b></span>
+              <span>Variety <b>Hwangdo · Cheonjungdo</b></span>
+              <span>Growing area <b>1.2ha</b></span>
+              <span>Harvest <b>05:00 ~ 07:30</b></span>
+              <span>Sell on Saebyeokbat <b>July 2023</b></span>
             </div>
-            <a class="story__link" href="#best">이재원 농가 상품 보기</a>
+            <a class="story__link" href="#best">See what Jaewon Lee's farm sends</a>
           </div>
         </article>
         <article class="story">
           <div class="story__media">
-            <img src="assets/img/fisherman-sea-1402.webp" width="800" height="1000" alt="완도 앞바다 전복 양식장에서 수온을 확인하는 김성호 어민" loading="lazy">
+            <img src="../assets/img/fisherman-sea-1402.webp" width="800" height="1000" alt="Seongho Kim checking the water temperature at his abalone farm off Wando" loading="lazy">
           </div>
           <div class="story__body">
-            <p class="story__where">전남 완도 · 전복</p>
-            <p class="story__quote">매일 아침 수온을 적습니다. 21도를 넘는 날은 전복이 약해져서 그날 출하는 미룹니다.</p>
-            <p class="story__who"><b>김성호</b> · 전복 양식 18년, 노화읍</p>
+            <p class="story__where">Wando, Jeonnam · abalone</p>
+            <p class="story__quote">I record the water temperature every morning. Above 21 degrees the abalone weaken, so nothing ships that day.</p>
+            <p class="story__who"><b>Seongho Kim</b> · 18 years farming abalone, Nohwa-eup</p>
             <div class="story__facts">
-              <span>출고 <b>화 · 목 · 토</b>, 수온 21°C 초과 시 출하 연기</span>
-              <span>새벽밭 입점 <b>2024년 3월</b></span>
+              <span>Dispatch <b>Tue · Thu · Sat</b>, shipping is held when the water goes above 21°C</span>
+              <span>Sell on Saebyeokbat <b>March 2024</b></span>
             </div>
-            <a class="story__link" href="#cat-sea">김성호 어가 상품 보기</a>
+            <a class="story__link" href="#cat-sea">See what Seongho Kim's farm sends</a>
           </div>
         </article>
       </div>
-      <p class="story-foot"><a href="#farmers">산지 파트너 218곳 모두 보기</a></p>
+      <p class="story-foot"><a href="#farmers">See all 218 partner farms and fisheries</a></p>
     </div>
   </section>
 
   <!-- ============ 8. 배송·신선 보장 — 약속을 표로 + 주문 상세 배송 조회 화면 ============ -->
   <section class="section" id="assure" aria-labelledby="assure-title">
     <div class="wrap">
-      <h2 class="section__title" id="assure-title">산지에서 문 앞까지, 이렇게 옵니다</h2>
-      <p class="assure__lead">농가·어가가 <b>수확 후 12시간 안에</b> 예냉·선별·포장을 마치면 중간 창고 없이 산지에서 바로 출발합니다. 아래 표의 내용은 상품 상세와 주문 상세에서 그대로 확인할 수 있습니다.</p>
+      <h2 class="section__title" id="assure-title">From the field to your door, step by step</h2>
+      <p class="assure__lead">The farms and fisheries <b>Within 12 hours of harvest</b> Once pre-cooled, graded, and packed, it leaves the source directly — no intermediate warehouse. Everything in the table below also appears on the product and order pages.</p>
       <div class="assure">
         <table class="promise">
-          <caption class="sr-only">새벽밭 배송·신선 보장 약속</caption>
+          <caption class="sr-only">The Saebyeokbat delivery and freshness promise</caption>
           <tbody>
             <tr>
-              <th scope="row">수확 → 포장</th>
-              <td>수확 후 12시간 안에 예냉·선별·포장. 과일·채소는 예냉 후 <b>4°C 이하</b>로 보관합니다.<small>수확일·산란일·포장일을 상자 겉면에 표기</small></td>
+              <th scope="row">Harvest → packing</th>
+              <td>Pre-cooled, graded, and packed within 12 hours of harvest. Fruit and vegetables are then held at <b>4°C or below</b>.<small>Harvest, lay, and packing dates are printed on the box</small></td>
             </tr>
             <tr>
-              <th scope="row">주문 마감·도착</th>
-              <td><b>오후 2시 전 주문</b>은 다음 날 오전 7시 전에 도착. 그 이후 주문은 하루 뒤 새벽에 받습니다.<small>배송 차량 적재함 온도는 실시간 기록, 주문 상세에서 확인</small></td>
+              <th scope="row">Cut-off & arrival</th>
+              <td><b>Order before 2 PM</b> arrives before 7 AM the next day. Anything later comes the morning after.<small>Van temperature is logged live and shown in your order details</small></td>
             </tr>
             <tr>
-              <th scope="row">새벽배송 권역</th>
-              <td>서울·경기·인천 전역, 대전·세종·충청, 대구·부산 일부.<small>그 외 지역은 택배 1~2일 · 도서산간 추가 3,000원</small></td>
+              <th scope="row">Dawn delivery coverage</th>
+              <td>All of Seoul, Gyeonggi, and Incheon; Daejeon, Sejong, and Chungcheong; parts of Daegu and Busan.<small>Elsewhere 1–2 days by courier · KRW 3,000 extra for islands and remote areas</small></td>
             </tr>
             <tr>
-              <th scope="row">수산·정육</th>
-              <td>활전복은 화·목·토 출고, 살아 있는 상태로 도착하지 않으면 전액 환불. 한우는 냉장 0~4°C 콜드체인, 이력번호를 상품 상세에 표기합니다.</td>
+              <th scope="row">Seafood & meat</th>
+              <td>Live abalone ships Tuesday, Thursday, and Saturday, with a full refund if it doesn't arrive alive. Hanwoo beef travels chilled at 0–4°C, with its traceability number on the product page.</td>
             </tr>
             <tr>
-              <th scope="row">신선 보장</th>
-              <td>받아보고 만족스럽지 않으면 <b>수령 후 24시간 이내</b> 사진 1장으로 신청. 반품 회수 없이 영업일 기준 1일 안에 환불합니다.<small>파손·무름·수량 부족 모두 대상 · 지난달 신청률 0.9%</small></td>
+              <th scope="row">Freshness guarantee</th>
+              <td>If it isn't right when it arrives <b>within 24 hours of delivery</b> One photo is enough. No return pickup, and the refund lands within one business day.<small>Covers damage, softening, and short counts · 0.9% claim rate last month</small></td>
             </tr>
           </tbody>
         </table>
 
         <div>
-          <div class="mock" aria-label="주문 상세의 배송 조회 화면 예시">
-            <div class="mock__bar"><svg class="icon" aria-hidden="true"><use href="#i-chev-l"/></svg>주문 상세<span>주문내역</span></div>
+          <div class="mock" aria-label="Delivery tracking in order details">
+            <div class="mock__bar"><svg class="icon" aria-hidden="true"><use href="#i-chev-l"/></svg>Order details<span>Orders</span></div>
             <div class="mock__head">
-              <div><b class="num">주문번호 20260814-04172</b><small>음성 황도 복숭아 2kg 외 2건</small></div>
-              <span class="chip chip--green">배송 중</span>
+              <div><b class="num">Order 20260814-04172</b><small>Eumseong yellow peaches 2kg and 2 more</small></div>
+              <span class="chip chip--green">On the way</span>
             </div>
             <ol class="mock__steps">
-              <li class="done"><b>주문 접수</b><span>8.14 (금) 11:20</span></li>
-              <li class="done"><b>산지 출고</b><span>8.14 (금) 18:05 · 충북 음성</span></li>
-              <li class="now"><b>배송 중</b><span>8.15 (토) 03:40 · 서울 성동 캠프 출발</span></li>
-              <li><b>문 앞 도착</b><span>오늘 07:00 전 예정</span></li>
+              <li class="done"><b>Order placed</b><span>Fri 8.14, 11:20</span></li>
+              <li class="done"><b>Leaves the source</b><span>Fri 8.14, 18:05 · Eumseong, Chungbuk</span></li>
+              <li class="now"><b>On the way</b><span>Sat 8.15, 03:40 · left the Seongdong depot, Seoul</span></li>
+              <li><b>At your door</b><span>Due before 07:00 today</span></li>
             </ol>
             <div class="mock__temp">
-              <span class="lbl">배송 차량 적재함 온도</span>
+              <span class="lbl">Temperature in the delivery van</span>
               <span class="val num">2.8°C</span>
               <span class="meter" aria-hidden="true"><i></i></span>
-              <span class="rng" aria-hidden="true"><span>0°C</span><span>기준 4°C 이하</span><span>10°C</span></span>
+              <span class="rng" aria-hidden="true"><span>0°C</span><span>kept at 4°C or below</span><span>10°C</span></span>
             </div>
             <div class="mock__foot">
-              <button class="btn btn--ghost" type="button" id="mock-ask">배송 문의</button>
-              <button class="btn btn--primary" type="button" id="mock-claim">신선 보장 신청</button>
+              <button class="btn btn--ghost" type="button" id="mock-ask">Delivery enquiries</button>
+              <button class="btn btn--primary" type="button" id="mock-claim">Make a freshness claim</button>
             </div>
           </div>
-          <p class="mock__caption">주문 상세에서 볼 수 있는 배송 조회 화면 예시</p>
+          <p class="mock__caption">The delivery tracking view inside order details</p>
         </div>
       </div>
     </div>
@@ -1059,53 +1059,53 @@ text-decoration:none}
     <div class="wrap">
       <div class="section__head">
         <div>
-          <h2 class="section__title" id="reviews-title">받아본 분들의 사진 리뷰</h2>
-          <p class="section__sub">사진 리뷰 중 도움돼요 순 · 구매 확인된 리뷰만 표시</p>
+          <h2 class="section__title" id="reviews-title">Photo reviews from people who ordered</h2>
+          <p class="section__sub">Photo reviews, most helpful first · verified purchases only</p>
         </div>
-        <a class="section__more" href="#reviews">리뷰 전체 <svg class="icon"><use href="#i-chev-r"/></svg></a>
+        <a class="section__more" href="#reviews">All reviews <svg class="icon"><use href="#i-chev-r"/></svg></a>
       </div>
       <div class="rv-summary">
         <div class="rv-summary__score"><b class="num">4.8</b>
-          <span class="stars" aria-label="5점 만점에 4.8점"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
+          <span class="stars" aria-label="4.8 out of 5"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
         </div>
-        <span>최근 30일 리뷰 <b class="num">4,812</b>개 · 그중 사진 리뷰 <b class="num">1,926</b>개</span>
-        <span>리뷰 작성자 재구매율 <b class="num">67%</b></span>
+        <span>Reviews, last 30 days <b class="num">4,812</b> · of which with photos <b class="num">1,926</b></span>
+        <span>Reorder rate among reviewers <b class="num">67%</b></span>
       </div>
       <div class="reviews">
         <article class="review">
-          <div class="review__media"><img src="assets/img/peach-box-1501.webp" width="600" height="450" alt="문 앞에 도착한 복숭아 상자를 연 모습" loading="lazy"></div>
+          <div class="review__media"><img src="../assets/img/peach-box-1501.webp" width="600" height="450" alt="A box of peaches opened at the door" loading="lazy"></div>
           <div class="review__body">
-            <span class="stars" aria-label="5점"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
-            <p class="review__prod">음성 황도 복숭아 2kg (6~8과)</p>
-            <p class="review__text">새벽 6시 반에 문 앞에 있었어요. 8개 다 멀쩡했고 아이스팩이 아직 차가웠습니다. 단맛은 하루 실온에 두니 딱 좋았어요.</p>
-            <p class="review__meta">김*연 · 2026.08.13 · 새벽배송 · 3회 구매</p>
+            <span class="stars" aria-label="5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
+            <p class="review__prod">Eumseong yellow peaches 2kg (6–8 fruit)</p>
+            <p class="review__text">It was at the door at half past six. All eight were fine and the ice pack was still cold. Left them out for a day and the sweetness was just right.</p>
+            <p class="review__meta">Kim · 2026.08.13 · dawn delivery · 3rd order</p>
           </div>
         </article>
         <article class="review">
-          <div class="review__media"><img src="assets/img/abalone-seafood-1502.webp" width="600" height="450" alt="손질 전 살아 움직이는 완도 전복" loading="lazy"></div>
+          <div class="review__media"><img src="../assets/img/abalone-seafood-1502.webp" width="600" height="450" alt="Live Wando abalone before cleaning" loading="lazy"></div>
           <div class="review__body">
-            <span class="stars" aria-label="5점"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
-            <p class="review__prod">완도 활전복 중 12미 (약 1kg)</p>
-            <p class="review__text">12마리 전부 살아서 왔어요. 움직이는 거 확인하고 바로 손질했습니다. 회로 먹기에 크기가 딱 적당했고 내장도 깨끗했어요.</p>
-            <p class="review__meta">박*호 · 2026.08.12 · 산지직송</p>
+            <span class="stars" aria-label="5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
+            <p class="review__prod">Live Wando abalone, medium, 12 (about 1kg)</p>
+            <p class="review__text">All twelve arrived alive. I checked they were moving and cleaned them straight away. Just the right size for sashimi, and the innards were clean.</p>
+            <p class="review__meta">Park · 2026.08.12 · direct from the source</p>
           </div>
         </article>
         <article class="review">
-          <div class="review__media"><img src="assets/img/corn-cooked-1503.webp" width="600" height="450" alt="찐 초당옥수수가 접시에 담긴 모습" loading="lazy"></div>
+          <div class="review__media"><img src="../assets/img/corn-cooked-1503.webp" width="600" height="450" alt="Steamed sweet corn on a plate" loading="lazy"></div>
           <div class="review__body">
-            <span class="stars" aria-label="4점"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill off"><use href="#i-star"/></svg></span>
-            <p class="review__prod">괴산 초당옥수수 10개</p>
-            <p class="review__text">10개 중 1개는 알이 조금 덜 찼는데 나머지는 정말 달아요. 생으로 먹어도 되고 3분만 쪄도 충분합니다. 다음 주에 또 주문할 예정.</p>
-            <p class="review__meta">이*진 · 2026.08.11 · 새벽배송 · 2회 구매</p>
+            <span class="stars" aria-label="4 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill off"><use href="#i-star"/></svg></span>
+            <p class="review__prod">Goesan sweet corn, 10 ears</p>
+            <p class="review__text">One of the ten wasn't quite filled out, but the rest were genuinely sweet. Good raw, and three minutes of steaming is plenty. Ordering again next week.</p>
+            <p class="review__meta">Lee · 2026.08.11 · dawn delivery · 2nd order</p>
           </div>
         </article>
         <article class="review">
-          <div class="review__media"><img src="assets/img/eggs-carton-1504.webp" width="600" height="450" alt="깨진 것 없이 도착한 유정란 트레이" loading="lazy"></div>
+          <div class="review__media"><img src="../assets/img/eggs-carton-1504.webp" width="600" height="450" alt="A tray of free-range eggs, none broken on arrival" loading="lazy"></div>
           <div class="review__body">
-            <span class="stars" aria-label="5점"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
-            <p class="review__prod">무항생제 동물복지 유정란 30구</p>
-            <p class="review__text">깨진 것 없이 도착했고 산란일이 이틀 전이었어요. 노른자 색이 진하고 비린내가 없어서 아이 이유식에 계속 쓰려고요.</p>
-            <p class="review__meta">정*아 · 2026.08.10 · 새벽배송 · 7회 구매</p>
+            <span class="stars" aria-label="5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
+            <p class="review__prod">Antibiotic-free, welfare-certified free-range eggs, 30</p>
+            <p class="review__text">Nothing broken, and they were laid two days earlier. Deep yolks, no off smell — I'll keep using them for the baby's food.</p>
+            <p class="review__meta">Jeong · 2026.08.10 · dawn delivery · 7th order</p>
           </div>
         </article>
       </div>
@@ -1118,56 +1118,56 @@ text-decoration:none}
   <div class="wrap">
     <div class="footer__grid">
       <div class="footer__cs">
-        <h3>고객센터</h3>
+        <h3>Customer service</h3>
         <b class="num">1588-0342</b>
-        <p>평일 09:00 ~ 18:00 · 점심 12:30 ~ 13:30<br>주말·공휴일 휴무 (신선 보장 신청은 24시간 접수)</p>
+        <p>Weekdays 09:00–18:00 · lunch 12:30–13:30<br>Closed weekends and holidays (freshness claims accepted 24 hours)</p>
         <div class="btns">
-          <a class="btn btn--ghost btn--sm" href="#chat"><svg class="icon"><use href="#i-chat"/></svg>카카오톡 1:1 문의</a>
-          <a class="btn btn--ghost btn--sm" href="#faq">자주 묻는 질문</a>
+          <a class="btn btn--ghost btn--sm" href="#chat"><svg class="icon"><use href="#i-chat"/></svg>Chat on KakaoTalk</a>
+          <a class="btn btn--ghost btn--sm" href="#faq">FAQ</a>
         </div>
       </div>
       <div>
-        <h3>새벽밭</h3>
+        <h3>Saebyeokbat</h3>
         <ul>
-          <li><a href="#about">회사 소개</a></li>
-          <li><a href="#farmers">산지 파트너 소개</a></li>
-          <li><a href="#sell">입점·납품 문의</a></li>
-          <li><a href="#careers">채용</a></li>
-          <li><a href="#notice">공지사항</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#farmers">Meet the growers</a></li>
+          <li><a href="#sell">Sell with us</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#notice">Notices</a></li>
         </ul>
       </div>
       <div>
-        <h3>이용 안내</h3>
+        <h3>How it works</h3>
         <ul>
-          <li><a href="#guide-ship">배송 안내 · 권역 조회</a></li>
-          <li><a href="#guide-fresh">신선 보장 · 교환·환불</a></li>
-          <li><a href="#guide-coupon">쿠폰 · 적립금</a></li>
-          <li><a href="#guide-order">주문 조회</a></li>
-          <li><a href="#guide-gift">선물하기</a></li>
+          <li><a href="#guide-ship">Delivery information · check coverage</a></li>
+          <li><a href="#guide-fresh">Freshness guarantee · exchanges & refunds</a></li>
+          <li><a href="#guide-coupon">Coupons & points</a></li>
+          <li><a href="#guide-order">Track an order</a></li>
+          <li><a href="#guide-gift">Send as a gift</a></li>
         </ul>
       </div>
       <div>
-        <h3>정책</h3>
+        <h3>Policies</h3>
         <ul>
-          <li><a href="#terms">이용약관</a></li>
-          <li><a href="#privacy"><b>개인정보처리방침</b></a></li>
-          <li><a href="#youth">청소년보호정책</a></li>
-          <li><a href="#partner-policy">입점 파트너 정책</a></li>
-          <li><a href="#dispute">분쟁 처리 절차</a></li>
+          <li><a href="#terms">Terms of service</a></li>
+          <li><a href="#privacy"><b>Privacy policy</b></a></li>
+          <li><a href="#youth">Youth protection policy</a></li>
+          <li><a href="#partner-policy">Partner policy</a></li>
+          <li><a href="#dispute">Dispute resolution</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer__biz">
-      <p><span>(주)새벽밭</span><span>대표 이수현</span><span>서울특별시 성동구 왕십리로 83-21, 3층 (성수동1가)</span></p>
-      <p><span>사업자등록번호 214-88-01523</span><span>통신판매업신고 2024-서울성동-1187</span><span>개인정보보호책임자 한지원 (privacy@saebyeokbat.kr)</span></p>
-      <p><span>고객센터 1588-0342</span><span>이메일 help@saebyeokbat.kr</span><span>호스팅 서비스 (주)새벽밭</span></p>
-      <p class="footer__note">(주)새벽밭은 통신판매중개자가 아닌 통신판매업자로, 판매하는 상품과 배송·교환·환불에 대한 책임을 직접 집니다. 산지·수확일·인증 정보는 상품 상세와 상자에 표기합니다.</p>
+      <p><span>Saebyeokbat Inc.</span><span>CEO Suhyeon Lee</span><span>3F, 83-21 Wangsimni-ro, Seongdong-gu, Seoul (Seongsu-dong 1-ga)</span></p>
+      <p><span>Business reg. 214-88-01523</span><span>E-commerce reg. 2024-Seoul-Seongdong-1187</span><span>Data protection officer Jiwon Han (privacy@saebyeokbat.kr)</span></p>
+      <p><span>Customer service 1588-0342</span><span>Email help@saebyeokbat.kr</span><span>Hosting by Saebyeokbat Inc.</span></p>
+      <p class="footer__note">Saebyeokbat Inc. sells directly rather than acting as a marketplace intermediary, and takes responsibility for the goods, delivery, exchanges, and refunds itself. Origin, harvest date, and certification are printed on the product page and on the box.</p>
     </div>
     <div class="footer__bottom">
       <span class="strong">© 2026 Saebyeokbat Inc.</span>
       <p class="certs">
-        <span>구매안전 에스크로 서비스 가입 (KG이니시스)</span><span>ISMS 인증 2025-118호</span>
+        <span>Purchase protection escrow through KG Inicis</span><span>ISMS certified, No. 2025-118</span>
       </p>
     </div>
   </div>
@@ -1176,43 +1176,43 @@ text-decoration:none}
 <!-- ============ 11. 모바일 하단 고정 장바구니 바 ============ -->
 <div class="cartbar" id="cartbar">
   <div class="cartbar__info">
-    <small id="cartbar-sub">장바구니가 비어 있어요</small>
-    <b id="cartbar-main">3만원 이상 무료배송</b>
+    <small id="cartbar-sub">Your basket is empty</small>
+    <b id="cartbar-main">Free delivery over KRW 30,000</b>
   </div>
-  <button class="btn btn--primary" type="button" id="cartbar-btn" aria-controls="cart-drawer">장바구니 보기</button>
+  <button class="btn btn--primary" type="button" id="cartbar-btn" aria-controls="cart-drawer">View basket</button>
 </div>
 
 <!-- 장바구니 드로어 -->
 <div class="overlay" id="overlay" hidden></div>
 <aside class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
   <div class="drawer__head">
-    <h2 id="drawer-title">장바구니 <span class="num" id="drawer-count">0</span></h2>
-    <button class="drawer__close" type="button" id="cart-close" aria-label="장바구니 닫기"><svg class="icon"><use href="#i-close"/></svg></button>
+    <h2 id="drawer-title">Basket <span class="num" id="drawer-count">0</span></h2>
+    <button class="drawer__close" type="button" id="cart-close" aria-label="Close basket"><svg class="icon"><use href="#i-close"/></svg></button>
   </div>
   <div class="drawer__ship" id="drawer-ship">
-    <span id="drawer-ship-text">3만원 이상 담으면 <b>배송비 무료</b></span>
+    <span id="drawer-ship-text">Spend KRW 30,000 and <b>Free delivery</b></span>
     <div class="meter" aria-hidden="true"><i id="drawer-meter"></i></div>
   </div>
   <div class="drawer__list" id="drawer-list">
     <div class="drawer__empty" id="drawer-empty">
       <svg class="icon"><use href="#i-cart"/></svg>
-      <b>아직 담긴 상품이 없어요</b>
-      오늘의 특가와 베스트 상품부터 살펴보세요.
+      <b>Nothing in the basket yet</b>
+      Start with today's deals and the best sellers.
     </div>
     <div id="drawer-items"></div>
   </div>
   <div class="drawer__foot">
-    <div class="drawer__row"><span>상품 금액</span><span class="num" id="sum-goods">0원</span></div>
-    <div class="drawer__row"><span>배송비</span><span class="num" id="sum-ship">3,000원</span></div>
-    <div class="drawer__row drawer__row--total"><span>결제 예정 금액</span><span class="num" id="sum-total">0원</span></div>
-    <button class="btn btn--primary" type="button" id="checkout-btn" disabled>주문하기</button>
-    <p class="drawer__hint">결제 단계에서 쿠폰·적립금을 적용할 수 있어요</p>
+    <div class="drawer__row"><span>Subtotal</span><span class="num" id="sum-goods">KRW 0</span></div>
+    <div class="drawer__row"><span>Delivery</span><span class="num" id="sum-ship">KRW 3,000</span></div>
+    <div class="drawer__row drawer__row--total"><span>Order total</span><span class="num" id="sum-total">KRW 0</span></div>
+    <button class="btn btn--primary" type="button" id="checkout-btn" disabled>Check out</button>
+    <p class="drawer__hint">Coupons and points apply at checkout</p>
   </div>
 </aside>
 
 <div class="toast" id="toast" role="status" aria-live="polite">
   <span id="toast-text"></span>
-  <button type="button" id="toast-action">장바구니 보기</button>
+  <button type="button" id="toast-action">View basket</button>
 </div>
 
 <script>
@@ -1224,7 +1224,7 @@ text-decoration:none}
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var fmt = function (n) { return n.toLocaleString('ko-KR'); };
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DAYS = ['일', '월', '화', '수', '목', '금', '토'];
+  var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   var FREE_SHIP = 30000, SHIP_FEE = 3000;
 
   /* ---------- 이미지: 로드 시 페이드 인, 실패 시 배경색 유지 ---------- */
@@ -1241,7 +1241,7 @@ text-decoration:none}
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---------- 전체 카테고리 패널 ---------- */
+  /* ---------- All categories 패널 ---------- */
   var catBtn = $('#catall-btn'), catPanel = $('#catall-panel');
   var closeCat = function () { catPanel.classList.remove('is-open'); catBtn.setAttribute('aria-expanded', 'false'); };
   catBtn.addEventListener('click', function () {
@@ -1288,7 +1288,7 @@ text-decoration:none}
   var setPaused = function (p) {
     paused = p;
     toggleBtn.setAttribute('aria-pressed', String(p));
-    toggleBtn.setAttribute('aria-label', p ? '자동 재생 시작' : '자동 재생 일시정지');
+    toggleBtn.setAttribute('aria-label', p ? 'Start autoplay' : 'Pause autoplay');
     toggleIcon.setAttribute('href', p ? '#i-play' : '#i-pause');
     play();
   };
@@ -1320,7 +1320,7 @@ text-decoration:none}
   var mmdd = function (d) { return (d.getMonth() + 1) + '/' + d.getDate() + '(' + DAYS[d.getDay()] + ')'; };
   var remainText = function (ms) {
     var m = Math.max(0, Math.floor(ms / 60000)), h = Math.floor(m / 60);
-    return h > 0 ? h + '시간 ' + (m % 60) + '분' : m + '분';
+    return h > 0 ? h + 'hours' + (m % 60) + 'min' : m + 'min';
   };
   var updateTimes = function () {
     var now = new Date();
@@ -1329,20 +1329,20 @@ text-decoration:none}
     var dayAfter = new Date(now); dayAfter.setDate(now.getDate() + 2);
     if (now < cutoff) {
       var left = cutoff - now;
-      cutoffBig.innerHTML = '오늘 14:00<small>까지 · ' + remainText(left) + ' 남음</small>';
-      cutoffDesc.innerHTML = '지금 주문하면 <b>' + mmdd(tomorrow) + ' 새벽 7시 전</b> 도착';
+      cutoffBig.innerHTML = '14:00 today<small> ·' + remainText(left) + 'left</small>';
+      cutoffDesc.innerHTML = 'Order now and it arrives <b>' + mmdd(tomorrow) + 'before 7 AM</b>';
       var dayStart = new Date(now); dayStart.setHours(0, 0, 0, 0);
       cutoffMeter.style.width = Math.min(100, Math.round(((now - dayStart) / (cutoff - dayStart)) * 100)) + '%';
     } else {
-      cutoffBig.innerHTML = '오늘 주문 마감<small>내일 14:00까지 다시 접수</small>';
-      cutoffDesc.innerHTML = '지금 주문하면 <b>' + mmdd(dayAfter) + ' 새벽 7시 전</b> 도착';
+      cutoffBig.innerHTML = 'Closed for today<small>reopens at 14:00 tomorrow</small>';
+      cutoffDesc.innerHTML = 'Order now and it arrives <b>' + mmdd(dayAfter) + 'before 7 AM</b>';
       cutoffMeter.style.width = '100%';
     }
     /* 특가 마감은 사실형 표기만 — 분 단위 카운트다운 없음 */
     var dl = new Date(now); dl.setHours(23, 0, 0, 0);
-    dealsDate.textContent = '오늘 ' + mmdd(now) + ' 23:00까지';
+    dealsDate.textContent = 'Today' + mmdd(now) + 'until 23:00';
     deadlines.forEach(function (el) {
-      el.textContent = now < dl ? '오늘 23:00까지 · ' + mmdd(now) : '오늘 특가 종료 · 자정에 새 상품';
+      el.textContent = now < dl ? 'Until 23:00 today ·' + mmdd(now) : 'Today\'s deals have ended · new ones at midnight';
     });
   };
   updateTimes();
@@ -1357,8 +1357,8 @@ text-decoration:none}
       wishCount += on ? 1 : -1;
       wishBadge.textContent = wishCount;
       wishBadge.dataset.zero = String(wishCount === 0);
-      var name = btn.getAttribute('aria-label').replace(' 찜하기', '');
-      toast(on ? '찜 목록에 넣었어요 · ' + name : '찜 목록에서 뺐어요 · ' + name, on ? '찜 목록' : null, '#wish');
+      var name = btn.getAttribute('aria-label').replace('Save', '');
+      toast(on ? 'Saved ·' + name : 'Removed from saved ·' + name, on ? 'Saved items' : null, '#wish');
     });
   });
 
@@ -1390,33 +1390,33 @@ text-decoration:none}
       html += '<div class="citem" data-id="' + id + '">' +
         '<img class="citem__img" src="' + it.img + '" width="64" height="64" alt="">' +
         '<div><p class="citem__name">' + esc(it.name) + '</p><p class="citem__origin">' + esc(it.origin) + '</p>' +
-        '<p class="citem__price num">' + fmt(it.price * it.qty) + '원</p></div>' +
-        '<div class="citem__side"><div class="qty" role="group" aria-label="수량">' +
-        '<button type="button" data-act="dec" aria-label="수량 줄이기"' + (it.qty <= 1 ? ' disabled' : '') + '><svg class="icon"><use href="#i-minus"/></svg></button>' +
+        '<p class="citem__price num">' + fmt(it.price * it.qty) + ' KRW</p></div>' +
+        '<div class="citem__side"><div class="qty" role="group" aria-label="Quantity">' +
+        '<button type="button" data-act="dec" aria-label="Decrease quantity"' + (it.qty <= 1 ? ' disabled' : '') + '><svg class="icon"><use href="#i-minus"/></svg></button>' +
         '<span class="num" aria-live="polite">' + it.qty + '</span>' +
-        '<button type="button" data-act="inc" aria-label="수량 늘리기"' + (it.qty >= 10 ? ' disabled' : '') + '><svg class="icon"><use href="#i-plus"/></svg></button></div>' +
-        '<button type="button" class="citem__remove" data-act="rm">삭제</button></div></div>';
+        '<button type="button" data-act="inc" aria-label="Increase quantity"' + (it.qty >= 10 ? ' disabled' : '') + '><svg class="icon"><use href="#i-plus"/></svg></button></div>' +
+        '<button type="button" class="citem__remove" data-act="rm">Remove</button></div></div>';
     });
     drawerItems.innerHTML = html;
     if (t.goods === 0) {
-      shipText.innerHTML = '3만원 이상 담으면 <b>배송비 무료</b>'; shipMeter.style.width = '0%';
+      shipText.innerHTML = 'Spend KRW 30,000 for <b>free delivery</b>'; shipMeter.style.width = '0%';
     } else if (t.goods >= FREE_SHIP) {
-      shipText.innerHTML = '<b>무료배송</b> 조건을 채웠어요'; shipMeter.style.width = '100%';
+      shipText.innerHTML = 'You\'ve qualified for <b>free delivery</b>'; shipMeter.style.width = '100%';
     } else {
-      shipText.innerHTML = '<b class="num">' + fmt(FREE_SHIP - t.goods) + '원</b> 더 담으면 배송비 무료';
+      shipText.innerHTML = '<b class="num">' + fmt(FREE_SHIP - t.goods) + ' KRW</b> more for free delivery';
       shipMeter.style.width = Math.round(t.goods / FREE_SHIP * 100) + '%';
     }
-    sumGoods.textContent = fmt(t.goods) + '원';
-    sumShip.textContent = t.ship === 0 ? (t.goods === 0 ? '3,000원' : '무료') : fmt(t.ship) + '원';
-    sumTotal.textContent = fmt(t.total) + '원';
+    sumGoods.textContent = fmt(t.goods) + ' KRW';
+    sumShip.textContent = t.ship === 0 ? (t.goods === 0 ? 'KRW 3,000' : 'Free') : fmt(t.ship) + ' KRW';
+    sumTotal.textContent = fmt(t.total) + ' KRW';
     checkoutBtn.disabled = t.qty === 0;
-    checkoutBtn.textContent = t.qty === 0 ? '주문하기' : fmt(t.total) + '원 주문하기';
+    checkoutBtn.textContent = t.qty === 0 ? 'Check out' : fmt(t.total) + ' KRW — check out';
     if (t.qty === 0) {
-      cartbarSub.textContent = '장바구니가 비어 있어요'; cartbarMain.textContent = '3만원 이상 무료배송'; cartbarBtn.textContent = '장바구니 보기';
+      cartbarSub.textContent = 'Your basket is empty'; cartbarMain.textContent = 'Free delivery over KRW 30,000'; cartbarBtn.textContent = 'View basket';
     } else {
-      cartbarSub.textContent = t.ship === 0 ? '무료배송 · ' + t.qty + '개 담김' : fmt(FREE_SHIP - t.goods) + '원 더 담으면 무료배송';
-      cartbarMain.innerHTML = '총 <span class="num">' + fmt(t.total) + '원</span>';
-      cartbarBtn.textContent = '장바구니 보기 (' + t.qty + ')';
+      cartbarSub.textContent = t.ship === 0 ? 'Free delivery ·' + t.qty + ' added' : fmt(FREE_SHIP - t.goods) + ' KRW more for free delivery';
+      cartbarMain.innerHTML = 'Total <span class="num">' + fmt(t.total) + ' KRW</span>';
+      cartbarBtn.textContent = 'View basket (' + t.qty + ')';
     }
   };
 
@@ -1427,15 +1427,15 @@ text-decoration:none}
     else cart.set(id, { name: card.dataset.name, price: +card.dataset.price, origin: card.dataset.origin, img: card.dataset.img, qty: 1 });
     renderCart();
     var t = totals();
-    var msg = card.dataset.name + ' 담았어요';
-    if (t.goods > 0 && t.goods < FREE_SHIP) msg += ' · 무료배송까지 ' + fmt(FREE_SHIP - t.goods) + '원';
-    toast(msg, '장바구니 보기', null, openDrawer);
+    var msg = card.dataset.name + 'Added';
+    if (t.goods > 0 && t.goods < FREE_SHIP) msg += '· to free delivery,' + fmt(FREE_SHIP - t.goods) + ' KRW';
+    toast(msg, 'View basket', null, openDrawer);
   };
   $$('.add-cart').forEach(function (btn) {
     btn.addEventListener('click', function () {
       addToCart(btn.closest('[data-id]'));
       var orig = btn.innerHTML;
-      btn.innerHTML = '<svg class="icon"><use href="#i-check"/></svg>담김';
+      btn.innerHTML = '<svg class="icon"><use href="#i-check"/></svg>Added';
       btn.disabled = true;
       setTimeout(function () { btn.innerHTML = orig; btn.disabled = false; }, 900);
     });
@@ -1483,7 +1483,7 @@ text-decoration:none}
   });
   checkoutBtn.addEventListener('click', function () {
     var t = totals();
-    toast('예시 페이지입니다 · ' + t.qty + '개 상품, ' + fmt(t.total) + '원이 결제 단계로 넘어갑니다', null);
+    toast('This is a sample page ·' + t.qty + ' items,' + fmt(t.total) + ' KRW carries over to checkout', null);
   });
   renderCart();
 
@@ -1500,13 +1500,13 @@ text-decoration:none}
     toastTimer = setTimeout(function () { toastEl.classList.remove('is-show'); }, 3200);
   };
   toastAction.addEventListener('click', function () { if (toastHandler) toastHandler(); toastEl.classList.remove('is-show'); });
-  $('#mock-ask').addEventListener('click', function () { toast('배송 문의는 고객센터 1588-0342 또는 카카오톡 1:1 문의로 접수돼요', '1:1 문의', '#chat'); });
-  $('#mock-claim').addEventListener('click', function () { toast('신선 보장은 수령 후 24시간 이내 사진 1장으로 신청할 수 있어요 (예시 화면)', null); });
+  $('#mock-ask').addEventListener('click', function () { toast('For delivery questions, call 1588-0342 or message us on KakaoTalk', 'Chat', '#chat'); });
+  $('#mock-claim').addEventListener('click', function () { toast('A freshness claim takes one photo within 24 hours of delivery (sample screen)', null); });
 
   /* ---------- 필터 · 검색 ---------- */
   var cards = $$('.pcard'), filters = $$('.filter'), statusText = $('#grid-status-text'), resetBtn = $('#grid-reset'), emptyEl = $('#pgrid-empty');
   var searchWrap = $('#search'), searchForm = $('#search-form'), q = $('#q'), searchClear = $('#search-clear');
-  var CAT_LABEL = { all: '전체', veg: '채소', fruit: '과일', sea: '수산·해산', meat: '정육·계란' };
+  var CAT_LABEL = { all: 'All', veg: 'Vegetables', fruit: 'Fruit', sea: 'Seafood', meat: 'Meat & eggs' };
   var state = { cat: 'all', query: '' };
   var applyFilter = function () {
     var n = 0, kw = state.query.trim().toLowerCase();
@@ -1520,9 +1520,9 @@ text-decoration:none}
     filters.forEach(function (f) { f.setAttribute('aria-pressed', String(f.dataset.filter === state.cat)); });
     emptyEl.hidden = n > 0;
     var parts = [];
-    if (kw) parts.push('"' + state.query.trim() + '" 검색 결과');
+    if (kw) parts.push('"' + state.query.trim() + '" results');
     if (state.cat !== 'all') parts.push(CAT_LABEL[state.cat]);
-    statusText.textContent = (parts.length ? parts.join(' · ') + ' ' : '') + n + '개 상품';
+    statusText.textContent = (parts.length ? parts.join(' · ') + ' ' : '') + n + ' items';
     resetBtn.hidden = !(kw || state.cat !== 'all');
   };
   filters.forEach(function (f) { f.addEventListener('click', function () { state.cat = f.dataset.filter; applyFilter(); }); });

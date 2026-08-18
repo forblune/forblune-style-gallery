@@ -6,7 +6,8 @@
 import json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-ATTRS = ("alt", "title", "aria-label", "placeholder", "content", "data-caption", "value")
+ATTRS = ("alt", "title", "aria-label", "placeholder", "content", "data-caption", "value",
+         "data-nav", "data-label", "data-title", "aria-description", "label")
 
 SWITCH_CSS = """<style id="lang-switch-style">
 .langswitch{position:fixed;bottom:14px;right:14px;z-index:99999;display:flex;gap:1px;
@@ -66,7 +67,33 @@ def translate_html(src, table, missing):
                 if key in table: return f'{a}="{table[key]}"'
                 missing.add(key); return m.group(0)
             parts[i] = re.sub(rf'{a}="([^"]*)"', sub_attr, parts[i])
-    return "".join(parts)
+    out = "".join(parts)
+
+    # ── 쓸기 패스 ────────────────────────────────────────────
+    # 위 규칙(텍스트 노드·속성·JS 문자열)이 닿지 못하는 자리가 있다.
+    # 중첩 템플릿 리터럴, JS 안에 조립되는 HTML, 데이터 배열 같은 것들이다.
+    # 사전에 있는 문구가 문서에 그대로 남아 있으면 여기서 literal 로 바꾼다.
+    # 짧은 키가 긴 키 안에 먼저 걸리지 않도록 긴 것부터 처리한다.
+    # 짧은 키는 절대 쓸지 않는다. '원'·'만'·'건' 같은 단위가 다른 단어 안에서
+    # 치환되어 '원두'가 'KRW두'로, '만들기'가 '0k들기'로 망가진 적이 있다.
+    # 문장 단위로만 안전하다.
+    SWEEP_MIN = 6
+    for key in sorted((k for k in table if has_ko(k) and len(k) >= SWEEP_MIN), key=len, reverse=True):
+        if key in out:
+            out = out.replace(key, table[key])
+    return out
+
+
+def leftover_korean(html):
+    """번역되지 않고 남은 한국어 조각을 돌려준다.
+
+    예전에는 '사전에 없던 키'만 누락으로 셌다. 그래서 추출기가 애초에 찾지
+    못한 자리(중첩 템플릿 리터럴 등)에 한국어가 그대로 남아도 '누락 없음'으로
+    보고했다. 실제로 utility-dashboard 에서 194건이 남은 채 통과했다.
+    이제는 결과물을 직접 훑어서 남은 것을 센다.
+    """
+    body = re.sub(r"<style[\s\S]*?</style>", "", html)
+    return sorted({" ".join(m.split()) for m in re.findall(r"[가-힣][가-힣\s·,.()%~\-]*", body) if m.strip()})
 
 def build(slug, table, js_patches=()):
     src_path = f"{ROOT}/sites/{slug}/index.html"
@@ -110,7 +137,14 @@ if __name__ == "__main__":
     missing = build(slug, table, [(p["find"], p["replace"]) for p in patches])
     print(f"{slug}: 사전 {len(table)}개 적용")
     if missing:
-        print(f"  !! 번역 누락 {len(missing)}개")
+        print(f"  !! 사전에 없는 문자열 {len(missing)}개")
         for m in sorted(missing)[:25]: print("   -", m)
-    else:
-        print("  누락 없음")
+
+    # 사전 적용과 별개로, 결과물에 한국어가 남았는지 직접 확인한다.
+    built = open(f"{ROOT}/sites/{slug}/en/index.html", encoding="utf-8").read()
+    left = leftover_korean(built)
+    if left:
+        print(f"  !! 결과물에 남은 한국어 {len(left)}종")
+        for m in left[:25]: print("   ·", m[:80])
+    elif not missing:
+        print("  누락 없음 · 잔존 한국어 없음")

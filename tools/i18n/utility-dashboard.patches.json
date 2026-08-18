@@ -1,0 +1,42 @@
+[
+ {
+  "find": "></i></span>${s.stock.toFixed(1)}일</span></td>",
+  "replace": "></i></span>${s.stock.toFixed(1)} d</span></td>"
+ },
+ {
+  "find": "<button class=\"btn sm\" type=\"button\" data-open=\"${s.id}\">상세</button>",
+  "replace": "<button class=\"btn sm\" type=\"button\" data-open=\"${s.id}\">Detail</button>"
+ },
+ {
+  "find": "${s.stock.toFixed(1)}일분",
+  "replace": "${s.stock.toFixed(1)} days"
+ },
+ {
+  "find": "rows.length).toFixed(1)}일</td>",
+  "replace": "rows.length).toFixed(1)} d</td>"
+ },
+ {
+  "find": "s.wait.toFixed(1)+'분'",
+  "replace": "s.wait.toFixed(1)+' min'"
+ },
+ {
+  "find": "<th scope=\"col\"><span class=\"small\">상세</span></th>",
+  "replace": "<th scope=\"col\"><span class=\"small\">Detail</span></th>"
+ },
+ {
+  "find": "`미처리 알림 ${open.length}건`",
+  "replace": "`${open.length} open alerts`"
+ },
+ {
+  "find": "`최근 ${trendRange}일 일별 매출 선 그래프. 이번 기간 실선, ${d.legend} 점선.`",
+  "replace": "`Daily sales over the last ${trendRange} days. This period solid, ${d.legend} dashed.`"
+ },
+ {
+  "find": "id=\"drawerGo\">매장 상세 화면</button>",
+  "replace": "id=\"drawerGo\">Store detail screen</button>"
+ },
+ {
+  "find": "Fixed(1)}분</td>",
+  "replace": "Fixed(1)} min</td>"
+ }
+]

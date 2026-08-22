@@ -10,6 +10,7 @@ rm -rf dist
 mkdir -p dist
 cp index.html dist/
 [ -f 404.html ] && cp 404.html dist/ || true
+[ -f og.png ] && cp og.png dist/ || true   # 링크 공유 미리보기 이미지
 cp -r sites dist/sites
 cp -r shots dist/shots   # 허브 카드 썸네일
 # meta.json 은 허브가 쓰지 않으므로 공개본에서 제외

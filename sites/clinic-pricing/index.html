@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>의원 홈페이지 제작·유지관리 단가표 | 포블룬</title>
+<meta name="description" content="포블룬 의원 홈페이지 제작 기본 190,000원에 포함되는 범위와 페이지 추가, 선택 항목, 하자보수, 납품 후 수정 단가를 정리한 문서입니다.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="의원 홈페이지 제작·유지관리 단가표">
+<meta property="og:description" content="기본 제작비에 무엇이 들어가고, 페이지가 늘면 얼마인지, 그 밖의 것은 각각 얼마인지 정리한 문서입니다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+:root{
+  --page:#ffffff;
+  --band:#f4f5f5;
+  --ink:#16191a;
+  --ink2:#4b5254;
+  --ink3:#7b8285;
+  --line:#dcdede;
+  --line2:#b9bdbe;
+  --mark:#12405a;
+  --markband:#eef2f5;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --page:#15181a;
+    --band:#1e2225;
+    --ink:#e9ecec;
+    --ink2:#adb4b6;
+    --ink3:#848b8e;
+    --line:#2c3134;
+    --line2:#434a4d;
+    --mark:#8fc2de;
+    --markband:#1b2a33;
+  }
+}
+:root[data-theme="dark"]{
+  --page:#15181a;
+  --band:#1e2225;
+  --ink:#e9ecec;
+  --ink2:#adb4b6;
+  --ink3:#848b8e;
+  --line:#2c3134;
+  --line2:#434a4d;
+  --mark:#8fc2de;
+  --markband:#1b2a33;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--page);color:var(--ink);
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+  font-size:15px;line-height:1.72;font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+.doc{max-width:800px;margin:0 auto;padding:34px 20px 80px}
+@media(min-width:700px){.doc{padding:56px 36px 96px}}
+
+.head{border-bottom:2px solid var(--ink);padding-bottom:16px}
+.issuer{font-size:12.5px;color:var(--ink3);letter-spacing:.02em;margin:0 0 18px}
+.issuer b{color:var(--ink2);font-weight:500}
+h1{font-size:22px;font-weight:700;letter-spacing:-.01em;margin:0;line-height:1.45}
+@media(min-width:700px){h1{font-size:26px}}
+.headrow{
+  display:flex;flex-wrap:wrap;justify-content:space-between;
+  align-items:flex-end;gap:8px 24px;margin-top:12px
+}
+.headrow p{margin:0;font-size:13px;color:var(--ink3)}
+.headrow p b{color:var(--ink2);font-weight:500}
+.intro{margin:20px 0 0;color:var(--ink2);font-size:14.5px;max-width:62ch}
+
+h2{
+  font-size:16px;font-weight:700;margin:44px 0 10px;letter-spacing:-.005em;
+  padding-bottom:7px;border-bottom:1px solid var(--line2)
+}
+h2 .amt{float:right;font-weight:700;color:var(--mark);font-variant-numeric:tabular-nums}
+p.note{margin:0 0 14px;color:var(--ink2);font-size:14px;max-width:64ch}
+
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:460px;font-size:14px}
+th{
+  text-align:left;font-weight:500;font-size:12.5px;color:var(--ink3);
+  padding:8px 12px;background:var(--band);border-top:1px solid var(--line2);
+  border-bottom:1px solid var(--line2);white-space:nowrap
+}
+th.r,td.r{text-align:right}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td.k{font-weight:500;white-space:nowrap}
+td.d{color:var(--ink2);font-size:13.5px;line-height:1.62}
+td.v{font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+td.f{color:var(--ink3);font-size:12.5px;white-space:nowrap}
+tr.sum td{
+  background:var(--markband);border-top:1px solid var(--line2);
+  border-bottom:1px solid var(--line2);font-weight:700
+}
+tr.sum td.v{color:var(--mark)}
+
+ul.rem{margin:12px 0 0;padding:0;list-style:none}
+ul.rem li{
+  position:relative;padding-left:17px;color:var(--ink2);
+  font-size:13.5px;line-height:1.7;margin:3px 0
+}
+ul.rem li:before{content:"\203B";position:absolute;left:0;color:var(--ink3);font-size:11px;top:2px}
+
+ol.terms{margin:14px 0 0;padding-left:20px;color:var(--ink2);font-size:14px}
+ol.terms li{margin:9px 0;line-height:1.75}
+ol.terms li b,ul.rem li b,p.note b,td.d b{color:var(--ink);font-weight:500}
+
+.sign{
+  margin-top:52px;padding-top:18px;border-top:2px solid var(--ink);
+  font-size:12.5px;color:var(--ink3);line-height:1.9
+}
+.sign b{color:var(--ink2);font-weight:500}
+.sign .co{color:var(--ink);font-weight:700;font-size:14px}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <div class="head">
+    <p class="issuer">포블룬 <b>Forblune</b></p>
+    <h1>의원 홈페이지 제작·유지관리 단가표</h1>
+    <div class="headrow">
+      <p><b>기준일</b> 2026. 8. 26.</p>
+      <p><b>금액 표기</b> 부가세 별도</p>
+      <p><b>담당</b> 김건희</p>
+    </div>
+  </div>
+
+  <p class="intro">
+    말씀하신 <b>5페이지 구성과 서브페이지</b> 모두 가능합니다.
+    기본 제작비에 무엇이 들어가고 페이지가 늘면 얼마인지, 그 밖의 것은 각각 얼마인지 적었습니다.
+    나중에 말이 달라지지 않도록 미리 문서로 드립니다.
+  </p>
+
+  <h2>1. 기본 제작비 <span class="amt">190,000원</span></h2>
+  <p class="note">먼저 말씀드린 금액입니다. <b>메인 페이지 1장</b> 기준이며 아래 범위까지 포함합니다. 페이지를 늘리시는 경우는 2번을 봐주십시오.</p>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:34%">구성</th><th>포함 범위</th></tr></thead>
+    <tbody>
+      <tr><td class="k">메인 페이지</td><td class="d">의원명, 한 문장 소개, 전화·예약 버튼, 아래 항목들의 요약</td></tr>
+      <tr><td class="k">진료 안내</td><td class="d">진료과목 목록과 과목별 설명</td></tr>
+      <tr><td class="k">의료진</td><td class="d">2인까지. 사진, 약력, 진료 요일</td></tr>
+      <tr><td class="k">진료시간·오시는 길</td><td class="d">요일별 시간표, 주소, 주차 안내, 지도 연결</td></tr>
+      <tr><td class="k">문의</td><td class="d">전화·문자 연결, 모바일 하단 고정 버튼</td></tr>
+      <tr><td class="k">화면 대응</td><td class="d">휴대폰·태블릿·PC 세 화면 모두 확인 후 납품</td></tr>
+      <tr><td class="k">검색·공유</td><td class="d">검색 결과 제목과 설명, 카카오톡 공유 시 뜨는 이미지 정리</td></tr>
+      <tr><td class="k">의료광고 검수</td><td class="d">문구 전체 1회 검수. 아래 특기사항 3번 참조</td></tr>
+      <tr><td class="k">배포</td><td class="d">도메인 연결과 배포 작업. 도메인·서버 비용은 별도</td></tr>
+      <tr><td class="k">수정</td><td class="d">납품 전 2회</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>2. 페이지 추가 <span class="amt">100,000원 / 장</span></h2>
+  <p class="note">
+    말씀하신 5페이지 구성이 여기 해당합니다.
+    서브페이지 한 장에 <b>상단 메뉴 구성과 페이지 간 이동까지</b> 포함해서 잡은 금액입니다.
+  </p>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:34%">구분</th><th>내용</th><th class="r" style="width:20%">금액</th></tr></thead>
+    <tbody>
+      <tr><td class="k">메인 페이지</td><td class="d">1번 기본 제작비</td><td class="v r">190,000원</td></tr>
+      <tr><td class="k">서브페이지</td><td class="d">병원 소개, 의료진, 진료 안내, 오시는 길 등. 글과 사진 위주 기준</td><td class="v r">100,000원 / 장</td></tr>
+      <tr class="sum"><td class="k">5페이지 구성</td><td class="d">메인 1장 + 서브 4장. 상단 메뉴 포함</td><td class="v r">590,000원</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="rem">
+    <li>서브페이지 금액은 <b>페이지라는 그릇</b>의 값입니다. 그 안에 들어가는 비급여 표나 진료 절차 도식처럼 따로 짜야 하는 구성은 3번에서 고르시면 됩니다.</li>
+    <li>정형외과에서 5페이지로 가실 때 흔한 구성은 <b>메인 / 병원 소개 / 의료진 / 진료 안내 / 오시는 길</b>입니다.</li>
+    <li>글이 아주 많거나 표가 여러 개 들어가는 페이지는 분량을 보고 다시 말씀드립니다. 임의로 올려 받지 않습니다.</li>
+  </ul>
+
+  <h2>3. 선택 항목</h2>
+  <p class="note">
+    보내드린 <b>바른마디 정형외과 예시</b>에는 아래 항목이 더 들어가 있습니다.
+    기본 제작비에 없는 범위라 따로 적습니다. 필요한 것만 고르시면 됩니다.
+  </p>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:27%">항목</th><th>내용</th><th class="r" style="width:19%">금액</th></tr></thead>
+    <tbody>
+      <tr><td class="k">비급여 진료비용 표</td><td class="d">의료법이 요구하는 고지 형식대로. 분류 필터, 기준일 표기, 고지 문구 포함</td><td class="v r">80,000원</td></tr>
+      <tr><td class="k">진료 절차 안내</td><td class="d">접수부터 재활까지 단계별 안내. 단계마다 걸리는 시간 표기</td><td class="v r">80,000원</td></tr>
+      <tr><td class="k">검사·치료 장비</td><td class="d">장비별 용도, 소요 시간, 급여 여부 표기</td><td class="v r">100,000원</td></tr>
+      <tr><td class="k">자주 묻는 질문</td><td class="d">8개 기준. 접었다 펴지는 형태</td><td class="v r">60,000원</td></tr>
+      <tr><td class="k">의료진 3인째부터</td><td class="d">기본 제작비에 2인까지 포함되어 있습니다</td><td class="v r">50,000원 / 인</td></tr>
+      <tr><td class="k">진료 중 표시</td><td class="d">현재 시각 기준으로 진료 중인지 자동 표시</td><td class="v r">50,000원</td></tr>
+      <tr><td class="k">약도</td><td class="d">지도 링크 대신 건물·출구·주차 입구를 직접 그린 약도</td><td class="v r">50,000원</td></tr>
+      <tr class="sum"><td class="k">전부 포함 시</td><td class="d">보내드린 예시와 같은 수준. 의료진 3인 기준</td><td class="v r">610,000원</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="rem">
+    <li>전부 하실 필요는 없습니다. 정형외과라면 <b>비급여 표와 진료 절차</b>가 실제로 효과가 큽니다. 환자분들이 전화로 제일 많이 묻는 두 가지입니다.</li>
+    <li>이 셋 중에서는 <b>비급여 표·진료 절차·FAQ</b> 세 가지 조합을 가장 많이 하십니다. 세 개 합쳐 220,000원입니다.</li>
+    <li>장비 소개는 장비가 실제로 여러 대 있을 때만 의미가 있습니다.</li>
+  </ul>
+
+  <h2>말씀하신 구성 기준 예상 금액</h2>
+  <p class="note">
+    5페이지에 서브페이지를 넣으신다고 하셔서, 그 기준으로 계산해 두었습니다.
+    아래 두 가지 중 고르시면 되고 항목은 자유롭게 빼셔도 됩니다.
+  </p>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:27%">구성</th><th>내역</th><th class="r" style="width:19%">합계</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="k">5페이지 기본</td>
+        <td class="d">메인 1장 190,000 + 서브 4장 400,000. 상단 메뉴와 의료광고 검수 포함</td>
+        <td class="v r">590,000원</td>
+      </tr>
+      <tr class="sum">
+        <td class="k">5페이지 + 권장 3종</td>
+        <td class="d">위 590,000 + 비급여 표 80,000 + 진료 절차 80,000 + FAQ 60,000</td>
+        <td class="v r">810,000원</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="rem">
+    <li>장비 소개와 약도, 진료 중 표시는 빼고 잡았습니다. 실제로 필요하실 때 나중에 붙이셔도 됩니다.</li>
+    <li>의료진이 3인 이상이면 3인째부터 인당 50,000원이 더해집니다.</li>
+    <li>확정 견적은 페이지별로 어떤 내용이 들어가는지 정리한 뒤에 드립니다. 위 금액에서 올라가는 일은 없도록 하겠습니다.</li>
+  </ul>
+
+  <h2>4. 하자보수와 수정</h2>
+  <p class="note">문의하신 부분입니다. 아래 두 가지는 청구하지 않습니다.</p>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:27%">구분</th><th>범위</th><th class="r" style="width:19%">기간·횟수</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="k">하자보수</td>
+        <td class="d">제가 작업한 범위에서 재현되는 오류, 오타, 깨진 화면. 수정이 아니라 하자라서 횟수를 세지 않습니다</td>
+        <td class="v r">30일 · 무제한</td>
+      </tr>
+      <tr>
+        <td class="k">내용 변경</td>
+        <td class="d">오류는 아니지만 문구나 배치를 바꾸고 싶으신 경우. 3회째부터 5번 단가 적용</td>
+        <td class="v r">30일 · 2회</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>5. 납품 30일 이후 수정 단가</h2>
+  <p class="note">
+    나중에 청구하려고 만든 목록이 아닙니다. 미리 아셔야 예산을 잡으실 수 있어서 적습니다.
+  </p>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:26%">항목</th><th>내용</th><th class="r" style="width:17%">금액</th><th class="r" style="width:13%">빈도</th></tr></thead>
+    <tbody>
+      <tr><td class="k">문구 수정</td><td class="d">전화번호, 진료시간, 휴진 안내, 본문 문구</td><td class="v r">10,000원 / 건</td><td class="f r">자주</td></tr>
+      <tr><td class="k">비급여 금액 변경</td><td class="d">항목 추가·변경·삭제. 의료법상 필요한 <b>고지 기준일 갱신까지 포함</b></td><td class="v r">10,000원 / 건</td><td class="f r">자주</td></tr>
+      <tr><td class="k">위 두 항목 묶음</td><td class="d">한 번에 5건까지 모아 주시는 경우</td><td class="v r">40,000원 / 5건</td><td class="f r">자주</td></tr>
+      <tr><td class="k">이미지 교체</td><td class="d">규격에 맞는 원본을 주시는 경우</td><td class="v r">10,000원 / 장</td><td class="f r">가끔</td></tr>
+      <tr><td class="k">이미지 교체·보정</td><td class="d">밝기·색 보정, 잘라내기, 배경 정리가 필요한 경우</td><td class="v r">30,000원 / 장</td><td class="f r">가끔</td></tr>
+      <tr><td class="k">공지 팝업</td><td class="d">휴진·명절·이전 안내. 기간이 지난 뒤 <b>내려드리는 것까지 포함</b></td><td class="v r">30,000원 / 건</td><td class="f r">가끔</td></tr>
+      <tr><td class="k">의료진 추가·교체</td><td class="d">사진 보정, 약력, 진료 요일, 담당 진료과목 연결</td><td class="v r">50,000원 / 인</td><td class="f r">가끔</td></tr>
+      <tr><td class="k">진료과목 추가·수정</td><td class="d">과목이 늘거나 설명이 통째로 바뀌는 경우</td><td class="v r">30,000원 / 건</td><td class="f r">가끔</td></tr>
+      <tr><td class="k">배너 제작</td><td class="d">메인·서브 배너 1개</td><td class="v r">50,000원 / 개</td><td class="f r">가끔</td></tr>
+      <tr><td class="k">의료광고 재검수</td><td class="d">페이지 전체 재검토. 새 문구를 많이 넣으실 때</td><td class="v r">50,000원 / 회</td><td class="f r">드묾</td></tr>
+      <tr><td class="k">섹션 신규 추가</td><td class="d">기획, 문구 작성, 의료광고 검수, 화면 대응까지 포함</td><td class="v r">150,000원부터</td><td class="f r">드묾</td></tr>
+      <tr><td class="k">우선 처리</td><td class="d">다른 작업보다 앞에 넣어 영업일 2일 안에 처리</td><td class="v r">해당 금액 × 1.5</td><td class="f r">드묾</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>6. 월 정액 관리 (선택)</h2>
+  <p class="note">
+    안 하셔도 됩니다. 건당으로만 쓰셔도 되고 나중에 시작하셔도 됩니다.
+    자동 갱신 없고 원하실 때 그만두시면 됩니다.
+  </p>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:22%">구분</th><th>포함 범위</th><th class="r" style="width:19%">월 금액</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="k">건당 정산</td>
+        <td class="d">고정비 없이 요청하실 때마다 5번 단가 적용. 수정이 분기에 한두 번이면 이쪽이 가장 저렴합니다</td>
+        <td class="v r">—</td>
+      </tr>
+      <tr>
+        <td class="k">기본 관리</td>
+        <td class="d">월 5건까지 수정 포함 · 영업일 3일 내 처리 · 월 1회 백업과 링크·문의폼 점검 · 도메인과 보안인증서 만료 사전 안내</td>
+        <td class="v r">49,000원</td>
+      </tr>
+      <tr>
+        <td class="k">확대 관리</td>
+        <td class="d">월 12건까지 수정 포함 · 영업일 2일 내 처리 · 기본 관리 전부 포함 · 월 1회 의료진 교체 또는 배너 1개 · 분기 1회 비급여 표 전체 점검과 기준일 갱신</td>
+        <td class="v r">99,000원</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="rem">
+    <li>의원은 비급여 금액 변경과 휴진 공지가 계속 생겨서 월 3~5건이 보통입니다. 건당으로 해도 금액은 비슷한데, 정액은 몇 건인지 세지 않고 그냥 말씀하시면 되는 것이 다릅니다.</li>
+    <li>수정이 거의 없는 의원이면 건당이 확실히 저렴합니다. <b>처음 두세 달은 건당으로 써보시고 그때 정하셔도 됩니다.</b></li>
+    <li>포함 건수를 넘기면 초과분은 5번 단가로 정산합니다.</li>
+  </ul>
+
+  <h2>7. 별도 비용과 제외 사항</h2>
+  <div class="tw">
+  <table>
+    <thead><tr><th style="width:27%">구분</th><th>해당 항목</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="k">청구하지 않음</td>
+        <td class="d">작업 범위·금액 상담 / 제가 고친 부분이 잘못되어 다시 고치는 일 / 계약 전 사전 점검</td>
+      </tr>
+      <tr>
+        <td class="k">원장님 직접 부담</td>
+        <td class="d">도메인 등록·갱신비 (연 2만원 안팎) / 호스팅·서버 비용 / 유료 폰트·유료 이미지 라이선스</td>
+      </tr>
+      <tr>
+        <td class="k">무상 범위 아님</td>
+        <td class="d">원장님이나 다른 업체가 직접 수정하신 부분에서 생긴 오류 / 호스팅·외부 서비스 장애 / 전체 디자인 방향을 처음부터 다시 잡는 일</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>특기사항</h2>
+  <ol class="terms">
+    <li>
+      <b>가격에 대해 그대로 말씀드립니다.</b>
+      병원 홈페이지 신규 제작은 보통 150만원에서 500만원 사이입니다.
+      제가 19만원을 부른 것은 일이 쉬워서가 아니고 들어가는 시간도 같습니다.
+      지금은 후기와 실적을 쌓는 시기라 낮게 받고 있습니다.
+      계속 유지되는 가격이 아니라 지금 시기의 가격입니다.
+      대신 싸게 받는 만큼 범위를 흐리지 않고 위와 같이 적어둡니다.
+    </li>
+    <li>
+      <b>보장하지 않는 것도 적어둡니다.</b>
+      검색 순위 상승, 환자 수 증가, 24시간 즉시 복구는 약속드리지 않습니다.
+      할 수 있는 것과 없는 것을 처음부터 나누어 적는 편이 서로 편합니다.
+    </li>
+    <li>
+      <b>의료광고 제한.</b>
+      치료 전후 사진, 환자 치료 경험담, 최상급 표현, 비급여 진료비 할인 광고,
+      다른 의료기관과의 비교는 홈페이지든 블로그든 매체와 무관하게 금지입니다.
+      요청하셔도 넣어드릴 수 없습니다. 문제가 되면 책임이 의료기관에 가기 때문입니다.
+      한편 광고 사전심의는 일일 이용자 10만명 이상 매체가 대상이라
+      의원 자체 홈페이지는 대개 심의 대상이 아닙니다.
+    </li>
+    <li>
+      본 단가표는 기준일 현재 기준이며 변경 시 미리 알려드립니다.
+      실제 견적은 페이지 구성과 자료 상태를 확인한 뒤 확정합니다.
+    </li>
+  </ol>
+
+  <div class="sign">
+    <span class="co">포블룬</span> · 대표 김건희<br>
+    사업자등록번호 535-34-01801 · 통신판매업신고 2026-서울양천-0966<br>
+    서울 양천구 목동로 212 · <b>geonhee@forblune.com</b>
+  </div>
+
+</div>
+</body>
+</html>
